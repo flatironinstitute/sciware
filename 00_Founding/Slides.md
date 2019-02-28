@@ -41,9 +41,10 @@ is to come up with shared vision v0.2
 
 How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
 
+[Google doc](https://docs.google.com/document/d/1y7tRcXEjOE6SP8Rw2L8KLC0tIJ2FfpuncGz8dnXsZF0/edit?usp=sharing)
 
-## Discussion
 
+Are there any ideas you DISAGREE with?
 [Google doc](https://docs.google.com/document/d/1y7tRcXEjOE6SP8Rw2L8KLC0tIJ2FfpuncGz8dnXsZF0/edit?usp=sharing)
 
 
@@ -72,7 +73,6 @@ Kelle's preferences through May:
 # Next meeting?
 Thur, March 28 at 3:30?
 
-[Google doc](https://docs.google.com/document/d/1m3eOYNRa4hR1D9vqVdf1c5H5MhE1IFnJhIuwBrYN7OU/edit?usp=sharing)
 
 
 ## Formats & Topics
@@ -81,6 +81,8 @@ Thur, March 28 at 3:30?
   - Schedule meeting to meeting or ~6 months in advance?
 - Topics
   - e.g., Version control, testing, tool selection
+
+[Google doc](https://docs.google.com/document/d/1m3eOYNRa4hR1D9vqVdf1c5H5MhE1IFnJhIuwBrYN7OU/edit?usp=sharing)
 
 
 ## Formats & Topics
@@ -91,7 +93,9 @@ Discuss in small teams
 - ADD topics and format options
 - ADD names and resources to topics
 
+[Google doc](https://docs.google.com/document/d/1m3eOYNRa4hR1D9vqVdf1c5H5MhE1IFnJhIuwBrYN7OU/edit?usp=sharing)
 
-## Discussion
+
+## Report Back & Discussion
 
 [Google doc](https://docs.google.com/document/d/1bg6rDr2AB9BGvlFLJBDzO97p4hR1nZf7LSiSYjJmm_k/edit?usp=sharing)
