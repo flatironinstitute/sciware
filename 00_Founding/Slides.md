@@ -45,6 +45,7 @@ How can we foster an environment which encourages participation across experienc
 
 
 Are there any ideas you DISAGREE with?
+
 [Google doc](https://docs.google.com/document/d/1y7tRcXEjOE6SP8Rw2L8KLC0tIJ2FfpuncGz8dnXsZF0/edit?usp=sharing)
 
 
