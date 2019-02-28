@@ -25,14 +25,14 @@ is to come up with shared vision v0.2
 
 
 
-# Get to know each other
+## Get to know each other
 - Name, affilation, and what you work on.
 - What you hope to contribute/teach Sciware.
 - What you hope to get/learn from Sciware.
 
 
 
-# Rules of Engagement
+## Rules of Engagement
 - Work in small team of 2-3 people
 - Take notes in a Google Doc
 - At least one scribe
@@ -49,14 +49,14 @@ How can we foster an environment which encourages participation across experienc
 - Next Meeting?
 
 
-# Meeting Frequency
+## Meeting Frequency
 - 1x/month for 1 hour?
 - 1x/month for 2 hours?
 - 2x/month for 1 hour?
 - 4x/month for 1 hour?
 
 
-# Meeting Day/Time
+## Meeting Day/Time
 Kelle's preferences through May:
 
 1) Thur afternoon
@@ -71,7 +71,7 @@ Thur, March 28 at 3:30?
 
 
 
-# Formats & Topics
+## Formats & Topics
 - Format
   - e.g., Lecture, Live Demos, Guided Activities
   - Schedule meeting to meeting or ~6 months in advance?
@@ -79,7 +79,7 @@ Thur, March 28 at 3:30?
   - e.g., Version control, testing, tool selection
 
 
-# Formats & Topics
+## Formats & Topics
 Discuss in small teams
 - at least one scribe
 - one reporter
