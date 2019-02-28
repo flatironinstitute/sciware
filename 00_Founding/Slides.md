@@ -59,11 +59,9 @@ How can we foster an environment which encourages participation across experienc
 ## Meeting Day/Time
 Kelle's preferences through May:
 
-1) Thur afternoon
-
-2) Thur before lunch
-
-3) Mon before lunch
+1. Thur afternoon
+2. Thur before lunch
+3. Mon before lunch
 
 
 # Next meeting?
