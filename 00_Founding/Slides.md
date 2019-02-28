@@ -1,6 +1,10 @@
 # SLIDE 1
 welcome
 
+- 3 blank lines between (horizontal) slides
+- 2 blank lines between (vertical) sub-slides
+
+#note: presenters notes
 
 
 # Slide 2
