@@ -1,11 +1,3 @@
-# SLIDE 1
-welcome
-
-- 3 blank lines between (horizontal) slides
-- 2 blank lines between (vertical) sub-slides
-
-#note: presenters notes
-
 # Sciware
 Activities facilitating scientific software development skills at the Flatiron Institute
 
