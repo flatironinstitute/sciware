@@ -14,7 +14,7 @@ Activities facilitating scientific software development skills at the Flatiron I
    - For example, technology and coding language agnostic
 
 
-4) Increase awareness and adoption of software development best practices to improve scientific productivity quality.
+4) Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
 
 
 5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
