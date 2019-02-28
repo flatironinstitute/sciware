@@ -42,6 +42,11 @@ is to come up with shared vision v0.2
 How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
 
 
+## Discussion
+
+[Google doc](https://docs.google.com/document/d/1y7tRcXEjOE6SP8Rw2L8KLC0tIJ2FfpuncGz8dnXsZF0/edit?usp=sharing)
+
+
 
 # Schedule
 - Frequency?
@@ -67,6 +72,7 @@ Kelle's preferences through May:
 # Next meeting?
 Thur, March 28 at 3:30?
 
+[Google doc](https://docs.google.com/document/d/1m3eOYNRa4hR1D9vqVdf1c5H5MhE1IFnJhIuwBrYN7OU/edit?usp=sharing)
 
 
 ## Formats & Topics
@@ -84,3 +90,8 @@ Discuss in small teams
 - DISCUSS what formats you think would work best
 - ADD topics and format options
 - ADD names and resources to topics
+
+
+## Discussion
+
+[Google doc](https://docs.google.com/document/d/1bg6rDr2AB9BGvlFLJBDzO97p4hR1nZf7LSiSYjJmm_k/edit?usp=sharing)
