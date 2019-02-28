@@ -26,7 +26,7 @@ is to come up with shared vision v0.2
 
 
 ## Get to know each other
-- Name, affilation, and what you work on.
+- Name, affiliation, and what you work on.
 - What you hope to contribute/teach Sciware.
 - What you hope to get/learn from Sciware.
 
@@ -39,7 +39,7 @@ is to come up with shared vision v0.2
 - One reporter
 
 
-How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scietific disciplines?
+How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
 
 
 
