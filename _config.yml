@@ -1,0 +1,5 @@
+timezone:    America/New_York
+baseurl:     /learn-sciware-dev
+exclude:
+  - reveal.js/test
+  - reveal.js/index.html

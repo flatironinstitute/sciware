@@ -1,9 +1,13 @@
 # SLIDE 1
 welcome
 
+
+
 # Slide 2
 
 Our vision
+
+
 
 # Slide 3
 
@@ -13,14 +17,18 @@ Our vision
 - 2x/month for 1 hour
 - 4x/month for 1 hour
 
+
 # Day/Time?
 Kelle's schedule
 1) Thur afternoon
 2) Thur before lunch
 3) Mon before lunch
 
+
 # Next meeting?
 Thur, March 28 at 3:30?
+
+
 
 # Format and Topic Options
 - Idea is to mix and match
