@@ -42,9 +42,9 @@ How can we foster an environment which encourages participation across experienc
 
 
 # Schedule
-- Frequency
-- Day/Time
-- Next Meeting
+- Frequency?
+- Day/Time?
+- Next Meeting?
 
 
 # Meeting Frequency
@@ -57,7 +57,9 @@ How can we foster an environment which encourages participation across experienc
 # Meeting Day/Time
 Kelle's preferences through May:
 1) Thur afternoon
+
 2) Thur before lunch
+
 3) Mon before lunch
 
 
@@ -66,15 +68,15 @@ Thur, March 28 at 3:30?
 
 
 
-# Format and Topic Options
-We've put together two google docs with some options. 
+# Formats & Topics
 - Format
-  - Lecture, Live Demos, Guided Activities
-  - Schedule meeting to meeting or ~6 months in advance
+  - e.g., Lecture, Live Demos, Guided Activities
+  - Schedule meeting to meeting or ~6 months in advance?
 - Topics
-  - Version control, testing, tool selection
+  - e.g., Version control, testing, tool selection
 
-# Discuss Format and Topic Options in Small Teams
+# Format & Topics
+Discuss in small teams
 - at least one scribe
 - one reporter
 - DISCUSS what formats you think would work best
