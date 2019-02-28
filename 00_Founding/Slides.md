@@ -24,7 +24,8 @@ Activities facilitating scientific software development skills at the Flatiron I
 5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
 
 
-# Goal for today is come up with shared vision v0.2
+# Goal for today 
+is to come up with shared vision v0.2
 
 
 
@@ -34,7 +35,9 @@ Activities facilitating scientific software development skills at the Flatiron I
 - At least one scribe
 - One reporter
 
-# How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scietific disciplines?
+
+# 
+How can we foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scietific disciplines?
 
 
 
