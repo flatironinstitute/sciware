@@ -50,14 +50,15 @@ How can we foster an environment which encourages participation across experienc
 
 
 # Meeting Frequency
-- 1x/month for 1 hour
-- 1x/month for 2 hours
-- 2x/month for 1 hour
-- 4x/month for 1 hour
+- 1x/month for 1 hour?
+- 1x/month for 2 hours?
+- 2x/month for 1 hour?
+- 4x/month for 1 hour?
 
 
 # Meeting Day/Time
 Kelle's preferences through May:
+
 1) Thur afternoon
 
 2) Thur before lunch
@@ -77,7 +78,8 @@ Thur, March 28 at 3:30?
 - Topics
   - e.g., Version control, testing, tool selection
 
-# Format & Topics
+
+# Formats & Topics
 Discuss in small teams
 - at least one scribe
 - one reporter
