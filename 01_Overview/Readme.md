@@ -1,2 +1,4 @@
-Thursday, March 28, 2019
-Flatiron, 2nd floor Auditorium
+# Founding Meeting
+- Mar 28, 2019
+- 3:00-4:30pm
+- 2nd floor auditorium classroom
