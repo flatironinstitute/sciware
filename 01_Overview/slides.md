@@ -1,4 +1,4 @@
-# Sciware
+# Sciware Overview
 Activities facilitating scientific software development skills at the Flatiron Institute
 
 
@@ -25,13 +25,13 @@ Motivate and provide an overview of the topics we plan to discuss
 
 
 
-#Meetings
+# Meetings
 1x/month for 2 hours
 Spring: 4th Thursdays at 3pm
 (Apr 25, May 23)
 
 
-#Rules of Engagement
+# Rules of Engagement
 Goal: 
 Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
 
@@ -43,9 +43,9 @@ Foster an environment which encourages participation across experience levels, c
 - Make it accessible enough for novices to attend
 
 
-#Format
+# Format
 Blend of presentations and intro followed by hands-on activities
 
 
 
-#Speakers
+# Speakers

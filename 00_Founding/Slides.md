@@ -1,4 +1,4 @@
-# Sciware
+# Sciware Founding
 Activities facilitating scientific software development skills at the Flatiron Institute
 
 
