@@ -67,7 +67,7 @@ Blend of presentations and intro followed by hands-on activities
 
 
 
-# Software Engineering
+## Software Engineering
 
 ### What is it (and why should you care)?
 
@@ -77,7 +77,7 @@ Blend of presentations and intro followed by hands-on activities
 - "systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software" (IEEE)
 
 
-## Software development at scale
+### Software development at scale
 
 - groups of developers and non-developers working together
 - requirements, agile, scrum
@@ -86,16 +86,31 @@ Blend of presentations and intro followed by hands-on activities
 - coordination between individuals with different skill sets and levels
 
 
-## <strike>Software development at scale</strike>
-## Efficient, sustainable development
 
-- Produce working code more quickly
-    - Tools to write code faster
-    - Tools to find bugs sooner
-    - Shorten the iteration/feedback cycle
-- Communicating with and protecting (against) your future self
-    - Invest in file structure, function naming
-    - Comment for yourself (your own thoughts as a reminder)
-    - Write tests to prevent later changes from breaking older parts ("regression" tests)
-- Do more science, faster
-    - A few minutes of optimization can save days of run time
+### <strike>Software development at scale</strike>
+### Efficient, sustainable development
+
+
+
+### Efficient, sustainable development
+
+### Produce working code more quickly
+
+- Tools to write code faster
+- Tools to find bugs sooner
+- Shorten the iteration/feedback cycle
+
+
+### Communicating with and protecting (against) your future self
+
+- Invest in file structure, function naming
+- Comment for yourself (your own thoughts as a reminder)
+- Write tests to prevent later changes from breaking older parts ("regression" tests)
+
+
+### Do more science, faster
+
+- Productive languages and tools mean less time coding
+- Reusable components mean less code to maintain
+- A few minutes of optimization can save days of run time
+
