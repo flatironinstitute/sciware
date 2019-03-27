@@ -1,9 +1,11 @@
 # Sciware Overview
+
 Activities facilitating scientific software development skills at the Flatiron Institute
 
 
 
 # Vision
+
 1) A positive and inclusive learning environment for all experience levels.
 
 
@@ -21,31 +23,44 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 
 # Goal for today 
+
 Motivate and provide an overview of the topics we plan to discuss 
 
 
 
 # Meetings
+
 1x/month for 2 hours
 Spring: 4th Thursdays at 3pm
 (Apr 25, May 23)
 
 
-# Rules of Engagement
+## Rules of Engagement
+
 Goal: 
 Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
 
 
 - Avoid discussions between two people on narrow topic
-- Provide time for people who haven’t spoken to speak/ask questions
-- Find ways to be sure everybody is following and that folks aren’t lost
+- Provide time for people who haven't spoken to speak/ask questions
+- Find ways to be sure everybody is following and that folks aren't lost
 - Make it engaging enough for experts to attend
 - Make it accessible enough for novices to attend
 
 
-# Format
+## Format
+
 Blend of presentations and intro followed by hands-on activities
 
 
 
-# Speakers
+# Today's Speakers
+
+
+## Katharine Hyatt: Testing and why open source
+
+
+## Joakim Anden: Version control and readable code
+
+
+## Miles Stoudenmire: Performant/efficient code
