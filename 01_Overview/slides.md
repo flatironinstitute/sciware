@@ -34,6 +34,8 @@ Motivate and provide an overview of the topics we plan to discuss
 Spring: 4th Thursdays at 3pm
 (Apr 25, May 23)
 
+- conflicts?
+
 
 ## Rules of Engagement
 
@@ -73,8 +75,8 @@ Blend of presentations and intro followed by hands-on activities
 
 - Not how to write code (software development), but
 - How to turn code into a product (process)
-- "sound engineering principles to economically obtain software that is reliable and works efficiently on real machines" (Fritz Bauer, 1972)
-- "systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software" (IEEE)
+- "...*sound engineering principles to economically obtain software that is reliable and works efficiently on real machines*" (Fritz Bauer, 1972)
+- "...*systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software*" (IEEE)
 
 
 ### Software development at scale
