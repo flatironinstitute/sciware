@@ -64,3 +64,38 @@ Blend of presentations and intro followed by hands-on activities
 
 
 ## Miles Stoudenmire: Performant/efficient code
+
+
+
+# Software Engineering
+
+### What is it (and why should you care)?
+
+- Not how to write code (software development), but
+- How to turn code into a product (process)
+- "sound engineering principles to economically obtain software that is reliable and works efficiently on real machines" (Fritz Bauer, 1972)
+- "systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software" (IEEE)
+
+
+## Software development at scale
+
+- groups of developers and non-developers working together
+- requirements, agile, scrum
+- waterfall, release schedules
+- QA, support, product management
+- coordination between individuals with different skill sets and levels
+
+
+## <strike>Software development at scale</strike>
+## Efficient, sustainable development
+
+- Produce working code more quickly
+    - Tools to write code faster
+    - Tools to find bugs sooner
+    - Shorten the iteration/feedback cycle
+- Communicating with and protecting (against) your future self
+    - Invest in file structure, function naming
+    - Comment for yourself (your own thoughts as a reminder)
+    - Write tests to prevent later changes from breaking older parts ("regression" tests)
+- Do more science, faster
+    - A few minutes of optimization can save days of run time
