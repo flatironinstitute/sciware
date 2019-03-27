@@ -86,7 +86,6 @@ Blend of presentations and intro followed by hands-on activities
 - coordination between individuals with different skill sets and levels
 
 
-
 ### <strike>Software development at scale</strike>
 ### Efficient, sustainable development
 
