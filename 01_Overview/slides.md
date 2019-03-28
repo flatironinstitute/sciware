@@ -9,15 +9,23 @@ Activities facilitating scientific software development skills at the Flatiron I
 1) A positive and inclusive learning environment for all experience levels.
 
 
+# Vision
+
 2) A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
 
+
+# Vision
 
 3) Topics general enough to be relevant to anyone doing scientific research.
    - For example, technology and coding language agnostic
 
 
+# Vision
+
 4) Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
 
+
+# Vision
 
 5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
 
@@ -27,22 +35,20 @@ Activities facilitating scientific software development skills at the Flatiron I
 Motivate and provide an overview of the topics we plan to discuss 
 
 
-
 # Meetings
 
 1x/month for 2 hours
 Spring: 4th Thursdays at 3pm
 (Apr 25, May 23)
 
-- conflicts?
-
 
 ## Rules of Engagement
 
 Goal: 
-Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines?
+Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
 
 
+## Rules of Engagement
 - Avoid discussions between two people on narrow topic
 - Provide time for people who haven't spoken to speak/ask questions
 - Find ways to be sure everybody is following and that folks aren't lost
@@ -56,10 +62,8 @@ Blend of presentations and intro followed by hands-on activities
 
 
 
-# Today's Speakers
-
-
 ## Katharine Hyatt: Testing and why open source
+
 
 ## Open Source Mindset
   - People from other fields can ask deceptively simple questions
@@ -69,18 +73,23 @@ Blend of presentations and intro followed by hands-on activities
   - Openness is a fundamental value of science
   - Don’t have to reinvent the wheel
 
+
 ## FLOSS in Action
   - “I have no idea why, but suddenly radio astronomers are interested in fixing bugs in my package?”
   - “I just wanted to learn how debuggers work, and then I ended up writing big parts of the Julia compiler and garbage collector…”
   - Physics, math, and CS people spontaneously collaborating to create a huge ecosystem of ODE/PDE solving tools
-  
+
+
 ## Testing
   - Force ourselves to ask: what does this code actually do?
   - Often writing tests spurs rewrites which make code clearer and more robust
   - Easier to catch problems early and know immediately if a change broke something
   - Good way to onboard new contributors
 
+
+
 ## Joakim Anden: Version control and readable code
+
 
 
 ## Miles Stoudenmire: Performant/efficient code
@@ -108,7 +117,6 @@ Blend of presentations and intro followed by hands-on activities
 
 ### <strike>Software development at scale</strike>
 ### Efficient, sustainable development
-
 
 
 ## Efficient, sustainable development
