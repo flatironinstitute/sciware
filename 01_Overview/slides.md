@@ -96,7 +96,7 @@ Participants all working to actively foster an environment which encourages part
 #### Communicating with and protecting (against) your future self
 
 - Invest in file structure, function naming
-- Comment for yourself (your own thoughts as a reminder)
+- Comment for your (future) self
 - Write tests to prevent later changes from breaking older parts ("regression" tests)
 
 
@@ -107,6 +107,7 @@ Participants all working to actively foster an environment which encourages part
 - Productive languages and tools mean less time coding
 - Reusable components mean less code to maintain
 - A few minutes of optimization can save days of run time
+- Good resources (people, documentation) mean less time figuring it out yourself
 
 
 
