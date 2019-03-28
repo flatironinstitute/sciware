@@ -233,7 +233,7 @@ How much time do you need to spend to understand what the code does?
 
 - Benefit doesn't come from tool, but how you use it
 
-![xkcd git commit](git_commit.png "xkcd git commit")  
+<img src='https://imgs.xkcd.com/comics/git_commit_2x.png' height='600'>  
 (xkcd #1296)
 
 
