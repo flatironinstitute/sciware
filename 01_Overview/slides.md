@@ -57,7 +57,7 @@ Participants all working to actively foster an environment which encourages part
 
 
 ## Katharine Hyatt (CCQ)
-###Testing and why open source
+### Testing and why open source
 
 
 ## Open Source Mindset
