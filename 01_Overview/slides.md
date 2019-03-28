@@ -145,7 +145,7 @@ Participants all working to actively foster an environment which encourages part
 
 ## Find closest prime?
 
-```
+```js
 n=>(g=(o,d=N=n+o)=>N%--d?g(o,d):d-1?g(o<0?-o:~o):N)
 ```
 — Arnauld, Code Golf Stack Exchange
@@ -153,7 +153,7 @@ n=>(g=(o,d=N=n+o)=>N%--d?g(o,d):d-1?g(o<0?-o:~o):N)
 
 ## ???
 
-```
+```matlab
 %Coeff = [sPCA_data.Coeff, conj(sPCA_data.Coeff)]; % John April 2016
 Coeff = sPCA_data.Coeff;
 Freqs = sPCA_data.Freqs;
