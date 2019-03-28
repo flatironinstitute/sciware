@@ -27,10 +27,9 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 ## Meetings and Format
 
-### In-person meetings
-Blend of presentations and intro followed by hands-on activities
-
-1x/month for 2 hours
+- Blend of presentations and intro followed by hands-on activities
+- 1x/month for 2 hours
+- Location TBD
 
 ### Next dates: Apr 25, May 23
 
