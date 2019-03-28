@@ -198,7 +198,7 @@ How much time do you need to spend to understand what the code does?
 
 ## Why version control?
 
-<img src='https://imgs.xkcd.com/comics/git_2x.png' height='600'>
+<img src='https://imgs.xkcd.com/comics/git_2x.png' height='600'>  
 (xkcd #1597)
 
 
