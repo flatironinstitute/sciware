@@ -13,19 +13,16 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 # Vision
 
-1) A positive and inclusive learning environment for all experience levels.
-
-2) A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
-
-3) Topics general enough to be relevant to anyone doing scientific research.
-   - For example, technology and coding language agnostic
+1. A positive and inclusive learning environment for all experience levels.
+2. A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
+3. Topics general enough to be relevant to anyone doing scientific research.
+    - For example, technology and coding language agnostic
 
 
 # Vision
 
-4) Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
-
-5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
+4. Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
+5. To use the Flatiron Institute as a sandbox for development of something useful for all of science.
 
 
 ## Meetings and Format
@@ -60,7 +57,8 @@ Participants all working to actively foster an environment which encourages part
 
 
 
-## Katharine Hyatt: Testing and why open source
+## Katharine Hyatt (CCQ)
+###Testing and why open source
 
 
 ## Open Source Mindset
@@ -86,15 +84,17 @@ Participants all working to actively foster an environment which encourages part
 
 
 
-## Joakim Anden: Version control and readable code
+## Joakim Anden (CCM)
+### Version control and readable code
 
 
 
-## Miles Stoudenmire: Performant/efficient code
+## Miles Stoudenmire (CCQ)
+### Performant/efficient code
 
 
 
-## Software Engineering
+## Software Engineering (SCC)
 
 ### What is it (and why should you care)?
 
