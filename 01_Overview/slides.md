@@ -35,7 +35,7 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 ### Next dates: Apr 25, May 23
 
-### Sciware channel on Simons Slack
+### #sciware on simonsfoundation.slack.com
 
 
 
