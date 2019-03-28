@@ -61,6 +61,24 @@ Blend of presentations and intro followed by hands-on activities
 
 ## Katharine Hyatt: Testing and why open source
 
+## Open Source Mindset
+  - People from other fields can ask deceptively simple questions
+  - Passive way to solicit feedback and code improvements, verify correctness
+  - Advertise your work and techniques to more people
+  - Open source is democratizing
+  - Openness is a fundamental value of science
+  - Don’t have to reinvent the wheel
+
+## FLOSS in Action
+  - “I have no idea why, but suddenly radio astronomers are interested in fixing bugs in my package?”
+  - “I just wanted to learn how debuggers work, and then I ended up writing big parts of the Julia compiler and garbage collector…”
+  - Physics, math, and CS people spontaneously collaborating to create a huge ecosystem of ODE/PDE solving tools
+  
+## Testing
+  - Force ourselves to ask: what does this code actually do?
+  - Often writing tests spurs rewrites which make code clearer and more robust
+  - Easier to catch problems early and know immediately if a change broke something
+  - Good way to onboard new contributors
 
 ## Joakim Anden: Version control and readable code
 
