@@ -6,22 +6,17 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 # Vision
 
-1) A positive and inclusive learning environment for all experience levels.
-2) A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
-3) Topics general enough to be relevant to anyone doing scientific research.
+- A positive and inclusive learning environment for all experience levels.
+- A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
+- Topics general enough to be relevant to anyone doing scientific research.
    - For example, technology and coding language agnostic
-4) Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
-5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
+- Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
+- To use the Flatiron Institute as a sandbox for development of something useful for all of science.
 
-
-# Goals for Today 
-
-- Motivate and provide an overview of the topics we plan to discuss 
-- Hear multiple perspectives
 
 ## Meetings and Format
 
-### In person meetings
+### In-person meetings
 Blend of presentations and intro followed by hands-on activities
 
 1x/month for 2 hours
@@ -30,7 +25,11 @@ Spring: 4th Thursdays at 3pm
 
 (Apr 25, May 23)
 
-### Sciware channel on Simons Slack
+## Discussion channel
+Sciware channel on Simons Slack# Goals for Today 
+
+- Motivate and provide an overview of the topics we plan to discuss 
+- Hear multiple perspectives
 
 
 
@@ -38,12 +37,12 @@ Spring: 4th Thursdays at 3pm
 
 ### Goal: 
 
-Participants all work to actively foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
+Participants all working to actively foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
 
 
 ## Rules of Engagement
 
-- Avoid discussions between two people on narrow topic
+- Avoid discussions between a few people on a narrow topic
 - Provide time for people who haven't spoken to speak/ask questions
 - Find ways to be sure everybody is following and that folks aren't lost
 - Make it engaging enough for experts to attend
@@ -137,4 +136,6 @@ Participants all work to actively foster an environment which encourages partici
 ## What's next? 
 What topics we want to cover in next two meetings?
 
-Apr 25, May 23
+### Apr 25
+
+### May 23
