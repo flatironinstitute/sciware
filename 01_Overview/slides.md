@@ -5,7 +5,7 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 # Goals for Today 
 
-- Describe vision for this activity
+- Describe vision for Sciware activity
 - Motivate and provide an overview of the topics we plan to discuss 
 - Hear multiple perspectives
 
@@ -19,6 +19,7 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 3) Topics general enough to be relevant to anyone doing scientific research.
    - For example, technology and coding language agnostic
+
 
 # Vision
 
@@ -34,14 +35,9 @@ Blend of presentations and intro followed by hands-on activities
 
 1x/month for 2 hours
 
-Spring: 4th Thursdays at 3pm
+### Next dates: Apr 25, May 23
 
-(Apr 25, May 23)
-
-
-## Meetings and Format
-### Discussion channel
-Sciware channel on Simons Slack
+### Sciware channel on Simons Slack
 
 
 
