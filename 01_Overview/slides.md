@@ -65,8 +65,8 @@ Participants all working to actively foster an environment which encourages part
 
 - Not how to write code (software development), but
 - How to turn code into a product (process)
-- "...*sound engineering principles to <b>economically</b> obtain software that is reliable and works efficiently on real machines*" (Fritz Bauer, 1972)
 - "...*systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software*" (IEEE)
+- "...*sound engineering principles to <b>economically</b> obtain software that is reliable and works efficiently on real machines*" (Fritz Bauer, 1972)
 
 
 ### Software development at scale
