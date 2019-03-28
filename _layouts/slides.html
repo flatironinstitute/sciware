@@ -39,11 +39,15 @@
     <script>
       Reveal.initialize({
 	dependencies: [
-	{ src: '{{site.baseurl}}/reveal.js/plugin/markdown/marked.js' },
-	{ src: '{{site.baseurl}}/reveal.js/plugin/markdown/markdown.js' },
-	{ src: '{{site.baseurl}}/reveal.js/plugin/notes/notes.js', async: true },
-	{ src: '{{site.baseurl}}/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-      ]
+	  { src: '{{site.baseurl}}/reveal.js/plugin/markdown/marked.js' },
+	  { src: '{{site.baseurl}}/reveal.js/plugin/markdown/markdown.js' },
+	  { src: '{{site.baseurl}}/reveal.js/plugin/notes/notes.js', async: true },
+	  { src: '{{site.baseurl}}/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+	],
+	controlsTutorial: false,
+	slideNumber: true,
+	width: 1200,
+	height: 800,
       });
     </script>
   </body>
