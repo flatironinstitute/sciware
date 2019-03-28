@@ -13,16 +13,16 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 # Vision
 
-1. A positive and inclusive learning environment for all experience levels.
-2. A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
-3. Topics general enough to be relevant to anyone doing scientific research.
-    - For example, technology and coding language agnostic
+1. Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
+2. A positive and inclusive learning environment for all experience levels.
+3. A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
 
 
 # Vision
 
 <ol start='4'>
-<li>Increase awareness and adoption of software development best practices to improve scientific productivity and quality.</li>
+    <li>Topics general enough to be relevant to anyone doing scientific research.</li>
+    - For example, technology and coding language agnostic
 <li>To use the Flatiron Institute as a sandbox for development of something useful for all of science.</li>
 </li>
 
