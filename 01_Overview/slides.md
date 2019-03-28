@@ -179,18 +179,18 @@ Coeff(Freqs==0, :)=Coeff(Freqs==0, :)*sqrt(2);
 ```
 
 
-## Who's reading the code when?
-
-- Yourself, collaborators, other researchers?
-- Lifetime: 1 day, 1 week, 1 month, 1 year, ...?
-
-
 ## "Code smell"
 
 - Duplicated code
 - Variable names: too short, too long, not meaningful
 - Functions: too long, too many arguments, no well-defined purpose
 - Comments: redundant, not present, outdated
+
+
+## Who's reading the code when?
+
+- Yourself, collaborators, other researchers?
+- Lifetime: 1 day, 1 week, 1 month, 1 year, ...?
 
 
 ## Cognitive load
