@@ -81,23 +81,23 @@ Participants all working to actively foster an environment which encourages part
 ### *Economic*, sustainable development
 
 
-## Efficient, sustainable development
+### <strike>Economic</strike>Efficient, sustainable development
 
-### Produce working code more quickly
+#### Produce working code more quickly
 
 - Tools to write code faster
 - Tools to find bugs sooner
 - Shorten the iteration/feedback cycle
 
 
-### Communicating with and protecting (against) your future self
+#### Communicating with and protecting (against) your future self
 
 - Invest in file structure, function naming
 - Comment for yourself (your own thoughts as a reminder)
 - Write tests to prevent later changes from breaking older parts ("regression" tests)
 
 
-### Do more science, faster
+#### Do more science, faster
 
 - Productive languages and tools mean less time coding
 - Reusable components mean less code to maintain
