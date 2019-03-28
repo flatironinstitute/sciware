@@ -3,15 +3,28 @@
 Activities facilitating scientific software development skills at the Flatiron Institute
 
 
+# Goals for Today 
+
+- Describe vision for this activity
+- Motivate and provide an overview of the topics we plan to discuss 
+- Hear multiple perspectives
+
+
 
 # Vision
 
-- A positive and inclusive learning environment for all experience levels.
-- A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
-- Topics general enough to be relevant to anyone doing scientific research.
+1) A positive and inclusive learning environment for all experience levels.
+
+2) A blend of lecture, activities, and discussion to facilitate equal involvement across experience levels.
+
+3) Topics general enough to be relevant to anyone doing scientific research.
    - For example, technology and coding language agnostic
-- Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
-- To use the Flatiron Institute as a sandbox for development of something useful for all of science.
+
+# Vision
+
+4) Increase awareness and adoption of software development best practices to improve scientific productivity and quality.
+
+5) To use the Flatiron Institute as a sandbox for development of something useful for all of science.
 
 
 ## Meetings and Format
@@ -25,11 +38,10 @@ Spring: 4th Thursdays at 3pm
 
 (Apr 25, May 23)
 
-## Discussion channel
-Sciware channel on Simons Slack# Goals for Today 
 
-- Motivate and provide an overview of the topics we plan to discuss 
-- Hear multiple perspectives
+## Meetings and Format
+### Discussion channel
+Sciware channel on Simons Slack
 
 
 
