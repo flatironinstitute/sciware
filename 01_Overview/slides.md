@@ -198,8 +198,8 @@ How much time do you need to spend to understand what the code does?
 
 ## Why version control?
 
-<img src='https://imgs.xkcd.com/comics/git_2x.png' height='600'>  
-((xkcd #1597)[https://xkcd.com/1597])
+<img src='https://imgs.xkcd.com/comics/git_2x.png' height='580'>  
+([xkcd #1597](https://xkcd.com/1597))
 
 
 ## Not just
@@ -234,7 +234,7 @@ How much time do you need to spend to understand what the code does?
 - Benefit doesn't come from tool, but how you use it
 
 <img src='https://imgs.xkcd.com/comics/git_commit_2x.png' height='500'>  
-((xkcd #1296)[https://xkcd.com/1296])
+([xkcd #1296](https://xkcd.com/1296))
 
 
 
