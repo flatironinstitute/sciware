@@ -134,7 +134,7 @@ Participants all working to actively foster an environment which encourages part
 
 
 
-## Joakim Anden (CCM)
+## Joakim Andén (CCM)
 ### Readable code and version control
 
 
