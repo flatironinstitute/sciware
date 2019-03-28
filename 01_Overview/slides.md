@@ -78,10 +78,11 @@ Participants all working to actively foster an environment which encourages part
 
 
 ### <strike>Software development at scale</strike>
-### *Economic*, sustainable development
+### Economic, sustainable development
 
 
-### <strike>Economic</strike>Efficient, sustainable development
+### Economic, sustainable development
+### Efficient, sustainable development
 
 #### Produce working code more quickly
 
@@ -90,12 +91,16 @@ Participants all working to actively foster an environment which encourages part
 - Shorten the iteration/feedback cycle
 
 
+### Efficient, sustainable development
+
 #### Communicating with and protecting (against) your future self
 
 - Invest in file structure, function naming
 - Comment for yourself (your own thoughts as a reminder)
 - Write tests to prevent later changes from breaking older parts ("regression" tests)
 
+
+### Efficient, sustainable development
 
 #### Do more science, faster
 
