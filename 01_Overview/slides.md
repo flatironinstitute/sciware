@@ -134,8 +134,104 @@ Participants all working to actively foster an environment which encourages part
 
 
 
-## Joakim Anden (CCM)
-### Version control and readable code
+## Why code readability?
+
+"*Programs must be written for people to read, and only incidentally for machines to execute.*" (Abelson and Sussman, 1985)
+
+
+## Find closest prime?
+
+```
+n=>(g=(o,d=N=n+o)=>N%--d?g(o,d):d-1?g(o<0?-o:~o):N)
+```
+— Arnauld, Code Golf Stack Exchange
+
+
+## ???
+
+```
+%Coeff = [sPCA_data.Coeff, conj(sPCA_data.Coeff)]; % John April 2016
+Coeff = sPCA_data.Coeff;
+Freqs = sPCA_data.Freqs;
+eigval = sPCA_data.eigval;
+clear sPCA_data;
+%rad_Freqs = sPCA_data.rad_Freqs;
+n_im = size(Coeff, 2);
+%n_im = (size(Coeff, 2))/2; % John April 21, 2017
+%normalize the coefficients
+Coeff(Freqs==0, :) = Coeff(Freqs==0, :)/sqrt(2);
+for i=1:n_im  %% John April 21, 2017 %% No need to double the coefficients
+    Coeff(:, i) = Coeff(:, i) / norm(Coeff(:, i));
+end
+Coeff(Freqs==0, :)=Coeff(Freqs==0, :)*sqrt(2);
+%Compute bispectrum
+%[ Coeff_b, toc_bispec ] = Bispec_2Drot_large( Coeff, Freqs ); %If the number of images and number of Coefficients are large use Bispec_2Drot_large
+%[ Coeff_b,  toc_bispec ] = Bispec_2Drot_1( Coeff, Freqs );
+%[ Coeff_b, Coeff_b_r, toc_bispec ] = Bispec_2Drot_large_v2( Coeff, Freqs );
+[ Coeff_b, Coeff_b_r, toc_bispec ] = Bispec_2Drot_large( Coeff, Freqs, eigval );
+
+```
+
+
+## Who's reading the code when?
+
+- Yourself, collaborators, other researchers?
+- Lifetime: 1 day, 1 week, 1 month, 1 year, ...?
+
+
+## "Code smell"
+
+- Duplicated code
+- Variable names: too short, too long, not meaningful
+- Functions: too long, too many arguments, no well-defined purpose
+- Comments: redundant, not present, outdated
+
+
+## Cognitive load
+
+How much time do you need to spend to understand what the code does?
+
+
+
+## Why version control?
+
+![xkcd git](git.png "xkcd git")  
+(xkcd #1597)
+
+
+## Not just
+
+- A version archiver (use `cp`)
+- A synchronizer (use `rsync`)
+- A new, exciting way to make you and your colleagues miserable
+
+## But
+
+- A tool for code collaboration through story-telling
+
+
+## Metadata
+
+- Change (what?)
+- Author (who?)
+- Message (why?)
+
+
+## Questions answered
+
+- Why was this line of code changed?
+- What was there before?
+- When was this bug introduced?
+- What changed in this file between v0.1 and v0.2?
+- Who has been contributing to this function?
+
+
+## Usage
+
+- Benefit doesn't come from tool, but how you use it
+
+![xkcd git commit](git_commit.png "xkcd git commit")  
+(xkcd #1296)
 
 
 
