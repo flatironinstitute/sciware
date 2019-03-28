@@ -133,6 +133,7 @@ Participants all working to actively foster an environment which encourages part
   - Good way to onboard new contributors
 
 
+
 ## Joakim Anden (CCM)
 ### Readable code and version control
 
@@ -193,7 +194,6 @@ Coeff(Freqs==0, :)=Coeff(Freqs==0, :)*sqrt(2);
 ## Cognitive load
 
 How much time do you need to spend to understand what the code does?
-
 
 
 ## Why version control?
