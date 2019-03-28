@@ -198,7 +198,7 @@ How much time do you need to spend to understand what the code does?
 
 ## Why version control?
 
-![xkcd git](git.png "xkcd git")  
+![xkcd git](https://imgs.xkcd.com/comics/git_2x.png "xkcd git")  
 (xkcd #1597)
 
 
