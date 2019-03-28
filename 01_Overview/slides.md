@@ -35,7 +35,8 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 ### Next dates: Apr 25, May 23
 
-### #sciware on simonsfoundation.slack.com
+#### [github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev)
+#### [#sciware on simonsfoundation.slack.com](https://simonsfoundation.slack.com/messages/CDU1EE9V5/)
 
 
 
