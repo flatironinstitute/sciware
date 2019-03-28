@@ -133,6 +133,9 @@ Participants all working to actively foster an environment which encourages part
   - Good way to onboard new contributors
 
 
+## Joakim Anden (CCM)
+### Readable code and version control
+
 
 ## Why code readability?
 
