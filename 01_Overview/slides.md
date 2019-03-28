@@ -22,7 +22,9 @@ Activities facilitating scientific software development skills at the Flatiron I
 
 <ol start='4'>
     <li>Topics general enough to be relevant to anyone doing scientific research.</li>
-    - For example, technology and coding language agnostic
+        <ul> 
+            <li>For example, technology and coding language agnostic</li>
+    </ul>
 <li>To use the Flatiron Institute as a sandbox for development of something useful for all of science.</li>
 </li>
 
