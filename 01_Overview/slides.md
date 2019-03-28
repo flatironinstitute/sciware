@@ -81,8 +81,7 @@ Participants all working to actively foster an environment which encourages part
 ### Economic, sustainable development
 
 
-### Economic, sustainable development
-### Efficient, sustainable development
+### Efficient, maintainable development
 
 #### Produce working code more quickly
 
@@ -91,16 +90,12 @@ Participants all working to actively foster an environment which encourages part
 - Shorten the iteration/feedback cycle
 
 
-### Efficient, sustainable development
-
 #### Communicating with and protecting (against) your future self
 
 - Invest in file structure, function naming
 - Comment for your (future) self
 - Write tests to prevent later changes from breaking older parts ("regression" tests)
 
-
-### Efficient, sustainable development
 
 #### Do more science, faster
 
