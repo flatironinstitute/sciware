@@ -1,4 +1,4 @@
-# Testing Meeting
+# Testing Scientific Software Meeting
 - May 9, 2019
 - 3:00-5:00pm
 - 9th floor classroom
