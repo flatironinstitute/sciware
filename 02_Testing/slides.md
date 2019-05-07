@@ -44,7 +44,7 @@ A very simple kind of "test" inserts checks into an existing code flow
 x = load_file("input")
 assert(len(x) == 345)
 y = process(x)
-assert(len(y) < len(x) && y[0] > 0)
+assert(len(y) < len(x) and y[0] > 0)
 write_file("output", y)
 ```
 
