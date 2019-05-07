@@ -153,7 +153,6 @@ self.assertListEqual(observed, expected)
 [source](https://github.com/FunctionLab/selene/blob/master/selene_sdk/predict/tests/test_model_predict.py#L12)
 
 
-
 ```c++
 array<long, 2> A(2, 3);
 
@@ -184,17 +183,18 @@ assert (A2["up"] == 0*m0).all() and (A2["dn"] == 0*m1).all(), "Subtraction faile
 
 ## How do you implement tests?
 
-Test libraries provide:
+#### Testing libraries
 
 * functions, utilities for writing tests
 * checks for (in)equality
-* ways to log messages, produce errors
+* log messages, produce errors
 * random input generation, looping
 
-Test frameworks provide:
 
-* ways to organize, describe tests
+#### Testing frameworks
+
+* organize, describe tests
 * way to run tests (or some subset thereof)
 * capture output, aggregate results
 
-Many tools include both, and languages can include builtin features or standard libraries.
+Many tools include both, and languages can include builtin features or standard libraries
