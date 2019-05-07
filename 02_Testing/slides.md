@@ -5,13 +5,50 @@
 ## What is a "test"?
 
 * Something you can run (a program, script, function)
-* Distinct from your "real" code (unnecessary)
-* That runs relatively quickly (while you wait)
-* That executes some portion of your "real" code
-* That checks something (?)
-* And returns success if things are good, or some kind of error otherwise
+* ...distinct from your "real" code (unnecessary)
+* ...that runs relatively quickly (while you wait)
+* ...that executes some portion of your "real" code
+* ...that checks something (?)
+* ...and returns success if things are good, or some kind of error otherwise.
 
 
+## Sanity checks, debugging assertions
+
+Many languages provide some kind of `assert`:
+
+```python
+def assert(expr):
+    if __debug__:
+        if not expr: raise AssertionError
+```
+
+```c
+#ifndef NDEBUG
+#define assert(expr) if (!expr) abort()
+#endif
+```
+
+
+```python
+x = load_file("input")
+
+y = process(x)
+
+write_file("output", y)
+```
+
+A very simple kind of "test" inserts checks into an existing code flow
+
+
+```python
+x = load_file("input")
+assert(len(x) == 345)
+y = process(x)
+assert(len(y) < len(x) && y[0] > 0)
+write_file("output", y)
+```
+
+This validates some assumptions, but isn't very flexible (hard-coded `x`)
 
 
 
@@ -146,3 +183,18 @@ assert (A2["up"] == 0*m0).all() and (A2["dn"] == 0*m1).all(), "Subtraction faile
 
 
 ## How do you implement tests?
+
+Test libraries provide:
+
+* functions, utilities for writing tests
+* checks for (in)equality
+* ways to log messages, produce errors
+* random input generation, looping
+
+Test frameworks provide:
+
+* ways to organize, describe tests
+* way to run tests (or some subset thereof)
+* capture output, aggregate results
+
+Many tools include both, and languages can include builtin features or standard libraries.
