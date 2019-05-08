@@ -12,7 +12,7 @@
 * ...and returns success if things are good, or some kind of error otherwise.
 
 
-## Sanity checks, debugging assertions
+## Debugging assertions
 
 Many languages provide some kind of `assert`:
 
@@ -60,6 +60,20 @@ assert(len(y) < len(x) and y[0] > 0)
 ```
 
 
+## Motivation for testing
+##### (from Rosetta tutorials)
+
+Why are tests important? 
+* Lets you know your code is working properly
+* Lets others know when they have broken your code
+* Formal validation
+
+Protect against:
+* Bugs
+* Crazy user edge cases
+* Constantly changing code base
+
+
 
 ## Strategies for writing tests
 
@@ -82,8 +96,13 @@ end
 
 ### Modularize your code (functions)
 
-
 * Identify testable components to turn into functions
+   * Chunk of calculations 
+   * Body of for loop
+   * Pass all inputs as arguments, return outputs
+   * Look for similar (repetitive) parts of code (mode argument)
+* Anything you're not sure about, tricky
+   * That you might try separately or interactively
 * Call these functions from tests and from "real" code
 
 
@@ -92,12 +111,12 @@ end
 * Write many tests
 * Write one script to call all the tests (more later...)
 
-
-### Introduce randomness
+### Validate assumptions
 
 * If some function works for a range of values, choose one at random each time
 * Validate properties that should hold
 * Use a less efficient, equivalent calculation to check
+* Identify and write down (test) your assumptions
 
 
 
@@ -127,7 +146,7 @@ end
 
 ### Regression tests
 
-* *regression*: when something stops working
+* *regression*: when something stops working due to a (theoretically unrelated) change
 * Often added when fixing bugs, to avoid re-introducing them later
 
 
@@ -136,6 +155,17 @@ end
 * The practice of writing tests before code
 * For example, a unit test for a function defines the API
 * May be written as a "TODO" for things to be implemented
+
+* Coding with the end in mind
+* Determine requirements for "working" code
+* Write tests that assert these requirements based on an interface
+   * Requirement: `f(2)` always returns 4
+   ```
+   assert f(2) == 4
+   ```
+* Implement functions
+* Check function passes the test
+
 
 
 ### Continuous Integration (CI)
@@ -291,10 +321,153 @@ Test.quickCheckResult $ \s -> Test.ioProperty $ do
 * random input generation, looping
 
 
-### Testing frameworks
+### Testing frameworks ("harness", "runner")
 
 * organize, describe tests
 * way to run tests (or some subset thereof)
 * capture output, aggregate results
 
 Many tools include both, and languages can include builtin features or standard libraries
+
+
+
+## Python
+
+### [unittest](https://docs.python.org/3/library/unittest.html)
+
+* Standard library
+
+```python
+class TestStringMethods(unittest.TestCase):
+
+    def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+    def test_isupper(self):
+        self.assertTrue('FOO'.isupper())
+        self.assertFalse('Foo'.isupper())
+
+    def test_split(self):
+        s = 'hello world'
+        self.assertEqual(s.split(), ['hello', 'world'])
+        # check that s.split fails when the separator is not a string
+        with self.assertRaises(TypeError):
+            s.split(2)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+
+#### Test discovery
+
+1. Look for all `test_*.py` and `*_test.py` files recursively
+1. Run all functions named `test*`
+
+### [nose2](https://docs.nose2.io/en/latest/)
+
+Alternative way to invoke unittest tests with more features.
+
+### [Pytest](https://docs.pytest.org/en/latest/index.html)
+
+```python
+def test_foo():
+    assert 0.1 + 0.2 == pytest.approx(0.3)
+```
+
+
+### [doctest](https://docs.python.org/3/library/doctest.html)
+
+* Standard library
+
+```python
+"""
+The example module supplies one function, factorial().  For example,
+
+>>> factorial(5)
+120
+"""
+
+def factorial(n):
+    """Return the factorial of n, an exact integer >= 0.
+
+    >>> [factorial(n) for n in range(6)]
+    [1, 1, 2, 6, 24, 120]
+    >>> factorial(30)
+    265252859812191058636308480000000
+    >>> factorial(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: n must be >= 0
+    """
+
+    import math
+    if not n >= 0:
+        raise ValueError("n must be >= 0")
+    result = 1
+    factor = 2
+    while factor <= n:
+        result *= factor
+        factor += 1
+    return result
+```
+
+
+## C++
+
+### [CppUnit](http://cppunit.sourceforge.net/doc/cvs/cppunit_cookbook.html)
+
+```c++
+class ComplexNumberTest : public CppUnit::TestCase { 
+public: 
+  ComplexNumberTest( std::string name ) : CppUnit::TestCase( name ) {}
+  
+  void runTest() {
+    CPPUNIT_ASSERT( Complex (10, 1) == Complex (10, 1) );
+    CPPUNIT_ASSERT( !(Complex (1, 1) == Complex (2, 2)) );
+  }
+};
+```
+
+
+### [CxxTest](http://cxxtest.com/guide.html)
+
+```c++
+class CalculatorTest : public CxxTest::TestSuite {
+
+public: 
+   setUp() {
+       c_ = CalculatorOP( new Calculator() );       
+   }
+
+   tearDown() {
+       c_ = 0;
+   }
+
+   void test_add() {
+       TS_ASSERT( c_->add( 1, 2 ) == 3 );
+       TS_ASSERT_EQUALS( c_->add( 0, 0 ), 0 ); 
+       TS_ASSERT_DELTA( c_->add( 1, 2 ), 3, 0.01 ); 
+   }
+
+private:
+   CalculatorOP c_;
+};
+```
+
+
+
+## [Julia](https://docs.julialang.org/en/latest/stdlib/Test/)
+
+* Standard library
+
+```julia
+@testset "My simple tests" begin
+    @test true
+    @test [1, 2] + [2, 1] == [3, 3]
+    @test π ≈ 3.14 atol=0.01
+
+    θ = 20*rand()
+    @test sin(-θ) ≈ -sin(θ)
+end;
+```
