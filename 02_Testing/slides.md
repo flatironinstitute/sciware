@@ -48,7 +48,99 @@ assert(len(y) < len(x) and y[0] > 0)
 write_file("output", y)
 ```
 
-This validates some assumptions, but isn't very flexible (hard-coded `x`)
+This validates some assumptions, but isn't very flexible (hard-coded input)
+
+
+Instead, write a separate test with hard-coded data:
+
+```python
+x = [...]
+y = process(x)
+assert(len(y) < len(x) and y[0] > 0)
+```
+
+
+
+## Strategies for writing tests
+
+Real-world code is more complicated
+
+```
+G0 = 100
+G1 = 200
+global_data = load_file("globals")
+z = 0
+
+for i in 1:120
+    x = load_file(str(i)+"/input")
+    z += f(x)/G0
+    y = g(G1, x, z)
+    write_file(str(i)+"/output", y)
+end
+```
+
+
+### Modularize your code (functions)
+
+
+* Identify testable components to turn into functions
+* Call these functions from tests and from "real" code
+
+
+### Think about automation
+
+* Write many tests
+* Write one script to call all the tests (more later...)
+
+
+### Introduce randomness
+
+* If some function works for a range of values, choose one at random each time
+* Validate properties that should hold
+* Use a less efficient, equivalent calculation to check
+
+
+
+## Boring Terminology
+
+
+### Unit tests
+
+* Tests of some small "unit" of code, usually a function
+* Often augments documentation
+
+#### "Doc" test
+
+* A unit test embedded in documentation
+
+
+### Sanity, Smoke tests
+
+* A very simple test to make sure things are basically working
+* Often run before other tests to determine whether to proceed
+
+
+### Integration, System, Acceptance tests
+
+* Tests of the interaction between components or the entire system in some real-world-like scenario
+
+
+### Regression tests
+
+* *regression*: when something stops working
+* Often added when fixing bugs, to avoid re-introducing them later
+
+
+### Test-driven development
+
+* The practice of writing tests before code
+* For example, a unit test for a function defines the API
+* May be written as a "TODO" for things to be implemented
+
+
+### Continuous Integration (CI)
+
+* Automatically running tests for each change/commit
 
 
 
@@ -180,10 +272,18 @@ assert (A2["up"] == 0*m0).all() and (A2["dn"] == 0*m1).all(), "Subtraction faile
 [source](https://github.com/TRIQS/triqs/blob/2.1.x/test/pytriqs/base/block_matrix.py#L23)
 
 
+```haskell
+Test.quickCheckResult $ \s -> Test.ioProperty $ do
+  [(Just s')] <- [pgSQL|SELECT ${s}::varchar|]
+  return (s' Test.=== s)
+```
+[source](https://github.com/dylex/postgresql-typed/blob/master/test/Main.hs#L104)
+
+
 
 ## How do you implement tests?
 
-#### Testing libraries
+### Testing libraries
 
 * functions, utilities for writing tests
 * checks for (in)equality
@@ -191,7 +291,7 @@ assert (A2["up"] == 0*m0).all() and (A2["dn"] == 0*m1).all(), "Subtraction faile
 * random input generation, looping
 
 
-#### Testing frameworks
+### Testing frameworks
 
 * organize, describe tests
 * way to run tests (or some subset thereof)
