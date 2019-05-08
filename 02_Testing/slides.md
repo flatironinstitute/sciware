@@ -167,7 +167,6 @@ end
 * Check function passes the test
 
 
-
 ### Continuous Integration (CI)
 
 * Automatically running tests for each change/commit
@@ -178,7 +177,7 @@ end
 
 
 
-## What do tests looks like?
+## What do tests look like?
 
 ```sh
 #!/bin/sh
