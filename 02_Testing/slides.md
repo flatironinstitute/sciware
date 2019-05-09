@@ -525,3 +525,17 @@ language: python
 ```
 
 ### [Jenkins](https://jenkins.flatironinstitute.org/)
+
+
+
+## #sciware
+
+Please post questions, useful resources, and other topics of discussion to the #sciware Slack channel
+
+
+## Coming Attractions 
+
+### June 20 - Testing for packages
+
+### July 18 or 25 - TBD
+
