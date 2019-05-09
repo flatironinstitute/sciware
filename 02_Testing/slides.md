@@ -66,22 +66,26 @@ Implementing "test" formalizes this process
 
 
 ## Software Integration Tests
+Does the code run as expected from beginning to end?
 - Output file should exist
 - Output file should be a CSV
 
 
 ## Acceptance/Scientific Integration Tests
+Is the output logical and/or physically realistic?
 - Number of lines in output matched list should be the same as in List #1
 - Characteristics from List #1 and #2 should be similar for matched objects (e.g., faint matched with faint)
 - Sample characteristics of List #1 and output matched list should be similar
 
 
 ## Unit Tests
+Do all the little bits work?
 - Test coordinate forecast method
 - Test finding closest coords method
 
 
 ## Edge Tests
+What unusual cases work?
 - Make a test List #1 with "edge" cases.
 ## Edges
 - objects which didn't match the first time
@@ -90,6 +94,7 @@ Implementing "test" formalizes this process
 
 
 ## Known Failures
+What does the code NOT do?
 - objects with insufficient data to test if closest match is the best one
 - objects with large uncertainties on location
 
@@ -276,6 +281,12 @@ end
 ### Continuous Integration (CI)
 
 * Automatically running tests for each change/commit
+
+
+
+# Digital Lab Techniques
+## More on Intergration Tests
+Nick Carriero (SCC)
 
 
 
