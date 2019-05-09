@@ -50,42 +50,38 @@ Participants all working to actively foster an environment which encourages part
 Implementing "test" fromalizes this process
 
 
-# Example
-## Crossmatch two lists of fast moving astro objects with sky locations from different decades
+## Example: Crossmatch two lists of fast moving astro objects with sky locations from different decades
 - Read in coordinates columns from List #1
 - Forecast coordinates of List #1 to date of List #2
 - Choose objects from from List #2 with closests to coords to forecasted List #1
 - Output matched List with all columns from both lists
 
-# Example Crossmatch Tests Types
-- Software - Does the code run as expected?
-- Acceptance/Integration - Is the output logical and/or physically realistic?
-- Unit - Do all the little bits work?
-- Edge - What unusual cases work?
-- Known Failures - What does the code NOT do?
+
+# Types of Tests 
+- **Software** - Does the code run as expected?
+- **Acceptance/Integration** - Is the output logical and/or physically realistic?
+- **Unit** - Do all the little bits work?
+- **Edge** - What unusual cases work?
+- **Known Failures** - What does the code NOT do?
 
 
-# Example Crossmatch Tests
-## Software
+## Tests of Crossmatch Script: Software
 - Output file should exist
 - Output file should be a CSV
 
 
-# Example Crossmatch Tests
-## Acceptance Tests
+## Tests of Crossmatch Script: Acceptance Tests
 - Number of lines in output matched list should be the same as in List #1
 - Characteristics from List #1 and #2 should be similar for matched objects (e.g., faint matched with faint)
 - Sample characteristics of List #1 and output matched list should be similar
 
 
-# Example Crossmatch Tests
-## Unit Tests
+## Tests of Crossmatch Script: Unit Tests
 - Test coordinate forecast method
 - Test finding closest coords method
 
 
-# Example Crossmatch Tests
-## Edge Tests
+## Tests of Crossmatch Script: Edge Tests
 - Make a test List #1 with "edge" cases.
 ## Edges
 - objects which didn't match the first time
@@ -93,30 +89,28 @@ Implementing "test" fromalizes this process
 - objects with null or missing data 
 
 
-# Example Crossmatch Tests
-## Known Failures
+# Tests of Crossmatch Script: Known Failures
 - objects with insufficient data to test if closest match is the best one
 - objects with large uncertainties on location
 
 
-# Activity
-## Think of one of each type of test relevat to your current work
-- Software - Does the code run as expected?
-- Acceptance/Integration - Is the output logical and/or physically realistic?
-- Unit - Do all the little bits work?
-- Edge - What unusual cases work?
-- Known Failures - What does the code NOT do?
+## Activity: Think of one of each type of test relevat to your current work
+- **Software** - Does the code run as expected?
+- **Acceptance/Integration** - Is the output logical and/or physically realistic?
+- **Unit** - Do all the little bits work?
+- **Edge** - What unusual cases work?
+- **Known Failures** - What does the code NOT do?
 
 
 
 ## What is a "test"?
 
 * Something you can run (a program, script, function)
-* distinct from your "real" code (unnecessary)
-* that runs relatively quickly (while you wait)
-* that executes some portion of your "real" code
-* and checks that it is doing what you expect
-* and returns success if things are good, or some kind of error otherwise.
+* ...distinct from your "real" code (unnecessary)
+* ...that runs relatively quickly (while you wait)
+* ...that executes some portion of your "real" code
+* ...that checks something (?)
+* ...and returns success if things are good, or some kind of error otherwise.
 
 
 ## Debugging assertions
@@ -209,7 +203,7 @@ end
    * Pass all inputs as arguments, return outputs
    * Look for similar (repetitive) parts of code (mode argument)
 * Anything you're not sure about, tricky
-   * That you might try separately, interactively, in a debugger or REPL
+   * That you might try separately or interactively
 * Call these functions from tests and from "real" code
 
 
@@ -573,20 +567,6 @@ private:
     θ = 20*rand()
     @test sin(-θ) ≈ -sin(θ)
 end;
-```
-
-
-
-## [R](http://r-pkgs.had.co.nz/tests.html)
-
-### [testthat](https://www.rdocumentation.org/packages/testthat)
-
-```R
-test_that("str_length is number of characters", {
-  expect_equal(str_length("a"), 1)
-  expect_equal(str_length("ab"), 2)
-  expect_equal(str_length("abc"), 3)
-})
 ```
 
 
