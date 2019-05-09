@@ -2,8 +2,6 @@
 
 ## Sciware Session #2
 
-[https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/02_Testing)
-
 
 # Goals for Today 
 
@@ -592,12 +590,10 @@ language: python
 
 Please post questions, useful resources, and other topics of discussion to the #sciware Slack channel
 
-[https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev)
-
 
 ## Coming Attractions 
 
-### June 20 - Testing for packages
+### June 20 - Testing for packages?
 
-### July 18 or 25 - TBD
+### July 18 or 25 - TBD. Requests?
 
