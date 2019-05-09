@@ -114,6 +114,7 @@ end
 ### Validate assumptions
 
 * If some function works for a range of values, choose one at random each time
+* Compose any pair of inverse operations (*g* ◦ *f*, `load` ◦ `save`)
 * Validate properties that should hold
 * Use a less efficient, equivalent calculation to check
 * Identify and write down (test) your assumptions
@@ -470,3 +471,11 @@ private:
     @test sin(-θ) ≈ -sin(θ)
 end;
 ```
+
+
+
+## CI: Test Automation
+
+### [Travis-CI](https://travis-ci.org/)
+
+### [Jenkins](https://jenkins.flatironinstitute.org/)
