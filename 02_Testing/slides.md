@@ -43,8 +43,6 @@ Participants all working to actively foster an environment which encourages part
 
 
 
-# How does testing apply to science?
-
 ## We already do some scientific validation
 - print statements
 - plots or output files midway through
@@ -60,19 +58,19 @@ Implementing "test" formalizes this process
 
 
 # Types of Tests 
-- **Software** - Does the code run as expected?
-- **Acceptance/Integration** - Is the output logical and/or physically realistic?
+- **Integration** - Does the code run as expected from beginning to end?
+- **Acceptance/Scientific** - Is the output logical and/or physically realistic?
 - **Unit** - Do all the little bits work?
 - **Edge** - What unusual cases work?
 - **Known Failures** - What does the code NOT do?
 
 
-## Software Tests
+## Software Integration Tests
 - Output file should exist
 - Output file should be a CSV
 
 
-## Acceptance/Integration Tests
+## Acceptance/Scientific Intergration Tests
 - Number of lines in output matched list should be the same as in List #1
 - Characteristics from List #1 and #2 should be similar for matched objects (e.g., faint matched with faint)
 - Sample characteristics of List #1 and output matched list should be similar
@@ -97,8 +95,8 @@ Implementing "test" formalizes this process
 
 
 ## Activity: Think of one of each type of test relevant to your current work
-- **Software** - Does the code run as expected?
-- **Acceptance/Integration** - Is the output logical and/or physically realistic?
+- **Software Integration** - Does the code run as expected?
+- **Acceptance/Scientific Integration** - Is the output logical and/or physically realistic?
 - **Unit** - Do all the little bits work?
 - **Edge** - What unusual cases work?
 - **Known Failures** - What does the code NOT do?
