@@ -108,11 +108,11 @@ Implementing "test" formalizes this process
 ## What is a "test"?
 
 * Something you can run (a program, script, function)
-* ...distinct from your "real" code (unnecessary)
-* ...that runs relatively quickly (while you wait)
-* ...that executes some portion of your "real" code
-* ...that checks something (?)
-* ...and returns success if things are good, or some kind of error otherwise.
+* distinct from your "real" code (unnecessary)
+* that runs relatively quickly (while you wait)
+* that executes some portion of your "real" code
+* and checks that it is doing what you expect
+* and returns success if things are good, or some kind of error otherwise.
 
 
 ## Debugging assertions
