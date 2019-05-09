@@ -141,7 +141,7 @@ end
    * Pass all inputs as arguments, return outputs
    * Look for similar (repetitive) parts of code (mode argument)
 * Anything you're not sure about, tricky
-   * That you might try separately or interactively
+   * That you might try separately, interactively, in a debugger or REPL
 * Call these functions from tests and from "real" code
 
 
@@ -509,6 +509,20 @@ private:
     θ = 20*rand()
     @test sin(-θ) ≈ -sin(θ)
 end;
+```
+
+
+
+## [R](http://r-pkgs.had.co.nz/tests.html)
+
+### [testthat](https://www.rdocumentation.org/packages/testthat)
+
+```R
+test_that("str_length is number of characters", {
+  expect_equal(str_length("a"), 1)
+  expect_equal(str_length("ab"), 2)
+  expect_equal(str_length("abc"), 3)
+})
 ```
 
 
