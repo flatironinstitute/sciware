@@ -209,7 +209,7 @@ end
    * Look for similar (repetitive) parts of code (mode argument)
 * Anything you're not sure about, tricky
    * That you might try separately, interactively, in a debugger or REPL
-* Call these functions from tests and from "real" code
+* Call these functions from both tests and "real" code
 
 
 ### Think about automation
