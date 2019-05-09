@@ -67,23 +67,23 @@ Implementing "test" formalizes this process
 - **Known Failures** - What does the code NOT do?
 
 
-## Tests of Crossmatch Script: Software
+## Software Tests
 - Output file should exist
 - Output file should be a CSV
 
 
-## Tests of Crossmatch Script: Acceptance Tests
+## Acceptance/Integration Tests
 - Number of lines in output matched list should be the same as in List #1
 - Characteristics from List #1 and #2 should be similar for matched objects (e.g., faint matched with faint)
 - Sample characteristics of List #1 and output matched list should be similar
 
 
-## Tests of Crossmatch Script: Unit Tests
+## Unit Tests
 - Test coordinate forecast method
 - Test finding closest coords method
 
 
-## Tests of Crossmatch Script: Edge Tests
+## Edge Tests
 - Make a test List #1 with "edge" cases.
 ## Edges
 - objects which didn't match the first time
@@ -91,7 +91,7 @@ Implementing "test" formalizes this process
 - objects with null or missing data 
 
 
-# Tests of Crossmatch Script: Known Failures
+## Known Failures
 - objects with insufficient data to test if closest match is the best one
 - objects with large uncertainties on location
 
