@@ -45,17 +45,17 @@ Participants all working to actively foster an environment which encourages part
 
 # How does testing apply to science?
 
-## We already do some sceintific validation
+## We already do some scientific validation
 - print statements
 - plots or output files midway through
 
-Implementing "test" fromalizes this process
+Implementing "test" formalizes this process
 
 
 ## Example: Crossmatch two lists of fast moving astro objects with sky locations from different decades
 - Read in coordinates columns from List #1
 - Forecast coordinates of List #1 to date of List #2
-- Choose objects from from List #2 with closests to coords to forecasted List #1
+- Choose objects from from List #2 with closets to coords to forecasted List #1
 - Output matched List with all columns from both lists
 
 
@@ -96,7 +96,7 @@ Implementing "test" fromalizes this process
 - objects with large uncertainties on location
 
 
-## Activity: Think of one of each type of test relevat to your current work
+## Activity: Think of one of each type of test relevant to your current work
 - **Software** - Does the code run as expected?
 - **Acceptance/Integration** - Is the output logical and/or physically realistic?
 - **Unit** - Do all the little bits work?
@@ -510,6 +510,7 @@ def factorial(n):
         factor += 1
     return result
 ```
+
 
 
 ## C++
