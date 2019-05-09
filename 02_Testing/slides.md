@@ -284,6 +284,13 @@ end
 
 
 
+# Group Activity
+- Discuss your particular use cases and questions with your team 
+- Discuss aspects of your code which you don't know how to test
+- Come up with more test ideas
+
+
+
 # Digital Lab Techniques
 ## More on Intergration Tests
 Nick Carriero (SCC)
@@ -432,6 +439,12 @@ Test.quickCheckResult $ \s -> Test.ioProperty $ do
   return (s' Test.=== s)
 ```
 [source](https://github.com/dylex/postgresql-typed/blob/master/test/Main.hs#L104)
+
+
+# Group Activity
+- Discuss your particular use cases and questions with your team 
+- Discuss aspects of your code which you don't know how to test
+- Come up with more test ideas
 
 
 
