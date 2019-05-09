@@ -476,6 +476,13 @@ end;
 
 ## CI: Test Automation
 
+Integration with github and other repositories to automatically run tests
+
 ### [Travis-CI](https://travis-ci.org/)
+
+`.travis.yml`:
+```yaml
+language: python
+```
 
 ### [Jenkins](https://jenkins.flatironinstitute.org/)
