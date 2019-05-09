@@ -70,7 +70,7 @@ Implementing "test" formalizes this process
 - Output file should be a CSV
 
 
-## Acceptance/Scientific Intergration Tests
+## Acceptance/Scientific Integration Tests
 - Number of lines in output matched list should be the same as in List #1
 - Characteristics from List #1 and #2 should be similar for matched objects (e.g., faint matched with faint)
 - Sample characteristics of List #1 and output matched list should be similar
