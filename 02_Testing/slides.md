@@ -237,7 +237,7 @@ end
 * A unit test embedded in documentation
 
 
-### Sanity, Smoke tests
+### Smoke tests
 
 * A very simple test to make sure things are basically working
 * Often run before other tests to determine whether to proceed
@@ -252,6 +252,10 @@ end
 
 * *regression*: when something stops working due to a (theoretically unrelated) change
 * Often added when fixing bugs, to avoid re-introducing them later
+
+### Performance tests
+
+* Automatically timing some code to make sure it still runs fast enough
 
 
 ### Test-driven development
@@ -277,14 +281,16 @@ end
 
 
 
-## What do tests look like?
+## Example tests
 
+Trivial smoke test
 ```sh
 #!/bin/sh
 true
 ```
 
 
+Another less trivial smoke test 
 ```
 import mypackage
 
@@ -292,6 +298,7 @@ return True
 ```
 
 
+Autocorrelation of iid random data should be 0
 ```python
 data = np.random.randn(1000)
 maxlag = 5
@@ -304,6 +311,7 @@ numpy.testing.assert_allclose(C, numpy.concatenate(
 [source](https://github.com/flatironinstitute/CaImAn/blob/master/caiman/tests/test_pre_processing.py)
 
 
+Compare fast and slow search for test membership
 ```c++
 std::vector<int> ints = {{ 1,3,6,7,9,10,12,14 }};
 
@@ -328,7 +336,10 @@ for(int i = 0; i <= 30; ++i)
 ```
 [source](https://github.com/ITensor/ITensor/blob/v2/unittest/algorithm_test.cc#L31)
 
+This could also generate random input
 
+
+Check some expected property of a function for various inputs
 ```python
 """
 Tests that 0.25 <= xi_max(Q) <= 0.5, whatever Q
@@ -342,6 +353,7 @@ for Q in Q_range:
 [source](https://github.com/kymatio/kymatio/blob/master/kymatio/scattering1d/tests/test_filters.py#L195)
 
 
+Compare min and max value fast for different structures (with random input)
 ```c++
 netket::Binning<double> binning(16);
 std::vector<double> vals;
@@ -360,6 +372,7 @@ REQUIRE(mean <= maxval);
 [source](https://github.com/netket/netket/blob/master/Test/Stats/unit-stats.cc#L59)
 
 
+Check known output for expected possible DNA mutations on fixed input
 ```python
 observed = in_silico_mutagenesis_sequences("ATCCG")
 expected = [
@@ -374,6 +387,7 @@ self.assertListEqual(observed, expected)
 [source](https://github.com/FunctionLab/selene/blob/master/selene_sdk/predict/tests/test_model_predict.py#L12)
 
 
+Ensure out-of-bounds indexing generates an error
 ```c++
 array<long, 2> A(2, 3);
 
@@ -386,6 +400,7 @@ EXPECT_THROW(A(0, 3), key_error);
 [source](https://github.com/TRIQS/triqs/blob/2.1.x/test/triqs/arrays/bound_check.cpp)
 
 
+Check basic math on tensors
 ```python
 m0 = matrix([[1,0],[0,2]])
 m1 = matrix([[0,1],[2,0]])
@@ -401,6 +416,7 @@ assert (A2["up"] == 0*m0).all() and (A2["dn"] == 0*m1).all(), "Subtraction faile
 [source](https://github.com/TRIQS/triqs/blob/2.1.x/test/pytriqs/base/block_matrix.py#L23)
 
 
+Check marshalling (sending/receiving) preserves data (generated random inputs)
 ```haskell
 Test.quickCheckResult $ \s -> Test.ioProperty $ do
   [(Just s')] <- [pgSQL|SELECT ${s}::varchar|]
