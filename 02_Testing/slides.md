@@ -1,5 +1,44 @@
 # Intro to Testing Scientific Software
 
+## Sciware Session #2
+
+
+# Goals for Today 
+
+- Introduce testing
+- Describe how testing is important for scientists 
+- Provide examples of various kinds of tests
+- Motivate and help folks implement some from of testing into their regular workflow
+
+
+## Rules of Engagement
+
+### Goal: 
+
+Participants all working to actively foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
+
+
+## Rules of Engagement
+
+- Avoid discussions between a few people on a narrow topic
+- Provide time for people who haven't spoken to speak/ask questions
+
+
+## Rules of Engagement
+### Engage Novices
+
+- Find ways to be sure everybody is following and that folks aren't lost
+- Anybody can ask a question, request for clarification, for yourself or the benefit of others
+
+
+## Rules of Engagement
+### Engage Experts
+
+- Find ways to be sure all contributors have a chance to contribute
+- Anybody can contribute more on a topic or request more ideas from the group.
+
+(These will always be a work in progress and will be updated, clarified, or expanded as needed.)
+
 
 
 ## What is a "test"?
