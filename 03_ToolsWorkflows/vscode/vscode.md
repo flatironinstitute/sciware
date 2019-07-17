@@ -1,0 +1,133 @@
+# Review of Visual Studio Code (VS Code)
+
+## Sciware: Tools and Workflow Show and Tell
+
+Date: July 18, 2019
+
+Presenter: Jeremy Magland
+
+## What I used prior to switching to VS Code
+
+I have always preferred simple text editors. I settled on Sublime Text 3 for a while. James Jun mentioned VS Code and encouraged me to try it. I didn't try it for quite a while because I associated it with *Microsoft Visual Studio* of the old days. Then toward the beginning the year I gave it a go and haven't turned back
+
+## Key advantages for me
+
+* Lightweight (nothing like Microsoft Visual Studio of the old days)
+* Many powerful, yet lightweight, extensions
+* Designed for software developers (maximizes efficiency)
+* Does not litter file system with a lot of extra files (easily use in conjunction with other tools)
+* Supports Python, JavaScript, and many other languages
+
+## How popular is VSCode among developers?
+
+According to Wikipedia
+
+**Stack Overflow 2016 survey**: 7.2% of respondents using it (ranked #13)
+
+**Stack Overflow 2019 survey**: 50.7% of respondents using it (ranked #1)
+
+## Installation
+
+There are various methods (see https://code.visualstudio.com/)
+
+## How I open a project
+
+Note: I use Linux, but VS Code is also available on Mac (startup may be slightly different)
+
+A project is simply a directory on the file system (no extra files needed).
+
+Open a yakuake terminal (which drops down from above) or something similar, change to the project directory and open VS Code:
+
+```
+cd /path/to/my/project
+code .
+```
+
+Open the integrated terminal within VS Code:
+
+```
+Ctrl+Shift+`
+```
+
+Now I have two terminals: one inside the IDE and one outside the IDE (yakuake). I use these for different purposes. This gives multiple views of the same project. The yakuake terminal gives me more space and flexibility whereas the integrated terminal is convenient in other ways (it's integrated!).
+
+The file explorer is on the left, the main editor workspace is on the right, and the terminal is at the bottom.
+
+Just start editing files and using the terminal!
+
+## Extensions
+
+VS Code has many wonderful extensions. You can search the extensions marketplace by clicking the appropriate icon on the left. Each extension has a description and popularity metrics, including number of users and number of stars. This is extremely useful.
+
+Extensions are very lightweight (programmed in typescript) so they download quickly and typically do not slow down the IDE.
+
+## Some of the extensions I use
+
+| Name          | Num. downloads | Num. stars   |
+| ------------- | -------------- | ----------   |
+| Python        | 55 million     | 4.5          |
+| GitLens       | 23 million     | 5            |
+| LatexWorkshop |  3 million     | 5            |
+| Markdown Preview Github Styling |  276 thousand | 4.5 |
+| autoDocstring | 131 thousand   | 5            |
+| Pyright       | 68 thousand    | 5            |
+
+## Python
+
+I use the terminal to run all Python programs. Thus I use VS Code just as an editor, and do everything else in the terminal.
+
+The basics are provided by the official Python extension:
+
+* Syntax highlighting and checking
+* Auto-completion
+* Code navigation
+* Linting (configurable)
+* Debugging (I don't use this)
+* Manage virtual environments, conda environments
+* Auto formating (Ctrl+Shift+I) -- configurable
+
+In the past I used integrated notebooks capabilities, but now I use JupyterLab separately
+
+## GitLens
+
+This extension provides a very tight integration of many aspects of the IDE with git.
+
+* Click a line of code and see when, why, and by whom it was changed.
+* Use the git view on the left to see which files have been modified, staged, deleted, etc, and visually perform basic git operations (add, commit, push, pull)
+* See side-by-side, editable comparisons of what has been modified since the last commit.
+* Other powerful capabilities -- file history view, line history view, comparison between branches/commits, search commits
+
+## Markdown previews
+
+Split-screen editing of markdown files with preview (github style).
+
+## Project search -- lightweight and pleasant
+
+Search for text in files of given type and get list of results. 
+
+Very nice find/replace interface (selective).
+
+## Pyright and static typing
+
+Static type checker for Python -- officially supported by Microsoft.
+
+As of Python 3.6, there is a very nice syntax for static typing.
+
+Pyright will show you type errors before you run the code.
+
+Highly recommended: add static typing to your Python code and use this extension!
+
+Note: you don't need to update your entire code base -- static typing pieces at a time is fine.
+
+## I use VS Code to edit all kinds of text files
+
+Lightweight and unobtrusive!
+
+.tex, .md, .rst, .html, .css, .js, .py, .sh, .m, .txt, .json, Dockerfile, .yml, etc.
+
+## Some useful key shortcuts
+
+* Open a new terminal (`Ctrl+Shift+[backtic]`)
+* Search for a command (includes extensions) (`Ctrl+Shift+P`)
+* Toggle side panel (`Ctrl+B`)
+* Many more
