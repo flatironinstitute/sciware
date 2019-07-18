@@ -8,23 +8,27 @@ Presenter: Jeremy Magland
 
 ## What I used prior to switching to VS Code
 
-I have always preferred simple text editors. I settled on Sublime Text 3 for a while. James Jun mentioned VS Code and encouraged me to try it. I didn't try it for quite a while because I associated it with *Microsoft Visual Studio* of the old days. Then toward the beginning the year I gave it a go and haven't turned back
+I have always preferred simple text editors rather than IDEs that take control of projects, add a lot of configuration or project files, or restrict how files may be organized. I settled on Sublime Text 3 for a while. James Jun mentioned VS Code and encouraged me to try it. I didn't try it for quite a while because I associated it with *Microsoft Visual Studio*, which I used back in the day for C++ (VS Code is actually a completely different product). Then toward the beginning the year I gave it a go and haven't turned back
 
 ## Key advantages for me
 
-* Lightweight (nothing like Microsoft Visual Studio of the old days)
-* Many powerful, yet lightweight, extensions
+* Lightweight -- Primarily a source code editor, not a complete IDE
+* Choose from many powerful, yet lightweight extensions
 * Designed for software developers (maximizes efficiency)
-* Does not litter file system with a lot of extra files (easily use in conjunction with other tools)
+* Does not litter file system with a lot of extra files (can easily use in conjunction with other tools)
 * Supports Python, JavaScript, and many other languages
 
-## How popular is VSCode among developers?
+## How popular is VS Code among developers?
 
 According to Wikipedia
 
-**Stack Overflow 2016 survey**: 7.2% of respondents using it (ranked #13)
+**Stack Overflow 2016 survey**: 7.2% of respondents using it (ranked #13 among popular development tools)
 
-**Stack Overflow 2019 survey**: 50.7% of respondents using it (ranked #1)
+**Stack Overflow 2019 survey**: 50.7% of respondents using it (ranked #1 among popular development tools)
+
+**PYPL index**: VS Code is [ranked #6](https://pypl.github.io/IDE.html) among IDEs, but it is trending up, whereas 4 of the top 5 are trending down (Android Studio is trending up, but that's because people are moving toward mobile devices).
+
+Only introduced in 2015 by Microsoft, it has grown substantially in popularity in a short time frame.
 
 ## Installation
 
@@ -32,11 +36,11 @@ There are various methods (see https://code.visualstudio.com/)
 
 ## How I open a project
 
-Note: I use Linux, but VS Code is also available on Mac (startup may be slightly different)
+Note: I use Linux, but VS Code is also available on Mac and Windows (startup may be slightly different)
 
 A project is simply a directory on the file system (no extra files needed).
 
-Open a yakuake terminal (which drops down from above) or something similar, change to the project directory and open VS Code:
+Open a terminal (I use yakuake which drops down from above when pressing F9), change to the project directory and open VS Code:
 
 ```
 cd /path/to/my/project
@@ -49,7 +53,7 @@ Open the integrated terminal within VS Code:
 Ctrl+Shift+`
 ```
 
-Now I have two terminals: one inside the IDE and one outside the IDE (yakuake). I use these for different purposes. This gives multiple views of the same project. The yakuake terminal gives me more space and flexibility whereas the integrated terminal is convenient in other ways (it's integrated!).
+Now I have two terminals: one inside the IDE and one outside the IDE (in my yakuake terminal). This gives multiple views of the same project. The yakuake terminal gives me more space and flexibility whereas the integrated terminal is convenient in other ways (it's integrated!).
 
 The file explorer is on the left, the main editor workspace is on the right, and the terminal is at the bottom.
 
@@ -57,7 +61,7 @@ Just start editing files and using the terminal!
 
 ## Extensions
 
-VS Code has many wonderful extensions. You can search the extensions marketplace by clicking the appropriate icon on the left. Each extension has a description and popularity metrics, including number of users and number of stars. This is extremely useful.
+VS Code has many wonderful extensions. You can search the extensions marketplace by clicking the appropriate icon on the left. Each extension has a description and popularity metrics, including number of users and number of stars. This is extremely helpful.
 
 Extensions are very lightweight (programmed in typescript) so they download quickly and typically do not slow down the IDE.
 
@@ -105,13 +109,13 @@ Split-screen editing of markdown files with preview (github style).
 
 Search for text in files of given type and get list of results. 
 
-Very nice find/replace interface (selective).
+Very efficient interactive find/replace interface.
 
 ## Pyright and static typing
 
 Static type checker for Python -- officially supported by Microsoft.
 
-As of Python 3.6, there is a very nice syntax for static typing.
+As of Python 3.6, there is a nice syntax for static typing.
 
 Pyright will show you type errors before you run the code.
 
@@ -130,4 +134,6 @@ Lightweight and unobtrusive!
 * Open a new terminal (`Ctrl+Shift+[backtic]`)
 * Search for a command (includes extensions) (`Ctrl+Shift+P`)
 * Toggle side panel (`Ctrl+B`)
+* Search in project files (`Ctrl+Shift+F`)
+* Search and replace in project files (`Ctrl+Shift+H`)
 * Many more
