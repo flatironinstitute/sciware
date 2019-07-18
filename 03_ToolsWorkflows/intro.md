@@ -55,4 +55,8 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## Next time?
+## Next time? Aug 29?
+- Python packaging (conda, pip, pypi)
+- Advanced Testing (CI, project examples)
+- Optimization/Performance/Profiling
+- Debugging (tools, workflows, tips)
