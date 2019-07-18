@@ -15,21 +15,17 @@
 
 ## Schedule
 
-- Terminal Environments and Command line tools
-   - [Joakim Andén](mailto:janden@flatironinstitute.org): screen, vim ([vim-fugitive](https://github.com/tpope/vim-fugitive)), readline, find + xargs
-   - [Eftychios Pnevmatikakis](mailto:epnevmatikakis@flatironinstitute.org): git command line (rebase -i, stash)
-   - [Nils Wentzell](mailto:nwentzell@flatironinstitute.org): zsh, git, vim
-   - [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling wm, zsh
-- Full Workflow with text editor
-   - [Ruth Angus](mailto:rangus@flatironinstitute.org): vim, iterm2, travis, readthedocs
-- IDEs and interactive coding platforms
-   - [Nikolai Chapochnikov](mailto:nchapochnikov@flatironinstitute.org): pycharm
-   - [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
-   - [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): jupytext, black, jupyter-lab
-   - [Jeremy Magland](mailto:jmagland@flatironinstitute.org): [VS Code](vscode/vscode_magland.md)
-- Misc
-   - [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow. TensorBoard
-   - [Rodrigo Luger](mailto:rluger@flatironinstitute.org): PDF generation from github repo
+- [Joakim Andén](mailto:janden@flatironinstitute.org): screen, vim ([vim-fugitive](https://github.com/tpope/vim-fugitive)), readline, find + xargs
+- [Eftychios Pnevmatikakis](mailto:epnevmatikakis@flatironinstitute.org): git command line (rebase -i, stash)
+- [Nils Wentzell](mailto:nwentzell@flatironinstitute.org): zsh, git, vim
+- [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling wm, zsh
+- [Ruth Angus](mailto:rangus@flatironinstitute.org): vim, iterm2, travis, readthedocs
+- [Nikolai Chapochnikov](mailto:nchapochnikov@flatironinstitute.org): pycharm
+- [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
+- [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): jupytext, black, jupyter-lab
+- [Jeremy Magland](mailto:jmagland@flatironinstitute.org): [VS Code](vscode/vscode_magland.md)
+- [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow. TensorBoard
+- [Rodrigo Luger](mailto:rluger@flatironinstitute.org): PDF generation from github repo
 
 
 
