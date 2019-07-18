@@ -49,6 +49,7 @@ Activities where participants all actively work to foster an environment which e
 ## Links
 
 - Please contribute resources and links to the google doc or these slides
+  - [jupytext](https://github.com/mwouts/jupytext), [black](https://black.readthedocs.io/en/stable/), [jupyterlab](https://jupyterlab.readthedocs.io/en/stable/), bonus: [jupyterlab_code_formatter](https://github.com/ryantam626/jupyterlab_code_formatter)
 - Share "dotfiles" repositories!
    - [Dylan's dotfiles](https://github.com/dylex/skel)
    - Easy way to setup and sync between systems
