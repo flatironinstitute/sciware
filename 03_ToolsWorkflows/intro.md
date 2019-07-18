@@ -24,7 +24,7 @@
 - [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
 - [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): jupytext, black, jupyter-lab
 - [Jeremy Magland](mailto:jmagland@flatironinstitute.org): [VS Code](vscode/vscode_magland.md)
-- [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow. TensorBoard
+- [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow, TensorBoard
 - [Rodrigo Luger](mailto:rluger@flatironinstitute.org): PDF generation from github repo
 
 
