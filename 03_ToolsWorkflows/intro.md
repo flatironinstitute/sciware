@@ -39,8 +39,8 @@ Activities where participants all actively work to foster an environment which e
 - [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling wm, zsh
 - [Ruth Angus](mailto:rangus@flatironinstitute.org): vim, iterm2, travis, readthedocs
 - [Nikolai Chapochnikov](mailto:nchapochnikov@flatironinstitute.org): pycharm
-- [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
 - [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): jupytext, black, jupyter-lab
+- [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
 - [Jeremy Magland](mailto:jmagland@flatironinstitute.org): [VS Code](vscode/vscode_magland.md)
 - [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow, TensorBoard
 - [Rodrigo Luger](mailto:rluger@flatironinstitute.org): PDF generation from github repo
