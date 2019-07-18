@@ -8,7 +8,7 @@ Presenter: Jeremy Magland
 
 ## What I used prior to switching to VS Code
 
-I have always preferred simple text editors rather than IDEs that take control of projects, add a lot of configuration or project files, or restrict how files may be organized. I settled on Sublime Text 3 for a while. James Jun mentioned VS Code and encouraged me to try it. I didn't try it for quite a while because I associated it with *Microsoft Visual Studio*, which I used back in the day for C++ (VS Code is actually a completely different product). Then toward the beginning the year I gave it a go and haven't turned back
+I have always preferred simple text editors rather than IDEs that take control of projects, add a lot of configuration or project files, or restrict how files may be organized. I settled on Sublime Text 3 for a while. James Jun mentioned VS Code and encouraged me to try it. I didn't try it for quite a while because I associated it with *Microsoft Visual Studio* which was too heavy for me back when I used it for C++ (VS Code is actually a completely different product). Then toward the beginning the year I gave it a go and haven't turned back.
 
 ## Key advantages for me
 
@@ -16,6 +16,7 @@ I have always preferred simple text editors rather than IDEs that take control o
 * Choose from many powerful, yet lightweight extensions
 * Designed for software developers (maximizes efficiency)
 * Does not litter file system with a lot of extra files (can easily use in conjunction with other tools)
+* Integration with the terminal
 * Supports Python, JavaScript, and many other languages
 
 ## How popular is VS Code among developers?
@@ -134,6 +135,7 @@ Lightweight and unobtrusive!
 ## Some useful key shortcuts
 
 * Open a new terminal (`Ctrl+Shift+[backtic]`)
+* Toggle view terminal (`Ctrl+[backtic]`) -- helpful in zen mode
 * Search for a command (includes extensions) (`Ctrl+Shift+P`) -- super useful
 * Toggle side panel (`Ctrl+B`)
 * Search in project files (`Ctrl+Shift+F`)
