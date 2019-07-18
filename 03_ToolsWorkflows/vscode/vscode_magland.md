@@ -101,6 +101,8 @@ This extension provides a very tight integration of many aspects of the IDE with
 * See side-by-side, editable comparisons of what has been modified since the last commit.
 * Other powerful capabilities -- file history view, line history view, comparison between branches/commits, search commits
 
+Try `Ctrl+Shift+P` and type `GitLens` to see the many available commands and views.
+
 ## Markdown previews
 
 Split-screen editing of markdown files with preview (github style).
@@ -132,8 +134,9 @@ Lightweight and unobtrusive!
 ## Some useful key shortcuts
 
 * Open a new terminal (`Ctrl+Shift+[backtic]`)
-* Search for a command (includes extensions) (`Ctrl+Shift+P`)
+* Search for a command (includes extensions) (`Ctrl+Shift+P`) -- super useful
 * Toggle side panel (`Ctrl+B`)
 * Search in project files (`Ctrl+Shift+F`)
 * Search and replace in project files (`Ctrl+Shift+H`)
+* Zen mode, which I only started using today (`Ctrl+K Z`, `Esc Esc` to exit)
 * Many more
