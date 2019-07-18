@@ -39,7 +39,7 @@ Activities where participants all actively work to foster an environment which e
 - [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling wm, zsh
 - [Ruth Angus](mailto:rangus@flatironinstitute.org): vim, iterm2, travis, readthedocs
 - [Nikolai Chapochnikov](mailto:nchapochnikov@flatironinstitute.org): pycharm
-- [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): jupytext, black, jupyter-lab
+- [Tiberiu Tesileanu](mailto:ttesileanu@flatironinstitute.org): [jupytext](https://github.com/mwouts/jupytext), [black](https://black.readthedocs.io/en/stable/), [jupyterlab](https://jupyterlab.readthedocs.io/en/stable/), [jupyterlab_code_formatter](https://github.com/ryantam626/jupyterlab_code_formatter)
 - [Danxun Li](mailto:dli@flatironinstitute.org): R in Jupyter
 - [Jeremy Magland](mailto:jmagland@flatironinstitute.org): [VS Code](vscode/vscode_magland.md)
 - [Charles Windolf](mailto:cwindolf@flatironinstitute.org): Tensorflow, TensorBoard
@@ -48,8 +48,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Links
 
-- Please contribute resources and links to the google doc or these slides
-  - [jupytext](https://github.com/mwouts/jupytext), [black](https://black.readthedocs.io/en/stable/), [jupyterlab](https://jupyterlab.readthedocs.io/en/stable/), bonus: [jupyterlab_code_formatter](https://github.com/ryantam626/jupyterlab_code_formatter)
+- Please add resources and links to the google doc or these slides
 - Share "dotfiles" repositories!
    - [Dylan's dotfiles](https://github.com/dylex/skel)
    - Easy way to setup and sync between systems
