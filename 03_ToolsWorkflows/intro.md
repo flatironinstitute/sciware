@@ -16,10 +16,10 @@
 ## Schedule
 
 - Terminal Environments and Command line tools
-   - [Joakim Andén](mailto:janden@flatironinstitute.org): screen, vim (vim-fugitive), readline, find + xargs
+   - [Joakim Andén](mailto:janden@flatironinstitute.org): screen, vim ([vim-fugitive](https://github.com/tpope/vim-fugitive)), readline, find + xargs
    - [Eftychios Pnevmatikakis](mailto:epnevmatikakis@flatironinstitute.org): git command line (rebase -i, stash)
    - [Nils Wentzell](mailto:nwentzell@flatironinstitute.org): zsh, git, vim
-   - [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling window managers, zsh tab completion
+   - [Dylan Simon](mailto:dsimon@flatironinstitute.org): [tmux](https://github.com/tmux/tmux/wiki), tiling wm, zsh
 - Full Workflow with text editor
    - [Ruth Angus](mailto:rangus@flatironinstitute.org): vim, iterm2, travis, readthedocs
 - IDEs and interactive coding platforms
