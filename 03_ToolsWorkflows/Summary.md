@@ -15,14 +15,14 @@
     *   Shortcuts in terminal and across applications
     *   .inputrc
     *   Access history of commands issued
-*   **Zsh** (Nils)
-    *   <link to MD file in repo with instructions and examples>
+*   **[Zsh](https://en.wikipedia.org/wiki/Z_shell)** (Nils)
+    * [Zsh Summary](https://github.com/flatironinstitute/learn-sciware-dev/blob/master/03_ToolsWorkflows/zsh_wentzell.md)
     *   Shell (alternative to bash)
     *   Globbing expressions - recursive pattern matching to find files, more powerful than **find**
     *   Can find files based on file name, type, permissions
     *   **Spaceship zsh** to customize prompts and make shortcuts, tab complete
     *   git integration, has nice icon which indicate status of repo, and branch indication
-    *   **Oh my zsh**
+    *   **[Oh my zsh](https://ohmyz.sh/)**
     *   Nice alias “git l” for generating graphical (ascii art) version of git history. Better than **git log**
     *   Likely gonna be the default in the next Mac OS release (licensing reasons)
 *   **Vi plugin managers** (Nils)
