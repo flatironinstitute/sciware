@@ -1,19 +1,17 @@
-*   **Vim** text editor (Joakim)	
+*   **[Vim](https://en.wikipedia.org/wiki/Vim_(text_editor))** text editor (Joakim)	
     *   lots of keystroke shortcuts, syntax highlighting options. Very little mousing.
-    *   Comparable functionality to **emacs**
+    *   Comparable functionality to **[emacs](https://www.gnu.org/software/emacs/)**
     *   Tabs, multiple files at the same time
     *   Ctags to index and find functions in your directory tree
-    *   Fugitive to integrate with git
-    *   Vim diff 
-    *   Configure status line at the bottom
-    *   Autocomplete
+    *   **[Fugitive](https://github.com/tpope/vim-fugitive)** to integrate with git
+    *   Vim diff, Configure status line at the bottom, Autocomplete
 *   **Screens** (Joakim)
     *   Multiple shell sessions at the same time
     *   Sessions will stay active even if computer disconnects 
     *   Can split vertically
-    *   Comparable to **tmux**.
+    *   Comparable to **[tmux](https://en.wikipedia.org/wiki/Tmux)**.
 *   Custom something to be able to show images in terminal (Joakim)
-*   **Readline** (Joakim)
+*   **[Readline](https://en.wikipedia.org/wiki/GNU_Readline)** (Joakim)
     *   Shortcuts in terminal and across applications
     *   .inputrc
     *   Access history of commands issued
