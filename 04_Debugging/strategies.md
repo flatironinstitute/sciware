@@ -24,55 +24,53 @@ Chapter 8 Debugging
 - You probably weren't taught helpful strategies to help
 
 
-# Error-Locating Principles
-## Think
-
-Without looking at the code. 
-  - Review in your mind how the program is designed and how it ~should~ be performing 
+## Error-Locating Principles
+### Think. Without looking at the code. 
+  - Review in your mind how the program is designed and how it *should* be performing 
   - Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
 
 
-# Error-Locating Principles
-## Sleep on It
+## Error-Locating Principles
+### Sleep on It
 
 - The human subconscious is a potent problem solver.
 - If error is not located in approximately 30 mins, set it aside and do something else
 - If solution arises while sleeping, capture it with a recording before going back to sleep
 
 
-# Error-Locating Principles
-## Describe Problem to Someone Else
+## Error-Locating Principles
+### Describe Problem to Someone Else
 
-Describing the problem to someone else may lead to the solution without any verbal assistance from the listener.
-
-
-# Error-Locating Principles
-## Use Debugging Tools Cautiously
-
-Debugging tools need to be used in conjunction with problem solving strategies
+- Talking to someone else may lead to the solution without any verbal assistance from the listener.
 
 
-# Error-Locating Principles
-## Experimentation is a Last Resort
+## Error-Locating Principles
+### Use Debugging Tools Cautiously
 
-A haphazard approach is inefficient and could result in compounding the problem by introducing new errors
-
-
-
-# Error Repairing Techniques
-## Errors Tend to Cluster
-
-When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
+- Debugging tools need to be used in conjunction with problem solving strategies
 
 
-# Error Repairing Techniques
-## Fix the Error, Not the Symptom
+## Error-Locating Principles
+### Experimentation is a Last Resort
 
-Be careful to find all instances of an error, not just the one causing failing right now
+- A haphazard approach is inefficient and could result in compounding the problem by introducing new errors-
 
 
-# Error Repairing Techniques
-## Bug Fixes Are Often Wrong
+
+## Error Repairing Techniques
+### Errors Tend to Cluster
+
+- When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
+
+
+## Error Repairing Techniques
+### Fix the Error, Not the Symptom
+
+- Be careful to find all instances of an error, not just the one causing failing right now
+
+
+## Error Repairing Techniques
+### Bug Fixes Are Often Wrong
 
 - Corrections are more error prone than original code and should be tested more rigorously 
 - Regression testing is important to help catch new errors potentially introduced by bug fixes
