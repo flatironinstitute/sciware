@@ -16,6 +16,7 @@ by Glenford J. Myers, Corey Sandler, Tom Badgett
 Chapter 8 Debugging
 
 
+
 # Debugging Can Be Unplesant
 
 - Bugs represent mistakes and an ego hit
@@ -24,13 +25,16 @@ Chapter 8 Debugging
 - You probably weren't taught helpful strategies to help
 
 
-## Error-Locating Principles
+
+# Error-Locating Principles
+
+
+
 ### Think. Without looking at the code. 
   - Review in your mind how the program is designed and how it *should* be performing 
   - Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
 
 
-## Error-Locating Principles
 ### Sleep on It
 
 - The human subconscious is a potent problem solver.
@@ -38,38 +42,35 @@ Chapter 8 Debugging
 - If solution arises while sleeping, capture it with a recording before going back to sleep
 
 
-## Error-Locating Principles
 ### Describe Problem to Someone Else
 
 - Talking to someone else may lead to the solution without any verbal assistance from the listener.
 
 
-## Error-Locating Principles
 ### Use Debugging Tools Cautiously
 
 - Debugging tools need to be used in conjunction with problem solving strategies
 
 
-## Error-Locating Principles
 ### Experimentation is a Last Resort
 
 - A haphazard approach is inefficient and could result in compounding the problem by introducing new errors-
 
 
 
-## Error Repairing Techniques
+# Error Repairing Techniques
+
+
 ### Errors Tend to Cluster
 
 - When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
 
 
-## Error Repairing Techniques
 ### Fix the Error, Not the Symptom
 
 - Be careful to find all instances of an error, not just the one causing failing right now
 
 
-## Error Repairing Techniques
 ### Bug Fixes Are Often Wrong
 
 - Corrections are more error prone than original code and should be tested more rigorously 
@@ -77,6 +78,7 @@ Chapter 8 Debugging
 
 <img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='300'>  
 ([xkcd #1739](https://xkcd.com/1739/))
+
 
 
 # Learn from Mistakes
@@ -89,25 +91,20 @@ Chapter 8 Debugging
 - How could it have been detected earlier?
 
 
-
-# Debugging by Brute Force
-
-
-# Debugging by Induction
+# Debugging Methods
 
 
-# Debugging by Deduction
+## Debugging by Brute Force
 
 
-# Debugging by Backtracking
+## Debugging by Induction
 
 
-# Debugging by Testing
+## Debugging by Deduction
 
 
+## Debugging by Backtracking
 
-# Practice Image
 
-<img src='https://imgs.xkcd.com/comics/git_2x.png' height='580'>  
-([xkcd #1597](https://xkcd.com/1597))
+## Debugging by Testing
 
