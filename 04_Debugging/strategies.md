@@ -29,7 +29,6 @@ Chapter 8 Debugging
 # Error-Locating Principles
 
 
-
 ### Think. Without looking at the code. 
   - Review in your mind how the program is designed and how it *should* be performing 
   - Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
@@ -76,7 +75,7 @@ Chapter 8 Debugging
 - Corrections are more error prone than original code and should be tested more rigorously 
 - Regression testing is important to help catch new errors potentially introduced by bug fixes
 
-<img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='300'>  
+<img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='400'>  
 ([xkcd #1739](https://xkcd.com/1739/))
 
 
