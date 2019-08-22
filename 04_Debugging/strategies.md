@@ -77,6 +77,8 @@ Be careful to find all instances of an error, not just the one causing failing r
 - Corrections are more error prone than original code and should be tested more rigorously 
 - Regression testing is important to help catch new errors potentially introduced by bug fixes
 
+<img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='300'>  
+([xkcd #1739](https://xkcd.com/1739/))
 
 
 # Learn from Mistakes
