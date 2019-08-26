@@ -2,20 +2,16 @@
 
 ## Sciware Session #4
 
-[https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/04_Debugging)
+### [https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/04_Debugging)
 
-
-# Goals for Today 
-
-
+# Goals for Today
 
 # Debugging Strategies
 
-## [The Art of Software Testing, 3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)  
-by Glenford J. Myers, Corey Sandler, Tom Badgett  
+## [The Art of Software Testing, 3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)
+
+by Glenford J. Myers, Corey Sandler, Tom Badgett
 Chapter 8 Debugging
-
-
 
 # Debugging Can Be Unplesant
 
@@ -24,15 +20,12 @@ Chapter 8 Debugging
 - Debugging can take you down rabbit holes
 - You probably weren't taught helpful strategies to help
 
-
-
 # Error-Locating Principles
 
+### Think. Without looking at the code.
 
-### Think. Without looking at the code. 
-  - Review in your mind how the program is designed and how it *should* be performing 
-  - Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
-
+- Review in your mind how the program is designed and how it _should_ be performing
+- Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
 
 ### Sleep on It
 
@@ -40,45 +33,35 @@ Chapter 8 Debugging
 - If error is not located in approximately 30 mins, set it aside and do something else
 - If solution arises while sleeping, capture it with a recording before going back to sleep
 
-
 ### Describe Problem to Someone Else
 
 - Talking to someone else may lead to the solution without any verbal assistance from the listener.
-
 
 ### Use Debugging Tools Cautiously
 
 - Debugging tools need to be used in conjunction with problem solving strategies
 
-
 ### Experimentation is a Last Resort
 
 - A haphazard approach is inefficient and could result in compounding the problem by introducing new errors-
 
-
-
 # Error Repairing Techniques
-
 
 ### Errors Tend to Cluster
 
 - When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
 
-
 ### Fix the Error, Not the Symptom
 
 - Be careful to find all instances of an error, not just the one causing failing right now
 
-
 ### Bug Fixes Are Often Wrong
 
-- Corrections are more error prone than original code and should be tested more rigorously 
+- Corrections are more error prone than original code and should be tested more rigorously
 - Regression testing is important to help catch new errors potentially introduced by bug fixes
 
-<img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='400'>  
+<img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='400'>
 ([xkcd #1739](https://xkcd.com/1739/))
-
-
 
 # Learn from Mistakes
 
@@ -89,21 +72,14 @@ Chapter 8 Debugging
 - Why wasn't it detected earlier
 - How could it have been detected earlier?
 
-
 # Debugging Methods
-
 
 ## Debugging by Brute Force
 
-
 ## Debugging by Induction
-
 
 ## Debugging by Deduction
 
-
 ## Debugging by Backtracking
 
-
 ## Debugging by Testing
-
