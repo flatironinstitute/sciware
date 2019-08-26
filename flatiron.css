@@ -17,6 +17,14 @@
   margin-bottom: 0.3em;
 }
 
+.reveal h1 {
+  font-size: 3em;
+}
+
+.reveal h2 {
+  font-size: 2em;
+}
+
 .reveal .slides section[data-vertical-align-top] {
   top: 0 !important;
 }
