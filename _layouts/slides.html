@@ -1,56 +1,73 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-    <title>{{page.title}}</title>
+    <title>{{ page.title }}</title>
 
-    <link rel="stylesheet" href="{{site.baseurl}}/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="{{site.baseurl}}/reveal.js/css/theme/simple.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/reveal.js/css/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="{{ site.baseurl }}/reveal.js/css/theme/simple.css"
+    />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="{{site.baseurl}}/reveal.js/lib/css/zenburn.css">
+    <link
+      rel="stylesheet"
+      href="{{ site.baseurl }}/reveal.js/lib/css/zenburn.css"
+    />
 
-    <link rel="stylesheet" href="{{site.baseurl}}/style.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = '{{site.baseurl}}/reveal.js/css/print/' + (window.location.search.match( /print-pdf/gi ) ? 'pdf.css' : 'paper.css');
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href =
+        "{{site.baseurl}}/reveal.js/css/print/" +
+        (window.location.search.match(/print-pdf/gi) ? "pdf.css" : "paper.css");
+      document.getElementsByTagName("head")[0].appendChild(link);
     </script>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-	<section
-	  data-markdown="{{page.markdown}}"
-	  data-separator="^\n\n\n"
-	  data-separator-vertical="^\n\n"
-	  data-separator-notes="^#note:">
-	</section>
+        <section
+          data-markdown="{{ page.markdown }}"
+          data-separator="^\n\n\n"
+          data-separator-vertical="^\n\n"
+          data-separator-notes="^#note:"
+        ></section>
       </div>
     </div>
 
-    <script src="{{site.baseurl}}/reveal.js/lib/js/head.min.js"></script>
-    <script src="{{site.baseurl}}/reveal.js/js/reveal.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/lib/js/head.min.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/js/reveal.js"></script>
 
     <script>
       Reveal.initialize({
-	dependencies: [
-	  { src: '{{site.baseurl}}/reveal.js/plugin/markdown/marked.js' },
-	  { src: '{{site.baseurl}}/reveal.js/plugin/markdown/markdown.js' },
-	  { src: '{{site.baseurl}}/reveal.js/plugin/notes/notes.js', async: true },
-	  { src: '{{site.baseurl}}/reveal.js/plugin/highlight/highlight.js', async: true }
-	],
-	controlsTutorial: false,
-	slideNumber: true,
-	width: 1200,
-	height: 800,
-	fragmentInURL: true
+        dependencies: [
+          { src: "{{site.baseurl}}/reveal.js/plugin/markdown/marked.js" },
+          { src: "{{site.baseurl}}/reveal.js/plugin/markdown/markdown.js" },
+          {
+            src: "{{site.baseurl}}/reveal.js/plugin/notes/notes.js",
+            async: true
+          },
+          {
+            src: "{{site.baseurl}}/reveal.js/plugin/highlight/highlight.js",
+            async: true
+          }
+        ],
+        controlsTutorial: false,
+        slideNumber: true,
+        width: 1200,
+        height: 800,
+        fragmentInURL: true
       });
     </script>
   </body>
