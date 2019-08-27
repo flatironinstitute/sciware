@@ -10,8 +10,7 @@
 
 ## [The Art of Software Testing, 3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)
 
-### by Glenford J. Myers, Corey Sandler, Tom Badgett
-
+by Glenford J. Myers, Corey Sandler, Tom Badgett
 Chapter 8 Debugging
 
 # Debugging Can Be Unplesant
@@ -26,7 +25,7 @@ Chapter 8 Debugging
 ### Think. Without looking at the code.
 
 - Review in your mind how the program is designed and how it _should_ be performing
-- Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
+- Concentrate on the process for correct performance, and then imagine ways in which the code may be incorrectly designed
 
 ### Sleep on It
 
