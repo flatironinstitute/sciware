@@ -39,6 +39,11 @@ body {
   font-weight: inherit;
 }
 
+.reveal .slides section.align-top,
+.reveal .slides section > section.align-top {
+  top: 0 !important;
+}
+
 /*********************************************
  * HEADERS
  *********************************************/
@@ -250,10 +255,6 @@ body {
 
 .reveal small * {
   vertical-align: top;
-}
-
-.reveal .slides section[data-vertical-align-top] {
-  top: 0 !important;
 }
 
 body:after {
