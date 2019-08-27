@@ -25,7 +25,7 @@ Chapter 8 Debugging
 ### Think. Without looking at the code.
 
 - Review in your mind how the program is designed and how it _should_ be performing
-- Concentrate on the process for correct performance, and then imagine ways in which the code may be incorrectly designed
+- Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
 
 ### Sleep on It
 
