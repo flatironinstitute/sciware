@@ -1,5 +1,5 @@
 /**
- * Simons Foundation theme for reveal.js.
+ * Flatiron Institute theme for reveal.js.
  * Author: Elizabeth Lovero
  * Updated: 27 August 2019
 */
@@ -24,6 +24,9 @@ $linkColor: #537eba;
 $linkColorHover: darken($linkColor, 20%);
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 $bodyColor: #222;
+
+// Theme template ------------------------------
+@import "../template/theme";
 
 // Custom overrides
 .reveal h1 {
@@ -69,6 +72,3 @@ body:after {
 .spacer {
   padding: 10px 0;
 }
-
-// Theme template ------------------------------
-@import "../template/theme";
