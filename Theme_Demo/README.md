@@ -4,7 +4,7 @@
 
 This folder contains a custom Sass theme for reveal.js called `flatiron.scss.` It is currently installed in this repo. Installation instructions for other projects can be found below.
 
-- [Theme demo](Theme_Demo)
+- [theme demo](https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/slides.html) ([source](demo.md))
 
 ## Installation
 
