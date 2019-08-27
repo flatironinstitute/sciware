@@ -1,44 +1,14 @@
 /**
- * Simons Foundation theme for reveal.js.
+ * Flatiron Institute theme for reveal.js.
  * Author: Elizabeth Lovero
- */
+ * Updated: 27 August 2019
+*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Tinos:400,700,400i,700i");
-.reveal h1,
-.reveal h2 {
-  margin: 0 0 0.4em 0;
-}
-
-.reveal p {
-  text-align: left;
-}
-
-.reveal li {
-  margin-bottom: 0.3em;
-}
-
-.reveal h1 {
-  font-size: 3em;
-}
-
-.reveal h2 {
-  font-size: 2em;
-}
-
-.reveal .slides section[data-vertical-align-top] {
-  top: 0 !important;
-}
-
-body:after {
-  content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
-  position: fixed;
-  bottom: 30px;
-  left: 12px;
-}
 
 /*********************************************
-  * GLOBAL STYLES
-  *********************************************/
+ * GLOBAL STYLES
+ *********************************************/
 body {
   background: #fff;
   background-color: #fff;
@@ -70,8 +40,8 @@ body {
 }
 
 /*********************************************
-  * HEADERS
-  *********************************************/
+ * HEADERS
+ *********************************************/
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -90,15 +60,15 @@ body {
 }
 
 .reveal h1 {
-  font-size: 3.77em;
+  font-size: 3em;
 }
 
 .reveal h2 {
-  font-size: 2.11em;
+  font-size: 2em;
 }
 
 .reveal h3 {
-  font-size: 1.55em;
+  font-size: 1.25em;
 }
 
 .reveal h4 {
@@ -109,9 +79,14 @@ body {
   text-shadow: none;
 }
 
+.reveal h1,
+.reveal h2 {
+  margin: 0 0 0.4em 0;
+}
+
 /*********************************************
-  * OTHER
-  *********************************************/
+ * OTHER
+ *********************************************/
 .reveal p {
   margin: 20px 0;
   line-height: 1.3;
@@ -164,6 +139,10 @@ body {
 .reveal ol ul {
   display: block;
   margin-left: 40px;
+}
+
+.reveal li {
+  margin-bottom: 0.3em;
 }
 
 .reveal dt {
@@ -273,9 +252,32 @@ body {
   vertical-align: top;
 }
 
+.reveal .slides section[data-vertical-align-top] {
+  top: 0 !important;
+}
+
+body:after {
+  content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
+  position: fixed;
+  bottom: 30px;
+  left: 12px;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.spacer {
+  padding: 10px 0;
+}
+
 /*********************************************
-  * LINKS
-  *********************************************/
+ * LINKS
+ *********************************************/
 .reveal a {
   color: #537eba;
   text-decoration: none;
@@ -296,8 +298,8 @@ body {
 }
 
 /*********************************************
-  * IMAGES
-  *********************************************/
+ * IMAGES
+ *********************************************/
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
@@ -323,15 +325,15 @@ body {
 }
 
 /*********************************************
-  * NAVIGATION CONTROLS
-  *********************************************/
+ * NAVIGATION CONTROLS
+ *********************************************/
 .reveal .controls {
   color: #537eba;
 }
 
 /*********************************************
-  * PROGRESS BAR
-  *********************************************/
+ * PROGRESS BAR
+ *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
   color: #537eba;
@@ -344,8 +346,8 @@ body {
 }
 
 /*********************************************
-  * PRINT BACKGROUND
-  *********************************************/
+ * PRINT BACKGROUND
+ *********************************************/
 @media print {
   .backgrounds {
     background-color: #fff;
