@@ -1,17 +1,16 @@
 /**
- * Flatiron Institute theme for reveal.js.
+ * Simons Foundation theme for reveal.js.
  * Author: Elizabeth Lovero
- */
+ * Updated: 27 August 2019
+*/
 
 // Default mixins and settings -----------------
 @import "../template/mixins";
 @import "../template/settings";
-// ---------------------------------------------
 
-// Include theme-specific fonts-----------------
+// Theme-specific fonts-----------------
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Tinos:400,700,400i,700i");
-// ---------------------------------------------
 
 // Custom theme settings (see ../template/settings.scss)
 $mainFont: "Open Sans", Arial, Helvetica, sans-serif;
@@ -26,40 +25,50 @@ $linkColorHover: darken($linkColor, 20%);
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 $bodyColor: #222;
 
+// Custom overrides
+.reveal h1 {
+  font-size: 3em;
+}
+.reveal h2 {
+  font-size: 2em;
+}
+.reveal h3 {
+  font-size: 1.25em;
+}
+.reveal h4 {
+  font-size: 1em;
+}
 .reveal h1,
 .reveal h2 {
   margin: 0 0 0.4em 0;
 }
-
-.reveal h1 {
-  font-size: 3em;
-}
-
-.reveal h2 {
-  font-size: 2em;
-}
-
-.reveal p {
-  text-align: left;
-}
-
 .reveal li {
   margin-bottom: 0.3em;
 }
 
+// Slide-specific vertical centering override
 .reveal .slides section[data-vertical-align-top] {
   top: 0 !important;
 }
 
-// Add FI Logo ---------------------------------
+// Logo
 body:after {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
   position: fixed;
   bottom: 30px;
   left: 12px;
 }
-// ---------------------------------------------
+
+// Utility classes
+.align-left {
+  text-align: left !important;
+}
+.align-right {
+  text-align: right !important;
+}
+.spacer {
+  padding: 10px 0;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";
-// ---------------------------------------------

@@ -8,8 +8,6 @@
 
 # Debugging Strategies
 
-<div class="spacer"></div>
-
 ## [The Art of Software Testing, 3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)
 
 ### by Glenford J. Myers, Corey Sandler, Tom Badgett

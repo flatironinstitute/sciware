@@ -1,7 +1,8 @@
 /**
  * Simons Foundation theme for reveal.js.
  * Author: Elizabeth Lovero
- */
+ * Updated: 27 August 2019
+*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Tinos:400,700,400i,700i");
 .reveal h1 {
@@ -33,14 +34,6 @@
   top: 0 !important;
 }
 
-.reveal p.align-left {
-  text-align: left;
-}
-
-.spacer {
-  padding: 5px 0;
-}
-
 body:after {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
   position: fixed;
@@ -48,9 +41,21 @@ body:after {
   left: 12px;
 }
 
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.spacer {
+  padding: 10px 0;
+}
+
 /*********************************************
-  * GLOBAL STYLES
-  *********************************************/
+ * GLOBAL STYLES
+ *********************************************/
 body {
   background: #fff;
   background-color: #fff;
@@ -82,8 +87,8 @@ body {
 }
 
 /*********************************************
-  * HEADERS
-  *********************************************/
+ * HEADERS
+ *********************************************/
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -122,8 +127,8 @@ body {
 }
 
 /*********************************************
-  * OTHER
-  *********************************************/
+ * OTHER
+ *********************************************/
 .reveal p {
   margin: 20px 0;
   line-height: 1.3;
@@ -286,8 +291,8 @@ body {
 }
 
 /*********************************************
-  * LINKS
-  *********************************************/
+ * LINKS
+ *********************************************/
 .reveal a {
   color: #537eba;
   text-decoration: none;
@@ -308,8 +313,8 @@ body {
 }
 
 /*********************************************
-  * IMAGES
-  *********************************************/
+ * IMAGES
+ *********************************************/
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
@@ -335,15 +340,15 @@ body {
 }
 
 /*********************************************
-  * NAVIGATION CONTROLS
-  *********************************************/
+ * NAVIGATION CONTROLS
+ *********************************************/
 .reveal .controls {
   color: #537eba;
 }
 
 /*********************************************
-  * PROGRESS BAR
-  *********************************************/
+ * PROGRESS BAR
+ *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
   color: #537eba;
@@ -356,8 +361,8 @@ body {
 }
 
 /*********************************************
-  * PRINT BACKGROUND
-  *********************************************/
+ * PRINT BACKGROUND
+ *********************************************/
 @media print {
   .backgrounds {
     background-color: #fff;
