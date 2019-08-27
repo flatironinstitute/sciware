@@ -10,9 +10,10 @@ This paragraph text is <div class="spacer"></div> separated by a spacer.
 
 The spacer is 20px high, you can layer a few of them together.
 
-### Code Sample:
 
-`<div class="spacer"></div>`
+```
+<div class="spacer"></div>
+```
 
 
 
@@ -24,10 +25,11 @@ This is regular paragraph text to which no default has been applied. The default
 <p class="align-left">This is a left 👈 aligned paragraph.</p>
 <p class="align-right">This is a right 👉 aligned paragraph.</p>
 
-### Code Sample:
 
-`<p class="align-left">This is a left 👈 aligned paragraph.</p>
-<p class="align-right">This is a right 👉 aligned paragraph.</p>`
+```
+<p class="align-left">This is a left 👈 aligned paragraph.</p>
+<p class="align-right">This is a right 👉 aligned paragraph.</p> 
+```
 
 
 
@@ -36,9 +38,7 @@ This is regular paragraph text to which no default has been applied. The default
 
 To vertically align all slides to the top of the page, add the `align-top` class to the `<section>` element in slides.html. Remove this class to revert to the default vertical centering.
 
-### Code Sample:
 
-`<section class="align-top" ></section>`
-
-
-
+```
+<section class="align-top" ></section>
+```
