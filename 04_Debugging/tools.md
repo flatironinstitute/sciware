@@ -6,7 +6,6 @@
 
 # Print statements
 
-
 - Be careful of buffering
 - Make sure to flush!
 - `python -u` (`PYTHONUNBUFFERED=1`)
