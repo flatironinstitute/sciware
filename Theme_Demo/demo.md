@@ -4,7 +4,7 @@ Reveal.js enables you to create beautiful interactive slide decks using HTML. Th
 
 
 
-## Spacer <!-- .element: class="test-pink" -->
+## Spacer <!-- .section: class="test-pink" -->
 
 This paragraph text is <div class="spacer"></div> separated by a spacer.
 
