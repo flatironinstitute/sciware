@@ -4,7 +4,7 @@ Reveal.js enables you to create beautiful interactive slide decks using HTML. Th
 
 
 
-## Spacer <!-- .slide: class="align-top" -->
+## Spacer 
 
 This paragraph text is <div class="spacer"></div> separated by a spacer.
 
@@ -18,7 +18,7 @@ The spacer is 20px high, you can layer a few of them together.
 
 
 
-## Slide Top Alignment
+## Slide Top Alignment <!-- .slide: class="align-top" -->
 
 To vertically align a slides to the top of the page, add the `align-top` class to the slide header element in the markdown of this page. See the code below for the syntax.
 
