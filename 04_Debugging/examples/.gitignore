@@ -1,0 +1,9 @@
+alloc
+alloc-set
+count
+count-flush
+open
+segv
+spin
+*.out
+*.pid
