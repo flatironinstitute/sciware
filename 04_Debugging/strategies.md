@@ -29,27 +29,27 @@ Chapter 8 Debugging
 # Error-Locating Principles
 
 
-### Think. Without looking at the code. 
-  - Review in your mind how the program is designed and how it *should* be performing 
-  - Concentrate on the process for correct performance, and then magine ways in which the code may be incorrectly designed
+### THINK. 
+#### Without looking at the code.  <div class="spacer"></div>
+ - Review in your mind how the program is designed and how it *should* be performing  <div class="spacer"></div>
+ - Concentrate on the process for correct performance, and then imagine ways in which the code may be incorrectly designed
 
 
-### Sleep on It
+### Sleep on It  <div class="spacer"></div>
 
-- The human subconscious is a potent problem solver.
-- If error is not located in approximately 30 mins, set it aside and do something else
+- The human subconscious is a potent problem solver.  <div class="spacer"></div>
+- If error is not located in approximately 30 mins, set it aside and do something else  <div class="spacer"></div>
 - If solution arises while sleeping, capture it with a recording before going back to sleep
 
 
-### Describe Problem to Someone Else
+### Describe Problem to Someone Else <div class="spacer"></div>
 
 - Talking to someone else may lead to the solution without any verbal assistance from the listener.
 
 
-### Use Debugging Tools Cautiously
+### Use Debugging Tools Cautiously 
 
 - Debugging tools need to be used in conjunction with problem solving strategies
-
 
 ### Experimentation is a Last Resort
 
@@ -57,13 +57,12 @@ Chapter 8 Debugging
 
 
 
-# Error Repairing Techniques
+# Error Repairing Techniques <!-- .slide: class="center" -->
 
 
 ### Errors Tend to Cluster
 
 - When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
-
 
 ### Fix the Error, Not the Symptom
 
@@ -73,7 +72,7 @@ Chapter 8 Debugging
 ### Bug Fixes Are Often Wrong
 
 - Corrections are more error prone than original code and should be tested more rigorously 
-- Regression testing is important to help catch new errors potentially introduced by bug fixes
+- **Regression testing** is important to help catch new errors potentially introduced by bug fixes
 
 <img src='https://imgs.xkcd.com/comics/fixing_problems.png' height='400'>  
 ([xkcd #1739](https://xkcd.com/1739/))
@@ -82,10 +81,10 @@ Chapter 8 Debugging
 
 # Debugging Methods
 
-- Use induction or deduction to form hypotheses
-- Eliminate and/or refine possible hypotheses
-- **Prove** the hypothesis
-- Fix the error
+- Use induction or deduction to form hypotheses  <div class="spacer"></div> 
+- Eliminate and/or refine possible hypotheses .  <div class="spacer"></div>  
+- **Prove** the hypothesis  <div class="spacer"></div>  
+- Fix the error  <div class="spacer"></div>  
 - **Run regression tests**
 
 
@@ -98,6 +97,8 @@ Two types of test cases:
    cover only a single conditon in each test
 
 As you track down bugs, write more tests!
+
+
 
 # Learn from Mistakes
 <section class="align-top" style="top: 387.5px; display: block;">   
