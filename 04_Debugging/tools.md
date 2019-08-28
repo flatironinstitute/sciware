@@ -7,7 +7,7 @@
 # Print statements
 
 - Be careful of buffering
-- Make sure to flush!
+- Make sure to flush! (`fflush(stdout)`, `print(..., flush=True)`)
 - `python -u` (`PYTHONUNBUFFERED=1`)
 
 
@@ -25,15 +25,15 @@
 
 # dstat (or vmstat)
 
-`dstat -ndgmypcl 5`
+`dstat -nvl 5`
 
 
 # ps
 
-`ps auxfS`
+`ps fuxS`
 
 
-# top (and htop)
+# top and htop
 
 
 # lsof (or proc)
