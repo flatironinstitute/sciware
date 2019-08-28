@@ -3,22 +3,10 @@
 ### Language-agnostic ways to figure out what your code is doing
 
 
-## Print statements
-
-- Be careful of buffering
-- Make sure to flush! (`fflush(stdout)`, `print(..., flush=True)`)
-- `python -u` (`PYTHONUNBUFFERED=1`)
-
-
-## Core dumps
-
-`ulimit -c unlimited`
-
-`/tmp/core.*`
-
-
 
 # System tools
+
+Let's analyze some running [processes](examples)
 
 
 ## dstat (or vmstat)
@@ -48,4 +36,19 @@
 
 ## watch
 
+
+
+## Print statements
+
+- Be careful of buffering
+- Make sure to flush! (`fflush(stdout)`, `print(..., flush=True)`)
+- `python -u` (`PYTHONUNBUFFERED=1`)
+
+
+
+## Core dumps
+
+`ulimit -c unlimited`
+
+`/tmp/core.*`
 
