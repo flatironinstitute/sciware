@@ -300,8 +300,7 @@ code {
   top: 0 !important; }
 
 
-.reveal .slides section.test-pink,
-.reveal .slides section.test-pink > section {
+.test-pink {
   background-color: pink !important; }
 
 #pink-id {
