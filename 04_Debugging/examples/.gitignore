@@ -5,5 +5,6 @@ count-flush
 open
 segv
 spin
+walk
 *.out
 *.pid
