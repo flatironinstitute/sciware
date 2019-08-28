@@ -1,7 +1,7 @@
 /**
  * Flatiron Institute theme for reveal.js.
  * Author: Elizabeth Lovero
- * Updated: 27 August 2019
+ * Updated: 28 August 2019
 */
 
 // Default mixins and settings -----------------
@@ -70,6 +70,6 @@ body:after {
 
 // Slide-specific vertical centering override
 .reveal .slides section.align-top,
-.reveal .slides section > section.align-top {
+.reveal .slides section.align-top > section {
   top: 0 !important;
 }
