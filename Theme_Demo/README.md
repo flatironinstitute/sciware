@@ -34,13 +34,13 @@ You can add additional space by inserting the HTML below into the markdown. The 
 
 Center is the default text alignment. You can alter this by adding HTML classes and element tags into the markdown.
 
-`<p class="left-align">This is a left aligned paragraph.</p>`
+`<p class="align-left">This is a left aligned paragraph.</p>`
 
-`<p class="right-align">This is a right aligned paragraph.</p>`
+`<p class="align-right">This is a right aligned paragraph.</p>`
 
 ### Top Alignment
 
-To vertically align all slides to the top of the page, add `data-vertical-align-top` to the `<section>` element in `slides.html`. Remove this property to revert to the default vertical centering.
+To vertically align all slides to the top of the page, add class="align-top" to the `<section>` element in `slides.html`. Remove this property to revert to the default vertical centering.
 
 ## More Info
 
