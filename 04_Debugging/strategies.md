@@ -53,6 +53,7 @@ Chapter 8 Debugging
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="spacer"></div>
+<div class="spacer"></div>
 
 ## Experimentation is a Last Resort
 
@@ -69,9 +70,11 @@ Chapter 8 Debugging
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="spacer"></div>
+<div class="spacer"></div>
+
 ## Fix the Error, Not the Symptom
 
-- Be careful to find all instances of an error, not just the one causing failing right now
+- Be careful to find all instances of an error, not just the one causing the failing right now
 
 
 ## Bug Fixes Are Often Wrong
@@ -97,7 +100,7 @@ Chapter 8 Debugging
 
 Two types of test cases:
 - *for testing*: to expose previously undetected error  
-   Can cover many conditions with a small number of test cases
+   Can cover many conditions with a small number of test cases <div class="spacer"></div>  
 - *for debugging*: to provide information useful in locating suspected error  
    cover only a single conditon in each test<div class="spacer"></div>
 <div class="spacer"></div>
