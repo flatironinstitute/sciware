@@ -24,7 +24,7 @@ To vertically align a slides to the top of the page, add the `align-top` class t
 
 <pre>
 	<code>
-// ## Slide Top Alignment <!-- .slide: class="align-top" -->
+## Slide Top Alignment <!-- \.slide: class="align-top" -->
 	</code>
 </pre>
 
