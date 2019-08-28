@@ -30,7 +30,7 @@ To vertically align all slides to the top of the page, add the `align-top` class
 
 
 
-## Paragraph Left Alignment
+## Paragraph Alignment
 
 This is regular paragraph text to which no default has been applied. The default is center.
 
@@ -43,5 +43,3 @@ This is regular paragraph text to which no default has been applied. The default
 <p class="align-right">This is a right 👉 aligned paragraph.</p> 
 	</code>
 </pre>
-
-
