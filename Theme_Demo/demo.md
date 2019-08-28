@@ -20,17 +20,11 @@ The spacer is 20px high, you can layer a few of them together.
 
 ## Slide Top Alignment
 
-To vertically align all slides to the top of the page, add the `align-top` class to the `<section>` element in slides.html. Remove this class to revert to the default vertical centering.
+To vertically align all slides to the top of the page, add the `align-top` class to the `<section>` element in the `layout/slides.html` file in this repo.
 
 <pre>
 <code>
-<section
-  data-markdown="{{ page.markdown }}"
-  data-separator="^\n\n\n"
-  data-separator-vertical="^\n\n"
-  data-separator-notes="^#note:"
-  class="align-top"
-></section>
+<section class="align-top">This is a top aligned section</section>
 </code>
 </pre>
 
