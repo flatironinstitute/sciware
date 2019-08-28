@@ -1,6 +1,8 @@
 /**
- * Flatiron Institute theme for reveal.js.
- * Author: Elizabeth Lovero
+ * flatiron theme
+ * reveal.js
+ * 
+ * Liz Lovero
  * Updated: 28 August 2019
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
@@ -16,7 +18,7 @@ body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: normal;
-  color: #8f8f8f; }
+  color: #5C5C5C; }
 
 ::selection {
   color: #fff;
@@ -51,6 +53,18 @@ body {
   text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
+
+.reveal h1 {
+  font-size: 3.77em; }
+
+.reveal h2 {
+  font-size: 2.11em; }
+
+.reveal h3 {
+  font-size: 1.55em; }
+
+.reveal h4 {
+  font-size: 1em; }
 
 .reveal h1 {
   text-shadow: none; }
@@ -216,7 +230,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #8f8f8f;
+  border: 4px solid #5C5C5C;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
@@ -295,3 +309,15 @@ body:after {
 .reveal .slides section.align-top,
 .reveal .slides section.align-top > section {
   top: 0 !important; }
+
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  color: #222; }
+
+.reveal pre code {
+  margin: 36px 0; }

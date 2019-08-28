@@ -1,6 +1,8 @@
 /**
- * Flatiron Institute theme for reveal.js.
- * Author: Elizabeth Lovero
+ * flatiron theme
+ * reveal.js
+ * 
+ * Liz Lovero
  * Updated: 28 August 2019
 */
 
@@ -14,7 +16,8 @@
 
 // Custom theme settings (see ../template/settings.scss)
 $mainFont: "Open Sans", Arial, Helvetica, sans-serif;
-$mainColor: #8f8f8f;
+// $mainColor is Flatiron brand gray (#8f8f8f) darkened by 20% for readability
+$mainColor: #5C5C5C;
 $headingFont: "Open Sans", Arial, Helvetica, sans-serif;
 $headingColor: #537eba;
 $headingTextShadow: none;
@@ -72,4 +75,18 @@ body:after {
 .reveal .slides section.align-top,
 .reveal .slides section.align-top > section {
   top: 0 !important;
+}
+
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  color: $bodyColor;
+}
+
+.reveal pre code {
+  margin: 36px 0;
 }
