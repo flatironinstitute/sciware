@@ -80,6 +80,20 @@ Chapter 8 Debugging
 
 
 
+# Debugging Methods
+
+- Use induction or deduction to form hypotheses
+- Eliminate and/or refine possible hypotheses
+- **Prove** the hypothesis
+- Fix the error
+- Run **regression tests**
+
+
+## Debugging by Testing
+
+
+
+
 # Learn from Mistakes
 <section class="align-top" style="top: 387.5px; display: block;">   
 </section>
@@ -90,21 +104,3 @@ Chapter 8 Debugging
 - How could the error have been prevented?
 - Why wasn't it detected earlier
 - How could it have been detected earlier?
-
-
-# Debugging Methods
-
-
-## Debugging by Brute Force
-
-
-## Debugging by Induction
-
-
-## Debugging by Deduction
-
-
-## Debugging by Backtracking
-
-
-## Debugging by Testing
