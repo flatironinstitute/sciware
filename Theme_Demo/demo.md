@@ -1,4 +1,5 @@
 # Flatiron Theme Demo
+<!-- {_class="test-pink"} -->
 
 Reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation demos the _*Flatiron Theme*_
 
