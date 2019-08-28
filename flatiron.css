@@ -55,18 +55,6 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
-
-.reveal h2 {
-  font-size: 2.11em; }
-
-.reveal h3 {
-  font-size: 1.55em; }
-
-.reveal h4 {
-  font-size: 1em; }
-
-.reveal h1 {
   text-shadow: none; }
 
 /*********************************************
@@ -291,6 +279,25 @@ body {
 .reveal li {
   margin-bottom: 0.3em; }
 
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  color: #222; }
+
+.reveal pre {
+  box-shadow: none !important; }
+
+.reveal pre code {
+  margin: 36px 0; }
+
+.reveal .slides section.align-top,
+.reveal .slides section.align-top > section {
+  top: 0 !important; }
+
 body:after {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
   position: fixed;
@@ -305,19 +312,3 @@ body:after {
 
 .spacer {
   padding: 10px 0; }
-
-.reveal .slides section.align-top,
-.reveal .slides section.align-top > section {
-  top: 0 !important; }
-
-code {
-  padding: .2rem .5rem;
-  margin: 0 .2rem;
-  font-size: 90%;
-  background: #F1F1F1;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px;
-  color: #222; }
-
-.reveal pre code {
-  margin: 36px 0; }

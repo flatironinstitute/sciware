@@ -51,6 +51,27 @@ $bodyColor: #222;
 .reveal li {
   margin-bottom: 0.3em;
 }
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  color: $bodyColor;
+}
+.reveal pre { 
+  box-shadow: none !important;
+}
+.reveal pre code {
+  margin: 36px 0;
+}
+
+// Slide-specific vertical centering override
+.reveal .slides section.align-top,
+.reveal .slides section.align-top > section {
+  top: 0 !important;
+}
 
 // Logo
 body:after {
@@ -69,24 +90,4 @@ body:after {
 }
 .spacer {
   padding: 10px 0;
-}
-
-// Slide-specific vertical centering override
-.reveal .slides section.align-top,
-.reveal .slides section.align-top > section {
-  top: 0 !important;
-}
-
-code {
-  padding: .2rem .5rem;
-  margin: 0 .2rem;
-  font-size: 90%;
-  background: #F1F1F1;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px;
-  color: $bodyColor;
-}
-
-.reveal pre code {
-  margin: 36px 0;
 }
