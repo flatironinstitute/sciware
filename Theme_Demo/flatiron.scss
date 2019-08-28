@@ -68,12 +68,6 @@ code {
   padding: 5px 15px;
 }
 
-// Slide-specific vertical centering override
-.reveal .slides section.align-top,
-.reveal .slides section.align-top > section {
-  top: 0 !important;
-}
-
 // Logo
 body:after {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
