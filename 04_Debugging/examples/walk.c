@@ -1,7 +1,10 @@
 #include <dirent.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+static unsigned long long count;
 
 static mode_t file_type(int fd) {
 	struct stat st;
@@ -32,6 +35,7 @@ static DIR *visit(int dfd, char *path) {
 }
 
 static void walk(int dfd, char *path) {
+	count++;
 	DIR *d = visit(dfd, path);
 	if (!d) return;
 	struct dirent *e;
@@ -41,6 +45,8 @@ static void walk(int dfd, char *path) {
 	closedir(d);
 }
 
-int main() {
-	walk(AT_FDCWD, "/mnt/ceph/users");
+int main(int argc, char **argv) {
+	walk(AT_FDCWD, argc > 1 ? argv[1] : "/mnt/ceph/users");
+	printf("%llu\n", count);
+	return 0;
 }
