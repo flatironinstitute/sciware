@@ -26,32 +26,35 @@ Chapter 8 Debugging
 
 
 
-# Error-Locating Principles
+# Error-Locating Principles <!-- .slide: class="center" -->
 
 
-### THINK. 
-#### Without looking at the code.  <div class="spacer"></div>
+## THINK. 
+### Without looking at the code.  <div class="spacer"></div>
  - Review in your mind how the program is designed and how it *should* be performing  <div class="spacer"></div>
  - Concentrate on the process for correct performance, and then imagine ways in which the code may be incorrectly designed
 
 
-### Sleep on It  <div class="spacer"></div>
+## Sleep on It  <div class="spacer"></div>
 
 - The human subconscious is a potent problem solver.  <div class="spacer"></div>
 - If error is not located in approximately 30 mins, set it aside and do something else  <div class="spacer"></div>
 - If solution arises while sleeping, capture it with a recording before going back to sleep
 
 
-### Describe Problem to Someone Else <div class="spacer"></div>
+## Describe Problem to Someone Else <div class="spacer"></div>
 
 - Talking to someone else may lead to the solution without any verbal assistance from the listener.
 
 
-### Use Debugging Tools Cautiously 
+## Use Debugging Tools Cautiously 
 
 - Debugging tools need to be used in conjunction with problem solving strategies
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="spacer"></div>
 
-### Experimentation is a Last Resort
+## Experimentation is a Last Resort
 
 - A haphazard approach is inefficient and could result in compounding the problem by introducing new errors
 
@@ -60,16 +63,18 @@ Chapter 8 Debugging
 # Error Repairing Techniques <!-- .slide: class="center" -->
 
 
-### Errors Tend to Cluster
+## Errors Tend to Cluster
 
 - When repairing an error, examine its immediate vicinity for anything else which looks suspicious.
-
-### Fix the Error, Not the Symptom
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+## Fix the Error, Not the Symptom
 
 - Be careful to find all instances of an error, not just the one causing failing right now
 
 
-### Bug Fixes Are Often Wrong
+## Bug Fixes Are Often Wrong
 
 - Corrections are more error prone than original code and should be tested more rigorously 
 - **Regression testing** is important to help catch new errors potentially introduced by bug fixes
@@ -94,19 +99,18 @@ Two types of test cases:
 - *for testing*: to expose previously undetected error  
    Can cover many conditions with a small number of test cases
 - *for debugging*: to provide information useful in locating suspected error  
-   cover only a single conditon in each test
+   cover only a single conditon in each test<div class="spacer"></div>
+<div class="spacer"></div>
 
-As you track down bugs, write more tests!
+**As you track down bugs, write more tests!**
 
 
 
 # Learn from Mistakes
-<section class="align-top" style="top: 387.5px; display: block;">   
-</section>
 
-- When and where was the error made?
-- Who made the error?
-- What was done incorrectly?
-- How could the error have been prevented?
-- Why wasn't it detected earlier
-- How could it have been detected earlier?
+- When and where was the error made? <div class="spacer">
+- Who made the error? <div class="spacer">
+- What was done incorrectly? <div class="spacer">
+- How could the error have been prevented? <div class="spacer">
+- Why wasn't it detected earlier? <div class="spacer">
+- How could it have been detected earlier? <div class="spacer">
