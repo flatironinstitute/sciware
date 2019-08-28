@@ -304,6 +304,10 @@ code {
 .reveal .slides section.test-pink > section {
   background-color: pink !important; }
 
+#pink-id {
+  background-color: #e0218a;
+}
+
 
 body:after {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");

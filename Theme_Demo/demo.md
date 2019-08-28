@@ -1,10 +1,10 @@
-# Flatiron Theme Demo {.test-pink}
+# Flatiron Theme Demo 
 
 Reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation demos the _*Flatiron Theme*_
 
 
 
-## Spacer
+## Spacer {#pink-id .test-pink}
 
 This paragraph text is <div class="spacer"></div> separated by a spacer.
 
