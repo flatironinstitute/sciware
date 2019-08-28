@@ -32,7 +32,7 @@ You can also use this method to apply a class to any element by adding `.element
 
 
 
-## Slide Center Alignment
+## Slide Center Alignment <!-- .slide: class="center" -->
 If you wish to center *all* the slides vertically, change `center: false` to `center: true` in the `Reveal.initialize({})` function in `_layouts/slides.html`.
 
 <pre>
