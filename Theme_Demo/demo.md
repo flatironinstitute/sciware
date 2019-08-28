@@ -23,9 +23,9 @@ The spacer is 20px high, you can layer a few of them together.
 To vertically align all slides to the top of the page, add the `align-top` class to the `<section>` element in the `layout/slides.html` file in this repo.
 
 <pre>
-<code>
+	<code>
 <section class="align-top">This is a top aligned section</section>
-</code>
+	</code>
 </pre>
 
 
