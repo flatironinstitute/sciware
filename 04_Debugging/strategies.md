@@ -53,7 +53,7 @@ Chapter 8 Debugging
 
 ### Experimentation is a Last Resort
 
-- A haphazard approach is inefficient and could result in compounding the problem by introducing new errors-
+- A haphazard approach is inefficient and could result in compounding the problem by introducing new errors
 
 
 
@@ -86,13 +86,18 @@ Chapter 8 Debugging
 - Eliminate and/or refine possible hypotheses
 - **Prove** the hypothesis
 - Fix the error
-- Run **regression tests**
+- **Run regression tests**
 
 
 ## Debugging by Testing
 
+Two types of test cases:
+- *for testing*: to expose previously undetected error  
+   Can cover many conditions with a small number of test cases
+- *for debugging*: to provide information useful in locating suspected error  
+   cover only a single conditon in each test
 
-
+As you track down bugs, write more tests!
 
 # Learn from Mistakes
 <section class="align-top" style="top: 387.5px; display: block;">   
