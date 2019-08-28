@@ -80,6 +80,7 @@ Chapter 8 Debugging
 
 
 
+<section class="align-top" style="top: 387.5px; display: block;"> 
 # Learn from Mistakes
 
 - When and where was the error made?
