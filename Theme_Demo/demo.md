@@ -20,11 +20,11 @@ The spacer is 20px high, you can layer a few of them together.
 
 ## Slide Top Alignment <!-- .slide: class="align-top" -->
 
-To vertically align a slides to the top of the page, add the `align-top` class to the slide header element in the markdown of this page. See the code below for the syntax.
+To vertically align a slides to the top of the page, add the `.slide: class="align-top" ` class to a comment next to the the slide header element in the markdown of this page. 
 
 <pre>
 	<code>
-`## Slide Top Alignment <!-- .slide: class="align-top" -->`
+## Slide Top Alignment <!-- Add the class code here -->
 	</code>
 </pre>
 
