@@ -1,18 +1,16 @@
-# Debugging: System Tools
+# Debugging
 
 ### Language-agnostic ways to figure out what your code is doing
 
 
-
-# Print statements
+## Print statements
 
 - Be careful of buffering
-- Make sure to flush!
+- Make sure to flush! (`fflush(stdout)`, `print(..., flush=True)`)
 - `python -u` (`PYTHONUNBUFFERED=1`)
 
 
-
-# Core dumps
+## Core dumps
 
 `ulimit -c unlimited`
 
@@ -23,24 +21,31 @@
 # System tools
 
 
-# dstat (or vmstat)
+## dstat (or vmstat)
 
-`dstat -ndgmypcl 5`
-
-
-# ps
-
-`ps auxfS`
+`dstat -nvl 5`
 
 
-# top (and htop)
+## ps
+
+`ps fuxS`
 
 
-# lsof (or proc)
+## top and htop
+
+`htop -u $USER`
+
+
+## lsof (or proc)
 
 `lsof -p PID`
 
 `/proc/PID/fdinfo`
 
 
-# strace
+## strace
+
+
+## watch
+
+
