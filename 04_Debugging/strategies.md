@@ -8,6 +8,16 @@
 # Goals for Today 
 
 
+# Schedule
+
+- Overview of Debugging Strategies - Kelle Cruz, CCA
+- System Tools - Dylan Simon, SCC
+- Pycharm Debugging Tools - Tibi Tesileanu, CCB
+- Emacs and gdb (C++) - Nick Carriero, SCC
+- gdb web frontend (C++) - Nils Wentzell, CCQ
+- C++/LLVM Sanitiziers - Olivier Parcollet, CCQ
+
+
 
 # Debugging Strategies
 
