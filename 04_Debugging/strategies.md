@@ -7,15 +7,34 @@
 
 # Goals for Today 
 
+##  Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
+
+- Avoid discussions between a few people on a narrow topic
+- Provide time for people who haven't spoken to speak/ask questions
+- Work together to make discussions accessible to novices
+
 
 # Schedule
 
-- Overview of Debugging Strategies - Kelle Cruz, CCA
-- System Tools - Dylan Simon, SCC
-- Pycharm Debugging Tools - Tibi Tesileanu, CCB
-- Emacs and gdb (C++) - Nick Carriero, SCC
-- gdb web frontend (C++) - Nils Wentzell, CCQ
-- C++/LLVM Sanitiziers - Olivier Parcollet, CCQ
+- **Overview of Debugging Strategies** - Kelle Cruz, CCA
+- **System Tools** - Dylan Simon, SCC
+- **Pycharm Debugging Tools** - Tibi Tesileanu, CCB
+- **Emacs and gdb (C++)** - Nick Carriero, SCC
+- **gdb web frontend (C++)** - Nils Wentzell, CCQ
+- **C++/LLVM Sanitiziers** - Olivier Parcollet, CCQ 
+
+About 15 mins each
+
+
+
+# This Reveal js theme
+
+## Available for everyone to use!
+
+Instructions here:
+https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/
+
+**Thanks Liz Lovero!**
 
 
 
