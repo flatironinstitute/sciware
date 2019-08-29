@@ -23,6 +23,7 @@ Let's analyze some running [processes](examples)
 - `ps fuxS`
 - `htop -u $USER`
    - `top -u $USER`
+- `w`
 
 
 ## Open files per process
@@ -39,7 +40,7 @@ Let's analyze some running [processes](examples)
 
 ## Other useful tools
 
-- `watch`
+- `watch 'COMMAND ...'`
 
 
 
