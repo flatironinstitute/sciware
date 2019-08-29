@@ -5,39 +5,43 @@
 [https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/04_Debugging)
 
 
-# This Reveal js theme
+# Flatiron Reveal js theme
 
 ## Available for everyone to use!
-
-Instructions here:
+<div class="spacer"></div>
+<div class="spacer"></div>
+Instructions here:  
 https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/
-
+<div class="spacer"></div>
+<div class="spacer"></div>
 **Thanks Liz Lovero!**
 
 
 # Next Time
 
-- Sept 26 or Oct 3
-- Thurs, 3-5 pm
-- Advanced Testing or HPC Cluster Intro
+- Sept 26 **or** Oct 3<div class="spacer"></div>
+- Thurs, 3--5 pm<div class="spacer"></div>
+- Advanced Testing **or** HPC Cluster Intro<div class="spacer"></div>
 - Location TBD
-
-**To be discussed/polled on #sciware Slack channel**
+<div class="spacer"></div>
+<div class="spacer"></div>
+**Let's discuss on #sciware Slack channel**
 
 
 
 # Goals for Today 
 
 **Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.**
+<div class="spacer"></div>
 
-- Avoid discussions between a few people on a narrow topic
-- Provide time for people who haven't spoken to speak/ask questions
+- Avoid discussions between a few people on a narrow topic<div class="spacer"></div>
+- Provide time for people who haven't spoken to speak/ask questions<div class="spacer"></div>
 - Work together to make discussions accessible to novices
 
 
 # Schedule
 
-About 15 mins each
+About 15 mins each<div class="spacer"></div>
 
 - **Overview of Debugging Strategies** - Kelle Cruz, CCA <div class="spacer"></div>
 - **System Tools** - Dylan Simon, SCC <div class="spacer"></div>
@@ -50,17 +54,19 @@ About 15 mins each
 
 # Debugging Strategies
 
-## [The Art of Software Testing, 3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)  
+## [The Art of Software Testing,    3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)  
 by Glenford J. Myers, Corey Sandler, Tom Badgett  
-Chapter 8 Debugging
+<div class="spacer"></div>
+<div class="spacer"></div>
+**Chapter 8 Debugging**
 
 
 
 # Debugging Can Be Unpleasant
 
-- Bugs represent mistakes and an ego hit
-- Debugging is mentally taxing and tiring
-- Debugging can take you down rabbit holes
+- Bugs represent mistakes and an ego hit<div class="spacer"></div>
+- Debugging is mentally taxing and tiring<div class="spacer"></div>
+- Debugging can take you down rabbit holes<div class="spacer"></div>
 - You probably weren't taught helpful strategies to help
 
 
