@@ -10,21 +10,26 @@
 ## Available for everyone to use!
 <div class="spacer"></div>
 <div class="spacer"></div>
+
 Instructions here:  
 https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/
+
 <div class="spacer"></div>
 <div class="spacer"></div>
+
 **Thanks Liz Lovero!**
 
 
 # Next Time
 
 - Sept 26 **or** Oct 3<div class="spacer"></div>
-- Thurs, 3--5 pm<div class="spacer"></div>
+- Thurs, 3-5 pm<div class="spacer"></div>
 - Advanced Testing **or** HPC Cluster Intro<div class="spacer"></div>
 - Location TBD
+
 <div class="spacer"></div>
 <div class="spacer"></div>
+
 **Let's discuss on #sciware Slack channel**
 
 
@@ -56,10 +61,11 @@ About 15 mins each<div class="spacer"></div>
 
 ## [The Art of Software Testing,    3rd Edition](https://www.amazon.com/Art-Software-Testing-Glenford-Myers-dp-1118031962/dp/1118031962)  
 by Glenford J. Myers, Corey Sandler, Tom Badgett  
-<div class="spacer"></div>
-<div class="spacer"></div>
-**Chapter 8 Debugging**
 
+<div class="spacer"></div>
+<div class="spacer"></div>
+
+**Chapter 8 Debugging**
 
 
 # Debugging Can Be Unpleasant
