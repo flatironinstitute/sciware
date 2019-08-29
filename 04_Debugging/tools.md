@@ -23,7 +23,7 @@ Let's analyze some running [processes](examples)
 - `ps fuxS`
 - `htop -u $USER`
    - `top -u $USER`
-- `w`
+- `w -f`
 
 
 ## Open files per process
