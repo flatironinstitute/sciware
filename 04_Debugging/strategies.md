@@ -17,7 +17,7 @@ Chapter 8 Debugging
 
 
 
-# Debugging Can Be Unplesant
+# Debugging Can Be Unpleasant
 
 - Bugs represent mistakes and an ego hit
 - Debugging is mentally taxing and tiring
@@ -90,7 +90,7 @@ Chapter 8 Debugging
 # Debugging Methods
 
 - Use induction or deduction to form hypotheses  <div class="spacer"></div> 
-- Eliminate and/or refine possible hypotheses .  <div class="spacer"></div>  
+- Eliminate and/or refine possible hypotheses   <div class="spacer"></div>  
 - **Prove** the hypothesis  <div class="spacer"></div>  
 - Fix the error  <div class="spacer"></div>  
 - **Run regression tests**
@@ -100,9 +100,9 @@ Chapter 8 Debugging
 
 Two types of test cases:
 - *for testing*: to expose previously undetected error  
-   Can cover many conditions with a small number of test cases <div class="spacer"></div>  
+  Can cover many conditions with a small number of test cases <div class="spacer"></div>  
 - *for debugging*: to provide information useful in locating suspected error  
-   cover only a single conditon in each test<div class="spacer"></div>
+  cover only a single condition in each test<div class="spacer"></div>
 <div class="spacer"></div>
 
 **As you track down bugs, write more tests!**
