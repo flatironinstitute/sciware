@@ -14,7 +14,7 @@ static mode_t file_type(int fd) {
 }
 
 static void visit_file(int fd) {
-	char buf[8192];
+	static char buf[1024*1024];
 	read(fd, buf, sizeof(buf));
 }
 
