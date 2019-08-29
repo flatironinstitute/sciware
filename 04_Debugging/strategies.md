@@ -5,28 +5,6 @@
 [https://github.com/flatironinstitute/learn-sciware-dev](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/04_Debugging)
 
 
-# Goals for Today 
-
-##  Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.
-
-- Avoid discussions between a few people on a narrow topic
-- Provide time for people who haven't spoken to speak/ask questions
-- Work together to make discussions accessible to novices
-
-
-# Schedule
-
-- **Overview of Debugging Strategies** - Kelle Cruz, CCA
-- **System Tools** - Dylan Simon, SCC
-- **Pycharm Debugging Tools** - Tibi Tesileanu, CCB
-- **Emacs and gdb (C++)** - Nick Carriero, SCC
-- **gdb web frontend (C++)** - Nils Wentzell, CCQ
-- **C++/LLVM Sanitiziers** - Olivier Parcollet, CCQ 
-
-About 15 mins each
-
-
-
 # This Reveal js theme
 
 ## Available for everyone to use!
@@ -35,6 +13,38 @@ Instructions here:
 https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/
 
 **Thanks Liz Lovero!**
+
+
+# Next Time
+
+- Sept 26 or Oct 3
+- Thurs, 3-5 pm
+- Advanced Testing or HPC Cluster Intro
+- Location TBD
+
+**To be discussed/polled on #sciware Slack channel**
+
+
+
+# Goals for Today 
+
+**Foster an environment which encourages participation across experience levels, coding language fluency, technology choices, and scientific disciplines.**
+
+- Avoid discussions between a few people on a narrow topic
+- Provide time for people who haven't spoken to speak/ask questions
+- Work together to make discussions accessible to novices
+
+
+# Schedule
+
+About 15 mins each
+
+- **Overview of Debugging Strategies** - Kelle Cruz, CCA <div class="spacer"></div>
+- **System Tools** - Dylan Simon, SCC <div class="spacer"></div>
+- **Pycharm Debugging Tools** - Tibi Tesileanu, CCB <div class="spacer"></div>
+- **Emacs and gdb (C++)** - Nick Carriero, SCC <div class="spacer"></div>
+- **gdb web frontend (C++)** - Nils Wentzell, CCQ <div class="spacer"></div>
+- **C++/LLVM Sanitiziers** - Olivier Parcollet, CCQ 
 
 
 
