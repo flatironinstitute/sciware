@@ -9,32 +9,37 @@
 Let's analyze some running [processes](examples)
 
 
-## dstat (or vmstat)
+## Overall system
 
-`dstat -nvl 5`
-
-
-## ps
-
-`ps fuxS`
-
-
-## top and htop
-
-`htop -u $USER`
+- `dstat -nvl 5`
+   - `vmstat 5`
+   - `iostat 5`
+- `nproc`
+- `lscpu`
 
 
-## lsof (or proc)
+## Individual processes
 
-`lsof -p PID`
-
-`/proc/PID/fdinfo`
-
-
-## strace
+- `ps fuxS`
+- `htop -u $USER`
+   - `top -u $USER`
 
 
-## watch
+## Open files per process
+
+- `lsof -p $PID`
+   - `ls -l /proc/$PID/fd`
+- `cat /proc/$PID/fdinfo/$FD`
+
+
+## Process activity
+
+- `strace -p $PID`
+
+
+## Other useful tools
+
+- `watch`
 
 
 
@@ -45,10 +50,8 @@ Let's analyze some running [processes](examples)
 - `python -u` (`PYTHONUNBUFFERED=1`)
 
 
-
 ## Core dumps
 
-`ulimit -c unlimited`
-
-`/tmp/core.*`
+- `ulimit -c unlimited`
+- `ls /tmp/core.*`
 
