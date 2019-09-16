@@ -5,11 +5,13 @@
     *   Ctags to index and find functions in your directory tree
     *   **[Fugitive](https://github.com/tpope/vim-fugitive)** to integrate with git
     *   Vim diff, Configure status line at the bottom, Autocomplete
-*   **Screens** (Joakim)
-    *   Multiple shell sessions at the same time
-    *   Sessions will stay active even if computer disconnects 
-    *   Can split vertically
+*   **[Screen](https://en.wikipedia.org/wiki/GNU_Screen)** (Joakim)
+    *   Multiple shell sessions at the same time (Ctrl-A C)
+    *   Sessions will stay active even if computer disconnects (Ctrl-A D)
+    *   Can split vertically (Ctrl-A |, not available on all versions)
     *   Comparable to **[tmux](https://en.wikipedia.org/wiki/Tmux)**.
+    *   [Screen User's Manual](https://www.gnu.org/software/screen/manual/screen.html)
+    *   [Quick reference](http://aperiodic.net/screen/quick_reference)
 *   Custom something to be able to show images in terminal (Joakim)
 *   **[Readline](https://en.wikipedia.org/wiki/GNU_Readline)** (Joakim)
     *   Shortcuts in terminal and across applications
