@@ -1,4 +1,4 @@
-# Parallelization
+# Getting Started with Parallel and Distributed Computing
 - Oct 17, 2019
 - 3:00-5:00pm
 - Room TBD
