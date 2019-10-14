@@ -88,13 +88,13 @@
 * Sometimes shared filesystems...
 
 
-## HPC: High Performance Computing
+### HPC: High Performance Computing
 
 * Tightly-coupled execution, often running the same code
 * Run more at once than fits on a single machine (more memory, calculations)
 * Share intermediate results throughout computation
 
-## HTC: High Throughput Computing
+### HTC: High Throughput Computing
 
 * Running many independent (though often parallel) computations
 * Collect and store many results across a number of inputs, parameters
@@ -103,13 +103,13 @@
 
 # General approaches
 
-## Multiple instances
+### Multiple instances
 
 * Divide up work among themselves
 * Work together in flat structure
 * Coordinate/communicate to share intermediate values
 
-## Worker pool
+### Worker pool
 
 * Run one main process
 * Hand off pieces of work to a pool of workers
