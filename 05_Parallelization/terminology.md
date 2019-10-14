@@ -55,7 +55,7 @@
 * Draws on single set of resources (memory, network)
 
 
-### Threads
+### Threads: shared memory
 
 * Parallel execution sharing resources in a single process
 * (Global) variables, open files, global state: all shared
@@ -85,7 +85,7 @@
 
 * Similar to process-level parallelization, but separate hardware
 * Must communicate over network
-* Sometimes shared filesystems...
+* Sometimes shared network filesystems
 
 
 ### HPC: High Performance Computing
