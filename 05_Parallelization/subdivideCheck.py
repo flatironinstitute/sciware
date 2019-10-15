@@ -9,7 +9,6 @@ def findZero(f, l, u, eps):
     if abs(fu) < eps: return None
     if (fl*fu) >= 0.0: return None
     # There's a zero in there somewhere...
-    # 64 subdivisions will exhaust the bits.
     for r in range(64):
         m = (l+u)/2.
         fm = f(m)
