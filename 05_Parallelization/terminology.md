@@ -2,24 +2,28 @@
 
 ## Terminology
 
+Just so you're familiar with these terms...
+
 
 ## Parallel Computing
 
-<img src="parallel.svg">
+<img src="parallel.svg" width="600">
 
 * Running multiple computations on the same computer at the same time
 
 
 ## Distributed Computing
 
-<img src="distributed.svg">
+<img src="distributed.svg" width="600">
 
 * Running a computation across multiple, networked computers at the same time
 
 
 ## Parallel and Distributed Computing
 
-<img src="pardist.svg">
+<img src="pardist.svg" width="600">
+
+* Often no clear distinction between these
 
 
 
