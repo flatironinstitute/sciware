@@ -1,17 +1,21 @@
+#!/bin/sh -e
+[[ $# -gt 0 ]] || set -- .00000015 100
 
 # Sequential run.
-t0=$(date +%s)
-python3 subdivideCheck.py .00000015 100
-echo Sequential $(( $(date +%s) - t0 ))
+time (
+  python3 subdivideCheck.py "$@"
+  echo Sequential
+)
 
 # Parallel runs with various ranks.
 for n in 1 2 4 8
 do
-    t0=$(date +%s)
+  time (
     for x in $(seq 0 $(( n - 1 )) )
     do
-	RANK=$x RANKS=$n python3 subdivideCheckPar.py .00000015 100 &
+	RANK=$x RANKS=$n python3 subdivideCheckPar.py "$@" &
     done
     wait
-    echo Ranks $n $(( $(date +%s) - t0 ))
+    echo Ranks $n
+  )
 done

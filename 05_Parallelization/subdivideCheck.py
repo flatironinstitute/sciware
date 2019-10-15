@@ -1,3 +1,4 @@
+#!/bin/env python3
 import sys
 from math import pi
 from random import randint, seed
@@ -45,5 +46,6 @@ def subdivideCheck(lower, upper, func, step, eps):
                 if z is not None: print(z)
                 x += step
 
-seed(7350)
-subdivideCheck(float(sys.argv[1]), float(sys.argv[2]), testFunc, 1e-6, 1e-8)
+if __name__ == '__main__':
+    seed(7350)
+    subdivideCheck(float(sys.argv[1]), float(sys.argv[2]), testFunc, 1e-6, 1e-8)

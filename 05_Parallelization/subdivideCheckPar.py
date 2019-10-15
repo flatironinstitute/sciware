@@ -1,3 +1,4 @@
+#!/bin/env python3
 import sys
 from math import pi
 from random import randint, seed
@@ -58,6 +59,7 @@ def own():
     if r: workLoad += 1
     return r
 
-seed(7350)
-subdivideCheck(float(sys.argv[1]), float(sys.argv[2]), testFunc, 1e-6, 1e-8)
-print('Rank: %d/%d'%(rank, ranks), ', iterCount:', iterCount, ', workLoad:', workLoad, sep='')
+if __name__ == '__main__':
+    seed(7350)
+    subdivideCheck(float(sys.argv[1]), float(sys.argv[2]), testFunc, 1e-6, 1e-8)
+    print('Rank: %d/%d'%(rank, ranks), ', iterCount:', iterCount, ', workLoad:', workLoad, sep='')
