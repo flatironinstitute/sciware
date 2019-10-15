@@ -125,7 +125,7 @@ if 1 == randint(0, 3):
 ```
 
 
-#### Return values
+Return values, collect results
 
 ```python
 def piece(lower, upper, func, step, eps):
@@ -142,8 +142,6 @@ def piece(lower, upper, func, step, eps):
 def concat(a, b):
     return a + b
 ```
-
-Collect results
 
 ```python
 def subdivideCheck(client, lower, upper, func, step, eps):
