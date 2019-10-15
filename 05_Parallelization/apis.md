@@ -65,19 +65,26 @@ end
 
 ## Worker pools
 
-* Many languages have libraries that provide worker pools
-* C OpenMP, python asyncio/dask/..., MATLAB, Julia, ...
+* Single stream of main execution
+* Assign calculation out to a pool of workers
+* Input and output for sub-calculations must be sent over network
+* Many languages have libraries that provide similar functionality
+   * C OpenMP (threads only)
+   * python asyncio/dask/...
+   * MATLAB
+   * Julia
+   * ...
 
 
 ## Futures
 
 * A common abstraction for "worker pools"
-* Given a *pure* function:
+* Given a *pure* function
    * All inputs passed as arguments (some implementation allow exceptions)
    * All results returned
    * No access to global data/state
 * Request that this function be applied to some arguments in parallel ("asynchronously")
-* Operations on a future (result):
+* Operations on a future (result)
    * Check if it's done
    * Wait for one (or more) futures to complete
    * Pass as input to another future evaluation (chaining)
@@ -94,7 +101,7 @@ if 1 == randint(0, 3):
 	x += step
 ```
 
-Convert parallel part into pure function:
+Convert parallel part into pure function
 
 ```python
 def piece(lower, upper, func, step, eps):
@@ -108,7 +115,7 @@ if 1 == randint(0, 3):
     piece(lower, upper, func, step, eps)
 ```
 
-Use worker pool to submit work:
+Use worker pool to submit work
 
 ```python
 client = distributed.Client()
@@ -134,7 +141,11 @@ def piece(lower, upper, func, step, eps):
 
 def concat(a, b):
     return a + b
+```
 
+Collect results
+
+```python
 def subdivideCheck(client, lower, upper, func, step, eps):
     if (upper - lower) > 1:
 	mid = (upper + lower)/2.
