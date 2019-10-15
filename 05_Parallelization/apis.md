@@ -10,7 +10,6 @@ A very quick preview of some ways to implement parallelism
 
 * How much coordination/communication do you need?
 
-
 ### Very little
 
 * Example was sufficient, just want to scale up
@@ -41,11 +40,9 @@ MPI_Finalize();
 ```
 
 
-
 ## Parallel loops
 
 * Some languages provide features to run loops in parallel
-
 
 ### OpenMP (C)
 
@@ -55,7 +52,6 @@ for (i=0; i<100000; i++) {
     ...
 }
 ```
-
 
 ### MATLAB
 
@@ -73,7 +69,7 @@ end
 * C OpenMP, python asyncio/dask/..., MATLAB, Julia, ...
 
 
-### Futures
+## Futures
 
 * A common abstraction for "worker pools"
 * Given a *pure* function:
@@ -98,7 +94,6 @@ if 1 == randint(0, 3):
 	x += step
 ```
 
-
 Convert parallel part into pure function:
 
 ```python
@@ -112,7 +107,6 @@ def piece(lower, upper, func, step, eps):
 if 1 == randint(0, 3):
     piece(lower, upper, func, step, eps)
 ```
-
 
 Use worker pool to submit work:
 
@@ -140,10 +134,7 @@ def piece(lower, upper, func, step, eps):
 
 def concat(a, b):
     return a + b
-```
 
-
-```
 def subdivideCheck(client, lower, upper, func, step, eps):
     if (upper - lower) > 1:
 	mid = (upper + lower)/2.
@@ -160,10 +151,10 @@ r = subdivideCheck(client, ...)
 print(client.gather(r))
 ```
 
-
 Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
 
-## Applications
+
+### Applications for Futures
 
 * parfor
 * parallel map: apply same function to list values, in parallel
