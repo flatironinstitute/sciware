@@ -14,7 +14,7 @@ def findZero(f, l, u, eps):
         m = (l+u)/2.
         fm = f(m)
         if abs(fm) < eps: return m
-        if fm*fl >= 0:
+        if (fm*fl) >= 0.0:
             l = m
             fl = fm
         else:
