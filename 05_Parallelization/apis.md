@@ -96,9 +96,9 @@ end
 if 1 == randint(0, 3):
     x = lower
     while x < upper:
-	z = findZero(func, x, min(x+step, upper), eps)
-	if z is not None: print(z)
-	x += step
+        z = findZero(func, x, min(x+step, upper), eps)
+        if z is not None: print(z)
+        x += step
 ```
 
 Convert parallel part into pure function
@@ -107,9 +107,9 @@ Convert parallel part into pure function
 def piece(lower, upper, func, step, eps):
     x = lower
     while x < upper:
-	z = findZero(func, x, min(x+step, upper), eps)
-	if z is not None: print(z)
-	x += step
+        z = findZero(func, x, min(x+step, upper), eps)
+        if z is not None: print(z)
+        x += step
 
 if 1 == randint(0, 3):
     piece(lower, upper, func, step, eps)
@@ -132,11 +132,11 @@ def piece(lower, upper, func, step, eps):
     r = []
     x = lower
     while x < upper:
-	z = findZero(func, x, min(x+step, upper), eps)
-	if z is not None:
-	    print(z)
-	    r.append(z)
-	x += step
+        z = findZero(func, x, min(x+step, upper), eps)
+        if z is not None:
+            print(z)
+            r.append(z)
+        x += step
     return r
 
 def concat(a, b):
@@ -146,15 +146,15 @@ def concat(a, b):
 ```python
 def subdivideCheck(client, lower, upper, func, step, eps):
     if (upper - lower) > 1:
-	mid = (upper + lower)/2.
-	rl = subdivideCheck(client, lower, mid, func, step, eps)
-	rr = subdivideCheck(client, mid, upper, func, step, eps)
-	return client.submit(concat, rl, rr)
+        mid = (upper + lower)/2.
+        rl = subdivideCheck(client, lower, mid, func, step, eps)
+        rr = subdivideCheck(client, mid, upper, func, step, eps)
+        return client.submit(concat, rl, rr)
     else:
-	if 1 == randint(0, 3):
-	    return client.submit(piece, lower, upper, func, step, eps)
-	else:
-	    return []
+        if 1 == randint(0, 3):
+            return client.submit(piece, lower, upper, func, step, eps)
+        else:
+            return []
 
 r = subdivideCheck(client, ...)
 print(client.gather(r))

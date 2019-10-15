@@ -15,7 +15,7 @@ do
   time (
     for x in $(seq 0 $(( n - 1 )) )
     do
-	RANK=$x RANKS=$n python3 subdivideCheckPar.py "$@" &
+      RANK=$x RANKS=$n python3 subdivideCheckPar.py "$@" &
     done
     wait
   )
