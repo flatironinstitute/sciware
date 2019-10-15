@@ -10,6 +10,7 @@ A very quick preview of some ways to implement parallelism
 
 * How much coordination/communication do you need?
 
+
 ### Very little
 
 * Example was sufficient, just want to scale up
@@ -20,7 +21,14 @@ A very quick preview of some ways to implement parallelism
 # disBatch
 
 ```
-#DISBATCH REPEAT 10000 RANK=$DISBATCH_REPEAT_INDEX subdivideCheck.py
+#DISBATCH REPEAT 1000 RANK=$DISBATCH_REPEAT_INDEX subdivideCheck.py
+```
+
+## slurm job arrays
+
+```
+#SBATCH --array=1-1000
+RANK=$SLURM_ARRAY_TASK_ID subdivideCheck.py
 ```
 
 
@@ -44,7 +52,7 @@ MPI_Finalize();
 
 * Some languages provide features to run loops in parallel
 
-### OpenMP (C)
+### OpenMP threads (C)
 
 ```C
 #pragma omp parallel for
