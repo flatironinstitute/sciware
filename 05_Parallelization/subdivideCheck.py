@@ -27,15 +27,6 @@ def findZero(f, l, u, eps):
             fu = fm
     raise Exception('Failed to find zero.')
 
-def testFunc(x):
-    x = pi * (x % 2)
-    t, s = 1., 1.
-    r = 0
-    for i in range(20):
-        r += s*t
-        t, s = t*(x/(2*i+1))*(x/(2*i+2)), s*-1
-    return r
-
 def subdivideCheck(lower, upper, func, step, eps):
     """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
     if (upper - lower) > 1:
@@ -48,9 +39,19 @@ def subdivideCheck(lower, upper, func, step, eps):
         if 1 == randint(0, 3):
             x = lower
             while x < upper:
-                z = findZero(testFunc, x, min(x+step, upper), eps)
+                z = findZero(func, x, min(x+step, upper), eps)
                 if z is not None: print(z)
                 x += step
+
+def testFunc(x):
+    """Target function we will look for zeros of."""
+    x = pi * (x % 2)
+    t, s = 1., 1.
+    r = 0
+    for i in range(20):
+        r += s*t
+        t, s = t*(x/(2*i+1))*(x/(2*i+2)), s*-1
+    return r
 
 if __name__ == '__main__':
     seed(7350)

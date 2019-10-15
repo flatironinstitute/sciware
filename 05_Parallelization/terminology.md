@@ -9,21 +9,21 @@ Just so you're familiar with these terms...
 
 <img src="parallel.svg" width="600">
 
-* Running multiple computations on the same computer at the same time
+* Running multiple computations (often on the same computer) at the same time
 
 
 ## Distributed Computing
 
 <img src="distributed.svg" width="600">
 
-* Running a computation across multiple, networked computers at the same time
+* Running a parallel computation across multiple, networked computers
 
 
 ## Parallel and Distributed Computing
 
 <img src="pardist.svg" width="600">
 
-* Often no clear distinction between these
+* Often no clear distinction between these two
 
 
 
@@ -72,7 +72,7 @@ Just so you're familiar with these terms...
 
 * Some libraries turn single function calls into multi-threaded calculations
 * Don't require any explicit code changes
-* Consider interaction with explicit parallelism (usage multiplies!)
+* Consider interaction with explicit parallelism (task count multiplies!)
 
 
 ### Processes
@@ -107,7 +107,7 @@ Just so you're familiar with these terms...
 
 # General approaches
 
-### Multiple instances
+### Multiple instances ("flock" parallelism)
 
 * Divide up work among themselves
 * Work together in flat structure
