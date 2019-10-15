@@ -75,7 +75,7 @@ Comments on performance:
      4 =>  75     69     78
      8 =>  38     34     39
 
-     Second run: (274, 149, 75, 38)
+     Second run: 274, 149, 75, 38 (Seq +/- 5s)
 
      Moral: For pratical parallelism, benchmarking is a necessary
      sanity check, but don't obsess.

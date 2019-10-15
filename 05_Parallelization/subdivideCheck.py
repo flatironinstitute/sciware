@@ -1,3 +1,4 @@
+import sys
 from math import pi
 from random import randint, seed
 
@@ -9,7 +10,7 @@ def findZero(f, l, u, eps):
     if (fl*fu) >= 0.0: return None
     # There's a zero in there somewhere...
     # 64 subdivisions will exhaust the bits.
-    for r in xrange(64):
+    for r in range(64):
         m = (l+u)/2.
         fm = f(m)
         if abs(fm) < eps: return m
@@ -19,7 +20,7 @@ def findZero(f, l, u, eps):
         else:
             u = m
             fu = fm
-    return None
+    raise Exception('Failed to find zero.')
 
 def testFunc(x):
     x = pi * (x % 2)
@@ -41,9 +42,9 @@ def subdivideCheck(lower, upper, func, step, eps):
         if 1 == randint(0, 3):
             x = lower
             while x < upper:
-                z = findZero(testFunc, x, x+step, eps)
+                z = findZero(testFunc, x, min(x+step, upper), eps)
                 if z is not None: print(z)
                 x += step
 
 seed(7350)
-subdivideCheck(0, 100, testFunc, 1e-6, 1e-8)
+subdivideCheck(float(sys.argv[1]), float(sys.argv[2]), testFunc, 1e-6, 1e-8)

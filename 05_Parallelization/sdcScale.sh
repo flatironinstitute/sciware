@@ -4,7 +4,7 @@ do
     t0=$(date +%s)
     for x in $(seq 0 $(( n - 1 )) )
     do
-	RANK=$x RANKS=$n python3 subdivideCheckPar.py &
+	RANK=$x RANKS=$n python3 subdivideCheckPar.py .00000015 100 &
     done
     wait
     echo $n $(( $(date +%s) - t0 ))
