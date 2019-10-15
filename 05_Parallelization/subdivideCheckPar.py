@@ -1,16 +1,21 @@
 #!/bin/env python3
+# Parallel example using rank parallelism
+
 import sys
 from math import pi
 from random import randint, seed
 
 def findZero(f, l, u, eps):
+    """Find and return a root of f(x), l<=x<=u s.t. |f(x)| < eps, using simple bracketing and return it, or None if none is found."""
     fl = f(l)
     if abs(fl) < eps: return l
     fu = f(u)
     if abs(fu) < eps: return None
+    # if f(u) and f(l) have the same sign, stop:
     if (fl*fu) >= 0.0: return None
     # There's a zero in there somewhere...
     for r in range(64):
+        # Bisect the current range based on the sign of the midpoint
         m = (l+u)/2.
         fm = f(m)
         if abs(fm) < eps: return m
@@ -32,6 +37,7 @@ def testFunc(x):
     return r
 
 def subdivideCheck(lower, upper, func, step, eps):
+    """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
     if (upper - lower) > 1:
         # proxy for recursive exploration of a data space or structure.
         mid = (upper + lower)/2.
