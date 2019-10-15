@@ -1,0 +1,83 @@
+
+Present trajectory of a program.
+
+Identify potential latent parallelism.
+
+Assume we can exploit it, present updated trajectory.
+
+Amdahl's law.
+
+Issues in latent parallelism:
+
+    Dependencies
+
+    # Clean, assuming f is "pure"
+    for i in range(N):
+        a[i] = f(i)
+
+    # Dependency, but fixable (likewise for min, max, etc.)
+    s = 0
+    for i in range(N):
+        s += f(i)
+    # FP order of operation issues.
+
+    # Needs careful review
+    for i in range(N):
+        a[i] = f(i, a)
+
+    Implicit ordering of output
+
+    Random numbers present two challenges:
+    - "Correctness": Don't want the same sequence in each concurrent evaluation "entity"
+    - Repeatability without reuse:
+      def randint(l, u):
+         return max(min(u, 42), l)
+
+Sequential code example.
+
+Setting up multiple entities:
+
+    Appropriate context
+	Depends on the nature of the entity (threads, child processes, independent processes: DS)
+
+	Independent processes offer the most scalability, but how to establish context?
+	E.g., create something that knows our test functions?
+
+    Division of labor
+    	Who does what?
+
+Aside: Coordination frameworks (MPI, KVS, memcached, ...) Consciously
+avoiding this issue at the moment. What if we wanted the output
+ordered correctly?
+
+Basic owner computes example.
+
+      - Review the functions
+      - What's sort of iterative structures are present?
+      - Where to put own()?
+
+Comments on performance:
+     seq 275s
+
+     Need to compare sequential code with (rank 0, ranks 1) case.
+     1 289 (37)
+
+     Runs to demonstrate speed up, as well as diminishing returns.
+     2 146 (18, 19)
+     4  75 (9, 9, 9, 10)
+     8  38 (4, 4, 4, 5, 5, 5, 5, 5)
+
+     Load balancing (Amdahl's law revisited). Model is
+     MaxLoad*Time(0/1)/37. Other sources of imbalance.
+     
+          Obs  Ideal  Model
+     2 => 146    137    148 
+     4 =>  75     69     78
+     8 =>  38     34     39
+
+     Second run: 274, 149, 75, 38 (Seq +/- 5s)
+
+     Moral: For pratical parallelism, benchmarking is a necessary
+     sanity check, but don't obsess.
+     
+     Controlling coordination costs (where else could "own" be placed?)
