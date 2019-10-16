@@ -13,11 +13,10 @@
 
 * Instruction pipelining
    * Completely transparent (invisible) parallelism
-   * Interleave steps, independent operations
-   * Possibly "speculatively"
+   * Interleave steps, independent operations, "speculative"
 * Data parallelism: SIMD (Single Instruction, Multiple Data)
-   * Special instructions that operate on multiple values simultaneously: *vectorization*
-   * MMX, SSE, AVX
+   * Instructions operate on multiple values simultaneously
+   * *vectorization*: MMX, SSE, AVX
    * Sometimes inferred by the compiler from loops
    * Hand-written assembly, special functions, math libraries
 
@@ -27,9 +26,10 @@
 <img src="pardist-proc1.svg" width="1000" style="border:0;box-shadow:none">
 
 * Everything runs in a process
-* Includes global state: memory contents, open files, network connections, etc.
+* Defines global state: memory contents, open files, network connections, etc.
 * Only makes use of one core by default
-* *Task parallelism*: explicitly indicate pieces of code to run concurrently
+
+#### *Task parallelism*: explicitly indicate pieces of code to run concurrently
 
 
 ### Threads
