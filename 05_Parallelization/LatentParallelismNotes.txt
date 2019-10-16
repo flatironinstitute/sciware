@@ -28,10 +28,10 @@ Issues in latent parallelism:
     Implicit ordering of output
 
     Random numbers present two challenges:
-    - "Correctness": Don't want the same sequence in each concurrent evaluation "entity"
-    - Repeatability without reuse:
-      def randint(l, u):
-         return max(min(u, 42), l)
+    - Different: Don't want the same sequence in each concurrent evaluation of a Monte Carlo code
+    - Same: Reproducibility, ideally for both sequential and parallel runs. Much easier to debug if
+      we expect the same answer from run to run.
+    - Need to understand the default behavior and control mechanisms for your RNG.
 
 Sequential code example.
 
