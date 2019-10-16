@@ -193,10 +193,10 @@ print(client.gather(r))
 ## Results
 
 * Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
-* Performance: runtime
+* Performance runtime
 
 | Parallelism | Sequential | Rank | Pool |
-| ----------- | ---------- | ---- | ---- |
+| -----------:| ----------:| ----:| ----:|
 | 1           |       4:54 | 4:54 | 5:04 |
 | 2           |            | 2:31 | 2:37 |
 | 4           |            | 1:27 | 1:31 |
@@ -205,6 +205,7 @@ print(client.gather(r))
 
 * Output is out of order (but not pool result list) -- why?
 * Pool overhead is greatest for pool size 1 -- why?
+* Decreasing marginal improvement -- why?
 
 
 
