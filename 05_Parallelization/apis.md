@@ -84,6 +84,7 @@ end
    * python asyncio, dask, tensorflow, ...
    * MATLAB, Julia
    * C OpenMP (threads only), MPI, ... (requires marshalling)
+   * KVS (disBatch)
    * ...
 
 
@@ -99,6 +100,23 @@ end
    * Check if it's done
    * Wait for one (or more) futures to complete
    * Pass as input to another future evaluation (chaining)
+
+
+### Common uses of Futures
+
+* parfor
+* parallel map: apply same function to list values, in parallel
+
+```
+for i in 1..10000
+    y[i] = f(x[i])
+```
+
+```
+for i in 1..10000
+    yf[i] = Future(f, x[i])
+y = Wait(yf)
+```
 
 
 ### Example
@@ -171,10 +189,27 @@ r = subdivideCheck(client, ...)
 print(client.gather(r))
 ```
 
-Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
+
+## Results
+
+* Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
+* Performance: runtime
+
+| Parallelism | Sequential | Rank | Pool |
+| ----------- | ---------- | ---- | ---- |
+| 1           |       4:54 | 4:54 | 5:04 |
+| 2           |            | 2:31 | 2:37 |
+| 4           |            | 1:27 | 1:31 |
+| 8           |            | 0:44 | 0:46 |
+| 16          |            | 0:26 | 0:28 |
+
+* Output is out of order (but not pool result list) -- why?
+* Pool overhead is greatest for pool size 1 -- why?
 
 
-### Applications for Futures
 
-* parfor
-* parallel map: apply same function to list values, in parallel
+# Hands-on
+
+* Run the example code
+* Identify latent parallelism in your own code
+* Convert your own code to use rank-based parallelism or a worker pool

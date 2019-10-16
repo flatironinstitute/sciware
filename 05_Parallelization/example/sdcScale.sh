@@ -9,7 +9,7 @@ time (
 echo End sequential
 
 # Parallel runs with various ranks.
-for n in 1 2 4 8
+for n in 1 2 4 8 16
 do
   echo -------------------- Ranks $n --------------------
   time (
@@ -22,7 +22,7 @@ do
 done
 
 # Parallel runs with various pool sizes.
-for n in 1 2 4 8
+for n in 1 2 4 8 16
 do
   echo ------------------ Pool size $n ------------------
   time (
