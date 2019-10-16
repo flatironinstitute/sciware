@@ -16,7 +16,7 @@
    version="1.1"
    id="svg7751"
    inkscape:version="0.92.4 5da689c313, 2019-01-14"
-   sodipodi:docname="pardist.svg">
+   sodipodi:docname="pardist-hpc.svg">
   <defs
      id="defs7745">
     <marker
@@ -169,7 +169,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
      inkscape:cx="201.75965"
-     inkscape:cy="-7.4785224"
+     inkscape:cy="1.6128505"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -296,7 +296,7 @@
     </g>
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.403;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-3);marker-mid:none;marker-end:url(#Arrow2Mend-7)"
+       style="fill:none;fill-rule:nonzero;stroke:#808000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-3);marker-mid:none;marker-end:url(#Arrow2Mend-7);fill-opacity:1"
        d="m 125.50469,35.86564 -6.08039,0.01334"
        id="path8866-3"
        sodipodi:nodetypes="cc" />
@@ -396,5 +396,17 @@
          width="744.09448"
          height="1052.3622" />
     </g>
+    <path
+       sodipodi:nodetypes="cc"
+       id="path8780"
+       d="m 125.50469,31.632304 -6.08039,0.01334"
+       style="fill:none;fill-rule:nonzero;stroke:#808000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-3);marker-mid:none;marker-end:url(#Arrow2Mend-7);fill-opacity:1"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path8782"
+       d="m 125.50469,40.098976 -6.08039,0.01334"
+       style="fill:none;fill-rule:nonzero;stroke:#808000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-3);marker-mid:none;marker-end:url(#Arrow2Mend-7);fill-opacity:1"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

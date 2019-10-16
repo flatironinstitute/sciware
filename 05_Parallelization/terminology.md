@@ -4,71 +4,52 @@
 
 Just so you're familiar with these terms...
 
+<img src="pardist-core1.svg" width="1000" style="border:0">
 
-## Parallel Computing
-
-<img src="parallel.svg" width="600">
-
-* Running multiple computations (often on the same computer) at the same time
-
-
-## Distributed Computing
-
-<img src="distributed.svg" width="600">
-
-* Running a parallel computation across multiple, networked computers
+* *Parallel*: Running multiple computations (often on the same computer) at the same time
+* *Distributed*: Running a calculation across multiple, networked computers
+* Often used together, interchangeably, especially in HPC
 
 
-## Parallel and Distributed Computing
+### Instruction-level parallelism
 
-<img src="pardist.svg" width="600">
+<img src="pardist-corep.svg" width="1000" style="border:0">
 
-* Often no clear distinction between these two
-
-
-
-# Parallel computing
-
-### Different ways to run things in parallel
-
-
-## Instruction pipelining
-
-* Completely transparent (invisible) parallelism
-* The processor may process operations in parallel
-* Interleave steps: fetch input, execute, write output
-* `(a+b)*(c+d)` (add, add, multiply)
-* Possibly "speculatively" (before it knows they will happen, in case they do)
+* Instruction pipelining
+   * Completely transparent (invisible) parallelism
+   * Interleave steps, independent operations
+   * Possibly "speculatively" (before it knows they will happen, in case they do)
+* Data parallelism: SIMD (Single Instruction, Multiple Data)
+   * Special instructions that operate on multiple values simultaneously: *vectorization*
+   * MMX, SSE, AVX
+   * Sometimes inferred by the compiler from loops
+   * Hand-written assembly, special functions, math libraries
 
 
-## Data parallelism: SIMD
+### Running code: *Process*
 
-* Special instructions that operate on multiple values simultaneously
-* Instruction-level "vectorization"
-* MMX, SSE, AVX
-* Sometimes inferred by the compiler from loops
-* Hand-written assembly, special functions, math libraries
-* Single instruction, multiple data
+<img src="pardist-proc1.svg" width="1000" style="border:0">
 
-
-## Task parallelism
-
-* Multiple processing units ("cores") in the same computer
-* Explicitly run multiple pieces of code (same or different) in parallel
-* Code runs independently, may run at different speeds
-* Draws on single set of resources (memory, network)
+* Everything runs in a process
+* Includes global state: memory contents, open files, network connections, etc.
+* Only makes use of one core by default
+* *Task parallelism*: explicitly indicate pieces of code to run concurrently
 
 
-### Threads: shared memory
+### Threads
+
+<img src="pardist-thread.svg" width="1000" style="border:0">
 
 * Parallel execution sharing resources in a single process
 * (Global) variables, open files, global state: all shared
 * Easy to read the same data
 * Hard to write to the same data
-* Simple functions allow synchronization (lock/mutex)
+* Functions allow synchronization (lock/mutex)
 
 
 ### Multi-threaded libraries
+
+<img src="pardist-lthreads.svg" width="1000" style="border:0">
 
 * Some libraries turn single function calls into multi-threaded calculations
 * Don't require any explicit code changes
@@ -77,19 +58,50 @@ Just so you're familiar with these terms...
 
 ### Processes
 
+<img src="pardist-procs.svg" width="1000" style="border:0">
+
 * Parallel execution in separate resource spaces
 * Separate copies of all data
-* Exceptions: same filesystems, "shared" memory
 * Need to explicitly communicate (send messages) to coordinate
+* Same filesystems, fast IPC, "shared" memory
 
 
 
+## Distributed Computing
 
-# Distributed computing
+<img src="distributed.svg" width="600" style="border:0">
 
-* Similar to process-level parallelization, but separate hardware
-* Must communicate over network
-* Sometimes shared network filesystems
+* Various machines working together
+* Must send messages to communicate, coordinate
+
+
+### HPC: High Performance Computing
+
+<img src="pardist-hpc.svg" width="1000" style="border:0">
+
+* Homogeneous cluster of machines
+* Low-latency network allows fast communication
+   * Shared network filesystems
+   * Low-latency networks (10x slower than local memory, 100x faster than SSD)
+* Makes distributed computing similar to process-level parallelism
+
+
+### Distributed Processes
+
+<img src="pardist-dprocs.svg" width="1000" style="border:0">
+
+* Processes running on separate hardware
+* No shared memory
+
+
+### Distributed Processes
+
+<img src="pardist-dprocs2.svg" width="1000" style="border:0">
+
+### Distributed, Threaded Processes
+
+<img src="pardist-dthreads.svg" width="1000" style="border:0">
+
 
 
 ### HPC: High Performance Computing
