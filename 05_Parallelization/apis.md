@@ -40,9 +40,13 @@ RANK=$SLURM_ARRAY_TASK_ID subdivideCheck.py
 # MPI
 
 ```C
-MPI_Init (&argc, &argv);
-MPI_Comm_size (MPI_COMM_WORLD, &ranks);
-MPI_Comm_rank (MPI_COMM_WORLD, &rank);
+MPI_Init(&argc, &argv);
+MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+MPI_Comm_size(MPI_COMM_WORLD, &ranks);
+...
+float myvalue = ...;
+float allvalues[ranks];
+MPI_Allgather(&myvalue, 1, MPI_FLOAT, allvalues, 1, MPI_FLOAT, MPI_COMM_WORLD);
 ...
 MPI_Finalize();
 ```
@@ -77,10 +81,9 @@ end
 * Assign calculation out to a pool of workers
 * Input and output for sub-calculations must be sent over network
 * Many languages have libraries that provide similar functionality
-   * C OpenMP (threads only)
-   * python asyncio/dask/...
-   * MATLAB
-   * Julia
+   * python asyncio, dask, tensorflow, ...
+   * MATLAB, Julia
+   * C OpenMP (threads only), MPI, ... (requires marshalling)
    * ...
 
 
