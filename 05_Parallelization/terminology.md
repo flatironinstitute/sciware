@@ -1,10 +1,6 @@
-# Parallel and Distributed Computing
+## Parallel and Distributed Computing Terminology
 
-## Terminology
-
-Just so you're familiar with these terms...
-
-<img src="pardist-core1.svg" width="1000" style="border:0">
+<img src="pardist-core1.svg" width="1000" style="border:0;box-shadow:none">
 
 * *Parallel*: Running multiple computations (often on the same computer) at the same time
 * *Distributed*: Running a calculation across multiple, networked computers
@@ -13,12 +9,12 @@ Just so you're familiar with these terms...
 
 ### Instruction-level parallelism
 
-<img src="pardist-corep.svg" width="1000" style="border:0">
+<img src="pardist-corep.svg" width="1000" style="border:0;box-shadow:none">
 
 * Instruction pipelining
    * Completely transparent (invisible) parallelism
    * Interleave steps, independent operations
-   * Possibly "speculatively" (before it knows they will happen, in case they do)
+   * Possibly "speculatively"
 * Data parallelism: SIMD (Single Instruction, Multiple Data)
    * Special instructions that operate on multiple values simultaneously: *vectorization*
    * MMX, SSE, AVX
@@ -28,7 +24,7 @@ Just so you're familiar with these terms...
 
 ### Running code: *Process*
 
-<img src="pardist-proc1.svg" width="1000" style="border:0">
+<img src="pardist-proc1.svg" width="1000" style="border:0;box-shadow:none">
 
 * Everything runs in a process
 * Includes global state: memory contents, open files, network connections, etc.
@@ -38,7 +34,7 @@ Just so you're familiar with these terms...
 
 ### Threads
 
-<img src="pardist-thread.svg" width="1000" style="border:0">
+<img src="pardist-thread.svg" width="1000" style="border:0;box-shadow:none">
 
 * Parallel execution sharing resources in a single process
 * (Global) variables, open files, global state: all shared
@@ -49,7 +45,7 @@ Just so you're familiar with these terms...
 
 ### Multi-threaded libraries
 
-<img src="pardist-lthreads.svg" width="1000" style="border:0">
+<img src="pardist-lthreads.svg" width="1000" style="border:0;box-shadow:none">
 
 * Some libraries turn single function calls into multi-threaded calculations
 * Don't require any explicit code changes
@@ -58,7 +54,7 @@ Just so you're familiar with these terms...
 
 ### Processes
 
-<img src="pardist-procs.svg" width="1000" style="border:0">
+<img src="pardist-procs.svg" width="1000" style="border:0;box-shadow:none">
 
 * Parallel execution in separate resource spaces
 * Separate copies of all data
@@ -69,7 +65,7 @@ Just so you're familiar with these terms...
 
 ## Distributed Computing
 
-<img src="distributed.svg" width="600" style="border:0">
+<img src="distributed.svg" width="600" style="border:0;box-shadow:none">
 
 * Various machines working together
 * Must send messages to communicate, coordinate
@@ -77,7 +73,7 @@ Just so you're familiar with these terms...
 
 ### HPC: High Performance Computing
 
-<img src="pardist-hpc.svg" width="1000" style="border:0">
+<img src="pardist-hpc.svg" width="1000" style="border:0;box-shadow:none">
 
 * Homogeneous cluster of machines
 * Low-latency network allows fast communication
@@ -88,7 +84,7 @@ Just so you're familiar with these terms...
 
 ### Distributed Processes
 
-<img src="pardist-dprocs.svg" width="1000" style="border:0">
+<img src="pardist-dprocs.svg" width="1000" style="border:0;box-shadow:none">
 
 * Processes running on separate hardware
 * No shared memory
@@ -96,11 +92,11 @@ Just so you're familiar with these terms...
 
 ### Distributed Processes
 
-<img src="pardist-dprocs2.svg" width="1000" style="border:0">
+<img src="pardist-dprocs2.svg" width="1000" style="border:0;box-shadow:none">
 
 ### Distributed, Threaded Processes
 
-<img src="pardist-dthreads.svg" width="1000" style="border:0">
+<img src="pardist-dthreads.svg" width="1000" style="border:0;box-shadow:none">
 
 
 
