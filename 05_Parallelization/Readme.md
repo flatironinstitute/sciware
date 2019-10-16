@@ -12,6 +12,7 @@ pip3 install -r requirements.txt
 ./sdcScale.sh
 ```
 
+- [intro](https://flatironinstitute.github.io/learn-sciware-dev/05_Parallelization/slides-intro.html) ([source](intro.md))
 - [terminology](https://flatironinstitute.github.io/learn-sciware-dev/05_Parallelization/slides-terms.html) ([source](terminology.md))
 - [APIs](https://flatironinstitute.github.io/learn-sciware-dev/05_Parallelization/slides-apis.html) ([source](apis.md))
 
