@@ -99,7 +99,6 @@
 <img src="pardist-dthreads.svg" width="1000" style="border:0;box-shadow:none">
 
 
-
 ### HPC: High Performance Computing
 
 * Tightly-coupled execution, often running the same code
