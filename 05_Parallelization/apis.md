@@ -2,7 +2,7 @@
 
 ## Abstractions and Libraries
 
-A very quick preview of some ways to implement parallelism
+A quick preview of more ways to implement parallelism
 
 
 

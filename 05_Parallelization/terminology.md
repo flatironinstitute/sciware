@@ -18,7 +18,7 @@
    * Instructions operate on multiple values simultaneously
    * *vectorization*: MMX, SSE, AVX
    * Sometimes inferred by the compiler from loops
-   * Hand-written assembly, special functions, math libraries
+   * Hand-written assembly, special functions, libraries
 
 
 ### Running code: *Process*
