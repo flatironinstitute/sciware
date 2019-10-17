@@ -92,7 +92,7 @@ end
    * ...
 
 
-## Futures
+## Futures/Promises
 
 * A common abstraction for "worker pools"
 * Given a *pure* function
