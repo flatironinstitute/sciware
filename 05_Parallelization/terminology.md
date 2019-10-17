@@ -114,14 +114,14 @@
 
 # General approaches
 
-### Multiple instances ("flock" parallelism)
+### Multiple instances ("flock"/rank parallelism)
 
+* A number of ranks work in parallel, usually running the same code
 * Divide up work among themselves
-* Work together in flat structure
 * Coordinate/communicate to share intermediate values
 
 ### Worker pool
 
 * Run one main process
 * Hand off pieces of work to a pool of workers
-* All coordination happens in main process
+* Coordination happens in main process
