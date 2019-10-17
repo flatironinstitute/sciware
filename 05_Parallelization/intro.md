@@ -35,7 +35,7 @@ Activities where participants all actively work to foster an environment which e
 
 Please run on your laptop or on a cluster. We want it running on different types of machines.
 
-<pre style="font-size:100%">
+<pre style="font-size:75%">
 git clone https://github.com/flatironinstitute/learn-sciware-dev
 cd learn-sciware-dev/05_Parallelization/example
 pip3 install distributed # or conda install distributed
