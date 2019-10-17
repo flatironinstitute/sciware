@@ -29,12 +29,7 @@ def findZero(f, l, u, eps):
 
 def subdivideCheck(lower, upper, func, step, eps):
     """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
-    if (upper - lower) > 1:
-        # proxy for recursive exploration of a data space or structure.
-        mid = (upper + lower)/2.
-        subdivideCheck(lower, mid, func, step, eps)
-        subdivideCheck(mid, upper, func, step, eps)
-    else:
+    if (upper - lower) <= 1:
         # proxy for determining if this interval should be searched. 1 in 4 chance.
         if 1 == randint(0, 3):
             x = lower
@@ -42,6 +37,11 @@ def subdivideCheck(lower, upper, func, step, eps):
                 z = findZero(func, x, min(x+step, upper), eps)
                 if z is not None: print(z)
                 x += step
+    else:
+        # proxy for recursive exploration of a data space or structure.
+        mid = (upper + lower)/2.
+        subdivideCheck(lower, mid, func, step, eps)
+        subdivideCheck(mid, upper, func, step, eps)
 
 def testFunc(x):
     """Target function we will look for zeros of."""

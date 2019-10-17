@@ -44,18 +44,18 @@ def concat(a, b):
 
 def subdivideCheck(client, lower, upper, func, step, eps):
     """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
-    if (upper - lower) > 1:
-        # proxy for recursive exploration of a data space or structure.
-        mid = (upper + lower)/2.
-        rl = subdivideCheck(client, lower, mid, func, step, eps)
-        rr = subdivideCheck(client, mid, upper, func, step, eps)
-        return client.submit(concat, rl, rr)
-    else:
+    if (upper - lower) <= 1:
         # proxy for determining if this interval should be searched. 1 in 4 chance.
         if 1 == randint(0, 3):
             return client.submit(piece, lower, upper, func, step, eps)
         else:
             return []
+    else:
+        # proxy for recursive exploration of a data space or structure.
+        mid = (upper + lower)/2.
+        rl = subdivideCheck(client, lower, mid, func, step, eps)
+        rr = subdivideCheck(client, mid, upper, func, step, eps)
+        return client.submit(concat, rl, rr)
 
 def testFunc(x):
     """Target function we will look for zeros of."""

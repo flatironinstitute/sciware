@@ -183,28 +183,28 @@ def pieceWithResults(lower, upper, func, step, eps):
 
 ```python
 def subdivideCheck(lower, upper, func, step, eps):
-    if (upper - lower) > 1:
+    if (upper - lower) <= 1:
+        if 1 == randint(0, 3):
+            client.submit(piece, lower, upper, func, step, eps)
+    else:
         mid = (upper + lower)/2.
         subdivideCheck(lower, mid, func, step, eps)
         subdivideCheck(mid, upper, func, step, eps)
-    else:
-        if 1 == randint(0, 3):
-            client.submit(piece, lower, upper, func, step, eps)
 ```
 
 #### Merge results
 
 ```python
 def subdivideCheck(client, lower, upper, func, step, eps):
-    if (upper - lower) > 1:
+    if (upper - lower) <= 1:
+        if 1 == randint(0, 3):
+            return client.submit(pieceWithResults, lower, upper, func, step, eps)
+        else: return []
+    else:
         mid = (upper + lower)/2.
         rl = subdivideCheck(client, lower, mid, func, step, eps)
         rr = subdivideCheck(client, mid, upper, func, step, eps)
         return ??? rl + rr ???
-    else:
-        if 1 == randint(0, 3):
-            return client.submit(pieceWithResults, lower, upper, func, step, eps)
-        else: return []
 ```
 
 
@@ -215,15 +215,15 @@ def concat(a, b):
     return a + b
 
 def subdivideCheck(client, lower, upper, func, step, eps):
-    if (upper - lower) > 1:
+    if (upper - lower) <= 1:
+        if 1 == randint(0, 3):
+            return client.submit(pieceWithResults, lower, upper, func, step, eps)
+        else: return []
+    else:
         mid = (upper + lower)/2.
         rl = subdivideCheck(client, lower, mid, func, step, eps)
         rr = subdivideCheck(client, mid, upper, func, step, eps)
         return client.submit(concat, rl, rr)
-    else:
-        if 1 == randint(0, 3):
-            return client.submit(pieceWithResults, lower, upper, func, step, eps)
-        else: return []
 
 r = subdivideCheck(client, ...)
 print(client.gather(r))
@@ -243,7 +243,7 @@ print(client.gather(r))
 | 32          |            | 0:17 | 0:17 |
 
 * Output is out of order (but not pool result list) -- why?
-* Pool overhead is greatest for pool size 1 -- why?
+* Pool 1 is slower (but not 32) -- why?
 * Decreasing marginal improvement -- why?
 
 
