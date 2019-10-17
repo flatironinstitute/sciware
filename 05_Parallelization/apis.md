@@ -130,7 +130,7 @@ if 1 == randint(0, 3):
         x += step
 ```
 
-Convert parallel part into pure function
+#### Convert parallel part into pure function
 
 ```python
 def piece(lower, upper, func, step, eps):
@@ -140,21 +140,31 @@ def piece(lower, upper, func, step, eps):
         if z is not None: print(z)
         x += step
 
-if 1 == randint(0, 3):
-    piece(lower, upper, func, step, eps)
+(in subdivideCheck loop ...):
+    if 1 == randint(0, 3):
+        piece(lower, upper, func, step, eps)
 ```
 
-Use worker pool to submit work
+
+```
+(in subdivideCheck loop ...):
+    if 1 == randint(0, 3):
+        piece(lower, upper, func, step, eps)
+```
+
+#### Use worker pool (`client`) to submit work
 
 ```python
+from dask import distributed
 client = distributed.Client()
 
-if 1 == randint(0, 3):
-    client.submit(piece, lower, upper, func, step, eps)
+(in subdivideCheck loop ...):
+    if 1 == randint(0, 3):
+        client.submit(piece, lower, upper, func, step, eps)
 ```
 
 
-Return values, collect results
+#### Return list of zeros
 
 ```python
 def piece(lower, upper, func, step, eps):
@@ -167,12 +177,42 @@ def piece(lower, upper, func, step, eps):
             r.append(z)
         x += step
     return r
-
-def concat(a, b):
-    return a + b
 ```
 
+
 ```python
+def subdivideCheck(lower, upper, func, step, eps):
+    if (upper - lower) > 1:
+        mid = (upper + lower)/2.
+        subdivideCheck(lower, mid, func, step, eps)
+        subdivideCheck(mid, upper, func, step, eps)
+    else:
+        if 1 == randint(0, 3):
+            client.submit(piece, lower, upper, func, step, eps)	
+```
+
+#### Merge results
+
+```python
+def subdivideCheck(client, lower, upper, func, step, eps):
+    if (upper - lower) > 1:
+        mid = (upper + lower)/2.
+        rl = subdivideCheck(client, lower, mid, func, step, eps)
+        rr = subdivideCheck(client, mid, upper, func, step, eps)
+        return ??? rl + rr ???
+    else:
+        if 1 == randint(0, 3):
+            return client.submit(piece, lower, upper, func, step, eps)
+        else: return []
+```
+
+
+#### Use another pure function to combine results
+
+```
+def concat(a, b):
+    return a + b
+
 def subdivideCheck(client, lower, upper, func, step, eps):
     if (upper - lower) > 1:
         mid = (upper + lower)/2.
@@ -182,8 +222,7 @@ def subdivideCheck(client, lower, upper, func, step, eps):
     else:
         if 1 == randint(0, 3):
             return client.submit(piece, lower, upper, func, step, eps)
-        else:
-            return []
+        else: return []
 
 r = subdivideCheck(client, ...)
 print(client.gather(r))
