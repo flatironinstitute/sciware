@@ -232,24 +232,26 @@ print(client.gather(r))
 
 ### Performance (runtime)
 
-| Parallelism | Sequential | Rank | Pool |
-| (cores) | (runtime)
-| -----------:| ----------:| ----:| ----:|
-| 1           |       4:34 | 4:34 | 4:39 |
-| 2           |            | 2:22 | 2:24 |
-| 4           |            | 1:15 | 1:16 |
-| 8           |            | 0:39 | 0:39 |
-| 16          |            | 0:23 | 0:23 |
-| 32          |            | 0:17 | 0:17 |
+| Parallelism | Sequential | Rank | Pool | Improvement |
+| (cores) | (runtime) | | | (factor) |
+| -----------:| ----------:| ----:| ----:| ---: |
+| 1           |       4:34 | 4:34 | 4:39 | 0.98 |
+| 2           |            | 2:22 | 2:24 | 1.9 |
+| 4           |            | 1:15 | 1:16 | 3.6 |
+| 8           |            | 0:39 | 0:39 | 7.0 |
+| 16          |            | 0:23 | 0:23 | 11.9 |
+| 32          |            | 0:17 | 0:17 | 16.1 |
+
+
+
+## Discussion
 
 * Output is out of order (but not pool result list) -- why?
 * Pool 1 is slower (but not 32) -- why?
 * Decreasing marginal improvement -- why?
 
+## Hnads-on
 
-
-# Hands-on
-
-* Run the example code
+* Look at the example code output
 * Identify latent parallelism in your own code
 * Convert your own code to use rank-based parallelism or a worker pool
