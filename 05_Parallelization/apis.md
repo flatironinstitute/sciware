@@ -230,6 +230,7 @@ print(client.gather(r))
 ```
 
 
+
 ### Performance (runtime)
 
 | Parallelism | Sequential | Rank | Pool | Improvement |
@@ -241,7 +242,6 @@ print(client.gather(r))
 | 8           |            | 0:39 | 0:39 | 7.0         |
 | 16          |            | 0:23 | 0:23 | 11.9        |
 | 32          |            | 0:17 | 0:17 | 16.1        |
-
 
 
 ## Discussion
