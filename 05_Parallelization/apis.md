@@ -124,11 +124,11 @@ y = Wait(yf)
 ```python
 (subdivideCheck loop ...):
     if 1 == randint(0, 3):
-	x = lower
-	while x < upper:
-	    z = findZero(func, x, min(x+step, upper), eps)
-	    if z is not None: print(z)
-	    x += step
+        x = lower
+        while x < upper:
+            z = findZero(func, x, min(x+step, upper), eps)
+            if z is not None: print(z)
+            x += step
 ```
 
 #### Convert parallel part into pure function
@@ -147,7 +147,7 @@ def piece(lower, upper, func, step, eps):
 ```
 
 
-```
+```python
 (subdivideCheck loop ...):
     if 1 == randint(0, 3):
         piece(lower, upper, func, step, eps)
@@ -168,7 +168,7 @@ client = distributed.Client()
 #### Return list of zeros
 
 ```python
-def piece(lower, upper, func, step, eps):
+def pieceWithResults(lower, upper, func, step, eps):
     r = []
     x = lower
     while x < upper:
@@ -189,7 +189,7 @@ def subdivideCheck(lower, upper, func, step, eps):
         subdivideCheck(mid, upper, func, step, eps)
     else:
         if 1 == randint(0, 3):
-            client.submit(piece, lower, upper, func, step, eps)	
+            client.submit(piece, lower, upper, func, step, eps)
 ```
 
 #### Merge results
@@ -203,14 +203,14 @@ def subdivideCheck(client, lower, upper, func, step, eps):
         return ??? rl + rr ???
     else:
         if 1 == randint(0, 3):
-            return client.submit(piece, lower, upper, func, step, eps)
+            return client.submit(pieceWithResults, lower, upper, func, step, eps)
         else: return []
 ```
 
 
 #### Use another pure function to combine results
 
-```
+```python
 def concat(a, b):
     return a + b
 
@@ -222,7 +222,7 @@ def subdivideCheck(client, lower, upper, func, step, eps):
         return client.submit(concat, rl, rr)
     else:
         if 1 == randint(0, 3):
-            return client.submit(piece, lower, upper, func, step, eps)
+            return client.submit(pieceWithResults, lower, upper, func, step, eps)
         else: return []
 
 r = subdivideCheck(client, ...)
@@ -233,6 +233,7 @@ print(client.gather(r))
 ### Performance (runtime)
 
 | Parallelism | Sequential | Rank | Pool |
+| (cores) | (runtime)
 | -----------:| ----------:| ----:| ----:|
 | 1           |       4:34 | 4:34 | 4:39 |
 | 2           |            | 2:22 | 2:24 |
