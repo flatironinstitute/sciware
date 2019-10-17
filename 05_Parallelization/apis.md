@@ -45,7 +45,11 @@ MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 MPI_Comm_size(MPI_COMM_WORLD, &ranks);
 ...
 float myvalue = ...;
+float valuesum;
+/* valuesum = sum(myvalue) over all ranks */
+MPI_Allreduce(&myvalue, &valuesum, 1, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 float allvalues[ranks];
+/* allvalue[i] = myvalue from rank = i */
 MPI_Allgather(&myvalue, 1, MPI_FLOAT, allvalues, 1, MPI_FLOAT, MPI_COMM_WORLD);
 ...
 MPI_Finalize();
