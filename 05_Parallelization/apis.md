@@ -18,7 +18,7 @@ A quick preview of more ways to implement parallelism
 * Same operations on many input files
 * Don't need to run concurrently
 
-# disBatch
+## disBatch
 
 ```
 #DISBATCH REPEAT 1000 RANK=$DISBATCH_REPEAT_INDEX subdivideCheck.py
