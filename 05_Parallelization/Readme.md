@@ -8,7 +8,7 @@ Example setup:
 ```
 git clone https://github.com/flatironinstitute/learn-sciware-dev
 cd learn-sciware-dev/05_Parallelization/example
-pip3 install -r requirements.txt
+pip3 install distributed # or conda install distributed
 ./sdcScale.sh
 ```
 
