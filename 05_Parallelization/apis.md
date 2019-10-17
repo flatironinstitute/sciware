@@ -40,9 +40,13 @@ RANK=$SLURM_ARRAY_TASK_ID subdivideCheck.py
 # MPI
 
 ```C
-MPI_Init (&argc, &argv);
-MPI_Comm_size (MPI_COMM_WORLD, &ranks);
-MPI_Comm_rank (MPI_COMM_WORLD, &rank);
+MPI_Init(&argc, &argv);
+MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+MPI_Comm_size(MPI_COMM_WORLD, &ranks);
+...
+float myvalue = ...;
+float allvalues[ranks];
+MPI_Allgather(&myvalue, 1, MPI_FLOAT, allvalues, 1, MPI_FLOAT, MPI_COMM_WORLD);
 ...
 MPI_Finalize();
 ```
@@ -77,10 +81,10 @@ end
 * Assign calculation out to a pool of workers
 * Input and output for sub-calculations must be sent over network
 * Many languages have libraries that provide similar functionality
-   * C OpenMP (threads only)
-   * python asyncio/dask/...
-   * MATLAB
-   * Julia
+   * python asyncio, dask, tensorflow, ...
+   * MATLAB, Julia
+   * C OpenMP (threads only), MPI, ... (requires marshalling)
+   * KVS (disBatch)
    * ...
 
 
@@ -96,6 +100,23 @@ end
    * Check if it's done
    * Wait for one (or more) futures to complete
    * Pass as input to another future evaluation (chaining)
+
+
+### Common uses of Futures
+
+* parfor
+* parallel map: apply same function to list values, in parallel
+
+```
+for i in 1..10000
+    y[i] = f(x[i])
+```
+
+```
+for i in 1..10000
+    yf[i] = Future(f, x[i])
+y = Wait(yf)
+```
 
 
 ### Example
@@ -168,10 +189,28 @@ r = subdivideCheck(client, ...)
 print(client.gather(r))
 ```
 
-Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
+
+## Results
+
+* Full example: [subdivideCheckDist.py](subdivideCheckDist.py)
+* Performance runtime
+
+| Parallelism | Sequential | Rank | Pool |
+| -----------:| ----------:| ----:| ----:|
+| 1           |       4:54 | 4:54 | 5:04 |
+| 2           |            | 2:31 | 2:37 |
+| 4           |            | 1:27 | 1:31 |
+| 8           |            | 0:44 | 0:46 |
+| 16          |            | 0:26 | 0:28 |
+
+* Output is out of order (but not pool result list) -- why?
+* Pool overhead is greatest for pool size 1 -- why?
+* Decreasing marginal improvement -- why?
 
 
-### Applications for Futures
 
-* parfor
-* parallel map: apply same function to list values, in parallel
+# Hands-on
+
+* Run the example code
+* Identify latent parallelism in your own code
+* Convert your own code to use rank-based parallelism or a worker pool
