@@ -77,7 +77,7 @@ Comments on performance:
 
      Second run: 274, 149, 75, 38 (Seq +/- 5s)
 
-     Moral: For pratical parallelism, benchmarking is a necessary
+     Moral: For practical parallelism, benchmarking is a necessary
      sanity check, but don't obsess.
      
      Controlling coordination costs (where else could "own" be placed?)
