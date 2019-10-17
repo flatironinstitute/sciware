@@ -246,12 +246,13 @@ print(client.gather(r))
 
 ## Discussion
 
+* Look at example output and times
+* How do your times compare?
 * Output is out of order (but not pool result list) -- why?
 * Decreasing marginal improvement -- why?
 * Pool 1 is a bit slower (but not 32) -- why?
 
 ## Hands-on
 
-* Look at the example code output
 * Identify latent parallelism in your own code
 * Convert your own code to use rank-based parallelism or a worker pool
