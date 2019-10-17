@@ -247,10 +247,10 @@ print(client.gather(r))
 ## Discussion
 
 * Output is out of order (but not pool result list) -- why?
-* Pool 1 is slower (but not 32) -- why?
 * Decreasing marginal improvement -- why?
+* Pool 1 is a bit slower (but not 32) -- why?
 
-## Hnads-on
+## Hands-on
 
 * Look at the example code output
 * Identify latent parallelism in your own code
