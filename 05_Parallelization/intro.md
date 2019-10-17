@@ -24,16 +24,20 @@ Activities where participants all actively work to foster an environment which e
 
 ## Schedule
 
-- Intro
-- More Intro
-- 
+- Intro to Latent Parallelism (Nick, SCC)
+- Terminology (Dylan, SCC)
+- Rank Based Parallelism Demo (Nick, SCC)
+- Abstractions, Libraries, and Worker Pools (Dylan, SCC)
+- Discussion
 
 
-## Let's start a demo together!
+## Let's start an experiment together!
 
-```
+Please run on your laptop or on a cluster. We want it running on different types of machines.
+
+<pre style="font-size:200%">
 git clone https://github.com/flatironinstitute/learn-sciware-dev
 cd learn-sciware-dev/05_Parallelization/example
 pip3 install distributed # or conda install distributed
 ./sdcScale.sh
-```
+</pre>
