@@ -92,7 +92,7 @@ end
 
 * A common abstraction for "worker pools"
 * Given a *pure* function
-   * All inputs passed as arguments (some implementation allow exceptions)
+   * All inputs passed as arguments\*
    * All results returned
    * No access to global data/state
 * Request that this function be applied to some arguments in parallel ("asynchronously")
@@ -122,12 +122,13 @@ y = Wait(yf)
 ### Example
 
 ```python
-if 1 == randint(0, 3):
-    x = lower
-    while x < upper:
-        z = findZero(func, x, min(x+step, upper), eps)
-        if z is not None: print(z)
-        x += step
+(subdivideCheck loop ...):
+    if 1 == randint(0, 3):
+	x = lower
+	while x < upper:
+	    z = findZero(func, x, min(x+step, upper), eps)
+	    if z is not None: print(z)
+	    x += step
 ```
 
 #### Convert parallel part into pure function
@@ -140,14 +141,14 @@ def piece(lower, upper, func, step, eps):
         if z is not None: print(z)
         x += step
 
-(in subdivideCheck loop ...):
+(subdivideCheck loop ...):
     if 1 == randint(0, 3):
         piece(lower, upper, func, step, eps)
 ```
 
 
 ```
-(in subdivideCheck loop ...):
+(subdivideCheck loop ...):
     if 1 == randint(0, 3):
         piece(lower, upper, func, step, eps)
 ```
@@ -158,7 +159,7 @@ def piece(lower, upper, func, step, eps):
 from dask import distributed
 client = distributed.Client()
 
-(in subdivideCheck loop ...):
+(subdivideCheck loop ...):
     if 1 == randint(0, 3):
         client.submit(piece, lower, upper, func, step, eps)
 ```
