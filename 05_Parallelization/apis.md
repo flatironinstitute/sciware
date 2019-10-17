@@ -134,7 +134,7 @@ y = Wait(yf)
 #### Convert parallel part into pure function
 
 ```python
-def piece(lower, upper, func, step, eps):
+def piece(lower, upper, func, step, eps) -> None:
     x = lower
     while x < upper:
         z = findZero(func, x, min(x+step, upper), eps)
@@ -168,7 +168,7 @@ client = distributed.Client()
 #### Return list of zeros
 
 ```python
-def pieceWithResults(lower, upper, func, step, eps):
+def pieceWithResults(lower, upper, func, step, eps) -> List[float]:
     r = []
     x = lower
     while x < upper:
@@ -182,7 +182,7 @@ def pieceWithResults(lower, upper, func, step, eps):
 
 
 ```python
-def subdivideCheck(lower, upper, func, step, eps):
+def subdivideCheck(lower, upper, func, step, eps) -> None:
     if (upper - lower) <= 1:
         if 1 == randint(0, 3):
             client.submit(piece, lower, upper, func, step, eps)
@@ -195,7 +195,7 @@ def subdivideCheck(lower, upper, func, step, eps):
 #### Merge results
 
 ```python
-def subdivideCheck(client, lower, upper, func, step, eps):
+def subdivideCheck(client, lower, upper, func, step, eps) -> Future[List[Float]]:
     if (upper - lower) <= 1:
         if 1 == randint(0, 3):
             return client.submit(pieceWithResults, lower, upper, func, step, eps)
@@ -211,10 +211,10 @@ def subdivideCheck(client, lower, upper, func, step, eps):
 #### Use another pure function to combine results
 
 ```python
-def concat(a, b):
+def concat(a: list, b: list) -> list:
     return a + b
 
-def subdivideCheck(client, lower, upper, func, step, eps):
+def subdivideCheck(client, lower, upper, func, step, eps) -> Future[List[Float]]:
     if (upper - lower) <= 1:
         if 1 == randint(0, 3):
             return client.submit(pieceWithResults, lower, upper, func, step, eps)
