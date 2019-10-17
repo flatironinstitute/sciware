@@ -1,11 +1,12 @@
 #!/bin/env python3
 # Sequential (non-parallel) example
 
+from typing import Callable, Optional
 import sys
 from math import pi
 from random import randint, seed
 
-def findZero(f, l, u, eps):
+def findZero(f: Callable[[float], float], l: float, u: float, eps: float) -> Optional[float]:
     """Find and return a root of f(x), l<=x<=u s.t. |f(x)| < eps, using simple bracketing and return it, or None if none is found."""
     fl = f(l)
     if abs(fl) < eps: return l
@@ -27,7 +28,7 @@ def findZero(f, l, u, eps):
             fu = fm
     raise Exception('Failed to find zero.')
 
-def subdivideCheck(lower, upper, func, step, eps):
+def subdivideCheck(lower: float, upper: float, func: Callable[[float], float], step: float, eps: float):
     """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
     if (upper - lower) <= 1:
         # proxy for determining if this interval should be searched. 1 in 4 chance.
@@ -43,11 +44,11 @@ def subdivideCheck(lower, upper, func, step, eps):
         subdivideCheck(lower, mid, func, step, eps)
         subdivideCheck(mid, upper, func, step, eps)
 
-def testFunc(x):
+def testFunc(x: float) -> float:
     """Target function we will look for zeros of."""
     x = pi * (x % 2)
     t, s = 1., 1.
-    r = 0
+    r = 0.
     for i in range(20):
         r += s*t
         t, s = t*(x/(2*i+1))*(x/(2*i+2)), s*-1

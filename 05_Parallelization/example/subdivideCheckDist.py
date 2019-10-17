@@ -1,12 +1,13 @@
 #!/bin/env python3
 # Parallel example using a worker pool (dask distributed futures)
 
+from typing import Callable, Optional, List
 import sys
 from math import pi
 from random import randint, seed
 from dask import distributed
 
-def findZero(f, l, u, eps):
+def findZero(f: Callable[[float], float], l: float, u: float, eps: float) -> Optional[float]:
     """Find and return a root of f(x), l<=x<=u s.t. |f(x)| < eps, using simple bracketing and return it, or None if none is found."""
     fl = f(l)
     if abs(fl) < eps: return l
@@ -28,7 +29,7 @@ def findZero(f, l, u, eps):
             fu = fm
     raise Exception('Failed to find zero.')
 
-def piece(lower, upper, func, step, eps):
+def piece(lower: float, upper: float, func: Callable[[float], float], step: float, eps: float) -> List[float]:
     r = []
     x = lower
     while x < upper:
@@ -39,10 +40,10 @@ def piece(lower, upper, func, step, eps):
         x += step
     return r
 
-def concat(a, b):
+def concat(a: list, b: list) -> list:
     return a + b
 
-def subdivideCheck(client, lower, upper, func, step, eps):
+def subdivideCheck(client: distributed.Client, lower: float, upper: float, func: Callable[[float], float], step: float, eps: float) -> distributed.Future:
     """Subdivide the range upper<=x<=lower into segments of size at most 1, and then call findZero(func, l, u, eps) on each."""
     if (upper - lower) <= 1:
         # proxy for determining if this interval should be searched. 1 in 4 chance.
@@ -57,11 +58,11 @@ def subdivideCheck(client, lower, upper, func, step, eps):
         rr = subdivideCheck(client, mid, upper, func, step, eps)
         return client.submit(concat, rl, rr)
 
-def testFunc(x):
+def testFunc(x: float) -> float:
     """Target function we will look for zeros of."""
     x = pi * (x % 2)
     t, s = 1., 1.
-    r = 0
+    r = 0.
     for i in range(20):
         r += s*t
         t, s = t*(x/(2*i+1))*(x/(2*i+2)), s*-1
