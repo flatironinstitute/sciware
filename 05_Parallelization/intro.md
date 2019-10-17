@@ -20,3 +20,20 @@ Activities where participants all actively work to foster an environment which e
 - Work together to make discussions accessible to novices
 
 (These will always be a work in progress and will be updated, clarified, or expanded as needed.)
+
+
+## Schedule
+
+- Intro
+- More Intro
+- 
+
+
+## Let's start a demo together!
+
+```
+git clone https://github.com/flatironinstitute/learn-sciware-dev
+cd learn-sciware-dev/05_Parallelization/example
+pip3 install distributed # or conda install distributed
+./sdcScale.sh
+```
