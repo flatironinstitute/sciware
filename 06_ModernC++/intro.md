@@ -21,7 +21,9 @@ Activities where participants all actively work to foster an environment which e
 - Provide time for experts to share wisdom and discuss 
 - Work together to make discussions accessible to novices
 
+<small>
 (These will always be a work in progress and will be updated, clarified, or expanded as needed.)
+</small>
 
 
 ## Feedback
@@ -35,3 +37,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Today
+
+Welcome
+Nils Wentzell and
+Olivier Parcollet
