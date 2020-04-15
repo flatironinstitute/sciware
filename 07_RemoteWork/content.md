@@ -68,6 +68,8 @@ Host *
 * You should set a new passphrase unless your local machine is secure (e.g., encrypted disk, or at least more secure than the server, e.g., github)
 * The private key (`id_mykey`) is your "password"
 * The public key (`id_mykey.pub`) can be put on servers to accept the private key
+
+
 * Use it in *client* config:
 
         IdentityFile ~/.ssh/id_mykey
@@ -105,7 +107,6 @@ If you're on a *slow* connection (like DSL), compression may help
 Compression yes
 ```
 
-
 ### Keep alive
 
 If your router (or, horrors, ISP) drops idle connections, enable keep-alives:
@@ -117,7 +118,7 @@ ServerAliveInterval 60
 
 ### Specific port forwards
 
-Forward specific services (https, vnc, ssh):
+Forward specific services (https, vnc, ssh)
 
 ```
 LocalForward 127.0.0.1:23443 jupyter:443
@@ -125,7 +126,7 @@ LocalForward 127.0.0.1:43059 x2go01:5902
 LocalForward 127.0.0.1:51022 myhost:22
 ```
 
-I often use this for chaining ssh:
+I often use this for chaining ssh
 
 ```
 Host gateway
@@ -137,7 +138,7 @@ Hostname 127.0.0.1
 Port 51022
 ```
 
-Newer ssh makes this easier:
+Newer ssh provides another way
 
 ```
 Host myhost
