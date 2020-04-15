@@ -76,7 +76,7 @@ Host *
 
 * Add it to *server* `~/.ssh/authorized_keys` (list of keys, one per line)
 
-        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6+dWRKWnpvs+JQcA1I6RW2Lq11Q/CWu87I3SZXYsYw dylan@upside.dylex.net
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6+dWRKWnpvs+JQcA1I6RW2Lq11Q/CWu87I3SZXYsYw
 
 * Or use `ssh-copy-id -i ~/.ssh/id_mykey host`
 * You can also set additional options/restrictions per key:
