@@ -41,7 +41,7 @@ Activities where participants all actively work to foster an environment which e
 
 * OpenSSH has a number of useful features that can be configured (per-host) in `~/.ssh/config`
 * These apply to the *client* side only: the place you run "ssh"
-* The file is divided into `Host` sections, matching the "host" on the command line with each
+* The file is divided into `Host` sections, matching the "host" on the command line against each section
 
 ```
 # settings only for "ssh myhost"
@@ -63,31 +63,23 @@ Host *
 * Keypairs let you authenticate to some hosts
 * Generate a new private/public key pair:
 
-```
-ssh-keygen -t ed25519 -f ~/.ssh/id_mykey
-```
+        ssh-keygen -t ed25519 -f ~/.ssh/id_mykey
 
 * You should set a new passphrase unless your local machine is secure (e.g., encrypted disk, or at least more secure than the server, e.g., github)
 * The private key (`id_mykey`) is your "password"
 * The public key (`id_mykey.pub`) can be put on servers to accept the private key
 * Use it in *client* config:
 
-```
-IdentityFile ~/.ssh/id_mykey
-```
+        IdentityFile ~/.ssh/id_mykey
 
 * Add it to *server* `~/.ssh/authorized_keys` (list of keys, one per line)
 
-```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6+dWRKWnpvs+JQcA1I6RW2Lq11Q/CWu87I3SZXYsYw dylan@upside.dylex.net
-```
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6+dWRKWnpvs+JQcA1I6RW2Lq11Q/CWu87I3SZXYsYw dylan@upside.dylex.net
 
 * Or use `ssh-copy-id -i ~/.ssh/id_mykey host`
 * You can also set additional options/restrictions per key:
 
-```
-from="my.client.com" environment="TERM=screen" command="..." ssh-ed25519 ...
-```
+        from="my.client.com" environment="TERM=screen" command="..." ssh-ed25519 ...
 
 
 ### ControlMaster
