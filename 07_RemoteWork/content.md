@@ -29,11 +29,9 @@ Activities where participants all actively work to foster an environment which e
 ## Feedback
 
 - Future sessions
-   - More language/technology-specific topics
-   - git/github
-   - Low-level parallelism/optimization
-   - Intel visit
-- Send us feedback or suggest more on #sciware
+   - Intro to Julia
+   - Optimizing Python Numeric Computing Performance 
+- Suggest topics and vote on options in #sciware Slack
 
 
 
