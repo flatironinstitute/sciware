@@ -77,6 +77,13 @@ VSCode tasks work really well with dev containers.
     - Run benchmarking
     - Run a database server (for testing)
 
+### Other examples
+
+I put some other examples in this repo:
+
+* [example_latex](./example_latex) - Everything you need to compile and view LaTeX
+* [example_jupyterlab](./example_jupyterlab) - Host a JupyterLab server in the dev container
+
 ### Mounting directories
 
 * Use an environment variable to specify a data directory (outside the container)
