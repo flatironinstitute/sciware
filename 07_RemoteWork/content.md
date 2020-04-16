@@ -26,12 +26,31 @@ Activities where participants all actively work to foster an environment which e
 </small>
 
 
+## Zoom Specific 
+
+- If comfortable, please keep video on so we can all see each other's faces.
+- Ok to break in for quick, clarifying questions.
+- Use Raise Hand feature for new topics or for more in-depth questions.
+- Please stay muted if not speaking. (Host may mute you.)
+
+
 ## Feedback
 
-- Future sessions
+- Future sessions planned:
    - Intro to Julia
    - Optimizing Python Numeric Computing Performance 
+   - Intro to GitHub (with Software Carpentry)
 - Suggest topics and vote on options in #sciware Slack
+
+
+
+## Today's Agenda
+
+- Zoom Lessons
+- Remote Access Overview
+- Remote Display (XQuartz, X11, VNC)
+- Persistent Development Environments
+- Discussion, Open Share
 
 
 
