@@ -47,7 +47,7 @@ When developing software, it's generally better to have files stored locally. So
 
 Better to use a version control system like git to sync source code between local and remote computers.
 
-I generally use vscode for maintaining files on the server (more like a terminal) rather than for actually developing code.
+I generally use this vscode extension for maintaining files on the server (more like a terminal) rather than for actually developing code.
 
 Some extensions are installed locally and some are installed remotely... it can sometimes be confusing. Things may not always work as expected. For example, the Docker extension always lists local containers (not remote).
 
