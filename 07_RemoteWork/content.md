@@ -73,6 +73,7 @@ Host *
 * Use it in *client* config:
 
         IdentityFile ~/.ssh/id_mykey
+        KbdInteractiveAuthentication no
 
 * Add it to *server* `~/.ssh/authorized_keys` (list of keys, one per line)
 
@@ -154,6 +155,25 @@ DynamicForward 21099
 
 Now configure your browser to use a SOCKS5 proxy at 127.0.0.1:21099 (or use something like `runsocks`)
 
+### Forward only
+
+Sometimes you want to connect only in order to setup forwards, and don't need a shell.
+
+```
+ExitOnForwardFailure yes
+```
+
+```
+ssh -Nf host
+```
+
+
+### Advanced forwarding
+
+```
+RemoteForward 127.0.0.1:remotetarget 127.0.0.1:localsrc
+GatewayPorts yes
+```
 
 ### X11 forwarding
 
@@ -163,3 +183,9 @@ ForwardX11Trusted yes
 ```
 
 Many application need trusted (same as `-Y`) but beware of security implications (e.g., keylogging).
+
+Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  To disable:
+
+```
+ForwardX11Timeout 0
+```
