@@ -182,3 +182,15 @@ ForwardX11Trusted yes
 * Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  Disable with
 
         ForwardX11Timeout 0
+
+
+
+## Workstations
+
+* If you have a linux workstation, and forget its name, just use `username.lin` (.flatironinstitute.org)
+
+
+## VPN
+
+* If you have a *Foundation-owned* Mac laptop, it should have the FI VPN pre-configured (if not, contact IT)
+* VPN is not available on Linux laptops or self-managed machines
