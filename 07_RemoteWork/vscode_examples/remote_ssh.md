@@ -1,2 +1,0 @@
-# VSCode - Remote-SSH extension
-
