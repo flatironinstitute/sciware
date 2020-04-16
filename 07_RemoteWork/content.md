@@ -97,12 +97,12 @@ Host *
 ControlPath ~/.ssh/.%r@%h:%p
 ```
 
-Now if you run `ssh myhost` in two different windows, the second we re-use the first connection without authentication.
+Now if you run `ssh myhost` in two different windows, the second will re-use the first connection without authentication.
 
 
 ### Compression
 
-If you're on a *slow* connection (like DSL), compression may help
+If you're on a *slow* connection, compression may help
 
 ```
 Compression yes
@@ -110,7 +110,7 @@ Compression yes
 
 ### Keep alive
 
-If your router (or, horrors, ISP) drops idle connections, enable keep-alives:
+If your router (or, horrors, ISP) drops idle connections, enable keep-alives
 
 ```
 ServerAliveInterval 60
@@ -153,7 +153,7 @@ ProxyJump gateway
 DynamicForward 21099
 ```
 
-Now configure your browser to use a SOCKS5 proxy at 127.0.0.1:21099 (or use something like `runsocks`)
+Now configure your browser to use a SOCKS5 proxy at `127.0.0.1:21099` (or use something like `runsocks`)
 
 ### Forward only
 
@@ -182,10 +182,7 @@ ForwardX11 yes
 ForwardX11Trusted yes
 ```
 
-Many application need trusted (same as `-Y`) but beware of security implications (e.g., keylogging).
+* Many application need trusted (same as `-Y`) but beware of security implications (e.g., keylogging).
+* Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  To disable:
 
-Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  To disable:
-
-```
-ForwardX11Timeout 0
-```
+        ForwardX11Timeout 0
