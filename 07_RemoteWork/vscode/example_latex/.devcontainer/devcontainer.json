@@ -1,0 +1,16 @@
+// See https://aka.ms/vscode-remote/containers for the
+// documentation about the devcontainer.json format
+{
+	"name": "Latex in Ubuntu 18.04",
+	"context": "..",
+	"dockerFile": "Dockerfile",
+	"extensions": [
+        "eamodio.gitlens",
+		"james-yu.latex-workshop",
+		"stkb.rewrap"
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ".devcontainer/post_create.sh",
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
