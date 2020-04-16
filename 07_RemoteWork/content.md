@@ -47,7 +47,7 @@ Activities where participants all actively work to foster an environment which e
 ## Today's Agenda
 
 - Zoom Lessons
-- Remote Access Overview
+- Remote Access Overview (ssh)
 - Remote Display (XQuartz, X11, VNC)
 - Persistent Development Environments
 - Discussion, Open Share
