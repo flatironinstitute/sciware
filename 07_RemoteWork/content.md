@@ -61,7 +61,7 @@ Host *
 ### Keypairs
 
 * Keypairs let you authenticate to some hosts
-* Generate a new private/public key pair:
+* Generate a new private/public key pair
 
         ssh-keygen -t ed25519 -f ~/.ssh/id_mykey
 
@@ -70,7 +70,7 @@ Host *
 * The public key (`id_mykey.pub`) can be put on servers to accept the private key
 
 
-* Use it in *client* config:
+* Use it in *client* config
 
         IdentityFile ~/.ssh/id_mykey
         KbdInteractiveAuthentication no
@@ -80,14 +80,14 @@ Host *
         ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6+dWRKWnpvs+JQcA1I6RW2Lq11Q/CWu87I3SZXYsYw
 
 * Or use `ssh-copy-id -i ~/.ssh/id_mykey host`
-* You can also set additional options/restrictions per key:
+* You can also set additional options/restrictions per key
 
         from="my.client.com" environment="TERM=screen" command="..." ssh-ed25519 ...
 
 
 ### ControlMaster
 
-Another way to avoid authentication when reconnecting is to re-use a single connection:
+Another way to avoid authentication when reconnecting is to re-use a single connection
 
 ```
 Host myhost
@@ -97,7 +97,7 @@ Host *
 ControlPath ~/.ssh/.%r@%h:%p
 ```
 
-Now if you run `ssh myhost` in two different windows, the second will re-use the first connection without authentication.
+Now if you run `ssh myhost` in two different windows, the second will re-use the first connection without authentication
 
 
 ### Compression
@@ -157,15 +157,11 @@ Now configure your browser to use a SOCKS5 proxy at `127.0.0.1:21099` (or use so
 
 ### Forward only
 
-Sometimes you want to connect only in order to setup forwards, and don't need a shell.
+* Sometimes you want to connect only to setup forwards, and don't need a shell
 
-```
-ExitOnForwardFailure yes
-```
+        ExitOnForwardFailure yes
 
-```
-ssh -Nf host
-```
+        ssh -Nf host
 
 
 ### Advanced forwarding
@@ -182,7 +178,7 @@ ForwardX11 yes
 ForwardX11Trusted yes
 ```
 
-* Many application need trusted (same as `-Y`) but beware of security implications (e.g., keylogging).
-* Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  To disable:
+* Many application need trusted (same as `-Y`) but beware of security implications (e.g., keylogging)
+* Without trusted, there is a timeout (default 20 min), after which X11 will stop working.  Disable with
 
         ForwardX11Timeout 0
