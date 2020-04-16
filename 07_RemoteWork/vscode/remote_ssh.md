@@ -12,7 +12,7 @@ The use cases go beyond code development.
 
 ### Step 1: Install the Remote-SSH vscode extension
 
-[![Alt text](https://img.youtube.com/vi/8jcrKcAGpD0/0.jpg)](https://www.youtube.com/watch?v=8jcrKcAGpD0)
+[![Install Remote-SSH extension](https://img.youtube.com/vi/8jcrKcAGpD0/0.jpg)](https://www.youtube.com/embed/8jcrKcAGpD0)
 
 ### Step 2: Set up passwordless ssh log in to the remote machine
 
@@ -27,14 +27,14 @@ See [this guide](../content.md) for more information.
 * Enter the ssh login information (e.g., user@host.com)
 * Open a folder on the remote machine
 
-[![Alt text](https://img.youtube.com/vi/pByJPvqqXuU/0.jpg)](https://www.youtube.com/watch?v=pByJPvqqXuU)
+[![Open a remote folder](https://img.youtube.com/vi/pByJPvqqXuU/0.jpg)](https://www.youtube.com/embed/pByJPvqqXuU)
 
 ### Use cases
 
 * Use it as a terminal (vscode integrated terminal)
 * Use it as a file explorer (vscode integrated file explorer)
 * Use it as a code editor
-    - Amazing integration between local and remote extensions
+    - Powerful integration between local and remote extensions
     - Full speed of local file editing (syntax highlighting, completion, etc.)
     - Code parsing, navigation, uses remotely installed extensions
 * Drag/drop to copy files to/from the remote computer
