@@ -9,3 +9,4 @@ A developing series of meetings about software development for science.
 - [Debugging](04_Debugging): Aug 29, 2019 presentation of several debugging tools in various coding environments and languages
 - [Parallel and Distributed Computing](05_Parallelization): Oct 17, 2019 introduction to parallel and distributed computing concepts and approaches
 - [Modern C++](06_ModernC++): Jan 30, 2020 overview of recent C++ language developments
+- [Working Remotely](07_RemoteWork): Apr 16, 2020 (by Zoom) community tools and tips for working, accessing computing, services, and data, remotely
