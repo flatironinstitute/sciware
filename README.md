@@ -10,3 +10,4 @@ A developing series of meetings about software development for science.
 - Oct 17, 2019 [Parallel and Distributed Computing](05_Parallelization): introduction to parallel and distributed computing concepts and approaches
 - Jan 30, 2020 [Modern C++](06_ModernC++): overview of recent C++ language developments
 - Apr 16, 2020 [Working Remotely](07_RemoteWork): community tools and tips for working, accessing computing, services, and data, remotely
+- May 14, 2020 [Introduction to Julia](08_Julia)
