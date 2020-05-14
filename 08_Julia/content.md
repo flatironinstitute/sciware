@@ -33,3 +33,7 @@ Activities where participants all actively work to foster an environment which e
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
 
+
+## Next Sciware
+
+- Intel VTune?  May 28/June 4? (poll on slack)
