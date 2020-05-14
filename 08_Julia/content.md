@@ -47,4 +47,5 @@ Activities where participants all actively work to foster an environment which e
 
 <div class="spacer"></div>
 <div class="spacer"></div>
+
 ### Let us know if you're interested in doing SWC Instructor Training
