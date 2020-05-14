@@ -42,6 +42,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Sciwares in the Pipeline
 
-- Python Performance
+- Python Performance: Date TBD
 - Intro to Github, in collaboration with Software Carpentry.
-  - Let us know if you're interested in doing SWC Instructor Training
+
+### Let us know if you're interested in doing SWC Instructor Training
