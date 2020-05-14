@@ -28,6 +28,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Zoom Specific 
 
+- We are recording for internal and personal use. 
 - If comfortable, please keep video on so we can all see each other's faces.
 - Ok to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
@@ -37,3 +38,10 @@ Activities where participants all actively work to foster an environment which e
 ## Next Sciware
 
 - Intel VTune?  May 28/June 4? (poll on slack)
+
+
+## Sciwares in the Pipeline
+
+- Python Performance
+- Intro to Github, in collaboration with Software Carpentry.
+  - Let us know if you're interested in doing SWC Instructor Training
