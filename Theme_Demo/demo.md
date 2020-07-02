@@ -20,7 +20,7 @@ The spacer is 20px high, you can layer a few of them together.
 
 ## Slide Center Alignment <!-- .slide: class="center" -->
 
-To vertically align a single slide to the center of the page, add `.slide: class="center" ` to a comment next to the the slide header element in the markdown of this page. 
+To vertically align a single slide to the center of the page, add `.slide: class="center" ` to a comment next to the slide header element in the markdown of this page. 
 
 You can also use this method to apply a class to any element by adding `.element class="whatever-class-you-want"` in a comment directly to the right of the element in question.
 
