@@ -55,6 +55,27 @@ Activities where participants all actively work to foster an environment which e
 
 ## Environment variables
 
+
+### Basic terms (Liz)
+
+Slide 1
+
+
+Slide 2
+
+
+
+### Specific variables (Nick)
+
+Slide 1
+
+
+Slide 2
+
+
+
+### Environment control (Robert)
+
 Slide 1
 
 
@@ -64,7 +85,22 @@ Slide 2
 
 ## Shells
 
+
+### Comparison (Dylan)
+
+
+
+### Colors! (Liz)
+
+
+
+### Shell features (Jonathan)
+
 Slide 1
 
 
 Slide 2
+
+
+
+### Extras
