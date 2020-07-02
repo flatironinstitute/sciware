@@ -11,3 +11,5 @@ A developing series of meetings about software development for science.
 - Jan 30, 2020 [Modern C++](06_ModernC++): overview of recent C++ language developments
 - Apr 16, 2020 [Working Remotely](07_RemoteWork): community tools and tips for working, accessing computing, services, and data, remotely
 - May 14, 2020 [Introduction to Julia](08_Julia)
+- Jun 18, 2020 Intel VTune
+- Aug 13, 2020 [Shells and Environments](10_EnvShell)
