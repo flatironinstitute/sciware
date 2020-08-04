@@ -89,6 +89,27 @@ Slide 2
 ### Comparison (Dylan)
 
 
+#### History
+
+<img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
+
+- POSIX standard
+- C vs ALGOL
+
+
+#### Startup files
+
+
+#### Changing your shell
+
+- Most systems: `chsh`
+- FI: email us
+- caveats
+
+
+#### EMACS shell modes?
+
+
 
 ### Colors! (Liz)
 
