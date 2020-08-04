@@ -101,14 +101,14 @@ Slide 2
 <table>
 <thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
 <tbody>
-<tr><td rowspan='2'>bash</td><td>`.bash_profile`|`.bash_login`|`.profile`</td><td>`.bashrc`</td></tr>
-<tr>   <td>`.bash_logout`</td></tr>
-<tr><td rowspan='4'>zsh</td><td colspan='3'>`.zshenv`</td><tr>
-<tr>   <td>`.zprofile`</td></tr>
-<tr>   <td colspan='2'>`.zshrc`</td></tr>
-<tr>   <td>`.zlogin`, `.zlogout`</td></tr>
-<tr><td rowspan='2'>tcsh</td><td colspan='3'>`.tcshrc`|`.cshrc`</td><tr>
-<tr>   <td>`.login`</td></tr>
+<tr><td rowspan='2'>bash</td><td><code>.bash_profile</code>|<code>.bash_login</code>|<code>.profile</code></td><td><code>.bashrc</code></td><td></td></tr>
+<tr>   <td><code>.bash_logout</code></td><td></td><td></td></tr>
+<tr><td rowspan='4'>zsh</td><td colspan='3'><code>.zshenv</code></td></tr>
+<tr>   <td><code>.zprofile</code></td><td></td><td></td></tr>
+<tr>   <td colspan='2'><code>.zshrc</code></td><td></td></tr>
+<tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td></td><td></td></tr>
+<tr><td rowspan='2'>tcsh</td><td colspan='3'><code>.tcshrc</code>|<code>.cshrc</code></td></tr>
+<tr>   <td><code>.login</code></td><td></td><td></td></tr>
 </tbody>
 </table>
 
