@@ -87,13 +87,28 @@ Slide 2
 
 ### Comparison (Dylan)
 
+- Ways to interact with the system (surface, outer layer, vs kernel)
+- Run commands, other programs
+
 
 #### History
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- POSIX standard
-- ALGOL vs C
+- control structure syntax: ALGOL (`fi`) vs. C (`{}`)
+- interactive vs. scripting
+- POSIX.2 standard: widely adopted
+
+
+#### Present
+
+- most modern shells have similar features
+- tcsh invented history, alias, others copied
+- zsh developed sophisticated tab-completion, prompts, bash followed
+
+- bash: most common shell, especially for scripting, often assumed default, lags behind but catches up
+- zsh: many features, large, more permissive license (cf Apple), oh my zsh (plugins, themes), many interactive features
+- opinions?
 
 
 #### Startup files
@@ -108,7 +123,7 @@ Slide 2
 <tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
 <tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
 <tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
-<tr>   <td><code>.login</code></td><td>-</td><td>-</td></tr>
+<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
 </tbody>
 </table>
 
@@ -117,7 +132,8 @@ Slide 2
 
 - Most systems: `chsh`
 - FI: email scicomp@flatironinstitute.org
-- caveats
+- caveat: many things only work out of the box in bash (modules, source)
+- alternative: exec different shell from `.bash_profile`
 
 
 #### EMACS shell modes?
