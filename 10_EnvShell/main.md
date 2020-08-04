@@ -99,6 +99,7 @@ Slide 2
 #### Startup files
 
 <table>
+<colgroup><col align='right'><col align='center'><col align='center'><col align='center'></colgroup>
 <thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
 <tbody>
 <tr><td rowspan='2'>bash</td><td><code>.bash_profile</code>|<code>.bash_login</code>|<code>.profile</code></td><td><code>.bashrc</code></td><td></td></tr>
