@@ -85,7 +85,6 @@ Slide 2
 
 ## Shells
 
-
 ### Comparison (Dylan)
 
 
@@ -98,6 +97,20 @@ Slide 2
 
 
 #### Startup files
+
+<table>
+<thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
+<tbody>
+<tr><td rowspan='2'>bash</td><td>`.bash_profile`|`.bash_login`|`.profile`</td><td>`.bashrc`</td></tr>
+<tr>   <td>`.bash_logout`</td></tr>
+<tr><td rowspan='4'>zsh</td><td colspan='3'>`.zshenv`</td><tr>
+<tr>   <td>`.zprofile`</td></tr>
+<tr>   <td colspan='2'>`.zshrc`</td></tr>
+<tr>   <td>`.zlogin`, `.zlogout`</td></tr>
+<tr><td rowspan='2'>tcsh</td><td colspan='3'>`.tcshrc`|`.cshrc`</td><tr>
+<tr>   <td>`.login`</td></tr>
+</tbody>
+</table>
 
 
 #### Changing your shell
