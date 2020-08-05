@@ -107,7 +107,7 @@ Slide 2
 - zsh developed sophisticated tab-completion, prompts, bash followed
 
 - bash: most common shell, especially for scripting, often assumed default, lags behind but catches up
-- zsh: many features, large, more permissive license (cf Apple), oh my zsh (plugins, themes), many interactive features
+- zsh: many interactive features, large, more permissive license (cf Apple), oh my zsh (plugins, themes)
 - opinions?
 
 
@@ -134,6 +134,12 @@ Slide 2
 - FI: email scicomp@flatironinstitute.org
 - caveat: many things only work out of the box in bash (modules, source)
 - alternative: exec different shell from `.bash_profile`
+
+```
+if [[ $- == *i* && -x /bin/zsh ]] ; then
+	SHELL=/bin/zsh exec /bin/zsh -l
+fi
+```
 
 
 #### EMACS shell modes?
