@@ -8,7 +8,7 @@ Compilation options deep within a build process?
 
 One, if not *the*, mechanism to do this is via modifications to the "environment" in which a program executes. This "environment" is simply a namespace,
 a collection of names and values associated with them. Standard library functions provide a way for a program to query this namespace and thus determine the
-value associated with a name. 
+value associated with a name. Shells provide mechanisms for users to display and modify the environment.
 
 Certain names, are, in effect "reserved", that is dedicated for a well defined, documented use. We'll discuss a few of those
 here:  
@@ -66,4 +66,6 @@ Ordering is significant (will stop with the first found).
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
 how much work it has to do to find the program).  
 
-export VarName vs export VarName=Value vs VarName=Value
+export VarName vs export VarName=Value vs VarName=Value vs VarName=Value myProg ...  
+
+Propagation of environment across shell invocations (and rc files), salloc/srun/sbatch, mpiexec, mpirun, ...  
