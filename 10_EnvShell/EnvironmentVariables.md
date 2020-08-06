@@ -32,7 +32,7 @@ but it can do more:
     [carriero@scclin001 carriero]$
 
 
-Certain names are, in effect "reserved", that is they are dedicated for a well defined, documented use. We'll discuss a few of those
+Certain names are, in effect, "reserved", that is they are dedicated for a well defined, documented use. We'll discuss a few of those
 here:  
 
 PATH  
