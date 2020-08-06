@@ -54,9 +54,10 @@ what is "reserved", so you'll want to give your variables long names with a pref
 ## Control how programs are started
 ### PATH  
 This should be set to a ":" separated list of *directories*.  
+
 When, at the shell prompt, you type:  
 `foo/bar/myProg`   
-the underlying library call used to run the program looks for the executable in the location you specified. If, however, you type:  
+the underlying system call used to run the program looks for the executable in the location you specified. If, however, you type:  
 `myProg`  
 that library call will begin searching for the executable using the value of `PATH`.
 
@@ -77,7 +78,7 @@ Starting with a "vanilla" PATH:
     stat("/usr/bin/foodle", 0x7ffdab36e030) = -1 ENOENT (No such file or directory)
     bash: foodle: command not found
 
-Let's try a few other directories:  
+Let's try searching a few other directories:  
 
     [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH
     [carriero@scclin001 carriero]$ strace -e stat -o >(grep foodle) bash -c foodle
