@@ -95,19 +95,30 @@ Slide 2
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- control structure syntax: ALGOL (`fi`) vs. C (`{}`)
-- interactive vs. scripting
-- POSIX.2 standard: widely adopted
+
+#### Evolution
+
+- control structure syntax: ALGOL (`fi`), C (`{}`), other...
+- ksh introduced functions
+- tcsh invented history, alias, other interactive features
+- bash developed (and spun off) readline, key bindings
+- zsh added sophisticated tab-completion, prompts
+- POSIX.2 standardized minimal shell features (cf., dash)
 
 
-#### Present
+#### Preferences
 
-- most modern shells have similar features
-- tcsh invented history, alias, others copied
-- zsh developed sophisticated tab-completion, prompts, bash followed
-
-- bash: most common shell, especially for scripting, often assumed default, lags behind but catches up
-- zsh: many interactive features, large, more permissive license (cf Apple), oh my zsh (plugins, themes)
+- most modern shells adopted popular, similar features
+- bash
+   - most common shell
+   - especially for scripting
+   - often assumed default
+   - lags behind but catches up
+- zsh
+   - many interactive features
+   - large, superset and compatible with both tcsh and bash
+   - more permissive license (cf Apple)
+   - oh my zsh (plugins, themes)
 - opinions?
 
 
