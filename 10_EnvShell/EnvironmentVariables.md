@@ -168,7 +168,7 @@ Most would consider this to be a hack, but on occasion it is a very useful one. 
 ## Control build process
 ### CPATH
 This should be set to a ":" separated list of *directories*.  
-Somewhat like `PATH` provides a list of locations to search for C include files.
+Somewhat like `PATH`, this provides a list of locations to search for C include files.
 
 ### LIBRARY_PATH
 This should be set to a ":" separated list of *directories*.  
@@ -182,4 +182,4 @@ between `LIBRARY_PATH` and `LD_LIBRARY_PATH`.
 This is by no means an exhaustive list. The main point is that environment variables are used to alter a wide variety of behaviors. Check documentation
 for new ones that might be relevant for your workflow.
 
-Not within scope: Propagation of environment across shell invocations (and impact of rc files), salloc/srun/sbatch, mpiexec, mpirun, ...  
+Not within scope: Propagation of environment across shell invocations (and impact of rc files), salloc/srun/sbatch, mpiexec, mpirun, strange idempotency of module, ...  
