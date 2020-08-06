@@ -163,7 +163,8 @@ write temp files to a local storage area, rather than a shared file system, can 
 ### HOME
 This should be set to a directory.  
 
-Some installers do not offer an easy way to specify the target of an installation. Other programs just assume they can leave behind config
+Some installers do not offer an easy way to specify the target of an installation and simply put the install in a subdirectory of
+your home directory. Other programs just assume they can leave behind config
 and status files in your home directory, even if you don't want them to. In cases where this matters a great deal, you can try:  
 
     HOME=/my/install/target installer ...
