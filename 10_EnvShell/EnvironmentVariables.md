@@ -114,7 +114,7 @@ A very common mistake:
     bash: strace: command not found
     [carriero@scclin001 carriero]$
 
-For day to day use, `which` is you friend here. `which myProg` will return the full path (if one is found) of the executable that would be
+For day to day use, `which` is your friend here. `which myProg` will return the full path (if one is found) of the executable that would be
 invoked if you were to have entered just `myProg`.
 
 Ordering is significant (will stop with the first found).  
