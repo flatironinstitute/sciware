@@ -105,10 +105,11 @@ Slide 2
 - zsh added sophisticated tab-completion, prompts
 - POSIX.2 standardized minimal shell features (cf., dash)
 
+most modern shells copied and adopted similar, popular features
+
 
 #### Preferences
 
-- most modern shells adopted popular, similar features
 - bash
    - most common shell
    - especially for scripting
@@ -129,12 +130,12 @@ Slide 2
 <tbody>
 <tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
 <tr>   <td><code>.bash_logout</code></td><td>-</td><td>-</td></tr>
+<tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
+<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
 <tr>   <td><code>.zprofile</code></td><td>-</td><td>-</td></tr>
 <tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
 <tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
-<tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
-<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
 </tbody>
 </table>
 
