@@ -105,7 +105,7 @@ Slide 2
 - zsh added sophisticated tab-completion, prompts
 - POSIX.2 standardized minimal shell features (cf., dash)
 
-most modern shells copied and adopted similar, popular features
+most modern shells copied, adopted similar, popular features
 
 
 #### Preferences
@@ -118,7 +118,7 @@ most modern shells copied and adopted similar, popular features
 - zsh
    - many interactive features
    - large, superset and compatible with both tcsh and bash
-   - more permissive license (cf Apple)
+   - more permissive license (*Apple*)
    - oh my zsh (plugins, themes)
 - opinions?
 
@@ -144,10 +144,10 @@ most modern shells copied and adopted similar, popular features
 
 - Most systems: `chsh`
 - FI: email scicomp@flatironinstitute.org
-- caveat: many things only work out of the box in bash (modules, source)
+- caveat: some things only work out of the box in bash (modules, source)
 - alternative: exec different shell from `.bash_profile`
 
-```
+```sh
 if [[ $- == *i* && -x /bin/zsh ]] ; then
 	SHELL=/bin/zsh exec /bin/zsh -l
 fi
