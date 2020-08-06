@@ -36,7 +36,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Feedback
 
-- Future sessions planned?
+- Future sessions planned:
+    - github with Software Carpentry Sep 25-26 (2 day session!)
+    - Designing APIs and software library interfaces
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -95,10 +97,12 @@ Slide 2
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
+- interactive, slowly developed more scripting features
+- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), *other*...
+
 
 #### Evolution
 
-- control structure syntax: ALGOL (`fi`), C (`{}`), other...
 - ksh introduced functions
 - tcsh invented history, alias, other interactive features
 - bash developed (and spun off) readline, key bindings
@@ -127,6 +131,7 @@ most modern shells copied, adopted similar, popular features
 
 #### Changing your shell
 
+- Current shell: `$SHELL`, `ps`
 - Most systems: `chsh`
 - FI: email scicomp@flatironinstitute.org
 - caveat: some things only work out of the box in bash (modules, source)
@@ -142,13 +147,13 @@ fi
 #### Preferences
 
 - bash
-   - most common shell
-   - especially for scripting
+   - most common shell, especially for scripting
    - often assumed default
    - lags behind but catches up
+- tcsh: largely fallen out of favor, non-POSIX, but maintained
 - zsh
    - many interactive features
-   - large, superset and compatible with both tcsh and bash
+   - large, superset and **compatible with bash** and tcsh
    - more permissive license (*Apple*)
    - oh my zsh (plugins, themes)
 - opinions?
