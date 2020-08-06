@@ -40,29 +40,30 @@ that library call will begin searching for the executable using the value of `PA
 
 Comapre:  
 
-    [carriero@scclin001 carriero]$ PATH=/bin:/usr/bin                                                                                                                                                                                    
-    [carriero@scclin001 carriero]$ echo $PATH                                                                                                                                                                                            
-    /bin:/usr/bin                                                                                                                                                                                                                        
-    [carriero@scclin001 carriero]$ strace -e stat bash -c /a/b/c/foodle 2>&1 | grep foodle                                                                                                                                               
-    stat("/a/b/c/foodle", 0x7fff8d763390)   = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    stat("/a/b/c/foodle", 0x7fff8d763370)   = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    bash: /a/b/c/foodle: No such file or directory                                                                                                                                                                                       
-    [carriero@scclin001 carriero]$ strace -e stat bash -c foodle 2>&1 | grep foodle                                                                                                                                                      
-    stat("/bin/foodle", 0x7ffe19c76a50)     = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    stat("/usr/bin/foodle", 0x7ffe19c76a50) = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    bash: foodle: command not found                                                                                                                                                                                                      
-    [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH                                                                                                                                                                   
-    [carriero@scclin001 carriero]$ strace -e stat bash -c foodle 2>&1 | grep foodle                                                                                                                                                      
-    stat("/here/foodle", 0x7ffd2b1342c0)    = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    stat("/there/foodle", 0x7ffd2b1342c0)   = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    stat("/everywhere/foodle", 0x7ffd2b1342c0) = -1 ENOENT (No such file or directory)                                                                                                                                                   
-    stat("/bin/foodle", 0x7ffd2b1342c0)     = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    stat("/usr/bin/foodle", 0x7ffd2b1342c0) = -1 ENOENT (No such file or directory)                                                                                                                                                      
-    bash: foodle: command not found                                                                                                                                                                                                      
+    [carriero@scclin001 carriero]$ PATH=/bin:/usr/bin   
+    [carriero@scclin001 carriero]$ echo $PATH     
+    /bin:/usr/bin              
+    [carriero@scclin001 carriero]$ strace -e stat bash -c /a/b/c/foodle 2>&1 | grep foodle    
+    stat("/a/b/c/foodle", 0x7fff8d763390)   = -1 ENOENT (No such file or directory)     
+    stat("/a/b/c/foodle", 0x7fff8d763370)   = -1 ENOENT (No such file or directory)    
+    bash: /a/b/c/foodle: No such file or directory                   
+    [carriero@scclin001 carriero]$ strace -e stat bash -c foodle 2>&1 | grep foodle     
+    stat("/bin/foodle", 0x7ffe19c76a50)     = -1 ENOENT (No such file or directory)    
+    stat("/usr/bin/foodle", 0x7ffe19c76a50) = -1 ENOENT (No such file or directory)    
+    bash: foodle: command not found                                  
+    [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH       
+    [carriero@scclin001 carriero]$ strace -e stat bash -c foodle 2>&1 | grep foodle  
+    stat("/here/foodle", 0x7ffd2b1342c0)    = -1 ENOENT (No such file or directory)   
+    stat("/there/foodle", 0x7ffd2b1342c0)   = -1 ENOENT (No such file or directory)   
+    stat("/everywhere/foodle", 0x7ffd2b1342c0) = -1 ENOENT (No such file or directory)  
+    stat("/bin/foodle", 0x7ffd2b1342c0)     = -1 ENOENT (No such file or directory)     
+    stat("/usr/bin/foodle", 0x7ffd2b1342c0) = -1 ENOENT (No such file or directory)   
+    bash: foodle: command not found                                                
     [carriero@scclin001 carriero]$  
 
 
 Ordering is significant (will stop with the first found).  
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
-how much work it has to do to find the program).
+how much work it has to do to find the program).  
+
 export VarName vs export VarName=Value vs VarName=Value
