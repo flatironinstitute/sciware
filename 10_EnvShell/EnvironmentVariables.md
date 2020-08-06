@@ -78,6 +78,9 @@ Starting with a "vanilla" PATH:
     stat("/usr/bin/foodle", 0x7ffdab36e030) = -1 ENOENT (No such file or directory)
     bash: foodle: command not found
 
+To help gain a better understanding of what's going, these examples user `strace` to look at the system calls being invoked.
+We use a combination of filters to reduce this to just the relevant bits.  
+
 Let's try searching a few other directories:  
 
     [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH
@@ -111,6 +114,8 @@ A very common mistake:
     bash: strace: command not found
     [carriero@scclin001 carriero]$
 
+For day to day use, `which` is you friend here. `which myProg` will return the full path (if one is found) of the executable that would be
+invoked if you were to have entered just `myProg`.
 
 Ordering is significant (will stop with the first found).  
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
