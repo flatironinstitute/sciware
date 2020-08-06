@@ -108,21 +108,6 @@ Slide 2
 most modern shells copied, adopted similar, popular features
 
 
-#### Preferences
-
-- bash
-   - most common shell
-   - especially for scripting
-   - often assumed default
-   - lags behind but catches up
-- zsh
-   - many interactive features
-   - large, superset and compatible with both tcsh and bash
-   - more permissive license (*Apple*)
-   - oh my zsh (plugins, themes)
-- opinions?
-
-
 #### Startup files
 
 <table>
@@ -152,6 +137,21 @@ if [[ $- == *i* && -x /bin/zsh ]] ; then
 	SHELL=/bin/zsh exec /bin/zsh -l
 fi
 ```
+
+
+#### Preferences
+
+- bash
+   - most common shell
+   - especially for scripting
+   - often assumed default
+   - lags behind but catches up
+- zsh
+   - many interactive features
+   - large, superset and compatible with both tcsh and bash
+   - more permissive license (*Apple*)
+   - oh my zsh (plugins, themes)
+- opinions?
 
 
 #### EMACS shell modes?
