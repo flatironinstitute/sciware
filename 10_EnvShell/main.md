@@ -51,10 +51,42 @@ Activities where participants all actively work to foster an environment which e
 
 #### Defining our Terms
 
+One often hears these used interchangably so before we discuss the configuration, let's clairfy.
+
     - Kernel 🌰
     - Shell 🐚
-    - Terminal 🖥️
-    - Process 🧵
+    - Command Line ⌨️
+    - Console 🖥️
+
+#### Kernel & Operating System
+
+- Bridge between application software and hardware
+- The Operating System is comprised of a kernel and a bunch of other applications that control the very low-level aspects of the hardware and provides APIs to software to use them.
+- Note that Linux is not an OS, but rather a kernel.
+
+#### Shell
+
+- Shell interface 🐚 surrounds the kernel just as a nutshell surrounds a nut 🥜.
+- Shell is a program that takes commands, gives them to the operating system to perform, and returns output.
+- In the old days, it was the only user interface. Nowadays, we have graphical user interfaces (GUIs) in addition to command line interfaces (CLIs) such as the shell.
+
+#### Shell Examples
+
+- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh, written by Steve Bourne) acts as the shell program.
+- Besides bash, other shell programs include: fish, ksh, tcsh, and zsh.
+- Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.
+
+#### Terminal
+
+- Terminal is a program that runs a shell.
+- Originally a physical device, now we run software terminal emulators.
+- Many different terminal emulators (Gnome-Terminal, iTerm), they all do the same thing - give you access to a shell session.
+- Opinions?
+
+#### Console
+
+- Console originally referred to the physical text entry and display device for system adminstration messages.
+- Now often refers specifically to system administration messages
 
 #### Bash Startup Process
 
