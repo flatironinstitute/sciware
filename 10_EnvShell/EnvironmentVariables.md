@@ -116,6 +116,27 @@ Ordering is significant (will stop with the first found).
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
 how much work it has to do to find the program).  
 
+Note that this behavior is not confined to the shell:
+
+    [carriero@scclin001 carriero]$ echo $PATH
+    /here:/there:/everywhere:/bin:/usr/bin
+    [carriero@scclin001 carriero]$ strace -f -o >(grep foodle) python -c 'import os; os.execvp("foodle", ["foodle"])'
+    1789869 execve("/bin/python", ["python", "-c", "import os; os.execvp(\"foodle\", ["...], [/* 18 vars */]) = 0
+    1789869 execve("/here/foodle", ["foodle"], [/* 18 vars */]) = -1 ENOENT (No such file or directory)
+    1789869 execve("/there/foodle", ["foodle"], [/* 18 vars */]) = -1 ENOENT (No such file or directory)
+    1789869 execve("/everywhere/foodle", ["foodle"], [/* 18 vars */]) = -1 ENOENT (No such file or directory)
+    1789869 execve("/bin/foodle", ["foodle"], [/* 18 vars */]) = -1 ENOENT (No such file or directory)
+    1789869 execve("/usr/bin/foodle", ["foodle"], [/* 18 vars */]) = -1 ENOENT (No such file or directory)
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/usr/lib64/python2.7/os.py", line 344, in execvp
+	_execvpe(file, args)
+      File "/usr/lib64/python2.7/os.py", line 380, in _execvpe
+	func(fullname, *argrest)
+    OSError: [Errno 2] No such file or directory
+    [carriero@scclin001 carriero]$
+
+
 ### LD_LIBRARY_PATH
 This should be set to a ":" separated list of *directories*.  
 
