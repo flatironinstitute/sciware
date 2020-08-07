@@ -96,7 +96,7 @@ Let's try searching a few other directories:
     stat("/usr/bin/foodle", 0x7ffece34e890) = -1 ENOENT (No such file or directory)
     bash: foodle: command not found
 
-I mean it this time (why is this relevant?):  
+I mean it this time (why is this example relevant?):  
 
     [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH
     [carriero@scclin001 carriero]$ strace -e stat -o >(grep foodle) bash -c foodle
