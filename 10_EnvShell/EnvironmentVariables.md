@@ -3,34 +3,37 @@
 When you run a program that you wrote, say `myProg`, you can arrange for it to accept arguments via the command line that will alter its behavior:  
 `myProg arg0 arg1 ...`  
 
-But what if you are trying to control the behavior of something that is running "behind the scenes"? A library? The mechanism Linux uses to launch a program?
+But what if you are trying to alter the behavior of something that is running "behind the scenes" beyond the reach of command line arguments?
+A library? The mechanism Linux uses to launch a program?
 Compilation options deep within a build process?
 
 One, if not *the*, mechanism to do this is via modifications to the "environment" in which a program executes. This "environment" is simply a namespace,
-a collection of names and values associated with them. Standard library functions provide a way for a program to query this namespace and thus determine the
-value associated with a name.
+a collection of names and the values associated with them. Standard library functions provide a way for a program to query this namespace and thus determine the
+value associated with a name, and then alter its behavior accordingly.
 
 # Shells and the Environment
 
 Shells provide mechanisms for users to modify the environment. For `bash` this mechanism is identical to managing
-normal variables. Environment variables are distinguished by being marked for "export". Some examples, note: `env` is used here to display the environment,
-but it can do more:
+normal variables. Environment variables are distinguished by being marked for "export". Some examples (note: `env` is used here to display the environment,
+but it can do more):
 
-    [carriero@scclin001 carriero]$ myVar=1234
-    [carriero@scclin001 carriero]$ env | grep myVar
-    [carriero@scclin001 carriero]$ export myVar
-    [carriero@scclin001 carriero]$ env | grep myVar
-    myVar=1234
-    [carriero@scclin001 carriero]$ export myVar2=4321
-    [carriero@scclin001 carriero]$ env | grep myVar
-    myVar2=4321
-    myVar=1234
-    [carriero@scclin001 carriero]$ myVar3=5678 bash -c "env | grep myVar"
-    myVar3=5678
-    myVar2=4321
-    myVar=1234
-    [carriero@scclin001 carriero]$
-
+    [carriero@scclin001 ~]$ myVar0=000
+    [carriero@scclin001 ~]$ env | grep myVar
+    [carriero@scclin001 ~]$ export myVar0
+    [carriero@scclin001 ~]$ env | grep myVar
+    myVar0=000
+    [carriero@scclin001 ~]$ export myVar1=111
+    [carriero@scclin001 ~]$ env | grep myVar
+    myVar1=111
+    myVar0=000
+    [carriero@scclin001 ~]$ myVar2=222 bash -c "env | grep myVar"
+    pmyVar2=222
+    myVar1=111
+    myVar0=000
+    [carriero@scclin001 ~]$ env | grep myVar
+    myVar1=111
+    myVar0=000
+    [carriero@scclin001 ~]$ 
 
 Certain names are, in effect, "reserved", that is they are dedicated for a well defined, documented use. We'll discuss a few of those
 here:  
@@ -38,6 +41,7 @@ here:
 PATH  
 LD_LIBRARY_PATH  
 LD_PRELOAD  
+PYTHONPATH  
 OMP_NUM_THREADS  
 HOME  
 TMPDIR  
@@ -148,8 +152,54 @@ This should be set to a ":" separated list of *directories*.
 List the locations to search for shared libraries when executing a program.
 
 ### LD_PRELOAD
-This should be set to a ":" separated list of shared object *files*. Very powerful. Very dangerous. Can be used, for example, to
+This should be set to a ":" separated list of shared object *files*.  
+
+Very powerful. Very dangerous. Can be used, for example, to
 swap out one memory allocation scheme for another.
+
+### PYTHONPATH
+This should be set to a ":" separated list of *directories*.  
+
+Same general idea as LD_LIBRARY_PATH, but for python modules.
+
+    [carriero@scclin001 ~]$ python3
+    Python 3.6.8 (default, Apr 25 2019, 21:02:35) 
+    [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import sys
+    >>> for e in sys.path:
+    ...    print(e)
+    ... 
+
+    /usr/lib64/python36.zip
+    /usr/lib64/python3.6
+    /usr/lib64/python3.6/lib-dynload
+    /mnt/home/carriero/.local/lib/python3.6/site-packages
+    /usr/lib64/python3.6/site-packages
+    /usr/lib/python3.6/site-packages
+    >>> 
+    [carriero@scclin001 ~]$ export PYTHONPATH=/here:/there:/everywhere:$PYTHONPATH
+    [carriero@scclin001 ~]$ python3
+    Python 3.6.8 (default, Apr 25 2019, 21:02:35) 
+    [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import sys
+    >>> for e in sys.path:
+    ...    print(e)
+    ... 
+
+    /here
+    /there
+    /everywhere
+    /mnt/home/carriero
+    /usr/lib64/python36.zip
+    /usr/lib64/python3.6
+    /usr/lib64/python3.6/lib-dynload
+    /mnt/home/carriero/.local/lib/python3.6/site-packages
+    /usr/lib64/python3.6/site-packages
+    /usr/lib/python3.6/site-packages
+    >>> 
+    [carriero@scclin001 ~]$ 
 
 ## Control how programs behave
 ### OMP_NUM_THREADS
