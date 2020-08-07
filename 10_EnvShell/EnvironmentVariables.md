@@ -178,6 +178,8 @@ Same general idea as LD_LIBRARY_PATH, but for python modules.
     /usr/lib64/python3.6/site-packages
     /usr/lib/python3.6/site-packages
     >>> 
+    [carriero@scclin001 ~]$  
+####
     [carriero@scclin001 ~]$ export PYTHONPATH=/here:/there:/everywhere:$PYTHONPATH
     [carriero@scclin001 ~]$ python3
     Python 3.6.8 (default, Apr 25 2019, 21:02:35) 
