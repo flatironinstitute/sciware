@@ -1,23 +1,29 @@
 ---
 title: index
+layout: slides
 ---
 
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/flatiron.css" id="theme" />
+  </head>
   <body class="landing">
     <h2>Pages</h2>
     <ul>
-    {% assign sorted_pages  = site.pages | where: "nav_include", "true" | sort:"value" %}
-      {% for p in sorted_pages %}
-        {% if p.title %}
-          {% unless p.url contains '/reveal.js/' %}
-            <li>
-              <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
-            </li>
-          {% endunless %}
-        {% endif %}
-      {% endfor %}
+      {% assign sorted_pages = site.pages | where: "nav_include", "true" |
+      sort:"site.title" %} {% for p in sorted_pages %} {% if p.title %} {%
+      unless p.url contains '/reveal.js/' %}
+      <li>
+        <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
+      </li>
+      {% endunless %} {% endif %} {% endfor %}
     </ul>
   </body>
 </html>
