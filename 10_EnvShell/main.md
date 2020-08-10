@@ -51,44 +51,51 @@ Activities where participants all actively work to foster an environment which e
 
 #### Defining our Terms
 
-One often hears these used interchangably so before we discuss the configuration, let's clairfy.
+One often hears the following used interchangably. Let's clairfy.
 
-    - Kernel 🌰
-    - Shell 🐚
-    - Command Line ⌨️
-    - Console 🖥️
+    - Kernel
+    - Shell
+    - Command Line
+    - Console
 
 #### Kernel & Operating System
 
-- Bridge between application software and hardware
-- The Operating System is comprised of a kernel and a bunch of other applications that control the very low-level aspects of the hardware and provides APIs to software to use them.
-- Note that Linux is not an OS, but rather a kernel.
+- Kernel: the bridge between application software and hardware.
+- Operating System: comprised of a kernel + other applications.
+- Linux can refer to a kernel or an OS built on that kernel.
 
 #### Shell
 
-- Shell interface 🐚 surrounds the kernel just as a nutshell surrounds a nut 🥜.
+- Name origin: Shell interface 🐚 surrounds the kernel just as a nutshell surrounds a nut 🥜.
 - Shell is a program that takes commands, gives them to the operating system to perform, and returns output.
-- In the old days, it was the only user interface. Nowadays, we have graphical user interfaces (GUIs) in addition to command line interfaces (CLIs) such as the shell.
+- In the old days, it was the _only_ user interface. Nowadays, we have graphical user interfaces (GUIs) in addition to command line interfaces (CLIs) such as the shell.
 
 #### Shell Examples
 
-- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh, written by Steve Bourne) acts as the shell program.
-- Besides bash, other shell programs include: fish, ksh, tcsh, and zsh.
+- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
+- Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
 - Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.
 
 #### Terminal
 
 - Terminal is a program that runs a shell.
 - Originally a physical device, now we run software terminal emulators.
-- Many different terminal emulators (Gnome-Terminal, iTerm), they all do the same thing - give you access to a shell session.
+- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator), but they all do the same thing - give you access to a shell session.
 - Opinions?
 
 #### Console
 
 - Console originally referred to the physical text entry and display device for system adminstration messages.
-- Now often refers specifically to system administration messages
+- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger.
+- ```javascript
+  console.log("👋from your web browser.");
+  ```
 
 #### Bash Startup Process
+
+The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently. The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
+
+#### Bash Startup
 
 <img src="img/bashstartup.svg" width="1000" style="border:0;box-shadow:none">
 
@@ -153,9 +160,11 @@ Slide 2
 - alternative: exec different shell from `.bash_profile`
 
 ```
+
 if [[ $- == *i* && -x /bin/zsh ]] ; then
-	SHELL=/bin/zsh exec /bin/zsh -l
+SHELL=/bin/zsh exec /bin/zsh -l
 fi
+
 ```
 
 #### EMACS shell modes?
@@ -169,3 +178,7 @@ Slide 1
 Slide 2
 
 ### Extras
+
+```
+
+```
