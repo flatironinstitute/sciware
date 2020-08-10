@@ -14,7 +14,8 @@ value associated with a name, and then alter its behavior accordingly.
 # Shells and the Environment
 
 Shells provide mechanisms for users to modify the environment. For `bash` this mechanism is identical to managing
-normal variables. Environment variables are distinguished by being marked for "export". Some examples (note: `env` is used here to display the environment,
+normal variables. Environment variables are distinguished by being marked for "export". And once marked for export, a variable will remain
+in the environment, associated with the last value assigned to it. Some examples (note: `env` is used here to display the environment,
 but it can do more):
 
     [carriero@scclin001 ~]$ myVar0=000
@@ -22,17 +23,21 @@ but it can do more):
     [carriero@scclin001 ~]$ export myVar0
     [carriero@scclin001 ~]$ env | grep myVar
     myVar0=000
+    [carriero@scclin001 ~]$ myVar0=000000
+    [carriero@scclin001 ~]$ env | grep myVar
+    myVar0=000000
+    [carriero@scclin001 ~]$ 
     [carriero@scclin001 ~]$ export myVar1=111
     [carriero@scclin001 ~]$ env | grep myVar
     myVar1=111
-    myVar0=000
+    myVar0=000000
     [carriero@scclin001 ~]$ myVar2=222 bash -c "env | grep myVar"
-    pmyVar2=222
+    myVar2=222
     myVar1=111
-    myVar0=000
+    myVar0=000000
     [carriero@scclin001 ~]$ env | grep myVar
     myVar1=111
-    myVar0=000
+    myVar0=000000
     [carriero@scclin001 ~]$ 
 
 Certain names are, in effect, "reserved", that is they are dedicated for a well defined, documented use. We'll discuss a few of those
@@ -63,7 +68,7 @@ When, at the shell prompt, you type:
 `foo/bar/myProg`   
 the underlying system call used to run the program looks for the executable in the location you specified. If, however, you type:  
 `myProg`  
-that library call will begin searching for the executable using the value of `PATH`.
+that system call will begin searching for the executable using the value of `PATH`.
 
 Starting with a "vanilla" PATH:  
 
@@ -121,7 +126,7 @@ A very common mistake:
 For day to day use, `which` is your friend here. `which myProg` will return the full path (if one is found) of the executable that would be
 invoked if you were to have entered just `myProg`.
 
-Ordering is significant (will stop with the first found).  
+Ordering is significant (the search stops with the first found).  
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
 how much work it has to do to find the program).  
 
@@ -149,13 +154,15 @@ Note that this behavior is not confined to the shell:
 ### LD_LIBRARY_PATH
 This should be set to a ":" separated list of *directories*.  
 
-List the locations to search for shared libraries when executing a program.
+List the locations to search for *shared libraries* when executing a program. Many executables these days are incomplete, with the
+missing pieces supplied by libraries that are assumed to be present on the host computer and that are shared by many other executables. To run,
+the executable needs to find the right versions of the shared pieces on the host computer.
 
 ### LD_PRELOAD
 This should be set to a ":" separated list of shared object *files*.  
 
-Very powerful. Very dangerous. Can be used, for example, to
-swap out one memory allocation scheme for another.
+Force one or more shared pieces to be loaded before anything else is. This allows you to override some very basic functionality.
+Very powerful. Very dangerous. Can be used, for example, to swap out one memory allocation scheme for another.
 
 ### PYTHONPATH
 This should be set to a ":" separated list of *directories*.  
@@ -215,7 +222,7 @@ write temp files to a local storage area, rather than a shared file system, can 
 ### HOME
 This should be set to a directory.  
 
-Some installers do not offer an easy way to specify the target of an installation and simply put the install in a subdirectory of
+Some software installers do not offer an easy way to specify the target of an installation and simply put the install in a subdirectory of
 your home directory. Other programs just assume they can leave behind config
 and status files in your home directory, even if you don't want them to. In cases where this matters a great deal, you can try:  
 
@@ -233,7 +240,7 @@ This should be set to a ":" separated list of *directories*.
 A list of locations to search for `libxyz` when linking a program with `-lxyz`.
 
 These are especially helpful when working with a complex source build that does you the "favor" of hiding most of the build steps, but isn't smart
-enough to handle libraries in non-standard locations.  Check the GNU compiler documentation for more of these. Also note the subtle distinction
+enough to handle include files and libraries placed in non-standard locations.  Check the GNU compiler documentation for more of these. Also note the subtle distinction
 between `LIBRARY_PATH` and `LD_LIBRARY_PATH`.
 
 # Conclusion
