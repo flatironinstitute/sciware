@@ -8,7 +8,7 @@ title: index
   <body class="landing">
     <h2>Pages</h2>
     <ul>
-    {% assign sorted_pages  = site.pages | sort:"value" %}
+    {% assign sorted_pages  = site.pages | where "nav_include", "true" | sort:"site.title" %}
       {% for p in sorted_pages %}
         {% if p.title %}
           {% unless p.url contains '/reveal.js/' %}

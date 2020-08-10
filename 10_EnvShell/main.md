@@ -53,7 +53,6 @@ Activities where participants all actively work to foster an environment which e
   - Features
 
 
-
 ## Basic terms
 
 One often hears the following used interchangably. Let's clairfy.
