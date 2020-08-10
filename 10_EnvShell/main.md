@@ -131,7 +131,6 @@ The bash shell program uses a collection of startup files to help create an envi
 
 
 ### Bash Startup
-<!-- ADD IMAGE -->
 
 
 
