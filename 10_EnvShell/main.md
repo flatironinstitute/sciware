@@ -32,7 +32,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Feedback
 
-- Future sessions planned?
+- Future sessions planned:
+  - github with Software Carpentry Sep 25-26 (2 day session!)
+  - Designing APIs and software library interfaces
 - Suggest topics and vote on options in #sciware Slack
 
 ## Today's Agenda
@@ -122,19 +124,18 @@ Slide 2
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- control structure syntax: ALGOL (`fi`) vs. C (`{}`)
-- interactive vs. scripting
-- POSIX.2 standard: widely adopted
+- interactive, slowly developed more scripting features
+- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), _other_...
 
-#### Present
+#### Evolution
 
-- most modern shells have similar features
-- tcsh invented history, alias, others copied
-- zsh developed sophisticated tab-completion, prompts, bash followed
+- ksh introduced functions
+- tcsh invented history, alias, other interactive features
+- bash developed (and spun off) readline, key bindings
+- zsh added sophisticated tab-completion, prompts
+- POSIX.2 standardized minimal shell features (cf., dash)
 
-- bash: most common shell, especially for scripting, often assumed default, lags behind but catches up
-- zsh: many interactive features, large, more permissive license (cf Apple), oh my zsh (plugins, themes)
-- opinions?
+most modern shells copied, adopted similar, popular features
 
 #### Startup files
 
@@ -143,29 +144,43 @@ Slide 2
 <tbody>
 <tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
 <tr>   <td><code>.bash_logout</code></td><td>-</td><td>-</td></tr>
+<tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
+<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
 <tr>   <td><code>.zprofile</code></td><td>-</td><td>-</td></tr>
 <tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
 <tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
-<tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
-<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
 </tbody>
 </table>
 
 #### Changing your shell
 
+- Current shell: `$SHELL`, `ps`
 - Most systems: `chsh`
 - FI: email scicomp@flatironinstitute.org
-- caveat: many things only work out of the box in bash (modules, source)
+- caveat: some things only work out of the box in bash (modules, source)
 - alternative: exec different shell from `.bash_profile`
 
-```
-
+```sh
 if [[ $- == *i* && -x /bin/zsh ]] ; then
 SHELL=/bin/zsh exec /bin/zsh -l
 fi
 
 ```
+
+#### Preferences
+
+- bash
+  - most common shell, especially for scripting
+  - often assumed default
+  - lags behind but catches up
+- tcsh: largely fallen out of favor, non-POSIX, but maintained
+- zsh
+  - many interactive features
+  - large, superset and **compatible with bash** and tcsh
+  - more permissive license (_Apple_)
+  - oh my zsh (plugins, themes)
+- opinions?
 
 #### EMACS shell modes?
 
