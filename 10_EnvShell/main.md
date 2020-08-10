@@ -131,8 +131,7 @@ The bash shell program uses a collection of startup files to help create an envi
 
 
 ### Bash Startup
-
-<img src="img/bashstartup.svg" width="1000" style="border:0;box-shadow:none">
+<!-- ADD IMAGE -->
 
 
 
@@ -241,7 +240,9 @@ fi
 
 
 
-### Colors! (Liz)
+### Configuring your prompt 🎨
+
+
 
 
 
