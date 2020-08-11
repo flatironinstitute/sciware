@@ -125,15 +125,12 @@ The bash shell program uses a collection of startup files to help create an envi
 
 ### Comparison (Dylan)
 
-- Ways to interact with the system (surface, outer layer, vs kernel)
-- Run commands, other programs
-
 
 #### History
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- interactive, slowly developed more scripting features
+- run commands, interactive, slowly developed more scripting features
 - control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), *other*...
 
 
@@ -177,7 +174,6 @@ most modern shells copied, adopted similar, popular features
 if [[ $- == *i* && -x /bin/zsh ]] ; then
 	SHELL=/bin/zsh exec /bin/zsh -l
 fi
-
 ```
 
 
@@ -189,8 +185,8 @@ fi
   - lags behind but catches up
 - tcsh: largely fallen out of favor, non-POSIX, but maintained
 - zsh
-  - many interactive features
   - large, superset and **compatible with bash** and tcsh
+  - many interactive features, tab completion (`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`)
   - more permissive license (_Apple_)
   - oh my zsh (plugins, themes)
 - opinions?
@@ -206,3 +202,7 @@ fi
 
 
 ### Extras
+
+* tab completion, expansion
+* command history, `fc`
+* shell scripting
