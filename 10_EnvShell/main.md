@@ -131,7 +131,8 @@ The bash shell program uses a collection of startup files to help create an envi
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- run commands, interactive, slowly developed more scripting features
+- run commands, interactive
+- slowly developed more scripting features
 - control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), *other*...
 
 
@@ -186,9 +187,9 @@ fi
   - lags behind, catches up
 - tcsh: fallen out of favor, non-POSIX, still maintained
 - zsh
-  - large, superset and **compatible with bash** and tcsh
+  - large, superset of **compatible with bash** and tcsh
   - many interactive features, tab completion
-     - <small>`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`</small>
+     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
   - more permissive license _(Apple)_
   - oh my zsh (plugins, themes)
 - opinions?
