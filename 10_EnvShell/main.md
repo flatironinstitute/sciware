@@ -39,6 +39,7 @@ Activities where participants all actively work to foster an environment which e
 - Future sessions planned:
   - github with Software Carpentry Sep 25-26 (2 day session!)
   - Designing APIs and software library interfaces
+  - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -87,24 +88,30 @@ Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
 
 ### Terminal
 
-- Terminal is a program that runs a shell.
-- Originally a physical device, now we run software terminal emulators.
-- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator), but they all do the same thing - give you access to a shell session.
-- Opinions?
+_Terminal_ is a program that runs and provides i/o to a shell (or other program).
+
+Originally a physical device, now we run software terminal emulators.
+
+Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), but they all do the same thing - give you access to a shell session.
+
+Opinions?
 
 
 ### Console
 
-- Console originally referred to the physical text entry and display device for system adminstration messages.
-- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger.
-- ```javascript
-  console.log("👋from your web browser.");
-  ```
+Console originally referred to the physical text entry and display device for system administration messages.
+Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
+
+```javascript
+  console.log("👋 hello, you are in a web browser.");
+```
 
 
 ### Bash Startup Process
 
-The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently. The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
+The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently.
+
+The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
 
 
 ### Bash Startup
@@ -125,15 +132,12 @@ The bash shell program uses a collection of startup files to help create an envi
 
 ### Comparison (Dylan)
 
-- Ways to interact with the system (surface, outer layer, vs kernel)
-- Run commands, other programs
-
 
 #### History
 
 <img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
 
-- interactive, slowly developed more scripting features
+- run commands, interactive, slowly developed more scripting features
 - control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), *other*...
 
 
@@ -143,7 +147,7 @@ The bash shell program uses a collection of startup files to help create an envi
 - tcsh invented history, alias, other interactive features
 - bash developed (and spun off) readline, key bindings
 - zsh added sophisticated tab-completion, prompts
-- POSIX.2 standardized minimal shell features (cf., dash)
+- POSIX.2 standardized minimal shell features (see `dash`)
 
 most modern shells copied, adopted similar, popular features
 
@@ -177,7 +181,6 @@ most modern shells copied, adopted similar, popular features
 if [[ $- == *i* && -x /bin/zsh ]] ; then
 	SHELL=/bin/zsh exec /bin/zsh -l
 fi
-
 ```
 
 
@@ -186,12 +189,13 @@ fi
 - bash
   - most common shell, especially for scripting
   - often assumed default
-  - lags behind but catches up
-- tcsh: largely fallen out of favor, non-POSIX, but maintained
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
 - zsh
-  - many interactive features
   - large, superset and **compatible with bash** and tcsh
-  - more permissive license (_Apple_)
+  - many interactive features, tab completion
+     - <small>`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`</small>
+  - more permissive license _(Apple)_
   - oh my zsh (plugins, themes)
 - opinions?
 
@@ -206,3 +210,9 @@ fi
 
 
 ### Extras
+
+* tab completion, expansion
+* command history, `fc`
+* shell scripting
+* slurm
+* jupyter kernels
