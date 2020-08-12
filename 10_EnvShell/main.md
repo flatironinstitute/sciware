@@ -216,6 +216,7 @@ fi
 - Q: Why does this matter?
 - A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g.: PATH)
 
+
 - There are over 70 builtin commands in bash (even more in zsh)
 - Find them all by using the "help" command at your prompt (for zsh type "man zshbuiltins")
 - Focus on a handful that are important to your interactive session
@@ -231,6 +232,7 @@ Today's builtins
 - help
 - history
 - source and .
+
  
 - alias: create or display a shortcut
 	- with no arguments alias displays a list of all aliases
