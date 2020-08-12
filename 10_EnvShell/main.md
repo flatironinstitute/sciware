@@ -188,7 +188,7 @@ fi
 - zsh
   - large, superset and **compatible with bash** and tcsh
   - many interactive features, tab completion
-     - <small>`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`<small>
+     - <small>`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`</small>
   - more permissive license _(Apple)_
   - oh my zsh (plugins, themes)
 - opinions?
