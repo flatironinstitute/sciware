@@ -220,15 +220,17 @@ fi
 - Find them all by using the "help" command at your prompt (for zsh type "man zshbuiltins")
 - Focus on a handful that are important to your interactive session
 
-- Today's builtins
-	- alias and command
-	- bg, fg, jobs, kill and ^c
-	- suspend and ^z
-	- cd, pwd, pushd, popd, dirs
-	- export
-	- help
-	- history
-	- source and .
+
+Today's builtins
+
+- alias and command
+- bg, fg, jobs, kill and ^c
+- suspend and ^z
+- cd, pwd, pushd, popd, dirs
+- export
+- help
+- history
+- source and .
  
 - alias: create or display a shortcut
 	- with no arguments alias displays a list of all aliases
