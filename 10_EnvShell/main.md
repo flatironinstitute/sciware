@@ -183,11 +183,12 @@ fi
 - bash
   - most common shell, especially for scripting
   - often assumed default
-  - lags behind but catches up
-- tcsh: largely fallen out of favor, non-POSIX, but maintained
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
 - zsh
   - large, superset and **compatible with bash** and tcsh
-  - many interactive features, tab completion <small>(`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`)</small>
+  - many interactive features, tab completion
+     - `git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`
   - more permissive license _(Apple)_
   - oh my zsh (plugins, themes)
 - opinions?
