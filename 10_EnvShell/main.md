@@ -217,12 +217,14 @@ fi
 - A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g.: PATH)
 
 
+More About Builtins
+
 - There are over 70 builtin commands in bash (even more in zsh)
 - Find them all by using the "help" command at your prompt (for zsh type "man zshbuiltins")
 - Focus on a handful that are important to your interactive session
 
 
-Today's builtins
+Today's Builtins
 
 - alias and command
 - bg, fg, jobs, kill and ^c
