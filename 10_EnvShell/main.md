@@ -288,9 +288,9 @@ Today's Builtins
   - -c option clears the stack entirely
 
 
-
 - export
   - makes a variable able to be inherited by subsequent commands
+
 
 - help
   - with no arguments lists all shell builtins with very basic descriptions
