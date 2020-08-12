@@ -308,6 +308,7 @@ fi
 	- source runs the file in the current shell where . runs it in a subshell
 
 #### Quoting and Word Splitting
+
 - spaces matter (set a variable with a space vs not)
 - “ vs ‘
 	- " does variable expansion
@@ -320,6 +321,7 @@ fi
 
 
 #### I/O Redirection
+
 - > and >>
 	- > writes output from a process to the file named after the greater than symbol. if the file already exists, ot is overwritten.
 	- >> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
@@ -336,6 +338,7 @@ fi
 
 
 #### Command and Process Substitution
+
 - ``
 	- this is the equivalent to the output of the command in the backticks. often useful in loops.
 - $()
@@ -345,6 +348,7 @@ fi
 
 
 #### Globs
+
 - * - 0 or more characters
 - ? - precisely one character
 - [somelistofcharspickone] - precisely one character from the list in the brackets (case matters)
