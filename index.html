@@ -4,9 +4,9 @@ title: index
 
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head><title>Sciware: a scientific software development learning community</title><link rel="stylesheet" href="{{ site.baseurl }}/flatiron.css" id="theme" /></head>
   <body class="landing">
-    <h2>Pages</h2>
+    <h2>Sciware sessions</h2>
     <ul>
     {% assign sorted_pages  = site.pages | where "nav_include", "true" | sort:"site.title" %}
       {% for p in sorted_pages %}

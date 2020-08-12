@@ -100,6 +100,7 @@ Opinions?
 ### Console
 
 Console originally referred to the physical text entry and display device for system administration messages.
+
 Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
 
 ```javascript
