@@ -296,10 +296,12 @@ Today's Builtins
   - with no arguments lists all shell builtins with very basic descriptions
   - with a single argument of a shall builtin, displays usage instructions on using the builtin
 
+
 - history
   - display or manipulate the history of commands you have run
   - -c option clears it
   - usually you just run it without arguments to remember something you did before
+
 
 - source and .
   - effectively the same thing
