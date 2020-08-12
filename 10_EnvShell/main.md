@@ -39,6 +39,7 @@ Activities where participants all actively work to foster an environment which e
 - Future sessions planned:
   - github with Software Carpentry Sep 25-26 (2 day session!)
   - Designing APIs and software library interfaces
+  - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -56,7 +57,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Basic terms
 
-One often hears the following used interchangably. Let's clairfy.
+One often hears the following used interchangeably. Let's clarify.
 
     - Kernel
     - Shell
@@ -87,16 +88,16 @@ One often hears the following used interchangably. Let's clairfy.
 
 ### Terminal
 
-- Terminal is a program that runs a shell.
+- Terminal is a program that runs and provides I/O to a shell (or other program).
 - Originally a physical device, now we run software terminal emulators.
-- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator), but they all do the same thing - give you access to a shell session.
+- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), but they all do the same thing - give you access to a shell session.
 - Opinions?
 
 
 ### Console
 
-- Console originally referred to the physical text entry and display device for system adminstration messages.
-- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger.
+- Console originally referred to the physical text entry and display device for system administration messages.
+- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
 - ```javascript
   console.log("👋from your web browser.");
   ```
@@ -140,7 +141,7 @@ The bash shell program uses a collection of startup files to help create an envi
 - tcsh invented history, alias, other interactive features
 - bash developed (and spun off) readline, key bindings
 - zsh added sophisticated tab-completion, prompts
-- POSIX.2 standardized minimal shell features (cf., dash)
+- POSIX.2 standardized minimal shell features (see `dash`)
 
 most modern shells copied, adopted similar, popular features
 
@@ -186,8 +187,8 @@ fi
 - tcsh: largely fallen out of favor, non-POSIX, but maintained
 - zsh
   - large, superset and **compatible with bash** and tcsh
-  - many interactive features, tab completion (`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`)
-  - more permissive license (_Apple_)
+  - many interactive features, tab completion <small>(`git diff <tab>`, `gcc -<tab>`, `rsync host:<tab>`)</small>
+  - more permissive license _(Apple)_
   - oh my zsh (plugins, themes)
 - opinions?
 
@@ -206,3 +207,5 @@ fi
 * tab completion, expansion
 * command history, `fc`
 * shell scripting
+* slurm
+* jupyter kernels
