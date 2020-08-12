@@ -210,18 +210,16 @@ fi
 
 #### Builtins
 
-- Builtins
-	- Q: What is a builtin?
-	- A: A builtin is a command you run that is part of the shell itself and not a separate executable
-	- Q: Why does this matter?
-	- A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g.: PATH)
+- Q: What is a builtin?
+- A: A builtin is a command you run that is part of the shell itself and not a separate executable
+- Q: Why does this matter?
+- A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g.: PATH)
 	
 ---
 
-- More on builtins
-	- There are over 70 builtin commands in bash (even more in zsh)
-	- You can find them all by using the "help" command at your prompt (for bash - for zsh type "man zshbuiltins")
-	- We're only going to talk about a handful that are important to your interactive session
+- There are over 70 builtin commands in bash (even more in zsh)
+- You can find them all by using the "help" command at your prompt (for bash - for zsh type "man zshbuiltins")
+- We're only going to talk about a handful that are important to your interactive session
 
 ---
 - Today's builtins
