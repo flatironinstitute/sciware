@@ -229,7 +229,7 @@ fi
 	- help
 	- history
 	- source and .
-	 
+ 
 - alias: create or display a shortcut
 	- with no arguments alias displays a list of all aliases
 	- with a single word argument alias displays the definition of the alias to which the argument refers
