@@ -254,6 +254,8 @@ Today's Builtins
   - puts the most recently suspended process in the background
 - fg
   - brings the first process in the jobs list into the foreground
+
+
 - ^c kills the current process that is running
 - kill terminates the process specified by either a PID or a job number
   - -1 (SIGHUP): "Good afternoon process, please consider stopping or maybe re-reading your configuration file"
