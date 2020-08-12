@@ -53,35 +53,36 @@ Activities where participants all actively work to foster an environment which e
   - Features
 
 
-## Basic terms
+## Defining terms
 
-One often hears the following used interchangably. Let's clairfy.
+One often hears these terms used interchangably. Let's clairfy.
 
-    - Kernel
-    - Shell
-    - Command Line
-    - Console
+* Kernel * Shell * Terminal * Command Line * Console
 
 
 ### Kernel & Operating System
 
-- Kernel: the bridge between application software and hardware.
-- Operating System: comprised of a kernel + other applications.
-- Linux can refer to a kernel or an OS built on that kernel.
+_Kernel_ is the bridge between application software and hardware.
+
+_Operating System_ is comprised of a kernel + other applications.
+
+<small>_Linux_ 🐧 can refer to a kernel or an OS built on that kernel.</small>
 
 
 ### Shell
 
-- Name origin: Shell interface 🐚 surrounds the kernel just as a nutshell surrounds a nut 🥜.
-- Shell is a program that takes commands, gives them to the operating system to perform, and returns output.
-- In the old days, it was the _only_ user interface. Nowadays, we have graphical user interfaces (GUIs) in addition to command line interfaces (CLIs) such as the shell.
+A _Shell_ is a program that takes commands, gives them to the operating system to perform, and returns output. As opposed to a _graphical user interface_ (GUI), the shell is a _command line interface_ (CLI).
+
+<small>Remember: The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
-### Shell Examples
+### Common Shells
 
-- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
-- Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
-- Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.
+On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
+
+Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
+
+<small>Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.</small>
 
 
 ### Terminal
