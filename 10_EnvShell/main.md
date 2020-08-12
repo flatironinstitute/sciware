@@ -199,7 +199,7 @@ fi
 
 
 
-### Shell features (Jonathan)
+### Shell Features (Jonathan)
 
 - Builtins
 - Quoting and Word Splitting
@@ -207,6 +207,7 @@ fi
 - Command and Process Substitution
 - Globs
 - Common programs that aren't builtins 
+
 
 #### Builtins
 
@@ -318,8 +319,6 @@ fi
 	- escapes things like spaces
 
 
-
-
 #### I/O Redirection
 
 - > and >>
@@ -345,8 +344,6 @@ fi
 	- the output of the command in the parentheses is sustituted. often useful in text strings.
 	
 
-
-
 #### Globs
 
 - * - 0 or more characters
@@ -354,7 +351,6 @@ fi
 - [somelistofcharspickone] - precisely one character from the list in the brackets (case matters)
 - if a glob doesn’t match anything, then the glob is the name (this can be confusing)
 - zsh globbing - if you press tab to complete, it will actually turn into the glob. (like pressing tab with a * on ls will actually expand the * to the files in your working directory)
-
 
 
 #### Not Builtins But Still Great
