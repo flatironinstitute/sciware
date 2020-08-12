@@ -20,17 +20,19 @@ but it can do more):
 
     [carriero@scclin001 ~]$ myVar0=000
     [carriero@scclin001 ~]$ env | grep myVar
+####    
     [carriero@scclin001 ~]$ export myVar0
     [carriero@scclin001 ~]$ env | grep myVar
     myVar0=000
     [carriero@scclin001 ~]$ myVar0=000000
     [carriero@scclin001 ~]$ env | grep myVar
     myVar0=000000
-    [carriero@scclin001 ~]$ 
+####
     [carriero@scclin001 ~]$ export myVar1=111
     [carriero@scclin001 ~]$ env | grep myVar
     myVar1=111
     myVar0=000000
+####
     [carriero@scclin001 ~]$ myVar2=222 bash -c "env | grep myVar"
     myVar2=222
     myVar1=111
@@ -82,6 +84,7 @@ Starting with a "vanilla" PATH:
     stat("/bin/date", {st_mode=S_IFREG|0755, st_size=62296, ...}) = 0
     stat("/bin/date", {st_mode=S_IFREG|0755, st_size=62296, ...}) = 0
     Thu Aug  6 10:34:34 EDT 2020
+####
     [carriero@scclin001 carriero]$ strace -e stat -o >(grep foodle) bash -c foodle
     stat("/bin/foodle", 0x7ffdab36e030)     = -1 ENOENT (No such file or directory)
     stat("/usr/bin/foodle", 0x7ffdab36e030) = -1 ENOENT (No such file or directory)
