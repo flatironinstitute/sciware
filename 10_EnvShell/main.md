@@ -347,13 +347,13 @@ fi
 
 
 
-### Configuring your prompt 🎨
+## Configuring your prompt 🎨
 
-#### ⚠️ Warning ⚠️
+### ⚠️ Warning ⚠️
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
 
 
-#### Prompt Design
+### Prompt design
  - Only include what you will actually use.
  - That said, don't be afraid to add a little ✨.
  - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
@@ -362,15 +362,15 @@ fi
  - Powerline: https://github.com/powerline/powerline
 
 
-#### bash Prompts
+### Prompt variables in bash
 - `PS1`: default interactive prompt.
 - `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
-- Other prompt variables exist to manage specific conditions like select loops, continuation, and tracing.
+- Other prompt variables exist to manage specific conditions like select loops, continuation, and tracing. - Check out
 
 
-#### Git Branch (bash)
-- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Otherwise you can use `sed` to find the active git branch by the *.
+#### Displaying git branch (bash)
+- Homebrew bash autocompletion and homebrew-installed git come with `__git_ps1` command predefined to display the branch.
+- Otherwise, you can use `sed` to find the active git branch.
 ```
   function parse_git_branch {
     git symbolic-ref --short HEAD 2> /dev/null
@@ -378,7 +378,7 @@ fi
 ```
 
 
-#### Example Prompt (bash)
+#### Example prompt (bash)
 - Show some 💛 for FI with this prompt:
 ```
     # Define the prompt character
@@ -398,7 +398,7 @@ fi
 ```
 
 
-#### zsh Prompts
+#### Prompt variables in zsh
 - `PROMPT`: default is `%m%#`
   - %m: short form of the current hostname
   - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
@@ -408,7 +408,7 @@ fi
 <img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
 
 
-####  Git Branch (zsh)
+####  Displaying git branch (zsh)
 ```
 autoload -Uz vcs_info
 precmd() {vcs_info}
@@ -419,11 +419,11 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
 - `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
 
 
-#### Example Prompt (zsh)
-- `PROMPT_SUBST`: expands the parameters usable in the prompt.
-- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
-- The final `%F{black}%B%` sets the color for the
-- Showing the same FI love.
+#### Example prompt (zsh)
+- Enable `PROMPT_SUBST` to expand the parameters and history options for the prompt.
+- Note that `%F{green}%B%` named colors must be surrounded by the escape characters.
+- The final `%F{black}%B%` sets the color for the subsequent command line.
+- Let's show FI the same love.
 ```
   setopt PROMPT_SUBST
   PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
