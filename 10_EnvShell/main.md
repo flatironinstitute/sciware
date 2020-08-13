@@ -9,7 +9,7 @@ https://github.com/flatironinstitute/learn-sciware-dev/tree/master/10_EnvShell
 
 ### Goal:
 
-Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, _technology choices_\*, and scientific disciplines.
+Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, *technology choices*\*, and scientific disciplines.
 
 <small>\*though sometimes we try to expand your options</small>
 
