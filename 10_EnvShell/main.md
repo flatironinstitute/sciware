@@ -219,15 +219,15 @@ fi
     conda activate myenvname
     conda deactivate
 ```
-Pros:
-- Can install non-python packages, even cross-platform
-- Useful for difficult to install packages (e.g. tensorflow)
-- Multiple environments in a central repository
 
-Cons:
-- Libraries can sometimes conflict: `shadowing`
-- Uses a __lot__ of files. Can hit filecount quota
-- [Un]installing packages (transactions) can be quite slow
+- Pros:
+  - Can install non-python packages, even cross-platform
+  - Useful for difficult to install packages (e.g. tensorflow)
+  - Multiple environments in a central repository
+- Cons:
+  - Libraries can sometimes conflict: `shadowing`
+  - Uses a __lot__ of files. Can hit filecount quota
+  - [Un]installing packages (transactions) can be quite slow
 
 
 #### venv (virtualenv)
@@ -237,16 +237,16 @@ Cons:
     source myenvname/bin/activate
     deactivate
 ```
-Pros:
-- Lightweight - piggybacks on your environment
-- Typically easier for SCC to support
-- Faster management for pure python packages
-- More on-the-fly control on which libraries to use
+- Pros:
+  - Lightweight - piggybacks on your environment
+  - Typically easier for SCC to support
+  - Faster management for pure python packages
+  - More on-the-fly control on which libraries to use
 
-Cons:
-- Restricted to use existing python binaries
-- Some packages that require compilation can be troublesome
-- Non-python packages aren't supported (vim, emacs, etc)
+- Cons:
+  - Restricted to use existing python binaries
+  - Some packages that require compilation can be troublesome
+  - Non-python packages aren't supported (vim, emacs, etc)
 
 
 #### Manual sourcing
