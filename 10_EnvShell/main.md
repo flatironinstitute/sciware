@@ -405,7 +405,6 @@ fi
   - %m: short form of the current hostname
   - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
 - `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
-- Prompt escapes and special characters: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
 <img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
 
