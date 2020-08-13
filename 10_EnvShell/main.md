@@ -246,7 +246,7 @@ fi
 ##### `command`: use the actual command or builtin, even if there is an alias making it something else
 
 - useful when you have an alias configued to run a command with a common set of flags
-- prefixing with `\\` has a similar effect
+- prefixing with `\` has a similar effect
 
 
 ##### `bg`
@@ -274,7 +274,7 @@ fi
 
 ##### *^Z*
 
-- suspend the process currently running in the fireground of your shell (`kill -TSTP`)
+- suspend the process currently running in the foreground of your shell (`kill -TSTP`)
 
 ##### `suspend`
 
@@ -286,7 +286,7 @@ fi
 - change into another directory
 - `cd -` puts you into the last directory you were in
 - `cd` with no arguments puts you back to your home directory
-- `cd *A* *B*` substitutes *A* for *B* in your path (zsh only)
+- `cd A B` substitutes *A* for *B* in your path (zsh only)
 
 ##### `pwd`
 
@@ -358,9 +358,9 @@ fi
 
 ##### stdin, stdout, stderr
 
-- stdin (0) is a stream of information you send to a process
-- stdout (1) is usually the expected output of a process
-- stderr (2) is either related to something going wrong or sort of control/status information depending on the process
+- stdin (`0`) is a stream of information you send to a process
+- stdout (`1`) is usually the expected output of a process
+- stderr (`2`) is either related to something going wrong or sort of control/status information depending on the process
 - what does this mean?  `2>&1`
    - this redirects standard error to standard output 
 
@@ -369,7 +369,7 @@ fi
 
 - take the stdout from one process and send it to the stdin of another. very useful 
 
-##### `<( *CMD* )` (and `>( *CMD* )`)
+##### `<( CMD )` (and `>( CMD )`)
 
 - output from *CMD* is passed as if in a real file
 - multiple processes can write to the hidden file
@@ -378,7 +378,7 @@ fi
 
 #### Command and Process Substitution
 
-##### `\`CMD\``
+##### <code>`CMD`</code>
 - this is the equivalent to the output of the command in the backticks. often useful in loops.
 ##### `$( CMD )`
 
