@@ -122,7 +122,7 @@ The files in the /etc directory generally provide global settings. If an equival
 
 ## Environment variables (Nick)
 
-[link](https://github.com/flatironinstitute/learn-sciware-dev/blob/master/10_EnvShell/EnvironmentVariables.md)
+[EnvironmentVariables.md](https://flatironinstitute.github.io/learn-sciware-dev/10_EnvShell/EnvironmentVariables.html)
 
 
 
