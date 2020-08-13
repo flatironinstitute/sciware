@@ -32,7 +32,7 @@ Activities where participants all actively work to foster an environment which e
 - Ok to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Will be posted to password-protected Vimeo. (Ask us for password.)
+- We are recording. Link will be posted on #sciware Slack.
 
 
 ## Future Sessions
