@@ -349,7 +349,7 @@ fi
 
 #### Command and Process Substitution
 
-- <code>`CMD`</code>
+- <code>\`CMD\`</code>
    - this is the equivalent to the output of the command in the backticks. often useful in loops.
 - `$( CMD )`
    - the output of the command in the parentheses is substituted. often useful in text strings.
