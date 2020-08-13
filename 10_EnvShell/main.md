@@ -237,11 +237,11 @@ fi
     source myenvname/bin/activate
     deactivate
 ```
+
 - Pros:
-  - Lightweight - faster management for pure python packages
+  - Lightweight - faster management for python packages
   - Typically easier for SCC to support
   - More on-the-fly control on which library/python to use
-
 - Cons:
   - Restricted to use existing python binaries
   - Some packages that require compilation can be troublesome
