@@ -55,62 +55,70 @@ Activities where participants all actively work to foster an environment which e
   - Features
 
 
+## Defining terms
 
-## Basic terms
+One often hears these terms used interchangably. Let's clairfy.
 
-One often hears the following used interchangeably. Let's clarify.
-
-    - Kernel
-    - Shell
-    - Command Line
-    - Console
+* Kernel * Shell * Terminal * Command Line * Console
 
 
 ### Kernel & Operating System
 
-- Kernel: the bridge between application software and hardware.
-- Operating System: comprised of a kernel + other applications.
-- Linux can refer to a kernel or an OS built on that kernel.
+_Kernel_ is the bridge between application software and hardware.
+
+_Operating System_ is comprised of a kernel + other applications.
+
+<small>_Linux_ 🐧 can refer to a kernel or an OS built on that kernel.</small>
 
 
 ### Shell
 
-- Name origin: Shell interface 🐚 surrounds the kernel just as a nutshell surrounds a nut 🥜.
-- Shell is a program that takes commands, gives them to the operating system to perform, and returns output.
-- In the old days, it was the _only_ user interface. Nowadays, we have graphical user interfaces (GUIs) in addition to command line interfaces (CLIs) such as the shell.
+A _Shell_ is a program that takes commands, gives them to the operating system to perform, and returns output. As opposed to a _graphical user interface_ (GUI), the shell is a _command line interface_ (CLI).
+
+<small>Remember: The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
-### Shell Examples
+### Common Shells
 
-- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
-- Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
-- Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.
+On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
+
+Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
+
+<small>Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.</small>
 
 
 ### Terminal
 
-- Terminal is a program that runs and provides I/O to a shell (or other program).
-- Originally a physical device, now we run software terminal emulators.
-- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), but they all do the same thing - give you access to a shell session.
-- Opinions?
+_Terminal_ is a program that runs and provides i/o to a shell (or other program).
+
+Originally a physical device, now we run software terminal emulators.
+
+Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), but they all do the same thing - give you access to a shell session.
+
+Opinions?
 
 
 ### Console
 
-- Console originally referred to the physical text entry and display device for system administration messages.
-- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
-- ```javascript
-  console.log("👋from your web browser.");
-  ```
+Console originally referred to the physical text entry and display device for system administration messages.
+
+Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
+
+```javascript
+  console.log("👋 hello, you are in a web browser.");
+```
 
 
 ### Bash Startup Process
 
-The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently. The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
+The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently.
+
+The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
 
 
 ### Bash Startup
 
+<img src="img/shell-chart.svg" width="1000" style="border:0;box-shadow:none">
 
 
 ## Environment variables
