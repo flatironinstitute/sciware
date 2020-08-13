@@ -219,13 +219,28 @@ flatiron is... the GOAT
 
 - ksh introduced functions
 - tcsh invented history, alias, other interactive features
+- POSIX.2 standardized minimal /bin/sh features (see `dash`)
 - bash developed (and spun off) readline, key bindings
      - <small>emacs mode, vi mode, custom bindings in `.inputrc`</small>
 - zsh added sophisticated tab-completion, prompts
      - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
-- POSIX.2 standardized minimal shell features (see `dash`)
+     - more permissive license, adopted by Apple
 
 most modern shells copied, adopted similar, popular features
+
+
+#### Preferences
+
+- bash
+  - most common shell, especially for scripting
+  - often assumed default
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
+- zsh
+  - large, superset of **compatible with bash** and tcsh
+  - many interactive and scripting features
+  - oh my zsh (plugins, themes)
+- opinions?
 
 
 #### Dotfiles
@@ -243,21 +258,6 @@ most modern shells copied, adopted similar, popular features
 <tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
 </tbody>
 </table>
-
-
-#### Preferences
-
-- bash
-  - most common shell, especially for scripting
-  - often assumed default
-  - lags behind, catches up
-- tcsh: fallen out of favor, non-POSIX, still maintained
-- zsh
-  - large, superset of **compatible with bash** and tcsh
-  - many interactive and scripting features
-  - more permissive license _(Apple)_
-  - oh my zsh (plugins, themes)
-- opinions?
 
 
 #### Changing your shell
