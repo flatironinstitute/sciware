@@ -32,10 +32,11 @@ Activities where participants all actively work to foster an environment which e
 - Ok to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
-- We are recording, posted on #sciware Slack
+- We are recording. Will be posted to password-protected Vimeo.
+  - Ask us for password.
 
 
-## Feedback
+## Future Sessions
 
 - Future sessions planned:
   - git+github with Software Carpentry Sep 25-26 (2 day session!)
@@ -608,3 +609,19 @@ Globs match things (but are less awesome than regular expressions)
 * slurm
 * jupyter kernels
 * fzf
+
+
+
+## Future Sessions
+
+- Future sessions planned:
+  - git+github with Software Carpentry Sep 25-26 (2 day session!)
+  - Designing APIs and software library interfaces
+  - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
+- Suggest topics and vote on options in #sciware Slack
+
+
+## Please give us feedback
+
+https://bit.ly/sciware-shells
+Most questions are optional
