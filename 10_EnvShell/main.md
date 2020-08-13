@@ -348,13 +348,15 @@ Today's Builtins
   - multiple processes can write to the hidden file
   - the program that wants to read the data only needs to be able to open a file
 
+
 #### Command and Process Substitution
 
 - ``
   - this is the equivalent to the output of the command in the backticks. often useful in loops.
 - $()
   - the output of the command in the parentheses is sustituted. often useful in text strings.
-	
+
+
 #### Globs
 
 - \* - 0 or more characters
@@ -362,6 +364,7 @@ Today's Builtins
 - [somelistofcharspickone] - precisely one character from the list in the brackets (case matters)
 - if a glob doesn’t match anything, then the glob is the name (this can be confusing)
 - zsh globbing - if you press tab to complete, it will actually turn into the glob. (like pressing tab with a * on ls will actually expand the * to the files in your working directory)
+
 
 #### Not Builtins But Still Great
 
