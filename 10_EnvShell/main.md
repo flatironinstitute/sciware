@@ -350,16 +350,24 @@ fi
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
 
 
-#### Prompt design
- - Include what you will actually use but don't be afraid to add a little ✨.
+#### Prompt Design
+ - Only include what you will actually use.
+ - That said, don't be afraid to add a little ✨.
  - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
  - Need inspo? ASCII Art Archive https://www.asciiart.eu/
  - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
+ - Powerline: https://github.com/powerline/powerline
+
+
+#### bash Prompts
+- `PS1`: default interactive prompt.
+- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
+- Other prompt variables exist to manage specific conditions like select loops, continuation, and tracing.
 
 
 #### Git Branch (bash)
 - Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Function to show your active git branch.
+- Otherwise you can use `sed` to find the active git branch by the *.
 ```
   function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -367,14 +375,9 @@ fi
 ```
 
 
-#### Prompt bash
-- PS1: default interactive prompt
-- PS2: continuation prompt
-- PS4: prefixes tracing for script run with `set -x`
-- PROMPT_COMMAND: executed just before PS1.
-
+#### Example Prompt (bash)
+- Show some 💛 for FI with this prompt:
 ```
-  function prompt {
     # Define the prompt character
     local   CHAR="♥"
 
@@ -389,13 +392,41 @@ fi
 
     # Export PS1:  default interactive prompt
     export PS1="\[\e]2;\u@\h\a[$GRAY_TEXT_BLUE_BACKGROUND\t$RESET]$RED\$(parse_git_branch) $GREEN\W\n$BLUE//$RED $CHAR $RESET"
-      PS2='> '
-      PS4='+ '
-    }
-
-  # Finally call the function and the prompt is all pretty
-  prompt
 ```
+
+
+#### zsh Prompts
+- `PROMPT`: default is `%m%#`
+  - %m: short form of the current hostname
+  - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
+- `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
+- Prompt escapes and special characters: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+
+<img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
+
+
+####  Git Branch (zsh)
+```
+autoload -Uz vcs_info
+precmd() {vcs_info}
+zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+```
+
+- Enable `vcs_info` function and call it in a pre-command.
+- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
+
+
+#### Example Prompt (zsh)
+- `PROMPT_SUBST`: expands the parameters usable in the prompt.
+- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
+- The final `%F{black}%B%` sets the color for the
+- Showing the same FI love.
+```
+  setopt PROMPT_SUBST
+  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+```
+
+<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
 
 
 
