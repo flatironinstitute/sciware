@@ -328,15 +328,21 @@ Today's Builtins
 - \> and >>
   - \> writes output from a process to the file named after the greater than symbol. if the file already exists, ot is overwritten.
   - \>\> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
-  - noclobber keeps you from overwriting files with > (set -o noclobber)
+  - noclobber keeps you from overwriting files with > 
+    - (set -o noclobber)
+
+
 - stidin, stdout(1), stderr(2)
   - stdin is a stream of information you send to a process
   - stdout is usually the expected output of a process
   - stderr is either related to something going wrong or sort of control/status information depending on the process
   - what does this mean?  2>&1
     - this redirects standard error to standard output 
+
+
 - |
   - take the stdout from one process and send it to the stdin of another. very useful 
+
 - process redirection vs a pipe and why it’s awesome
   - output from a file is put into a hidden file and then is read like a generic file
   - multiple processes can write to the hidden file
