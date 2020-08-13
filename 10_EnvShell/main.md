@@ -137,7 +137,6 @@ sh-4.2$ echo "flatiron is... $fi"
 flatiron is...
 ```
 
----
 
 #### Environment variables
 
@@ -199,6 +198,7 @@ flatiron is... the GOAT
 
 
 #### Manual sourcing
+
 
 
 ## Shells
