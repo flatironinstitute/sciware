@@ -148,16 +148,16 @@ flatiron is...
 - Can delete with `unset` command
 - Set only for a child process by prepending
 ```sh
-$ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
-Woo! Environment fun!
-$ echo "Woo! $MY_ENV_VAR"
-Woo!
 $ export FI="the GOAT"
 $ echo "flatiron is... $FI"
 flatiron is... the GOAT
 $ sh
 sh-4.2$ echo "flatiron is... $FI"
 flatiron is... the GOAT
+$ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
+Woo! Environment fun!
+$ echo "Woo! $MY_ENV_VAR"
+Woo!
 ```
 
 
