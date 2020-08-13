@@ -229,13 +229,13 @@ fi
 ```
 
 - Pros:
-  - Can install non-python packages, even cross-platform
-  - Useful for difficult to install packages (e.g. tensorflow)
+  - Cross-platform installs of non-python packages
+  - Handles complex packages well (e.g. tensorflow)
   - Multiple environments in a central repository
 - Cons:
   - Libraries can sometimes conflict: `shadowing`
   - Uses a __lot__ of files. Can hit filecount quota
-  - [Un]installing packages (transactions) can be quite slow
+  - [Un]installing packages (transactions) slow
 
 
 #### venv (virtualenv)
