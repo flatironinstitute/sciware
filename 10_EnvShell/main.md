@@ -379,22 +379,24 @@ fi
 
 
 ### Example prompt (bash)
+
 - Show some 💛 for FI with this prompt:
+
 ```sh
-# Define the prompt character
-char="♥"
+  # Define the prompt character
+  char="♥"
 
-# Define some local colors
-red="\[\e[0;31m\]"
-blue="\[\e[0;34m\]"
-green="\[\e[0;32m\]"
-gray_text_blue_background="\[\e[37;44;1m\]"
+  # Define some local colors
+  red="\[\e[0;31m\]"
+  blue="\[\e[0;34m\]"
+  green="\[\e[0;32m\]"
+  gray_text_blue_background="\[\e[37;44;1m\]"
 
-# Define a variable to reset the text color
-reset="\[\e[0m\]"
+  # Define a variable to reset the text color
+  reset="\[\e[0m\]"
 
-# Export PS1:  default interactive prompt
-PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
+  # Export PS1:  default interactive prompt
+  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
 ```
 
 
