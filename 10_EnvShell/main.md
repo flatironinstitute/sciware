@@ -241,7 +241,7 @@ fi
 
 - with no arguments `alias` displays a list of all aliases
 - with a single word argument alias displays the definition of the alias to which the argument refers
-- with the argument `*NAME*=*VALUE*`, creates or updates the alias named `*NAME*` with the value of `*VALUE*`
+- with the argument `NAME=VALUE`, creates or updates the alias named *NAME* with the value of *VALUE*
 
 ##### `command`: use the actual command or builtin, even if there is an alias making it something else
 
@@ -378,9 +378,9 @@ fi
 
 #### Command and Process Substitution
 
-##### `\`*CMD*\``
+##### `\`CMD\``
 - this is the equivalent to the output of the command in the backticks. often useful in loops.
-##### `$( *CMD* )`
+##### `$( CMD )`
 
 - the output of the command in the parentheses is substituted. often useful in text strings.
 
