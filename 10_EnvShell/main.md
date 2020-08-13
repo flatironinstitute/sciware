@@ -177,7 +177,7 @@ flatiron is... the GOAT
 - `source myscript.sh` and `. myscript.sh` will _generally_ execute the script in the current shell
    - all variables set in the file will persist in your shell after execution is complete
    - `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
-- Making a script executable via `chmod` and executing via `./myscript.sh` will execute the script in a child process, and the variables will **not** persist into your current shell
+- Running a script with `bash myscript.sh`, or making it executable (with `chmod +x` and `#!/bin/bash`) and running `./myscript.sh` will execute the script in a child process, and the variables will **not** persist into your current shell
 
 
 #### Startup files
