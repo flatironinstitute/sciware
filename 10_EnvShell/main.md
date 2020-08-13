@@ -67,7 +67,7 @@ One often hears these terms used interchangeably. Let's clarify.
 * Console
 
 
-### Kernel & Operating System
+### Kernel & Operating System <!-- .slide: class="center" -->
 
 _Kernel_ is the bridge between application software and hardware.
 
@@ -76,21 +76,21 @@ _Operating System_ is comprised of a kernel + other applications.
 <small>_Linux_ 🐧 can refer to a kernel or an OS built on that kernel.</small>
 
 
-### Shell
+### Shell <!-- .slide: class="center" -->
 
 A _Shell_ is a program that takes commands, gives them to the operating system to perform, and returns output. As opposed to a _graphical user interface_ (GUI), the shell is a _command line interface_ (CLI).
 
 <small>Remember: The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
-### Common Shells
+### Common Shells <!-- .slide: class="center" -->
 
 On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
 
 Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
 
 
-### Terminal
+### Terminal <!-- .slide: class="center" -->
 
 _Terminal_ is a program that runs and provides I/O to a shell (or other program).
 
@@ -101,7 +101,7 @@ Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), bu
 Opinions?
 
 
-### Console
+### Console <!-- .slide: class="center" -->
 
 Console originally referred to the physical text entry and display device for system administration messages.
 
@@ -112,7 +112,7 @@ Now often used specifically in context of sys admin messages from BIOS, kernel, 
 ```
 
 
-### Bash Startup Process
+### Bash Startup Process <!-- .slide: class="center" -->
 
 The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently.
 
