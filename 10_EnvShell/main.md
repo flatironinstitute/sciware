@@ -215,7 +215,7 @@ fi
 #### Conda
 
 ```sh
-    conda create -n myenvname
+    conda create -n myenvname # places inside conda
     conda activate myenvname
     conda deactivate
 ```
@@ -233,15 +233,14 @@ fi
 #### venv (virtualenv)
 
 ```sh
-    python -m venv myenvname
+    python -m venv myenvname # places in cwd
     source myenvname/bin/activate
     deactivate
 ```
 - Pros:
-  - Lightweight - piggybacks on your environment
+  - Lightweight - faster management for pure python packages
   - Typically easier for SCC to support
-  - Faster management for pure python packages
-  - More on-the-fly control on which libraries to use
+  - More on-the-fly control on which library/python to use
 
 - Cons:
   - Restricted to use existing python binaries
@@ -251,7 +250,17 @@ fi
 
 #### Manual sourcing
 
+- Often useful to lump environment control commands into a single file
+- I often create an environment file in a project root
+```sh
+$ cat setenv.sh 
+module purge
+module load gcc python3
+module load pvfmm/1e4bef5 home/stkfmm/59951f4 intel/compiler/2020 openmpi2/2.1.6-intel-hfi intel/mkl/2020 --force
 
+source $HOME/projects/codes/fiber-private/env/bin/activate
+$ source setenv.sh
+```
 
 
 ## Shells
