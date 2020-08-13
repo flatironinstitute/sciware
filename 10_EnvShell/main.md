@@ -38,7 +38,7 @@ Activities where participants all actively work to foster an environment which e
 ## Feedback
 
 - Future sessions planned:
-  - github with Software Carpentry Sep 25-26 (2 day session!)
+  - git+github with Software Carpentry Sep 25-26 (2 day session!)
   - Designing APIs and software library interfaces
   - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
@@ -307,7 +307,7 @@ most modern shells copied, adopted similar, popular features
 - zsh
   - large, superset of **compatible with bash** and tcsh
   - many interactive and scripting features
-  - oh my zsh (plugins, themes)
+  - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
 - opinions?
 
 
