@@ -220,14 +220,14 @@ fi
     conda deactivate
 ```
 Pros:
-- Can install non-python packages, even cross-platform (!)
-- Useful for difficult to install packages (i.e. tensorflow)
-- Multiple environments in a central repository - different pythons and packages for different projects
+- Can install non-python packages, even cross-platform
+- Useful for difficult to install packages (e.g. tensorflow)
+- Multiple environments in a central repository
 
 Cons:
-- Libraries can sometimes conflict with modules and system libraries, aka `shadowing` - care sometimes needed
-- Uses a __lot__ of files. Using many environments can hit your filecount quota in your home directory
-- Installing and uninstalling packages (transactions) can be quite slow on shared file systems
+- Libraries can sometimes conflict: `shadowing`
+- Uses a __lot__ of files. Can hit filecount quota
+- [Un]installing packages (transactions) can be quite slow
 
 
 #### venv (virtualenv)
@@ -238,15 +238,15 @@ Cons:
     deactivate
 ```
 Pros:
-- Lightweight - piggybacks on your environment rather than supplying its own entirely
+- Lightweight - piggybacks on your environment
 - Typically easier for SCC to support
-- Faster management for pure python or precompiled packages
-- More on-the-fly control on which libraries to use (openblas, mkl, etc)
+- Faster management for pure python packages
+- More on-the-fly control on which libraries to use
 
 Cons:
-- Restricted to use existing python binaries (module, system, or even conda)
+- Restricted to use existing python binaries
 - Some packages that require compilation can be troublesome
-- Non-python packages aren't supported (vim, emacs, silver-searcher, etc)
+- Non-python packages aren't supported (vim, emacs, etc)
 
 
 #### Manual sourcing
