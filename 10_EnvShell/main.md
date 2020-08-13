@@ -128,7 +128,7 @@ The bash shell program uses a collection of startup files to help create an envi
 - Conventionally lower case ($history, $path, $aliases, etc.)
 - Can list via a bare `set` command (depending on shell/mode, will print environment variables as well)
 - Can delete with `unset var` command
-```
+```sh
 $ fi="the best"
 $ echo "flatiron is... $fi"
 flatiron is... the best
@@ -146,7 +146,7 @@ flatiron is...
 - Set with `export` command
 - Can delete with `unset` command
 - Set only for a child process by prepending
-```
+```sh
 $ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
 Woo! Environment fun!
 $ echo "Woo! $MY_ENV_VAR"
@@ -208,13 +208,13 @@ fi
 
 - Two main ways to manage multiple python environments
 - conda is a powerful, but heavier, one-stop-shop solution
--- Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
+  - Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
 - venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
 
 
 #### Conda
 
-```shell
+```sh
     conda create -n myenvname
     conda activate myenvname
     conda deactivate
@@ -232,7 +232,7 @@ Cons:
 
 #### venv (virtualenv)
 
-```shell
+```sh
     python -m venv myenvname
     source myenvname/bin/activate
     deactivate
