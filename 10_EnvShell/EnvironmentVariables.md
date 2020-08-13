@@ -14,7 +14,7 @@ value associated with a name, and then alter its behavior accordingly.
 # Shells and the Environment
 
 Shells provide mechanisms for users to modify the environment. For `bash` this mechanism is identical to managing
-normal variables. Environment variables are distinguished by being marked for "export". And once marked for export, a variable will remain
+normal variables. Environment variables are simply variables that are marked for "export". And once marked for export, a variable will remain
 in the environment, associated with the last value assigned to it. Some examples (note: `env` is used here to display the environment,
 but it can do more):
 
@@ -70,9 +70,12 @@ When, at the shell prompt, you type:
 `foo/bar/myProg`   
 the underlying system call used to run the program looks for the executable in the location you specified. If, however, you type:  
 `myProg`  
-that system call will begin searching for the executable using the value of `PATH`.
+that system call will begin searching for the executable using the value of `PATH`.  
 
-Starting with a "vanilla" PATH:  
+To help gain a better understanding of what's going, the following examples use `strace` to look at the system calls being invoked.
+We use a combination of filters to reduce the output of `strace` to just the relevant bits.  
+
+Starting with a "vanilla" PATH (`$PATH` is `bash` syntax for the *value* associated with `PATH`):  
 
     [carriero@scclin001 carriero]$ echo $PATH     
     /bin:/usr/bin       
@@ -90,10 +93,7 @@ Starting with a "vanilla" PATH:
     stat("/usr/bin/foodle", 0x7ffdab36e030) = -1 ENOENT (No such file or directory)
     bash: foodle: command not found
 
-To help gain a better understanding of what's going, these examples user `strace` to look at the system calls being invoked.
-We use a combination of filters to reduce this to just the relevant bits.  
-
-Let's try searching a few other directories:  
+Let's try searching a few other directories (`bash` implicitly concatenates strings to come up with the new value for `PATH`):  
 
     [carriero@scclin001 carriero]$ PATH=/here:/there:/everywhere:$PATH
     [carriero@scclin001 carriero]$ strace -e stat -o >(grep foodle) bash -c foodle
@@ -129,7 +129,7 @@ A very common mistake:
 For day to day use, `which` is your friend here. `which myProg` will return the full path (if one is found) of the executable that would be
 invoked if you were to have entered just `myProg`.
 
-Ordering is significant (the search stops with the first found).  
+Ordering is significant. The search works from left to right and stops with the first found, so `/here:$PATH` is very different form `$PATH:/here`.
 Keeping your `PATH` tidy reduces the risk of accidental collisions, and could make the shell a little more responsive (think about
 how much work it has to do to find the program).  
 
@@ -219,6 +219,7 @@ This is set to an integer to control the number of threads that will be used by 
 
 ### TMPDIR
 This should be set to a directory where temporary/scratch files should be written.  
+
 Not all (even many) codes use this, but if they do, using this to
 write temp files to a local storage area, rather than a shared file system, can have a big impact on the performance of your code.
 
@@ -236,10 +237,12 @@ Most would consider this to be a hack, but on occasion it is a very useful one. 
 ## Control build process
 ### CPATH
 This should be set to a ":" separated list of *directories*.  
+
 Somewhat like `PATH`, this provides a list of locations to search for C include files.
 
 ### LIBRARY_PATH
 This should be set to a ":" separated list of *directories*.  
+
 A list of locations to search for `libxyz` when linking a program with `-lxyz`.
 
 These are especially helpful when working with a complex source build that does you the "favor" of hiding most of the build steps, but isn't smart
