@@ -212,9 +212,11 @@ fi
 #### Modules
 
 - Manages environment by setting and modifying environment variables for you
-- `module avail` to available modules -- useful to `module avail -t | grep <pattern>` to search
+- `module avail` to see available all modules
+  - search: `module avail -t | grep <pattern>`
 - `module load <modulename>` to load module
-- `module unload <modulename>` to unload module, and `module purge` to unload all modules
+- `module unload <modulename>` to unload module
+- `module purge` to unload all modules
 - `module show <modulename>` to show what loading the module does
 
 
