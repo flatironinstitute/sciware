@@ -241,19 +241,19 @@ fi
 #### venv (virtualenv)
 
 ```sh
-    python -m venv myenvname # places in cwd
+    python3 -m venv myenvname # places in cwd
     source myenvname/bin/activate
     deactivate
 ```
 
 - Pros:
-  - Lightweight - faster management for python packages
+  - Lightweight - fast [un]installs
   - Typically easier for SCC to support
   - More on-the-fly control on which library/python to use
 - Cons:
   - Restricted to use existing python binaries
-  - Some packages that require compilation can be troublesome
-  - Non-python packages aren't supported (vim, emacs, etc)
+  - Some issues with compiled packages
+  - (Almost) no non-python packages (vim, emacs, etc)
 
 
 #### Manual sourcing
