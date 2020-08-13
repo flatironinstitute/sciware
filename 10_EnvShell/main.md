@@ -197,11 +197,60 @@ fi
 
 #### Modules
 
+- Manages environment by setting and modifying environment variables for you
+- `module avail` to available modules -- useful to `module avail -t | grep <pattern>` to search
+- `module load <modulename>` to load module
+- `module unload <modulename>` to unload module, and `module purge` to unload all modules
+- `module show <modulename>` to show what loading the module does
 
-#### Conda/venv
+
+#### Python (conda and venv/virtualenv)
+
+- Two main ways to manage multiple python environments
+- conda is a powerful, but heavier, one-stop-shop solution
+-- Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
+- venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
+
+
+#### Conda
+
+```shell
+    conda create -n myenvname
+    conda activate myenvname
+    conda deactivate
+```
+Pros:
+- Can install non-python packages, even cross-platform (!)
+- Useful for difficult to install packages (i.e. tensorflow)
+- Multiple environments in a central repository - different pythons and packages for different projects
+
+Cons:
+- Libraries can sometimes conflict with modules and system libraries, aka `shadowing` - care sometimes needed
+- Uses a __lot__ of files. Using many environments can hit your filecount quota in your home directory
+- Installing and uninstalling packages (transactions) can be quite slow on shared file systems
+
+
+#### venv (virtualenv)
+
+```shell
+    python -m venv myenvname
+    source myenvname/bin/activate
+    deactivate
+```
+Pros:
+- Lightweight - piggybacks on your environment rather than supplying its own entirely
+- Typically easier for SCC to support
+- Faster management for pure python or precompiled packages
+- More on-the-fly control on which libraries to use (openblas, mkl, etc)
+
+Cons:
+- Restricted to use existing python binaries (module, system, or even conda)
+- Some packages that require compilation can be troublesome
+- Non-python packages aren't supported (vim, emacs, silver-searcher, etc)
 
 
 #### Manual sourcing
+
 
 
 
@@ -489,3 +538,4 @@ Globs match things (but are less awesome than regular expressions)
 * shell scripting
 * slurm
 * jupyter kernels
+* fzf
