@@ -243,7 +243,7 @@ Today's Builtins
   - with the argument NAME=VALUE, creates or updates the alias named NAME with the value of VALUE
 
 - command: use the actual command or builtin, even if there is an alias making it something else
-  - useful when you have an alias configued to runa command with a common set of flags
+  - useful when you have an alias configued to run a command with a common set of flags
 
 
 - jobs
@@ -294,7 +294,7 @@ Today's Builtins
 
 - help
   - with no arguments lists all shell builtins with very basic descriptions
-  - with a single argument of a shall builtin, displays usage instructions on using the builtin
+  - with a single argument of a shell builtin, displays usage instructions on using the builtin
 
 
 - history
@@ -313,18 +313,19 @@ Today's Builtins
 
 #### Quoting and Word Splitting
 
-- spaces matter (set a variable with a space vs not)
+- spaces matter - for most things they define the boundaries of strings
 - “ vs ‘
   - " does variable expansion
   - ' does not
 - automatic string concatenation (nested quotes and such)
+  - if you have consecutive quoted things
 - \
   - escapes things like spaces
 
 
 #### I/O Redirection
 
-- > and >>
+- \> and >>
   - > writes output from a process to the file named after the greater than symbol. if the file already exists, ot is overwritten.
   - >> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
   - noclobber keeps you from overwriting files with > (set -o noclobber)
@@ -332,11 +333,14 @@ Today's Builtins
   - stdin is a stream of information you send to a process
   - stdout is usually the expected output of a process
   - stderr is either related to something going wrong or sort of control/status information depending on the process
-  - walk through 2>&1
+  - what does this mean?  2>&1
     - this redirects standard error to standard output 
-- process redirection vs a pipe and why it’s awesome
 - |
   - take the stdout from one process and send it to the stdin of another. very useful 
+- process redirection vs a pipe and why it’s awesome
+  - output from a file is put into a hidden file and then is read like a generic file
+  - multiple processes can write to the hidden file
+  - the program that wants to read the data only needs to be able to open a file
 
 #### Command and Process Substitution
 
