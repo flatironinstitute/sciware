@@ -215,7 +215,9 @@ Same general idea as LD_LIBRARY_PATH, but for python modules.
 
 ## Control how programs behave
 ### OMP_NUM_THREADS
-This is set to an integer to control the number of threads that will be used by an OMP-enabled application.
+This is set to an integer to control the number of threads that will be used by an OMP-enabled application.  
+
+Useful when the problem isn't big enough to make use of all available cores, or to make effective use of resources when mixing parallelization techniques.
 
 ### TMPDIR
 This should be set to a directory where temporary/scratch files should be written.  
