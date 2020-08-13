@@ -249,7 +249,7 @@ fi
 - Pros:
   - Lightweight - fast [un]installs
   - Typically easier for SCC to support
-  - More on-the-fly control on which library/python to use
+  - More on-the-fly selecting of library/python
 - Cons:
   - Restricted to use existing python binaries
   - Some issues with compiled packages
@@ -358,7 +358,7 @@ fi
 - I/O Redirection
 - Command and Process Substitution
 - Globs
-- Common programs that aren't builtins 
+- Common programs that aren't builtins
 
 
 #### Builtins
@@ -480,11 +480,11 @@ fi
 - stdout (`1`) is usually the expected output of a process
 - stderr (`2`) is either related to something going wrong or sort of control/status information depending on the process
 - what does this mean?  `2>&1`
-   - this redirects standard error to standard output 
+   - this redirects standard error to standard output
 
 
 - `|`
-   - take the stdout from one process and send it to the stdin of another. very useful 
+   - take the stdout from one process and send it to the stdin of another. very useful
 - `<( CMD )` (and `>( CMD )`)
    - output from *CMD* is passed as if in a real file
    - multiple processes can write to the hidden file
@@ -528,7 +528,7 @@ Globs match things (but are less awesome than regular expressions)
 
 
 - `nano`
-   - basic editor. open. (^R) save. (^O) quit. (^X) 
+   - basic editor. open. (^R) save. (^O) quit. (^X)
 
 
 - `rename`
@@ -543,7 +543,7 @@ Globs match things (but are less awesome than regular expressions)
 
 
 - `less` (is `more`)
-   - paginates output, so we can read it before it scrolls past 
+   - paginates output, so we can read it before it scrolls past
 - `cat`
    - does not
 
