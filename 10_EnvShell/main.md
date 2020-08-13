@@ -327,7 +327,7 @@ Today's Builtins
 
 - \> and >>
   - \> writes output from a process to the file named after the greater than symbol. if the file already exists, ot is overwritten.
-  - >> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
+  - \>\> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
   - noclobber keeps you from overwriting files with > (set -o noclobber)
 - stidin, stdout(1), stderr(2)
   - stdin is a stream of information you send to a process
