@@ -222,15 +222,15 @@ More About Builtins
 
 - There are over 70 builtin commands in bash (even more in zsh)
 - Find them all by using the "help" command at your prompt (for zsh type "man zshbuiltins")
-- Focus on a handful that are important to your interactive session
+- Now, we will focus on a handful that are important to your interactive session
 
 
 Today's Builtins
 
 - alias and command
-- bg, fg, jobs, kill and ^c
+- bg, fg, jobs, kill, and ^c
 - suspend and ^z
-- cd, pwd, pushd, popd, dirs
+- cd, pwd, pushd, popd, and dirs
 - export
 - help
 - history
