@@ -178,18 +178,18 @@ flatiron is... the GOAT
    - all variables set in the file will persist in your shell after execution is complete
    - `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
 - Vs. running a script in a child process:
-   - `bash myscript.sh`
-   - Make it executable (by adding `#!/bin/bash` and doing `chmod +x`) and run `./myscript.sh`
+   - `bash myscript.sh`, or
+   - make it executable (by adding `#!/bin/bash` and doing `chmod +x`) and run `./myscript.sh`
    - the variables will **not** persist into your current shell
 
 
 #### Startup files
 
-- certain "dotfiles" or "rcfiles" are `source`'d during shell startup
-- can easily break your shell, prevent logins (ex: `exit`)
+- Certain "dotfiles" or "rcfiles" are `source`'d during shell startup
+- Can easily break your shell, prevent logins (ex: `exit`)
 - Avoid generating output in non-login files, issues with `scp`:
 
-```
+```sh
 if [[ -z $PS1 ]] ; then
 	return
 fi
@@ -248,12 +248,12 @@ fi
 
 - Pros:
   - Lightweight - fast [un]installs
-  - Typically easier for SCC to support
+  - Can build on SCC-supported and maintained python installations, better support
   - More on-the-fly selecting of library/python
 - Cons:
   - Restricted to use existing python binaries
   - Some issues with compiled packages
-  - (Almost) no non-python packages (vim, emacs, etc)
+  - (Almost) no non-python packages (vim, emacs, etc.)
 
 
 #### Manual sourcing
@@ -292,7 +292,7 @@ $ source setenv.sh
 - tcsh invented history, alias, other interactive features
 - POSIX.2 standardized minimal /bin/sh features (see `dash`)
 - bash developed (and spun off) readline, key bindings
-     - <small>emacs mode, vi mode, custom bindings in `.inputrc`</small>
+     - emacs mode, vi mode, custom bindings in `.inputrc`
 - zsh added sophisticated tab-completion, prompts
      - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
      - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
