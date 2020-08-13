@@ -350,10 +350,12 @@ fi
 ## Configuring your prompt 🎨
 
 ### ⚠️ Warning ⚠️
+
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
 
 
 ### Prompt design
+
  - Only include what you will actually use.
  - That said, don't be afraid to add a little ✨.
  - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
@@ -363,6 +365,7 @@ fi
 
 
 ### Prompt variables (bash)
+
 - `PS1`: default interactive prompt.
 - `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
 - Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
@@ -370,8 +373,10 @@ fi
 
 
 ### Accessing git branch (bash)
+
 - Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Otherwise you can use this to find the active git branch:
+- Otherwise you can use the following function to find the active git branch.
+
 ```sh
   function parse_git_branch {
     git symbolic-ref --short HEAD 2> /dev/null
@@ -402,6 +407,7 @@ fi
 
 
 ### Prompt variables (zsh)
+
 - `PROMPT`: default is `%m%#`
   - %m: short form of the current hostname
   - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
@@ -411,10 +417,11 @@ fi
 
 
 ###  Accessing git branch (zsh)
+
 ```zsh
-autoload -Uz vcs_info
-precmd() {vcs_info}
-zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+  autoload -Uz vcs_info
+  precmd() {vcs_info}
+  zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
 ```
 
 - Enable `vcs_info` function and call it in a pre-command.
@@ -422,6 +429,7 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
 
 
 ### Example prompt (bash)
+
 - `PROMPT_SUBST`: expands the parameters usable in the prompt.
 - `%F{green}%B%`: Named colors must be surrounded by the escape characters.
 - The final `%F{black}%B%` sets the color for the
