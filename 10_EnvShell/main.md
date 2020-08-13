@@ -252,12 +252,12 @@ fi
 
 - Often useful to lump environment control commands into a single file
 - I often create an environment file in a project root
-```sh
-$ cat setenv.sh 
-module purge
-module load gcc python3
-module load pvfmm/1e4bef5 home/stkfmm/59951f4 intel/compiler/2020 openmpi2/2.1.6-intel-hfi intel/mkl/2020 --force
 
+```sh
+$ cat setenv.sh
+module purge
+module load gcc python3 intel/compiler/2020 --force
+module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl/2020
 source $HOME/projects/codes/fiber-private/env/bin/activate
 $ source setenv.sh
 ```
