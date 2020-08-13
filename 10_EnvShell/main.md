@@ -174,8 +174,8 @@ flatiron is... the GOAT
 #### Executing shell scripts: `source`, `.`, and `chmod +x`
 
 - `source myscript.sh` and `. myscript.sh` will _generally_ execute the script in the current shell
--- all variables set in the file will persist in your shell after execution is complete
--- `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
+   - all variables set in the file will persist in your shell after execution is complete
+   - `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
 - Making a script executable via `chmod` and executing via `./myscript.sh` will execute the script in a child process, and the variables will **not** persist into your current shell
 
 
