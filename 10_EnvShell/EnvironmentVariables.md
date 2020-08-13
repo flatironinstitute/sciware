@@ -14,7 +14,7 @@ value associated with a name, and then alter its behavior accordingly.
 # Shells and the Environment
 
 Shells provide mechanisms for users to modify the environment. For `bash` this mechanism is identical to managing
-normal variables. Environment variables are distinguished by being marked for "export". And once marked for export, a variable will remain
+normal variables. Environment variables are simply variables that are marked for "export". And once marked for export, a variable will remain
 in the environment, associated with the last value assigned to it. Some examples (note: `env` is used here to display the environment,
 but it can do more):
 
@@ -70,7 +70,10 @@ When, at the shell prompt, you type:
 `foo/bar/myProg`   
 the underlying system call used to run the program looks for the executable in the location you specified. If, however, you type:  
 `myProg`  
-that system call will begin searching for the executable using the value of `PATH`.
+that system call will begin searching for the executable using the value of `PATH`.  
+
+To help gain a better understanding of what's going, the following examples use `strace` to look at the system calls being invoked.
+We use a combination of filters to reduce the output of `strace` to just the relevant bits.  
 
 Starting with a "vanilla" PATH (`$PATH` is `bash` syntax for the *value* associated with `PATH`):  
 
@@ -89,9 +92,6 @@ Starting with a "vanilla" PATH (`$PATH` is `bash` syntax for the *value* associa
     stat("/bin/foodle", 0x7ffdab36e030)     = -1 ENOENT (No such file or directory)
     stat("/usr/bin/foodle", 0x7ffdab36e030) = -1 ENOENT (No such file or directory)
     bash: foodle: command not found
-
-To help gain a better understanding of what's going, these examples use `strace` to look at the system calls being invoked.
-We use a combination of filters to reduce this to just the relevant bits.  
 
 Let's try searching a few other directories (`bash` implicitly concatenates strings to come up with the new value for `PATH`):  
 
