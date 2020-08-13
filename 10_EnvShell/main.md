@@ -181,11 +181,15 @@ flatiron is... the GOAT
 
 #### Startup files
 
-- `zsh`: `/etc/zprofile`, `.zprofile`, `.zshrc`
-- `bash`: `/etc/profile`, `.profile`, `.bash_profile`, `.bashrc`, 
-- 'profile' files executed only on __login__ shells (e.g. `ssh`, `bash --login`), and should typically contain only environment variable definitions. It's common to source the relevant 'rc' file here.
-- 'rc' files executed only on __interactive__ shells. Used for everything else (aliases, functions, bash/zsh variables, etc). 
-- Avoid issues with `scp`: in 'rc' file `[ -z "$PS1" ] && return`
+- certain "dotfiles" or "rcfiles" are `source`d during shell startup (more later)
+- can easily break your shell, prevent logins (ex: `exit`)
+- Avoid generating output in non-login files, issues with `scp`:
+
+```
+if [[ -z $PS1 ]] ; then
+	return
+fi
+```
 
 
 ### Environment Management
