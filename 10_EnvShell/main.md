@@ -32,10 +32,10 @@ Activities where participants all actively work to foster an environment which e
 - Ok to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
-- We are recording, posted on #sciware Slack
+- We are recording. Link will be posted on #sciware Slack.
 
 
-## Feedback
+## Future Sessions
 
 - Future sessions planned:
   - git+github with Software Carpentry Sep 25-26 (2 day session!)
@@ -148,16 +148,16 @@ flatiron is...
 - Can delete with `unset` command
 - Set only for a child process by prepending
 ```sh
-$ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
-Woo! Environment fun!
-$ echo "Woo! $MY_ENV_VAR"
-Woo!
 $ export FI="the GOAT"
 $ echo "flatiron is... $FI"
 flatiron is... the GOAT
 $ sh
 sh-4.2$ echo "flatiron is... $FI"
 flatiron is... the GOAT
+$ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
+Woo! Environment fun!
+$ echo "Woo! $MY_ENV_VAR"
+Woo!
 ```
 
 
@@ -177,16 +177,19 @@ flatiron is... the GOAT
 - `source myscript.sh` and `. myscript.sh` will _generally_ execute the script in the current shell
    - all variables set in the file will persist in your shell after execution is complete
    - `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
-- Making a script executable via `chmod` and executing via `./myscript.sh` will execute the script in a child process, and the variables will **not** persist into your current shell
+- Vs. running a script in a child process:
+   - `bash myscript.sh`, or
+   - make it executable (by adding `#!/bin/bash` and doing `chmod +x`) and run `./myscript.sh`
+   - the variables will **not** persist into your current shell
 
 
 #### Startup files
 
-- certain "dotfiles" or "rcfiles" are `source`d during shell startup (more later)
-- can easily break your shell, prevent logins (ex: `exit`)
+- Certain "dotfiles" or "rcfiles" are `source`'d during shell startup
+- Can easily break your shell, prevent logins (ex: `exit`)
 - Avoid generating output in non-login files, issues with `scp`:
 
-```
+```sh
 if [[ -z $PS1 ]] ; then
 	return
 fi
@@ -199,7 +202,7 @@ fi
 #### Modules
 
 - Manages environment by setting and modifying environment variables for you
-- `module avail` to see available all modules
+- `module avail` to see all available modules
   - search: `module avail -t | grep <pattern>`
 - `module load <modulename>` to load module
 - `module unload <modulename>` to unload module
@@ -245,12 +248,12 @@ fi
 
 - Pros:
   - Lightweight - fast [un]installs
-  - Typically easier for SCC to support
+  - Can build on SCC-supported and maintained python installations, better support
   - More on-the-fly selecting of library/python
 - Cons:
   - Restricted to use existing python binaries
   - Some issues with compiled packages
-  - (Almost) no non-python packages (vim, emacs, etc)
+  - (Almost) no non-python packages (vim, emacs, etc.)
 
 
 #### Manual sourcing
@@ -289,7 +292,7 @@ $ source setenv.sh
 - tcsh invented history, alias, other interactive features
 - POSIX.2 standardized minimal /bin/sh features (see `dash`)
 - bash developed (and spun off) readline, key bindings
-     - <small>emacs mode, vi mode, custom bindings in `.inputrc`</small>
+     - emacs mode, vi mode, custom bindings in `.inputrc`
 - zsh added sophisticated tab-completion, prompts
      - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
      - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
@@ -370,7 +373,7 @@ fi
 - Otherwise you can use `sed` to find the active git branch by the *.
 ```
   function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git symbolic-ref --short HEAD 2> /dev/null
   }
 ```
 
@@ -599,7 +602,7 @@ Globs match things (but are less awesome than regular expressions)
    - if you try to use `man` on a builtin, you might get a generic or bash man page.
 
 
-- `sed`, `awk`
+- `sed`, `awk`, `cut`
    - `sed` is used to selectively edit streams of text (usually replacement or transformation of one or more characters)
    - `awk` is used to carve up text based around some field separators
    - `cut` selects single columns
@@ -636,3 +639,20 @@ Globs match things (but are less awesome than regular expressions)
 * slurm
 * jupyter kernels
 * fzf
+
+
+
+## Future Sessions
+
+- Future sessions planned:
+  - git+github with Software Carpentry Sep 25-26 (2 day session!)
+  - Designing APIs and software library interfaces
+  - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
+- Suggest topics and vote on options in #sciware Slack
+
+
+## Please give us feedback
+
+### https://bit.ly/sciware-shells
+
+Most questions are optional
