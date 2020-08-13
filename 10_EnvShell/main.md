@@ -140,7 +140,7 @@ The bash shell program uses a collection of startup files to help create an envi
 
 - ksh introduced functions
 - tcsh invented history, alias, other interactive features
-- bash developed (and spun off) readline, key bindings
+- bash developed (and spun off) readline, key bindings (emacs vs vi mode!)
 - zsh added sophisticated tab-completion, prompts
 - POSIX.2 standardized minimal shell features (see `dash`)
 
@@ -215,202 +215,241 @@ fi
 - Q: What is a builtin?
 - A: A builtin is a command you run that is part of the shell itself and not a separate executable
 - Q: Why does this matter?
-- A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g.: PATH)
+- A: These commands are accessible no matter what and are not dependent on other processes or variables (e.g., `PATH`)
 
 
-More About Builtins
+##### More About Builtins
 
 - There are over 70 builtin commands in bash (even more in zsh)
-- Find them all by using the "help" command at your prompt (for zsh type "man zshbuiltins")
+- Find them all by using the `help` command at your prompt (for zsh `man zshbuiltins`)
 - Now, we will focus on a handful that are important to your interactive session
 
 
-Today's Builtins
+##### Today's Builtins
 
-- alias and command
-- bg, fg, jobs, kill, and ^c
-- suspend and ^z
-- cd, pwd, pushd, popd, and dirs
-- export
-- help
-- history
-- source and .
-
-
-- alias: create or display a shortcut
-  - with no arguments alias displays a list of all aliases
-  - with a single word argument alias displays the definition of the alias to which the argument refers
-  - with the argument NAME=VALUE, creates or updates the alias named NAME with the value of VALUE
-
-- command: use the actual command or builtin, even if there is an alias making it something else
-  - useful when you have an alias configued to run a command with a common set of flags
+- `alias` and `command`
+- `bg`, `fg`, `jobs`, `kill`, and *^C*
+- `suspend` and *^Z*
+- `cd`, `pwd`, `pushd`, `popd`, and `dirs`
+- `export`
+- `help`
+- `history` and `fc`
+- `source` and `.`
 
 
-- jobs
-  - displays the status of jobs and their ID
-  - -p flag also gives the PID for the relevant process
-  - common statuses are running, suspended, killed
-- bg
-  - puts the most recently suspended process in the background
-- fg
-  - brings the first process in the jobs list into the foreground
+##### `alias`: create or display a shortcut
+
+- with no arguments `alias` displays a list of all aliases
+- with a single word argument alias displays the definition of the alias to which the argument refers
+- with the argument `*NAME*=*VALUE*`, creates or updates the alias named `*NAME*` with the value of `*VALUE*`
+
+##### `command`: use the actual command or builtin, even if there is an alias making it something else
+
+- useful when you have an alias configued to run a command with a common set of flags
+- prefixing with `\\` has a similar effect
 
 
-- ^c kills the current process that is running
-- kill terminates the process specified by either a PID or a job number
-  - -1 (SIGHUP): "Good afternoon process, please consider stopping or maybe re-reading your configuration file"
-  - no flag specified (SIGTERM): "hey process, just die."
-  - -9 (SIGKILL): "DIE DIE DIE STUPID PROCESS!!!"
+##### `bg`
+
+- puts the most recently suspended process in the background
+
+##### `fg`
+
+- brings the first process in the jobs list into the foreground
+
+##### `jobs`
+
+- displays the status of jobs and their ID
+- `-p` flag also gives the PID for the relevant process
+- common statuses are running, suspended, killed
 
 
-- suspend
-  - suspend the execution of your shell
-- ^z
-  - suspend the process currently running in the fireground of your shell
+##### `kill`: terminates the process specified by either a PID or a job number
+
+- `-HUP`: "Good afternoon process, please consider stopping or maybe re-reading your configuration file"
+- `-TERM` (default): "hey process, just die."
+- `-KILL`: "DIE DIE DIE STUPID PROCESS!!!"
+- *^C* is equivalent to `-INT`: "please stop"
 
 
-- cd
-  - change into another directory
-  - cd - puts you into the last directory you were in (super helpful when you change to the wrong place or when you have to go back and forth a bunch)
-  - cd with no arguments puts you back to your home directory
-- pwd
-  - prints the name of the current working directory 
+##### *^Z*
+
+- suspend the process currently running in the fireground of your shell (`kill -TSTP`)
+
+##### `suspend`
+
+- suspend the execution of your shell (because *^Z* doesn't work for shells)
 
 
-- pushd
-  - change into a directory and place it onto the top of a stack
-  - the -n option only adds the directory to the top of the stack but does not change directories
-- popd
-  - remnoves a directory from the top of the stack and changes into the new top of the stack
-  - the -n option only removes the directory from the to pof the stack but does not change directories
-- dirs
-  - shows the contents of the stack generated by pushd
-  - -c option clears the stack entirely
+##### `cd`
+
+- change into another directory
+- `cd -` puts you into the last directory you were in
+- `cd` with no arguments puts you back to your home directory
+- `cd *A* *B*` substitutes *A* for *B* in your path (zsh only)
+
+##### `pwd`
+
+- prints the name of the current working directory (also `$PWD`)
 
 
-- export
-  - makes a variable able to be inherited by subsequent commands
+##### `pushd`
+
+- change into a directory and place it onto the top of a stack
+
+##### `popd`
+
+- removes a directory from the top of the stack and changes into the new top of the stack
+
+##### `dirs`
+
+- shows the contents of the stack generated by `pushd`
 
 
-- help
-  - with no arguments lists all shell builtins with very basic descriptions
-  - with a single argument of a shell builtin, displays usage instructions on using the builtin
+##### `export`
+
+- makes a variable able to be inherited by subsequent commands (creates an environment variable)
 
 
-- history
-  - display or manipulate the history of commands you have run
-  - -c option clears it
-  - usually you just run it without arguments to remember something you did before
+##### `help`
+
+- with no arguments lists all shell builtins with very basic descriptions
+- with a single argument of a shell builtin, displays usage instructions on using the builtin
 
 
-- source and .
-  - effectively the same thing
-  - read and execute commands from a file
-  - uses your PATH to find the file you specify
-  - . is POSIX compliant, while source is the more readable version provided by BASH
-  - source runs the file in the current shell where . runs it in a subshell
+##### `history`
+
+- display or manipulate the history of commands you have run
+- usually you just run it without arguments to remember something you did before
+
+##### `fc`
+
+- opens the last command in the editor, re-runs edited result
+
+
+##### `source` and `.`
+
+- effectively the same thing
+- read and execute commands from a file (as if you typed them)
+- uses your `PATH` to find the file you specify (sometimes! zsh `source` looks in current directory first)
+- `.` is POSIX compliant, while `source` is the more readable version provided by bash
 
 
 #### Quoting and Word Splitting
 
-- spaces matter - for most things they define the boundaries of strings
-- “ vs ‘
-  - " does variable expansion
-  - ' does not
+- spaces matter: for most things they define the boundaries of strings
+- `"` vs `'`
+  - `"` does variable expansion
+  - `'` does not
 - automatic string concatenation (nested quotes and such)
   - if you have consecutive quoted things
-- \
-  - escapes things like spaces
+- `\`
+  - escapes things like spaces or special characters
 
 
 #### I/O Redirection
 
-- \> and >>
-  - \> writes output from a process to the file named after the greater than symbol. if the file already exists, ot is overwritten.
-  - \>\> appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
-  - noclobber keeps you from overwriting files with > 
-    - (set -o noclobber)
+##### `>` and `>>`
+
+- `>` writes output from a process to the file named after the greater than symbol. if the file already exists, it is overwritten.
+- `>>` appends output from a process to the file name after the double greater than. if the file does not exist, it is created.
+- `set -o noclobber` keeps you from overwriting files with `>`
 
 
-- stidin, stdout(1), stderr(2)
-  - stdin is a stream of information you send to a process
-  - stdout is usually the expected output of a process
-  - stderr is either related to something going wrong or sort of control/status information depending on the process
-  - what does this mean?  2>&1
-    - this redirects standard error to standard output 
+##### stdin, stdout, stderr
+
+- stdin (0) is a stream of information you send to a process
+- stdout (1) is usually the expected output of a process
+- stderr (2) is either related to something going wrong or sort of control/status information depending on the process
+- what does this mean?  `2>&1`
+   - this redirects standard error to standard output 
 
 
-- |
-  - take the stdout from one process and send it to the stdin of another. very useful 
+##### `|`
 
-- process redirection vs a pipe and why it’s awesome
-  - output from a file is put into a hidden file and then is read like a generic file
-  - multiple processes can write to the hidden file
-  - the program that wants to read the data only needs to be able to open a file
+- take the stdout from one process and send it to the stdin of another. very useful 
+
+##### `<( *CMD* )` (and `>( *CMD* )`)
+
+- output from *CMD* is passed as if in a real file
+- multiple processes can write to the hidden file
+- the program that wants to read the data only needs to be able to open a file
 
 
 #### Command and Process Substitution
 
-- ``
-  - this is the equivalent to the output of the command in the backticks. often useful in loops.
-- $()
-  - the output of the command in the parentheses is sustituted. often useful in text strings.
+##### `\`*CMD*\``
+- this is the equivalent to the output of the command in the backticks. often useful in loops.
+##### `$( *CMD* )`
+
+- the output of the command in the parentheses is substituted. often useful in text strings.
 
 
 #### Globs
 
-Globs match things, but are less awesome than regular expressions
-- \* - 0 or more characters
-- ? - precisely one character
-- [somelistofcharspickone] - precisely one character from the list in the brackets (case matters)
-- if a glob doesn’t match anything, then the glob is the name (this can be confusing)
-- zsh globbing - if you press tab to complete, it will actually turn into the glob. (like pressing tab with a * on ls will actually expand the * to the files in your working directory)
+Globs match things (but are less awesome than regular expressions)
+- `*`: 0 or more any characters
+- `?`: precisely any one character
+- `[somelistofcharspickone]` precisely one character from the list in the brackets (case matters)
+- if a glob doesn't match anything, then the glob stays as is (this can be confusing)
+- (zsh) if you press tab to complete, it will expand the glob in-place
 
 
 #### Not Builtins But Still Great
 
-- ls
-  - lists the files in a directory. if no directory is specified, lists the current directory
-  - usually aliased with some options to make for easier color/formatting
+##### `ls`
+
+- lists the files in a directory. if no directory is specified, lists the current directory
+- usually aliased with some options to make for easier color/formatting (and slower!)
 
 
-- man
-  - instructions on how to use a command
-  - man -k / apropos is a keyword search of man pages (this is life changing)
-  - if you try to use man on a builtin, you just get the bash man page. (use the help builtin for this)
+##### `man`
+
+- instructions on how to use a command
+- man `-k` / `apropos` is a keyword search of man pages (this is life changing)
+- if you try to use `man` on a builtin, you might get a generic or bash man page.
 
 
-- sed and awk
-  - sed is used to selectively edit streams of text (usually replacement or transformation of one or more characters)
-  - awk is used to carve up text based around some field separators
-  - they are often used together
-  - effective for formatting output from a command to be piped to another command
+##### `sed` and `awk`
+
+- `sed` is used to selectively edit streams of text (usually replacement or transformation of one or more characters)
+- `awk` is used to carve up text based around some field separators
+- they are often used together
+- effective for formatting output from a command to be piped to another command
 
 
-- nano
-  - basic overview. open. (^r) save. (^o) quit. (^x) 
+##### `nano`
+
+- basic editor. open. (^R) save. (^O) quit. (^X) 
 
 
-- rename
-  - rename multiple files based on a supplied expression
-  - usually 3 arguments starting format, ending format, and the things you want to change
-    - rename foo foo00 foo?
-    - the takes the files foo1 -> foo5 and makes them foo001 -> foo005
+##### `rename`
+
+- rename multiple files based on a supplied expression
+- usually 3 arguments: starting format, ending format, and the things you want to change
+   - `rename foo foo00 foo?`
+   - the takes the files foo1 -> foo5 and makes them foo001 -> foo005
 
 
-- sleep
-  - wait for some number of seconds based on a single argument
+##### `sleep`
+
+- wait for some number of seconds (or other unit) based on a single argument
 
 
-- less
-  - paginates output, so we can read it before it scrolls past  
+##### `less` (is `more`)
+
+- paginates output, so we can read it before it scrolls past 
+
+##### `cat`
+
+- does not
 
 
 
 ### Extras
 
 * tab completion, expansion
-* command history, `fc`
+* command line editing (emacs, vi, custom)
 * shell scripting
 * slurm
 * jupyter kernels
