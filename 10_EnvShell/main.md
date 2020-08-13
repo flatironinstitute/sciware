@@ -32,6 +32,7 @@ Activities where participants all actively work to foster an environment which e
 - Ok to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
+- We are recording, posted on #sciware Slack
 
 
 ## Feedback
@@ -133,21 +134,23 @@ The bash shell program uses a collection of startup files to help create an envi
 
 - run commands, interactive
 - slowly developed more scripting features
-- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`), *other*...
+- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`)
 
 
 #### Evolution
 
 - ksh introduced functions
 - tcsh invented history, alias, other interactive features
-- bash developed (and spun off) readline, key bindings (emacs vs vi mode!)
+- bash developed (and spun off) readline, key bindings
+     - <small>emacs mode, vi mode, custom bindings in `.inputrc`</small>
 - zsh added sophisticated tab-completion, prompts
+     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
 - POSIX.2 standardized minimal shell features (see `dash`)
 
 most modern shells copied, adopted similar, popular features
 
 
-#### Startup files
+#### Dotfiles
 
 <table>
 <thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
@@ -164,6 +167,21 @@ most modern shells copied, adopted similar, popular features
 </table>
 
 
+#### Preferences
+
+- bash
+  - most common shell, especially for scripting
+  - often assumed default
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
+- zsh
+  - large, superset of **compatible with bash** and tcsh
+  - many interactive and scripting features
+  - more permissive license _(Apple)_
+  - oh my zsh (plugins, themes)
+- opinions?
+
+
 #### Changing your shell
 
 - Current shell: `$SHELL`, `ps`
@@ -177,22 +195,6 @@ if [[ $- == *i* && -x /bin/zsh ]] ; then
 	SHELL=/bin/zsh exec /bin/zsh -l
 fi
 ```
-
-
-#### Preferences
-
-- bash
-  - most common shell, especially for scripting
-  - often assumed default
-  - lags behind, catches up
-- tcsh: fallen out of favor, non-POSIX, still maintained
-- zsh
-  - large, superset of **compatible with bash** and tcsh
-  - many interactive features, tab completion
-     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
-  - more permissive license _(Apple)_
-  - oh my zsh (plugins, themes)
-- opinions?
 
 
 
@@ -408,7 +410,7 @@ Globs match things (but are less awesome than regular expressions)
 ### Other things!
 
 * tab completion, expansion
-* command line editing (emacs, vi, custom)
+* command line editing
 * shell scripting
 * slurm
 * jupyter kernels
