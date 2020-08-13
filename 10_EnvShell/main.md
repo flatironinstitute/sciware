@@ -233,6 +233,7 @@ fi
 ```sh
     conda create -n myenvname # places inside conda
     conda activate myenvname
+    conda install numpy
     conda deactivate
 ```
 
@@ -251,6 +252,7 @@ fi
 ```sh
     python3 -m venv myenvname # places in cwd
     source myenvname/bin/activate
+    pip install numpy
     deactivate
 ```
 
