@@ -370,13 +370,14 @@ Globs match things, but are less awesome than regular expressions
 #### Not Builtins But Still Great
 
 - ls
-  - lists the files in a directory. if no directory is specified, lists the currend directory
+  - lists the files in a directory. if no directory is specified, lists the current directory
   - usually aliased with some options to make for easier color/formatting
 
 
 - man
   - instructions on how to use a command
   - man -k / apropos is a keyword search of man pages (this is life changing)
+  - if you try to use man on a builtin, you just get the bash man page. (use the help builtin for this)
 
 
 - sed and awk
