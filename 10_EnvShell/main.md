@@ -89,8 +89,6 @@ On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced v
 
 Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
 
-<small>Note: As of macOS Catalina (Nov 19), `zsh` is now the default Mac shell.</small>
-
 
 ### Terminal
 
@@ -121,15 +119,10 @@ The bash shell program uses a collection of startup files to help create an envi
 The files in the /etc directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
 
 
-### Bash Startup
 
-<img src="img/shell-chart.svg" width="1000" style="border:0;box-shadow:none">
+## Environment variables (Nick)
 
-
-
-## Environment variables
-
-<small>Jump to Nick's slides</small>
+[link](https://github.com/flatironinstitute/learn-sciware-dev/blob/master/10_EnvShell/EnvironmentVariables.md)
 
 
 
@@ -305,7 +298,7 @@ $ source setenv.sh
      - <small>emacs mode, vi mode, custom bindings in `.inputrc`</small>
 - zsh added sophisticated tab-completion, prompts
      - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
-     - more permissive license, adopted by Apple
+     - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
 
 most modern shells copied, adopted similar, popular features
 
