@@ -185,7 +185,7 @@ flatiron is... the GOAT
 
 #### Startup files
 
-- certain "dotfiles" or "rcfiles" are `source`d during shell startup (more later)
+- certain "dotfiles" or "rcfiles" are `source`'d during shell startup
 - can easily break your shell, prevent logins (ex: `exit`)
 - Avoid generating output in non-login files, issues with `scp`:
 
