@@ -370,8 +370,8 @@ fi
 
 #### Git Branch (bash)
 - Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Otherwise you can use `sed` to find the active git branch by the *.
-```
+- Otherwise you can use this to find the active git branch:
+```sh
   function parse_git_branch {
     git symbolic-ref --short HEAD 2> /dev/null
   }
@@ -380,21 +380,21 @@ fi
 
 #### Example Prompt (bash)
 - Show some 💛 for FI with this prompt:
-```
-    # Define the prompt character
-    local   CHAR="♥"
+```sh
+# Define the prompt character
+char="♥"
 
-    # Define some local colors
-    local   RED="\[\e[0;31m\]"
-    local   BLUE="\[\e[0;34m\]"
-    local   GREEN="\[\e[0;32m\]"
-    local   GRAY_TEXT_BLUE_BACKGROUND="\[\e[37;44;1m\]"
+# Define some local colors
+red="\[\e[0;31m\]"
+blue="\[\e[0;34m\]"
+green="\[\e[0;32m\]"
+gray_text_blue_background="\[\e[37;44;1m\]"
 
-    # Define a variable to reset the text color
-    local   RESET="\[\e[0m\]"
+# Define a variable to reset the text color
+reset="\[\e[0m\]"
 
-    # Export PS1:  default interactive prompt
-    export PS1="\[\e]2;\u@\h\a[$GRAY_TEXT_BLUE_BACKGROUND\t$RESET]$RED\$(parse_git_branch) $GREEN\W\n$BLUE//$RED $CHAR $RESET"
+# Export PS1:  default interactive prompt
+PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
 ```
 
 
@@ -409,7 +409,7 @@ fi
 
 
 ####  Git Branch (zsh)
-```
+```zsh
 autoload -Uz vcs_info
 precmd() {vcs_info}
 zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
@@ -424,7 +424,7 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
 - `%F{green}%B%`: Named colors must be surrounded by the escape characters.
 - The final `%F{black}%B%` sets the color for the
 - Showing the same FI love.
-```
+```zsh
   setopt PROMPT_SUBST
   PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
 ```
