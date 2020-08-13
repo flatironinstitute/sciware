@@ -359,6 +359,7 @@ Today's Builtins
 
 #### Globs
 
+Globs match things, but are less awesome than regular expressions
 - \* - 0 or more characters
 - ? - precisely one character
 - [somelistofcharspickone] - precisely one character from the list in the brackets (case matters)
@@ -372,9 +373,11 @@ Today's Builtins
   - lists the files in a directory. if no directory is specified, lists the currend directory
   - usually aliased with some options to make for easier color/formatting
 
+
 - man
   - instructions on how to use a command
   - man -k / apropos is a keyword search of man pages (this is life changing)
+
 
 - sed and awk
   - sed is used to selectively edit streams of text (usually replacement or transformation of one or more characters)
@@ -382,8 +385,10 @@ Today's Builtins
   - they are often used together
   - effective for formatting output from a command to be piped to another command
 
+
 - nano
   - basic overview. open. (^r) save. (^o) quit. (^x) 
+
 
 - rename
   - rename multiple files based on a supplied expression
@@ -391,14 +396,13 @@ Today's Builtins
     - rename foo foo00 foo?
     - the takes the files foo1 -> foo5 and makes them foo001 -> foo005
 
+
 - sleep
   - wait for some number of seconds based on a single argument
 
+
 - less
   - paginates output, so we can read it before it scrolls past  
-	
-
-
 
 
 
