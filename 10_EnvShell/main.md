@@ -349,21 +349,29 @@ fi
 #### ⚠️ Warning ⚠️
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
 
+
 #### Git Branch (bash)
-
+- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
+- Function to show your active git branch.
 ```
-  # if you install git via homebrew, or install the bash autocompletion via homebrew, you get __git_ps1 which you can use in the PS1
-  # to display the git branch.  it's supposedly a bit faster and cleaner than manually parsing through sed. i dont' know if you care enough to change it
-
-  # This function is called in your prompt to output your active git branch.
   function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
   }
 ```
 
-#### Prompt (bash)
+
+#### Prompts generally
  - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ
  - Need inspo? ASCII Art Archive https://www.asciiart.eu/
+ - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
+
+
+#### Prompt bash
+- PS1: default interactive prompt
+- PS2: continuation prompt
+- PS4: prefixes tracing for script run with `set -x`
+- PROMPT_COMMAND: executed just before PS1.
+
 ```
   function prompt {
     # Define the prompt character
@@ -378,7 +386,7 @@ fi
     # Define a variable to reset the text color
     local   RESET="\[\e[0m\]"
 
-    # Here is where we actually export the PS1 Variable which stores the text for your prompt
+    # Export PS1:  default interactive prompt
     export PS1="\[\e]2;\u@\h\a[$GRAY_TEXT_BLUE_BACKGROUND\t$RESET]$RED\$(parse_git_branch) $GREEN\W\n$BLUE//$RED $CHAR $RESET"
       PS2='> '
       PS4='+ '
@@ -387,6 +395,7 @@ fi
   # Finally call the function and the prompt is all pretty
   prompt
 ```
+
 
 
 ### Shell Features (Jonathan)
