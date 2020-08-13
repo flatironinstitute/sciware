@@ -202,7 +202,7 @@ fi
 #### Modules
 
 - Manages environment by setting and modifying environment variables for you
-- `module avail` to see available all modules
+- `module avail` to see all available modules
   - search: `module avail -t | grep <pattern>`
 - `module load <modulename>` to load module
 - `module unload <modulename>` to unload module
