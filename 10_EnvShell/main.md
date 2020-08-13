@@ -364,6 +364,23 @@ fi
  - Powerline: https://github.com/powerline/powerline
 
 
+### Off the shelf options
+
+- Oh-my-zsh:
+  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
+  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
+
+<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
+
+
+### Off the shelf options
+
+- Powerline:
+  - _ A statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile._
+
+<img src="img/powerline.png" width="1000" style="border:0;box-shadow:none">
+
+
 ### Prompt variables (bash)
 
 - `PS1`: default interactive prompt.
