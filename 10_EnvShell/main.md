@@ -571,7 +571,7 @@ Globs match things (but are less awesome than regular expressions)
    - if you try to use `man` on a builtin, you might get a generic or bash man page.
 
 
-- `sed`, `awk`
+- `sed`, `awk`, `cut`
    - `sed` is used to selectively edit streams of text (usually replacement or transformation of one or more characters)
    - `awk` is used to carve up text based around some field separators
    - `cut` selects single columns
