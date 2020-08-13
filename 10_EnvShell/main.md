@@ -362,13 +362,14 @@ fi
  - Powerline: https://github.com/powerline/powerline
 
 
-### Prompt variables in bash
+### Prompt variables (bash)
 - `PS1`: default interactive prompt.
 - `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
-- Other prompt variables exist to manage specific conditions like select loops, continuation, and tracing. - Check out
+- Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
+- Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
 
 
-### Git Branch (bash)
+### Accessing git branch (bash)
 - Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
 - Otherwise you can use this to find the active git branch:
 ```sh
@@ -409,7 +410,7 @@ fi
 <img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
 
 
-###  Git Branch (zsh)
+###  Accessing git branch (zsh)
 ```zsh
 autoload -Uz vcs_info
 precmd() {vcs_info}
@@ -420,11 +421,12 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
 - `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
 
 
-### Example Prompt (zsh)
+### Example prompt (bash)
 - `PROMPT_SUBST`: expands the parameters usable in the prompt.
 - `%F{green}%B%`: Named colors must be surrounded by the escape characters.
 - The final `%F{black}%B%` sets the color for the
 - Showing the same FI love.
+
 ```zsh
   setopt PROMPT_SUBST
   PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
