@@ -117,6 +117,7 @@ The files in the /etc directory generally provide global settings. If an equival
 
 ### Bash Startup
 
+<img src="img/shell-chart.svg" width="1000" style="border:0;box-shadow:none">
 
 
 ## Environment variables
