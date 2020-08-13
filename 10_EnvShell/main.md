@@ -365,7 +365,7 @@ fi
 - Function to show your active git branch.
 ```
   function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git symbolic-ref --short HEAD 2> /dev/null
   }
 ```
 
