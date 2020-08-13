@@ -55,11 +55,16 @@ Activities where participants all actively work to foster an environment which e
   - Features
 
 
+
 ## Defining terms
 
-One often hears these terms used interchangably. Let's clairfy.
+One often hears these terms used interchangeably. Let's clarify.
 
-* Kernel * Shell * Terminal * Command Line * Console
+* Kernel
+* Shell
+* Terminal
+* Command Line
+* Console
 
 
 ### Kernel & Operating System
@@ -89,7 +94,7 @@ Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
 
 ### Terminal
 
-_Terminal_ is a program that runs and provides i/o to a shell (or other program).
+_Terminal_ is a program that runs and provides I/O to a shell (or other program).
 
 Originally a physical device, now we run software terminal emulators.
 
