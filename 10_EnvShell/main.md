@@ -350,6 +350,13 @@ fi
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
 
 
+#### Prompt design
+ - Include what you will actually use but don't be afraid to add a little ✨.
+ - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
+ - Need inspo? ASCII Art Archive https://www.asciiart.eu/
+ - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
+
+
 #### Git Branch (bash)
 - Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
 - Function to show your active git branch.
@@ -358,12 +365,6 @@ fi
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
   }
 ```
-
-
-#### Prompts generally
- - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ
- - Need inspo? ASCII Art Archive https://www.asciiart.eu/
- - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
 
 
 #### Prompt bash
