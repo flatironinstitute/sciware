@@ -38,21 +38,17 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Future sessions planned:
-  - git+github with Software Carpentry Sep 25-26 (2 day session!)
-  - Designing APIs and software library interfaces
   - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's Agenda
 
-- Environment variables
-  - Introduction
-  - Specific variables
-  - Control
-- Shells
-  - Comparison
-  - Features
+- What is a functions?
+- Writing a function
+- Extracting a function
+- Hands-on exercise
+- Discussion
 
 
 
