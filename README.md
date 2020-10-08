@@ -13,3 +13,5 @@ A developing series of meetings about software development for science.
 - May 14, 2020 [Introduction to Julia](08_Julia)
 - Jun 18, 2020 Intel VTune
 - Aug 13, 2020 [Shells and Environments](10_EnvShell)
+- Sep 24--Oct 1, 2020 [Git](https://flatironinstitute.github.io/sciware-swc-2020-09-git/)
+- Nov 06, 2020 [Functions](12_Functions)
