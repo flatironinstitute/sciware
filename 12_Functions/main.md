@@ -44,15 +44,17 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- What is a functions?
-- Writing a function
-- Extracting a function
-- Hands-on exercise
+- Intro: what is a function? (Alex)
+- Designing good functions (Bob)
+- Hands-on exercise : extracting a function (Alex)
+- Case studies (Joakim)
 - Discussion
 
 
 
-## Sum of squares (Alex)
+## Intro: what is a function? (Alex)
+
+Say your 
 
 
 
