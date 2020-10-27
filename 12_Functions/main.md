@@ -54,8 +54,81 @@ Activities where participants all actively work to foster an environment which e
 
 ## Intro: what is a function? (Alex)
 
-Say your 
+Say you have a python script/notebook that includes the code snippet...
 
+```
+S = 0
+T = 0
+for i in range(10) :
+  S += a[i]*a[i]
+for i in range(20) :
+  T += b[i]*b[i]
+result = S-T
+```
+
+Seems to sum the squares of array a, then similar for b, then subtract them.
+
+Good to package the self-contained repeated task as a *function*:
+```
+def sumsquares(a):
+    """Sum the squares of the elements of a NumPy array."""
+    return sum(a*a)
+```
+Then the snippet becomes much simpler:
+```
+result = sumsquares(a)-sumsquares(b)
+```
+and other users, and future you, get a useful tool :)
+
+#### Functions are sad without tests
+
+```
+def sumsquares(a):
+    """Sum the squares of the elements of a NumPy array."""
+    return sum(a*a)
+```
+A ("pure") function has inputs (here ``a``), outputs (returned value)
+- refers to no global variables
+- has no "state" (internal memory). This makes it *testable*.
+Never trust a function you wrote but didn't test! Here's a simple tester:
+```
+import numpy as np
+if sumsquares(np.array((3.0,4.0))) == 25.0:
+    print('pass')
+else:
+    print('fail')
+```
+Every such tester (aka driver, example) *shows a human how to use your function*
+
+<!-- are more elaborate tests, like what if you send it empy, or non-numpy array... -->
+
+
+#### Standing on the shoulders of giants
+
+We rely on other people's functions all the time, eg ``y=sin(x)`` (low-level math lib), ``coeffs=numpy.polyfit(y,x,degree)``.
+Good *design* work went into these functions, as docs for latter show:
+<img src="pics/polyfit_doc.png">
+
+Note _interface_: three arguments required, plus various optional ones
+
+But you can be a giant too, by writing your own functions!
+
+#### Session goals and topics
+
+I. Get us to package most of our code as functions:
+- breaks tasks in to *separately* testable components
+- clean, modular code, leaving scripts/notebooks short and readable
+
+II. Write good functions with a good interface, and critique them:
+- naming, inputs, outputs, and optional ones
+- testers, documentation
+Otherwise no-one will use your functions... and that includes future you!  :(
+
+Call it "good interface design", in sense of API (application programmer interface). This can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` wraps ``libm``)
+
+[Not to be confused with: "interfacing" in sense of UX/UI (user experience), human-computer interfaces, package management (``apt`` etc)...]
+
+Any questions about what we're talking about, goals ?
 
 
 ## Bob
