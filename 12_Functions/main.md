@@ -70,7 +70,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Intro: what is a function? (Alex)
 
-----
+### What is a function?
 
 Say you have python script/notebook including snippet...
 
@@ -104,10 +104,11 @@ def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
 ```
-A ("pure") function has inputs (here ``a``), outputs (returned value)
+A ("pure") function has inputs (array ``a``), outputs (return value)
 - refers to no global variables
 - has no "state" (internal memory). This makes it *testable*.
-Never trust a function you wrote but didn't test! Here's a simple tester:
+
+Never trust a func you wrote but didn't test! A simple tester:
 ```
 import numpy as np
 if sumsquares(np.array((3.0,4.0))) == 25.0:
@@ -115,7 +116,9 @@ if sumsquares(np.array((3.0,4.0))) == 25.0:
 else:
     print('fail')
 ```
-Every such tester (aka driver, example) *shows a human how to use your function*
+Q: why else are test "driver" codes useful?
+
+*shows a human how to use your function*
 
 <!-- are more elaborate tests, like what if you send it empy, or non-numpy array... -->
 
@@ -123,12 +126,14 @@ Every such tester (aka driver, example) *shows a human how to use your function*
 ### Standing on the shoulders of giants
 
 We rely on other people's functions all the time, eg ``y=sin(x)`` (low-level math lib), ``coeffs=numpy.polyfit(y,x,degree)``.
-Good *design* work went into these functions, as docs for latter show:
-<img src="pics/polyfit_doc.png">
+Good *design* work went into these functions, as docs show:
 
-Note _interface_: three arguments required, plus various optional ones
+<img src="pics/polyfit_doc.png" align="center">
 
-But you can be a giant too, by writing (& distributing) your own functions!
+Note _interface_: simple required args; advanced ones are optional
+
+You can be a giant too, by writing (& distributing) your own functions!
+
 
 ### Session goals & topics
 
@@ -142,7 +147,7 @@ __II. Write functions with good interfaces, and critique them:__
 - these are *just as important* as the algorithm ("meat") inside the function
 Otherwise no-one will use your functions... and that includes future you!  :(
 
-Call it "good interface design", in sense of API (application programmer interface). Can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` actually wraps ``libm`` library)
+Call it: <font color="red">"good interface design"</font>, in sense of API (application programmer interface). Can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` actually wraps ``libm`` library)
 
 [Not to be confused with: "interfacing" in sense of UX/UI (user experience), human-computer interfaces, package management (``apt`` etc)...]
 
@@ -153,7 +158,9 @@ Any questions about what we're talking about or goals ?
 
 
 
-## Jabberwocky demo (Alex)
+## Jabberwocky example (Alex)
+
+
 
 
 
