@@ -59,43 +59,40 @@ Activities where participants all actively work to foster an environment which e
 
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 
+<!-- I want default left-justify everywhere:  -->
 <style type="text/css">
   .reveal p {
     text-align: left;
   }
  </style>
-<!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550  -->
+<!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
 
 
 ## Intro: what is a function? (Alex)
 
-Say you have a python script/notebook that includes the code snippet...
+Say you have python script/notebook including snippet...
 
-```
-S = 0
-T = 0
+```python
+S = 0; T = 0
 for i in range(10) :
   S += a[i]*a[i]
 for i in range(20) :
   T += b[i]*b[i]
 result = S-T
 ```
-
-Seems to sum the squares of array a, then similar for b, then subtract them.
-
-<p class="fragment">
+<small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
 Good to package the self-contained repeated task as a *function*:
-```
+```python
 def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
 ```
-Then the entire snippet becomes much simpler *and* easier to read:
-```
+Then entire snippet becomes much simpler, *and* easier to read:
+```python
 result = sumsquares(a)-sumsquares(b)
 ```
-and other users, and future you, get a useful tool :)
-</p>
+plus other users, and future you, get a useful tool: a function :)
+
 
 ### Functions are sad without tests
 
