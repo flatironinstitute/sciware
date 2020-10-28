@@ -52,6 +52,21 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+
+
+
+
+
+<!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
+
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+ </style>
+<!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550  -->
+
+
 ## Intro: what is a function? (Alex)
 
 Say you have a python script/notebook that includes the code snippet...
@@ -68,19 +83,21 @@ result = S-T
 
 Seems to sum the squares of array a, then similar for b, then subtract them.
 
+<p class="fragment">
 Good to package the self-contained repeated task as a *function*:
 ```
 def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
 ```
-Then the snippet becomes much simpler:
+Then the entire snippet becomes much simpler *and* easier to read:
 ```
 result = sumsquares(a)-sumsquares(b)
 ```
 and other users, and future you, get a useful tool :)
+</p>
 
-#### Functions are sad without tests
+### Functions are sad without tests
 
 ```
 def sumsquares(a):
@@ -103,7 +120,7 @@ Every such tester (aka driver, example) *shows a human how to use your function*
 <!-- are more elaborate tests, like what if you send it empy, or non-numpy array... -->
 
 
-#### Standing on the shoulders of giants
+### Standing on the shoulders of giants
 
 We rely on other people's functions all the time, eg ``y=sin(x)`` (low-level math lib), ``coeffs=numpy.polyfit(y,x,degree)``.
 Good *design* work went into these functions, as docs for latter show:
@@ -111,24 +128,25 @@ Good *design* work went into these functions, as docs for latter show:
 
 Note _interface_: three arguments required, plus various optional ones
 
-But you can be a giant too, by writing your own functions!
+But you can be a giant too, by writing (& distributing) your own functions!
 
-#### Session goals and topics
+### Session goals & topics
 
-I. Get us to package most of our code as functions:
+__I. Get us to package most of our code as functions:__
 - breaks tasks in to *separately* testable components
 - clean, modular code, leaving scripts/notebooks short and readable
 
-II. Write good functions with a good interface, and critique them:
-- naming, inputs, outputs, and optional ones
+__II. Write functions with good interfaces, and critique them:__
+- naming, inputs, outputs, their types, optional args
 - testers, documentation
+- these are *just as important* as the algorithm ("meat") inside the function
 Otherwise no-one will use your functions... and that includes future you!  :(
 
-Call it "good interface design", in sense of API (application programmer interface). This can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` wraps ``libm``)
+Call it "good interface design", in sense of API (application programmer interface). Can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` actually wraps ``libm`` library)
 
 [Not to be confused with: "interfacing" in sense of UX/UI (user experience), human-computer interfaces, package management (``apt`` etc)...]
 
-Any questions about what we're talking about, goals ?
+Any questions about what we're talking about or goals ?
 
 
 ## Bob
