@@ -70,6 +70,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Intro: what is a function? (Alex)
 
+----
+
 Say you have python script/notebook including snippet...
 
 ```python
@@ -81,6 +83,7 @@ for i in range(20) :
 result = S-T
 ```
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
+
 Good to package the self-contained repeated task as a *function*:
 ```python
 def sumsquares(a):
