@@ -104,6 +104,7 @@ A ("pure") function has inputs (array ``a``), outputs (return value)
 - refers to no global variables
 - has no "state" (internal memory). This makes it *testable*.
 
+
 Never trust a func you wrote but didn't test! A simple tester:
 ```python
 import numpy as np
@@ -126,6 +127,7 @@ Good *design* work went into these functions, as docs show:
 
 <img src="pics/polyfit_doc.png" align="center">
 
+
 Note _interface_: simple required args; advanced ones are optional
 
 You can be a giant too, by writing (& distributing) your own functions!
@@ -142,6 +144,7 @@ __II. Write functions with good interfaces, and critique them:__
 - testers, documentation
 - these are *just as important* as the algorithm ("meat") inside the function
 Otherwise no-one will use your functions... and that includes future you!  :(
+
 
 Call it: <font color="red">"good interface design"</font>, in sense of API (application programmer interface). Can include *wrapping existing code so it can be called from another language* (eg Python ``y=sin(x)`` actually wraps ``libm`` library)
 
@@ -180,6 +183,7 @@ for brillig in np.arange(0, pi, 0.1):
 ```
 You laugh, but this is a common collaboration experience!
 
+
 How useful is this to you? Must waste time understanding the whole script, some outer loop. Is runcible a 1D function? It has 2 args. Where’s the bit that finds the zero of a 1D function? What variable contains the answer??
 
 
@@ -213,6 +217,7 @@ def rootfind1d(f, dfdx, x0):
         x0 = xnew
     return xnew
 ```
+
 
 And it is incomplete without a test routine:
 ```python
@@ -253,6 +258,7 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
         x0 = xnew
     return xnew
 ```
+
 
 Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters from *sensible defaults*.
 
