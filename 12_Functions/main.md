@@ -228,12 +228,15 @@ And it is incomplete without a test routine:
     else:
         print('fail')
 ```
+Very niiice! Universal simple *math* language (all jargon gone).
 
-Very niiice! Universal *math* language (no jargon).
+Now why didn't your friend hand you this in the first place?? If they had been a good structured coder, they would have :) And So Can You\*.
+
+<small>\* Stephen Colbert</small>
 
 ### Improvements
 
-The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it. Thus:
+The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it. Now they can:
 
 ```python
 def rootfind1d(f, dfdx, x0, tol=1e-9):
@@ -253,12 +256,16 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
     return xnew
 ```
 
-Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters.
+Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters from *sensible defaults*.
 
 Q: how *else* could you improve this function or its tests?
 A: group exercise!
 
 
+
+
+
+<!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
 ## Exercises (breakouts)
 
 Choose an example to work on in a small group, from the files in the [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
