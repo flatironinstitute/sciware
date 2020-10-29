@@ -13,12 +13,10 @@ big picture...)
 Here is a more usable version:
 
 [bdwf.m](https://github.com/ahbarnett/fresnaq/blob/master/bdrymeths/bdwf.m)
-
-plus
-
+with
 [test_bdwf.m](https://github.com/ahbarnett/fresnaq/blob/master/bdrymeths/test_bdwf.m)
 
-Did that match your usibility criteria?
+Did that match your usability criteria?
 
 Finally, what changes from that interface were done here: ?
 

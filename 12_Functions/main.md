@@ -46,9 +46,9 @@ Activities where participants all actively work to foster an environment which e
 
 - Intro: what is a function? (Alex)
 - Designing good functions (Bob)
-- Hands-on exercise : extracting a function (Alex)
-- Case studies (Joakim)
-- Discussion
+- Packaging a Jabberwocky (Alex)
+- Group exercises!
+- Case studies and discussion (Joakim)
 
 
 
@@ -154,20 +154,63 @@ Call it: <font color="red">"good interface design"</font>, in sense of API (appl
 Any questions about what we're talking about or goals ?
 
 
+<!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
 ## Bob
 
 
 
-## Jabberwocky example (Alex)
+
+
+
+<!-- JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJj -->
+
+## Packaging a Jabberwocky (Alex)
+
+(why Jabberwocky? Because all technical terms in science codes are *nonsense poems* to other users outside that area)
+
+### Creating a good function from a script
+
+You heard your friend wrote code once that included a cool way to find a place `$x$` where some 1D function `$f(x)=0$`. You ask and they say, sure, here you go:!
+```python
+# script proving my gimble is frumious! (recall technical words are gibberish to other users)
+for brillig in np.arange(0, pi, 0.1):
+    mimsy = cos(brillig)
+    wabe_guess = 1.5
+    while True:
+        wabe_newguess = wabe_guess - runcible(mimsy, wabe_guess) / runciblederivative(mimsy, wabe_guess)
+        if abs(wabe_newguess - wabe_guess) < 1e-9:
+            break
+        wabe_guess = wabe_newguess        
+    print(bandersnatch(brillig, wabe_newguess))
+```
+You laugh, but this is a common collaboration experience!
+
+How useful is this to you? Must waste time understanding the whole script, some outer loop. Is runcible a 1D function? It has 2 args. Where’s the bit that finds the zero of a 1D function? What variable contains the answer??
+
+### Split out a root-finding function
+
+Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func.
+
+Ah, you realize it's doing Newton's iteration `$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$` so sequence `$x_0, x_1, \ldots$` tends to a root.
+`mimsy` is some parameter we ignore. `wabe` is `$x$`.
+
+Let's wrap in interface for roots of a *general* function, not just `runcible`!
 
 
 
 
 
-## Exercise (breakouts)
 
-Choose an examples in [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
 
+
+
+
+
+## Exercises (breakouts)
+
+Choose an example to work on in a small group, from the files in the [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
+
+There are different languages.
 
 
 ## Discussion, guides (Joakim)
