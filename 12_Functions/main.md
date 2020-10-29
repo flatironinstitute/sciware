@@ -329,9 +329,3 @@ fftw_plan fftw_plan_guru_dft(
      fftw_complex *in, fftw_complex *out,
      int sign, unsigned flags);
 ```
-
-## Math test
-
-Some \\(\sqrt{\sigma}\\) inline math.
-
-\\[ \sum_x x^2 \\]
