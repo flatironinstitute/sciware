@@ -52,11 +52,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-
-
-
-
-
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 
 <!-- I want default left-justify everywhere:  -->
@@ -67,8 +62,8 @@ Activities where participants all actively work to foster an environment which e
  </style>
 <!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
 
-
 ## Intro: what is a function? (Alex)
+
 
 ### What is a function?
 
@@ -83,6 +78,7 @@ for i in range(20) :
 result = S-T
 ```
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
+
 
 Good to package the self-contained repeated task as a *function*:
 ```python
@@ -99,7 +95,7 @@ plus other users, and future you, get a useful tool: a function :)
 
 ### Functions are sad without tests
 
-```
+```python
 def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
@@ -109,7 +105,7 @@ A ("pure") function has inputs (array ``a``), outputs (return value)
 - has no "state" (internal memory). This makes it *testable*.
 
 Never trust a func you wrote but didn't test! A simple tester:
-```
+```python
 import numpy as np
 if sumsquares(np.array((3.0,4.0))) == 25.0:
     print('pass')
@@ -154,11 +150,9 @@ Call it: <font color="red">"good interface design"</font>, in sense of API (appl
 Any questions about what we're talking about or goals ?
 
 
+
 <!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
 ## Bob
-
-
-
 
 
 
@@ -167,6 +161,7 @@ Any questions about what we're talking about or goals ?
 ## Packaging a Jabberwocky (Alex)
 
 (why Jabberwocky? Because all technical terms in science codes are *nonsense poems* to other users outside that area)
+
 
 ### Creating a good function from a script
 
@@ -187,6 +182,7 @@ You laugh, but this is a common collaboration experience!
 
 How useful is this to you? Must waste time understanding the whole script, some outer loop. Is runcible a 1D function? It has 2 args. Where’s the bit that finds the zero of a 1D function? What variable contains the answer??
 
+
 ### Split out a root-finding function
 
 Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func.
@@ -197,6 +193,7 @@ Ah, you realize it's doing Newton's iteration `$x_{n+1} = x_n - \frac{f(x_n)}{f'
 Let's wrap in interface for roots of a *general* function, not just `runcible`!
 
 We steal the same *algorithm* as the script, just do better *packaging*.
+
 
 ### First draft function
 
@@ -234,6 +231,7 @@ Now why didn't your friend hand you this in the first place?? If they had been a
 
 <small>\* Stephen Colbert</small>
 
+
 ### Improvements
 
 The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it. Now they can:
@@ -263,14 +261,13 @@ A: group exercise!
 
 
 
-
-
 <!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
 ## Exercises (breakouts)
 
 Choose an example to work on in a small group, from the files in the [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
 
 There are different languages.
+
 
 
 ## Discussion, guides (Joakim)
