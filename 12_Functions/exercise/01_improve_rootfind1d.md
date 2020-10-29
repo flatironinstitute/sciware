@@ -20,5 +20,6 @@ Note: breaking an algorithm requires your creative brain!
 Ie, f(x,a,b,...) and dfdx(x,a,b,...) ?
 
 * What if the user doesn't want to have to send in dfdx ?
-Eg, look at
-[scipy.optimize.newton](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html)
+Eg, look at the poorly-named
+[scipy.optimize.newton](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html). Why do I say poorly-named?
+*Functions should be named for the task they solve, not the particular algorithm(s) they might use.*
