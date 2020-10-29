@@ -288,6 +288,6 @@ There are different languages.
 
 ## Math test
 
-Some \(\sqrt{\sigma}\) inline math.
+Some \\(\sqrt{\sigma}\\) inline math.
 
-\[ \sum_x x^2 \]
+\\[ \sum_x x^2 \\]
