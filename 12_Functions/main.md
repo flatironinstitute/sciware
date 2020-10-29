@@ -168,7 +168,7 @@ Any questions about what we're talking about or goals ?
 
 ### Creating a good function from a script
 
-You heard your friend wrote code once that included a cool way to find a place `$x$` where some 1D function `$f(x)=0$`. You ask and they say, sure, here you go:!
+You heard your friend wrote code once that included a cool way to find a place \\(x\\) where some 1D function \\(f(x)=0\\). You ask and they say, sure, here you go:!
 ```python
 # script proving my gimble is frumious! (recall technical words are gibberish to other users)
 for brillig in np.arange(0, pi, 0.1):
@@ -191,8 +191,8 @@ How useful is this to you? Must waste time understanding the whole script, some 
 
 Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func.
 
-Ah, you realize it's doing Newton's iteration `$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$` so sequence `$x_0, x_1, \ldots$` tends to a root.
-`mimsy` is some parameter we ignore. `wabe` is `$x$`, which is a simpler and more universal variable name!
+Ah, you realize it's doing Newton's iteration \\[x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\\] so that the sequence \\(x_0, x_1, \ldots\\) tends to a root.
+`mimsy` is some parameter we ignore. `wabe` is \\(x\\), which is a simpler and more universal variable name!
 
 Let's wrap in interface for roots of a *general* function, not just `runcible`!
 
@@ -217,9 +217,13 @@ def rootfind1d(f, dfdx, x0):
         x0 = xnew
     return xnew
 ```
+Look it has docs! I suggest you even write the docs *before* you write the
+body of the function.
+
+Q: are we done with this basic draft?
 
 
-And it is incomplete without a test routine:
+No, recall it is *incomplete* without a test routine, like this:
 ```python
     from math import *
     f = lambda x: sin(x)
@@ -232,7 +236,9 @@ And it is incomplete without a test routine:
 ```
 Very niiice! Universal simple *math* language (all jargon gone).
 
-Now why didn't your friend hand you this in the first place?? If they had been a good structured coder, they would have :) And So Can You\*.
+Now why didn't your friend hand you this in the first place?? If they had been a good structured coder, they would have :)
+
+And So Can You\*.
 
 <small>\* Stephen Colbert</small>
 
@@ -263,7 +269,8 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
 Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters from *sensible defaults*.
 
 Q: how *else* could you improve this function or its tests?
-A: group exercise!
+
+A: group exercise / discussion !
 
 
 
