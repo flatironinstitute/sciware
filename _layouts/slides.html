@@ -9,25 +9,14 @@
 
     <title>{{ page.title }}</title>
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/reveal.js/css/reveal.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="{{ site.baseurl }}/flatiron.css" id="theme" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link
       rel="stylesheet"
-      href="{{ site.baseurl }}/reveal.js/lib/css/zenburn.css"
+      href="{{ site.baseurl }}/reveal.js/plugin/highlight/zenburn.css"
     />
-
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.type = "text/css";
-      link.href =
-        "{{site.baseurl}}/reveal.js/css/print/" +
-        (window.location.search.match(/print-pdf/gi) ? "pdf.css" : "paper.css");
-      document.getElementsByTagName("head")[0].appendChild(link);
-    </script>
   </head>
   <body>
     <div class="reveal">
@@ -42,23 +31,14 @@
       </div>
     </div>
 
-    <script src="{{ site.baseurl }}/reveal.js/lib/js/head.min.js"></script>
-    <script src="{{ site.baseurl }}/reveal.js/js/reveal.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/dist/reveal.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js/plugin/notes/notes.js"></script>
 
     <script>
       Reveal.initialize({
-        dependencies: [
-          { src: "{{site.baseurl}}/reveal.js/plugin/markdown/marked.js" },
-          { src: "{{site.baseurl}}/reveal.js/plugin/markdown/markdown.js" },
-          {
-            src: "{{site.baseurl}}/reveal.js/plugin/notes/notes.js",
-            async: true
-          },
-          {
-            src: "{{site.baseurl}}/reveal.js/plugin/highlight/highlight.js",
-            async: true
-          }
-        ],
+	plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
         controlsTutorial: false,
         slideNumber: true,
         width: 1200,
