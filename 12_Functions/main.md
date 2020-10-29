@@ -288,10 +288,47 @@ There are different languages.
 
 ### Naming
 
+Comments are good, but names are better.
 
-...
+```python
+def get_values2(x, y):
+    temp = np.mean(np.abs(x - y) ** 2)
+
+    return temp
+```
+
+vs.
+
+```python
+def mean_squared_error(x, x_ref):
+    mse = np.mean(np.abs(x - x_ref) ** 2)
+
+    return mse
+```
+
+Comments can go stale and require maintenance.
+
+Comments also can't be tested (generally).
 
 
+### High- and low-level APIs
+
+More advanced libraries or packages can have multiple levels of APIs.
+
+High level calls low level.
+
+```c
+fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
+                           int sign, unsigned flags);
+```
+
+```c
+fftw_plan fftw_plan_guru_dft(
+     int rank, const fftw_iodim *dims,
+     int howmany_rank, const fftw_iodim *howmany_dims,
+     fftw_complex *in, fftw_complex *out,
+     int sign, unsigned flags);
+```
 
 ## Math test
 
