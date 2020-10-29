@@ -192,18 +192,71 @@ How useful is this to you? Must waste time understanding the whole script, some 
 Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func.
 
 Ah, you realize it's doing Newton's iteration `$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$` so sequence `$x_0, x_1, \ldots$` tends to a root.
-`mimsy` is some parameter we ignore. `wabe` is `$x$`.
+`mimsy` is some parameter we ignore. `wabe` is `$x$`, which is a simpler and more universal variable name!
 
 Let's wrap in interface for roots of a *general* function, not just `runcible`!
 
+We steal the same *algorithm* as the script, just do better *packaging*.
 
+### First draft function
 
+```python
+def rootfind1d(f, dfdx, x0):
+    """Find a nearby root of a 1D scalar function.
+    Inputs: f - a 1D scalar function
+            dfdx - its derivative function
+            x0 - an initial guess to the root
+    Returned value: approximate root x, meaning f(x)=0.
+    Notes: uses the Newton-Raphson iteration.
+    """
+    while True:
+        xnew = x0 - f(x0)/dfdx(x0)
+        if abs(xnew-x0) < 1e-9:
+            break
+        x0 = xnew
+    return xnew
+```
 
+And it is incomplete without a test routine:
+```python
+    from math import *
+    f = lambda x: sin(x)
+    dfdx = lambda x: cos(x)
+    x = rootfind1d(f, dfdx, 2.0)
+    if abs(x-pi)<1e-9:
+        print('pass')
+    else:
+        print('fail')
+```
 
+Very niiice! Universal *math* language (no jargon).
 
+### Improvements
 
+The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it. Thus:
 
+```python
+def rootfind1d(f, dfdx, x0, tol=1e-9):
+    """Find a nearby root of a 1D scalar function.
+    Inputs: f - a 1D scalar function
+            dfdx - its derivative function
+            x0 - an initial guess to the root
+            tol (optional) - desired absolute tolerance in the root
+    Returned value: approximate root x, meaning f(x)=0.
+    Notes: uses the Newton-Raphson iteration.
+    """
+    while True:
+        xnew = x0 - f(x0)/dfdx(x0)
+        if abs(xnew-x0) < tol:
+            break
+        x0 = xnew
+    return xnew
+```
 
+Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters.
+
+Q: how *else* could you improve this function or its tests?
+A: group exercise!
 
 
 ## Exercises (breakouts)

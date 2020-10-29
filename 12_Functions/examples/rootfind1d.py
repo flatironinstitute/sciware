@@ -4,18 +4,17 @@
 # Note scipy.optimize.root does something else!
 
 
-def rootfind1d(f, dfdx, x0, tol=1e-9):
+def rootfind1d(f, dfdx, x0):
     """Find a nearby root of a 1D scalar function.
     Inputs: f - a 1D scalar function
             dfdx - its derivative function
             x0 - an initial guess to the root
-            tol (optional) - rough desired tolerance in output
     Returned value: approximate root x, meaning f(x)=0.
     Notes: uses the Newton-Raphson iteration.
     """
     while True:
         xnew = x0 - f(x0)/dfdx(x0)
-        if abs(xnew-x0) < tol:
+        if abs(xnew-x0) < 1e-9:
             break
         x0 = xnew
     return xnew
