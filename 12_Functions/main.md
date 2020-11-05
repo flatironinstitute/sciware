@@ -370,3 +370,93 @@ fftw_plan fftw_plan_guru_dft(
      fftw_complex *in, fftw_complex *out,
      int sign, unsigned flags);
 ```
+
+
+
+## Example: HDF5 (Hierarchical data format)
+
+<img src="pics/hdf_logo.png" align="center">
+
+* Binary data format store large datasets
+* Organize Data in a directory structure
+* Seamless compression and decompression
+
+
+### Storing a C++ vector
+
+```c++
+std::vector<double> vec = {1.0, 2.0};
+
+// Create a new file using the default properties.
+hid_t file = H5Fcreate ("vec.h5", H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
+
+// Create a dataspace describing the dimensions
+hsize_t dims[1] = {vec.size()};
+hid_t space = H5Screate_simple(1 /*ndims*/, dims, NULL);
+
+// Create a dataset and save it to file
+hid_t dset = H5Dcreate(file, "vec", H5T_IEEE_F64LE, space, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+herr_t status = H5Dwrite(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, vec.data());
+
+// Close and release resources.
+H5Dclose (dset); H5Sclose (space); H5Fclose (file);
+```
+
+
+### The output
+
+```
+$ h5dump vec.h5
+
+HDF5 "vec.h5" {
+GROUP "/" {
+   DATASET "vec" {
+      DATATYPE  H5T_IEEE_F64LE
+      DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
+      DATA {
+      (0): 1, 2
+      }
+   }
+}
+}
+```
+
+
+### What would we like to write?
+
+```c++
+std::vector<double> vec = {1.0, 2.0};
+
+// Create a new file with write access
+h5::file file("vec.h5", 'w');
+
+// Store the vector to dataset "vec"
+h5::write(file, "vec", vec);
+```
+
+```c++
+// Create a new file with read access
+h5::file file("vec.h5", 'r');
+
+// Read the vector from dataset "vec"
+std::vector<double> vec;
+h5::read(file, "vec", vec);
+```
+
+
+### The User Interface
+
+```c++
+namespace h5 {
+  template <typename T>
+  void write(group g, std::string key, T data);
+
+  template <typename T>
+  void read(group g, std::string key, T& data);
+
+  template <typename T>
+  T read(group g, std::string key);
+}
+```
+
+Find library at [github.com/TRIQS/h5](https://github.com/TRIQS/h5/)
