@@ -27,19 +27,19 @@ def testderiv(f, dfdx, x):
     """
     eps = 1e-5          # for choice, see Barnett FWAM2019 lecture, slide 14.
     FDderiv = (f(x+eps)-f(x-eps))/(2*eps)
-    return abs(FDderiv-dfdx(x))
+    return abs(FDderiv-dfdx(x)) < 1e-9
 
 if __name__ == "__main__":
     from math import *
     # if this module is simply run, does test: checks root x=pi of f(x)=sin(x) 
     f = lambda x: sin(x)
     dfdx = lambda x: cos(x)
-    if testderiv(f,dfdx,1.4)>1e-9:     # good practice to test your pair first!
+    if !testderiv(f,dfdx,1.4):     # good practice to test your test pair first!
         print('dfdx appears not to be the derivative of f')
-        return
+        return                     # (this is a meta-test :)
     tol=1e-12
     x = rootfind1d(f, dfdx, 2.0, tol=tol)
-    if abs(x-pi)<tol:
+    if abs(x-pi)<tol:              # the actual test
         print('pass')
     else:
         print('fail')
