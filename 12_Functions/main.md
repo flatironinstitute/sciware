@@ -378,6 +378,24 @@ plan.setpts(x, y)
 f = plan.execute(c)
 ```
 
+### Default arguments
+
+Why do we need them? When do we need them? What is a “sensible default”? How do we order them?
+
+```python
+f = finufft.nufft2d1(x, y, c, (N1, N2))
+```
+
+```python
+iflag = 1
+eps = 1e-6
+f = np.zeros([N1, N2], dtype=np.complex128, order='F')
+
+ret = finufftpy.nufft2d1(x, y, c, iflag, eps, N1, N2, f)
+```
+
+How do we implement them in languages that do not support them natively? Provide `-1`, `NULL`?
+
 
 ## Example: HDF5 (Hierarchical data format)
 
