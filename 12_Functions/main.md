@@ -334,6 +334,7 @@ def get_values2(x, y):
     return temp
 ```
 
+
 vs.
 
 ```python
@@ -343,7 +344,9 @@ def mean_squared_error(x, x_ref):
     return mse
 ```
 
+
 Comments can go stale and require maintenance.
+
 
 Comments also can't be tested (generally).
 
@@ -358,6 +361,7 @@ High level calls low level.
 fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
                            int sign, unsigned flags);
 ```
+
 
 ```c
 fftw_plan fftw_plan_guru_dft(
