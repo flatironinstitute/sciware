@@ -378,6 +378,7 @@ plan.setpts(x, y)
 f = plan.execute(c)
 ```
 
+
 ### Default arguments
 
 Why do we need them? When do we need them? What is a “sensible default”? How do we order them?
