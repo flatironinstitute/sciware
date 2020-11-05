@@ -46,11 +46,11 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- Intro: what is a function? (Alex)
-- Designing good functions (Bob)
-- Packaging a Jabberwocky (Alex)
+- Intro: what is a function? (Alex Barnett, CCM)
+- Designing good functions (Bob Carpenter, CCM)
+- Packaging a Jabberwocky (Alex Barnett, CCM)
 - Group exercises!
-- Case studies and discussion (Joakim)
+- Case studies and discussion (Joakim Anden, formerly CCM, Nils Wentzell, CCQ, and others)
 
 
 
@@ -64,7 +64,7 @@ Activities where participants all actively work to foster an environment which e
  </style>
 <!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
 
-## Intro: what is a function? (Alex)
+## Intro: what is a function?
 
 
 ### What is a function?
@@ -166,17 +166,17 @@ Any questions about what we're talking about or goals ?
 
 
 <!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
-## Bob
+## The why, when, and how of functions
 
 <!-- trying md file include.  failed:   #include carpenter.md -->
 
-[Bob's slides](carpenter.html)
+[slides](carpenter.html)
 
 
 
 <!-- JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJj -->
 
-## Packaging a Jabberwocky (Alex)
+## Packaging a Jabberwocky
 
 <br>
 <br>
