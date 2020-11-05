@@ -309,7 +309,7 @@ A: one of the group exercises!
 <!-- EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
 ## Exercises (breakouts)
 
-Choose an example to work on in a small group, from the files in the [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
+Choose an example to work on in a small group, from the files in the repo: https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise
 
 There are several different languages to choose from.
 
