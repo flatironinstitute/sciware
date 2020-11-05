@@ -435,7 +435,7 @@ How do we implement them in languages that do not support them natively?
 </div>
 
 <div class="fragment">
-Provide <code class="c hljs">-1</code>, <code class="c hljs">NULL</code>?
+Provide -1, NULL?
 </div>
 
 
