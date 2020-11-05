@@ -372,6 +372,23 @@ fftw_plan fftw_plan_guru_dft(
 ```
 
 
+```python
+# perform the type-2 NUFFT
+f = finufft.nufft2d1(x, y, c, (N1, N2))
+```
+
+
+```python
+# instantiate the plan (note ntrans must be set here)
+plan = finufft.Plan(nufft_type, (N1, N2), n_trans=K)
+
+# set the nonuniform points
+plan.setpts(x, y)
+
+# execute the plan
+f = plan.execute(c)
+```
+
 
 ## Example: HDF5 (Hierarchical data format)
 
