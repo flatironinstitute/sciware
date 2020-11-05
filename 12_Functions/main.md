@@ -315,7 +315,7 @@ There are several different languages to choose from.
 
 
 
-## Discussion, advanced topics (Joakim)
+## Discussion, advanced topics
 
 
 ### Naming
