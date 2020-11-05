@@ -81,21 +81,19 @@ result = S-T
 ```
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
 
-<p class="fragment">
-Good to package the self-contained repeated task as a <em>function</em>:
-<pre><code class="python hljs">
-def sumsquares(a):
+<div>
+<p class="fragment">Good to package the self-contained repeated task as a <em>function</em>:
+<pre><code class="python hljs">def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
 </code></pre>
 </p>
-<p class="fragment">
-Then entire snippet becomes much simpler, <em>and</em> easier to read:
-<pre><code class="python hljs">
-result = sumsquares(a)-sumsquares(b)
+<p class="fragment">Then entire snippet becomes much simpler, <em>and</em> easier to read:
+<pre><code class="python hljs">result = sumsquares(a)-sumsquares(b)
 </code></pre>
 plus other users, and future you, get a useful tool: a function :)
 </p>
+</div>
 
 
 ### Functions are sad without tests
