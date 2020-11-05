@@ -355,34 +355,26 @@ Comments also can't be tested (generally).
 
 More advanced libraries or packages can have multiple levels of APIs.
 
-<div class="fragment">
 High level calls low level.
-</div>
 
-<div class="fragment">
-<pre><code class="c hljs">
+```c
 fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
                            int sign, unsigned flags);
-</code></pre>
-</div>
+```
 
-<div class="fragment">
-<pre><code class="c hljs">
+```c
 typedef struct {
      int n;
      int is;
      int os;
 } fftw_iodim;
-</code>
 
-<code class="c hljs">
 fftw_plan fftw_plan_guru_dft(
      int rank, const fftw_iodim *dims,
      int howmany_rank, const fftw_iodim *howmany_dims,
      fftw_complex *in, fftw_complex *out,
      int sign, unsigned flags);
-</code></pre>
-</div>
+```
 
 
 ### High- and low-level APIs (cont.)
