@@ -402,7 +402,7 @@ How do we implement them in languages that do not support them natively? Provide
 
 <img src="pics/hdf_logo.png" align="center">
 
-* Binary data format store large datasets
+* Binary data format to store large datasets
 * Organize Data in a directory structure
 * Seamless compression and decompression
 
@@ -474,7 +474,7 @@ h5::read(file, "vec", vec);
 ```c++
 namespace h5 {
   template <typename T>
-  void write(group g, std::string key, T data);
+  void write(group g, std::string key, T const& data);
 
   template <typename T>
   void read(group g, std::string key, T& data);
