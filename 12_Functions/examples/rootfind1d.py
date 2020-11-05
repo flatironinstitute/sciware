@@ -15,7 +15,6 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
     """
     while True:
         xnew = x0 - f(x0)/dfdx(x0)
-        print(xnew)
         if abs(xnew-x0) < tol:
             break
         x0 = xnew
@@ -23,23 +22,25 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
 
 def testderiv(f, dfdx, x):
     """Test if dfdx is actually the derivative of f(x) at a given x, using
-    finite differencing. Returns error, that should be at the 1e-10 level.
+    finite differencing. Returns True iff error near expected level.
     """
     eps = 1e-5          # for choice, see Barnett FWAM2019 lecture, slide 14.
     FDderiv = (f(x+eps)-f(x-eps))/(2*eps)
     return abs(FDderiv-dfdx(x)) < 1e-9
 
-if __name__ == "__main__":
-    from math import *
-    # if this module is simply run, does test: checks root x=pi of f(x)=sin(x) 
+from math import *
+def test():
+    # checks root x=pi of f(x)=sin(x)
     f = lambda x: sin(x)
     dfdx = lambda x: cos(x)
-    if !testderiv(f,dfdx,1.4):     # good practice to test your test pair first!
-        print('dfdx appears not to be the derivative of f')
-        return                     # (this is a meta-test :)
-    tol=1e-12
+    if not testderiv(f,dfdx,1.4):  # good practice to test your test pair first
+        print('dfdx appears not even to be the derivative of f!')
+        return
+    tol=1e-12                      # now actual test of rootfind...
     x = rootfind1d(f, dfdx, 2.0, tol=tol)
-    if abs(x-pi)<tol:              # the actual test
+    if abs(x-pi)<tol:
         print('pass')
     else:
         print('fail')
+
+test()                              # run if called as script OR (re)imported

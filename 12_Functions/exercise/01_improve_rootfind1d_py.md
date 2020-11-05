@@ -4,9 +4,11 @@ Yes, since it has a function and a tester, it's a module.
 Iterate test-break-fix cycles to improve robustness of
 [rootfind1d](../examples/rootfind1d.py):
 
-(Hints: you may want to just paste the raw from that link into a local file ``rootfind1d.py``.
-Then in python3, ``import rootfind1d`` and call ``rootfind1d.rootfind1d()``,
-then if make changes, ``import importlib; importlib.reload(rootfind1d)``. ]
+(Hints: just paste from the raw version of link into a local file ``rootfind1d.py``.
+Then either ``python3 rootfind1d.py`` each time, or work in iPython with
+``import rootfind1d`` and call ``rootfind1d.rootfind1d()`` by hand,
+then if make changes, ``import importlib; importlib.reload(rootfind1d)``.
+We set it up so every time it's reimported it also reruns the test.]
 
 * add to the tester a case that causes an infinity, or near-infinity, or NaN, hence breaks it
 
