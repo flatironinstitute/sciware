@@ -69,7 +69,6 @@ Activities where participants all actively work to foster an environment which e
 
 ### What is a function?
 
-<section>
 Say you have python script/notebook including the snippet...
 
 ```python
@@ -83,25 +82,20 @@ result = S-T
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
 
 <p class="fragment">
-
 Good to package the self-contained repeated task as a *function*:
-```python
+<code class="python hljs">
 def sumsquares(a):
     """Sum the squares of the elements of a NumPy array."""
     return sum(a*a)
-```
-
+</code>
 </p>
 <p class="fragment">
-
 Then entire snippet becomes much simpler, *and* easier to read:
-```python
+<code class="python hljs">
 result = sumsquares(a)-sumsquares(b)
-```
+</code>
 plus other users, and future you, get a useful tool: a function :)
-
 </p>
-</section>
 
 
 ### Functions are sad without tests
