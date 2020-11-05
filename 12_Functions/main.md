@@ -166,6 +166,7 @@ Any questions about what we're talking about or goals ?
 <!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
 ## Bob
 
+#include carpenter.md
 
 
 <!-- JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJj -->
