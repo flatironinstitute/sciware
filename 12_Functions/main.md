@@ -37,7 +37,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- Sciware "Office Hours" follow-up discussion in 2 weeks (Nov 19)
 - Future sessions planned:
+  - Intro to R
   - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
 
@@ -81,6 +83,8 @@ result = S-T
 
 
 <!-- two spaces makes new slide-->
+
+<!-- AHB OLD
 Good to package the self-contained repeated task as a *function*:
 ```python
 def sumsquares(a):
@@ -93,6 +97,22 @@ Then entire snippet becomes much simpler, *and* easier to read:
 result = sumsquares(a)-sumsquares(b)
 ```
 plus other users, and future you, get a useful tool: a function :)
+-->
+
+<div>
+<p class="fragment">Good to package the self-contained repeated task as a <em>function</em>:
+<pre><code class="python hljs">def sumsquares(a):
+    """Sum the squares of the elements of a NumPy array."""
+    return sum(a*a)
+</code></pre>
+</p>
+<p class="fragment">Then entire snippet becomes much simpler, <em>and</em> easier to read:
+<pre><code class="python hljs">result = sumsquares(a)-sumsquares(b)
+</code></pre>
+plus other users, and future you, get a useful tool: a function :)
+</p>
+</div>
+
 
 
 ### Functions are sad without tests
