@@ -2,7 +2,11 @@
 
 Yes, since it has a function and a tester, it's a module.
 Iterate test-break-fix cycles to improve robustness of
-[rootfind1d](../examples/rootfind1d.py) :
+[rootfind1d](../examples/rootfind1d.py):
+
+(Hints: you may want to just paste the raw from that link into a local file ``rootfind1d.py``.
+Then in python3, ``import rootfind1d`` and call ``rootfind1d.rootfind1d()``,
+then if make changes, ``import importlib; importlib.reload(rootfind1d)``. ]
 
 * add to the tester a case that causes an infinity, or near-infinity, or NaN, hence breaks it
 
@@ -10,7 +14,7 @@ Iterate test-break-fix cycles to improve robustness of
 
 * must it always terminate? It would be sad to be stuck in this iteration forever. [Advanced: add a tester with such a case.]
 
-Note: breaking an algorithm requires your creative brain!
+  *Note: breaking an algorithm requires your creative brain!*
 
 * fix the algorithm to catch such a case
 
