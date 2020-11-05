@@ -328,7 +328,7 @@ Comments are good, but names are better.
 <pre><code class="python hljs">
 def get_values2(x, y):
     temp = np.mean(np.abs(x - y) ** 2)
-
+ 
     return temp
 </code></pre>
 </div>
@@ -339,7 +339,7 @@ vs.
 <pre><code class="python hljs">
 def mean_squared_error(x, x_ref):
     mse = np.mean(np.abs(x - x_ref) ** 2)
-
+ 
     return mse
 </code></pre>
 </div>
