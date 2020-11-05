@@ -81,6 +81,8 @@ result = S-T
 ```
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
 
+<!-- note to get pause, ie fragment, to work, need raw HTML here... -->
+
 <div class="fragment">
 Good to package the self-contained repeated task as a <em>function</em>:
 <pre><code class="python hljs">def sumsquares(a):
@@ -120,7 +122,7 @@ else:
 Q: Other than checking it does the right thing, why else are test "driver" codes essential?
 </div>
 <div class="fragment">
-*shows a human how to use your function*
+<em>shows a human how to use your function</em>
 </div>
 
 <!-- are more elaborate tests, like what if you send it empy, or non-numpy array... -->
@@ -213,13 +215,13 @@ How useful is this to you? Must waste time understanding the whole script, some 
 
 ### Split out a root-finding function
 
-Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func.
+Ok, in real world at this point you'd read around, eventually (!) find ``scipy.optimize.newton``, and be done. Say internet is broken. Need to make own func...
 
 Ah, you realize it's doing Newton's iteration \\[x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\\] so that the sequence \\(x_0, x_1, \ldots\\) tends to a root.
 `mimsy` is some parameter we ignore. `wabe` is \\(x\\), which is a simpler and more universal variable name!
 
 <div class="fragment">
-Let's wrap in interface for roots of a *general* function, not just `runcible`!
+Let's wrap in interface for roots of a <em>general</em> function, not just `runcible`!
 
 We steal the *algorithm* of the script, just do better *packaging*.
 </div>
@@ -227,7 +229,7 @@ We steal the *algorithm* of the script, just do better *packaging*.
 
 ### First draft function
 
-To root-find a general func, need pass that func in, and another func for its derivative:
+To root-find a general func, need pass that func in, and a (separate?) func for its derivative:
 ```python
 def rootfind1d(f, dfdx, x0):
     """Find a nearby root of a 1D scalar function.
@@ -245,7 +247,7 @@ def rootfind1d(f, dfdx, x0):
     return xnew
 ```
 Look it has docs! We suggest you even write the docs *before* you write the
-body of the function.
+body of the function, focuses the mind.
 
 Q: are we done with this basic draft?
 
@@ -278,10 +280,7 @@ The tolerance check `1e-9` was particular to frumious gimbles. Think about your 
 
 Q: how best do this?
 
-This catches an amazing amount of coding mistakes.
-
 <div class="fragment">
-Add an optional arg:
 <pre><code class="python hljs">
 def rootfind1d(f, dfdx, x0, tol=1e-9):
     """Find a nearby root of a 1D scalar function.
@@ -303,7 +302,10 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
 Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters from *sensible defaults*.
 </div>
 
+
 Q: how *else* could you improve this function or its tests?
+
+<!-- let some ideas happen here, then... -->
 
 A: one of the group exercises!
 
