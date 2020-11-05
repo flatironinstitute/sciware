@@ -398,13 +398,10 @@ f = finufft.nufft2d1(x, y, c, (N1, N2))
 
 <div class="fragment">
 <pre><code class="python hljs">
-# instantiate the plan (note ntrans must be set here)
 plan = finufft.Plan(nufft_type, (N1, N2), n_trans=c.shape[0])
 
-# set the nonuniform points
 plan.setpts(x, y)
 
-# execute the plan
 f = plan.execute(c)
 </code></pre>
 </div>
