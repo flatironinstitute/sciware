@@ -165,17 +165,12 @@ Any questions about what we're talking about or goals ?
 
 
 
-
-
 <!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
 ## Bob
 
 <!-- trying md file include.  failed:   #include carpenter.md -->
 
 [Bob's slides](carpenter.html)
-
-
-
 
 
 
