@@ -334,7 +334,6 @@ def get_values2(x, y):
     return temp
 ```
 
-
 vs.
 
 ```python
@@ -344,9 +343,7 @@ def mean_squared_error(x, x_ref):
     return mse
 ```
 
-
 Comments can go stale and require maintenance.
-
 
 Comments also can't be tested (generally).
 
@@ -362,7 +359,6 @@ fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
                            int sign, unsigned flags);
 ```
 
-
 ```c
 fftw_plan fftw_plan_guru_dft(
      int rank, const fftw_iodim *dims,
@@ -371,12 +367,10 @@ fftw_plan fftw_plan_guru_dft(
      int sign, unsigned flags);
 ```
 
-
 ```python
 # perform the type-2 NUFFT
 f = finufft.nufft2d1(x, y, c, (N1, N2))
 ```
-
 
 ```python
 # instantiate the plan (note ntrans must be set here)
