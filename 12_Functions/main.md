@@ -67,7 +67,6 @@ Activities where participants all actively work to foster an environment which e
 
 ### What is a function?
 
-<section>
 Say you have python script/notebook including the snippet...
 
 ```python
@@ -80,8 +79,8 @@ result = S-T
 ```
 <small>Seems to sum the squares of array a, then similar for b, then subtract them.</small>
 
-<p class="fragment">
 
+<!-- two spaces makes new slide-->
 Good to package the self-contained repeated task as a *function*:
 ```python
 def sumsquares(a):
@@ -89,17 +88,11 @@ def sumsquares(a):
     return sum(a*a)
 ```
 
-</p>
-<p class="fragment">
-
 Then entire snippet becomes much simpler, *and* easier to read:
 ```python
 result = sumsquares(a)-sumsquares(b)
 ```
 plus other users, and future you, get a useful tool: a function :)
-
-</p>
-</section>
 
 
 ### Functions are sad without tests
@@ -113,7 +106,6 @@ A ("pure") function has inputs (array ``a``), outputs (return value)
 - refers to no global variables
 - has no "state" (internal memory). This makes it *testable*.
 
-
 Never trust a func you wrote but didn't test! A simple tester:
 ```python
 import numpy as np
@@ -122,7 +114,7 @@ if sumsquares(np.array((3.0,4.0))) == 25.0:
 else:
     print('fail')
 ```
-Q: why else are test "driver" codes useful?
+Q: why else are test "driver" codes essential?
 
 *shows a human how to use your function*
 

@@ -15,16 +15,28 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
     """
     while True:
         xnew = x0 - f(x0)/dfdx(x0)
+        print(xnew)
         if abs(xnew-x0) < tol:
             break
         x0 = xnew
     return xnew
-    
+
+def testderiv(f, dfdx, x):
+    """Test if dfdx is actually the derivative of f(x) at a given x, using
+    finite differencing. Returns error, that should be at the 1e-10 level.
+    """
+    eps = 1e-5          # for choice, see Barnett FWAM2019 lecture, slide 14.
+    FDderiv = (f(x+eps)-f(x-eps))/(2*eps)
+    return abs(FDderiv-dfdx(x))
+
 if __name__ == "__main__":
     from math import *
     # if this module is simply run, does test: checks root x=pi of f(x)=sin(x) 
     f = lambda x: sin(x)
     dfdx = lambda x: cos(x)
+    if testderiv(f,dfdx,1.4)>1e-9:     # good practice to test your pair first!
+        print('dfdx appears not to be the derivative of f')
+        return
     tol=1e-12
     x = rootfind1d(f, dfdx, 2.0, tol=tol)
     if abs(x-pi)<tol:
