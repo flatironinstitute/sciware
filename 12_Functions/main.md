@@ -355,12 +355,23 @@ fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
 ```
 
 ```c
+typedef struct {
+     int n;
+     int is;
+     int os;
+} fftw_iodim;
+
 fftw_plan fftw_plan_guru_dft(
      int rank, const fftw_iodim *dims,
      int howmany_rank, const fftw_iodim *howmany_dims,
      fftw_complex *in, fftw_complex *out,
      int sign, unsigned flags);
 ```
+
+
+### High- and low-level APIs (cont.)
+
+FINUFFT: simple call vs. plan interface
 
 ```python
 # perform the type-2 NUFFT
