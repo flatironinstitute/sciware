@@ -37,7 +37,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- Sciware "Office Hours" follow-up discussion in 2 weeks (Nov 19)
 - Future sessions planned:
+  - Intro to R
   - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
 - Suggest topics and vote on options in #sciware Slack
 
