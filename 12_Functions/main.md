@@ -320,41 +320,56 @@ There are several different languages to choose from.
 
 ### Naming
 
+<div class="fragment">
 Comments are good, but names are better.
+</div>
 
-```python
+<div class="fragment">
+<pre><code class="python hljs">
 def get_values2(x, y):
     temp = np.mean(np.abs(x - y) ** 2)
 
     return temp
-```
+</code></pre>
+</div>
 
+<div class="fragment">
 vs.
 
-```python
+<pre><code class="python hljs">
 def mean_squared_error(x, x_ref):
     mse = np.mean(np.abs(x - x_ref) ** 2)
 
     return mse
-```
+</code></pre>
+</div>
 
+<div class="fragment">
 Comments can go stale and require maintenance.
+</div>
 
+<div class="fragment">
 Comments also can't be tested (generally).
+</div>
 
 
 ### High- and low-level APIs
 
 More advanced libraries or packages can have multiple levels of APIs.
 
+<div class="fragment">
 High level calls low level.
+</div>
 
-```c
+<div class="fragment">
+<pre><code class="c hljs">
 fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out,
                            int sign, unsigned flags);
-```
+</code></pre>
+</div>
 
-```c
+<div class="fragment">
+<pre><code class="c hljs">
 typedef struct {
      int n;
      int is;
@@ -366,19 +381,23 @@ fftw_plan fftw_plan_guru_dft(
      int howmany_rank, const fftw_iodim *howmany_dims,
      fftw_complex *in, fftw_complex *out,
      int sign, unsigned flags);
-```
+</code></pre>
+</div>
 
 
 ### High- and low-level APIs (cont.)
 
 FINUFFT: simple call vs. plan interface
 
-```python
+<div class="fragment">
+<pre><code class="python hljs">
 # perform the type-2 NUFFT
 f = finufft.nufft2d1(x, y, c, (N1, N2))
-```
+</code></pre>
+</div>
 
-```python
+<div class="fragment">
+<pre><code class="python hljs">
 # instantiate the plan (note ntrans must be set here)
 plan = finufft.Plan(nufft_type, (N1, N2), n_trans=c.shape[0])
 
@@ -387,26 +406,43 @@ plan.setpts(x, y)
 
 # execute the plan
 f = plan.execute(c)
-```
+</code></pre>
+</div>
 
 
 ### Default arguments
 
-Why do we need them? When do we need them? What is a “sensible default”? How do we order them?
+<div class="fragment">Why do we need them?</div>
 
-```python
+<div class="fragment">When do we need them?</div>
+
+<div class="fragment">What is a “sensible default”?</div>
+
+<div class="fragment">How do we order them?</div>
+
+<div class="fragment">
+<pre><code class="python hljs">
 f = finufft.nufft2d1(x, y, c, (N1, N2))
-```
+</code></pre>
+</div>
 
-```python
+<div class="fragment">
+<pre><code class="python hljs">
 iflag = 1
 eps = 1e-6
 f = np.zeros([N1, N2], dtype=np.complex128, order='F')
 
 ret = finufftpy.nufft2d1(x, y, c, iflag, eps, N1, N2, f)
-```
+</code></pre>
+</div>
 
-How do we implement them in languages that do not support them natively? Provide `-1`, `NULL`?
+<div class="fragment">
+How do we implement them in languages that do not support them natively?
+</div>
+
+<div class="fragment">
+Provide `-1`, `NULL`?
+</div>
 
 
 ## Example: HDF5 (Hierarchical data format)
