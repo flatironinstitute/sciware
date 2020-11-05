@@ -328,7 +328,6 @@ Comments are good, but names are better.
 <pre><code class="python hljs">
 def get_values2(x, y):
     temp = np.mean(np.abs(x - y) ** 2)
- 
     return temp
 </code></pre>
 </div>
@@ -339,7 +338,6 @@ vs.
 <pre><code class="python hljs">
 def mean_squared_error(x, x_ref):
     mse = np.mean(np.abs(x - x_ref) ** 2)
- 
     return mse
 </code></pre>
 </div>
@@ -375,7 +373,9 @@ typedef struct {
      int is;
      int os;
 } fftw_iodim;
+</code>
 
+<code class="c hljs">
 fftw_plan fftw_plan_guru_dft(
      int rank, const fftw_iodim *dims,
      int howmany_rank, const fftw_iodim *howmany_dims,
@@ -399,9 +399,7 @@ f = finufft.nufft2d1(x, y, c, (N1, N2))
 <div class="fragment">
 <pre><code class="python hljs">
 plan = finufft.Plan(nufft_type, (N1, N2), n_trans=c.shape[0])
-
 plan.setpts(x, y)
-
 f = plan.execute(c)
 </code></pre>
 </div>
@@ -428,7 +426,6 @@ f = finufft.nufft2d1(x, y, c, (N1, N2))
 iflag = 1
 eps = 1e-6
 f = np.zeros([N1, N2], dtype=np.complex128, order='F')
-
 ret = finufftpy.nufft2d1(x, y, c, iflag, eps, N1, N2, f)
 </code></pre>
 </div>
