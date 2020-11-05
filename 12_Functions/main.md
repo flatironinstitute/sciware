@@ -407,17 +407,19 @@ f = plan.execute(c)
 <div class="fragment">How do we order them?</div>
 
 <div class="fragment">
-<pre><code class="python hljs">
-f = finufft.nufft2d1(x, y, c, (N1, N2))
-</code></pre>
-</div>
-
-<div class="fragment">
+Before:
 <pre><code class="python hljs">
 iflag = 1
 eps = 1e-6
 f = np.zeros([N1, N2], dtype=np.complex128, order='F')
 ret = finufftpy.nufft2d1(x, y, c, iflag, eps, N1, N2, f)
+</code></pre>
+</div>
+
+<div class="fragment">
+After:
+<pre><code class="python hljs">
+f = finufft.nufft2d1(x, y, c, (N1, N2))
 </code></pre>
 </div>
 
