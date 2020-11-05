@@ -391,7 +391,6 @@ FINUFFT: simple call vs. plan interface
 
 <div class="fragment">
 <pre><code class="python hljs">
-# perform the type-2 NUFFT
 f = finufft.nufft2d1(x, y, c, (N1, N2))
 </code></pre>
 </div>
