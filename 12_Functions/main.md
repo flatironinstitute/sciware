@@ -163,15 +163,26 @@ Any questions about what we're talking about or goals ?
 
 
 
+
+
 <!--  BBBBBBBBBBBBBBBBBBBBBBBBbbbbbbbBBBBBBBBBBBBBBBBBBB -->
 ## Bob
 
-#include carpenter.md
+<!-- trying md file include.  failed:   #include carpenter.md -->
+
+[Bob's slides](carpenter.html)
+
+
+
+
 
 
 <!-- JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJj -->
 
 ## Packaging a Jabberwocky (Alex)
+
+<br>
+<br>
 
 (why Jabberwocky? Because all technical terms in science codes are *nonsense poems* to other users outside that area)
 
