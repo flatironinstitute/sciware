@@ -189,14 +189,16 @@ Any questions about what we're talking about or goals ?
 
 ### Creating a good function from a script
 
-You heard your friend wrote code once that included a cool way to find a place \\(x\\) where some 1D function \\(f(x)=0\\). You ask and they say, sure, here you go:!
+You heard your friend wrote code once that included a cool way to find a place \\(x\\) where some 1D function \\(f(x)=0\\). You ask and they say, sure, here you go:
 ```python
-# script proving my gimble is frumious! (recall technical words are gibberish to other users)
+# script proving my gimble is frumious!
+# (recall technical words are gibberish to other users)
 for brillig in np.arange(0, pi, 0.1):
     mimsy = cos(brillig)
     wabe_guess = 1.5
     while True:
-        wabe_newguess = wabe_guess - runcible(mimsy, wabe_guess) / runciblederivative(mimsy, wabe_guess)
+        wabe_newguess = wabe_guess - runcible(mimsy, wabe_guess) /
+                                      runciblederivative(mimsy, wabe_guess)
         if abs(wabe_newguess - wabe_guess) < 1e-9:
             break
         wabe_guess = wabe_newguess        
@@ -204,8 +206,9 @@ for brillig in np.arange(0, pi, 0.1):
 ```
 You laugh, but this is a common collaboration experience!
 
-
+<div class="fragment">
 How useful is this to you? Must waste time understanding the whole script, some outer loop. Is runcible a 1D function? It has 2 args. Where’s the bit that finds the zero of a 1D function? What variable contains the answer??
+</div>
 
 
 ### Split out a root-finding function
@@ -215,13 +218,16 @@ Ok, in real world at this point you'd read around, eventually (!) find ``scipy.o
 Ah, you realize it's doing Newton's iteration \\[x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\\] so that the sequence \\(x_0, x_1, \ldots\\) tends to a root.
 `mimsy` is some parameter we ignore. `wabe` is \\(x\\), which is a simpler and more universal variable name!
 
+<div class="fragment">
 Let's wrap in interface for roots of a *general* function, not just `runcible`!
 
-We steal the same *algorithm* as the script, just do better *packaging*.
+We steal the *algorithm* of the script, just do better *packaging*.
+</div>
 
 
 ### First draft function
 
+To root-find a general func, need pass that func in, and another func for its derivative:
 ```python
 def rootfind1d(f, dfdx, x0):
     """Find a nearby root of a 1D scalar function.
@@ -238,7 +244,7 @@ def rootfind1d(f, dfdx, x0):
         x0 = xnew
     return xnew
 ```
-Look it has docs! I suggest you even write the docs *before* you write the
+Look it has docs! We suggest you even write the docs *before* you write the
 body of the function.
 
 Q: are we done with this basic draft?
@@ -255,7 +261,9 @@ No, recall it is *incomplete* without a test routine, like this:
     else:
         print('fail')
 ```
-Very niiice! Universal simple *math* language (all jargon gone).
+Very niiice!
+
+Note: universal simple *math* language and symbols (all jargon gone).
 
 Now why didn't your friend hand you this in the first place?? If they had been a good structured coder, they would have :)
 
@@ -266,9 +274,15 @@ And So Can You\*.
 
 ### Improvements
 
-The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it. Now they can:
+The tolerance check `1e-9` was particular to frumious gimbles. Think about your user (or future self): they'll want to change it.
 
-```python
+Q: how best do this?
+
+This catches an amazing amount of coding mistakes.
+
+<div class="fragment">
+Add an optional arg:
+<pre><code class="python hljs">
 def rootfind1d(f, dfdx, x0, tol=1e-9):
     """Find a nearby root of a 1D scalar function.
     Inputs: f - a 1D scalar function
@@ -284,14 +298,14 @@ def rootfind1d(f, dfdx, x0, tol=1e-9):
             break
         x0 = xnew
     return xnew
-```
-
+</code></pre>
 
 Optional args are a great way make it easy on the basic user while the power user can tweak various algorithm parameters from *sensible defaults*.
+</div>
 
 Q: how *else* could you improve this function or its tests?
 
-A: group exercise / discussion !
+A: one of the group exercises!
 
 
 
@@ -300,11 +314,11 @@ A: group exercise / discussion !
 
 Choose an example to work on in a small group, from the files in the [repo](https://github.com/flatironinstitute/learn-sciware-dev/tree/master/12_Functions/exercise)
 
-There are different languages.
+There are several different languages to choose from.
 
 
 
-## Discussion, guides (Joakim)
+## Discussion, advanced topics (Joakim)
 
 
 ### Naming
