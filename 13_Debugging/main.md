@@ -43,3 +43,13 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+* Introduction to debugging: goals and strategies
+* Totalview
+* gdb gui + lldb
+* Valgrind & Sanitizers
+* Python debuggers
+
+
+## Terminology
+
+
