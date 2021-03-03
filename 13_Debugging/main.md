@@ -54,7 +54,7 @@ Activities where participants all actively work to foster an environment which e
 ## Terminology
 
 * backtrace, stacktrace: a state of a running/crashed program, the sequence of (nested) function calls leading to the current line of code
-* coredump, core file: a file (`/tmp/core.UID-PROG.PID`), produced when a program crashes in certain ways (segfault, `abort()`), if enabled (`ulimit -c unlimited`)
+* coredump, core file: a file (`/tmp/core.UID-PROG.PID`), produced when a program crashes in certain ways (`*NULL`, `abort()`), if enabled (`ulimit -c unlimited`)
 * Heisenbug: a bug that goes away when you try to debug it
-* Debugger, interactive debugging: a tool to let you watch your program as it runs, one line at a time
+* debugger, interactive debugging: a tool to let you watch your program as it runs, one line at a time
 * wolf fence debugging, bisection: finding a bug by recursively dividing your code and seeing which part fails (commenting out lines or reverting some changes)
