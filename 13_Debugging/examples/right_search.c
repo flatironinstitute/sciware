@@ -30,7 +30,7 @@ int main(int argc, char **argv){
     }
     
     // Now find the right-most occurence of a value in this array
-    int search_val = 0;
+    int search_val = 5;
     int j = right_search(search_val, arr, N);
     if(j != -1)
         printf("Found value %d at loc %d\n", search_val, j);
