@@ -37,8 +37,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Sciware Office Hours follow-up discussion in 2 weeks
-- Advanced testing (test frameworks, strategies, TTD, ...)
+- Sciware Office Hour follow-up discussion in 2 weeks (Mar 18)
+- Advanced testing (test frameworks, strategies, TTD, etc.) (TBD, soliciting contributors...)
 - Suggest topics and vote on options in #sciware Slack
 
 
