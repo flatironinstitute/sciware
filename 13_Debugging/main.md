@@ -58,3 +58,8 @@ Activities where participants all actively work to foster an environment which e
 * Heisenbug: a bug that goes away when you try to debug it
 * debugger, interactive debugging: a tool to let you watch your program as it runs, one line at a time
 * wolf fence debugging, bisection: finding a bug by recursively dividing your code and seeing which part fails (commenting out lines or reverting some changes)
+
+
+## Feedback
+
+http://bit.ly/sciware-debugging-2021
