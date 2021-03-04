@@ -1,0 +1,41 @@
+clang++ -g -std=c++20 -o simple simple.cpp
+
+lldb simple
+
+b main
+run
+
+next
+frame variable
+h fr v
+fr v s
+p s
+f
+
+b simple.cpp:20
+b
+c
+p ints.size()
+
+b simple.cpp:23
+br modify -c "i==5" 3
+b
+c
+p i
+
+s
+bt
+finish
+
+wa set var ints[0]
+c
+
+n
+p coords
+type summary add --summary-string "MyCoord (${var.x}, ${var.y})" "coord"
+n
+p coords
+
+script
+dir()
+dir(lldb)
