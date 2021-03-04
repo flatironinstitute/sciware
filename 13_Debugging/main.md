@@ -46,8 +46,8 @@ Activities where participants all actively work to foster an environment which e
 
 * Introduction to debugging: goals and strategies (Jeff Soules, CCM + Miles Stoudenmire, CCQ)
 * TotalView (Marsha Berger, CCM)
-* gdb gui + lldb (Nils Wentzell, CCQ)
-* Valgrind & Sanitizers (Nils & Lehman)
+* lldb (Nils Wentzell, CCQ)
+* Dynamic analyzers (Nils & Lehman)
 * Python debuggers (Lehman Garrison, CCA)
 
 
