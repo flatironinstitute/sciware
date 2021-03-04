@@ -38,18 +38,28 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Sciware Office Hours follow-up discussion in 2 weeks
+- Advanced testing (test frameworks, strategies, TTD, ...)
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's Agenda
 
-* Introduction to debugging: goals and strategies
-* Totalview
-* gdb gui + lldb
-* Valgrind & Sanitizers
-* Python debuggers
+* Introduction to debugging: goals and strategies (Jeff Soules, CCM)
+* TotalView (Marsha Berger, CCM)
+* gdb gui + lldb (Nils Wentzell, CCQ)
+* Valgrind & Sanitizers (Nils & Lehman)
+* Python debuggers (Lehman Garrison, CCA)
 
 
 ## Terminology
 
+* backtrace, stacktrace: a state of a running/crashed program, the sequence of (nested) function calls leading to the current line of code
+* coredump, core file: a file (`/tmp/core.UID-PROG.PID`), produced when a program crashes in certain ways (`*NULL`, `abort()`), if enabled (`ulimit -c unlimited`)
+* Heisenbug: a bug that goes away when you try to debug it
+* debugger, interactive debugging: a tool to let you watch your program as it runs, one line at a time
+* wolf fence debugging, bisection: finding a bug by recursively dividing your code and seeing which part fails (commenting out lines or reverting some changes)
 
+
+## Feedback
+
+http://bit.ly/sciware-debugging-2021
