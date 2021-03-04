@@ -1,6 +1,6 @@
 # Sciware
 
-## Functions
+## Debugging and Debuggers
 
 https://github.com/flatironinstitute/learn-sciware-dev/tree/master/13_Debugging
 
