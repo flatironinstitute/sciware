@@ -9,7 +9,7 @@
 - Log in to Github (if necessary)
 - Click "Fork" in upper right
    - Choose your username (if prompted)
-- `git clone https://github.com/*YOURUSER*/sciware-testing-python.git`
+- `git clone https://github.com/YOURUSER/sciware-testing-python.git`
    - Other instructions under green "Code" button dropdown
 
 
@@ -20,7 +20,7 @@
    - Or `pip3 install --user -e .` without venv/conda
 - `pytest`
 
-You should see ... (TODO)
+You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 
 
 ### Code overview
@@ -53,7 +53,7 @@ You should see ... (TODO)
 - Run `pytest --doctest-modules`
 
 
-## Exercise: test-driven fixing
+## Exercise: test-driven fixes
 
 - Look at `sciware_testing_python/main.py` `add_vectors`
    - It has a problem, but don't fix it yet
@@ -68,9 +68,9 @@ You should see ... (TODO)
 - `pytest tests/test_exercise.py`: PASS?!
 - Tell pytest that this should actually fail:
    - Add `@pytest.mark.xfail(strict=True)` before the function
-   - Now it fails
+   - Run tests again: now it should fail
 - Fix `sum_numbers` in `sciware_testing_python/main.py` to check for non-numbers
-- Run tests again
+- Run tests again to pass
 
 
 ### Bonus: test-driven development (TDD)
@@ -79,7 +79,7 @@ You should see ... (TODO)
 - Remove the `@pytest.mark.skip` line
 - Run `pytest tests/test_tdd.py`: FAIL!
 - Add a `count_ones` function to `sciware_testing_python/main.py`
-- Run the tests again
+- Run the tests again to pass
 
 
 ### Bonus: other pytest features
