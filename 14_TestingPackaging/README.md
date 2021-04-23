@@ -4,5 +4,6 @@
 - Zoom
 
 - [slides](https://flatironinstitute.github.io/learn-sciware-dev/14_TestingPackaging/slides.html) ([source](main.md))
+- [workshop guide](https://flatironinstitute.github.io/learn-sciware-dev/14_TestingPackaging/guide.html) ([source](workshop.md))
 - [python project](https://github.com/flatironinstitute/sciware-testing-python)
 - [C++ project](https://github.com/flatironinstitute/sciware-testing-cpp)
