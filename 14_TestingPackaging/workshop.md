@@ -1,4 +1,5 @@
-# Testing and packaging workshop guide
+# Sciware
+## Testing and packaging workshop guide
 
 
 ## Repo setup and packaging
