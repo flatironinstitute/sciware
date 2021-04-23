@@ -84,12 +84,12 @@ Do all the little bits work?
 * Tests of some small "unit" of code, usually a function
 * Often augments documentation
 
-#### "Doc" test
+### "Doc" test
 
 * A unit test embedded in documentation
 
 
-### Smoke tests
+## Smoke tests
 
 * A very simple test to make sure things are basically working
 * Often run before other tests to determine whether to proceed
