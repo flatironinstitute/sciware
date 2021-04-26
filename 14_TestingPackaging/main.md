@@ -121,11 +121,10 @@ What does the code NOT do?
 * Automatically timing some code to make sure it still runs fast enough
 
 
-### Test-driven development
+### Test-driven development (TDD)
 
 * The practice of writing tests before code
 * For example, a unit test for a function defines the API
-
 
 ### Continuous Integration (CI)
 

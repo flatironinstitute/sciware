@@ -38,6 +38,7 @@ You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 
 - Open `tests/test_exercise.py`
 - Write some tests for `sum_numbers`
+   - fill in `test_sum1` and `test_sum2`
 - Run `pytest tests/test_exercise.py`
 
 #### Bonus: commit and push your changes
@@ -57,7 +58,7 @@ You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 ## Exercise: test-driven fixes
 
 - Look at `sciware_testing_python/main.py` `add_vectors`
-   - It has a problem, but don't fix it yet
+   - It has a problem (but don't fix it yet)
 - Add a new test for `add_vectors` to `tests/test_exercise.py`
 - `pytest tests/test_exercise.py`: FAIL!
 - Fix `add_vectors` and try again
@@ -87,7 +88,10 @@ You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 
 - See examples in `tests/test_examples.py`
 - `@pytest.mark.parameterize`
+   - can be used to loop over input arguments for your test
+   - `@pytest.mark.parameterize("arg1, arg2, ...", [[val1, val2, ...], ...]`
 - `@pytest.fixture`
+   - Fixtures are called automatically to generate/load matching arguments
 
 
 
