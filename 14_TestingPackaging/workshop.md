@@ -105,8 +105,8 @@ You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 
 ### Exercise: improve CI tests
 
-- Open `.github/workflows/test.yml`
-- Add `--doctest-modules` to pytest run
+- Open `.github/workflows/exercise.yml`
+- Add a `pytest --doctest-modules` test step
 - Add python 3.9
 - Commit and push (to your repo)
 
