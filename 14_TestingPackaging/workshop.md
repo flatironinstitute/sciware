@@ -21,7 +21,7 @@
    - Or `pip3 install --user -e .` without venv/conda
 - `pytest`
 
-You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
+You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 
 ### Code overview
@@ -48,12 +48,12 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Exercise: doctests
 
 - Open `sciware_testing_python/exercise.py`
-- Modify the lines in the quoted documentation to do a real test:
+- Add the lines in the quoted documentation to another test:
    - ```
      Example
      -------
-     >>> sum_numbers([1,2,3])
-     6
+     >>> sum_numbers([])
+     0
      ```
 - Run `pytest --doctest-modules`
 
@@ -78,10 +78,10 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ### Bonus: test-driven development (TDD)
 
-- Open `tests/test_tdd.py` and look at the test
-- Remove the `@pytest.mark.skip` line
+- Open `tests/test_tdd.py` and look at the tests
+- Remove the `@pytest.mark.skip` line for `test_count_twos`
 - Run `pytest tests/test_tdd.py`: FAIL!
-- Add a `count_ones` function to `sciware_testing_python/exercise.py`
+- Add a `count_twos` function to `sciware_testing_python/exercise.py`
 - Run the tests again to pass
 
 
