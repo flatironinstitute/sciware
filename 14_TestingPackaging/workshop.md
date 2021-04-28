@@ -47,10 +47,12 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Exercise: doctests
 
 - Open `sciware_testing_python/main.py`
-- Modify the lines under "Example" in the quoted documentation to do a real test:
+- Modify the lines in the quoted documentation to do a real test:
    - ```
-     >>> some code
-     expected result
+     Example
+     -------
+     >>> sum_numbers([1,2,3])
+     6
      ```
 - Run `pytest --doctest-modules`
 
