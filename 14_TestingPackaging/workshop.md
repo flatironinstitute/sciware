@@ -66,7 +66,7 @@ You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
 
 ## Exercise: testing for error cases
 
-- Add a test to `tests/test_exercise.py` to call `sum_numbers` on a list of strings
+- Add a test to `tests/test_exercise.py` to call `sum_numbers` on a list of bools (`[False, True]`)
 - `pytest tests/test_exercise.py`: PASS?!
 - Tell pytest that this should actually fail:
    - Add `@pytest.mark.xfail(strict=True)` before the function
