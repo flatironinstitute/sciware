@@ -26,9 +26,9 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ### Code overview
 
-- Code lives in `sciware_testing_python/*.py` (main module: `main.py`)
+- Code lives in `sciware_testing_python/*.py` (main module: `exercise.py`)
 - Tests live in `test/test_*.py`
-- Let's look at `sciware_testing_python/main.py` now
+- Let's look at `sciware_testing_python/exercise.py` now
    - `sum_numbers`: what does it do? how do you use it?
 
 
@@ -47,7 +47,7 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ## Exercise: doctests
 
-- Open `sciware_testing_python/main.py`
+- Open `sciware_testing_python/exercise.py`
 - Modify the lines in the quoted documentation to do a real test:
    - ```
      Example
@@ -60,7 +60,7 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ## Exercise: test-driven fixes
 
-- Look at `sciware_testing_python/main.py` `add_vectors`
+- Look at `sciware_testing_python/exercise.py` `add_vectors`
    - It has a problem (but don't fix it yet)
 - Add a new test for `add_vectors` to `tests/test_exercise.py`
 - `pytest tests/test_exercise.py`: FAIL!
@@ -81,7 +81,7 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 - Open `tests/test_tdd.py` and look at the test
 - Remove the `@pytest.mark.skip` line
 - Run `pytest tests/test_tdd.py`: FAIL!
-- Add a `count_ones` function to `sciware_testing_python/main.py`
+- Add a `count_ones` function to `sciware_testing_python/exercise.py`
 - Run the tests again to pass
 
 
@@ -130,4 +130,4 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Bonus: Typing
 
 - Run `mypy`
-- Add type some annotations to `sciware_testing_python/main.py` (see `examples.py`)
+- Add type some annotations to `sciware_testing_python/exercise.py` (see `examples.py`)
