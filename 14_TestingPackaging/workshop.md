@@ -47,10 +47,10 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Exercise: doctests
 
 - Open `sciware_testing_python/main.py`
-- Add some lines in the quoted documentation:
+- Modify the lines under "Example" in the quoted documentation to do a real test:
    - ```
-     >>> code
-     result
+     >>> some code
+     expected result
      ```
 - Run `pytest --doctest-modules`
 
