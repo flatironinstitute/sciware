@@ -21,7 +21,7 @@
    - Or `pip3 install --user -e .` without venv/conda
 - `pytest`
 
-You should see: 9 passed, 2 skipped, 2 xfailed, 1 xpassed
+You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 
 ### Code overview
