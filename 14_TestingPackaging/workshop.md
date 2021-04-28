@@ -69,13 +69,11 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ## Exercise: testing for error cases
 
-- Add a test to `tests/test_exercise.py` to call `sum_numbers` on a list of bools (`[False, True]`)
-- `pytest tests/test_exercise.py`: PASS?!
+- Update the `test_sum_strings` test in `tests/test_exercise.py` to call `sum_numbers` on a list of strings
+- `pytest tests/test_exercise.py`: FAIL
 - Tell pytest that this should actually fail:
    - Add (uncomment) `@pytest.mark.xfail(strict=True)` before the function
-   - Run tests again: now it should fail
-- Fix `sum_numbers` in `sciware_testing_python/main.py` to check for non-numbers
-- Run tests again to pass
+- Run tests again: now it should pass
 
 
 ### Bonus: test-driven development (TDD)
