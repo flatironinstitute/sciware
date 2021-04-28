@@ -72,7 +72,7 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 - Add a test to `tests/test_exercise.py` to call `sum_numbers` on a list of bools (`[False, True]`)
 - `pytest tests/test_exercise.py`: PASS?!
 - Tell pytest that this should actually fail:
-   - Add `@pytest.mark.xfail(strict=True)` before the function
+   - Add (uncomment) `@pytest.mark.xfail(strict=True)` before the function
    - Run tests again: now it should fail
 - Fix `sum_numbers` in `sciware_testing_python/main.py` to check for non-numbers
 - Run tests again to pass
