@@ -123,6 +123,10 @@ You should see: `10 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 ## Bonus: Code coverage
 
+- Run `pytest --cov`
+- Open `.github/workflows/exercise.yml`
+- Add codecov step
+
 
 
 ## Bonus: Typing
