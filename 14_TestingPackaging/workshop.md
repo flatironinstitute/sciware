@@ -67,6 +67,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 - Add a new test for `add_vectors` to `tests/test_exercise.py`
 - `pytest tests/test_exercise.py`: FAIL!
 - Fix `add_vectors` and try again
+   - Hint: change `\*` to `+`
 
 
 ## Exercise: testing for error cases
