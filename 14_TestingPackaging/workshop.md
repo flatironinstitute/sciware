@@ -79,7 +79,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 - Run tests again: now it should pass
 
 
-### Bonus: test-driven development (TDD)
+### Exercise: test-driven development (TDD)
 
 - Open `tests/test_tdd.py` and look at the tests
    - We wrote a test before writing the code for `count_twos`
