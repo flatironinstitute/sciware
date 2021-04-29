@@ -27,7 +27,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ### Code overview
 
 - Code lives in `sciware_testing_python/*.py` (main module: `exercise.py`)
-- Tests live in `test/test_*.py`
+- Tests live in `tests/test_*.py`
 - Let's look at `sciware_testing_python/exercise.py` now
    - `sum_numbers`: what does it do? how do you use it?
 
