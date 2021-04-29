@@ -37,6 +37,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- May 13 3-4pm: Chat and office hour (followup from today)
 - Week of June 14 (date TBD): Intro to Git/GitHub
 - July 8: Intro to IDEs and Debugging
 - Suggest topics and vote on options in #sciware Slack
