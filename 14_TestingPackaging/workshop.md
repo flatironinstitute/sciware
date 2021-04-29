@@ -39,7 +39,8 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 - Open `tests/test_exercise.py`
 - Write some tests for `sum_numbers`
-   - fill in `test_sum1` and `test_sum2`
+   - Fill in `test_sum_numbers_yours` and `test_sum_numbers_empty`
+   - Change `pass` to `assert sum_numbers(..) == ..`
 - Run `pytest tests/test_exercise.py`
 
 #### Bonus: commit and push your changes
