@@ -82,8 +82,10 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ### Bonus: test-driven development (TDD)
 
 - Open `tests/test_tdd.py` and look at the tests
+   - We wrote a test before writing the code for `count_twos`
 - Remove the `@pytest.mark.skip` line for `test_count_twos`
 - Run `pytest tests/test_tdd.py`: FAIL!
+   - `count_twos` doesn't exist yet!
 - Add a `count_twos` function to `sciware_testing_python/exercise.py`
 - Run the tests again to pass
 
