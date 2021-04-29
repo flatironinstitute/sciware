@@ -107,8 +107,8 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ### Exercise: improve CI tests
 
 - Open `.github/workflows/exercise.yml`
-- Add a `pytest --doctest-modules` test step
-- Add python 3.9
+- Add `3.9` to `python-version` to add testing for Python 3.9
+- Add a `pytest --doctest-modules` to the Test step
 - Commit and push (to your repo)
 
 
@@ -123,7 +123,17 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 - Run `pytest --cov`
 - Open `.github/workflows/exercise.yml`
-- Add codecov step
+- Update the Test step so it runs `pytest --doctest-modules --cov`
+
+
+
+## Code Coverage (cont.)
+
+- Setup your account at codecov.io
+   - Link it to `sciware-testing-python`
+   - Go to Settings -> Repository Upload Token and copy the token
+- Uncomment the Codecov step and paste your token
+- Commit and push (to your repo)
 
 
 
