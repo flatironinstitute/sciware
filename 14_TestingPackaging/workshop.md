@@ -118,16 +118,14 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 - Fix the badge link to point to your repo
 
 
-
-## Bonus: Code coverage
+### Bonus: Code coverage
 
 - Run `pytest --cov`
 - Open `.github/workflows/exercise.yml`
 - Update the Test step so it runs `pytest --doctest-modules --cov`
 
 
-
-## Code Coverage (cont.)
+### Code Coverage (cont.)
 
 - Setup your account at codecov.io
    - Link it to `sciware-testing-python`
