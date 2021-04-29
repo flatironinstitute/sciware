@@ -37,13 +37,15 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- Week of June 14 (date TBD): Intro to Git/GitHub
+- July 8: Intro to IDEs and Debugging
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's Agenda
 
-- Testing intro and background
-- Python exercise
+- Testing intro and background (Lehman Garrison, CCA)
+- Python exercise (James Smith, CCQ, Adam Lamson, CCB)
 
 
 
