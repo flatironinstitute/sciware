@@ -56,7 +56,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
      >>> sum_numbers([])
      0
      ```
-- Run `pytest --doctest-modules`
+- Run `pytest --doctest-modules sciware_testing_python/exercise.py`
 
 
 ## Exercise: test-driven fixes
