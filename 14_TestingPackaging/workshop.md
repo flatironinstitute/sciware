@@ -49,7 +49,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Exercise: doctests
 
 - Open `sciware_testing_python/exercise.py`
-- Add the lines in the quoted documentation to another test:
+- Add another doctest to the lines in quoted docstring:
    - ```
      Example
      -------
