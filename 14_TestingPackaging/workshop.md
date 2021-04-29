@@ -49,13 +49,14 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 ## Exercise: doctests
 
 - Open `sciware_testing_python/exercise.py`
-- Add another doctest to the lines in quoted docstring:
+- Add another doctest to the lines in quoted documentation:
    - ```
      Example
      -------
      >>> sum_numbers([])
      0
      ```
+   - Any `>>>` line in a docstring will be executed and compared to the expected output on the following line
 - Run `pytest --doctest-modules sciware_testing_python/exercise.py`
 
 
