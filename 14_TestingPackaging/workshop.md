@@ -50,7 +50,7 @@ You should see: `12 passed, 2 skipped, 2 xfailed, 1 xpassed`
 
 - Open `sciware_testing_python/exercise.py`
 - Add another doctest to the lines in quoted documentation:
-   - ```
+   - ```text
      Example
      -------
      >>> sum_numbers([])
