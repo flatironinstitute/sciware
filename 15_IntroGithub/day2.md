@@ -43,3 +43,59 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+- Distributed (aka Fork) Workflow
+- Exercise: How to Fork and Make a Pull Request
+- Reviewing and Merging Pull Requests
+- Bonus Exercise: Keeping a Fork Up-To-Date
+
+
+
+## Distributed Workflow
+
+![](https://uploads.toptal.io/blog/image/678/toptal-blog-image-1416834518259.png)
+
+
+## Distributed Workflow
+
+> Each contributor has not one, but two Git repositories: a personal fork local one and a public server-side one.
+
+
+## Distributed Workflow
+
+1. Fork and clone the project
+2. Make a new branch for your feature
+3. Add the code and push to your fork
+4. Open a pull request
+
+
+## EXTRA SLIDE
+
+Another way to visualize this workflow:
+
+<img height="auto" width=60% src="https://happygitwithr.com/img/fork-and-clone.png">
+
+
+
+## Step 1: Fork and Clone
+
+<div>
+    First we need to fork the repo
+    <img src="./where_is_the_fork_button.png">
+</div>
+
+<div class="fragment">
+    Next, we clone <em>our</em> fork of the repo:
+    <pre>
+        <code data-trim data-noescape>
+        git clone https://github.com/<your GitHub username>/sciware_intro_git_2021_06_17.git
+        </code>
+    </pre>
+</div>
+
+
+
+
+## Step 2: 
+
+
+## How to Fork and Make a PR
