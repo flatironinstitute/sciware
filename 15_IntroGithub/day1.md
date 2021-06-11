@@ -43,3 +43,87 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+- What is Git and GitHub? 
+- Setting up GitHub on your computer
+- Getting code off of GitHub
+- Putting code onto GitHub
+
+
+
+# Intro to Git and GitHub
+
+Dylan's slides here.
+
+
+
+# Setting up GitHub on your Computer
+
+
+## Make sure `git` is installed
+```angular2html
+> git version`
+git version 2.30.1 (Apple Git-130)
+```
+
+If this returns an error, please raise your hand and someone can help you in a berakout room.
+
+## Setting your name in Git 
+
+### See what name is currently set
+```
+> git config --global user.name`
+```
+
+### Set your name
+```
+> git config --global user.name "Mona Lisa"
+```
+
+
+## Setting your email address
+
+### See what email address is currently set
+```
+> git config --global user.email`
+```
+
+### Set an email address
+```
+> git config --global user.email "your_email@example.com"
+```
+
+
+## Setup SSH
+
+### Generate an SSH key and copy it to the clipboard
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+```
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+### Add the SSH key to GitHub
+Profile Photo > Settings > SSH ad GPG keys > New SSH Key
+
+Title should refer to the computer on which the key was generated.
+
+Paste key into text box.
+
+
+## Setup Git's default text editor
+So that you don't get stuck in vi:
+```
+git config --global core.editor "nano -w"
+```
+
+**How to set up your favorite editor with Git:**
+>https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
+
+
+
+# Getting code off of GitHub
+
+
+
+# Putting code on GitHub
