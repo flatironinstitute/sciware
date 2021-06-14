@@ -83,8 +83,6 @@ git version 2.30.1
 <p class="align-left">If this returns an error, please raise your hand and someone can help you in a breakout room.
 </p>
 
-If this returns an error, please raise your hand and someone can help you in a berakout room.
-
 
 ## Setting your name in Git 
 
@@ -121,13 +119,13 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 ### Add the SSH key to GitHub
-Profile Photo > Settings > SSH and GPG keys > New SSH Key
-<p class="align-left">Profile Photo > Settings > SSH ad GPG keys > New SSH Key
 
-Title should refer to the computer on which the key was generated.
+- On Github: Profile Photo > Settings > SSH ad GPG keys > New SSH Key
 
-Paste key into text box.
-</p>
+- **Title** should refer to the computer on which the key was generated.
+
+- Paste key into text box.
+
 
 ## Setup Git's default text editor
 <p class="align-left">So that you don't get stuck in vi:</p>
