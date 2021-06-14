@@ -76,10 +76,10 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Make sure `git` is installed
-```
-> git version
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git version
 git version 2.30.1
-```
+</code></pre>
+
 <p class="align-left">If this returns an error, please raise your hand and someone can help you in a breakout room.
 </p>
 
@@ -87,8 +87,10 @@ git version 2.30.1
 ## Setting your name in Git 
 
 **See what name is currently set**
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name
+<pre style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name
 </code></pre>
+
+<div class="spacer"></div>
 
 **Set your name**
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
@@ -107,17 +109,19 @@ git version 2.30.1
 
 
 ## Setup SSH
-
+<div class="spacer"></div>
 ### Generate an SSH key and copy it to the clipboard
 <pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
   > cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
 
-### Add the SSH key to GitHub
+## Add the SSH key to GitHub
+
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; margin-right: 10px;" />
 
 - On Github:
-  - Profile Photo > Settings > SSH ad GPG keys > New SSH Key
+  - Profile Photo > Settings > SSH and GPG keys > New SSH Key
 
 - **Title** should refer to the computer on which the key was generated.
 
@@ -125,11 +129,13 @@ git version 2.30.1
 
 
 ## Setup Git's default text editor
-**So that you don't get stuck in vi:**
+
+- So that you don't get stuck in vi:
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
 </code></pre>
 
-**How to set up your favorite editor with Git:**
+<div class="spacer"></div>
+- How to set up your favorite editor with Git:
 >https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
 
 
