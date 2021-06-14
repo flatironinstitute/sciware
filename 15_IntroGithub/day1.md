@@ -54,13 +54,23 @@ Activities where participants all actively work to foster an environment which e
 # Intro to Git and GitHub
 
 
+## Version control
+
+<div style="display: flex;">
+<img src="assets/phd101212s.gif" style="height: 10em; float: left;">
+<ul>
+<li>keeps track of history of one or more files</li>
+<li>helps with backup and collaboration</li>
+<li>makes it easier to combine changes to the same file</li>
+</ul>
+</div>
+
 ## git
 
-*the stupid content tracker*: a distributed version-control system
+*a distributed, command-line, version-control tool*
 
-* a command-line tool
 * released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
-* **version-control**: keeps track of history of a directory (who changed what when)
+* now the dominant tool for academic and industry software development
 * **distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other
 
 
@@ -76,7 +86,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Make sure `git` is installed
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git version
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
 git version 2.30.1
 </code></pre>
 
@@ -87,32 +97,33 @@ git version 2.30.1
 ## Setting your name in Git 
 
 **See what name is currently set**
-<pre style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name
+<pre style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name
 </code></pre>
 
 <div class="spacer"></div>
 
 **Set your name**
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name "Mona Lisa"
 </code></pre>
 
 
 ## Setting your email address
 
 ### See what email address is currently set
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.email
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.email
 </code></pre>
 
 ### Set an email address
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "your_email@example.com"
 </code></pre>
+(Ideally set to the same email address you used for Github.)
 
 
 ## Setup SSH
 <div class="spacer"></div>
 
 ### Generate an SSH key and copy it to the clipboard
-<pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
+<pre style="font-size:1em;"> <code data-trim data-noescape>&gt; ssh-keygen -t ed25519
 > cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
@@ -122,9 +133,8 @@ git version 2.30.1
 - On Github:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
   
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; margin-left: 50px; height: 500px" />
-
-<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="float: right; margin-right: 50px; height: 500px" />
+<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
+<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
 
 
 ## Add the SSH key to GitHub
@@ -140,7 +150,7 @@ git version 2.30.1
 
 - So that you don't get stuck in vi:
 
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global core.editor "nano -w"
 </code></pre>
 
 <div class="spacer"></div>
@@ -173,13 +183,16 @@ git version 2.30.1
 
 
 ## Clone the repo
-- Go to the repo on the Github website
 
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
-
-- Click Green Code button
-- Choose SSH tab
-- Click the clipboard icon to copy the repo path
+<div style="display: flex;">
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px">
+<ul>
+<li>Go to the repo on the Github website</li>
+<li>Click Green Code button</li>
+<li>Choose SSH tab</li>
+<li>Click the clipboard icon to copy the repo path</li>
+</ul>
+</div>
 
 
 ## Clone the repo (continued...)
@@ -187,7 +200,7 @@ git version 2.30.1
 - In a Terminal window, clone the repo:
 
 ```
-git clone git@github.com:flatironinstitute/sciware-testing-python.git
+git clone git@github.com:flatironinstitute/sciware15-git-intro
 ```
 
 <div class="spacer"></div>
@@ -200,16 +213,16 @@ The folder name will be the repo name.
 ## What does `git clone` do?
 Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
 
-- It generates hidden folders `.git` and `.github`
+- It generates hidden folder `.git`
 
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > ls -a
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; ls -a
 </code></pre>
 
-- It also saves the path to the repo and names it *origin*
+- It also saves the URL to the repo and names it *origin*
 
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git remote -v
-origin	git@github.com:flatironinstitute/sciware-testing-python.git (fetch)
-origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git remote -v
+origin  git@github.com:flatironinstitute/sciware15-git-intro (fetch)
+origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
 
 
