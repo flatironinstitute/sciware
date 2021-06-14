@@ -53,6 +53,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Intro to Git and GitHub
 
+
 ## git
 
 *the stupid content tracker*: a distributed version-control system
