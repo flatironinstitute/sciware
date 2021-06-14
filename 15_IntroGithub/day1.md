@@ -57,7 +57,7 @@ Activities where participants all actively work to foster an environment which e
 ## Version control
 
 <div style="display: flex;">
-<img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" style="height: 12em; float: left;">
+<img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" style="height: 16em; float: left;">
 <ul>
 <li>keeps track of history of one or more files</li>
 <li>helps with backup and collaboration</li>
@@ -66,7 +66,7 @@ Activities where participants all actively work to foster an environment which e
 </div>
 
 
-<a href="https://git-scm.com/"><img src="https://git-scm.com/images/logos/downloads/Git-Logo-Black.png"></a>
+<a href="https://git-scm.com/"><img src="https://git-scm.com/images/logos/downloads/Git-Logo-Black.png" style="height: 4em; border: none; box-shadow: none;"></a>
 
 *an open-source, distributed, command-line, version-control tool*
 
