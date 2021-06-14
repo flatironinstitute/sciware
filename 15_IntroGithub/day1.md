@@ -54,13 +54,21 @@ Activities where participants all actively work to foster an environment which e
 # Intro to Git and GitHub
 
 
+## Version control
+
+<img src="assests/phd101212s.gif">
+
+* keeps track of history of one or more files
+* helps with backup and collaboration
+* makes it easier to combine changes to the same file
+
+
 ## git
 
-*"the stupid content tracker"*: a distributed version-control system
+*a distributed, command-line, version-control tool*
 
-* a command-line tool
 * released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
-* **version-control**: keeps track of history of a directory (who changed what when)
+* now the dominant tool for academic and industry software development
 * **distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other
 
 
@@ -174,6 +182,7 @@ git version 2.30.1
 
 ## Clone the repo
 
+<div>
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
 <ul>
 <li>Go to the repo on the Github website</li>
@@ -181,6 +190,7 @@ git version 2.30.1
 <li>Choose SSH tab</li>
 <li>Click the clipboard icon to copy the repo path</li>
 </ul>
+</div>
 
 
 ## Clone the repo (continued...)
