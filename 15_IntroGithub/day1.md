@@ -110,18 +110,24 @@ git version 2.30.1
 
 ## Setup SSH
 <div class="spacer"></div>
+
 ### Generate an SSH key and copy it to the clipboard
 <pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
-  > cat ~/.ssh/id_ed25519.pub
+> cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
 
 ## Add the SSH key to GitHub
 
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; margin-right: 10px;" />
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; margin-right: 10px; height: 200px" />
+
+<img src="assets/SSHkeys.png.png" alt="SSH Keys screenshot" style="float: right; margin-right: 10px; height: 200px" />
 
 - On Github:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
+
+
+## Add the SSH key to GitHub
 
 - **Title** should refer to the computer on which the key was generated.
 
@@ -131,11 +137,14 @@ git version 2.30.1
 ## Setup Git's default text editor
 
 - So that you don't get stuck in vi:
+
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
 </code></pre>
 
 <div class="spacer"></div>
+
 - How to set up your favorite editor with Git:
+
 >https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
 
 
@@ -157,11 +166,14 @@ git version 2.30.1
 - Your computer harddrive 
   - *local*
 
-*"Download the code to your computer"* in GitHub-ese is 
-*"Clone the Repo to your local"*
+*Download the code to your computer* in GitHub-ese is   
+**Clone the Repo to your local**
 
 
 ## Clone the repo
+
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 10px; height: 200px" />
+
 - Go to the repo on the Github website
 - Click Green Code button
 - Choose SSH tab
@@ -178,11 +190,13 @@ A folder will be created containing all of the files in the repo.
 Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
 
 - It generates hidden folders `.git` and `.github`
+
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > ls -a
 </code></pre>
 
 - It also saves the path to the repo and names it *origin*
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git remote -v
+
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git remote -v
 origin	git@github.com:flatironinstitute/sciware-testing-python.git (fetch)
 origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
 </code></pre>
