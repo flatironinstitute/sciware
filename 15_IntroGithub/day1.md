@@ -86,41 +86,37 @@ git version 2.30.1
 
 ## Setting your name in Git 
 
-### See what name is currently set
-<pre  style="font-size:1.5em;"> <code data-trim data-noescape> > git config --global user.name
+**See what name is currently set**
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name
 </code></pre>
 
-### Set your name
-<pre  style="font-size:1.5em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
+**Set your name**
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
 </code></pre>
 
 
 ## Setting your email address
 
 ### See what email address is currently set
-```
-> git config --global user.email
-```
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.email
+</code></pre>
 
 ### Set an email address
-```
-> git config --global user.email "your_email@example.com"
-```
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
+</code></pre>
 
 
 ## Setup SSH
 
 ### Generate an SSH key and copy it to the clipboard
-```
-ssh-keygen -t ed25519
-```
-```
-cat ~/.ssh/id_ed25519.pub
-```
+<pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
+  > cat ~/.ssh/id_ed25519.pub
+</code></pre>
 
 ### Add the SSH key to GitHub
 
-- On Github: Profile Photo > Settings > SSH ad GPG keys > New SSH Key
+- On Github:
+  - Profile Photo > Settings > SSH ad GPG keys > New SSH Key
 
 - **Title** should refer to the computer on which the key was generated.
 
@@ -128,20 +124,24 @@ cat ~/.ssh/id_ed25519.pub
 
 
 ## Setup Git's default text editor
-<p class="align-left">So that you don't get stuck in vi:</p>
-```
-git config --global core.editor "nano -w"
-```
+**So that you don't get stuck in vi:**
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
+
+</code></pre>
+
 
 **How to set up your favorite editor with Git:**
 >https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
+
+
+# Questions?
 
 
 
 # Getting code from GitHub onto your computer
 
 
-## GitHub Jargon
+# GitHub Jargon
 
 - Folder containing the code
   - *repository* or *repo*, for short
@@ -152,12 +152,12 @@ git config --global core.editor "nano -w"
 - Your computer harddrive 
   - *local*
 
-"Download the code to your computer" in GitHub-ese is 
-"Clone the Repo to your local"
+*"Download the code to your computer"* in GitHub-ese is 
+*"Clone the Repo to your local"*
 
 
 ## Clone the repo
-- Go to the repo on the GitHub website
+- Go to the repo on the Github website
 - Click Green Code button
 - Choose SSH tab
 - Click the clipboard icon to copy the repo path
@@ -173,16 +173,14 @@ A folder will be created containing all of the files in the repo.
 Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
 
 - It generates hidden folders `.git` and `.github`
-```
-> ls -a
-```
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > ls -a
+</code></pre>
 
 - It also saves the path to the repo and names it *origin*
-```
-> git remote -v
+<pre  style="font-size:1em;"> <code data-trim data-noescape> > git remote -v
 origin	git@github.com:flatironinstitute/sciware-testing-python.git (fetch)
 origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
-```
+</code></pre>
 
 
 # Questions? 
