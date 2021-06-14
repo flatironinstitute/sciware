@@ -84,7 +84,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Make sure `git` is installed
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git version
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
 git version 2.30.1
 </code></pre>
 
@@ -95,24 +95,24 @@ git version 2.30.1
 ## Setting your name in Git 
 
 **See what name is currently set**
-<pre style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name
+<pre style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name
 </code></pre>
 
 <div class="spacer"></div>
 
 **Set your name**
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name "Mona Lisa"
 </code></pre>
 
 
 ## Setting your email address
 
 ### See what email address is currently set
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.email
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.email
 </code></pre>
 
 ### Set an email address
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "your_email@example.com"
 </code></pre>
 (Ideally set to the same email address you used for Github.)
 
@@ -121,7 +121,7 @@ git version 2.30.1
 <div class="spacer"></div>
 
 ### Generate an SSH key and copy it to the clipboard
-<pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
+<pre style="font-size:1em;"> <code data-trim data-noescape>&gt; ssh-keygen -t ed25519
 > cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
@@ -148,7 +148,7 @@ git version 2.30.1
 
 - So that you don't get stuck in vi:
 
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global core.editor "nano -w"
 </code></pre>
 
 <div class="spacer"></div>
@@ -198,7 +198,7 @@ git version 2.30.1
 - In a Terminal window, clone the repo:
 
 ```
-git clone git@github.com:flatironinstitute/sciware_intro_git_2021_06_17
+git clone git@github.com:flatironinstitute/sciware15-git-intro
 ```
 
 <div class="spacer"></div>
@@ -219,8 +219,8 @@ Using the `git clone` command connects the folder to the repo on GitHub in case 
 - It also saves the URL to the repo and names it *origin*
 
 <pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git remote -v
-origin	git@github.com:flatironinstitute/sciware_intro_git_2021_06_17 (fetch)
-origin  git@github.com:flatironinstitute/sciware_intro_git_2021_06_17 (push)
+origin  git@github.com:flatironinstitute/sciware15-git-intro (fetch)
+origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
 
 
