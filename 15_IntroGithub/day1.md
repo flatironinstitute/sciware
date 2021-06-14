@@ -57,7 +57,7 @@ Activities where participants all actively work to foster an environment which e
 ## Version control
 
 <div style="display: flex;">
-<img src="assets/phd101212s.gif" style="height: 10em; float: left;">
+<img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" style="height: 12em; float: left;">
 <ul>
 <li>keeps track of history of one or more files</li>
 <li>helps with backup and collaboration</li>
@@ -65,9 +65,10 @@ Activities where participants all actively work to foster an environment which e
 </ul>
 </div>
 
-## git
 
-*a distributed, command-line, version-control tool*
+<a href="https://git-scm.com/"><img src="https://git-scm.com/images/logos/downloads/Git-Logo-Black.png"></a>
+
+*an open-source, distributed, command-line, version-control tool*
 
 * released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
 * now the dominant tool for academic and industry software development
