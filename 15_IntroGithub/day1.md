@@ -106,6 +106,7 @@ git version 2.30.1
 ### Set an email address
 <pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
 </code></pre>
+(Ideally set to the same email address you used for Github.)
 
 
 ## Setup SSH
@@ -174,10 +175,12 @@ git version 2.30.1
 ## Clone the repo
 
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
-- Go to the repo on the Github website
-- Click Green Code button
-- Choose SSH tab
-- Click the clipboard icon to copy the repo path
+<ul>
+<li>Go to the repo on the Github website</li>
+<li>Click Green Code button</li>
+<li>Choose SSH tab</li>
+<li>Click the clipboard icon to copy the repo path</li>
+</ul>
 
 
 ## Clone the repo (continued...)
@@ -185,7 +188,7 @@ git version 2.30.1
 - In a Terminal window, clone the repo:
 
 ```
-git clone git@github.com:flatironinstitute/sciware-testing-python.git
+git clone git@github.com:flatironinstitute/sciware_intro_git_2021_06_17
 ```
 
 <div class="spacer"></div>
@@ -198,16 +201,16 @@ The folder name will be the repo name.
 ## What does `git clone` do?
 Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
 
-- It generates hidden folders `.git` and `.github`
+- It generates hidden folder `.git`
 
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > ls -a
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; ls -a
 </code></pre>
 
-- It also saves the path to the repo and names it *origin*
+- It also saves the URL to the repo and names it *origin*
 
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git remote -v
-origin	git@github.com:flatironinstitute/sciware-testing-python.git (fetch)
-origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git remote -v
+origin	git@github.com:flatironinstitute/sciware_intro_git_2021_06_17 (fetch)
+origin  git@github.com:flatironinstitute/sciware_intro_git_2021_06_17 (push)
 </code></pre>
 
 
