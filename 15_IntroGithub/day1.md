@@ -119,12 +119,12 @@ git version 2.30.1
 
 ## Add the SSH key to GitHub
 
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; margin-right: 10px; height: 200px" />
-
-<img src="assets/SSHkeys.png.png" alt="SSH Keys screenshot" style="float: right; margin-right: 10px; height: 200px" />
-
 - On Github:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
+  
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; margin-right: 10px; height: 400px" />
+
+<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="float: right; margin-right: 10px; height: 400px" />
 
 
 ## Add the SSH key to GitHub
@@ -136,6 +136,8 @@ git version 2.30.1
 
 ## Setup Git's default text editor
 
+<div class="spacer"></div>
+
 - So that you don't get stuck in vi:
 
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
@@ -145,7 +147,7 @@ git version 2.30.1
 
 - How to set up your favorite editor with Git:
 
->https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
+> https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
 
 
 # Questions?
@@ -172,16 +174,23 @@ git version 2.30.1
 
 ## Clone the repo
 
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 10px; height: 200px" />
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
 
 - Go to the repo on the Github website
 - Click Green Code button
 - Choose SSH tab
 - Click the clipboard icon to copy the repo path
+
+
+## Clone the repo (continued...)
+
 - In a Terminal window, clone the repo:
 ```
 git clone git@github.com:flatironinstitute/sciware-testing-python.git
 ```
+
+<div class="spacer"></div>
+
 A folder will be created containing all of the files in the repo. 
   The folder name will be the repo name.
 
