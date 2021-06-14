@@ -37,6 +37,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- Tomorrow: Github Part 2: collaboration
 - July 8: Intro to IDEs and Debugging
 - Suggest topics and vote on options in #sciware Slack
 
@@ -44,7 +45,7 @@ Activities where participants all actively work to foster an environment which e
 ## Today's Agenda
 
 - What is Git and GitHub? 
-- Setting up GitHub on your computer
+- Setting up git and GitHub on your computer
 - Getting code off of GitHub
 - Putting code onto GitHub
 
@@ -52,7 +53,22 @@ Activities where participants all actively work to foster an environment which e
 
 # Intro to Git and GitHub
 
-Dylan's slides here.
+
+## git
+
+*the stupid content tracker*: a distributed version-control system
+
+* a command-line tool
+* released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
+* **version-control**: keeps track of history of a directory (who changed what when)
+* **distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other
+
+
+## GitHub
+
+* A central website for storing and sharing git repositories
+* Started in 2008 as a freemium service, now owned by Microsoft
+* Provides repository management, permissions, collaboration tools, CI, etc.
 
 
 
@@ -60,20 +76,21 @@ Dylan's slides here.
 
 
 ## Make sure `git` is installed
-```angular2html
-> git version`
-git version 2.30.1 (Apple Git-130)
 ```
-<p class="align-left">If this returns an error, please raise your hand and someone can help you in a berakout room.
+> git version
+git version 2.30.1
+```
+<p class="align-left">If this returns an error, please raise your hand and someone can help you in a breakout room.
 </p>
 
+If this returns an error, please raise your hand and someone can help you in a berakout room.
 
 ## Setting your name in Git 
 
 ### See what name is currently set
 <pre  style="font-size:1em;">
 ```
-> git config --global user.name`
+> git config --global user.name
 ```
 </pre>
 
@@ -87,7 +104,7 @@ git version 2.30.1 (Apple Git-130)
 
 ### See what email address is currently set
 ```
-> git config --global user.email`
+> git config --global user.email
 ```
 
 ### Set an email address
@@ -100,13 +117,14 @@ git version 2.30.1 (Apple Git-130)
 
 ### Generate an SSH key and copy it to the clipboard
 ```
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519
 ```
 ```
-pbcopy < ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 ### Add the SSH key to GitHub
+Profile Photo > Settings > SSH and GPG keys > New SSH Key
 <p class="align-left">Profile Photo > Settings > SSH ad GPG keys > New SSH Key
 
 Title should refer to the computer on which the key was generated.
