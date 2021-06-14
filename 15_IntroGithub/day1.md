@@ -102,7 +102,7 @@ git version 2.30.1
 </code></pre>
 
 ### Set an email address
-<pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape> > git config --global user.email "your_email@example.com"
 </code></pre>
 
 
@@ -112,6 +112,7 @@ git version 2.30.1
 <pre style="font-size:1em;"> <code data-trim data-noescape> > ssh-keygen -t ed25519
   > cat ~/.ssh/id_ed25519.pub
 </code></pre>
+
 
 ### Add the SSH key to GitHub
 
@@ -126,9 +127,7 @@ git version 2.30.1
 ## Setup Git's default text editor
 **So that you don't get stuck in vi:**
 <pre  style="font-size:1em;"> <code data-trim data-noescape> > git config --global core.editor "nano -w"
-
 </code></pre>
-
 
 **How to set up your favorite editor with Git:**
 >https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
