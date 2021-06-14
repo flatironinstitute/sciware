@@ -56,7 +56,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## git
 
-*the stupid content tracker*: a distributed version-control system
+*"the stupid content tracker"*: a distributed version-control system
 
 * a command-line tool
 * released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
@@ -122,9 +122,8 @@ git version 2.30.1
 - On Github:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
   
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; margin-left: 50px; height: 500px" />
-
-<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="float: right; margin-right: 50px; height: 500px" />
+<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px" />
+<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px" />
 
 
 ## Add the SSH key to GitHub
