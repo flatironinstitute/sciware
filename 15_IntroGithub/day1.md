@@ -56,12 +56,14 @@ Activities where participants all actively work to foster an environment which e
 
 ## Version control
 
-<img src="assests/phd101212s.gif">
-
-* keeps track of history of one or more files
-* helps with backup and collaboration
-* makes it easier to combine changes to the same file
-
+<div style="display: flex;">
+<img src="assets/phd101212s.gif" style="height: 10em; float: left;">
+<ul>
+<li>keeps track of history of one or more files</li>
+<li>helps with backup and collaboration</li>
+<li>makes it easier to combine changes to the same file</li>
+</ul>
+</div>
 
 ## git
 
@@ -131,8 +133,8 @@ git version 2.30.1
 - On Github:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
   
-<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px" />
-<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px" />
+<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
+<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
 
 
 ## Add the SSH key to GitHub
@@ -182,8 +184,8 @@ git version 2.30.1
 
 ## Clone the repo
 
-<div>
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
+<div style="display: flex;">
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px">
 <ul>
 <li>Go to the repo on the Github website</li>
 <li>Click Green Code button</li>
