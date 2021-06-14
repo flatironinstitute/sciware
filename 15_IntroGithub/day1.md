@@ -64,15 +64,18 @@ Dylan's slides here.
 > git version`
 git version 2.30.1 (Apple Git-130)
 ```
+<p class="align-left">If this returns an error, please raise your hand and someone can help you in a berakout room.
+</p>
 
-If this returns an error, please raise your hand and someone can help you in a berakout room.
 
 ## Setting your name in Git 
 
 ### See what name is currently set
+<pre  style="font-size:1em;">
 ```
 > git config --global user.name`
 ```
+</pre>
 
 ### Set your name
 ```
@@ -104,15 +107,15 @@ pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
 ### Add the SSH key to GitHub
-Profile Photo > Settings > SSH ad GPG keys > New SSH Key
+<p class="align-left">Profile Photo > Settings > SSH ad GPG keys > New SSH Key
 
 Title should refer to the computer on which the key was generated.
 
 Paste key into text box.
-
+</p>
 
 ## Setup Git's default text editor
-So that you don't get stuck in vi:
+<p class="align-left">So that you don't get stuck in vi:</p>
 ```
 git config --global core.editor "nano -w"
 ```
@@ -122,7 +125,54 @@ git config --global core.editor "nano -w"
 
 
 
-# Getting code off of GitHub
+# Getting code from GitHub onto your computer
+
+
+## GitHub Jargon
+
+- Folder containing the code
+  - *repository* or *repo*, for short
+
+- "Download the code"
+  - *clone* the *repo*
+
+- Your computer harddrive 
+  - *local*
+
+"Download the code to your computer" in GitHub-ese is 
+"Clone the Repo to your local"
+
+
+## Clone the repo
+- Go to the repo on the GitHub website
+- Click Green Code button
+- Choose SSH tab
+- Click the clipboard icon to copy the repo path
+- In a Terminal window, clone the repo:
+```
+git clone git@github.com:flatironinstitute/sciware-testing-python.git
+```
+A folder will be created containing all of the files in the repo. 
+  The folder name will be the repo name.
+
+
+## What does `git clone` do?
+Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
+
+- It generates hidden folders `.git` and `.github`
+```
+> ls -a
+```
+
+- It also saves the path to the repo and names it *origin*
+```
+> git remote -v
+origin	git@github.com:flatironinstitute/sciware-testing-python.git (fetch)
+origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
+```
+
+
+# Questions? 
 
 
 
