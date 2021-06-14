@@ -173,9 +173,10 @@ git version 2.30.1
 
 
 ## Clone the repo
+- Go to the repo on the Github website
 
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px" />
-- Go to the repo on the Github website
+
 - Click Green Code button
 - Choose SSH tab
 - Click the clipboard icon to copy the repo path
@@ -216,4 +217,95 @@ origin	git@github.com:flatironinstitute/sciware-testing-python.git (push)
 
 
 
+# Survey
+
+
+
 # Putting code on GitHub
+
+
+# Make a test project folder
+```
+> mkdir test_project
+> cd test_project
+> touch test_file.txt
+```
+
+# Create repo on Github
+
+- Go to your homepage on Github
+- Click the Repositories tab
+- Click the green New button
+- Name the repository `test_project`
+
+
+# Initialize the directory to use with Github
+```
+> git init
+```
+
+# Name the primary branch main
+
+It's possible to have multiple *branches* of the code where different things are being worked on. 
+The primary branch is usual called *main*. 
+
+```
+> git branch -M main
+> git status
+```
+
+Notice:
+- branch name
+- `test_file.txt` is in red and is *untracked*
+
+# Add the files that you want to put on Github
+
+```
+> git add test_file.txt
+> git status
+```
+
+Notice:
+- `test_file.txt` is now green
+- `test_file.txt` needs to be committed 
+
+# Commit the changes to git
+
+```
+git commit
+```
+will launch a text editor where you can type "first commit"
+
+You can commit directly from the command line:
+```
+git commit -m "add test_file.txt"
+```
+
+# Connect the folder to Github
+
+```
+> git remote -v 
+> git remote add origin git@github.com:kelle/test_project.git
+> git remote -v 
+```
+
+# Push the folder contents to Github
+```
+> git push -u origin main
+```
+
+# Check Github
+
+`test_file.txt` should now be in the repo on the Github website.
+
+
+
+# Troubleshooting
+
+- Find Github buddies 
+  - The best way to figure things out is by asking folks for help
+- Avoid problems by keeping track of the state of your local. Use these commands before and after every command until you gain confidence
+  - `git status`
+  - `git log`
+- There are many resources for common git and Github problems on the internet.
+  - Consider discussing with a buddy before copy/pasting.
