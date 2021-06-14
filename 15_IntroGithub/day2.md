@@ -50,6 +50,15 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+## What's a Fork?
+(Figure incoming)
+
+
+## Why are Forks Necessary?
+- When we want to make changes _separately_ from a main project
+- Sometimes we want to make and track changes to repositories we don't have permissions to push to
+
+
 ## Forking Workflow
 
 ![](https://uploads.toptal.io/blog/image/678/toptal-blog-image-1416834518259.png)
@@ -63,17 +72,10 @@ Activities where participants all actively work to foster an environment which e
 ## Forking Workflow
 
 1. Fork and clone the project
-2. Make a new branch for your feature
-3. Add the code and push to your fork
-4. Open a pull request
+2. Add the code and push to your fork
+3. Open a pull request
+4. Pull everyone else's changes
 5. Bonus: Reviewing a pull request
-
-
-## EXTRA SLIDE
-
-Another way to visualize this workflow:
-
-<img height="auto" width=60% src="https://happygitwithr.com/img/fork-and-clone.png">
 
 
 ## EXTRA SLIDE
@@ -89,39 +91,24 @@ Another way to visualize this workflow:
     First we need to fork the repo
     <img src="./assets/where_is_the_fork_button.png">
 </div>
+<style>
+    pre {
+    overflow-x: hidden;
+    }
+</style>
 
 <div class="fragment">
     Next, we clone <em>our</em> fork of the repo:
-    <pre>
-        <code data-trim data-noescape>
-        git clone https://github.com/your_user_name/sciware_intro_git_2021_06_17.git
+    <pre  style="font-size:0.75em;">
+        <code data-trim data-noescape class="language-zsh">
+        ➜ git clone https://github.com/your_user_name/sciware_intro_git_2021_06_17.git
         </code>
     </pre>
 </div>
 
 
 
-
-## Step 2: Make a Branch
-
-From the command line:
-    <pre>
-        <code data-trim data-noescape>
-        git checkout -b my_new_feature
-        </code>
-    </pre>
-
-Output
-<pre>
-    <code data-trim data-noescape>
-    ➜ git checkout -b js_info
-    Switched to a new branch 'js_info'
-    </code>
-</pre>
-
-
-
-## Step 3a: Add Your Code 
+## Step 2a: Add Your Code 
 
 Add a file in `student_info` called `firstName_lastName.csv` with the following info:
 
@@ -130,39 +117,38 @@ Add a file in `student_info` called `firstName_lastName.csv` with the following 
 - Your research focus
 
 
-## Step 3a: Add Your Code
+## Step 2a: Add Your Codes
 
 Mine looks like this:
 
-<pre>
-    <code>
-Name,Center,Research Focus
-James Smith, CCQ, Quantum Chemistry
+<pre  style="font-size:0.75em;">
+    <code data-trim data-noescape class="language-plaintext">
+Name,Center,Research Focus, Fun Fact
+James Smith, CCQ, Quantum Chemistry, My initials are JETS
     </code>
 </pre>
 
 
-
-## Step 3b: Push to Your Fork
+## Step 2b: Push to Your Fork
 
 - Run `git add` on your file
 - Commit it
-- Push to your feature branch
+- Push to your fork
 
 Mine looks like this:
 
-<pre>
-    <code>
+<pre  style="font-size:0.75em;">
+    <code data-trim data-noescape class="language-zsh">
 ➜ git add student_info/james_smith.csv
 ➜ git commit -m "Adding info for James Smith"
 ...
-➜ git push origin js_info
+➜ git push origin main
     </code>
 </pre>
 
 
 
-## Step 4: Open a Pull Request
+## Step 3: Open a Pull Request
 
 - Using your browser, navigate to your forked repository
 - It should look something like this:
@@ -172,20 +158,41 @@ Mine looks like this:
 - Click on the `Compare & pull request` button
 
 
-## Step 4: Open a Pull Request
+## Step 3: Open a Pull Request
 
 <img src="./assets/pull_request_form.png">
 
 
-## Step 4: Open a Pull Request
+## Step 3: Open a Pull Request
 
 Things to think about when making pull requests (PR):
 
 <ul>
 <li>Many projects have PR templates with information you need to fill out, <b><em>use them</em></b>!</li>
-<li class="fragment">Always include why you're making the PR, what steps you took, and how it addresses a current problem.</li>
-<li class="fragment">If you're fixing any previously published issues, add links to them.</li>
+<li class="fragment">Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
+<li class="fragment">Bug reports should <b><em>always</em></b> include a minimum working example.</li>
+<li class="fragment">PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
 </ul>
+
+
+
+## Step 4: Pull Other's Changes
+
+<pre  style="font-size:0.75em;">
+    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
+    ➜ git remote -v
+    origin  https://github.com/jamesETsmith/sciware_intro_git_2021_06_17.git (fetch)
+    origin  https://github.com/jamesETsmith/sciware_intro_git_2021_06_17.git (push)
+    ➜ git remote add upstream https://github.com/flatironinstitute/sciware_intro_git_2021_06_17.git
+    ➜ git remote -v
+    origin  https://github.com/jamesETsmith/sciware_intro_git_2021_06_17.git (fetch)
+    origin  https://github.com/jamesETsmith/sciware_intro_git_2021_06_17.git (push)
+    upstream  https://github.com/flatironinstitute/sciware_intro_git_2021_06_17.git (fetch)
+    upstream  https://github.com/flatironinstitute/sciware_intro_git_2021_06_17.git (push)
+    ➜ git pull upstream main
+    </code>
+</pre>
+
 
 
 

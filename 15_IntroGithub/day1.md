@@ -85,19 +85,16 @@ git version 2.30.1
 
 If this returns an error, please raise your hand and someone can help you in a berakout room.
 
+
 ## Setting your name in Git 
 
 ### See what name is currently set
-<pre  style="font-size:1em;">
-```
-> git config --global user.name
-```
-</pre>
+<pre  style="font-size:1.5em;"> <code data-trim data-noescape> > git config --global user.name
+</code></pre>
 
 ### Set your name
-```
-> git config --global user.name "Mona Lisa"
-```
+<pre  style="font-size:1.5em;"> <code data-trim data-noescape> > git config --global user.name "Mona Lisa"
+</code></pre>
 
 
 ## Setting your email address
