@@ -173,10 +173,10 @@ git version 2.30.1
 # GitHub Jargon
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:450px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
 <ul>
 <li> Folder containing the code</li>
-  - <i>repository</i>. or <i>repo</i>, for short
+  - <i>repository</i> or <i>repo</i>, for short
 
 <li> "Download the code"</li>
   - <i>clone</i> the repo
@@ -193,7 +193,7 @@ git version 2.30.1
 ## Clone the repo
 
 <div style="display: flex;">
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 400px">
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 450px">
 <ul>
 <li>Go to the repo on the Github website</li>
 <li>Click Green Code button</li>
@@ -235,7 +235,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Questions? 
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:600px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:550px">
 
 
 
@@ -245,24 +245,29 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
 
 
 # Make a project folder
 
-<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir test_project
-> cd test_project
-> touch test_file.txt
+<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
+> cd silly_project
+> touch silly_file.txt
 </code></pre>
+
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Push to remote graphic" style="height:500px">
 
 
 # Create a repo on Github
 
-- Go to your homepage on Github
-- Click the Repositories tab
-- Click the green New button
-- Name the repository `test_project`
-
+<div style="display: flex;">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:500px">
+<ul>
+<li>Go to your homepage on Github</li>
+<li>Click the Repositories tab</li>
+<li>Click the green New button</li>
+<li>Name the repository `silly_project`</li>
+</ul>
 
 ## Initialize the directory to use with Github
 
@@ -283,20 +288,20 @@ The primary branch is usual called *main*.
 
 Notice:
 - branch name
-- `test_file.txt` is in red and is *untracked*
+- `silly_file.txt` is in red and is *untracked*
 
 
 ## `Add` the files that you want to put on Github
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git add test_file.txt
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git add silly_file.txt
 </code></pre>
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 </code></pre>
 
 Notice:
-- `test_file.txt` is now green
-- `test_file.txt` needs to be committed 
+- `silly_file.txt` is now green
+- `silly_file.txt` needs to be committed 
 
 
 ## `Commit` the changes
@@ -308,14 +313,14 @@ Launch a text editor where you can type "first commit"
 <div class="spacer"></div>
 
 Alternatively, you can commit directly from the command line:
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape> > git commit -m "add test_file.txt"
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape> > git commit -m "add silly file"
 </code></pre>
 
 
 ## Add a `remote`: Connect the folder to Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
-> git remote add origin git@github.com:kelle/test_project.git
+> git remote add origin git@github.com:kelle/silly_project.git
 > git remote -v 
 </code></pre>
 
@@ -327,7 +332,7 @@ Alternatively, you can commit directly from the command line:
 
 # Check Github
 
-`test_file.txt` should now be in the repo on the Github website.
+`silly_file.txt` should now be in the repo on the Github website.
 
 <img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:400px">
 
