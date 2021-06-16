@@ -224,6 +224,11 @@ If the original repo from `flatironinstitute` isn't your upstream, set it now an
 </pre>
 
 
+# Survey
+
+## http://bit.ly/sciware-github2-2021
+
+
 
 ## Reviewing a Pull Request
 
@@ -268,3 +273,9 @@ Check out and bookmark these tutorials for more information about git and the fo
 
 - [Bitbucket: Making a Pull Request](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 - [CodeRefinery: Distributed version control and forking workflow](https://coderefinery.github.io/git-collaborative/03-distributed/)
+
+
+
+# Survey
+
+## http://bit.ly/sciware-github2-2021
