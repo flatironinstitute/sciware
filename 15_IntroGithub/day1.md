@@ -276,7 +276,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
 ## Name the primary *branch* `main`
@@ -334,11 +334,11 @@ Use `git remote add` to provide the URL to the Github repo.
 
 The repo that is in your personal profile is usually called `origin`
 
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote -v 
 </code></pre>
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote add origin git@github.com:kelle/silly_project.git
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote add origin git@github.com:kelle/silly_project.git
 </code></pre>
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote -v
 </code></pre>
 
 
@@ -349,7 +349,7 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push -u origin main
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Push20to%20Remote.svg" alt="Push to remote graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:200px">
 
 
 # Check Github
