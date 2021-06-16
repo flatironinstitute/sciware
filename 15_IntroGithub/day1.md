@@ -278,11 +278,12 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:200px">
 
+
 ## Name the primary *branch* `main`
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
 
-The primary branch is usual called *main*. 
+The primary branch is usually called *main*. 
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
 </code></pre>
