@@ -245,30 +245,31 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote%20.svg" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:500px">
 
 
 # Make a project folder
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
-> cd silly_project
+> cd silly_repo
 > touch silly_file.txt
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
 # Create a repo on Github
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:250px">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:300px">
 <ul>
 <li>Go to your homepage on Github</li>
 <li>Click the Repositories tab</li>
 <li>Click the green New button</li>
-<li>Name the repository `silly_project`</li>
+<li>Name the repository `silly_repo`</li>
 </ul>
 </div>
+
 
 ## Initialize the directory to use with Github
 
