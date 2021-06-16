@@ -167,6 +167,7 @@ git version 2.30.1
 
 # Getting code from GitHub onto your computer
 
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:400px">
 
 # GitHub Jargon
 
@@ -200,9 +201,8 @@ git version 2.30.1
 
 - In a Terminal window, clone the repo:
 
-```
-git clone git@github.com:flatironinstitute/sciware15-git-intro
-```
+<pre  style="font-size:0.9em; margin-top:-20px"> <code data-trim data-noescape>> git clone git@github.com:flatironinstitute/sciware15-git-intro
+</code></pre>
 
 <div class="spacer"></div>
 
@@ -216,12 +216,12 @@ Using the `git clone` command connects the folder to the repo on GitHub in case 
 
 - It generates hidden folder `.git`
 
-<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; ls -a
+<pre  style="font-size:1em; margin-top:-20px"> <code data-trim data-noescape>&gt; ls -a
 </code></pre>
 
 - It also saves the URL to the repo and names it *origin*
 
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git remote -v
+<pre  style="font-size:0.9em; margin-top:-20px"> <code data-trim data-noescape>&gt; git remote -v
 origin  git@github.com:flatironinstitute/sciware15-git-intro (fetch)
 origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
