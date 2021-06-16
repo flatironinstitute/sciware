@@ -245,7 +245,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote%20.svg" alt="Push to remote graphic" style="height:500px">
 
 
 # Make a project folder
@@ -255,19 +255,20 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 > touch silly_file.txt
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:200px">
 
 
 # Create a repo on Github
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:500px">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:250px">
 <ul>
 <li>Go to your homepage on Github</li>
 <li>Click the Repositories tab</li>
 <li>Click the green New button</li>
 <li>Name the repository `silly_project`</li>
 </ul>
+</div>
 
 ## Initialize the directory to use with Github
 
@@ -275,7 +276,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
 
 
-## Name the primary branch `main`
+## Name the primary *branch* `main`
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
 The primary branch is usual called *main*. 
@@ -291,7 +292,7 @@ Notice:
 - `silly_file.txt` is in red and is *untracked*
 
 
-## `Add` the files that you want to put on Github
+## *Add* the files that you want to put on Github
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git add silly_file.txt
 </code></pre>
@@ -304,7 +305,7 @@ Notice:
 - `silly_file.txt` needs to be committed 
 
 
-## `Commit` the changes
+## *Commit* the changes
 
 Launch a text editor where you can type "first commit"
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
@@ -317,7 +318,7 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## Add a `remote`: Connect the folder to Github
+## Add a *remote*: Connect the folder to Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 > git remote add origin git@github.com:kelle/silly_project.git
@@ -325,7 +326,7 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## `Push` the folder contents to Github
+## *Push* the folder contents to Github
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
 </code></pre>
 
