@@ -243,9 +243,9 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 
 
-# Putting code on GitHub
+## Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:550px; margin-right:10px">
 
 
 # Make a project folder
@@ -280,6 +280,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 ## Name the primary *branch* `main`
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
+
 The primary branch is usual called *main*. 
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
@@ -293,7 +294,9 @@ Notice:
 - `silly_file.txt` is in red and is *untracked*
 
 
-## *Add* the files that you want to put on Github
+## Specify which files that you want to transfer
+
+Use the `git add` command to specify exactly which files you want to transfer to Github.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git add silly_file.txt
 </code></pre>
@@ -306,9 +309,13 @@ Notice:
 - `silly_file.txt` needs to be committed 
 
 
-## *Commit* the changes
+## Save the changes
 
-Launch a text editor where you can type "first commit"
+Use the `git commit` to save the local changes.
+
+Add a *commit message* to document the changes.
+
+Launch a text editor where you can type the commit message:
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
 </code></pre>
 
@@ -319,7 +326,11 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## Add a *remote*: Connect the folder to Github
+## Connect the folder to Github
+
+Use `git remote add` to provide the URL to the Github repo.
+
+The repo that is in your personal profile is usually called `origin`
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 > git remote add origin git@github.com:kelle/silly_project.git
@@ -327,9 +338,14 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## *Push* the folder contents to Github
+## Upload the folder contents to Github
+
+Use the `git push` command to upload the committed changes to the Github repo.
+
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
 </code></pre>
+
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:400px">
 
 
 # Check Github
