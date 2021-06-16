@@ -387,13 +387,12 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:500px">
 
 
-
-# Troubleshooting
+## Troubleshooting
 
 - Avoid problems by keeping track of the state of your local.
 - Inspect `git status` before and after every command until you gain confidence
 
-<img src="assets/GitStatus.png" alt="github status screenshot" style="height:300px">
+<img src="assets/GitStatus.png" alt="github status screenshot" style="height:350px">
 
 https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-status-colors-170de858953d
 
@@ -403,7 +402,7 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 - There are many resources for common git and Github problems on the internet.
   - Consider discussing with a buddy before copy/pasting.
 
-<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:300px">
+<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:500px">
 
 
 
@@ -412,6 +411,7 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 ### Using Github to collaborate
 
 <img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
+
 
 
 # Survey
