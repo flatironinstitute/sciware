@@ -238,10 +238,11 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
 
 
-
 # Activity
 
 ## Find a repo and clone it to your computer
+
+https://github.com/explore
 
 
 
@@ -372,7 +373,6 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:500px">
 
 
-
 # Activity
 
 ## Put one of your projects into a new Github repo
@@ -384,17 +384,26 @@ Use the `git push` command to upload the committed changes to the Github repo.
 - Find Github buddies 
   - The best way to figure things out is by asking folks for help
 
+<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:500px">
+
+
 
 # Troubleshooting
 
 - Avoid problems by keeping track of the state of your local.
 - Inspect `git status` before and after every command until you gain confidence
 
+<img src="assets/GitStatus.png" alt="github status screenshot" style="height:300px">
+
+https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-status-colors-170de858953d
+
 
 # Troubleshooting
 
 - There are many resources for common git and Github problems on the internet.
   - Consider discussing with a buddy before copy/pasting.
+
+<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:300px">
 
 
 
