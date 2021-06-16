@@ -128,6 +128,8 @@ git version 2.30.1
 > cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
+It is easiest to leave the password blank.
+
 
 ## Add the SSH key to GitHub
 
@@ -195,7 +197,9 @@ git version 2.30.1
 <div style="display: flex;">
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 450px">
 <ul>
-<li>Go to the repo on the Github website</li>
+<li>Go to the repo on the Github website<ul>
+  <li>https://github.com/flatironinstitute/sciware15-git-intro</li></ul>
+</li>
 <li>Click Green Code button</li>
 <li>Choose SSH tab</li>
 <li>Click the clipboard icon to copy the repo path</li>
