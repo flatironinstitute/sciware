@@ -239,9 +239,17 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 
 
+# Activity
+
+## Find a repo and clone it to your computer
+
+
+
 # Survey
 
-##http://bit.ly/sciware-github1-2021
+## http://bit.ly/sciware-github1-2021
+
+
 
 ## Putting code on GitHub
 
@@ -362,6 +370,12 @@ Use the `git push` command to upload the committed changes to the Github repo.
 # Questions?
 
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:500px">
+
+
+
+# Activity
+
+## Put one of your projects into a new Github repo
 
 
 
