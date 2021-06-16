@@ -286,10 +286,9 @@ Notice:
 - `test_file.txt` is in red and is *untracked*
 
 
-## Add the files that you want to put on Github
+## `Add` the files that you want to put on Github
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git add test_file.txt
-> git status
 </code></pre>
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
@@ -300,12 +299,11 @@ Notice:
 - `test_file.txt` needs to be committed 
 
 
-## Commit the changes to git
+## `Commit` the changes
 
+Launch a text editor where you can type "first commit"
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
 </code></pre>
-
-will launch a text editor where you can type "first commit"
 
 <div class="spacer"></div>
 
@@ -314,7 +312,7 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## Connect the folder to Github
+## Add a `remote`: Connect the folder to Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 > git remote add origin git@github.com:kelle/test_project.git
@@ -322,7 +320,7 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## Push the folder contents to Github
+## `Push` the folder contents to Github
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
 </code></pre>
 
@@ -348,9 +346,8 @@ Alternatively, you can commit directly from the command line:
 
 # Troubleshooting
 
-- Avoid problems by keeping track of the state of your local. Use these commands before and after every command until you gain confidence
-  - `git status`
-  - `git log`
+- Avoid problems by keeping track of the state of your local.
+- Inspect `git status` before and after every command until you gain confidence
 
 
 # Troubleshooting
