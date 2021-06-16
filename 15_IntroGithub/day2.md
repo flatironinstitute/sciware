@@ -42,10 +42,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## What's a Fork?
-(Figure incoming)
-
-
 ## Why do we Need Forks?
 
 - When we want to make changes _separately_ from a main project
@@ -53,13 +49,9 @@ Activities where participants all actively work to foster an environment which e
 - Sometimes we want to make and track changes to repositories we don't have permissions to push to
 
 
-## Forking Workflow
+## What's a Fork?
 
-- (Update image)
-![](https://uploads.toptal.io/blog/image/678/toptal-blog-image-1416834518259.png)
-
-
-> Each contributor has not one, but two Git repositories: a personal fork local one and a public server-side one.
+<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.svg">
 
 
 ## Forking Workflow
@@ -68,13 +60,15 @@ Activities where participants all actively work to foster an environment which e
 2. Add the code and push to your fork
 3. Open a pull request
 4. Pull everyone else's changes
-5. Reviewing a pull request
+
+<br><br>
+
+- Then we'll demonstrate reviewing a pull request
 
 
-## EXTRA SLIDE
 
-<img height="auto" width=60% src="http://jlord.us/git-it/assets/imgs/clone.png">
-
+## Step 1: Fork and Clone
+<img width=80% src="./assets/Learn-Git-Graphics/Clone%20The%20Fork.svg">
 
 
 ## Step 1: Fork and Clone
@@ -120,7 +114,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-
 ## Step 2a: Add Your Code 
 
 Add a file in `student_info` called `firstName_lastName.csv` with the following info:
@@ -130,7 +123,7 @@ Add a file in `student_info` called `firstName_lastName.csv` with the following 
 - Your research focus
 
 
-## Step 2a: Add Your Codes
+## Step 2a: Add Your Code
 
 Mine looks like this:
 
@@ -140,6 +133,10 @@ Name,Center,Research Focus, Fun Fact
 James Smith, CCQ, Quantum Chemistry, My initials are JETS
     </code>
 </pre>
+
+
+## Step 2b: Push to Your Fork
+<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20The%20Fork.svg">
 
 
 ## Step 2b: Push to Your Fork
@@ -161,6 +158,10 @@ Mine looks like this:
     </code>
 </pre>
 
+
+
+## Step 3: Open a Pull Request
+<img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.svg">
 
 
 ## Step 3: Open a Pull Request
@@ -196,6 +197,10 @@ Things to think about when making pull requests (PR):
 <li class="fragment">PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
 </ul>
 
+
+
+## Step 4: Pull Other's Changes
+<img width=80% src="./assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg">
 
 
 ## Step 4: Pull Other's Changes
