@@ -265,7 +265,8 @@ https://github.com/explore
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
 > cd silly_repo
-> touch silly_file.txt
+> touch silly_code.py
+> touch silly_funct.py
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
@@ -279,7 +280,7 @@ https://github.com/explore
 <li>Go to your homepage on Github</li>
 <li>Click the Repositories tab</li>
 <li>Click the green New button</li>
-<li>Name the repository `silly_repo`</li>
+<li>Name the repository <tt>silly_repo</tt></li>
 </ul>
 </div>
 
@@ -287,6 +288,9 @@ https://github.com/explore
 ## Initialize the directory to use with Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
+</code></pre>
+
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git status
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:350px">
@@ -312,6 +316,9 @@ Notice:
 ## Specify which files that you want to transfer
 
 Use the `git add` command to specify exactly which files you want to transfer to Github.
+
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
+</code></pre>
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git add silly_file.txt
 </code></pre>
@@ -340,6 +347,9 @@ Alternatively, you can commit directly from the command line:
 <pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git commit -m "add silly file"
 </code></pre>
 
+<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git status
+</code></pre>
+
 
 ## Connect the folder to Github
 
@@ -359,7 +369,7 @@ The repo that is in your personal profile is usually called `origin`
 
 Use the `git push` command to upload the committed changes to the Github repo.
 
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push -u origin main
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push origin main
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
@@ -398,7 +408,9 @@ Use the `git push` command to upload the committed changes to the Github repo.
 
 <img src="assets/GitStatus.png" alt="github status screenshot" style="height:350px">
 
+<p style="font-size:11px">
 https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-status-colors-170de858953d
+</p>
 
 
 # Troubleshooting
