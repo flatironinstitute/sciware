@@ -261,7 +261,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 ## Create a repo on Github
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-right:10px">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-left:20px; margin-right:10px">
 <ul>
 <li>Go to your homepage on Github</li>
 <li>Click the Repositories tab</li>
@@ -276,7 +276,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:350px">
 
 
 ## Name the primary *branch* `main`
@@ -349,7 +349,7 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push -u origin main
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
 
 
 # Check Github
