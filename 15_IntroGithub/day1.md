@@ -243,12 +243,12 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 
 
-## Putting code on GitHub
+# Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:550px">
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
 
 
-# Make a test project folder
+# Make a project folder
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir test_project
 > cd test_project
@@ -256,7 +256,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
 
 
-# Create repo on Github
+# Create a repo on Github
 
 - Go to your homepage on Github
 - Click the Repositories tab
@@ -264,19 +264,21 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 - Name the repository `test_project`
 
 
-# Initialize the directory to use with Github
+## Initialize the directory to use with Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
 </code></pre>
 
 
-## Name the primary branch main
+## Name the primary branch `main`
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
 The primary branch is usual called *main*. 
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
-> git status
+</code></pre>
+
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 </code></pre>
 
 Notice:
@@ -288,6 +290,9 @@ Notice:
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git add test_file.txt
 > git status
+</code></pre>
+
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 </code></pre>
 
 Notice:
@@ -302,8 +307,10 @@ Notice:
 
 will launch a text editor where you can type "first commit"
 
-You can commit directly from the command line:
-<pre  style="font-size:1.1em"> <code data-trim data-noescape> > git commit -m "add test_file.txt"
+<div class="spacer"></div>
+
+Alternatively, you can commit directly from the command line:
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape> > git commit -m "add test_file.txt"
 </code></pre>
 
 
@@ -323,6 +330,13 @@ You can commit directly from the command line:
 # Check Github
 
 `test_file.txt` should now be in the repo on the Github website.
+
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:400px">
+
+
+# Questions?
+
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
 
 
 
@@ -346,9 +360,9 @@ You can commit directly from the command line:
 
 
 
-# Tomorrow
+## Tomorrow
 
-- Using Github to collaborate
+### Using Github to collaborate
 
 <img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.svg" alt="Push to the fork graphic" style="height:600px">
 
