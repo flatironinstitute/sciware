@@ -167,12 +167,13 @@ git version 2.30.1
 
 ## Getting code from GitHub onto your computer
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:600px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:550px">
 
 
 # GitHub Jargon
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
+<div style="display: flex;">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:450px">
 <ul>
 <li> Folder containing the code</li>
   - <i>repository</i>. or <i>repo</i>, for short
@@ -183,6 +184,7 @@ git version 2.30.1
 <li>Your computer harddrive </li>
   - <i>local</i>
 </ul>
+</div>
 
 *Download the code to your computer* in GitHub-ese is   
 **Clone the Repo to your local**
@@ -205,7 +207,7 @@ git version 2.30.1
 
 - In a Terminal window, clone the repo:
 
-<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> git clone git@github.com:flatironinstitute/sciware15-git-intro
+<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware15-git-intro
 </code></pre>
 
 <div class="spacer"></div>
@@ -241,9 +243,9 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 
 
-# Putting code on GitHub
+## Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:600px">
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:550px">
 
 
 # Make a test project folder
@@ -268,7 +270,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
 
 
-# Name the primary branch main
+## Name the primary branch main
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
 The primary branch is usual called *main*. 
@@ -282,9 +284,9 @@ Notice:
 - `test_file.txt` is in red and is *untracked*
 
 
-# Add the files that you want to put on Github
+## Add the files that you want to put on Github
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape> > git add test_file.txt
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git add test_file.txt
 > git status
 </code></pre>
 
@@ -293,7 +295,7 @@ Notice:
 - `test_file.txt` needs to be committed 
 
 
-# Commit the changes to git
+## Commit the changes to git
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
 </code></pre>
@@ -305,7 +307,7 @@ You can commit directly from the command line:
 </code></pre>
 
 
-# Connect the folder to Github
+## Connect the folder to Github
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 > git remote add origin git@github.com:kelle/test_project.git
@@ -313,7 +315,7 @@ You can commit directly from the command line:
 </code></pre>
 
 
-# Push the folder contents to Github
+## Push the folder contents to Github
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
 </code></pre>
 
