@@ -167,13 +167,13 @@ git version 2.30.1
 
 ## Getting code from GitHub onto your computer
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:550px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
 
 
 # GitHub Jargon
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
 <ul>
 <li> Folder containing the code</li>
   - <i>repository</i> or <i>repo</i>, for short
@@ -235,7 +235,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Questions? 
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:550px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
 
 
 
@@ -245,7 +245,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 ## Putting code on GitHub
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:550px; margin-right:10px">
+<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote.png" alt="Push to remote graphic" style="height:550px; margin-right:10px">
 
 
 # Make a project folder
@@ -349,19 +349,19 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push -u origin main
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:200px">
 
 
 # Check Github
 
 `silly_file.txt` should now be in the repo on the Github website.
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:400px">
+<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:400px">
 
 
 # Questions?
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:500px">
+<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:500px">
 
 
 
@@ -388,5 +388,5 @@ Use the `git push` command to upload the committed changes to the Github repo.
 
 ### Using Github to collaborate
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.svg" alt="Push to the fork graphic" style="height:550px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
 
