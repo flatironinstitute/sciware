@@ -167,22 +167,21 @@ git version 2.30.1
 
 ## Getting code from GitHub onto your computer
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:400px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:600px">
 
 
 # GitHub Jargon
 
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
-
 <ul>
 <li> Folder containing the code</li>
-  - *repository* or *repo*, for short
+  - <i>repository</i>. or <i>repo</i>, for short
 
 <li> "Download the code"</li>
-  - *clone* the *repo*
+  - <i>clone</i> the repo
 
 <li>Your computer harddrive </li>
-  - *local*
+  - <i>local</i>
 </ul>
 
 *Download the code to your computer* in GitHub-ese is   
@@ -206,7 +205,7 @@ git version 2.30.1
 
 - In a Terminal window, clone the repo:
 
-<pre  style="font-size:0.9em; margin-top:-25px"> <code data-trim data-noescape>> git clone git@github.com:flatironinstitute/sciware15-git-intro
+<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> git clone git@github.com:flatironinstitute/sciware15-git-intro
 </code></pre>
 
 <div class="spacer"></div>
@@ -226,7 +225,7 @@ Using the `git clone` command connects the folder to the repo on GitHub in case 
 
 - It also saves the URL to the repo and names it *origin*
 
-<pre  style="font-size:0.9em; margin-top:-20px"> <code data-trim data-noescape>&gt; git remote -v
+<pre  style="font-size:0.9em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>&gt; git remote -v
 origin  git@github.com:flatironinstitute/sciware15-git-intro (fetch)
 origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 </code></pre>
@@ -234,7 +233,8 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Questions? 
 
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:400px">
+<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.svg" alt="Clone graphic" style="height:600px">
+
 
 
 # Survey
@@ -243,13 +243,16 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 # Putting code on GitHub
 
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:600px">
+
 
 # Make a test project folder
-```
-> mkdir test_project
+
+<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir test_project
 > cd test_project
 > touch test_file.txt
-```
+</code></pre>
+
 
 # Create repo on Github
 
@@ -260,59 +263,60 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 
 
 # Initialize the directory to use with Github
-```
-> git init
-```
+
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
+</code></pre>
+
 
 # Name the primary branch main
 
 It's possible to have multiple *branches* of the code where different things are being worked on. 
 The primary branch is usual called *main*. 
 
-```
-> git branch -M main
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
 > git status
-```
+</code></pre>
 
 Notice:
 - branch name
 - `test_file.txt` is in red and is *untracked*
 
+
 # Add the files that you want to put on Github
 
-```
-> git add test_file.txt
+<pre  style="font-size:1.1em"><code data-trim data-noescape> > git add test_file.txt
 > git status
-```
+</code></pre>
 
 Notice:
 - `test_file.txt` is now green
 - `test_file.txt` needs to be committed 
 
+
 # Commit the changes to git
 
-```
-git commit
-```
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
+</code></pre>
+
 will launch a text editor where you can type "first commit"
 
 You can commit directly from the command line:
-```
-git commit -m "add test_file.txt"
-```
+<pre  style="font-size:1.1em"> <code data-trim data-noescape> > git commit -m "add test_file.txt"
+</code></pre>
+
 
 # Connect the folder to Github
 
-```
-> git remote -v 
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 > git remote add origin git@github.com:kelle/test_project.git
 > git remote -v 
-```
+</code></pre>
+
 
 # Push the folder contents to Github
-```
-> git push -u origin main
-```
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
+</code></pre>
+
 
 # Check Github
 
