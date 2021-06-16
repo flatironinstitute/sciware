@@ -92,7 +92,7 @@ git version 2.30.1
 </code></pre>
 
 <p class="align-left">If this returns an error, please raise your hand and someone can help you in a breakout room.
-</p>
+</p>  
 
 
 ## Setting your name in Git 
@@ -328,8 +328,25 @@ You can commit directly from the command line:
 
 - Find Github buddies 
   - The best way to figure things out is by asking folks for help
+
+
+# Troubleshooting
+
 - Avoid problems by keeping track of the state of your local. Use these commands before and after every command until you gain confidence
   - `git status`
   - `git log`
+
+
+# Troubleshooting
+
 - There are many resources for common git and Github problems on the internet.
   - Consider discussing with a buddy before copy/pasting.
+
+
+
+# Tomorrow
+
+- Using Github to collaborate
+
+<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.svg" alt="Push to the fork graphic" style="height:600px">
+
