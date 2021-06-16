@@ -258,10 +258,10 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
-# Create a repo on Github
+## Create a repo on Github
 
 <div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:300px">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-right:10px">
 <ul>
 <li>Go to your homepage on Github</li>
 <li>Click the Repositories tab</li>
@@ -276,6 +276,7 @@ origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
 </code></pre>
 
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:200px">
 
 ## Name the primary *branch* `main`
 
@@ -316,13 +317,13 @@ Use the `git commit` to save the local changes.
 Add a *commit message* to document the changes.
 
 Launch a text editor where you can type the commit message:
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git commit
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git commit
 </code></pre>
 
 <div class="spacer"></div>
 
 Alternatively, you can commit directly from the command line:
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape> > git commit -m "add silly file"
+<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git commit -m "add silly file"
 </code></pre>
 
 
@@ -342,10 +343,10 @@ The repo that is in your personal profile is usually called `origin`
 
 Use the `git push` command to upload the committed changes to the Github repo.
 
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git push -u origin main
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git push -u origin main
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:400px">
+<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:200px">
 
 
 # Check Github
@@ -384,5 +385,5 @@ Use the `git push` command to upload the committed changes to the Github repo.
 
 ### Using Github to collaborate
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.svg" alt="Push to the fork graphic" style="height:600px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.svg" alt="Push to the fork graphic" style="height:550px">
 
