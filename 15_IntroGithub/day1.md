@@ -335,8 +335,10 @@ Use `git remote add` to provide the URL to the Github repo.
 The repo that is in your personal profile is usually called `origin`
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
-> git remote add origin git@github.com:kelle/silly_project.git
-> git remote -v 
+</code></pre>
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote add origin git@github.com:kelle/silly_project.git
+</code></pre>
+<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git remote -v 
 </code></pre>
 
 
@@ -344,17 +346,17 @@ The repo that is in your personal profile is usually called `origin`
 
 Use the `git push` command to upload the committed changes to the Github repo.
 
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git push -u origin main
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push -u origin main
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:200px">
+<img src="assets/Learn-Git-Graphics/Push20to%20Remote.svg" alt="Push to remote graphic" style="height:200px">
 
 
 # Check Github
 
 `silly_file.txt` should now be in the repo on the Github website.
 
-<img src="assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg" alt="Push to remote graphic" style="height:400px">
+<img src="assets/Learn-Git-Graphics/Push%20to%20Remote.svg" alt="Push to remote graphic" style="height:400px">
 
 
 # Questions?
