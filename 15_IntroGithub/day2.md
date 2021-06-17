@@ -65,7 +65,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Step 1: Fork and Clone
 
-<img width=80% src="./assets/Learn-Git-Graphics/Clone%20The%20Fork.png">
+<img width=80% src="./assets/Learn-Git-Graphics/Clone%20the%20Fork.png">
 
 
 ## Step 1: Fork and Clone
@@ -134,7 +134,7 @@ James Smith, CCQ, Quantum Chemistry, My initials are JETS
 
 ## Step 2b: Push to Your Fork
 
-<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20The%20Fork.png">
+<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png">
 
 
 ## Step 2b: Push to Your Fork
