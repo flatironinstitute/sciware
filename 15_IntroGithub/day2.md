@@ -42,33 +42,29 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## Why do we Need Forks?
+## We Need Something Different
 
 - When we want to make changes _separately_ from a main project
 - We want to take an existing project in a _new_ direction
 - Sometimes we want to make and track changes to repositories we don't have permissions to push to
 
 
-## What's a Fork?
+## Forking to the Rescue
 
-<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.svg">
+<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
 
 
 ## Forking Workflow
 
 1. Fork and clone the project
 2. Add the code and push to your fork
-3. Open a pull request
-4. Pull everyone else's changes
-
-<br><br>
-
-- Then we'll demonstrate reviewing a pull request
+3. Merge code into the main project
+4. Keep your fork up to date
 
 
 
 ## Step 1: Fork and Clone
-<img width=80% src="./assets/Learn-Git-Graphics/Clone%20The%20Fork.svg">
+<img width=80% src="./assets/Learn-Git-Graphics/Clone%20The%20Fork.png">
 
 
 ## Step 1: Fork and Clone
@@ -121,6 +117,7 @@ Add a file in `student_info` called `firstName_lastName.csv` with the following 
 - Your full name
 - Your enter
 - Your research focus
+- A fun fact
 
 
 ## Step 2a: Add Your Code
@@ -136,7 +133,7 @@ James Smith, CCQ, Quantum Chemistry, My initials are JETS
 
 
 ## Step 2b: Push to Your Fork
-<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20The%20Fork.svg">
+<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20The%20Fork.png">
 
 
 ## Step 2b: Push to Your Fork
@@ -161,7 +158,7 @@ Mine looks like this:
 
 
 ## Step 3: Open a Pull Request
-<img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.svg">
+<img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.png">
 
 
 ## Step 3: Open a Pull Request
@@ -200,7 +197,7 @@ Things to think about when making pull requests (PR):
 
 
 ## Step 4: Pull Other's Changes
-<img width=80% src="./assets/Learn-Git-Graphics/Pull%20to%20Remote%20Copy.svg">
+<img width=80% src="./assets/Learn-Git-Graphics/Pull%20from%20upstream.png">
 
 
 ## Step 4: Pull Other's Changes
