@@ -64,6 +64,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Step 1: Fork and Clone
+
 <img width=80% src="./assets/Learn-Git-Graphics/Clone%20The%20Fork.png">
 
 
@@ -83,7 +84,7 @@ Activities where participants all actively work to foster an environment which e
     Next, we clone <em>our</em> fork of the repo:
     <pre  style="font-size:0.75em;">
         <code data-trim data-noescape class="language-zsh">
-        ➜ git clone https://github.com/your_user_name/sciware15-git-intro.git
+        ➜ git clone git@github.com:your_user_name/sciware15-git-intro.git
         </code>
     </pre>
 </div>
@@ -93,7 +94,7 @@ Activities where participants all actively work to foster an environment which e
 
  If you already have a copy of this repo from yesterday's workshop, that's ok, keep it!
 <pre  style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,11">
+    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,6">
     ➜ git remote -v
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
@@ -104,7 +105,6 @@ Activities where participants all actively work to foster an environment which e
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
     upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
     upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
-    ➜ git pull upstream main
     </code>
 </pre>
 
@@ -115,7 +115,7 @@ Activities where participants all actively work to foster an environment which e
 Add a file in `student_info` called `firstName_lastName.csv` with the following info:
 
 - Your full name
-- Your enter
+- Your center
 - Your research focus
 - A fun fact
 
@@ -133,6 +133,7 @@ James Smith, CCQ, Quantum Chemistry, My initials are JETS
 
 
 ## Step 2b: Push to Your Fork
+
 <img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20The%20Fork.png">
 
 
@@ -207,10 +208,9 @@ If the original repo from `flatironinstitute` isn't your upstream, set it now an
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
     ➜ git remote -v
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
-    ➜ git remote rename origin upstream
-    ➜ git remote add origin git@github.com:jamesETsmith/sciware15-git-intro.git
+    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
+    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
+    ➜ git remote add upstream git@github.com:flatironinstitute/sciware15-git-intro.git
     ➜ git remote -v
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
