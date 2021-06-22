@@ -212,6 +212,7 @@ It is easiest to leave the password blank.
 - In a Terminal window, clone the repo:
 
 <pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware15-git-intro
+> cd sciware15-git-intro
 </code></pre>
 
 <div class="spacer"></div>
