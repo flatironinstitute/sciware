@@ -50,3 +50,35 @@ Activities where participants all actively work to foster an environment which e
 
 
 # Quick reference guides
+
+
+
+# Working on Remote Clusters
+
+All of the cool features you've seen so far, can be used when editing _remote_ files, i.e. on a cluster!!
+
+
+## How It Works
+
+<img height=80% src="./assets/vscode_remote_setup.png">
+
+
+## What You Can Do
+
+- View, move, and reorganize directories
+- Edit files
+- Debug
+- Static linting
+- Formatting
+- View figures
+
+
+## Bonus: Setup
+
+1. Get OpenSSH compatible SSH client
+2. Download the [Remote SSH extension](https://code.visualstudio.com/docs/remote/ssh) for VSCode
+3. Enable key-based authentication, see the [VSCode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication) for details
+4. From the VSCode command palette search for `Remote-SSH: Connect to Host`
+5. Enter your username and host info, e.g. `jasm3285@login.colorado.edu`
+
+See the official instructions [here](https://code.visualstudio.com/docs/remote/ssh-tutorial)
