@@ -93,6 +93,79 @@ Execute python codes without a terminal!
 
 
 
+# Compile and Debug c++ code
+
+
+
+## Create a task file
+
+### It tells VSCode how to compile your code
+<img height=80% width=80% src="./assets/gifs/create_task.gif">
+
+
+## Examples
+
+### Compiling with g++
+
+
+## Compiling with make
+
+
+## Create a launch file
+
+### Defines how the debugging goes
+<img height=80% width=80% src="./assets/gifs/create_launch.gif">
+
+
+## Examples
+
+### For c++
+
+
+## For python
+
+
+## Debugging options
+
+### Breakpoints
+<img height=80% width=80% src="./assets/gifs/create_breakpoint.gif">
+
+
+## Types of breakpoints
+
+- Normal breakpoints: "Breaks" the execution of the code when it is hit.
+- Conditional breakpoints:
+    - Expression condition: The breakpoint will "break" execution whenever the expression evaluates to True
+    - Hit count: "Breaks" execution only if it has been hit a particular number of times
+- Inline breakpoints: Only are hit when the execution reaches a specific line and column.
+
+
+## Debugging Actions
+
+- Continue/Pause (F5)
+- Step Over (F10)
+- Step Into (F11)
+- Restart (Ctrl+Shift+F5)
+- Stop (Shift+F5)
+
+
+## Step Over
+<img height=80% width=80% src="./assets/gifs/step_over.gif">
+
+
+## Step Into
+<img height=80% width=80% src="./assets/gifs/step_into.gif">
+
+
+## Step Out
+<img height=80% width=80% src="./assets/gifs/step_out.gif">
+
+
+## Watch Variables
+<img height=80% width=80% src="./assets/gifs/watch_variables.gif">
+
+
+
 # Working on Remote Clusters
 
 All of the cool features you've seen so far, can be used when editing _remote_ files, i.e. on a cluster!!
