@@ -62,7 +62,9 @@ Workspaces are a quality of life feature of vscode that let you:
 - Store and restore UI state associated with that workspace (opened files, tab order, ...)
 - Enable or disable extensions only for that workspace.
 
+
 ## Creating a workspace
+
 
 ### Open the folder(s) you will use
 <img height=80% width=80% src="./assets/gifs/open_folder.gif">
