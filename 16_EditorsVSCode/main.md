@@ -52,6 +52,7 @@ Activities where participants all actively work to foster an environment which e
 # Quick reference guides
 
 
+
 # Workspaces
 
 Workspaces are a quality of life feature of vscode that let you:
@@ -67,15 +68,19 @@ Workspaces are a quality of life feature of vscode that let you:
 
 
 ### Open the folder(s) you will use
+
 <img height=80% width=80% src="./assets/gifs/open_folder.gif">
 
 
 ## Save workspace
+
 <img height=80% width=80% src="./assets/gifs/save_workspace.gif">
 
 
 ## Load workspace
+
 <img height=80% width=80% src="./assets/gifs/open_workspace.gif">
+
 
 
 # Integrated execution
@@ -85,11 +90,15 @@ Execute python codes without writting on a terminal
 
 ## Select your python interpreter
 
+
 <img height=80% width=80% src="./assets/gifs/select_interpreter.gif">
+
 
 ## Run your code!
 
+
 <img height=80% width=80% src="./assets/gifs/integrated_execution.gif">
+
 
 
 # Working on Remote Clusters
