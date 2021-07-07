@@ -95,8 +95,6 @@ Execute python codes without a terminal!
 
 # Compile and Debug c++ code
 
-
-
 ## Create a task file
 
 ### It tells VSCode how to compile your code
@@ -106,9 +104,54 @@ Execute python codes without a terminal!
 ## Examples
 
 ### Compiling with g++
+```yml
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "type": "cppbuild",
+   "label": "Build .cpp file", //Remember this label!
+   "command": "/usr/bin/g++", //Compiler
+   "args": [
+    "-g",
+    "${workspaceFolder}/simple_addition.cpp",
+    "-o",
+    "${workspaceFolder}/simple_addition.out"
+   ],
+   "options": {
+    "cwd": "${fileDirname}"
+   },
+   "problemMatcher": [
+    "$gcc"
+   ],
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   },
+   "detail": "compiler: /usr/bin/g++"
+	 }
+ ]
+}
+```
 
 
 ## Compiling with make
+```yml
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "type": "shell",
+   "label": "Build .cpp file", //Remember this name!
+   "command": "make",
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   }
+  }
+ ]
+}
+```
 
 
 ## Create a launch file
@@ -121,9 +164,51 @@ Execute python codes without a terminal!
 
 ### For c++
 
+```yml
+{
+ "version": "0.2.0",
+ "configurations": [        
+   {
+    "name": "(gdb) g++ buld and debug",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/simple_addition.out",
+    "args": [],
+    "stopAtEntry": false,
+    "cwd": "${workspaceFolder}",
+    "environment": [],
+    "externalConsole": false,
+    "MIMode": "gdb",
+    "setupCommands": [
+     {
+      "description": "Enable pretty-printing for gdb",
+      "text": "-enable-pretty-printing",
+      "ignoreFailures": true
+     }
+    ],
+    "preLaunchTask": "Build .cpp file"
+   }
+ ]
+}
+```
+
 
 ## For python
 
+```yml
+{
+ "version": "0.2.0",
+ "configurations": [
+  {
+   "name": "Python: Specific file",
+   "type": "python",
+   "request": "launch",
+   "program": "${workspaceFolder}/simple_addition.py",
+   "console": "integratedTerminal"
+  }
+ ]
+}
+```
 
 ## Debugging options
 
