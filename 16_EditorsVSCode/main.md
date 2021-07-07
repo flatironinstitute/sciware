@@ -99,15 +99,10 @@ Integrated Development Environment:
 
 
 
-# Workspaces and C++
+# Workspaces, integrated execution and debugging
 
 ## David Silva Sanchez (CCM)
 
-
-
-# Remote environments
-
-## Wen Yan (CCB)
 
 
 # Workspaces
@@ -325,6 +320,12 @@ Press F5 for starting the session
 
 ## Watch Variables
 <img height=80% width=80% src="./assets/gifs/watch_variables.gif">
+
+
+
+# Remote environments
+
+## Wen Yan (CCB)
 
 
 
