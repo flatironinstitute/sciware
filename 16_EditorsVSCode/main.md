@@ -3,7 +3,7 @@
 ## Tools to make programming easier
 ### Intro to code editors and debugging
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/master/16_EditorsVSCode
+https://github.com/flatironinstitute/learn-sciware-dev/tree/main/16_EditorsVSCode
 
 
 ## Rules of Engagement
@@ -93,8 +93,21 @@ Integrated Development Environment:
 
 
 
-# Quick reference guides
+# Basic functionality
 
+## Jeremy Magland & Jeff Soules (CCM)
+
+
+
+# Workspaces and C++
+
+## David Silva Sanchez (CCM)
+
+
+
+# Remote environments
+
+## Wen Yan (CCB)
 
 
 # Working on Remote Clusters
@@ -126,3 +139,13 @@ All of the cool features you've seen so far, can be used when editing _remote_ f
 5. Enter your username and host info, e.g. `jasm3285@login.colorado.edu`
 
 See the official instructions [here](https://code.visualstudio.com/docs/remote/ssh-tutorial)
+
+
+
+# Customization
+
+## Adam Lamson (CCB)
+
+
+
+# Questions & Help
