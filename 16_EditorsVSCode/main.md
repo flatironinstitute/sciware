@@ -3,7 +3,7 @@
 ## Tools to make programming easier
 ### Intro to code editors and debugging
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/master/16_EditorsVSCode
+https://github.com/flatironinstitute/learn-sciware-dev/tree/main/16_EditorsVSCode
 
 
 ## Rules of Engagement
@@ -41,16 +41,73 @@ Activities where participants all actively work to foster an environment which e
 - Suggest topics and vote on options in #sciware Slack
 
 
-## Today's Agenda
+## Today's agenda
+
+- Introduction
+- Examples and demos of features
+- Help with setting up your own environment
 
 
 
-# Intro to IDEs
+# What is an IDE?
+
+Integrated Development Environment:
+- an interactive environment (tool or program)
+- for developing (writing, editing) code
+- that integrates other features
+   - for running, compiling, testing, debugging, checking, documenting, sharing, ...
+- designed to make it easier to write code all in one place
+   - no need to switch to terminal to run/build, web browser to look up documentation, ...
+
+
+## Text editor
+
+- Most IDEs are, at the core, a text editor
+- Aware of code structure, project, programming language
+- Fancy "spell checker" (variables, functions, syntax)
+
+
+## Options
+
+- vim: based on vi (Vi IMproved), old UNIX editor, heavy on single-key short cuts ("modal": edit by default), many optional extensions with IDE functionality
+- emacs: old UNIX editor, CTRL-heavy, similarly many extensions
+- Notepad++: in the tradition of Windows Notepad
+- vscode: Visual Studio Code (not to be confused with Visual Studio, also an IDE)
+- atom: from github
+- sublime: proprietary editor
+- PyCharm, Spyder: python-specific editors
+
+
+## Learning curves
+
+<img src="https://webdeveloperankitakulkarni.files.wordpress.com/2013/11/curves.jpg">
+
+
+## Today
+
+- You'll see examples of a number of features
+- You don't need to follow along on your own live
+- Slides can be used as reference to come back and try later
+- Using VS Code to demo features
+- Most features exist in many other editors (sometimes with plugins, extensions)
 
 
 
-# Quick reference guides
+# Basic functionality
 
+## Jeremy Magland & Jeff Soules (CCM)
+
+
+
+# Workspaces and C++
+
+## David Silva Sanchez (CCM)
+
+
+
+# Remote environments
+
+## Wen Yan (CCB)
 
 
 # Workspaces
@@ -300,3 +357,13 @@ All of the cool features you've seen so far, can be used when editing _remote_ f
 5. Enter your username and host info, e.g. `jasm3285@login.colorado.edu`
 
 See the official instructions [here](https://code.visualstudio.com/docs/remote/ssh-tutorial)
+
+
+
+# Customization
+
+## Adam Lamson (CCB)
+
+
+
+# Questions & Help
