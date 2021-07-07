@@ -175,7 +175,7 @@ After you create the task file just press Ctrl+Shift+B!
 
 ## Starting a debugging session
 
-Press F5 and the session will start
+Press F5 for starting the session
 <img height=80% width=80% src="./assets/vscode_debugging.png">
 
 
