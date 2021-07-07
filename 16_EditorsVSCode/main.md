@@ -85,10 +85,14 @@ Execute python codes without a terminal!
 
 
 ## Select your python interpreter
+
+Press Ctrl+Shift+p and look for "python: Select interpreter"
 <img height=80% width=80% src="./assets/gifs/select_interpreter.gif">
 
 
 ## Run your code!
+
+Press Ctrl+F5 or press the green arrow
 <img height=80% width=80% src="./assets/gifs/integrated_execution.gif">
 
 
@@ -102,9 +106,15 @@ Execute python codes without a terminal!
 <img height=80% width=80% src="./assets/gifs/create_task.gif">
 
 
+## Compiling the code
+
+After you create the task file just press Ctrl+Shift+B!
+
+
 ## Examples
 
 ### Compiling with g++
+
 ```yml
 {
  "version": "2.0.0",
@@ -137,6 +147,7 @@ Execute python codes without a terminal!
 
 
 ## Compiling with make
+
 ```yml
 {
  "version": "2.0.0",
@@ -158,7 +169,14 @@ Execute python codes without a terminal!
 ## Create a launch file
 
 ### Defines how the debugging goes
+
 <img height=80% width=80% src="./assets/gifs/create_launch.gif">
+
+
+## Starting a debugging session
+
+Press F5 and the session will start
+<img height=80% width=80% src="./assets/vscode_debugging.png">
 
 
 ## Examples
