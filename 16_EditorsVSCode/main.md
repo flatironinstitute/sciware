@@ -51,7 +51,8 @@ Activities where participants all actively work to foster an environment which e
 
 # What is an IDE?
 
-Integrated Development Environment:
+### Integrated Development Environment
+
 - an interactive environment (tool or program)
 - for developing (writing, editing) code
 - that integrates other features
@@ -63,19 +64,17 @@ Integrated Development Environment:
 ## Text editor
 
 - Most IDEs are, at the core, a text editor
-- Aware of code structure, project, programming language
-- Fancy "spell checker" (variables, functions, syntax)
+- Fancy "spell checker" (variables, functions, syntax), autocomplete
+- Aware of code structure, projects, programming language, libraries
 
 
 ## Options
 
-- vim: based on vi (Vi IMproved), old UNIX editor, heavy on single-key short cuts ("modal": edit by default), many optional extensions with IDE functionality
-- emacs: old UNIX editor, CTRL-heavy, similarly many extensions
-- Notepad++: in the tradition of Windows Notepad
-- vscode: Visual Studio Code (not to be confused with Visual Studio, also an IDE)
-- atom: from github
-- sublime: proprietary editor
-- PyCharm, Spyder: python-specific editors
+### Old school (evolved text-editors)
+
+- emacs: old UNIX editor, CTRL-heavy (`C-x C-c`), many optional extensions, fully functional programming environment (1976)
+- vim: based on vi (*v*i *im*proved), old UNIX editor, heavy on single-key short cuts ("modal"), many optional extensions with IDE functionality (1991)
+- Notepad++: in the tradition of Notepad, open-source Windows editor (2003)
 
 
 ## Learning curves
@@ -83,12 +82,21 @@ Integrated Development Environment:
 <img src="https://webdeveloperankitakulkarni.files.wordpress.com/2013/11/curves.jpg">
 
 
+### Modern
+
+- Sublime Text: proprietary editor with fancy navigation, focused on MacOS (2008)
+- PyCharm, Spyder: python-specific IDEs with focus on debugging (2010)
+- Atom: open-source cross-platform editor from Github, "web" (js) based, can be a bit slow (2014)
+- Visual Studio Code ("vscode"): open-source cross-platform editor from Microsoft (2015)
+   - not to be confused with MS Visual Studio, an older Windows IDE (1997)
+
+
+
 ## Today
 
 - You'll see examples of a number of features
-- You don't need to follow along on your own live
+- No need to follow along on your own live
 - Slides can be used as reference to come back and try later
-- Using VS Code to demo features
 - Most features exist in many other editors (sometimes with plugins, extensions)
 
 
