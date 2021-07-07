@@ -38,6 +38,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
+- Chat & office hour: Jul 22 3-4pm
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -52,6 +53,7 @@ Activities where participants all actively work to foster an environment which e
 # What is an IDE?
 
 ### Integrated Development Environment
+#### (or just "editor")
 
 - an interactive environment (tool or program)
 - for developing (writing, editing) code
@@ -68,9 +70,7 @@ Activities where participants all actively work to foster an environment which e
 - Aware of code structure, projects, programming language, libraries
 
 
-## Options
-
-### Old school (evolved text-editors)
+### Old school options (evolved text-editors)
 
 - emacs: old UNIX editor, CTRL-heavy (`C-x C-c`), many optional extensions, fully functional programming environment (1976)
 - vim: based on vi (*v*i *im*proved), old UNIX editor, heavy on single-key short cuts ("modal"), many optional extensions with IDE functionality (1991)
@@ -82,14 +82,13 @@ Activities where participants all actively work to foster an environment which e
 <img src="https://webdeveloperankitakulkarni.files.wordpress.com/2013/11/curves.jpg">
 
 
-### Modern
+### Newer options
 
 - Sublime Text: proprietary editor with fancy navigation, focused on MacOS (2008)
 - PyCharm, Spyder: python-specific IDEs with focus on debugging (2010)
 - Atom: open-source cross-platform editor from Github, "web" (js) based, can be a bit slow (2014)
 - Visual Studio Code ("vscode"): open-source cross-platform editor from Microsoft (2015)
    - not to be confused with MS Visual Studio, an older Windows IDE (1997)
-
 
 
 ## Today
