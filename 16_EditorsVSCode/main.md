@@ -50,7 +50,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# How can you code faster?
+## How can you code faster?
 
 What do you spend time doing (other than thinking about logic)?
 Translating ideas into code:
@@ -117,6 +117,8 @@ Translating ideas into code:
 # Basic functionality
 
 ## Jeremy Magland & Jeff Soules (CCM)
+
+https://github.com/jsoules/vs-code-introduction 
 
 
 
@@ -346,7 +348,6 @@ Press F5 for starting the session
 # Remote environments
 
 ## Wen Yan (CCB)
-
 
 
 # Working on Remote Clusters
