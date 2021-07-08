@@ -387,7 +387,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 ### Adam Lamson (CCB)
 
-<img height="70%" src="./assets/borrow_your_laptop.png">
+<img height="60%" src="./assets/borrow_your_laptop.png">
 
 
 ## Links and resources
