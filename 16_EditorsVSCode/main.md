@@ -385,9 +385,9 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 # Customization
 
-## Adam Lamson (CCB)
+### Adam Lamson (CCB)
 
-<img height="75%" src="./assets/borrow_your_laptop.png">
+<img height="70%" src="./assets/borrow_your_laptop.png">
 
 
 ## Links and resources
