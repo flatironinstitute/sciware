@@ -106,15 +106,234 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# Workspaces and C++
+# Workspaces, integrated execution and debugging
 
 ## David Silva Sanchez (CCM)
+
+
+
+# Workspaces
+
+Workspaces are a quality of life feature of vscode that let you:
+
+- Save which folders you are using.
+- Configure settings that only apply to said folders.
+- Set tasks (compiling/running) and debugging configurations.
+- Store and restore UI state associated with that workspace (opened files, tab order, ...)
+- Enable or disable extensions only for that workspace.
+
+
+## Creating a workspace
+
+### Open the folder(s) you will use
+<img height=80% width=80% src="./assets/gifs/open_folder.gif">
+
+
+## Save workspace
+<img height=80% width=80% src="./assets/gifs/save_workspace.gif">
+
+
+## Load workspace
+<img height=80% width=80% src="./assets/gifs/open_workspace.gif">
+
+
+
+# Integrated execution
+
+Execute python codes without a terminal!
+
+
+## Select your python interpreter
+
+Press Ctrl+Shift+p and look for "python: Select interpreter"
+<img height=80% width=80% src="./assets/gifs/select_interpreter.gif">
+
+
+## Run your code!
+
+Press Ctrl+F5 or press the green arrow
+<img height=80% width=80% src="./assets/gifs/integrated_execution.gif">
+
+
+
+# Compile and Debug c++ code
+
+
+## Create a task file
+
+### It tells VSCode how to compile your code
+<img height=80% width=80% src="./assets/gifs/create_task.gif">
+
+
+## Compiling the code
+
+After you create the task file just press Ctrl+Shift+B!
+
+
+## Examples
+
+### Compiling with g++
+
+```yml
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "type": "cppbuild",
+   "label": "Build .cpp file", //Remember this label!
+   "command": "/usr/bin/g++", //Compiler
+   "args": [
+    "-g",
+    "${workspaceFolder}/simple_addition.cpp",
+    "-o",
+    "${workspaceFolder}/simple_addition.out"
+   ],
+   "options": {
+    "cwd": "${fileDirname}"
+   },
+   "problemMatcher": [
+    "$gcc"
+   ],
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   },
+   "detail": "compiler: /usr/bin/g++"
+	 }
+ ]
+}
+```
+
+
+## Compiling with make
+
+```yml
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "type": "shell",
+   "label": "Build .cpp file", //Remember this name!
+   "command": "make",
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   }
+  }
+ ]
+}
+```
+
+
+## Create a launch file
+
+### Defines how the debugging goes
+
+<img height=80% width=80% src="./assets/gifs/create_launch.gif">
+
+
+## Starting a debugging session
+
+Press F5 for starting the session
+<img height=80% width=80% src="./assets/vscode_debugging.png">
+
+
+## Examples
+
+### For c++
+
+```yml
+{
+ "version": "0.2.0",
+ "configurations": [        
+   {
+    "name": "(gdb) g++ buld and debug",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/simple_addition.out",
+    "args": [],
+    "stopAtEntry": false,
+    "cwd": "${workspaceFolder}",
+    "environment": [],
+    "externalConsole": false,
+    "MIMode": "gdb",
+    "setupCommands": [
+     {
+      "description": "Enable pretty-printing for gdb",
+      "text": "-enable-pretty-printing",
+      "ignoreFailures": true
+     }
+    ],
+    "preLaunchTask": "Build .cpp file"
+   }
+ ]
+}
+```
+
+
+## For python
+
+```yml
+{
+ "version": "0.2.0",
+ "configurations": [
+  {
+   "name": "Python: Specific file",
+   "type": "python",
+   "request": "launch",
+   "program": "${workspaceFolder}/simple_addition.py",
+   "console": "integratedTerminal"
+  }
+ ]
+}
+```
+
+
+## Debugging options
+
+### Breakpoints
+<img height=80% width=80% src="./assets/gifs/create_breakpoint.gif">
+
+
+## Types of breakpoints
+
+- Normal breakpoints: "Breaks" the execution of the code when it is hit.
+- Conditional breakpoints:
+    - Expression condition: The breakpoint will "break" execution whenever the expression evaluates to True
+    - Hit count: "Breaks" execution only if it has been hit a particular number of times
+- Inline breakpoints: Only are hit when the execution reaches a specific line and column.
+
+
+## Debugging Actions
+
+- Continue/Pause (F5)
+- Step Over (F10)
+- Step Into (F11)
+- Restart (Ctrl+Shift+F5)
+- Stop (Shift+F5)
+
+
+## Step Over
+<img height=80% width=80% src="./assets/gifs/step_over.gif">
+
+
+## Step Into
+<img height=80% width=80% src="./assets/gifs/step_into.gif">
+
+
+## Step Out
+<img height=80% width=80% src="./assets/gifs/step_out.gif">
+
+
+## Watch Variables
+<img height=80% width=80% src="./assets/gifs/watch_variables.gif">
 
 
 
 # Remote environments
 
 ## Wen Yan (CCB)
+
 
 
 # Working on Remote Clusters
