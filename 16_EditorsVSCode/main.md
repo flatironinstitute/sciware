@@ -386,7 +386,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 ## Adam Lamson (CCB)
 
-<img height=80% width=80% src="./assets/borrow_your_laptop.png">
+<img height="75%" src="./assets/borrow_your_laptop.png">
 
 
 ## Links and resources
@@ -412,12 +412,13 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 
 ## JSON keybinding and settings file
+
 ### Why
 - Often easier to edit file directly instead of using UI
 - Easily copy settings other people recommend
 - Transfer settings over to other machines
+
 ### How
-- 
 
 
 ## Some useful shortcuts to add to
