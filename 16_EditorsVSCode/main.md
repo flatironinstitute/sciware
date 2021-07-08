@@ -50,6 +50,19 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+# How can you code faster?
+
+What do you spend time doing (other than thinking about logic)?
+Translating ideas into code:
+- is this the right syntax?
+- what was that function called? what are the arguments?
+- what is in this variable?
+- does it compile? does it run?
+- trial-and-error, looking at documentation
+- repetitive editing tasks
+- saving and switching files
+
+
 # What is an IDE?
 
 ### Integrated Development Environment
@@ -58,9 +71,7 @@ Activities where participants all actively work to foster an environment which e
 - an interactive environment (tool or program)
 - for developing (writing, editing) code
 - that integrates other features
-   - for running, compiling, testing, debugging, checking, documenting, sharing, ...
 - designed to make it easier to write code all in one place
-   - no need to switch to terminal to run/build, web browser to look up documentation, ...
 
 
 ## Text editor
@@ -68,6 +79,8 @@ Activities where participants all actively work to foster an environment which e
 - Most IDEs are, at the core, a text editor
 - Fancy "spell checker" (variables, functions, syntax), autocomplete
 - Aware of code structure, projects, programming language, libraries
+- Integrated tools for running, compiling, testing, debugging, checking, documenting, sharing, ...
+- No need to switch to terminal to run/build, web browser to look up documentation, ...
 
 
 ### Old school options (evolved text-editors)
@@ -94,7 +107,8 @@ Activities where participants all actively work to foster an environment which e
 ## Today
 
 - You'll see examples of a number of features
-- No need to follow along on your own live
+- Get a sense of what's possible
+- No need to follow along on your own, live
 - Slides can be used as reference to come back and try later
 - Most features exist in many other editors (sometimes with plugins, extensions)
 
@@ -109,7 +123,6 @@ Activities where participants all actively work to foster an environment which e
 # Workspaces, integrated execution and debugging
 
 ## David Silva Sanchez (CCM)
-
 
 
 # Workspaces
