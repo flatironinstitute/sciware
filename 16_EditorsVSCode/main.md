@@ -386,6 +386,73 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 ## Adam Lamson (CCB)
 
+<img height=80% width=80% src="./assets/borrow_your_laptop.png">
+
+## Links and resources
+
+- Things to get you comfortable with editing `settings.json`: 
+  - [VS Code settings you should customize](https://dev.to/thegeoffstevens/vs-code-settings-you-should-customize-5e75)
+- Tips and tricks with some customization examples
+  - [Short tips and tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+  - [Official MS VS code tips and tricks](https://github.com/Microsoft/vscode-tips-and-tricks)
+- Collected extensions with examples
+  - [Awesome VS code](https://github.com/viatsko/awesome-vscode)
+
+## Finding, adding, and editing shortcuts
+
+- Most shortcuts begin with `cmd`, `alt`, or `ctrl` depending on system.
+- Shortcut for editing your shortcuts: 
+  - (Mac) `cmd + K cmd + S`
+  - (Windows/Linux) `ctrl + K ctrl + S`
+- If you find yourself using one task a lot. Find or make a shortcut for it!
+  - Tip: Don't be clever. Use the combination that first comes to mind.
+- Cheatsheets: [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf), [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+
+## JSON keybinding and settings file
+### Why
+- Often easier to edit file directly instead of using UI
+- Easily copy settings other people recommend
+- Transfer settings over to other machines
+### How
+- 
+
+## Some useful shortcuts to add to
+- Move through open tabs quickly
+```
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.nextEditor",
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.previousEditor",
+    },
+```
+- Quick file search
+```
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen"
+    },
+```
+- Open and edit keybindings and settings 
+```
+   {
+        "key": "cmd+;",
+        "command": "workbench.action.openGlobalKeybindings"
+    },
+    {
+        "key": "cmd+.",
+        "command": "workbench.action.openSettingsJson"
+    },
+```
+## Other things to play around with
+### Color theme
+- Access with `cmd + k cmd + t`
+- Plenty of themes in extensions
+
+### Other editor keymaps
+- Vim, Emacs, Sublime, etc.
 
 
 # Questions & Help
