@@ -468,4 +468,8 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 
 
+# Survey
+
+https://bit.ly/sciware-IDEs
+
 # Questions & Help
