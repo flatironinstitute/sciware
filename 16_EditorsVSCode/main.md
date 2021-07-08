@@ -39,6 +39,7 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Chat & office hour: Jul 22 3-4pm
+- Blender tutorial for scientific visualization animations
 - Suggest topics and vote on options in #sciware Slack
 
 
