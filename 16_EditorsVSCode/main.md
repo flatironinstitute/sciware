@@ -388,6 +388,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 <img height=80% width=80% src="./assets/borrow_your_laptop.png">
 
+
 ## Links and resources
 
 - Things to get you comfortable with editing `settings.json`: 
@@ -397,6 +398,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
   - [Official MS VS code tips and tricks](https://github.com/Microsoft/vscode-tips-and-tricks)
 - Collected extensions with examples
   - [Awesome VS code](https://github.com/viatsko/awesome-vscode)
+
 
 ## Finding, adding, and editing shortcuts
 
@@ -408,6 +410,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
   - Tip: Don't be clever. Use the combination that first comes to mind.
 - Cheatsheets: [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf), [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
 
+
 ## JSON keybinding and settings file
 ### Why
 - Often easier to edit file directly instead of using UI
@@ -415,6 +418,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 - Transfer settings over to other machines
 ### How
 - 
+
 
 ## Some useful shortcuts to add to
 - Move through open tabs quickly
@@ -428,6 +432,8 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
         "command": "workbench.action.previousEditor",
     },
 ```
+
+
 - Quick file search
 ```
     {
@@ -435,6 +441,8 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
         "command": "workbench.action.quickOpen"
     },
 ```
+
+
 - Open and edit keybindings and settings 
 ```
    {
@@ -446,6 +454,8 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
         "command": "workbench.action.openSettingsJson"
     },
 ```
+
+
 ## Other things to play around with
 ### Color theme
 - Access with `cmd + k cmd + t`
@@ -453,6 +463,7 @@ See the official instructions [here](https://code.visualstudio.com/docs/remote/s
 
 ### Other editor keymaps
 - Vim, Emacs, Sublime, etc.
+
 
 
 # Questions & Help
