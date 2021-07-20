@@ -1,10 +1,10 @@
-# Flatiron Theme Demo 
+# Flatiron Theme Demo
 
 Reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation demos the _*Flatiron Theme*_
 
 
 
-## Spacer 
+## Spacer
 
 This paragraph text is <div class="spacer"></div> separated by a spacer.
 
@@ -20,7 +20,7 @@ The spacer is 20px high, you can layer a few of them together.
 
 ## Slide Center Alignment <!-- .slide: class="center" -->
 
-To vertically align a single slide to the center of the page, add `.slide: class="center" ` to a comment next to the slide header element in the markdown of this page. 
+To vertically align a single slide to the center of the page, add `.slide: class="center" ` to a comment next to the slide header element in the markdown of this page.
 
 You can also use this method to apply a class to any element by adding `.element class="whatever-class-you-want"` in a comment directly to the right of the element in question.
 
@@ -58,6 +58,12 @@ This is regular paragraph text to which no default has been applied. The default
 <pre>
 	<code>
 <p class="align-left">This is a left 👈 aligned paragraph.</p>
-<p class="align-right">This is a right 👉 aligned paragraph.</p> 
+<p class="align-right">This is a right 👉 aligned paragraph.</p>
 	</code>
 </pre>
+
+
+
+## Documentation and Support
+
+<img height=80% width=80% src="./assets/scc-help.png">

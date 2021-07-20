@@ -42,39 +42,30 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## What's a Fork?
-(Figure incoming)
-
-
-## Why do we Need Forks?
+## We Need Something Different
 
 - When we want to make changes _separately_ from a main project
 - We want to take an existing project in a _new_ direction
 - Sometimes we want to make and track changes to repositories we don't have permissions to push to
 
 
-## Forking Workflow
+## Forking to the Rescue
 
-- (Update image)
-![](https://uploads.toptal.io/blog/image/678/toptal-blog-image-1416834518259.png)
-
-
-> Each contributor has not one, but two Git repositories: a personal fork local one and a public server-side one.
+<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
 
 
 ## Forking Workflow
 
 1. Fork and clone the project
 2. Add the code and push to your fork
-3. Open a pull request
-4. Pull everyone else's changes
-5. Reviewing a pull request
+3. Merge code into the main project
+4. Keep your fork up to date
 
 
-## EXTRA SLIDE
 
-<img height="auto" width=60% src="http://jlord.us/git-it/assets/imgs/clone.png">
+## Step 1: Fork and Clone
 
+<img width=80% src="./assets/Learn-Git-Graphics/Clone%20the%20Fork.png">
 
 
 ## Step 1: Fork and Clone
@@ -93,7 +84,7 @@ Activities where participants all actively work to foster an environment which e
     Next, we clone <em>our</em> fork of the repo:
     <pre  style="font-size:0.75em;">
         <code data-trim data-noescape class="language-zsh">
-        ➜ git clone https://github.com/your_user_name/sciware15-git-intro.git
+        ➜ git clone git@github.com:your_user_name/sciware15-git-intro.git
         </code>
     </pre>
 </div>
@@ -103,7 +94,7 @@ Activities where participants all actively work to foster an environment which e
 
  If you already have a copy of this repo from yesterday's workshop, that's ok, keep it!
 <pre  style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,11">
+    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,6">
     ➜ git remote -v
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
@@ -114,23 +105,22 @@ Activities where participants all actively work to foster an environment which e
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
     upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
     upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
-    ➜ git pull upstream main
     </code>
 </pre>
 
 
 
-
-## Step 2a: Add Your Code 
+## Step 2a: Add Your Code
 
 Add a file in `student_info` called `firstName_lastName.csv` with the following info:
 
 - Your full name
-- Your enter
+- Your center
 - Your research focus
+- A fun fact
 
 
-## Step 2a: Add Your Codes
+## Step 2a: Add Your Code
 
 Mine looks like this:
 
@@ -140,6 +130,11 @@ Name,Center,Research Focus, Fun Fact
 James Smith, CCQ, Quantum Chemistry, My initials are JETS
     </code>
 </pre>
+
+
+## Step 2b: Push to Your Fork
+
+<img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png">
 
 
 ## Step 2b: Push to Your Fork
@@ -161,6 +156,10 @@ Mine looks like this:
     </code>
 </pre>
 
+
+
+## Step 3: Open a Pull Request
+<img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.png">
 
 
 ## Step 3: Open a Pull Request
@@ -199,16 +198,28 @@ Things to think about when making pull requests (PR):
 
 
 ## Step 4: Pull Other's Changes
+<img width=80% src="./assets/Learn-Git-Graphics/Pull%20from%20upstream.png">
+
+
+## Step 4: Pull Other's Changes
+
+If the original repo from `flatironinstitute` isn't your upstream, set it now and then pull from it.
 
 If the original repo from `flatironinstitute` isn't your upstream, set it now and then pull from it.
 
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
     ➜ git remote -v
+<<<<<<< HEAD
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
     origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
     ➜ git remote rename origin upstream
     ➜ git remote add origin git@github.com:jamesETsmith/sciware15-git-intro.git
+=======
+    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
+    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
+    ➜ git remote add upstream git@github.com:flatironinstitute/sciware15-git-intro.git
+>>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
     ➜ git remote -v
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
     origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
@@ -219,6 +230,9 @@ If the original repo from `flatironinstitute` isn't your upstream, set it now an
 </pre>
 
 
+# Survey
+
+## http://bit.ly/sciware-github2-2021
 
 ## Reviewing a Pull Request
 
@@ -227,8 +241,47 @@ As other students make PRs, go to the pull requests tab on GitHub.
 ![](./assets/pull_request_rev.png)
 
 
+<<<<<<< HEAD
 ## Reviewing a Pull Request
 
+Choose another student's PR and click on it.
+
+![](./assets/pull_request_rev2.png)
+=======
+
+## Reviewing a Pull Request
+
+As other students make PRs, go to the pull requests tab on GitHub.
+
+![](./assets/pull_request_rev.png)
+>>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
+
+
+## Reviewing a Pull Request
+
+<<<<<<< HEAD
+Click on the commit to see the diff of their changes and hover over a line until you see the `+` sybmol.
+
+![](./assets/pull_request_rev3.png)
+
+
+
+## PR Case Study
+
+Here's an example of a PR _without_ a helpful description:
+
+![](./assets/pr_case_study_bad.png)
+
+
+## PR Case Study
+
+Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
+
+<img height=70% width=60% src="./assets/pr_case_study_good.png">
+
+
+
+=======
 Choose another student's PR and click on it.
 
 ![](./assets/pull_request_rev2.png)
@@ -257,9 +310,16 @@ Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20
 
 
 
+>>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
 ## Extra Resources
 
 Check out and bookmark these tutorials for more information about git and the forking workflow:
 
 - [Bitbucket: Making a Pull Request](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 - [CodeRefinery: Distributed version control and forking workflow](https://coderefinery.github.io/git-collaborative/03-distributed/)
+
+
+
+# Survey
+
+## http://bit.ly/sciware-github2-2021
