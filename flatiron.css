@@ -369,11 +369,18 @@ code {
   padding: 5px 15px;
 }
 
-body:after {
+body:before {
   content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
   position: fixed;
   bottom: 30px;
   left: 12px;
+}
+
+body:after {
+  content: url("https://raw.githubusercontent.com/flatironinstitute/learn-sciware-dev/main/Theme_Demo/assets/sciware-final-full.png");
+  position: fixed;
+  bottom: 30px;
+  left: 177px;
 }
 
 .align-left {
