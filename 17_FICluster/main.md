@@ -1,6 +1,6 @@
 # Sciware
 
-## Tools to make programming easier
+## Flatiron Clusters: Performance and Efficiency
 
 https://github.com/flatironinstitute/learn-sciware-dev/tree/main/17_FICluster
 
