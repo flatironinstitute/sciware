@@ -44,11 +44,13 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's agenda
 
-- Hardware overview + mention file systems
+- Hardware + file systems overview
 - Modules
-- SLURM introduction/workflow (parallelization)
+- SLURM and parallelization
+  - Workshop: Share your workflow.
 - Monitoring jobs
-- Monitoring file systems (performance characteristics)
+  - Workshop: Find a job, analyze it, look at SlurmUtil. - Slideo
+- Monitoring file systems
 
 
 # Survey
