@@ -1,4 +1,4 @@
-# Flatiron Clusters
+# Using the Flatiron Clusters
 ## Performance and Efficiency
 - Sept 23, 2021
 - 3:00-5:00pm
