@@ -53,11 +53,12 @@ Activities where participants all actively work to foster an environment which e
 - Monitoring file systems
 
 
-## Running Parallel Jobs on the FI Cluster
+# Running Parallel Jobs on the FI Cluster
 
-### Slurm, Job Arrays, and disBatch
+## Slurm, Job Arrays, and disBatch
 
 Different ways to run parallel jobs on the Flatiron cluster
+
 
 ## Slurm
 
@@ -87,12 +88,14 @@ Different ways to run parallel jobs on the Flatiron cluster
 - Trick: use `-p ccX,gen` to submit to multiple partitions.
   - In general, give Slurm the maximum flexibility to run your job
 
+
 ## Running Jobs in Parallel
 
 - You've written a script to post-process a simulation output
 - Have 10–1000 outputs to process
 - Each can be processed independently
 - Ready to use Rusty! ... but how?
+
 
 ## Running Jobs in Parallel
 
@@ -102,11 +105,13 @@ Different ways to run parallel jobs on the Flatiron cluster
   - disBatch
 - Note: this job is a bad candidate for MPI
   - If the jobs don't need to communicate with each other, no need for MPI!
-  
+
+
 ## Option 1: Slurm Job Arrays
 - Queues up one job per output
 - Syntax: `#SBATCH --array=0-9`, submits 10 jobs as an array
 - Slurm is allowed to submit each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
+
 
 ## Option 1: Slurm Job Arrays: Full Example
 - Recommend organizing into two scripts: `./launch_slurm.sh` and `job.slurm`
@@ -150,6 +155,7 @@ fn=$(tail -n+${i} ${fn_list} | head -n1)
 
 ```
 
+
 ## Option 1: Slurm Job Arrays
 - What did we just do?
   - Get the list of N files we want to process (one per job)
@@ -158,11 +164,13 @@ fn=$(tail -n+${i} ${fn_list} | head -n1)
   - Have each job get the i-th line in the file
   - Execute our science script with that file
 
+
 ## Option 2: disBatch
 
 
 
 ## Comparison: Job Arrays and disBatch
+
 - Slurm job arrays
   - Advantages
     - No external dependencies
@@ -172,6 +180,9 @@ fn=$(tail -n+${i} ${fn_list} | head -n1)
     - No good way to retry failed jobs
     - Doesn't scale to 1000+ jobs
     - Doesn't handle variable-length jobs
+
+
+## Comparison: Job Arrays and disBatch
     
 - disBatch
   - Advantages
@@ -184,9 +195,11 @@ fn=$(tail -n+${i} ${fn_list} | head -n1)
     - Writing a disBatch task file can require multiple layers of bash escaping
     - disBatch is not builtin to Slurm
 
+
 ## Summary of Parallel Jobs
 - Personally, I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
   - Status file, easy retries, and scalability to 100K+ jobs
+
 
 # Survey
 
