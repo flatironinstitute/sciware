@@ -54,6 +54,10 @@ Activities where participants all actively work to foster an environment which e
 
 # Running Parallel Jobs on the FI Cluster
 
+## Slurm, Job Arrays, and disBatch
+
+Different ways to run parallel jobs on the Flatiron cluster
+
 ## Slurm
 
 - How do you share a set of computational resources among cycle-hungry scientists?
@@ -179,7 +183,7 @@ fn=$(tail -n+${i} ${fn_list} | head -n1)
     - Writing a disBatch task file can require multiple layers of bash escaping
     - disBatch is not builtin to Slurm
 
-## Summary
+## Summary of Parallel Jobs
 - Personally, I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
   - Status file, easy retries, and scalability to 100K+ jobs
 
