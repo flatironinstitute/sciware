@@ -52,9 +52,9 @@ Activities where participants all actively work to foster an environment which e
   - Workshop: Find a job, analyze it, look at SlurmUtil. - Slideo
 - Monitoring file systems
 
-# Running Parallel Jobs on the FI Cluster
+## Running Parallel Jobs on the FI Cluster
 
-## Slurm, Job Arrays, and disBatch
+### Slurm, Job Arrays, and disBatch
 
 Different ways to run parallel jobs on the Flatiron cluster
 
