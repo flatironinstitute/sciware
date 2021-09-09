@@ -116,43 +116,42 @@ Different ways to run parallel jobs on the Flatiron cluster
 ## Option 1: Slurm Job Arrays: Full Example
 - Recommend organizing into two scripts: `./launch_slurm.sh` and `job.slurm`
 ```bash
-#!/usr/bin/env bash
-# File: launch_slurm.sh
+    #!/usr/bin/env bash
+    # File: launch_slurm.sh
 
-# Let's say
-projdir="/mnt/ceph/${USER}/projname/"
-jobname="job1"
-workingdir="${projdir}/${jobname}"
+    # Let's say
+    projdir="/mnt/ceph/${USER}/projname/"
+    jobname="job1"
+    workingdir="${projdir}/${jobname}"
 
-mkdir -p ${workingdir}
+    mkdir -p ${workingdir}
 
-# Use the "find" command to write the list of files to process, 1 per line
-fn_list="${workingdir}/fn_list.txt"
-find ${projdir} -name 'output*.hdf5' > ${fn_list}
-nfiles=$(wc -l < ${fn_list})
+    # Use the "find" command to write the list of files to process, 1 per line
+    fn_list="${workingdir}/fn_list.txt"
+    find ${projdir} -name 'output*.hdf5' > ${fn_list}
+    nfiles=$(wc -l < ${fn_list})
 
-# Launch a Slurm job array with ${nfiles} entries
-sbatch --array=0-${nfiles} job.slurm ${fn_list}
+    # Launch a Slurm job array with ${nfiles} entries
+    sbatch --array=0-${nfiles} job.slurm ${fn_list}
 ```
 
 ```bash
-# File: job.slurm
-
-#SBATCH -p ccX,gen  # or "-p genx" if your job won't fill a node
-#SBATCH -N 1
-#SBATCH --mem=128G
-
-# the file with the list of files to process
-fn_list=${1}
-
-# the job array index
-i=${SLURM_ARRAY_TASK_ID}
-
-# get the line of the file belonging to this job
-fn=$(tail -n+${i} ${fn_list} | head -n1)
-
-./my_analysis_script.py ${fn}
-
+    # File: job.slurm
+    
+    #SBATCH -p ccX,gen  # or "-p genx" if your job won't fill a node
+    #SBATCH -N 1
+    #SBATCH --mem=128G
+    
+    # the file with the list of files to process
+    fn_list=${1}
+    
+    # the job array index
+    i=${SLURM_ARRAY_TASK_ID}
+    
+    # get the line of the file belonging to this job
+    fn=$(tail -n+${i} ${fn_list} | head -n1)
+    
+    ./my_analysis_script.py ${fn}
 ```
 
 
