@@ -200,7 +200,7 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Status file, easy retries, and scalability to 100K+ jobs
 
 
-# Benchmarking on the FI Cluster
+# Benchmarking
 
 ## Why, when, what, and how?
 
@@ -220,7 +220,7 @@ Testing how to get the best performance out of your jobs on the Flatiron cluster
 
 ## When to benchmark?
 
-- Before you press enter after sbatch --time=a-very-long-time
+- Before you press enter after `sbatch --time=a-very-long-time`
 - For new projects
 - For known projects, batch scripts are not "one size fits all"
   - Especially if your submission script come from another HPC center
@@ -241,48 +241,47 @@ Testing how to get the best performance out of your jobs on the Flatiron cluster
 
 ## How to benchmark?
   
-- Some domain-specific benchmarking tools exist:
-  - eg: [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
+- Domain-specific benchmarking tools
+  - [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
 - Generic frameworks
   - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
 - These environments will let you:
   - Explore a space of different parameters
   - Get and format reults in an easy to read/export manner
   - Produce scaling results for articles
-  - Fill the Slurm queues with jobs: run in multiple steps to avoid that (or use disBatch when possible!)
-<small>You can see examples [https://github.com/gkrawezik/BENCHMARKS]</small>
+  - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps (or use disBatch when possible)</span>
+<small>You can see examples (https://github.com/gkrawezik/BENCHMARKS)</small>
 
 
 ## JUBE utilization
 
-1. Create an XML (or YAML) file edscribing the benchmark
+1. Create an XML (or YAML) file describing the benchmark
 1. Launch using `jube run mybenchmark.xml`
-1. If you are running inside a batch scheduler:
-  1. `jube continue mybenchmark --id=N` to see the status
-  1. `jube result mybenchmark --id=N` to see partial results
-  1. `jube analyse mybenchmark --id=N` to see partial results
+1. While running with a batch scheduler:
+  - Status: `jube continue mybenchmark --id=N`
+  - Partial results `jube result mybenchmark --id=N`
+  - Update results `jube analyse mybenchmark --id=N`
 1. Once finished, get the complete results:
-  - As a formatted table: `jube results mybenchmark --id=N`
-  - As a csv: `jube results mybenchmark --id=N -s csv`
+  - Formatted table: `jube results mybenchmark --id=N`
+  - CSV: `jube results mybenchmark --id=N -s csv`
 
 
-## Benchmarking Example 1: GROMACS
-
-Used to answer the following questions:
+## Benchmark 1: GROMACS
+<small>
 - How many nodes to use?
 - How to distribute threads/ranks inside nodes?
-
-Uses the capability to tell GROMACS to stop after _N_ minutes
+- Uses the capability to tell GROMACS to stop after _N_ minutes
+</small>
 
 ```xml
     <parameterset name="param_set">
-        <parameter name="num_nodes" type="int">1,2,3,4,5,6,7,8,9,10</parameter>
-        <parameter name="ranks_per_node" type="int">128,64,32,16</parameter>
+        <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
+        <parameter name="ranks_per_node">128,64,32,16</parameter>
     </parameterset>
     <parameterset name="execute_set">
-        <parameter name="cores_per_node" type="int">128</parameter>
-        <parameter name="threads_per_rank" type="int" mode="python">${procs_per_node}/${cores_per_node}</parameter>
-        <parameter name="num_rank" type="int" mode="python">${num_nodes}*${ranks_per_node}</parameter>
+        <parameter name="cores_per_node">128</parameter>
+        <parameter name="threads_per_rank">${procs_per_node}/${cores_per_node}</parameter>
+        <parameter name="num_rank">${num_nodes}*${ranks_per_node}</parameter>
     </parameterset>
 ```
 
