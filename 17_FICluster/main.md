@@ -221,7 +221,7 @@ Testing how to get the best performance out of your jobs
 
 ## When to benchmark?
 
-- Before you press enter `sbatch --time=a-very-long-time`
+- Before you type `sbatch --time=a-very-long-time`
 - For new projects
 - For known projects: batch scripts are not "one size fits all"
   - Especially if your scripts come from another HPC center
@@ -251,7 +251,6 @@ Testing how to get the best performance out of your jobs
   - Easily read/format/export results
   - Produce scaling results for articles
   - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
-<small>Examples: https://github.com/gkrawezik/BENCHMARKS</small>
 
 
 ## Using JUBE 
@@ -274,7 +273,8 @@ Testing how to get the best performance out of your jobs
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
-<img style="height=16em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+</ul>
+<img style="height=8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
 </div>
 
@@ -289,7 +289,45 @@ Testing how to get the best performance out of your jobs
         <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
     </parameterset>
 ```
-<small>System courtesy Sonya Hanson</small>
+<small>System courtesy Sonya Hanson (CCB)</small>
+
+
+## Benchmark 2: Gadget4
+<div style="display: flex;">
+<small>
+<ul>
+<li>Compare Intel MPI with OpenMPI</li>
+<li>Weak scaling for a given problem type</li>
+<li>Smulation stopped after a few iterations</li>
+</ul>
+<img style="height=8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+</small>
+</div>
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes">1,2,4,8,16</parameter>
+    </parameterset>
+    <parameterset name="compile_set">
+        <parameter name="lookchain">gcc_openmpi, intel</parameter>
+        <parameter name="compiler">
+          { "gcc_openmpi" : "gcc/7.4.0",
+            "intel"       : "intel/compiler/2017-4" }
+        </parameter>
+        <parameter name="mpi_library">
+          { "gcc_openmpi" : "openmpi4/4.0.5",
+            "intel"       : "intel/mpi/2017-4" }
+        </parameter>
+    </parameterset>
+```
+<small>Simulation config courtesy Yin Li (CCA)</small>
+
+
+## Benchmarking: conclusion
+
+- Try and benchmark when you are starting a new large project
+- Using a toolkit like JUBE can simplify your work
+- For examples: https://github.com/gkrawezik/BENCHMARKS
 
 
 # Survey
