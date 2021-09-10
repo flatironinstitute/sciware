@@ -274,8 +274,8 @@ Testing how to get the best performance out of your jobs
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
 </ul>
-<img style="height=8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
+<img style="height:8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </div>
 
 ```xml
@@ -300,8 +300,8 @@ Testing how to get the best performance out of your jobs
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
-<img style="height=8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
+<img style="height: 8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </div>
 
 ```xml
