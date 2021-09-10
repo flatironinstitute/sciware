@@ -200,6 +200,95 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Status file, easy retries, and scalability to 100K+ jobs
 
 
+# Benchmarking on the FI Cluster
+
+## Why, when, what, and how?
+
+Testing how to get the best performance out of your jobs on the Flatiron cluster
+
+
+## Why benchmarking?
+
+- Use the resources more efficiently
+- Are you sure you are running optimally?
+  - Which libraries to use? (eg: OpenBLAS vs MKL)
+  - What ratio MPI ranks / OpenMP threads for hybrid parallel codes
+  - How many nodes to use for a given problem size?
+- A 15 minutes benchmark can help your week-long computation get you more results
+  - Or reduce it to a day-long computation!
+
+
+## When to benchmark?
+
+- Before you press enter after sbatch --time=a-very-long-time
+- For new projects
+- For known projects, batch scripts are not "one size fits all"
+  - Especially if your submission script come from another HPC center
+  - Even locally we have very diverse machines!
+  - A new version of your favorite software might require new ways of running
+
+
+## What to benchmark?
+
+- Find something that can:
+  - Represent your whole run in a short period of time
+  - eg: a couple of iterations instead of 1000s of them
+  - Use the same machine size you intend to use in production
+- Be weary of "toy benchmarks":
+  - They might benefit from requiring less memory, less I/O, ...
+  - If possible run with your real problem, but not to completion!
+
+
+## How to benchmark?
+  
+- Some domain-specific benchmarking tools exist:
+  - eg: [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
+- Generic frameworks
+  - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
+- These environments will let you:
+  - Explore a space of different parameters
+  - Get and format reults in an easy to read/export manner
+  - Produce scaling results for articles
+  - Fill the Slurm queues with jobs: run in multiple steps to avoid that (or use disBatch when possible!)
+<small>You can see examples [https://github.com/gkrawezik/BENCHMARKS]</small>
+
+
+## JUBE utilization
+
+1. Create an XML (or YAML) file edscribing the benchmark
+1. Launch using `jube run mybenchmark.xml`
+1. If you are running inside a batch scheduler:
+  1. `jube continue mybenchmark --id=N` to see the status
+  1. `jube result mybenchmark --id=N` to see partial results
+  1. `jube analyse mybenchmark --id=N` to see partial results
+1. Once finished, get the complete results:
+  - As a formatted table: `jube results mybenchmark --id=N`
+  - As a csv: `jube results mybenchmark --id=N -s csv`
+
+
+## Benchmarking Example 1: GROMACS
+
+Used to answer the following questions:
+- How many nodes to use?
+- How to distribute threads/ranks inside nodes?
+
+Uses the capability to tell GROMACS to stop after _N_ minutes
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes" type="int">1,2,3,4,5,6,7,8,9,10</parameter>
+        <parameter name="ranks_per_node" type="int">128,64,32,16</parameter>
+    </parameterset>
+    <parameterset name="execute_set">
+        <parameter name="cores_per_node" type="int">128</parameter>
+        <parameter name="threads_per_rank" type="int" mode="python">${procs_per_node}/${cores_per_node}</parameter>
+        <parameter name="num_rank" type="int" mode="python">${num_nodes}*${ranks_per_node}</parameter>
+    </parameterset>
+```
+
+<img height="40%" src="./assets/benchmarking/jube_gromacs.png">
+
+
 # Survey
 
 https://bit.ly/???
