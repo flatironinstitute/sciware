@@ -204,28 +204,29 @@ Different ways to run parallel jobs on the Flatiron cluster
 
 ## Why, when, what, and how?
 
-Testing how to get the best performance out of your jobs on the Flatiron cluster
+Testing how to get the best performance out of your jobs
 
 
 ## Why benchmarking?
 
 - Use the resources more efficiently
 - Are you sure you are running optimally?
-  - Which libraries to use? (eg: OpenBLAS vs MKL)
-  - What ratio MPI ranks / OpenMP threads for hybrid parallel codes
-  - How many nodes to use for a given problem size?
+  - What processor architecture?
+  - Which libraries? (eg: OpenBLAS vs MKL)
+  - What MPI ranks / OpenMP threads ratio?
+  - How many nodes for a given problem size?
 - A 15 minutes benchmark can help your week-long computation get you more results
   - Or reduce it to a day-long computation!
 
 
 ## When to benchmark?
 
-- Before you press enter after `sbatch --time=a-very-long-time`
+- Before you press enter `sbatch --time=a-very-long-time`
 - For new projects
-- For known projects, batch scripts are not "one size fits all"
-  - Especially if your submission script come from another HPC center
+- For known projects: batch scripts are not "one size fits all"
+  - Especially if your scripts come from another HPC center
   - Even locally we have very diverse machines!
-  - A new version of your favorite software might require new ways of running
+  - New software versions can mean new configuration
 
 
 ## What to benchmark?
@@ -233,9 +234,9 @@ Testing how to get the best performance out of your jobs on the Flatiron cluster
 - Find something that can:
   - Represent your whole run in a short period of time
   - eg: a couple of iterations instead of 1000s of them
-  - Use the same machine size you intend to use in production
+  - Use the same configuration you intend to use in production
 - Be weary of "toy benchmarks":
-  - They might benefit from requiring less memory, less I/O, ...
+  - They might benefit from requiring less memory, I/O, ...
   - If possible run with your real problem, but not to completion!
 
 
@@ -247,31 +248,35 @@ Testing how to get the best performance out of your jobs on the Flatiron cluster
   - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
 - These environments will let you:
   - Explore a space of different parameters
-  - Get and format reults in an easy to read/export manner
+  - Easily read/format/export results
   - Produce scaling results for articles
-  - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps (or use disBatch when possible)</span>
-<small>You can see examples (https://github.com/gkrawezik/BENCHMARKS)</small>
+  - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
+<small>Examples: https://github.com/gkrawezik/BENCHMARKS</small>
 
 
-## JUBE utilization
+## Using JUBE 
 
 1. Create an XML (or YAML) file describing the benchmark
 1. Launch using `jube run mybenchmark.xml`
 1. While running with a batch scheduler:
-  - Status: `jube continue mybenchmark --id=N`
-  - Partial results `jube result mybenchmark --id=N`
-  - Update results `jube analyse mybenchmark --id=N`
+  - `jube continue mybenchmark --id=N`: status
+  - `jube result mybenchmark --id=N`  : partial results
+  - `jube analyse mybenchmark --id=N` : update results
 1. Once finished, get the complete results:
-  - Formatted table: `jube results mybenchmark --id=N`
-  - CSV: `jube results mybenchmark --id=N -s csv`
+  - Formatted table: `jube result mybenchmark --id=N`
+  - CSV: `jube result mybenchmark --id=N -s csv`
 
 
 ## Benchmark 1: GROMACS
+<div style="display: flex;">
 <small>
-- How many nodes to use?
-- How to distribute threads/ranks inside nodes?
-- Uses the capability to tell GROMACS to stop after _N_ minutes
+<ul>
+<li>How many nodes to use?</li>
+<li>How to distribute threads/ranks inside nodes?</li>
+<li>GROMACS can be told to stop after _N_ minutes</li>
+<img style="height=16em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
+</div>
 
 ```xml
     <parameterset name="param_set">
@@ -280,12 +285,11 @@ Testing how to get the best performance out of your jobs on the Flatiron cluster
     </parameterset>
     <parameterset name="execute_set">
         <parameter name="cores_per_node">128</parameter>
-        <parameter name="threads_per_rank">${procs_per_node}/${cores_per_node}</parameter>
-        <parameter name="num_rank">${num_nodes}*${ranks_per_node}</parameter>
+        <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
+        <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
     </parameterset>
 ```
-
-<img height="40%" src="./assets/benchmarking/jube_gromacs.png">
+<small>System courtesy Sonya Hanson</small>
 
 
 # Survey
