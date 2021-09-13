@@ -200,6 +200,199 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Status file, easy retries, and scalability to 100K+ jobs
 
 
+# Benchmarking
+
+## Why, when, what, and how?
+
+Testing how to get the best performance out of your jobs
+
+
+## Why benchmarking?
+
+- Use the resources more efficiently
+- Are you sure you are running optimally?
+  - What processor architecture?
+  - Which libraries? (eg: OpenBLAS vs MKL)
+  - What MPI ranks / OpenMP threads ratio?
+  - How many nodes for a given problem size?
+- A 15 minutes benchmark can help your week-long computation get you more results
+  - Or reduce it to a day-long computation!
+
+
+## When to benchmark?
+
+- Before you type `sbatch --time=a-lot!`
+- For new projects
+- For known projects: batch scripts are not "one size fits all"
+  - Especially if your scripts come from another HPC center
+  - Even locally we have very diverse machines!
+  - New software versions can mean new configuration
+
+
+## What to benchmark?
+
+- Find something that can:
+  - Represent your whole run in a short period of time
+  - eg: a couple of iterations instead of 1000s of them
+  - Use the same configuration you intend to use in production
+- Be weary of "toy benchmarks":
+  - They might benefit from requiring less memory, I/O, ...
+  - If possible run with your real problem, but not to completion!
+
+
+## How to benchmark?
+  
+- Domain-specific benchmarking tools
+  - [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
+- Generic frameworks
+  - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
+- These environments will let you:
+  - Explore a space of different parameters
+  - Easily read/format/export results
+  - Produce scaling results for articles
+  - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
+
+
+## Using JUBE 
+
+1. Create an XML (or YAML) file describing the benchmark
+1. Launch using `jube run mybenchmark.xml`
+1. While running with a batch scheduler:
+  - `jube continue mybenchmark --id=N`: status
+  - `jube result mybenchmark --id=N`  : partial results
+  - `jube analyse mybenchmark --id=N` : update results
+1. Once finished, get the complete results:
+  - Formatted table: `jube result mybenchmark --id=N`
+  - CSV: `jube result mybenchmark --id=N -s csv`
+
+
+## JUBE Configuration Files (1)
+
+- XML Structure:
+  - Benchmark configuration: number of nodes, input files
+    - Inputs can be dynamic (python, shell)
+  - Execution configuration: processor type, runtime
+    - Execution can be through a batch scheduler
+  - Benchmark definition: which steps to run, in what order
+  - Results regular expressions
+  - Results printing: inputs, outputs, in what order
+- If needed, templates for other files, filled at runtime
+  - batch scheduler job
+  - input parameter files
+
+
+## JUBE Configuration Files (2):
+Parameter sets: NAS Parallel Benchmarks, single node
+```xml
+<benchmark name="npb3.4.1" outpath="bench_npb_run_mpi_singlenode">
+<!-- Benchmark configuration -->
+<parameterset name="param_set">
+    <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
+    <parameter name="class" type="string">A,B,C,D</parameter>
+</parameterset>
+    
+<!-- Job configuration -->
+<parameterset name="executeset">
+    <parameter name="submit_cmd">sbatch</parameter>
+    <parameter name="job_file">npb_mpi.run</parameter>
+    <parameter name="walltime">00:20:00</parameter>
+    <parameter name="proc_type" type="string">rome</parameter>
+    <parameter name="max_num_ranks_per_node" type="int">128</parameter>
+    <parameter name="err_file">npb.err</parameter>
+    <parameter name="out_file">npb.out</parameter>
+    <parameter name="exec">num_ranks=1; while [ $$num_ranks -le ${max_num_ranks_per_node} ]; do echo "Launching $kernel on $$num_ranks cores"; hostname; mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; num_ranks=$$[$$num_ranks*2]; done</parameter>
+</parameterset>
+```
+<small>The parameters in `executeset` will be replaced in the Slurm template file</small>
+
+
+# JUBE Configuration Files (3)
+Analysis and results
+```xml
+<!-- Regex pattern -->
+<patternset name="pattern">
+    <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
+    <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
+    <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
+</patternset>
+
+<!-- Create result table -->
+<result>
+    <use>analyse</use>
+    <table name="result" style="csv" sort="kernel,class,num_ranks_used">
+        <column>kernel</column>
+        <column>class</column>
+        <column>num_ranks_used</column>
+        <column>time_in_seconds</column>
+        <column>mflops</column>
+    </table>
+</result>
+```
+
+## Benchmark 1: GROMACS
+<div style="display: flex;">
+<small>
+<ul>
+<li>How many nodes to use?</li>
+<li>How to distribute threads/ranks inside nodes?</li>
+<li>GROMACS can be told to stop after _N_ minutes</li>
+</ul>
+<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+</small>
+</div>
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
+        <parameter name="ranks_per_node">128,64,32,16</parameter>
+    </parameterset>
+    <parameterset name="execute_set">
+        <parameter name="cores_per_node">128</parameter>
+        <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
+        <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
+    </parameterset>
+```
+<small>System courtesy Sonya Hanson (CCB)</small>
+
+
+## Benchmark 2: Gadget4
+<div style="display: flex;">
+<small>
+<ul>
+<li>Compare Intel MPI with OpenMPI</li>
+<li>Weak scaling for a given problem type</li>
+<li>Smulation stopped after a few iterations</li>
+</ul>
+<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+</small>
+</div>
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes">1,2,4,8,16</parameter>
+    </parameterset>
+    <parameterset name="compile_set">
+        <parameter name="lookchain">gcc_openmpi, intel</parameter>
+        <parameter name="compiler">
+          { "gcc_openmpi" : "gcc/7.4.0",
+            "intel"       : "intel/compiler/2017-4" }
+        </parameter>
+        <parameter name="mpi_library">
+          { "gcc_openmpi" : "openmpi4/4.0.5",
+            "intel"       : "intel/mpi/2017-4" }
+        </parameter>
+    </parameterset>
+```
+<small>Simulation config courtesy Yin Li (CCA)</small>
+
+
+## Benchmarking: conclusion
+
+- Try and benchmark when you are starting a new large project
+- Using a toolkit like JUBE can simplify your work
+- For examples: https://github.com/gkrawezik/BENCHMARKS
+
+
 # Survey
 
 https://bit.ly/???
