@@ -7,4 +7,4 @@
 - [slides](https://flatironinstitute.github.io/learn-sciware-dev/17_FICluster/slides.html) ([source](main.md))
 
 ## Pre-workshop prep
-?
+- 
