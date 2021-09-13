@@ -260,7 +260,6 @@ Testing how to get the best performance out of your jobs
 1. While running with a batch scheduler:
   - `jube continue mybenchmark --id=N`: status
   - `jube result mybenchmark --id=N`  : partial results
-  - `jube analyse mybenchmark --id=N` : update results
 1. Once finished, get the complete results:
   - Formatted table: `jube result mybenchmark --id=N`
   - CSV: `jube result mybenchmark --id=N -s csv`
@@ -289,32 +288,32 @@ Parameter sets: NAS Parallel Benchmarks, single node
     <parameter name="class" type="string">A,B,C,D</parameter>
 </parameterset>
     
-<parameterset name="executeset"> <-- Job configuration -->
+<parameterset name="executeset"> <!-- Slurm job configuration -->
     <parameter name="submit_cmd">sbatch</parameter>
     <parameter name="job_file">npb_mpi.run</parameter>
     <parameter name="walltime">00:20:00</parameter>
     <parameter name="proc_type" type="string">rome</parameter>
     <parameter name="max_num_ranks_per_node" type="int">128</parameter>
-    <parameter name="exec">num_ranks=1; while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
-        mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; num_ranks=$$[$$num_ranks*2];
-    done</parameter>
+    <parameter name="exec">num_ranks=1; 
+        while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
+            mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; 
+            num_ranks=$$[$$num_ranks*2];
+        done
+    </parameter>
 </parameterset>
 ```
-<small>The parameters in `executeset` will be replaced in the Slurm template file</small>
 
 
 ## JUBE Configuration Files (3)
 Analysis and results
 ```xml
-<!-- Regex pattern -->
-<patternset name="pattern">
+<patternset name="pattern"><!-- Regex pattern -->
     <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
     <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
     <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
 </patternset>
 
-<!-- Create result table -->
-<result>
+<result><!-- Create result table -->
     <use>analyse</use>
     <table name="result" style="csv" sort="kernel,class,num_ranks_used">
         <column>kernel</column>
@@ -335,20 +334,20 @@ Analysis and results
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
 </ul>
-<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+<img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
 </div>
 
 ```xml
-    <parameterset name="param_set">
-        <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
-        <parameter name="ranks_per_node">128,64,32,16</parameter>
-    </parameterset>
-    <parameterset name="execute_set">
-        <parameter name="cores_per_node">128</parameter>
-        <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
-        <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
-    </parameterset>
+<parameterset name="param_set">
+    <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
+    <parameter name="ranks_per_node">128,64,32,16</parameter>
+</parameterset>
+<parameterset name="execute_set">
+    <parameter name="cores_per_node">128</parameter>
+    <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
+    <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
+</parameterset>
 ```
 <small>System courtesy Sonya Hanson (CCB)</small>
 
@@ -361,25 +360,22 @@ Analysis and results
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
-<img style="margin: 0 0 0 2em; height: 12em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+<img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
 </div>
 
 ```xml
-    <parameterset name="param_set">
-        <parameter name="num_nodes">1,2,4,8,16</parameter>
-    </parameterset>
-    <parameterset name="compile_set">
-        <parameter name="lookchain">gcc_openmpi, intel</parameter>
-        <parameter name="compiler">
-          { "gcc_openmpi" : "gcc/7.4.0",
-            "intel"       : "intel/compiler/2017-4" }
-        </parameter>
-        <parameter name="mpi_library">
-          { "gcc_openmpi" : "openmpi4/4.0.5",
-            "intel"       : "intel/mpi/2017-4" }
-        </parameter>
-    </parameterset>
+<parameterset name="compile_set">
+    <parameter name="toolchain">gcc_openmpi, intel</parameter>
+    <parameter name="compiler">
+      { "gcc_openmpi" : "gcc/7.4.0",
+        "intel"       : "intel/compiler/2017-4" }
+    </parameter>
+    <parameter name="mpi_library">
+      { "gcc_openmpi" : "openmpi4/4.0.5",
+        "intel"       : "intel/mpi/2017-4" }
+    </parameter>
+</parameterset>
 ```
 <small>Simulation config courtesy Yin Li (CCA)</small>
 
