@@ -17,7 +17,10 @@ title: index
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{ site.baseurl }}/flatiron.css" id="theme" />
   </head>
-  <body class="landing">
+  <body class="">
+    <div class="banner">
+      <div class="banner-image"></div>
+    </div>
     <h2>Sciware sessions</h2>
     <ul>
     {% assign sorted_pages  = site.pages | where:"nav_include", "true" | sort:"title" %}
