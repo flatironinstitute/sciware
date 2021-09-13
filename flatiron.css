@@ -398,7 +398,7 @@ body.landing {
   justify-content: center;
 }
 
-header.banner, section, footer {
+body.landing > header.banner, section, footer {
   margin: 0 auto 2.75rem auto;
   max-width: 980px;
   padding: 2.75rem 2rem;
@@ -411,12 +411,12 @@ header.banner, section, footer {
 
 @media only screen
   and (max-device-width: 812px) {
-    header.banner, section {
+    body.landing > header.banner, section {
       width: auto;
     }
 }
 
-footer.landing-footer {
+body.landing > footer.landing-footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
