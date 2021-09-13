@@ -398,30 +398,30 @@ body.landing {
   justify-content: center;
 }
 
-header.banner, section {
-  max-width: 100vh;
-  width: 100%;
-  padding: 5vh 10vw;
+header.banner, section, footer {
+  margin: 0 auto 2.75rem auto;
+  max-width: 980px;
+  padding: 2.75rem 2rem;
   background-color: white;
   box-shadow: 0.25rem 0.125rem 0 rgb(0 0 0 / 3%);
-  border-color: #e9ecef;
   border-color: #e9ecef;
   border-radius: .25rem;
   border-width: .125rem;
 }
 
-header.banner {
-  margin: 5vh 0;
-}
-
 @media only screen
   and (max-device-width: 812px) {
-
     header.banner, section {
-      background-color: pink;
+      width: auto;
     }
 }
 
+footer.landing-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 h1.banner-title {
   font-size: 4em;
@@ -443,14 +443,6 @@ h1.banner-title {
 .banner-subtitle {
   text-align: center;
 }
-
-section {
-  margin-bottom: 5vh;
-}
-
-/* @media screen {
-
-} */
 
 .landing h1,
 .landing h2 {
