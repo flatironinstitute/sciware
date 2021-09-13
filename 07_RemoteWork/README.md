@@ -4,4 +4,4 @@
 - Zoom
 
 - [Agenda & Planning doc](https://docs.google.com/document/d/1p9djETurNGB0YOItXtNQIYSBM2VE7y3Ltc3Gx9kQAyU/edit)
-- [slides](https://flatironinstitute.github.io/learn-sciware-dev/07_RemoteWork/slides.html) ([source](content.md))
+- [slides](https://flatironinstitute.github.io/sciware/07_RemoteWork/slides.html) ([source](content.md))

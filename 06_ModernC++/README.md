@@ -3,7 +3,7 @@
 - 3:00-5:00pm
 - 162, 9th floor classroom
 
-- [intro](https://flatironinstitute.github.io/learn-sciware-dev/06_ModernC++/slides.html) ([source](intro.md))
+- [intro](https://flatironinstitute.github.io/sciware/06_ModernC++/slides.html) ([source](intro.md))
 
 
 # Useful Resources

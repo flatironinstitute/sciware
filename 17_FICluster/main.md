@@ -2,7 +2,7 @@
 
 ## Flatiron Clusters: Performance and Efficiency
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/17_FICluster
+https://github.com/flatironinstitute/sciware/tree/main/17_FICluster
 
 
 ## Rules of Engagement
@@ -65,7 +65,7 @@ Different ways to run parallel jobs on the Flatiron cluster
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
-- Wide adoption at universities and HPC centers. The skills you learn today will be highly transferrable!
+- Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes
 - The [wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the options and what flags to use
 
@@ -79,7 +79,7 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Implication: specifying the smallest set of resources for your job will help it run sooner
   - But don't short yourself!
 - How to estimate resource requirements:
-  - Make a conservative guess based on your knowlege of the program. For scientific computing, think about the sizes of big arrays and any files being read.
+  - Make a conservative guess based on your knowledge of the program. For scientific computing, think about the sizes of big arrays and any files being read.
   - Run a test job
   - Check the actual usage with: `sacct -j 1118837 -o MaxRSS,Elapsed`
     - `MaxRSS`: maximum "resident set size", usually corresponds to the memory requirement (`#SBATCH --mem`)

@@ -161,4 +161,4 @@ What does the code NOT do?
 
 ## Workshop exercises
 
-https://flatironinstitute.github.io/learn-sciware-dev/14_TestingPackaging/guide.html
+https://flatironinstitute.github.io/sciware/14_TestingPackaging/guide.html
