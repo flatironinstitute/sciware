@@ -12,6 +12,122 @@
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="./flatiron.css" id="theme" />
+    <style>
+      /*********************************************
+      * LANDING PAGE
+      *********************************************/
+      body.landing:before, body.landing:after {
+        content: none;
+      }
+
+      body.landing {
+        background-color: #3F519D;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body.landing > header.banner, body.landing > section, body.landing > footer {
+        margin: 0 auto 2.75rem auto;
+        max-width: 980px;
+        padding: 2.75rem 2rem;
+        background-color: white;
+        box-shadow: 0.25rem 0.125rem 0 rgb(0 0 0 / 3%);
+        border-color: #e9ecef;
+        border-radius: .25rem;
+        border-width: .125rem;
+      }
+
+      @media only screen
+        and (max-device-width: 812px) {
+          body.landing > header.banner, body.landing > section {
+            width: auto;
+          }
+      }
+
+      body.landing > footer.landing-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1.banner-title {
+        font-size: 4em;
+        text-align: center;
+      }
+
+      .banner-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .banner-image > img {
+        max-width: 200px;
+        margin-bottom: 2rem;
+      }
+
+      .banner-subtitle {
+        text-align: center;
+      }
+
+      .landing h1,
+      .landing h2 {
+        margin: 0 0 20px 0;
+        color: #3F519D;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        line-height: 1.2;
+        letter-spacing: normal;
+        text-transform: none;
+        text-shadow: none;
+        word-wrap: break-word;
+      }
+
+      ul.nav-links {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0;
+        text-align: center;
+      }
+
+      ul.nav-links li {
+        display:inline-block;
+        width: fit-content;
+        margin: 0 1vw;
+      }
+
+      ul.nav-links li a {
+        font-size: 120%;
+        font-weight: bold;
+      }
+
+      .landing a, ul li a {
+        color: #3F519D;
+        text-decoration: none;
+        -webkit-transition: color 0.15s ease;
+        -moz-transition: color 0.15s ease;
+        transition: color 0.15s ease;
+      }
+
+      .landing a:hover, ul li a:hover {
+        /* color: #304e77; */
+        color: #537eba;
+        text-shadow: none;
+        border: none;
+      }
+
+      i.fab {
+        font-size: 2em;
+      }
+    </style>
   </head>
   <body class="landing">
     <header class="banner">
