@@ -162,6 +162,8 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Launch a job array with N jobs
   - Have each job get the i-th line in the file
   - Execute our science script with that file
+- Why write a list of files when each Slurm job could run its own `find`?
+    - Just to be sure that if new files appear, jobs don't fail
 
 
 ## Option 2: disBatch
