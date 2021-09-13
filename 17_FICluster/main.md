@@ -221,7 +221,7 @@ Testing how to get the best performance out of your jobs
 
 ## When to benchmark?
 
-- Before you type `sbatch --time=a-very-long-time`
+- Before you type `sbatch --time=a-lot!`
 - For new projects
 - For known projects: batch scripts are not "one size fits all"
   - Especially if your scripts come from another HPC center
@@ -266,16 +266,59 @@ Testing how to get the best performance out of your jobs
   - CSV: `jube result mybenchmark --id=N -s csv`
 
 
+## JUBE Configuration Files (1)
+
+- XML Structure:
+  - Benchmark configuration: number of nodes, input files
+    - Inputs can be calculated dynamically (python, shell)
+  - Execution configuration: processor type, runtime
+    - Execution can be through a batch scheduler
+  - Benchmark definition: which steps to run, in what order
+  - Results regular expressions: JUBE provides simple patterns to read float, int
+  - Results printing: which inputs to show, with outputs, in what order
+- If needed, templates for other files, they will be filled at runtime
+  - batch scheduler job
+  - input parameter files
+
+
+## JUBE Configuration Files (2): parameter sets
+
+```xml
+<!-- Benchmark configuration -->
+<parameterset name="param_set">
+    <parameter name="num_nodes" type="int">1,2,3,4,5,6,7,8,9,10</parameter>
+    <parameter name="num_ranks_per_node" type="int">128,64,32,16</parameter>
+    <parameter name="tpr_filename" type="string">lignocellulose-rf.BGQ, step7_1, box_of_water_11nm</parameter>
+</parameterset>
+    
+<!-- Job configuration -->
+<parameterset name="executeset">
+    <parameter name="submit_cmd">sbatch</parameter>
+    <parameter name="job_file">gromacs_mpi.run</parameter>
+    <parameter name="nodes" type="int">$num_nodes</parameter>
+    <parameter name="walltime">00:20:00</parameter>
+    <parameter name="ranks_per_node" type="int">$num_ranks_per_node</parameter>
+    <parameter name="proc_type" type="string">rome</parameter>
+    <parameter name="procs_per_node" type="int">128</parameter>
+    <parameter name="threads_per_rank" type="int" mode="python">int(${procs_per_node}/${ranks_per_node})</parameter>
+    <parameter name="num_ranks" type="int" mode="python">${num_nodes}*${ranks_per_node}</parameter>
+    <parameter name="ready_file">ready</parameter>
+    <parameter name="err_file">gromacs.err</parameter>
+    <parameter name="out_file">gromacs.out</parameter>
+    <parameter name="exec">echo "Launching Gromacs on $num_nodes nodes $num_ranks_per_node ranks/node"; hostname; mpirun --map-by socket:pe=$threads_per_rank -np $num_ranks gmx_mpi mdrun -v -ntomp $threads_per_rank -maxh 0.25 -resethway -noconfout -deffnm $tpr_filename</parameter>
+</parameterset>
+```
+The parameters in `executeset` will be replaced in the Slurm template file
+
+
 ## Benchmark 1: GROMACS
 <div style="display: flex;">
-<small>
 <ul>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
 </ul>
-</small>
-<img style="height:8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </div>
 
 ```xml
@@ -294,14 +337,12 @@ Testing how to get the best performance out of your jobs
 
 ## Benchmark 2: Gadget4
 <div style="display: flex;">
-<small>
 <ul>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
-</small>
-<img style="height: 8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </div>
 
 ```xml
