@@ -3,8 +3,8 @@
 - 3:00-5:00pm
 - Zoom
 
-- [day 1: github](https://flatironinstitute.github.io/learn-sciware-dev/15_IntroGithub/slides1.html) ([source](day1.md))
-- [day 2: collaboration](https://flatironinstitute.github.io/learn-sciware-dev/15_IntroGithub/slides2.html) ([source](day2.md))
+- [day 1: github](https://flatironinstitute.github.io/sciware/15_IntroGithub/slides1.html) ([source](day1.md))
+- [day 2: collaboration](https://flatironinstitute.github.io/sciware/15_IntroGithub/slides2.html) ([source](day2.md))
 
 ## Pre-workshop prep
 

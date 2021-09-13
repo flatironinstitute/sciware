@@ -12,7 +12,7 @@
 <div class="spacer"></div>
 
 Instructions here:  
-https://flatironinstitute.github.io/learn-sciware-dev/Theme_Demo/
+https://flatironinstitute.github.io/sciware/Theme_Demo/
 
 <div class="spacer"></div>
 <div class="spacer"></div>

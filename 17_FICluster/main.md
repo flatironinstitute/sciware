@@ -2,7 +2,7 @@
 
 ## Flatiron Clusters: Performance and Efficiency
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/17_FICluster
+https://github.com/flatironinstitute/sciware/tree/main/17_FICluster
 
 
 ## Rules of Engagement
@@ -53,12 +53,11 @@ Activities where participants all actively work to foster an environment which e
 - Monitoring file systems
 
 
-
 # Running Parallel Jobs on the FI Cluster
 
 ## Slurm, Job Arrays, and disBatch
 
-How to run jobs efficiently on Flatiron's clusters
+Different ways to run parallel jobs on the Flatiron cluster
 
 
 ## Slurm
@@ -66,63 +65,25 @@ How to run jobs efficiently on Flatiron's clusters
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
-  
-<img width="30%" src="./assets/Slurm_logo.png">
+- Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
+- Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes
+- The [wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the options and what flags to use
+
+<img height="40%" src="./assets/Slurm_logo.png">
+<img height="40%" src="./assets/slurm_futurama.webp">
 
 
-## Slurm
-- Wide adoption at universities and HPC centers. The skills you learn today will be highly transferrable!
-- Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes (see the slides from earlier)
-- The [SCC Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
-
-
-## Slurm Basics
-
-- Write a "batch file" that specifies the resources your job needs, and submit it to the queue with\
-`sbatch myjob.sbatch`
-  - Nodes? Cores? Memory? Time?
-
-```bash
-# File: myjob.sbatch
-# These look like comments, but are interpreted by Slurm as sbatch flags
-#SBATCH --mem=1G
-#SBATCH --time=02:00:00
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --partition=genx
-
-conda activate myjob-env
-
-for fn in *.hdf5; do
-    ./myjob $fn
-done
-```
-
-- Submit the job to the queue with `sbatch myjob.sbatch`
-- Check the status with: `squeue`
-
-
-## Slurm Tip \#1: Estimating Resource Requirements
+## Slurm Tips
 
 - Jobs don't necessarily run in order; most run via "backfill".
   - Implication: specifying the smallest set of resources for your job will help it run sooner
   - But don't short yourself!
-- Memory requirements can be hard to assess, especially if you're running someone else's code
-
-
-## Slurm Tip \#1: Estimating Resource Requirements
-
 - How to estimate resource requirements:
-  1. Make a conservative guess based on your knowlege of the program. For scientific computing, think about the sizes of big arrays and any files being read.
-  1. Run a test job
-  1. Check the actual usage with:\
-  `sacct -j <jobid> -o MaxRSS,Elapsed`
+  - Make a conservative guess based on your knowledge of the program. For scientific computing, think about the sizes of big arrays and any files being read.
+  - Run a test job
+  - Check the actual usage with: `sacct -j 1118837 -o MaxRSS,Elapsed`
     - `MaxRSS`: maximum "resident set size", usually corresponds to the memory requirement (`#SBATCH --mem`)
     - `Elapsed`: wall-clock runtime (`#SBATCH -t`)
-
-
-## Slurm Tip \#2: Submitting Jobs
-    
 - Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
 - Trick: use `-p ccX,gen` to submit to multiple partitions.
   - In general, give Slurm the maximum flexibility to run your job
@@ -131,21 +92,15 @@ done
 ## Running Jobs in Parallel
 
 - You've written a script to post-process a simulation output
-- Have 10–10000 outputs to process
-   ```bash
-   $ ls $HOME/projname
-   my_analysis_script.py
-   $ ls /mnt/ceph/users/$USER/projname
-   output1.hdf5  output2.hdf5  output3.hdf5 [...]
-   ```
-- Each file can be processed independently
+- Have 10–1000 outputs to process
+- Each can be processed independently
 - Ready to use Rusty! ... but how?
 
 
 ## Running Jobs in Parallel
 
 - This pattern of independent parallel jobs is known as "embarrassingly parallel" or "pleasantly parallel"
-- Two good options for pleasantly parallel jobs:
+- Two good options:
   - Slurm job arrays
   - disBatch
 - Note: this job is a bad candidate for MPI
@@ -154,32 +109,31 @@ done
 
 ## Option 1: Slurm Job Arrays
 - Queues up one job per output
-- Syntax: `#SBATCH --array=1-10`, submits 10 jobs as an array
-- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
+- Syntax: `#SBATCH --array=0-9`, submits 10 jobs as an array
+- Slurm is allowed to submit each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
 
 
-## Option 1: Slurm Job Arrays
-- Recommend organizing into two scripts: `launch_slurm.sh` and `job.slurm`
+## Option 1: Slurm Job Arrays: Full Example
+- Recommend organizing into two scripts: `./launch_slurm.sh` and `job.slurm`
 ```bash
     #!/usr/bin/env bash
     # File: launch_slurm.sh
 
-    # Recommendation: keep scripts in $HOME, and data in ceph
+    # Let's say
     projdir="/mnt/ceph/${USER}/projname/"
     jobname="job1"
-    jobdir="${projdir}/${jobname}"
+    workingdir="${projdir}/${jobname}"
 
-    mkdir -p ${jobdir}
+    mkdir -p ${workingdir}
 
     # Use the "find" command to write the list of files to process, 1 per line
-    fn_list="${jobdir}/fn_list.txt"
-    find ${projdir} -name 'output*.hdf5' | sort > ${fn_list}
+    fn_list="${workingdir}/fn_list.txt"
+    find ${projdir} -name 'output*.hdf5' > ${fn_list}
     nfiles=$(wc -l < ${fn_list})
 
     # Launch a Slurm job array with ${nfiles} entries
-    sbatch --array=1-${nfiles} job.slurm ${fn_list}
+    sbatch --array=0-${nfiles} job.slurm ${fn_list}
 ```
-
 
 ```bash
     # File: job.slurm
@@ -187,7 +141,6 @@ done
     #SBATCH -p ccX,gen  # or "-p genx" if your job won't fill a node
     #SBATCH -N 1
     #SBATCH --mem=128G
-    #SBATCH -t 1:00:00
     
     # the file with the list of files to process
     fn_list=${1}
@@ -198,7 +151,6 @@ done
     # get the line of the file belonging to this job
     fn=$(tail -n+${i} ${fn_list} | head -n1)
     
-    echo "About to process ${fn}"
     ./my_analysis_script.py ${fn}
 ```
 
@@ -210,65 +162,10 @@ done
   - Launch a job array with N jobs
   - Have each job get the i-th line in the file
   - Execute our science script with that file
-- Why write a list of files when each Slurm job could run its own `find`?
-    - Just to be sure that all jobs agree on the division of work (file sorting, files appearing or disappearing, etc)
 
 
 ## Option 2: disBatch
-- What if jobs take a variable amount of time?
-  - The job array approach forces you to request the longest runtime of any single job
-- What if a job in the job array fails?
-  - Resubmitting requires a manual post-mortem
-- disBatch is a Slurm-aware dynamic dispatch mechanism that also has nice task tracking, addressing both of the above problems
-  - Developed here at Flatiron: https://github.com/flatironinstitute/disBatch
 
-
-## Option 2: disBatch
-- Write a "task file" with one command-line command per line:
-```bash
-# File: jobs.disbatch
-./my_analysis_script.py output1.hdf5
-./my_analysis_script.py output2.hdf5
-```
-- Simplify as:
-```bash
-# File: jobs.disbatch
-#DISBATCH PREFIX ./my_analysis_script.py
-output1.hdf5
-output2.hdf5
-```
-- Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
-`sbatch [...] --wrap "disBatch jobs.disbatch"`
-
-
-## Option 2: disBatch
-```bash
-#!/usr/bin/env bash
-# File: submit_disbatch.sh
-
-nnodes=4
-cpus_per_task=8
-mem_per_node=256G
-
-projdir="/mnt/ceph/${USER}/projname/"
-jobname="job1"
-jobdir="${projdir}/${jobname}"
-taskfn="${jobdir}/tasks.disbatch"
-
-# Build the task file
-echo "#DISBATCH PREFIX ./my_analysis_script.py" > ${taskfn}
-find ${projdir} -name 'output*.hdf5' | sort >> ${taskfn}
-
-# Submit the Slurm job
-sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
-    --wrap "disBatch ${taskfn}"
-```
-
-
-## Option 2: disBatch
-- When the job runs, it will write a `status.txt` file, one line per task
-- Resubmit any jobs that failed with:\
-`disBatch -r status.txt -R`
 
 
 ## Comparison: Job Arrays and disBatch
@@ -288,7 +185,7 @@ sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
     
 - disBatch
   - Advantages
-    - Dynamic scheduling handles variable-length jobs
+    - Dynamic scheduling ensures jobs 
     - Status file of successful and failed jobs
     - Easy retries of failed jobs
     - Slurm just sees a single big job, which sometimes can go through faster than many small jobs
@@ -299,13 +196,8 @@ sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
 
 
 ## Summary of Parallel Jobs
-- Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
-- For these jobs, Slurm job arrays or disBatch are preferable over MPI
-- Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
-  - Status file, easy retries, and scalability to 10K+ jobs
-  
-<img width="30%" src="./assets/slurm_futurama.webp">
-
+- Personally, I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
+  - Status file, easy retries, and scalability to 100K+ jobs
 
 
 # Benchmarking
@@ -329,7 +221,7 @@ Testing how to get the best performance out of your jobs
 
 ## When to benchmark?
 
-- Before you type `sbatch --time=a-very-long-time`
+- Before you type `sbatch --time=a-lot!`
 - For new projects
 - For known projects: batch scripts are not "one size fits all"
   - Especially if your scripts come from another HPC center
@@ -368,10 +260,66 @@ Testing how to get the best performance out of your jobs
 1. While running with a batch scheduler:
   - `jube continue mybenchmark --id=N`: status
   - `jube result mybenchmark --id=N`  : partial results
-  - `jube analyse mybenchmark --id=N` : update results
 1. Once finished, get the complete results:
   - Formatted table: `jube result mybenchmark --id=N`
   - CSV: `jube result mybenchmark --id=N -s csv`
+
+
+## JUBE Configuration Files (1)
+
+- XML Structure:
+  1. Benchmark configuration: number of nodes, input files
+    - Inputs can be dynamic (python, shell)
+  1. Execution configuration: processor type, runtime
+    - Execution can be through a batch scheduler
+  1. Benchmark definition: which steps to run, in what order
+  1. Regular expressions to extract results
+  1. Results printing: inputs, outputs, in what order
+- If needed, templates for other files, filled at runtime
+  - batch scheduler job
+  - input parameter files
+
+
+## JUBE Configuration Files (2)
+Parameter sets: NAS Parallel Benchmarks, single node
+```xml
+<parameterset name="param_set"> <!-- Benchmark configuration -->
+    <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
+    <parameter name="class" type="string">A,B,C,D</parameter>
+</parameterset>
+<parameterset name="executeset"> <!-- Slurm job configuration -->
+    <parameter name="submit_cmd">sbatch</parameter>
+    <parameter name="job_file">npb_mpi.run</parameter>
+    <parameter name="max_num_ranks_per_node" type="int">128</parameter>
+    <parameter name="exec">num_ranks=1; 
+        while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
+            mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; 
+            num_ranks=$$[$$num_ranks*2];
+        done
+    </parameter>
+</parameterset>
+```
+
+
+## JUBE Configuration Files (3)
+Analysis and results
+```xml
+<patternset name="pattern"><!-- Regex pattern -->
+    <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
+    <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
+    <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
+</patternset>
+<result><!-- Create result table -->
+    <use>analyse</use>
+    <table name="result" style="csv" sort="kernel,class,num_ranks_used">
+        <column>kernel</column>
+        <column>class</column>
+        <column>num_ranks_used</column>
+        <column>time_in_seconds</column>
+        <column>mflops</column>
+    </table>
+</result>
+```
 
 
 ## Benchmark 1: GROMACS
@@ -380,24 +328,24 @@ Testing how to get the best performance out of your jobs
 <ul>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
-<li>GROMACS can be told to stop after _N_ minutes</li>
+<li>GROMACS can be told to stop after <i>N</i> minutes</li>
+System courtesy Sonya Hanson (CCB)
 </ul>
-<img style="height=8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+<img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
 </div>
 
 ```xml
-    <parameterset name="param_set">
-        <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
-        <parameter name="ranks_per_node">128,64,32,16</parameter>
-    </parameterset>
-    <parameterset name="execute_set">
-        <parameter name="cores_per_node">128</parameter>
-        <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
-        <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
-    </parameterset>
+<parameterset name="param_set">
+    <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
+    <parameter name="ranks_per_node">128,64,32,16</parameter>
+</parameterset>
+<parameterset name="execute_set">
+    <parameter name="cores_per_node">128</parameter>
+    <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
+    <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
+</parameterset>
 ```
-<small>System courtesy Sonya Hanson (CCB)</small>
 
 
 ## Benchmark 2: Gadget4
@@ -407,33 +355,30 @@ Testing how to get the best performance out of your jobs
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
+Simulation config courtesy Yin Li (CCA)
 </ul>
-<img style="height=8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+<img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
 </div>
 
 ```xml
-    <parameterset name="param_set">
-        <parameter name="num_nodes">1,2,4,8,16</parameter>
-    </parameterset>
-    <parameterset name="compile_set">
-        <parameter name="lookchain">gcc_openmpi, intel</parameter>
-        <parameter name="compiler">
-          { "gcc_openmpi" : "gcc/7.4.0",
-            "intel"       : "intel/compiler/2017-4" }
-        </parameter>
-        <parameter name="mpi_library">
-          { "gcc_openmpi" : "openmpi4/4.0.5",
-            "intel"       : "intel/mpi/2017-4" }
-        </parameter>
-    </parameterset>
+<parameterset name="compile_set">
+    <parameter name="toolchain">gcc_openmpi, intel</parameter>
+    <parameter name="compiler">
+      { "gcc_openmpi" : "gcc/7.4.0",
+        "intel"       : "intel/compiler/2017-4" }
+    </parameter>
+    <parameter name="mpi_library">
+      { "gcc_openmpi" : "openmpi4/4.0.5",
+        "intel"       : "intel/mpi/2017-4" }
+    </parameter>
+</parameterset>
 ```
-<small>Simulation config courtesy Yin Li (CCA)</small>
 
 
 ## Benchmarking: conclusion
 
-- Try and benchmark when you are starting a new large project
+- Try and benchmark when you are starting a new large project on the FI machines
 - Using a toolkit like JUBE can simplify your work
 - For examples: https://github.com/gkrawezik/BENCHMARKS
 

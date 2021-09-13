@@ -4,7 +4,7 @@
 - 3:00-5:00pm
 - Zoom
 
-- [slides](https://flatironinstitute.github.io/learn-sciware-dev/16_EditorsVSCode/slides.html) ([source](main.md))
+- [slides](https://flatironinstitute.github.io/sciware/16_EditorsVSCode/slides.html) ([source](main.md))
 
 ## Pre-workshop prep
 

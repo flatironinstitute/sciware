@@ -13,6 +13,7 @@
 body {
   background: #fff;
   background-color: #fff;
+  -webkit-text-size-adjust: 200%;
 }
 
 .reveal {
@@ -67,19 +68,6 @@ body {
 
 .reveal h1 {
   text-shadow: none;
-}
-
-.landing h1,
-.landing h2 {
-  margin: 0 0 20px 0;
-  color: #537eba;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  line-height: 1.2;
-  letter-spacing: normal;
-  text-transform: none;
-  text-shadow: none;
-  word-wrap: break-word;
 }
 
 /*********************************************
@@ -377,7 +365,7 @@ body:before {
 }
 
 body:after {
-  content: url("https://raw.githubusercontent.com/flatironinstitute/learn-sciware-dev/main/Theme_Demo/assets/sciware-final-footer.png");
+  content: url("/sciware/Theme_Demo/assets/sciware-final-footer.png");
   position: fixed;
   bottom: 30px;
   left: 177px;
