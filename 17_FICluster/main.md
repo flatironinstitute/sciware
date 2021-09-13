@@ -270,55 +270,75 @@ Testing how to get the best performance out of your jobs
 
 - XML Structure:
   - Benchmark configuration: number of nodes, input files
-    - Inputs can be calculated dynamically (python, shell)
+    - Inputs can be dynamic (python, shell)
   - Execution configuration: processor type, runtime
     - Execution can be through a batch scheduler
   - Benchmark definition: which steps to run, in what order
-  - Results regular expressions: JUBE provides simple patterns to read float, int
-  - Results printing: which inputs to show, with outputs, in what order
-- If needed, templates for other files, they will be filled at runtime
+  - Results regular expressions
+  - Results printing: inputs, outputs, in what order
+- If needed, templates for other files, filled at runtime
   - batch scheduler job
   - input parameter files
 
 
-## JUBE Configuration Files (2): parameter sets
-
+## JUBE Configuration Files (2):
+Parameter sets: NAS Parallel Benchmarks, single node
 ```xml
+<benchmark name="npb3.4.1" outpath="bench_npb_run_mpi_singlenode">
 <!-- Benchmark configuration -->
 <parameterset name="param_set">
-    <parameter name="num_nodes" type="int">1,2,3,4,5,6,7,8,9,10</parameter>
-    <parameter name="num_ranks_per_node" type="int">128,64,32,16</parameter>
-    <parameter name="tpr_filename" type="string">lignocellulose-rf.BGQ, step7_1, box_of_water_11nm</parameter>
+    <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
+    <parameter name="class" type="string">A,B,C,D</parameter>
 </parameterset>
     
 <!-- Job configuration -->
 <parameterset name="executeset">
     <parameter name="submit_cmd">sbatch</parameter>
-    <parameter name="job_file">gromacs_mpi.run</parameter>
-    <parameter name="nodes" type="int">$num_nodes</parameter>
+    <parameter name="job_file">npb_mpi.run</parameter>
     <parameter name="walltime">00:20:00</parameter>
-    <parameter name="ranks_per_node" type="int">$num_ranks_per_node</parameter>
     <parameter name="proc_type" type="string">rome</parameter>
-    <parameter name="procs_per_node" type="int">128</parameter>
-    <parameter name="threads_per_rank" type="int" mode="python">int(${procs_per_node}/${ranks_per_node})</parameter>
-    <parameter name="num_ranks" type="int" mode="python">${num_nodes}*${ranks_per_node}</parameter>
-    <parameter name="ready_file">ready</parameter>
-    <parameter name="err_file">gromacs.err</parameter>
-    <parameter name="out_file">gromacs.out</parameter>
-    <parameter name="exec">echo "Launching Gromacs on $num_nodes nodes $num_ranks_per_node ranks/node"; hostname; mpirun --map-by socket:pe=$threads_per_rank -np $num_ranks gmx_mpi mdrun -v -ntomp $threads_per_rank -maxh 0.25 -resethway -noconfout -deffnm $tpr_filename</parameter>
+    <parameter name="max_num_ranks_per_node" type="int">128</parameter>
+    <parameter name="err_file">npb.err</parameter>
+    <parameter name="out_file">npb.out</parameter>
+    <parameter name="exec">num_ranks=1; while [ $$num_ranks -le ${max_num_ranks_per_node} ]; do echo "Launching $kernel on $$num_ranks cores"; hostname; mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; num_ranks=$$[$$num_ranks*2]; done</parameter>
 </parameterset>
 ```
-The parameters in `executeset` will be replaced in the Slurm template file
+<small>The parameters in `executeset` will be replaced in the Slurm template file</small>
 
+
+# JUBE Configuration Files (3)
+Analysis and results
+```xml
+<!-- Regex pattern -->
+<patternset name="pattern">
+    <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
+    <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
+    <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
+</patternset>
+
+<!-- Create result table -->
+<result>
+    <use>analyse</use>
+    <table name="result" style="csv" sort="kernel,class,num_ranks_used">
+        <column>kernel</column>
+        <column>class</column>
+        <column>num_ranks_used</column>
+        <column>time_in_seconds</column>
+        <column>mflops</column>
+    </table>
+</result>
+```
 
 ## Benchmark 1: GROMACS
 <div style="display: flex;">
+<small>
 <ul>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
 </ul>
 <img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+</small>
 </div>
 
 ```xml
@@ -337,12 +357,14 @@ The parameters in `executeset` will be replaced in the Slurm template file
 
 ## Benchmark 2: Gadget4
 <div style="display: flex;">
+<small>
 <ul>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
 <img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+</small>
 </div>
 
 ```xml
