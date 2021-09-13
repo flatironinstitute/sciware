@@ -53,11 +53,12 @@ Activities where participants all actively work to foster an environment which e
 - Monitoring file systems
 
 
+
 # Running Parallel Jobs on the FI Cluster
 
 ## Slurm, Job Arrays, and disBatch
 
-Different ways to run parallel jobs on the Flatiron cluster
+How to run jobs efficiently on Flatiron's clusters
 
 
 ## Slurm
@@ -65,25 +66,63 @@ Different ways to run parallel jobs on the Flatiron cluster
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
+  
+<img width="30%" src="./assets/Slurm_logo.png">
+
+
+## Slurm
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
-- Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes
-- The [wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the options and what flags to use
-
-<img height="40%" src="./assets/Slurm_logo.png">
-<img height="40%" src="./assets/slurm_futurama.webp">
+- Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes (see the slides from earlier)
+- The [SCC Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
 
 
-## Slurm Tips
+## Slurm Basics
+
+- Write a "batch file" that specifies the resources your job needs, and submit it to the queue with\
+`sbatch myjob.sbatch`
+  - Nodes? Cores? Memory? Time?
+
+```bash
+# File: myjob.sbatch
+# These look like comments, but are interpreted by Slurm as sbatch flags
+#SBATCH --mem=1G
+#SBATCH --time=02:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=genx
+
+conda activate myjob-env
+
+for fn in *.hdf5; do
+    ./myjob $fn
+done
+```
+
+- Submit the job to the queue with `sbatch myjob.sbatch`
+- Check the status with: `squeue`
+
+
+## Slurm Tip \#1: Estimating Resource Requirements
 
 - Jobs don't necessarily run in order; most run via "backfill".
   - Implication: specifying the smallest set of resources for your job will help it run sooner
   - But don't short yourself!
+- Memory requirements can be hard to assess, especially if you're running someone else's code
+
+
+## Slurm Tip \#1: Estimating Resource Requirements
+
 - How to estimate resource requirements:
-  - Make a conservative guess based on your knowledge of the program. For scientific computing, think about the sizes of big arrays and any files being read.
-  - Run a test job
-  - Check the actual usage with: `sacct -j 1118837 -o MaxRSS,Elapsed`
+  1. Make a conservative guess based on your knowledge of the program. For scientific computing, think about the sizes of big arrays and any files being read.
+  1. Run a test job
+  1. Check the actual usage with:\
+  `sacct -j <jobid> -o MaxRSS,Elapsed`
     - `MaxRSS`: maximum "resident set size", usually corresponds to the memory requirement (`#SBATCH --mem`)
     - `Elapsed`: wall-clock runtime (`#SBATCH -t`)
+
+
+## Slurm Tip \#2: Submitting Jobs
+    
 - Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
 - Trick: use `-p ccX,gen` to submit to multiple partitions.
   - In general, give Slurm the maximum flexibility to run your job
@@ -92,15 +131,21 @@ Different ways to run parallel jobs on the Flatiron cluster
 ## Running Jobs in Parallel
 
 - You've written a script to post-process a simulation output
-- Have 10–1000 outputs to process
-- Each can be processed independently
+- Have 10–10000 outputs to process
+   ```bash
+   $ ls $HOME/projname
+   my_analysis_script.py
+   $ ls /mnt/ceph/users/$USER/projname
+   output1.hdf5  output2.hdf5  output3.hdf5 [...]
+   ```
+- Each file can be processed independently
 - Ready to use Rusty! ... but how?
 
 
 ## Running Jobs in Parallel
 
 - This pattern of independent parallel jobs is known as "embarrassingly parallel" or "pleasantly parallel"
-- Two good options:
+- Two good options for pleasantly parallel jobs:
   - Slurm job arrays
   - disBatch
 - Note: this job is a bad candidate for MPI
@@ -109,31 +154,32 @@ Different ways to run parallel jobs on the Flatiron cluster
 
 ## Option 1: Slurm Job Arrays
 - Queues up one job per output
-- Syntax: `#SBATCH --array=0-9`, submits 10 jobs as an array
-- Slurm is allowed to submit each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
+- Syntax: `#SBATCH --array=1-10`, submits 10 jobs as an array
+- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
 
 
-## Option 1: Slurm Job Arrays: Full Example
-- Recommend organizing into two scripts: `./launch_slurm.sh` and `job.slurm`
+## Option 1: Slurm Job Arrays
+- Recommend organizing into two scripts: `launch_slurm.sh` and `job.slurm`
 ```bash
     #!/usr/bin/env bash
     # File: launch_slurm.sh
 
-    # Let's say
+    # Recommendation: keep scripts in $HOME, and data in ceph
     projdir="/mnt/ceph/${USER}/projname/"
     jobname="job1"
-    workingdir="${projdir}/${jobname}"
+    jobdir="${projdir}/${jobname}"
 
-    mkdir -p ${workingdir}
+    mkdir -p ${jobdir}
 
     # Use the "find" command to write the list of files to process, 1 per line
-    fn_list="${workingdir}/fn_list.txt"
-    find ${projdir} -name 'output*.hdf5' > ${fn_list}
+    fn_list="${jobdir}/fn_list.txt"
+    find ${projdir} -name 'output*.hdf5' | sort > ${fn_list}
     nfiles=$(wc -l < ${fn_list})
 
     # Launch a Slurm job array with ${nfiles} entries
-    sbatch --array=0-${nfiles} job.slurm ${fn_list}
+    sbatch --array=1-${nfiles} job.slurm ${fn_list}
 ```
+
 
 ```bash
     # File: job.slurm
@@ -141,6 +187,7 @@ Different ways to run parallel jobs on the Flatiron cluster
     #SBATCH -p ccX,gen  # or "-p genx" if your job won't fill a node
     #SBATCH -N 1
     #SBATCH --mem=128G
+    #SBATCH -t 1:00:00
     
     # the file with the list of files to process
     fn_list=${1}
@@ -151,6 +198,7 @@ Different ways to run parallel jobs on the Flatiron cluster
     # get the line of the file belonging to this job
     fn=$(tail -n+${i} ${fn_list} | head -n1)
     
+    echo "About to process ${fn}"
     ./my_analysis_script.py ${fn}
 ```
 
@@ -163,11 +211,64 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Have each job get the i-th line in the file
   - Execute our science script with that file
 - Why write a list of files when each Slurm job could run its own `find`?
-    - Just to be sure that if new files appear, jobs don't fail
+    - Just to be sure that all jobs agree on the division of work (file sorting, files appearing or disappearing, etc)
 
 
 ## Option 2: disBatch
+- What if jobs take a variable amount of time?
+  - The job array approach forces you to request the longest runtime of any single job
+- What if a job in the job array fails?
+  - Resubmitting requires a manual post-mortem
+- disBatch is a Slurm-aware dynamic dispatch mechanism that also has nice task tracking, addressing both of the above problems
+  - Developed here at Flatiron: https://github.com/flatironinstitute/disBatch
 
+
+## Option 2: disBatch
+- Write a "task file" with one command-line command per line:
+```bash
+# File: jobs.disbatch
+./my_analysis_script.py output1.hdf5
+./my_analysis_script.py output2.hdf5
+```
+- Simplify as:
+```bash
+# File: jobs.disbatch
+#DISBATCH PREFIX ./my_analysis_script.py
+output1.hdf5
+output2.hdf5
+```
+- Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
+`sbatch [...] --wrap "disBatch jobs.disbatch"`
+
+
+## Option 2: disBatch
+```bash
+#!/usr/bin/env bash
+# File: submit_disbatch.sh
+
+nnodes=4
+cpus_per_task=8
+mem_per_node=256G
+
+projdir="/mnt/ceph/${USER}/projname/"
+jobname="job1"
+jobdir="${projdir}/${jobname}"
+taskfn="${jobdir}/tasks.disbatch"
+
+# Build the task file
+echo "#DISBATCH PREFIX ./my_analysis_script.py" > ${taskfn}
+find ${projdir} -name 'output*.hdf5' | sort >> ${taskfn}
+
+# Submit the Slurm job
+sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
+    --wrap "disBatch ${taskfn}"
+```
+
+
+## Option 2: disBatch
+- When the job runs, it will write a `status.txt` file, one line per task
+- Resubmit any jobs that failed with:\
+`disBatch -r status.txt -R`
 
 
 ## Comparison: Job Arrays and disBatch
@@ -187,7 +288,7 @@ Different ways to run parallel jobs on the Flatiron cluster
     
 - disBatch
   - Advantages
-    - Dynamic scheduling ensures jobs 
+    - Dynamic scheduling handles variable-length jobs
     - Status file of successful and failed jobs
     - Easy retries of failed jobs
     - Slurm just sees a single big job, which sometimes can go through faster than many small jobs
@@ -198,8 +299,13 @@ Different ways to run parallel jobs on the Flatiron cluster
 
 
 ## Summary of Parallel Jobs
-- Personally, I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
-  - Status file, easy retries, and scalability to 100K+ jobs
+- Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
+- For these jobs, Slurm job arrays or disBatch are preferable over MPI
+- Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
+  - Status file, easy retries, and scalability to 10K+ jobs
+  
+<img width="30%" src="./assets/slurm_futurama.webp">
+
 
 
 # Benchmarking
