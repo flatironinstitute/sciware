@@ -365,7 +365,7 @@ body:before {
 }
 
 body:after {
-  content: url("https://raw.githubusercontent.com/flatironinstitute/learn-sciware-dev/main/Theme_Demo/assets/sciware-final-footer.png");
+  content: url("/sciware/main/Theme_Demo/assets/sciware-final-footer.png");
   position: fixed;
   bottom: 30px;
   left: 177px;

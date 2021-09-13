@@ -31,6 +31,6 @@ and collaborators.</p>
 Many of the recordings from past events are available on our Vimeo Sciware
 channel [https://vimeo.com/showcase/sciware, password: "flatiron"] and the
 materials are available in the Sciware Github repository
-[https://github.com/flatironinstitute/learn-sciware-dev].  There is also a
+[https://github.com/flatironinstitute/sciware].  There is also a
 #sciware channel on the Simons Foundation Slack that everyone is encouraged to
 join and ask questions, share knowledge, or request code reviews.
