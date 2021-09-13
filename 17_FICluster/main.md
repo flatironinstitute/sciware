@@ -273,7 +273,7 @@ Testing how to get the best performance out of your jobs
   1. Execution configuration: processor type, runtime
     - Execution can be through a batch scheduler
   1. Benchmark definition: which steps to run, in what order
-  1. Results regular expressions
+  1. Regular expressions to extract results
   1. Results printing: inputs, outputs, in what order
 - If needed, templates for other files, filled at runtime
   - batch scheduler job
@@ -287,7 +287,6 @@ Parameter sets: NAS Parallel Benchmarks, single node
     <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
     <parameter name="class" type="string">A,B,C,D</parameter>
 </parameterset>
-    
 <parameterset name="executeset"> <!-- Slurm job configuration -->
     <parameter name="submit_cmd">sbatch</parameter>
     <parameter name="job_file">npb_mpi.run</parameter>
@@ -310,7 +309,6 @@ Analysis and results
     <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
     <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
 </patternset>
-
 <result><!-- Create result table -->
     <use>analyse</use>
     <table name="result" style="csv" sort="kernel,class,num_ranks_used">
@@ -330,9 +328,9 @@ Analysis and results
 <ul>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
-<li>GROMACS can be told to stop after _N_ minutes</li>
-</ul>
+<li>GROMACS can be told to stop after <i>N</i> minutes</li>
 System courtesy Sonya Hanson (CCB)
+</ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
 </div>
@@ -357,8 +355,8 @@ System courtesy Sonya Hanson (CCB)
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
-</ul>
 Simulation config courtesy Yin Li (CCA)
+</ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
 </div>
