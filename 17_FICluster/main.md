@@ -268,13 +268,13 @@ Testing how to get the best performance out of your jobs
 ## JUBE Configuration Files (1)
 
 - XML Structure:
-  - Benchmark configuration: number of nodes, input files
+  1. Benchmark configuration: number of nodes, input files
     - Inputs can be dynamic (python, shell)
-  - Execution configuration: processor type, runtime
+  1. Execution configuration: processor type, runtime
     - Execution can be through a batch scheduler
-  - Benchmark definition: which steps to run, in what order
-  - Results regular expressions
-  - Results printing: inputs, outputs, in what order
+  1. Benchmark definition: which steps to run, in what order
+  1. Results regular expressions
+  1. Results printing: inputs, outputs, in what order
 - If needed, templates for other files, filled at runtime
   - batch scheduler job
   - input parameter files
@@ -291,8 +291,6 @@ Parameter sets: NAS Parallel Benchmarks, single node
 <parameterset name="executeset"> <!-- Slurm job configuration -->
     <parameter name="submit_cmd">sbatch</parameter>
     <parameter name="job_file">npb_mpi.run</parameter>
-    <parameter name="walltime">00:20:00</parameter>
-    <parameter name="proc_type" type="string">rome</parameter>
     <parameter name="max_num_ranks_per_node" type="int">128</parameter>
     <parameter name="exec">num_ranks=1; 
         while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
@@ -334,6 +332,7 @@ Analysis and results
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after _N_ minutes</li>
 </ul>
+System courtesy Sonya Hanson (CCB)
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
 </div>
@@ -349,7 +348,6 @@ Analysis and results
     <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
 </parameterset>
 ```
-<small>System courtesy Sonya Hanson (CCB)</small>
 
 
 ## Benchmark 2: Gadget4
@@ -360,6 +358,7 @@ Analysis and results
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
+Simulation config courtesy Yin Li (CCA)
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
 </div>
@@ -377,12 +376,11 @@ Analysis and results
     </parameter>
 </parameterset>
 ```
-<small>Simulation config courtesy Yin Li (CCA)</small>
 
 
 ## Benchmarking: conclusion
 
-- Try and benchmark when you are starting a new large project
+- Try and benchmark when you are starting a new large project on the FI machines
 - Using a toolkit like JUBE can simplify your work
 - For examples: https://github.com/gkrawezik/BENCHMARKS
 
