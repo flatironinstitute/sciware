@@ -281,32 +281,29 @@ Testing how to get the best performance out of your jobs
   - input parameter files
 
 
-## JUBE Configuration Files (2):
+## JUBE Configuration Files (2)
 Parameter sets: NAS Parallel Benchmarks, single node
 ```xml
-<benchmark name="npb3.4.1" outpath="bench_npb_run_mpi_singlenode">
-<!-- Benchmark configuration -->
-<parameterset name="param_set">
+<parameterset name="param_set"> <!-- Benchmark configuration -->
     <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
     <parameter name="class" type="string">A,B,C,D</parameter>
 </parameterset>
     
-<!-- Job configuration -->
-<parameterset name="executeset">
+<parameterset name="executeset"> <-- Job configuration -->
     <parameter name="submit_cmd">sbatch</parameter>
     <parameter name="job_file">npb_mpi.run</parameter>
     <parameter name="walltime">00:20:00</parameter>
     <parameter name="proc_type" type="string">rome</parameter>
     <parameter name="max_num_ranks_per_node" type="int">128</parameter>
-    <parameter name="err_file">npb.err</parameter>
-    <parameter name="out_file">npb.out</parameter>
-    <parameter name="exec">num_ranks=1; while [ $$num_ranks -le ${max_num_ranks_per_node} ]; do echo "Launching $kernel on $$num_ranks cores"; hostname; mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; num_ranks=$$[$$num_ranks*2]; done</parameter>
+    <parameter name="exec">num_ranks=1; while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
+        mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; num_ranks=$$[$$num_ranks*2];
+    done</parameter>
 </parameterset>
 ```
 <small>The parameters in `executeset` will be replaced in the Slurm template file</small>
 
 
-# JUBE Configuration Files (3)
+## JUBE Configuration Files (3)
 Analysis and results
 ```xml
 <!-- Regex pattern -->
@@ -328,6 +325,7 @@ Analysis and results
     </table>
 </result>
 ```
+
 
 ## Benchmark 1: GROMACS
 <div style="display: flex;">
@@ -363,7 +361,7 @@ Analysis and results
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
 </ul>
-<img style="margin: 0 0 0 2em; height: 14em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+<img style="margin: 0 0 0 2em; height: 12em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
 </div>
 
