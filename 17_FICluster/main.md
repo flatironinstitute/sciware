@@ -202,6 +202,136 @@ Different ways to run parallel jobs on the Flatiron cluster
   - Status file, easy retries, and scalability to 100K+ jobs
 
 
+# Benchmarking
+
+## Why, when, what, and how?
+
+Testing how to get the best performance out of your jobs
+
+
+## Why benchmarking?
+
+- Use the resources more efficiently
+- Are you sure you are running optimally?
+  - What processor architecture?
+  - Which libraries? (eg: OpenBLAS vs MKL)
+  - What MPI ranks / OpenMP threads ratio?
+  - How many nodes for a given problem size?
+- A 15 minutes benchmark can help your week-long computation get you more results
+  - Or reduce it to a day-long computation!
+
+
+## When to benchmark?
+
+- Before you type `sbatch --time=a-very-long-time`
+- For new projects
+- For known projects: batch scripts are not "one size fits all"
+  - Especially if your scripts come from another HPC center
+  - Even locally we have very diverse machines!
+  - New software versions can mean new configuration
+
+
+## What to benchmark?
+
+- Find something that can:
+  - Represent your whole run in a short period of time
+  - eg: a couple of iterations instead of 1000s of them
+  - Use the same configuration you intend to use in production
+- Be weary of "toy benchmarks":
+  - They might benefit from requiring less memory, I/O, ...
+  - If possible run with your real problem, but not to completion!
+
+
+## How to benchmark?
+  
+- Domain-specific benchmarking tools
+  - [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
+- Generic frameworks
+  - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
+- These environments will let you:
+  - Explore a space of different parameters
+  - Easily read/format/export results
+  - Produce scaling results for articles
+  - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
+
+
+## Using JUBE 
+
+1. Create an XML (or YAML) file describing the benchmark
+1. Launch using `jube run mybenchmark.xml`
+1. While running with a batch scheduler:
+  - `jube continue mybenchmark --id=N`: status
+  - `jube result mybenchmark --id=N`  : partial results
+  - `jube analyse mybenchmark --id=N` : update results
+1. Once finished, get the complete results:
+  - Formatted table: `jube result mybenchmark --id=N`
+  - CSV: `jube result mybenchmark --id=N -s csv`
+
+
+## Benchmark 1: GROMACS
+<div style="display: flex;">
+<small>
+<ul>
+<li>How many nodes to use?</li>
+<li>How to distribute threads/ranks inside nodes?</li>
+<li>GROMACS can be told to stop after _N_ minutes</li>
+</ul>
+<img style="height=8em; float: right" src="./assets/benchmarking/jube_gromacs.png">
+</small>
+</div>
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
+        <parameter name="ranks_per_node">128,64,32,16</parameter>
+    </parameterset>
+    <parameterset name="execute_set">
+        <parameter name="cores_per_node">128</parameter>
+        <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
+        <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
+    </parameterset>
+```
+<small>System courtesy Sonya Hanson (CCB)</small>
+
+
+## Benchmark 2: Gadget4
+<div style="display: flex;">
+<small>
+<ul>
+<li>Compare Intel MPI with OpenMPI</li>
+<li>Weak scaling for a given problem type</li>
+<li>Smulation stopped after a few iterations</li>
+</ul>
+<img style="height=8em; float: right" src="./assets/benchmarking/jube_gadget4.png">
+</small>
+</div>
+
+```xml
+    <parameterset name="param_set">
+        <parameter name="num_nodes">1,2,4,8,16</parameter>
+    </parameterset>
+    <parameterset name="compile_set">
+        <parameter name="lookchain">gcc_openmpi, intel</parameter>
+        <parameter name="compiler">
+          { "gcc_openmpi" : "gcc/7.4.0",
+            "intel"       : "intel/compiler/2017-4" }
+        </parameter>
+        <parameter name="mpi_library">
+          { "gcc_openmpi" : "openmpi4/4.0.5",
+            "intel"       : "intel/mpi/2017-4" }
+        </parameter>
+    </parameterset>
+```
+<small>Simulation config courtesy Yin Li (CCA)</small>
+
+
+## Benchmarking: conclusion
+
+- Try and benchmark when you are starting a new large project
+- Using a toolkit like JUBE can simplify your work
+- For examples: https://github.com/gkrawezik/BENCHMARKS
+
+
 # Survey
 
 https://bit.ly/???
