@@ -29,7 +29,7 @@ Activities where participants all actively work to foster an environment which e
 ## Zoom Specific
 
 - If comfortable, please keep video on so we can all see each other's faces.
-- Ok to break in for quick, clarifying questions.
+- OK to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
 - Please stay muted if not speaking. (Host may mute you.)
 - We are recording. Link will be posted on #sciware Slack.
@@ -37,20 +37,20 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Chat & office hour: (TBD)
-- Blender tutorial for scientific visualization animations (DATE?)
+- Chat & office hour (TBD)
+- Oct 21: An introduction to scientific visualization with Blender (Brian Kent, NRAO)
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's agenda
 
-- Hardware + file systems overview
-- Modules
+- Cluster overview
 - Slurm and parallelization
-  - Workshop: Share your workflow.
-- Monitoring jobs
-  - Workshop: Find a job, analyze it, look at SlurmUtil. - Slideo
-- Monitoring file systems
+- Modules and software
+- Filesystems and storage
+- Performance and benchmarking
+- Activity: monitoring jobs
+- Reception (roof)
 
 
 
@@ -307,6 +307,10 @@ sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
     - Status file, easy retries, and scalability to 10K+ jobs
   
 <img width="20%" src="./assets/slurm_futurama.webp">
+
+
+
+# Modules & software
 
 
 
