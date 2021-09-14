@@ -113,19 +113,20 @@ done
 ## Slurm Tip \#1: Estimating Resource Requirements
 
 - How to estimate resource requirements:
-  1. Make a conservative guess based on your knowledge of the program. For scientific computing, think about the sizes of big arrays and any files being read.
+  1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read.
   1. Run a test job
-  1. Check the actual usage with:\
+  1. Check the actual usage of the test job with:\
   `sacct -j <jobid> -o MaxRSS,Elapsed`
-    - `MaxRSS`: maximum "resident set size", usually corresponds to the memory requirement (`#SBATCH --mem`)
+    - `MaxRSS`: maximum "resident set size", the amount of memory used (`#SBATCH --mem`)
     - `Elapsed`: wall-clock runtime (`#SBATCH -t`)
 
 
-## Slurm Tip \#2: Submitting Jobs
+## Slurm Tip \#2: Choosing a Partition
     
-- Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
-- Trick: use `-p ccX,gen` to submit to multiple partitions.
+- Use `-p ccX,gen` to submit to multiple partitions.
   - In general, give Slurm the maximum flexibility to run your job
+- Remember: the center and general partitions (`ccx` and `gen`) allocate a whole node to you
+- If your job doesn't use a whole node, it will get scheduled faster in the `genx` partition (allows multiple jobs per node)
 
 
 ## Running Jobs in Parallel
@@ -133,13 +134,14 @@ done
 - You've written a script to post-process a simulation output
 - Have 10–10000 outputs to process
    ```bash
-   $ ls $HOME/projname
+   $ ls $HOME/myproj
    my_analysis_script.py
-   $ ls /mnt/ceph/users/$USER/projname
+   $ ls /mnt/ceph/users/$USER/myproj
    output1.hdf5  output2.hdf5  output3.hdf5 [...]
    ```
 - Each file can be processed independently
 - Ready to use Rusty! ... but how?
+- Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
 
 
 ## Running Jobs in Parallel
@@ -153,7 +155,8 @@ done
 
 
 ## Option 1: Slurm Job Arrays
-- Queues up one job per output
+- Queues up multiple identical jobs
+  - In this case, one per output
 - Syntax: `#SBATCH --array=1-10`, submits 10 jobs as an array
 - Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
 
@@ -165,7 +168,7 @@ done
     # File: launch_slurm.sh
 
     # Recommendation: keep scripts in $HOME, and data in ceph
-    projdir="/mnt/ceph/${USER}/projname/"
+    projdir="/mnt/ceph/${USER}/myproj/"  # data dir with output*.hdf5
     jobname="job1"
     jobdir="${projdir}/${jobname}"
 
@@ -219,7 +222,8 @@ done
   - The job array approach forces you to request the longest runtime of any single job
 - What if a job in the job array fails?
   - Resubmitting requires a manual post-mortem
-- disBatch is a Slurm-aware dynamic dispatch mechanism that also has nice task tracking, addressing both of the above problems
+- disBatch solves both of these problems!
+  - A Slurm-aware dynamic dispatch mechanism that also has nice task tracking
   - Developed here at Flatiron: https://github.com/flatironinstitute/disBatch
 
 
@@ -233,7 +237,7 @@ done
 - Simplify as:
 ```bash
 # File: jobs.disbatch
-#DISBATCH PREFIX ./my_analysis_script.py
+#DISBATCH PREFIX ./my_analysis_script.py 
 output1.hdf5
 output2.hdf5
 ```
@@ -250,7 +254,7 @@ nnodes=4
 cpus_per_task=8
 mem_per_node=256G
 
-projdir="/mnt/ceph/${USER}/projname/"
+projdir="/mnt/ceph/${USER}/myproj/"
 jobname="job1"
 jobdir="${projdir}/${jobname}"
 taskfn="${jobdir}/tasks.disbatch"
@@ -271,40 +275,38 @@ sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
 `disBatch -r status.txt -R`
 
 
-## Comparison: Job Arrays and disBatch
+## Job Arrays vs. disBatch
 
-- Slurm job arrays
-  - Advantages
+- Job Array Advantages
     - No external dependencies
     - Jobs can be scheduled by Slurm independently
-  - Disadvantages
+- Job Array Disadvantages
     - Can require multiple scripts to launch; a little clumsy
     - No good way to retry failed jobs
     - Doesn't scale to 1000+ jobs
     - Doesn't handle variable-length jobs
 
 
-## Comparison: Job Arrays and disBatch
+## Job Arrays vs. disBatch
     
-- disBatch
-  - Advantages
+- disBatch Advantages
     - Dynamic scheduling handles variable-length jobs
     - Status file of successful and failed jobs
     - Easy retries of failed jobs
     - Slurm just sees a single big job, which sometimes can go through faster than many small jobs
-    
-  - Disadvantages
+
+- disBatch Disadvantages
     - Writing a disBatch task file can require multiple layers of bash escaping
     - disBatch is not builtin to Slurm
 
 
 ## Summary of Parallel Jobs
 - Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
-- For these jobs, Slurm job arrays or disBatch are preferable over MPI
+    - Slurm job arrays or disBatch work better than MPI
 - Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
-  - Status file, easy retries, and scalability to 10K+ jobs
+    - Status file, easy retries, and scalability to 10K+ jobs
   
-<img width="30%" src="./assets/slurm_futurama.webp">
+<img width="20%" src="./assets/slurm_futurama.webp">
 
 
 
