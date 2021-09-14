@@ -328,7 +328,7 @@ gcc/11.1.0
 python3/3.6.2
 python3/3.7.3
 ```
-- Load modules with `module load NAME[/VERSION]` (defaults to highest version if not specified)
+- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
 
 
 ### `module load`
@@ -339,7 +339,89 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
 > module load gcc
 > gcc -v
 gcc version 7.4.0 (GCC)
+> module unload gcc
 ```
+
+
+### Other module commands
+
+- `module list` to see what you've loaded
+- `module unload`
+- `module show NAME` to see what a module does (probably sets PATH)
+
+
+## Python packages
+
+- `module load python` has a lot of packages built-in (check `pip list`)
+- If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
+
+```
+> python3 -m venv --system-site-packages ~/myvenv
+> source ~/myvenv/bin/activate
+> pip install ...
+```
+
+### Jupyter
+
+You can also use modules and virtual environments in JupyterHub:
+```
+# setup your environment
+module load gcc python ...
+source ~/projenv/bin/activate
+# capture it into a new kernel
+module load jupyter-kernels
+python3 -m make-custom-kernel projkernel
+```
+
+Reload jupyterhub and "projkernel" will show up with the same environment.
+
+
+## Batch scripts
+
+Good practice to load the modules you need:
+
+```bash
+#!/bin/sh
+#SBATCH -p ccx
+module purge
+module load gcc python3
+source ~/myvenv/bin/activate
+
+python3 myscript.py
+```
+
+### Too much typing
+
+Put common sets of modules in a script
+```bash
+# File: ~/amods
+module purge
+module load gcc python hdf5 git
+```
+And "source" it when needed:
+```
+> . ~/amods
+```
+
+- Avoid putting module loads in `~/.bashrc`
+
+
+## New modules
+
+- We will soon transition to a new set of modules
+- Most things work the same, but some names change
+- New versions of packages
+- Will replace current modules and `modules-nix`
+- Try them now: `module load modules-new`
+
+
+## Other software
+
+If you need something not in the base system, modules, or pip:
+- Download and install it yourself
+  - Many packages provide install instructions
+  - Load modules to find dependencies
+- Ask!
 
 
 
