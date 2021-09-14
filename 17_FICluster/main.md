@@ -289,20 +289,57 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
     - Dynamic scheduling handles variable-length jobs
     - Status file of successful and failed jobs
     - Easy retries of failed jobs
-    - Scales beyond 1000+ jobs
+    - Scales beyond 10K+ jobs
 
 
 ## Summary of Parallel Jobs
 - Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
     - Slurm job arrays or disBatch work better than MPI
 - Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
-    - Status file, easy retries, and scalability to 10K+ jobs
   
 <img width="20%" src="./assets/slurm_futurama.webp">
 
 
+## GPUs
+
+
+## Other resources
+
+- "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
+- "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+
+
 
 # Modules & software
+
+- Most software you'll use on the cluster will either be:
+  - In a "module" we provide
+  - Downloaded/built/installed by you
+- By default you only see the "base system" software (CentOS 7), which is often rather old
+
+
+## Modules
+
+- See what's available: `module avail`
+```
+gcc/7.4.0(default)
+gcc/10.2.0
+gcc/11.1.0
+python3/3.6.2
+python3/3.7.3
+```
+- Load modules with `module load NAME[/VERSION]` (defaults to highest version if not specified)
+
+
+### `module load`
+
+```
+> gcc -v
+gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
+> module load gcc
+> gcc -v
+gcc version 7.4.0 (GCC)
+```
 
 
 
