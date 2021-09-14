@@ -1,6 +1,7 @@
 # Sciware
 
-## Flatiron Clusters: Performance and Efficiency
+## Flatiron Clusters
+## Performance and Efficiency
 
 https://github.com/flatironinstitute/sciware/tree/main/17_FICluster
 
@@ -72,26 +73,25 @@ How to run jobs efficiently on Flatiron's clusters
 
 ## Slurm
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
-- Flatiron has two clusters (Rusty & Popeye), each with multiple kinds of nodes (see the slides from earlier)
-- The [SCC Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
+- Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
+- The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
 
 
 ## Slurm Basics
 
-- Write a "batch file" that specifies the resources your job needs, and submit it to the queue with\
-`sbatch myjob.sbatch`
-  - Nodes? Cores? Memory? Time?
+- Write a "batch file" that specifies the resources needed:
 
 ```bash
+#!/bin/bash
 # File: myjob.sbatch
 # These look like comments, but are interpreted by Slurm as sbatch flags
-#SBATCH --mem=1G
-#SBATCH --time=02:00:00
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G          # Memory?
+#SBATCH --time=02:00:00   # Time? (2 hours)
+#SBATCH --ntasks=1        # Parallel tasks?
+#SBATCH --cpus-per-task=1 # Cores?
 #SBATCH --partition=genx
 
-conda activate myjob-env
+module load gcc python3
 
 for fn in *.hdf5; do
     ./myjob $fn
@@ -99,7 +99,7 @@ done
 ```
 
 - Submit the job to the queue with `sbatch myjob.sbatch`
-- Check the status with: `squeue`
+- Check the status with: `squeue --me`
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -116,16 +116,16 @@ done
   1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read.
   1. Run a test job
   1. Check the actual usage of the test job with:\
-  `sacct -j <jobid> -o MaxRSS,Elapsed`
-    - `MaxRSS`: maximum "resident set size", the amount of memory used (`#SBATCH --mem`)
-    - `Elapsed`: wall-clock runtime (`#SBATCH -t`)
+  `seff -j <jobid>`
+    - `Job Wall-clock time`: how long it took in "real world" time (`#SBATCH -t`)
+    - `Memory Utilized`: maximum amount of memory used (`#SBATCH --mem`)
 
 
 ## Slurm Tip \#2: Choosing a Partition
     
-- Use `-p ccX,gen` to submit to multiple partitions.
-  - In general, give Slurm the maximum flexibility to run your job
-- Remember: the center and general partitions (`ccx` and `gen`) allocate a whole node to you
+- Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
+  - `gen` has smaller limits and higher priority
+- The center and general partitions (`ccx` and `gen`) allocate whole nodes to you
 - If your job doesn't use a whole node, it will get scheduled faster in the `genx` partition (allows multiple jobs per node)
 
 
@@ -134,13 +134,13 @@ done
 - You've written a script to post-process a simulation output
 - Have 10–10000 outputs to process
    ```bash
-   $ ls $HOME/myproj
+   $ ls ~/myproj
    my_analysis_script.py
-   $ ls /mnt/ceph/users/$USER/myproj
+   $ ls ~/ceph/myproj
    output1.hdf5  output2.hdf5  output3.hdf5 [...]
    ```
 - Each file can be processed independently
-- Ready to use Rusty! ... but how?
+- Ready to use rusty! ... but how?
 - Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
 
 
@@ -164,11 +164,11 @@ done
 ## Option 1: Slurm Job Arrays
 - Recommend organizing into two scripts: `launch_slurm.sh` and `job.slurm`
 ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     # File: launch_slurm.sh
 
     # Recommendation: keep scripts in $HOME, and data in ceph
-    projdir="/mnt/ceph/${USER}/myproj/"  # data dir with output*.hdf5
+    projdir="$HOME/ceph/myproj/"  # data dir with output*.hdf5
     jobname="job1"
     jobdir="${projdir}/${jobname}"
 
@@ -177,7 +177,7 @@ done
     # Use the "find" command to write the list of files to process, 1 per line
     fn_list="${jobdir}/fn_list.txt"
     find ${projdir} -name 'output*.hdf5' | sort > ${fn_list}
-    nfiles=$(wc -l < ${fn_list})
+    nfiles=$(wc -l ${fn_list})
 
     # Launch a Slurm job array with ${nfiles} entries
     sbatch --array=1-${nfiles} job.slurm ${fn_list}
@@ -187,10 +187,10 @@ done
 ```bash
     # File: job.slurm
     
-    #SBATCH -p ccX,gen  # or "-p genx" if your job won't fill a node
-    #SBATCH -N 1
-    #SBATCH --mem=128G
-    #SBATCH -t 1:00:00
+    #SBATCH -p ccX  # or "-p genx" if your job won't fill a node
+    #SBATCH -N 1    # 1 node
+    #SBATCH --mem=128G  # ccX always gets all memory on the node, require at least...
+    #SBATCH -t 1:00:00  # 1 hour
     
     # the file with the list of files to process
     fn_list=${1}
@@ -247,14 +247,14 @@ output2.hdf5
 
 ## Option 2: disBatch
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 # File: submit_disbatch.sh
 
 nnodes=4
 cpus_per_task=8
 mem_per_node=256G
 
-projdir="/mnt/ceph/${USER}/myproj/"
+projdir="$HOME/ceph/myproj/"
 jobname="job1"
 jobdir="${projdir}/${jobname}"
 taskfn="${jobdir}/tasks.disbatch"
@@ -264,7 +264,7 @@ echo "#DISBATCH PREFIX ./my_analysis_script.py" > ${taskfn}
 find ${projdir} -name 'output*.hdf5' | sort >> ${taskfn}
 
 # Submit the Slurm job
-sbatch -p ccX,genx -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
+sbatch -p ccX -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
     --wrap "disBatch ${taskfn}"
 ```
 
