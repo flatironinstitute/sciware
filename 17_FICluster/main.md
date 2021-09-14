@@ -102,6 +102,13 @@ done
 - Check the status with: `squeue --me`
 
 
+## Where is my output?
+
+- By default, `slurm-<jobid>.out` in your current directory
+- Can set `-o outfile.log`, `-e stderr.log`
+- You can also run interactive jobs with `srun --pty ... bash`
+
+
 ## Slurm Tip \#1: Estimating Resource Requirements
 
 - Jobs don't necessarily run in order; most run via "backfill".
@@ -125,8 +132,10 @@ done
     
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
   - `gen` has smaller limits and higher priority
-- The center and general partitions (`ccx` and `gen`) allocate whole nodes to you
-- If your job doesn't use a whole node, it will get scheduled faster in the `genx` partition (allows multiple jobs per node)
+- The center and general partitions (`ccx` and `gen`) always allocate whole nodes
+  - All cores, all memory, reserved for you to make use of
+- If your job doesn't use a whole node, you can use the `genx` partition (allows multiple jobs per node)
+- Or run multiple things in parallel...
 
 
 ## Running Jobs in Parallel
@@ -141,7 +150,7 @@ done
    ```
 - Each file can be processed independently
 - Ready to use rusty! ... but how?
-- Recommendation: don't submit more than ~100 jobs at once. Job schedulers are notoriously unresponsive.
+- Recommendation: don't submit more than ~50 jobs at once
 
 
 ## Running Jobs in Parallel
@@ -157,8 +166,8 @@ done
 ## Option 1: Slurm Job Arrays
 - Queues up multiple identical jobs
   - In this case, one per output
-- Syntax: `#SBATCH --array=1-10`, submits 10 jobs as an array
-- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes (assuming 1 job per node)
+- Syntax: `#SBATCH --array=1-100%10`, submits 100 jobs as an array, limited to 10 running at once
+- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes
 
 
 ## Option 1: Slurm Job Arrays
@@ -170,39 +179,39 @@ done
     # Recommendation: keep scripts in $HOME, and data in ceph
     projdir="$HOME/ceph/myproj/"  # data dir with output*.hdf5
     jobname="job1"
-    jobdir="${projdir}/${jobname}"
+    jobdir="$projdir/$jobname"
 
-    mkdir -p ${jobdir}
+    mkdir -p $jobdir
 
     # Use the "find" command to write the list of files to process, 1 per line
-    fn_list="${jobdir}/fn_list.txt"
-    find ${projdir} -name 'output*.hdf5' | sort > ${fn_list}
-    nfiles=$(wc -l ${fn_list})
+    fn_list="$jobdir/fn_list.txt"
+    find $projdir -name 'output*.hdf5' | sort > ${fn_list}
+    nfiles=$(wc -l $fn_list)
 
-    # Launch a Slurm job array with ${nfiles} entries
-    sbatch --array=1-${nfiles} job.slurm ${fn_list}
+    # Launch a Slurm job array with $nfiles entries
+    sbatch --array=1-$nfiles job.slurm $fn_list
 ```
 
 
 ```bash
     # File: job.slurm
     
-    #SBATCH -p ccX  # or "-p genx" if your job won't fill a node
-    #SBATCH -N 1    # 1 node
+    #SBATCH -p ccX      # or "-p genx" if your job won't fill a node
+    #SBATCH -N 1        # 1 node
     #SBATCH --mem=128G  # ccX always gets all memory on the node, require at least...
     #SBATCH -t 1:00:00  # 1 hour
     
     # the file with the list of files to process
-    fn_list=${1}
+    fn_list=$1
     
     # the job array index
-    i=${SLURM_ARRAY_TASK_ID}
+    i=$SLURM_ARRAY_TASK_ID
     
     # get the line of the file belonging to this job
-    fn=$(tail -n+${i} ${fn_list} | head -n1)
+    fn=$(sed -n "${i}p" ${fn_list})
     
-    echo "About to process ${fn}"
-    ./my_analysis_script.py ${fn}
+    echo "About to process $fn"
+    ./my_analysis_script.py $fn
 ```
 
 
@@ -242,7 +251,7 @@ output1.hdf5
 output2.hdf5
 ```
 - Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
-`sbatch [...] --wrap "disBatch jobs.disbatch"`
+`sbatch [...] disBatch jobs.disbatch`
 
 
 ## Option 2: disBatch
@@ -250,22 +259,17 @@ output2.hdf5
 #!/bin/bash
 # File: submit_disbatch.sh
 
-nnodes=4
-cpus_per_task=8
-mem_per_node=256G
-
 projdir="$HOME/ceph/myproj/"
 jobname="job1"
-jobdir="${projdir}/${jobname}"
-taskfn="${jobdir}/tasks.disbatch"
+jobdir="$projdir/$jobname"
+taskfn="$jobdir/tasks.disbatch"
 
 # Build the task file
-echo "#DISBATCH PREFIX ./my_analysis_script.py" > ${taskfn}
-find ${projdir} -name 'output*.hdf5' | sort >> ${taskfn}
+echo "#DISBATCH PREFIX ./my_analysis_script.py" > $taskfn
+find $projdir -name 'output*.hdf5' | sort >> $taskfn
 
-# Submit the Slurm job
-sbatch -p ccX -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
-    --wrap "disBatch ${taskfn}"
+# Submit the Slurm job: run 16 at a time, each with 8 cores
+sbatch -p ccX -n16 -c8 disBatch $taskfn
 ```
 
 
@@ -276,28 +280,16 @@ sbatch -p ccX -N${nnodes} -c${cpus_per_task} --mem=${mem_per_node} \
 
 
 ## Job Arrays vs. disBatch
-
+    
 - Job Array Advantages
     - No external dependencies
     - Jobs can be scheduled by Slurm independently
-- Job Array Disadvantages
-    - Can require multiple scripts to launch; a little clumsy
-    - No good way to retry failed jobs
-    - Doesn't scale to 1000+ jobs
-    - Doesn't handle variable-length jobs
 
-
-## Job Arrays vs. disBatch
-    
 - disBatch Advantages
     - Dynamic scheduling handles variable-length jobs
     - Status file of successful and failed jobs
     - Easy retries of failed jobs
-    - Slurm just sees a single big job, which sometimes can go through faster than many small jobs
-
-- disBatch Disadvantages
-    - Writing a disBatch task file can require multiple layers of bash escaping
-    - disBatch is not builtin to Slurm
+    - Scales beyond 1000+ jobs
 
 
 ## Summary of Parallel Jobs
