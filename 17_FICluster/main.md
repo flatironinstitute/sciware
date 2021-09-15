@@ -317,6 +317,15 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 - "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
 
 
+## `srun` and `salloc`
+
+- `srun` can run interactive jobs (builds, tests, etc.)
+- `salloc` can allocate multi-node interactive jobs for testing
+- Inside `sbatch` scripts, `srun` is only useful for running many identical instances of a program in parallel
+   - Use `mpirun` for MPI
+   - Unnecessary for running single tasks
+
+
 
 # Modules & software
 
