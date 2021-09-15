@@ -302,6 +302,14 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## GPUs
 
+- For GPU nodes, you should specify:
+  - `-p gpu`
+  - Number of tasks: `-n1`
+  - Number of cores: `--cpus-per-task=1` or `--cpus-per-gpu=1`
+  - Amount of memory: `--mem=16G` or `--mem-per-gpu=16G`
+  - Number of GPUs: `--gpus=` or `--gpus-per-task=`
+  - Acceptable GPU types: `-C p100|v100|a100` (also `v100-32gb` `a100-40gb` `nvlink`)
+
 
 ## Other resources
 
@@ -459,8 +467,8 @@ Testing how to get the best performance out of your jobs
 - Find something that can:
   - Represent your whole run in a short period of time
   - eg: a couple of iterations instead of 1000s of them
-  - Use the a production run configuration
-- Be weary of "toy benchmarks":
+  - Use a production run configuration
+- Be wary of "toy benchmarks":
   - They might benefit from requiring less memory, I/O, ...
   - If possible run with your real problem, but not to completion!
 
