@@ -527,34 +527,35 @@ Parameter sets: NAS Parallel Benchmarks, single node
 
 
 ## JUBE Configuration Files (3)
-Analysis and results
+Analysis and results (with stats!)
 ```xml
 <patternset name="pattern"><!-- Regex pattern -->
-    <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
-    <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
-    <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
+  <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
+  <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
+  <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
 </patternset>
 <result><!-- Create result table -->
-    <use>analyse</use>
-    <table name="result" style="csv" sort="kernel,class,num_ranks_used">
-        <column>kernel</column>
-        <column>class</column>
-        <column>num_ranks_used</column>
-        <column>time_in_seconds</column>
-        <column>mflops</column>
-    </table>
+  <use>analyse</use>
+  <table name="result" style="csv" sort="kernel,class,num_ranks_used">
+    <column>kernel</column>
+    <column>class</column>
+    <column>num_ranks_used</column>
+    <column>time_in_seconds_avg</column><!-- Stats: avg, sum, min, max, std,... -->
+    <column>mflops_avg</column>
+  </table>
 </result>
 ```
 
 
-## Benchmark 1: GROMACS
+## Example 1: GROMACS
 <div style="display: flex;">
 <small>
 <ul>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after <i>N</i> minutes</li>
-System courtesy Sonya Hanson (CCB)
+<li>GROMACS provides performance numbers in ns/day</li>
+<i>System courtesy Sonya Hanson (CCB)</i>
 </ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
 </small>
@@ -573,14 +574,15 @@ System courtesy Sonya Hanson (CCB)
 ```
 
 
-## Benchmark 2: Gadget4
+## Example 2: Gadget4
 <div style="display: flex;">
 <small>
 <ul>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Smulation stopped after a few iterations</li>
-Simulation config courtesy Yin Li (CCA)
+<li>Gadget4 gives detailed timings</li>
+<i>Simulation config courtesy Yin Li (CCA)</i>
 </ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gadget4.png">
 </small>
