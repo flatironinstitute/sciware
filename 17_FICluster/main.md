@@ -620,13 +620,13 @@ Analysis and results (with stats!)
 ```
 
 
-## Benchmarking: conclusion
+## Benchmarking: Conclusion
 
 - Try and benchmark when you are starting a new large project on the FI machines
 - Using a toolkit like JUBE can simplify your life
-- For examples: 
+- Examples: 
 
-<centerhttps://github.com/gkrawezik/BENCHMARKS</center>
+<center>https://github.com/gkrawezik/BENCHMARKS</center>
 
 
 # Survey
