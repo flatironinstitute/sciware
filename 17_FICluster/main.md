@@ -433,6 +433,77 @@ If you need something not in the base system, modules, or pip:
 
 
 
+# File Systems
+
+See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
+
+
+## What is a file system?
+
+<div >
+  <ul>
+    <li>The directory structure</li>
+    <li class="fragment"><em>More technical definition</em>: a method for organizing and retrieving files from a storage medium</li>
+  </ul>
+</div>
+
+
+## Home Directory
+
+<ul>
+  <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
+  <li class="fragment">Home directory is mirrored on all FI and BNL nodes</li>
+  <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
+</ul>
+
+
+## Home Directory
+
+<b>Your home directory is for code, notes, and documentation.</b>
+
+<p style="text-align:left;">It is <b>NOT</b> for:</p>
+
+1. Large data sets downloaded from other sites
+2. Intermediate files generated and then deleted during the course of a computation
+3. Large output files.
+
+<p style="text-align:left;"><b>You are limited to 10<sup>6</sup> files and 1 TB</b></p>
+
+
+## Backups (aka snapshots)
+
+<div class="r-stack">
+
+  <img class="fragment fade-out" data-fragment-index=0 src="https://media.giphy.com/media/G4rIGiMVtrJ1S/source.gif?cid=ecf05e4733lcv4bxv1hctf6k50lc0365y23gunb55d3ei2e6&rid=source.gif&ct=g">
+
+  <div class="fragment fade-in" data-fragment-index=0>
+    If you accidentally delete some files, you access backups through your <code>~/.snapshots</code> directory like this:
+
+  <pre style="font-size:0.65em">
+  <code data-trim>cp -a ~/.snapshots/@GMT-2017.12.14-02.00.14/lost_file lost_file.restored</code>
+  </pre>
+
+  <code>~/.snapshots</code> is a special directory and paths WON'T autocomplete
+  </div>
+
+</div>
+
+
+## Ceph
+
+- Pronounces as "sef"
+- For large data storage
+- No backups
+- Do not put > 1000 files in a directory
+
+
+## Local Scratch
+
+- Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm/`
+- Both of these directories are cleaned up after _each_ job
+
+
 # Benchmarking
 
 ## Why, when, what, and how?
