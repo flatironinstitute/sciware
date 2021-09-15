@@ -302,6 +302,14 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## GPUs
 
+- For GPU nodes, you should specify:
+  - `-p gpu`
+  - Number of tasks: `-n1`
+  - Number of cores: `--cpus-per-task=1` or `--cpus-per-gpu=1`
+  - Amount of memory: `--mem=16G` or `--mem-per-gpu=16G`
+  - Number of GPUs: `--gpus=` or `--gpus-per-task=`
+  - Acceptable GPU types: `-C p100|v100|a100` (also `v100-32gb` `a100-40gb` `nvlink`)
+
 
 ## Other resources
 
