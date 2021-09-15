@@ -317,6 +317,15 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 - "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
 
 
+## `srun` and `salloc`
+
+- `srun` can run interactive jobs (builds, tests, etc.)
+- `salloc` can allocate multi-node interactive jobs for testing
+- Inside `sbatch` scripts, `srun` is only useful for running many identical instances of a program in parallel
+   - Use `mpirun` for MPI
+   - Unnecessary for running single tasks
+
+
 
 # Modules & software
 
@@ -518,7 +527,7 @@ Testing how to get the best performance out of your jobs
   - What processor architecture?
   - Which libraries? (eg: OpenBLAS vs MKL)
   - What MPI ranks / OpenMP threads ratio?
-  - How many nodes for a given problem size?
+  - How many nodes?
 - A 15 minutes benchmark can help your week-long computation get you more results
   - Or reduce it to a day-long computation!
 
@@ -538,8 +547,8 @@ Testing how to get the best performance out of your jobs
 - Find something that can:
   - Represent your whole run in a short period of time
   - eg: a couple of iterations instead of 1000s of them
-  - Use the same configuration you intend to use in production
-- Be weary of "toy benchmarks":
+  - Use a production run configuration
+- Be wary of "toy benchmarks":
   - They might benefit from requiring less memory, I/O, ...
   - If possible run with your real problem, but not to completion!
 
@@ -571,11 +580,11 @@ Testing how to get the best performance out of your jobs
 
 ## JUBE Configuration Files (1)
 
-- XML Structure:
+- XML/YAML Structure:
   1. Benchmark configuration: number of nodes, input files
-    - Inputs can be dynamic (python, shell)
+    - Parameters can be dynamic (python, shell)
   1. Execution configuration: processor type, runtime
-    - Execution can be through a batch scheduler
+    - Can submit jobs to a batch scheduler
   1. Benchmark definition: which steps to run, in what order
   1. Regular expressions to extract results
   1. Results printing: inputs, outputs, in what order
@@ -608,12 +617,12 @@ Parameter sets: NAS Parallel Benchmarks, single node
 ## JUBE Configuration Files (3)
 Analysis and results (with stats!)
 ```xml
-<patternset name="pattern"><!-- Regex pattern -->
+<patternset name="pattern"> <!-- Regex pattern -->
   <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
-  <pattern name="time_in_seconds" type="float">Time in seconds =\s+$jube_pat_fp</pattern>
+  <pattern name="time_in_seconds" type="float">Time in seconds = $jube_pat_fp</pattern>
   <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
 </patternset>
-<result><!-- Create result table -->
+<result> <!-- Create result table -->
   <use>analyse</use>
   <table name="result" style="csv" sort="kernel,class,num_ranks_used">
     <column>kernel</column>
@@ -633,7 +642,7 @@ Analysis and results (with stats!)
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after <i>N</i> minutes</li>
-<li>GROMACS provides performance numbers in ns/day</li>
+<li>It provides performance numbers</li>
 <i>System courtesy Sonya Hanson (CCB)</i>
 </ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
@@ -659,7 +668,7 @@ Analysis and results (with stats!)
 <ul>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
-<li>Smulation stopped after a few iterations</li>
+<li>Simulation stopped after a few iterations</li>
 <li>Gadget4 gives detailed timings</li>
 <i>Simulation config courtesy Yin Li (CCA)</i>
 </ul>
@@ -682,11 +691,13 @@ Analysis and results (with stats!)
 ```
 
 
-## Benchmarking: conclusion
+## Benchmarking: Conclusion
 
 - Try and benchmark when you are starting a new large project on the FI machines
-- Using a toolkit like JUBE can simplify your work
-- For examples: https://github.com/gkrawezik/BENCHMARKS
+- Using a toolkit like JUBE can simplify your life
+- Examples: 
+
+<center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
 
 
 # Survey
