@@ -509,11 +509,11 @@ Testing how to get the best performance out of your jobs
 
 ## JUBE Configuration Files (1)
 
-- XML Structure:
+- XML/YAML Structure:
   1. Benchmark configuration: number of nodes, input files
     - Parameters can be dynamic (python, shell)
   1. Execution configuration: processor type, runtime
-    - Execution can be through a batch scheduler
+    - Can submit jobs to a batch scheduler
   1. Benchmark definition: which steps to run, in what order
   1. Regular expressions to extract results
   1. Results printing: inputs, outputs, in what order
@@ -571,7 +571,7 @@ Analysis and results (with stats!)
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
 <li>GROMACS can be told to stop after <i>N</i> minutes</li>
-<li>GROMACS provides performance numbers</li>
+<li>It provides performance numbers</li>
 <i>System courtesy Sonya Hanson (CCB)</i>
 </ul>
 <img style="margin: 0 0 0 1em; height: 12.5em; float: right" src="./assets/benchmarking/jube_gromacs.png">
@@ -597,7 +597,7 @@ Analysis and results (with stats!)
 <ul>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
-<li>Smulation stopped after a few iterations</li>
+<li>Simulation stopped after a few iterations</li>
 <li>Gadget4 gives detailed timings</li>
 <i>Simulation config courtesy Yin Li (CCA)</i>
 </ul>
@@ -626,7 +626,7 @@ Analysis and results (with stats!)
 - Using a toolkit like JUBE can simplify your life
 - Examples: 
 
-<center>https://github.com/gkrawezik/BENCHMARKS</center>
+<center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
 
 
 # Survey
