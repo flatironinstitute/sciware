@@ -477,7 +477,7 @@ Testing how to get the best performance out of your jobs
   - Represent your whole run in a short period of time
   - eg: a couple of iterations instead of 1000s of them
   - Use the same configuration you intend to use in production
-- Be weary of "toy benchmarks":
+- Be wary of "toy benchmarks":
   - They might benefit from requiring less memory, I/O, ...
   - If possible run with your real problem, but not to completion!
 
