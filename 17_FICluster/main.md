@@ -329,10 +329,10 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # Modules & software
 
-- Most software you'll use on the cluster will either be:
+- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
   - Downloaded/built/installed by you
-- By default you only see the "base system" software (CentOS 7), which is often rather old
+- By default you only see the "base system" software (CentOS7), which is often rather old
 
 
 ## Modules
@@ -363,7 +363,7 @@ gcc version 7.4.0 (GCC)
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module unload`
+- `module purge` to unload all modules
 - `module show NAME` to see what a module does (probably sets PATH)
 
 
@@ -377,6 +377,7 @@ gcc version 7.4.0 (GCC)
 > source ~/myvenv/bin/activate
 > pip install ...
 ```
+
 
 ### Jupyter
 
@@ -406,6 +407,7 @@ source ~/myvenv/bin/activate
 
 python3 myscript.py
 ```
+
 
 ### Too much typing
 
