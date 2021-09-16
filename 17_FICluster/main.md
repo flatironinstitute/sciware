@@ -739,7 +739,7 @@ Testing how to get the best performance out of your jobs
 1. Launch using `jube run mybenchmark.xml`
 1. While running with a batch scheduler:
   - `jube continue mybenchmark --id=N`: status
-  - `jube result mybenchmark --id=N`  : partial results
+  - `jube result mybenchmark --id=N`: partial results
 1. Once finished, get the complete results:
   - Formatted table: `jube result mybenchmark --id=N`
   - CSV: `jube result mybenchmark --id=N -s csv`
