@@ -75,16 +75,17 @@ How to run jobs efficiently on Flatiron's clusters
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
 - The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
+- Run any of these Slurm commands from a command line on your Flatiron workstation (`module load slurm`)
 
 
 ## Slurm Basics
 
-- Write a "batch file" that specifies the resources needed:
+- Write a "batch file" (special kind of bash script) that specifies the resources needed:
 
 ```bash
 #!/bin/bash
 # File: myjob.sbatch
-# These look like comments, but are interpreted by Slurm as sbatch flags
+# These comments are interpreted by Slurm as sbatch flags
 #SBATCH --mem=1G          # Memory?
 #SBATCH --time=02:00:00   # Time? (2 hours)
 #SBATCH --ntasks=1        # Parallel tasks?
@@ -93,8 +94,8 @@ How to run jobs efficiently on Flatiron's clusters
 
 module load gcc python3
 
-for fn in *.hdf5; do
-    ./myjob $fn
+for filename in *.hdf5; do
+    ./myjob $filename
 done
 ```
 
@@ -104,7 +105,7 @@ done
 
 ## Where is my output?
 
-- By default, `slurm-<jobid>.out` in your current directory
+- By default, anything printed to `stdout` ends up in `slurm-<jobid>.out` in your current directory
 - Can set `-o outfile.log`, `-e stderr.log`
 - You can also run interactive jobs with `srun --pty ... bash`
 
@@ -124,15 +125,15 @@ done
   1. Run a test job
   1. Check the actual usage of the test job with:\
   `seff -j <jobid>`
-    - `Job Wall-clock time`: how long it took in "real world" time (`#SBATCH -t`)
-    - `Memory Utilized`: maximum amount of memory used (`#SBATCH --mem`)
+    - `Job Wall-clock time`: how long it took in "real world" time; corresponds to `#SBATCH -t`
+    - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
 
 
 ## Slurm Tip \#2: Choosing a Partition
     
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
   - `gen` has smaller limits and higher priority
-- The center and general partitions (`ccx` and `gen`) always allocate whole nodes
+- The center and general partitions (`ccX` and `gen`) always allocate whole nodes
   - All cores, all memory, reserved for you to make use of
 - If your job doesn't use a whole node, you can use the `genx` partition (allows multiple jobs per node)
 - Or run multiple things in parallel...
@@ -146,7 +147,7 @@ done
    $ ls ~/myproj
    my_analysis_script.py
    $ ls ~/ceph/myproj
-   output1.hdf5  output2.hdf5  output3.hdf5 [...]
+   data1.hdf5  data2.hdf5  data3.hdf5 [...]
    ```
 - Each file can be processed independently
 - Ready to use rusty! ... but how?
@@ -177,15 +178,15 @@ done
     # File: launch_slurm.sh
 
     # Recommendation: keep scripts in $HOME, and data in ceph
-    projdir="$HOME/ceph/myproj/"  # data dir with output*.hdf5
-    jobname="job1"
+    projdir="$HOME/ceph/myproj/"  # dir with data*.hdf5
+    jobname="job1"  # change for new jobs
     jobdir="$projdir/$jobname"
 
     mkdir -p $jobdir
 
     # Use the "find" command to write the list of files to process, 1 per line
     fn_list="$jobdir/fn_list.txt"
-    find $projdir -name 'output*.hdf5' | sort > ${fn_list}
+    find $projdir -name 'data*.hdf5' | sort > ${fn_list}
     nfiles=$(wc -l $fn_list)
 
     # Launch a Slurm job array with $nfiles entries
@@ -205,9 +206,11 @@ done
     fn_list=$1
     
     # the job array index
+    # the task ID is automatically set by Slurm
     i=$SLURM_ARRAY_TASK_ID
     
     # get the line of the file belonging to this job
+    # make sure your `sbatch --array=1-X` command uses 1 as the starting index
     fn=$(sed -n "${i}p" ${fn_list})
     
     echo "About to process $fn"
@@ -222,8 +225,9 @@ done
   - Launch a job array with N jobs
   - Have each job get the i-th line in the file
   - Execute our science script with that file
-- Why write a list of files when each Slurm job could run its own `find`?
-    - Just to be sure that all jobs agree on the division of work (file sorting, files appearing or disappearing, etc)
+- Why write the list when each job could run its own `find`?
+    - Avoid expensive repeated filesystem crawl, when the answer ought to be static
+    - Ensure that all jobs agree on the division of work (file sorting, files appearing or disappearing, etc)
 
 
 ## Option 2: disBatch
@@ -240,15 +244,15 @@ done
 - Write a "task file" with one command-line command per line:
 ```bash
 # File: jobs.disbatch
-./my_analysis_script.py output1.hdf5
-./my_analysis_script.py output2.hdf5
+./my_analysis_script.py data1.hdf5
+./my_analysis_script.py data2.hdf5
 ```
 - Simplify as:
 ```bash
 # File: jobs.disbatch
 #DISBATCH PREFIX ./my_analysis_script.py 
-output1.hdf5
-output2.hdf5
+data1.hdf5
+data2.hdf5
 ```
 - Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
 `sbatch [...] disBatch jobs.disbatch`
@@ -266,7 +270,7 @@ taskfn="$jobdir/tasks.disbatch"
 
 # Build the task file
 echo "#DISBATCH PREFIX ./my_analysis_script.py" > $taskfn
-find $projdir -name 'output*.hdf5' | sort >> $taskfn
+find $projdir -name 'data*.hdf5' | sort >> $taskfn
 
 # Submit the Slurm job: run 16 at a time, each with 8 cores
 sbatch -p ccX -n16 -c8 disBatch $taskfn
@@ -315,6 +319,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 - "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
 - "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+    - This is a great option if your job writes regular checkpoints
 
 
 ## `srun` and `salloc`
@@ -329,10 +334,10 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # Modules & software
 
-- Most software you'll use on the cluster will either be:
+- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
   - Downloaded/built/installed by you
-- By default you only see the "base system" software (CentOS 7), which is often rather old
+- By default you only see the "base system" software (CentOS7), which is often rather old
 
 
 ## Modules
@@ -342,6 +347,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 gcc/7.4.0(default)
 gcc/10.2.0
 gcc/11.1.0
+...
 python3/3.6.2
 python3/3.7.3
 ```
@@ -363,7 +369,7 @@ gcc version 7.4.0 (GCC)
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module unload`
+- `module purge` to unload all modules
 - `module show NAME` to see what a module does (probably sets PATH)
 
 
@@ -372,16 +378,20 @@ gcc version 7.4.0 (GCC)
 - `module load python` has a lot of packages built-in (check `pip list`)
 - If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
 
+```bash
+module load gcc python3
+python3 -m venv --system-site-packages ~/myvenv
+source ~/myvenv/bin/activate
+pip install ...
 ```
-> python3 -m venv --system-site-packages ~/myvenv
-> source ~/myvenv/bin/activate
-> pip install ...
-```
+
+- Repeat the `module load` and `source activate` to return in a new shell
+
 
 ### Jupyter
 
 You can also use modules and virtual environments in JupyterHub:
-```
+```bash
 # setup your environment
 module load gcc python ...
 source ~/projenv/bin/activate
@@ -390,12 +400,12 @@ module load jupyter-kernels
 python3 -m make-custom-kernel projkernel
 ```
 
-Reload jupyterhub and "projkernel" will show up with the same environment.
+Reload jupyterhub and "projkernel" will show up providing the same environment.
 
 
 ## Batch scripts
 
-Good practice to load the modules you need:
+Good practice to load the modules you need in the script:
 
 ```bash
 #!/bin/sh
@@ -407,6 +417,7 @@ source ~/myvenv/bin/activate
 python3 myscript.py
 ```
 
+
 ### Too much typing
 
 Put common sets of modules in a script
@@ -416,8 +427,8 @@ module purge
 module load gcc python hdf5 git
 ```
 And "source" it when needed:
-```
-> . ~/amods
+```bash
+. ~/amods
 ```
 
 - Avoid putting module loads in `~/.bashrc`
@@ -439,6 +450,217 @@ If you need something not in the base system, modules, or pip:
   - Many packages provide install instructions
   - Load modules to find dependencies
 - Ask!
+
+
+
+# File Systems
+
+See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
+
+
+## What is a file system?
+
+<div>
+  <ul>
+    <li>The directory structure</li>
+    <li class="fragment"><em>More technical definition</em>: a method for organizing and retrieving files from a storage medium</li>
+  </ul>
+</div>
+
+
+## Home Directory
+
+<ul>
+  <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
+  <li class="fragment">Home directory is shared on all FI nodes (rusty, workstations, gateway)</li>
+  <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
+</ul>
+
+
+## Home Directory
+
+<b>Your home directory is for code, notes, and documentation.</b>
+
+<p style="text-align:left;">It is <b>NOT</b> for:</p>
+
+1. Large data sets downloaded from other sites
+2. Intermediate files generated and then deleted during the course of a computation
+3. Large output files.
+
+<p style="text-align:left;"><b>You are limited to 900,000 files and 900 GB</b> (if you go beyond this you will not be able to log in)</p>
+
+
+## Backups (aka snapshots)
+
+<div class="r-stack">
+
+  <img class="fragment fade-out" data-fragment-index=0 src="https://media.giphy.com/media/G4rIGiMVtrJ1S/source.gif?cid=ecf05e4733lcv4bxv1hctf6k50lc0365y23gunb55d3ei2e6&rid=source.gif&ct=g">
+
+  <div class="fragment fade-in" data-fragment-index=0>
+    If you accidentally delete some files, you can access backups through the <code>.snapshots</code> directory like this:
+
+  <pre style="font-size:0.65em">
+  <code data-trim>cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
+  </pre>
+
+  <ul>
+    <li><code>.snapshots</code> is a special invisible directory and WON'T autocomplete</li>
+    <li>Snapshots happen twice a day and kept for 3-4 weeks.</li>
+    <li>There are separate long-term backups of home if needed (years).</li>
+  </ul>
+  </div>
+
+</div>
+
+
+## Ceph
+
+- Pronounces as "sef"
+- Rusty: `/mnt/ceph`
+- Popeye: `/mnt/sdceph`
+- For large data storage
+- No backups<sup>\*</sup>
+- Do not put &#x2273; 1000 files in a directory
+
+<small><sup>\*</sup> <code>.snap</code> is coming soon (already at popeye)</small>
+
+
+## Local Scratch
+
+- Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm/`
+- Both of these directories are cleaned up after _each_ job
+  - Make sure you copy any important data/results over to `ceph` or your `home`
+
+
+## Monitoring Usage: `/mnt/home`
+
+View a usage summary:
+
+<pre style="font-size:0.75em">
+<code data-trim class="language-bash">
+$ /cm/shared/apps/fi/bin/pq
+
++-----------------------------------------------+
+|        GPFS Quotas for /mnt/home/johndoe      |
++------------------------+----------------------+
+|     Block limits       |    File limits       |
++------------------------+----------------------+
+|   Usage:       235G    |   Files:    660k     |
+|   Limit:       1.1T    |   Limit:    1.1M     |
+|   Avail:       866G    |   Avail:    389k     |
++------------------------+----------------------+
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/home`
+
+To track down large file counts use:
+
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
+$ du -s --inodes ./*
+
+1	CHANGELOG
+1	CONTRIBUTING.md
+437	examples
+1	FEATURES
+...
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/home`
+
+To track down large files use:
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
+$ du -sh ./*
+
+64K	CHANGELOG
+64K	CONTRIBUTING.md
+1.8M	examples
+64K	FEATURES
+...
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/ceph`
+
+Don't use <code>du</code>, it's slow and taxing on the filesystem
+
+
+## Monitoring Usage: `/mnt/ceph`
+
+List files in increasing order:
+  <pre style="font-size:1em">
+    <code data-trim>
+      ls -lASrh /mnt/ceph/users/johndoe/
+    </code>
+  </pre>
+
+
+## Monitoring Usage: `/mnt/ceph`
+
+Show the number of files in directory:
+  <pre style="font-size:1em">
+    <code class="language-bash" data-trim>
+      getfattr -n ceph.dir.rentries my_dir
+    </code>
+  </pre>
+
+
+## Use Data-Pipes on `/mnt/ceph`
+
+Writing to filesystems is slow, if your workflow looks like this:
+
+<pre style="font-size:1em">
+<code class="language-bash" data-trim>
+gunzip data.gz
+awk '...' data > awkFilteredData
+gzip data
+myProgram -i awkFilteredData -o results
+rm awkFilteredData
+</code>
+</pre>
+
+
+## Use Data-Pipes on `/mnt/ceph`
+
+Try consolidating with the `|` command to speed things up and avoid writing intermediate files
+
+<pre style="font-size:1em">
+<code class="language-bash" data-trim>
+myProgram -i <(gunzip -c data.gz | awk '...') \
+  -o /mnt/ceph/YourUserID/projectDirectory/result
+</code>
+</pre>
+
+Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm` or `/tmp` for intermediate files)
+
+
+## Compiling on `/mnt/ceph`
+
+If compiling is going to generate a lot of temporary files, you can you the `-pipe` option, e.g.:
+
+```bash
+g++ -pipe simple_test.cpp
+clang++ -pipe simple_test.cpp
+icpc -pipe simple_test.cpp
+```
+
+__Note__: `-pipe` isn't supported by `nvhpc`
+
+
+## Tape Storage
+
+- We have a 10PB "cold storage" tape archive at FI
+- Can be used to backup things you don't expect to need but don't want to lose
+- Archive by moving files to /mnt/ceph/tape/USERNAME (contact SCC to setup the first time)
+- Restores by request (please allow a few weeks)
+- Avoid archiving many small files with long names: use tar
 
 
 
@@ -627,6 +849,7 @@ Analysis and results (with stats!)
 - Examples: 
 
 <center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
+
 
 
 # Survey
