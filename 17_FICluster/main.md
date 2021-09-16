@@ -535,10 +535,8 @@ TODO: spell out which wiki page
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups<sup>\*</sup>
+- No backups
 - Do not put &#x2273; 1000 files in a directory
-
-<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
 
 
 ## Local Scratch
