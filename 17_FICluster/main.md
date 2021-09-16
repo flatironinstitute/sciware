@@ -59,6 +59,9 @@ Activities where participants all actively work to foster an environment which e
 
 ### Dylan Simon (SCC)
 
+
+## Overview
+
 - Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
   - Downloaded/built/installed by you
@@ -180,11 +183,11 @@ If you need something not in the base system, modules, or pip:
 
 # Running Parallel Jobs on the FI Cluster
 
-### Lehman Garrison (CCA)
-
 ## Slurm, Job Arrays, and disBatch
 
 How to run jobs efficiently on Flatiron's clusters
+
+### Lehman Garrison (CCA)
 
 
 ## Slurm
@@ -465,10 +468,10 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # File Systems
 
-### James Smith (CCQ)
-
 See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
 TODO: spell out which wiki page
+
+### James Smith (CCQ)
 
 
 ## What is a file system?
@@ -680,11 +683,11 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 # Benchmarking
 
-### Geraud Krawezik (SCC)
-
 ## Why, when, what, and how?
 
 Testing how to get the best performance out of your jobs
+
+### Geraud Krawezik (SCC)
 
 
 ## Why benchmarking?
