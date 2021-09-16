@@ -520,7 +520,7 @@ TODO: spell out which wiki page
   </pre>
 
   <ul>
-    <li><code>.snapshots</code> is a special invisible directory and *won't* autocomplete</li>
+    <li><code>.snapshots</code> is a special invisible directory and <em>won't</em> autocomplete</li>
     <li>Snapshots happen twice a day and are kept for 3-4 weeks</li>
     <li>There are separate long-term backups of home if needed (years)</li>
   </ul>
@@ -542,7 +542,7 @@ TODO: spell out which wiki page
 ## Local Scratch
 
 - Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm/`
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory)
 - Both of these directories are cleaned up after _each_ job
   - Make sure you copy any important data/results over to `ceph` or your `home`
 
