@@ -180,7 +180,7 @@ If you need something not in the base system, modules, or pip:
 
 # Running Parallel Jobs on the FI Cluster
 
-Lehman Garrison (CCA)
+### Lehman Garrison (CCA)
 
 ## Slurm, Job Arrays, and disBatch
 
@@ -207,6 +207,8 @@ TODO: spell out which wiki page
 ## Slurm Basics
 
 - Write a "batch file" (special kind of bash script) that specifies the resources needed:
+
+TODO: change to just one program (no for loop)
 
 ```bash
 #!/bin/bash
@@ -236,10 +238,13 @@ done
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
+TODO: add for loop background multiple tasks wait
+
+
 ## Slurm Tip \#1: Estimating Resource Requirements
 
 - Jobs don't necessarily run in order; most run via "backfill".
-  - Implication: specifying the smallest set of resources for your job will help it run sooner
+  - Implication: specifying the smallest set of resources for your job will help it run **sooner**
   - But don't short yourself!
 - Memory requirements can be hard to assess, especially if you're running someone else's code
 
@@ -255,12 +260,12 @@ done
     - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
 
 
-## Slurm Tip \#2: Choosing a Partition
+## Slurm Tip \#2: Choosing a Partition (CPUs)
     
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
   - `gen` has smaller limits and higher priority
 - The center and general partitions (`ccX` and `gen`) always allocate whole nodes
-  - All cores, all memory, reserved for you to make use of
+  - **All cores, all memory**, reserved for you to make use of
 - If your job doesn't use a whole node, you can use the `genx` partition (allows multiple jobs per node)
 - Or run multiple things in parallel...
 
@@ -287,14 +292,14 @@ done
   - Slurm job arrays
   - disBatch
 - Note: this job is a bad candidate for MPI
-  - If the jobs don't need to communicate with each other, no need for MPI!
+  - If the jobs don't need to communicate with each other, **no need for MPI**!
 
 
 ## Option 1: Slurm Job Arrays
 - Queues up multiple identical jobs
   - In this case, one per output
-- Syntax: `#SBATCH --array=1-100%10`, submits 100 jobs as an array, limited to 10 running at once
-- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes
+- Syntax: `#SBATCH --array=1-100%16`, submits 100 jobs as an array, limited to 16 running at once
+- Slurm is allowed to run each job in the array individually; no need to wait for 16 nodes
 
 
 ## Option 1: Slurm Job Arrays
@@ -460,7 +465,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # File Systems
 
-James Smith (CCQ)
+### James Smith (CCQ)
 
 See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
 TODO: spell out which wiki page
@@ -675,7 +680,7 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 # Benchmarking
 
-Geraud Krawezik (SCC)
+### Geraud Krawezik (SCC)
 
 ## Why, when, what, and how?
 
