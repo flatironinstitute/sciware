@@ -463,8 +463,8 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 
 <ul>
   <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
-  <li class="fragment">Home directory is mirrored on all FI and BNL nodes</li>
-  <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
+  <li class="fragment">Home directory is the same on all FI and BNL nodes</li>
+  <li class="fragment">Popeye (SDSC) is separate and files you add on FI/BNL will not show up here</li>
 </ul>
 
 
@@ -491,13 +491,16 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
     If you accidentally delete some files, you can access backups through your <code>~/.snapshots</code> directory like this:
 
   <pre style="font-size:0.65em">
-  <code data-trim>cp -a ~/.snapshots/@GMT-2017.12.14-02.00.14/lost_file lost_file.restored</code>
+  <code data-trim>cp -a ~/.snapshots/@GMT-2021.9.14-02.00.14/lost_file lost_file.restored</code>
   </pre>
 
   <code>~/.snapshots</code> is a special directory and paths WON'T autocomplete
+
   </div>
 
 </div>
+
+__TODO__: How long to snapshots last for? Talk about frequency too
 
 
 ## Ceph
@@ -520,7 +523,10 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 
 ## Monitoring Usage: `/mnt/home`
 
-```txt
+View a usage summary:
+
+<pre style="font-size:0.75em">
+<code data-trim class="language-bash">
 $ /cm/shared/apps/fi/bin/pq
 
 +-----------------------------------------------+
@@ -532,14 +538,16 @@ $ /cm/shared/apps/fi/bin/pq
 |   Limit:       1.1T    |   Limit:    1.1M     |
 |   Avail:       866G    |   Avail:    389k     |
 +------------------------+----------------------+
-```
+</code>
+</pre>
 
 
 ## Monitoring Usage: `/mnt/home`
 
 To track down large file counts use:
 
-```bash
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
 $ du -s --inodes ./*
 
 1	./CHANGELOG
@@ -547,10 +555,15 @@ $ du -s --inodes ./*
 437	./examples
 1	./FEATURES
 ...
-```
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/home`
 
 To track down large files use:
-```bash
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
 $ du -sh ./*
 
 64K	./CHANGELOG
@@ -558,39 +571,60 @@ $ du -sh ./*
 1.8M	./examples
 64K	./FEATURES
 ...
-```
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/ceph`
+
+Don't use <code>du</code>, it's slow and taxing on the filesystem
 
 
 ## Monitoring Usage: `/mnt/ceph`
 
 List files in increasing order:
+  <pre style="font-size:1em">
+    <code data-trim>
+      ls -lASrh /mnt/ceph/users/johndoe/
+    </code>
+  </pre>
 
-```bash
-ls -lASrh /mnt/ceph/users/johndoe/
-```
+
+## Monitoring Usage: `/mnt/ceph`
 
 Show the number of files in directory:
-
-```bash
-getfattr -n ceph.dir.rentries /mnt/ceph/users/johndoe/my_dir
-```
-
-Don't use `du`, it's slow and taxing on the filesystem
+  <pre style="font-size:1em">
+    <code class="language-bash" data-trim>
+      getfattr -n ceph.dir.rentries my_dir
+    </code>
+  </pre>
 
 
 ## Use Data-Pipes on `/mnt/ceph`
 
-```bash
+Writing to filesystems is slow, if your workflow looks like this:
+
+<pre style="font-size:1em">
+<code class="language-bash" data-trim>
 gunzip data.gz
 awk '...' data > awkFilteredData
 gzip data
 myProgram -i awkFilteredData -o results
 rm awkFilteredData
-```
+</code>
+</pre>
 
-```bash
-myProgram -i <(gunzip -c data.gz | awk '...') -o /mnt/ceph/YourUserID/projectDirectory/result
-```
+
+## Use Data-Pipes on `/mnt/ceph`
+
+Try consolidating with the `|` command to speed things up and avoid writing intermediate files
+
+<pre style="font-size:1em">
+<code class="language-bash" data-trim>
+myProgram -i <(gunzip -c data.gz | awk '...') \
+  -o /mnt/ceph/YourUserID/projectDirectory/result
+</code>
+</pre>
 
 Gotcha: pipes do __NOT__ support random access
 
