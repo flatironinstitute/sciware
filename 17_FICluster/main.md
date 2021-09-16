@@ -347,6 +347,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 gcc/7.4.0(default)
 gcc/10.2.0
 gcc/11.1.0
+...
 python3/3.6.2
 python3/3.7.3
 ```
@@ -468,7 +469,7 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 
 <ul>
   <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
-  <li class="fragment">Home directory is mirrored on all FI and BNL nodes</li>
+  <li class="fragment">Home directory is shared on all FI nodes (rusty, workstations, gateway)</li>
   <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
 </ul>
 
@@ -483,7 +484,7 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 2. Intermediate files generated and then deleted during the course of a computation
 3. Large output files.
 
-<p style="text-align:left;"><b>You are limited to 10<sup>6</sup> files and 1 TB</b></p>
+<p style="text-align:left;"><b>You are limited to 900,000 files and 900 GB</b> (if you go beyond this you will not be able to log in)</p>
 
 
 ## Backups (aka snapshots)
@@ -493,13 +494,17 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
   <img class="fragment fade-out" data-fragment-index=0 src="https://media.giphy.com/media/G4rIGiMVtrJ1S/source.gif?cid=ecf05e4733lcv4bxv1hctf6k50lc0365y23gunb55d3ei2e6&rid=source.gif&ct=g">
 
   <div class="fragment fade-in" data-fragment-index=0>
-    If you accidentally delete some files, you can access backups through your <code>~/.snapshots</code> directory like this:
+    If you accidentally delete some files, you can access backups through the <code>.snapshots</code> directory like this:
 
   <pre style="font-size:0.65em">
-  <code data-trim>cp -a ~/.snapshots/@GMT-2017.12.14-02.00.14/lost_file lost_file.restored</code>
+  <code data-trim>cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
   </pre>
 
-  <code>~/.snapshots</code> is a special directory and paths WON'T autocomplete
+  <code>.snapshots</code> is a special invisible directory and WON'T autocomplete
+  </div>
+
+  <div class="fragment fade-in" data-fragment-index=0>
+    There are also longer-term backups of home if needed
   </div>
 
 </div>
@@ -511,8 +516,10 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups
-- Do not put > 1000 files in a directory
+- No backups<sup>\*</sup>
+- Do not put &#x2273; 1000 files in a directory
+
+<small><sup>\*</sup> <code>.snap</code> is coming soon (already at popeye)</small>
 
 
 ## Local Scratch
