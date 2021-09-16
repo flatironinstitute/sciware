@@ -38,7 +38,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Chat & office hour (TBD)
+- Oct 7: Chat & office hour 
 - Oct 21: An introduction to scientific visualization with Blender (Brian Kent, NRAO)
 - Suggest topics and vote on options in #sciware Slack
 
@@ -46,8 +46,8 @@ Activities where participants all actively work to foster an environment which e
 ## Today's agenda
 
 - Cluster overview
-- Slurm and parallelization
 - Modules and software
+- Slurm and parallelization
 - Filesystems and storage
 - Performance and benchmarking
 - Activity: monitoring jobs
@@ -55,7 +55,132 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+# Modules & software
+
+Dylan Simon (SCC)
+
+- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
+  - In a "module" we provide
+  - Downloaded/built/installed by you
+- By default you only see the "base system" software (CentOS7), which is often rather old
+
+
+## Modules
+
+- See what's available: `module avail`
+```
+gcc/7.4.0(default)
+gcc/10.2.0
+gcc/11.1.0
+...
+python3/3.6.2
+python3/3.7.3
+```
+- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
+
+
+### `module load`
+
+```
+> gcc -v
+gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
+> module load gcc
+> gcc -v
+gcc version 7.4.0 (GCC)
+> module unload gcc
+```
+
+
+### Other module commands
+
+- `module list` to see what you've loaded
+- `module purge` to unload all modules
+- `module show NAME` to see what a module does (probably sets PATH)
+
+
+## Python packages
+
+- `module load python` has a lot of packages built-in (check `pip list`)
+- If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
+
+```bash
+module load gcc python3
+python3 -m venv --system-site-packages ~/myvenv
+source ~/myvenv/bin/activate
+pip install ...
+```
+
+- Repeat the `module load` and `source activate` to return in a new shell
+
+
+### Jupyter
+
+You can also use modules and virtual environments in JupyterHub:
+```bash
+# setup your environment
+module load gcc python ...
+source ~/projenv/bin/activate
+# capture it into a new kernel
+module load jupyter-kernels
+python3 -m make-custom-kernel projkernel
+```
+
+Reload jupyterhub and "projkernel" will show up providing the same environment.
+
+
+## Batch scripts
+
+Good practice to load the modules you need in the script:
+
+```bash
+#!/bin/sh
+#SBATCH -p ccx
+module purge
+module load gcc python3
+source ~/myvenv/bin/activate
+
+python3 myscript.py
+```
+
+
+### Too much typing
+
+Put common sets of modules in a script
+```bash
+# File: ~/amods
+module purge
+module load gcc python hdf5 git
+```
+And "source" it when needed:
+```bash
+. ~/amods
+```
+
+- Avoid putting module loads in `~/.bashrc`
+
+
+## New modules
+
+- We will soon transition to a new set of modules
+- Most things work the same, but some names change
+- New versions of packages
+- Will replace current modules and `modules-nix`
+- Try them now: `module load modules-new`
+
+
+## Other software
+
+If you need something not in the base system, modules, or pip:
+- Download and install it yourself
+  - Many packages provide install instructions
+  - Load modules to find dependencies
+- Ask!
+
+
+
 # Running Parallel Jobs on the FI Cluster
+
+Lehman Garrison (CCA)
 
 ## Slurm, Job Arrays, and disBatch
 
@@ -75,6 +200,7 @@ How to run jobs efficiently on Flatiron's clusters
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
 - The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
+TODO: spell out which wiki page
 - Run any of these Slurm commands from a command line on your Flatiron workstation (`module load slurm`)
 
 
@@ -332,130 +458,12 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 
 
-# Modules & software
-
-- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
-  - In a "module" we provide
-  - Downloaded/built/installed by you
-- By default you only see the "base system" software (CentOS7), which is often rather old
-
-
-## Modules
-
-- See what's available: `module avail`
-```
-gcc/7.4.0(default)
-gcc/10.2.0
-gcc/11.1.0
-...
-python3/3.6.2
-python3/3.7.3
-```
-- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
-
-
-### `module load`
-
-```
-> gcc -v
-gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
-> module load gcc
-> gcc -v
-gcc version 7.4.0 (GCC)
-> module unload gcc
-```
-
-
-### Other module commands
-
-- `module list` to see what you've loaded
-- `module purge` to unload all modules
-- `module show NAME` to see what a module does (probably sets PATH)
-
-
-## Python packages
-
-- `module load python` has a lot of packages built-in (check `pip list`)
-- If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
-
-```bash
-module load gcc python3
-python3 -m venv --system-site-packages ~/myvenv
-source ~/myvenv/bin/activate
-pip install ...
-```
-
-- Repeat the `module load` and `source activate` to return in a new shell
-
-
-### Jupyter
-
-You can also use modules and virtual environments in JupyterHub:
-```bash
-# setup your environment
-module load gcc python ...
-source ~/projenv/bin/activate
-# capture it into a new kernel
-module load jupyter-kernels
-python3 -m make-custom-kernel projkernel
-```
-
-Reload jupyterhub and "projkernel" will show up providing the same environment.
-
-
-## Batch scripts
-
-Good practice to load the modules you need in the script:
-
-```bash
-#!/bin/sh
-#SBATCH -p ccx
-module purge
-module load gcc python3
-source ~/myvenv/bin/activate
-
-python3 myscript.py
-```
-
-
-### Too much typing
-
-Put common sets of modules in a script
-```bash
-# File: ~/amods
-module purge
-module load gcc python hdf5 git
-```
-And "source" it when needed:
-```bash
-. ~/amods
-```
-
-- Avoid putting module loads in `~/.bashrc`
-
-
-## New modules
-
-- We will soon transition to a new set of modules
-- Most things work the same, but some names change
-- New versions of packages
-- Will replace current modules and `modules-nix`
-- Try them now: `module load modules-new`
-
-
-## Other software
-
-If you need something not in the base system, modules, or pip:
-- Download and install it yourself
-  - Many packages provide install instructions
-  - Load modules to find dependencies
-- Ask!
-
-
-
 # File Systems
 
+James Smith (CCQ)
+
 See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
+TODO: spell out which wiki page
 
 
 ## What is a file system?
@@ -658,7 +666,7 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 - We have 10PB "cold storage" tape archive at FI
 - Can be used to backup things you don't expect to need but don't want to lose
-- Archive by moving files to /mnt/ceph/tape/USERNAME (contact SCC to setup the first time)
+- Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
 - Avoid archiving many small files with long names: use tar
 - Optional Globus endpoint coming soon
@@ -666,6 +674,8 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 
 # Benchmarking
+
+Geraud Krawezik (SCC)
 
 ## Why, when, what, and how?
 
