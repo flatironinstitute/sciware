@@ -38,7 +38,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Chat & office hour (TBD)
+- Oct 7: Chat & office hour 
 - Oct 21: An introduction to scientific visualization with Blender (Brian Kent, NRAO)
 - Suggest topics and vote on options in #sciware Slack
 
@@ -46,12 +46,138 @@ Activities where participants all actively work to foster an environment which e
 ## Today's agenda
 
 - Cluster overview
-- Slurm and parallelization
 - Modules and software
+- Slurm and parallelization
 - Filesystems and storage
 - Performance and benchmarking
 - Activity: monitoring jobs
 - Reception (roof)
+
+
+
+# Modules & software
+
+### Dylan Simon (SCC)
+
+
+## Overview
+
+- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
+  - In a "module" we provide
+  - Downloaded/built/installed by you
+- By default you only see the "base system" software (CentOS7), which is often rather old
+
+
+## Modules
+
+- See what's available: `module avail`
+```
+gcc/7.4.0(default)
+gcc/10.2.0
+gcc/11.1.0
+...
+python3/3.6.2
+python3/3.7.3
+```
+- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
+
+
+### `module load`
+
+```
+> gcc -v
+gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
+> module load gcc
+> gcc -v
+gcc version 7.4.0 (GCC)
+> module unload gcc
+```
+
+
+### Other module commands
+
+- `module list` to see what you've loaded
+- `module purge` to unload all modules
+- `module show NAME` to see what a module does (probably sets PATH)
+
+
+## Python packages
+
+- `module load python` has a lot of packages built-in (check `pip list`)
+- If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
+
+```bash
+module load gcc python3
+python3 -m venv --system-site-packages ~/myvenv
+source ~/myvenv/bin/activate
+pip install ...
+```
+
+- Repeat the `module load` and `source activate` to return in a new shell
+
+
+### Jupyter
+
+You can also use modules and virtual environments in JupyterHub:
+```bash
+# setup your environment
+module load gcc python ...
+source ~/projenv/bin/activate
+# capture it into a new kernel
+module load jupyter-kernels
+python3 -m make-custom-kernel projkernel
+```
+
+Reload jupyterhub and "projkernel" will show up providing the same environment.
+
+
+## Batch scripts
+
+Good practice to load the modules you need in the script:
+
+```bash
+#!/bin/sh
+#SBATCH -p ccx
+module purge
+module load gcc python3
+source ~/myvenv/bin/activate
+
+python3 myscript.py
+```
+
+
+### Too much typing
+
+Put common sets of modules in a script
+```bash
+# File: ~/amods
+module purge
+module load gcc python hdf5 git
+```
+And "source" it when needed:
+```bash
+. ~/amods
+```
+
+- Avoid putting module loads in `~/.bashrc`
+
+
+## New modules
+
+- We will soon transition to a new set of modules
+- Most things work the same, but some names change
+- New versions of packages
+- Will replace current modules and `modules-nix`
+- Try them now: `module load modules-new`
+
+
+## Other software
+
+If you need something not in the base system, modules, or pip:
+- Download and install it yourself
+  - Many packages provide install instructions
+  - Load modules to find dependencies
+- Ask!
 
 
 
@@ -60,6 +186,8 @@ Activities where participants all actively work to foster an environment which e
 ## Slurm, Job Arrays, and disBatch
 
 How to run jobs efficiently on Flatiron's clusters
+
+### Lehman Garrison (CCA)
 
 
 ## Slurm
@@ -75,12 +203,15 @@ How to run jobs efficiently on Flatiron's clusters
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
 - The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
+TODO: spell out which wiki page
 - Run any of these Slurm commands from a command line on your Flatiron workstation (`module load slurm`)
 
 
 ## Slurm Basics
 
 - Write a "batch file" (special kind of bash script) that specifies the resources needed:
+
+TODO: change to just one program (no for loop)
 
 ```bash
 #!/bin/bash
@@ -110,10 +241,13 @@ done
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
+TODO: add for loop background multiple tasks wait
+
+
 ## Slurm Tip \#1: Estimating Resource Requirements
 
 - Jobs don't necessarily run in order; most run via "backfill".
-  - Implication: specifying the smallest set of resources for your job will help it run sooner
+  - Implication: specifying the smallest set of resources for your job will help it run **sooner**
   - But don't short yourself!
 - Memory requirements can be hard to assess, especially if you're running someone else's code
 
@@ -129,12 +263,12 @@ done
     - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
 
 
-## Slurm Tip \#2: Choosing a Partition
+## Slurm Tip \#2: Choosing a Partition (CPUs)
     
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
   - `gen` has smaller limits and higher priority
 - The center and general partitions (`ccX` and `gen`) always allocate whole nodes
-  - All cores, all memory, reserved for you to make use of
+  - **All cores, all memory**, reserved for you to make use of
 - If your job doesn't use a whole node, you can use the `genx` partition (allows multiple jobs per node)
 - Or run multiple things in parallel...
 
@@ -161,14 +295,14 @@ done
   - Slurm job arrays
   - disBatch
 - Note: this job is a bad candidate for MPI
-  - If the jobs don't need to communicate with each other, no need for MPI!
+  - If the jobs don't need to communicate with each other, **no need for MPI**!
 
 
 ## Option 1: Slurm Job Arrays
 - Queues up multiple identical jobs
   - In this case, one per output
-- Syntax: `#SBATCH --array=1-100%10`, submits 100 jobs as an array, limited to 10 running at once
-- Slurm is allowed to run each job in the array individually; no need to wait for 10 nodes
+- Syntax: `#SBATCH --array=1-100%16`, submits 100 jobs as an array, limited to 16 running at once
+- Slurm is allowed to run each job in the array individually; no need to wait for 16 nodes
 
 
 ## Option 1: Slurm Job Arrays
@@ -317,8 +451,8 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Other resources
 
-- "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
-- "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+- `-p mem`: "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
+- `-p preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
     - This is a great option if your job writes regular checkpoints
 
 
@@ -332,130 +466,12 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 
 
-# Modules & software
-
-- Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
-  - In a "module" we provide
-  - Downloaded/built/installed by you
-- By default you only see the "base system" software (CentOS7), which is often rather old
-
-
-## Modules
-
-- See what's available: `module avail`
-```
-gcc/7.4.0(default)
-gcc/10.2.0
-gcc/11.1.0
-...
-python3/3.6.2
-python3/3.7.3
-```
-- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
-
-
-### `module load`
-
-```
-> gcc -v
-gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
-> module load gcc
-> gcc -v
-gcc version 7.4.0 (GCC)
-> module unload gcc
-```
-
-
-### Other module commands
-
-- `module list` to see what you've loaded
-- `module purge` to unload all modules
-- `module show NAME` to see what a module does (probably sets PATH)
-
-
-## Python packages
-
-- `module load python` has a lot of packages built-in (check `pip list`)
-- If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
-
-```bash
-module load gcc python3
-python3 -m venv --system-site-packages ~/myvenv
-source ~/myvenv/bin/activate
-pip install ...
-```
-
-- Repeat the `module load` and `source activate` to return in a new shell
-
-
-### Jupyter
-
-You can also use modules and virtual environments in JupyterHub:
-```bash
-# setup your environment
-module load gcc python ...
-source ~/projenv/bin/activate
-# capture it into a new kernel
-module load jupyter-kernels
-python3 -m make-custom-kernel projkernel
-```
-
-Reload jupyterhub and "projkernel" will show up providing the same environment.
-
-
-## Batch scripts
-
-Good practice to load the modules you need in the script:
-
-```bash
-#!/bin/sh
-#SBATCH -p ccx
-module purge
-module load gcc python3
-source ~/myvenv/bin/activate
-
-python3 myscript.py
-```
-
-
-### Too much typing
-
-Put common sets of modules in a script
-```bash
-# File: ~/amods
-module purge
-module load gcc python hdf5 git
-```
-And "source" it when needed:
-```bash
-. ~/amods
-```
-
-- Avoid putting module loads in `~/.bashrc`
-
-
-## New modules
-
-- We will soon transition to a new set of modules
-- Most things work the same, but some names change
-- New versions of packages
-- Will replace current modules and `modules-nix`
-- Try them now: `module load modules-new`
-
-
-## Other software
-
-If you need something not in the base system, modules, or pip:
-- Download and install it yourself
-  - Many packages provide install instructions
-  - Load modules to find dependencies
-- Ask!
-
-
-
 # File Systems
 
 See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
+TODO: spell out which wiki page
+
+### James Smith (CCQ)
 
 
 ## What is a file system?
@@ -504,9 +520,9 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
   </pre>
 
   <ul>
-    <li><code>.snapshots</code> is a special invisible directory and WON'T autocomplete</li>
-    <li>Snapshots happen twice a day and kept for 3-4 weeks.</li>
-    <li>There are separate long-term backups of home if needed (years).</li>
+    <li><code>.snapshots</code> is a special invisible directory and <em>won't</em> autocomplete</li>
+    <li>Snapshots happen twice a day and are kept for 3-4 weeks</li>
+    <li>There are separate long-term backups of home if needed (years)</li>
   </ul>
   </div>
 
@@ -519,16 +535,14 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups<sup>\*</sup>
+- No backups
 - Do not put &#x2273; 1000 files in a directory
-
-<small><sup>\*</sup> <code>.snap</code> is coming soon (already at popeye)</small>
 
 
 ## Local Scratch
 
 - Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm/`
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory)
 - Both of these directories are cleaned up after _each_ job
   - Make sure you copy any important data/results over to `ceph` or your `home`
 
@@ -560,12 +574,12 @@ To track down large file counts use:
 
 <pre style="font-size:1em">
 <code data-trim class="language-bash">
-$ du -s --inodes ./*
+$ du -s --inodes *
 
-1	CHANGELOG
-1	CONTRIBUTING.md
-437	examples
-1	FEATURES
+1       CHANGELOG
+1       CONTRIBUTING.md
+437     examples
+1       FEATURES
 ...
 </code>
 </pre>
@@ -576,12 +590,12 @@ $ du -s --inodes ./*
 To track down large files use:
 <pre style="font-size:1em">
 <code data-trim class="language-bash">
-$ du -sh ./*
+$ du -sh *
 
-64K	CHANGELOG
-64K	CONTRIBUTING.md
-1.8M	examples
-64K	FEATURES
+64K     CHANGELOG
+64K     CONTRIBUTING.md
+1.8M    examples
+64K     FEATURES
 ...
 </code>
 </pre>
@@ -656,11 +670,12 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 ## Tape Storage
 
-- We have a 10PB "cold storage" tape archive at FI
+- We have 10PB "cold storage" tape archive at FI
 - Can be used to backup things you don't expect to need but don't want to lose
-- Archive by moving files to /mnt/ceph/tape/USERNAME (contact SCC to setup the first time)
+- Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
-- Avoid archiving many small files with long names: use tar
+- Avoid archiving many small files with long names (use tar)
+- Optional Globus endpoint coming soon
 
 
 
@@ -669,6 +684,8 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 ## Why, when, what, and how?
 
 Testing how to get the best performance out of your jobs
+
+### Geraud Krawezik (SCC)
 
 
 ## Why benchmarking?
@@ -723,7 +740,7 @@ Testing how to get the best performance out of your jobs
 1. Launch using `jube run mybenchmark.xml`
 1. While running with a batch scheduler:
   - `jube continue mybenchmark --id=N`: status
-  - `jube result mybenchmark --id=N`  : partial results
+  - `jube result mybenchmark --id=N`: partial results
 1. Once finished, get the complete results:
   - Formatted table: `jube result mybenchmark --id=N`
   - CSV: `jube result mybenchmark --id=N -s csv`
@@ -854,7 +871,7 @@ Analysis and results (with stats!)
 
 # Survey
 
-https://bit.ly/???
+https://bit.ly/fi-clusters
 
 
 # Questions & Help
