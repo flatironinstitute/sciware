@@ -500,11 +500,10 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
   <code data-trim>cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
   </pre>
 
-  <code>.snapshots</code> is a special invisible directory and WON'T autocomplete
-  </div>
-
-  <div class="fragment fade-in" data-fragment-index=0>
-    There are also longer-term backups of home if needed
+  <ul>
+    <li><code>.snapshots</code> is a special invisible directory and WON'T autocomplete</li>
+    <li>There are also longer-term backups of home if needed</li>
+  </ul>
   </div>
 
 </div>
