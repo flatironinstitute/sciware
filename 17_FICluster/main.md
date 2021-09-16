@@ -379,10 +379,13 @@ gcc version 7.4.0 (GCC)
 - If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
 
 ```bash
+module load gcc python3
 python3 -m venv --system-site-packages ~/myvenv
 source ~/myvenv/bin/activate
 pip install ...
 ```
+
+- Repeat the `module load` and `source activate` to return in a new shell
 
 
 ### Jupyter
@@ -397,12 +400,12 @@ module load jupyter-kernels
 python3 -m make-custom-kernel projkernel
 ```
 
-Reload jupyterhub and "projkernel" will show up with the same environment.
+Reload jupyterhub and "projkernel" will show up providing the same environment.
 
 
 ## Batch scripts
 
-Good practice to load the modules you need:
+Good practice to load the modules you need in the script:
 
 ```bash
 #!/bin/sh
