@@ -674,7 +674,7 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 - Can be used to backup things you don't expect to need but don't want to lose
 - Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
-- Avoid archiving many small files with long names: use tar
+- Avoid archiving many small files with long names (use tar)
 - Optional Globus endpoint coming soon
 
 
