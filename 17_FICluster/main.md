@@ -505,13 +505,12 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 
   <ul>
     <li><code>.snapshots</code> is a special invisible directory and WON'T autocomplete</li>
-    <li>There are also longer-term backups of home if needed</li>
+    <li>Snapshots happen twice a day and kept for 3-4 weeks.</li>
+    <li>There are separate long-term backups of home if needed (years).</li>
   </ul>
   </div>
 
 </div>
-
-__TODO__: How long to snapshots last for? Talk about frequency too
 
 
 ## Ceph
@@ -639,7 +638,7 @@ myProgram -i <(gunzip -c data.gz | awk '...') \
 </code>
 </pre>
 
-Gotcha: pipes do __NOT__ support random access
+Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm` or `/tmp` for intermediate files)
 
 
 ## Compiling on `/mnt/ceph`
@@ -655,9 +654,13 @@ icpc -pipe simple_test.cpp
 __Note__: `-pipe` isn't supported by `nvhpc`
 
 
-## Tape Storage?
+## Tape Storage
 
-(I can't find anything on the wiki about it)
+- We have a 10PB "cold storage" tape archive at FI
+- Can be used to backup things you don't expect to need but don't want to lose
+- Archive by moving files to /mnt/ceph/tape/USERNAME (contact SCC to setup the first time)
+- Restores by request (please allow a few weeks)
+- Avoid archiving many small files with long names: use tar
 
 
 
