@@ -522,7 +522,7 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 - No backups<sup>\*</sup>
 - Do not put &#x2273; 1000 files in a directory
 
-<small><sup>\*</sup> <code>.snap</code> is coming soon (already at popeye)</small>
+<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
 
 
 ## Local Scratch
@@ -656,11 +656,12 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 ## Tape Storage
 
-- We have a 10PB "cold storage" tape archive at FI
+- We have 10PB "cold storage" tape archive at FI
 - Can be used to backup things you don't expect to need but don't want to lose
 - Archive by moving files to /mnt/ceph/tape/USERNAME (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
 - Avoid archiving many small files with long names: use tar
+- Optional Globus endpoint coming soon
 
 
 
