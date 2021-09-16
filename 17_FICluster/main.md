@@ -574,12 +574,12 @@ To track down large file counts use:
 
 <pre style="font-size:1em">
 <code data-trim class="language-bash">
-$ du -s --inodes ./*
+$ du -s --inodes *
 
-1	CHANGELOG
-1	CONTRIBUTING.md
-437	examples
-1	FEATURES
+1       CHANGELOG
+1       CONTRIBUTING.md
+437     examples
+1       FEATURES
 ...
 </code>
 </pre>
@@ -590,12 +590,12 @@ $ du -s --inodes ./*
 To track down large files use:
 <pre style="font-size:1em">
 <code data-trim class="language-bash">
-$ du -sh ./*
+$ du -sh *
 
-64K	CHANGELOG
-64K	CONTRIBUTING.md
-1.8M	examples
-64K	FEATURES
+64K     CHANGELOG
+64K     CONTRIBUTING.md
+1.8M    examples
+64K     FEATURES
 ...
 </code>
 </pre>
