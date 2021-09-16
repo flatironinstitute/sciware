@@ -378,17 +378,17 @@ gcc version 7.4.0 (GCC)
 - `module load python` has a lot of packages built-in (check `pip list`)
 - If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
 
-```
-> python3 -m venv --system-site-packages ~/myvenv
-> source ~/myvenv/bin/activate
-> pip install ...
+```bash
+python3 -m venv --system-site-packages ~/myvenv
+source ~/myvenv/bin/activate
+pip install ...
 ```
 
 
 ### Jupyter
 
 You can also use modules and virtual environments in JupyterHub:
-```
+```bash
 # setup your environment
 module load gcc python ...
 source ~/projenv/bin/activate
@@ -424,8 +424,8 @@ module purge
 module load gcc python hdf5 git
 ```
 And "source" it when needed:
-```
-> . ~/amods
+```bash
+. ~/amods
 ```
 
 - Avoid putting module loads in `~/.bashrc`
@@ -457,7 +457,7 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 
 ## What is a file system?
 
-<div >
+<div>
   <ul>
     <li>The directory structure</li>
     <li class="fragment"><em>More technical definition</em>: a method for organizing and retrieving files from a storage medium</li>
@@ -551,23 +551,23 @@ $ /cm/shared/apps/fi/bin/pq
 To track down large file counts use:
 
 ```bash
-$ du -s --inodes ./*
+$ du -s --inodes *
 
-1	./CHANGELOG
-1	./CONTRIBUTING.md
-437	./examples
-1	./FEATURES
+1	CHANGELOG
+1	CONTRIBUTING.md
+437	examples
+1	FEATURES
 ...
 ```
 
 To track down large files use:
 ```bash
-$ du -sh ./*
+$ du -sh *
 
-64K	./CHANGELOG
-64K	./CONTRIBUTING.md
-1.8M	./examples
-64K	./FEATURES
+64K	CHANGELOG
+64K	CONTRIBUTING.md
+1.8M	examples
+64K	FEATURES
 ...
 ```
 
