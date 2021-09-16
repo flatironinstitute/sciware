@@ -520,9 +520,9 @@ TODO: spell out which wiki page
   </pre>
 
   <ul>
-    <li><code>.snapshots</code> is a special invisible directory and WON'T autocomplete</li>
-    <li>Snapshots happen twice a day and kept for 3-4 weeks.</li>
-    <li>There are separate long-term backups of home if needed (years).</li>
+    <li><code>.snapshots</code> is a special invisible directory and *won't* autocomplete</li>
+    <li>Snapshots happen twice a day and are kept for 3-4 weeks</li>
+    <li>There are separate long-term backups of home if needed (years)</li>
   </ul>
   </div>
 
