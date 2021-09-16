@@ -186,7 +186,7 @@ done
 
     # Use the "find" command to write the list of files to process, 1 per line
     fn_list="$jobdir/fn_list.txt"
-    find $projdir -name 'output*.hdf5' | sort > ${fn_list}
+    find $projdir -name 'data*.hdf5' | sort > ${fn_list}
     nfiles=$(wc -l $fn_list)
 
     # Launch a Slurm job array with $nfiles entries
@@ -206,7 +206,7 @@ done
     fn_list=$1
     
     # the job array index
-    # the task ID is automatically set by 
+    # the task ID is automatically set by Slurm
     i=$SLURM_ARRAY_TASK_ID
     
     # get the line of the file belonging to this job
