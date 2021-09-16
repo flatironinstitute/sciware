@@ -486,7 +486,7 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
   <img class="fragment fade-out" data-fragment-index=0 src="https://media.giphy.com/media/G4rIGiMVtrJ1S/source.gif?cid=ecf05e4733lcv4bxv1hctf6k50lc0365y23gunb55d3ei2e6&rid=source.gif&ct=g">
 
   <div class="fragment fade-in" data-fragment-index=0>
-    If you accidentally delete some files, you access backups through your <code>~/.snapshots</code> directory like this:
+    If you accidentally delete some files, you can access backups through your <code>~/.snapshots</code> directory like this:
 
   <pre style="font-size:0.65em">
   <code data-trim>cp -a ~/.snapshots/@GMT-2017.12.14-02.00.14/lost_file lost_file.restored</code>
@@ -501,6 +501,8 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 ## Ceph
 
 - Pronounces as "sef"
+- Rusty: `/mnt/ceph`
+- Popeye: `/mnt/sdceph`
 - For large data storage
 - No backups
 - Do not put > 1000 files in a directory
@@ -511,6 +513,102 @@ See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for
 - Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
 - For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm/`
 - Both of these directories are cleaned up after _each_ job
+  - Make sure you copy any important data/results over to `ceph` or your `home`
+
+
+## Monitoring Usage: `/mnt/home`
+
+```txt
+$ /cm/shared/apps/fi/bin/pq
+
++-----------------------------------------------+
+|        GPFS Quotas for /mnt/home/johndoe      |
++------------------------+----------------------+
+|     Block limits       |    File limits       |
++------------------------+----------------------+
+|   Usage:       235G    |   Files:    660k     |
+|   Limit:       1.1T    |   Limit:    1.1M     |
+|   Avail:       866G    |   Avail:    389k     |
++------------------------+----------------------+
+```
+
+
+## Monitoring Usage: `/mnt/home`
+
+To track down large file counts use:
+
+```bash
+$ du -s --inodes ./*
+
+1	./CHANGELOG
+1	./CONTRIBUTING.md
+437	./examples
+1	./FEATURES
+...
+```
+
+To track down large files use:
+```bash
+$ du -sh ./*
+
+64K	./CHANGELOG
+64K	./CONTRIBUTING.md
+1.8M	./examples
+64K	./FEATURES
+...
+```
+
+
+## Monitoring Usage: `/mnt/ceph`
+
+List files in increasing order:
+
+```bash
+ls -lASrh /mnt/ceph/users/johndoe/
+```
+
+Show the number of files in directory:
+
+```bash
+getfattr -n ceph.dir.rentries /mnt/ceph/users/johndoe/my_dir
+```
+
+Don't use `du`, it's slow and taxing on the filesystem
+
+
+## Use Data-Pipes on `/mnt/ceph`
+
+```bash
+gunzip data.gz
+awk '...' data > awkFilteredData
+gzip data
+myProgram -i awkFilteredData -o results
+rm awkFilteredData
+```
+
+```bash
+myProgram -i <(gunzip -c data.gz | awk '...') -o /mnt/ceph/YourUserID/projectDirectory/result
+```
+
+Gotcha: pipes do __NOT__ support random access
+
+
+## Compiling on `/mnt/ceph`
+
+If compiling is going to generate a lot of temporary files, you can you the `-pipe` option, e.g.:
+
+```bash
+g++ -pipe simple_test.cpp
+clang++ -pipe simple_test.cpp
+icpc -pipe simple_test.cpp
+```
+
+__Note__: `-pipe` isn't supported by `nvhpc`
+
+
+## Tape Storage?
+
+(I can't find anything on the wiki about it)
 
 
 
