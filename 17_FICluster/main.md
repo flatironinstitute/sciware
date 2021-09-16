@@ -57,7 +57,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Modules & software
 
-Dylan Simon (SCC)
+### Dylan Simon (SCC)
 
 - Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
@@ -448,8 +448,8 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Other resources
 
-- "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
-- "preempt" partition: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+- `-p mem`: "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
+- `-p preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
     - This is a great option if your job writes regular checkpoints
 
 
