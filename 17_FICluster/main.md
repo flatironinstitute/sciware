@@ -782,8 +782,9 @@ Testing how to get the best performance out of your jobs
 
 ## Using JUBE: Example 
 
-```console
-user@rusty:~$ jube run mybenchmark.xml
+<code class="console hljs shell">
+<b>user@rusty:~$ jube run mybenchmark.xml</b>
+"
 ######################################################################
 # benchmark: npb3.4.1
 # id: 0
@@ -793,10 +794,14 @@ user@rusty:~$ jube run mybenchmark.xml
 
 Running workpackages (#=done, 0=wait, E=error):
 0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
-user@rusty:~$ jube continue mybenchmark_title --id=0
+"
+<b>user@rusty:~$ jube continue mybenchmark_title --id=0</b>
+"
 Running workpackages (#=done, 0=wait, E=error):
 #############00000000000000000000000000000000000000000000000 ( 13/ 48)
-user@rusty:~$ jube result mybenchmark_title --id=0
+"
+<b>user@rusty:~$ jube result mybenchmark_title --id=0</b>
+"
 result:
 | kernel | class | num_ranks_used | time_in_seconds |    mflops |
 |--------|-------|----------------|-----------------|-----------|
@@ -808,11 +813,12 @@ result:
 |     cg |     B |              4 |           10.23 |   5350.09 |
 |     cg |     B |             16 |             2.9 |  18884.73 |
 |     cg |     B |             64 |            1.45 |  37621.67 |
-```
+"
+</code>
 
 
 ## JUBE Config (1) Parameter sets
-What parameter sets to use, generic run settings
+What parameters to explore, and generic run settings
 ```yaml
 parameterset: # NAS Parallel Benchmarks, single node strong scaling
   - name: benchmark_configuration # The parameter space
@@ -831,7 +837,7 @@ parameterset: # NAS Parallel Benchmarks, single node strong scaling
 
 
 ## JUBE Config (2) Analysis
-Regular expressions to extract the results from the output file
+Regular expressions to extract the results from the output file(s)
 ```yaml
 patternset:
   name: regex_patterns
@@ -862,11 +868,11 @@ analyser:
   name: analyse
   use:  regex_patterns 
   analyse:
-    step: submit
+    step: submit  # Dependency: applies to submit's results
     file: $out_file
 
 result:
-  use: analyse
+  use: analyse    # Dependency: use results from analyse
   table:
     name:   result
     column: [ kernel, size, num_ranks, mflops_avg, time_in_seconds_avg ]
@@ -918,16 +924,16 @@ parameterset
 
 ```yaml
 parameterset:
-  name="compile_set">
-    parameter:
-      - name: toolchain
-        _: "gcc_openmpi, intel"
-      - name: compiler
-        _: "{ 'gcc_openmpi' : 'gcc/7.4.0',
-              'intel'       : 'intel/compiler/2017-4' }"
-      - name: mpi_library
-        _: "{ 'gcc_openmpi' : 'openmpi4/4.0.5',
-              'intel'       : 'intel/mpi/2017-4' }"
+  name: compile_set
+  parameter:
+    - name: toolchain
+      _: "gcc_openmpi, intel"
+    - name: compiler
+      _: "{ 'gcc_openmpi' : 'gcc/7.4.0',
+            'intel'       : 'intel/compiler/2017-4' }"
+    - name: mpi_library
+      _: "{ 'gcc_openmpi' : 'openmpi4/4.0.5',
+            'intel'       : 'intel/mpi/2017-4' }"
 ```
 
 
