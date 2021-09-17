@@ -202,8 +202,7 @@ How to run jobs efficiently on Flatiron's clusters
 ## Slurm
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
-- The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
-TODO: spell out which wiki page
+- The [Iron Cluster Wiki page](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
 - Run any of these Slurm commands from a command line on your Flatiron workstation (`module load slurm`)
 
 
@@ -211,23 +210,18 @@ TODO: spell out which wiki page
 
 - Write a "batch file" (special kind of bash script) that specifies the resources needed:
 
-TODO: change to just one program (no for loop)
-
 ```bash
 #!/bin/bash
 # File: myjob.sbatch
 # These comments are interpreted by Slurm as sbatch flags
 #SBATCH --mem=1G          # Memory?
 #SBATCH --time=02:00:00   # Time? (2 hours)
-#SBATCH --ntasks=1        # Parallel tasks?
 #SBATCH --cpus-per-task=1 # Cores?
 #SBATCH --partition=genx
 
 module load gcc python3
 
-for filename in *.hdf5; do
-    ./myjob $filename
-done
+./myjob data1.hdf5
 ```
 
 - Submit the job to the queue with `sbatch myjob.sbatch`
@@ -241,7 +235,26 @@ done
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
-TODO: add for loop background multiple tasks wait
+## What if you have multiple jobs?
+
+- Let's say we have 10 files, each using 1 GB and 1 CPU
+
+```bash
+#!/bin/bash
+#SBATCH --mem=10G           # Request 10x the memory
+#SBATCH --time=02:00:00     # Same time
+#SBATCH --cpus-per-task=10  # Request 10x the CPUs
+#SBATCH --partition=genx
+
+module load gcc python3
+
+for filename in data{1..10}.hdf5; do
+    ./myjob $filename &  # << the "&" runs the task in the background
+done
+wait  # << wait for all background tasks to complete
+```
+
+- This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -285,7 +298,7 @@ TODO: add for loop background multiple tasks wait
    ```
 - Each file can be processed independently
 - Ready to use rusty! ... but how?
-- Recommendation: don't submit more than ~50 jobs at once
+- Running 1000 independent jobs will be really slow: Slurm won't even look at more than 50
 
 
 ## Running Jobs in Parallel
@@ -413,6 +426,11 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Option 2: disBatch
 - When the job runs, it will write a `status.txt` file, one line per task
+
+```text
+0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
+1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+```
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
 
@@ -425,9 +443,11 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 - disBatch Advantages
     - Dynamic scheduling handles variable-length jobs
-    - Status file of successful and failed jobs
-    - Easy retries of failed jobs
-    - Scales beyond 10K+ jobs
+    - Easy way to make good use of exclusive nodes
+    - Status file of job success; easily retry failed jobs
+    - Scales beyond 10K+ jobs, low overhead for short jobs
+    - Can modify execution resources on the fly
+    - Can be used outside of Slurm, e.g. on a workstation
 
 
 ## Summary of Parallel Jobs
@@ -468,10 +488,9 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # File Systems
 
-See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
-TODO: spell out which wiki page
+See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
 
-### James Smith (CCQ)
+<h3 style="color:#7e588aff">James Smith (CCQ)</h3>
 
 
 ## What is a file system?
@@ -489,7 +508,7 @@ TODO: spell out which wiki page
 <ul>
   <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
   <li class="fragment">Home directory is shared on all FI nodes (rusty, workstations, gateway)</li>
-  <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
+  <li class="fragment">Popeye (SDSC) has the same structure, but it's a <em>different</em> home directory than on FI nodes</li>
 </ul>
 
 
@@ -542,7 +561,7 @@ TODO: spell out which wiki page
 ## Local Scratch
 
 - Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory)
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory), but be careful!
 - Both of these directories are cleaned up after _each_ job
   - Make sure you copy any important data/results over to `ceph` or your `home`
 
@@ -609,9 +628,11 @@ Don't use <code>du</code>, it's slow and taxing on the filesystem
 ## Monitoring Usage: `/mnt/ceph`
 
 List files in increasing order:
-  <pre style="font-size:1em">
-    <code data-trim>
-      ls -lASrh /mnt/ceph/users/johndoe/
+  <pre style="font-size:0.65em">
+    <code data-trim class="language-bash">
+      $ ls -ldh /mnt/ceph/users/johndoe/
+      -rw-rw-r-- 1 johndoe johndoe 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
+      -rw-rw-r-- 1 johndoe johndoe  83M Apr 30 00:39 QM9.tar.bz2
     </code>
   </pre>
 
@@ -621,14 +642,35 @@ List files in increasing order:
 Show the number of files in directory:
   <pre style="font-size:1em">
     <code class="language-bash" data-trim>
-      getfattr -n ceph.dir.rentries my_dir
+      $ getfattr -n ceph.dir.rentries my_dir
+      # file: datasets
+      ceph.dir.rentries="3"
     </code>
   </pre>
 
 
+## Moving Files
+- Use `mv` within a filesystem, __NOT__ in between them
+- Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below:
+
+```bash
+# Transfer
+rsync -a /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
+# Verify
+rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
+# Clean-up
+/bin/rm -r /mnt/home/johndoe/SourceDir 
+```
+
+
+## Speeding up your Workflow
+
+If file IO to HOME is slowing down your workflow, try writing to `/tmp` or `/dev/shm` instead
+
+
 ## Use Data-Pipes on `/mnt/ceph`
 
-Writing to filesystems is slow, if your workflow looks like this:
+Still, writing to filesystems can be slow, if your workflow looks like this:
 
 <pre style="font-size:1em">
 <code class="language-bash" data-trim>
@@ -657,12 +699,14 @@ Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm`
 
 ## Compiling on `/mnt/ceph`
 
-If compiling is going to generate a lot of temporary files, you can you the `-pipe` option, e.g.:
+`/mnt/ceph` is not great for compiling, trying compiling on `/tmp` or `/dev/shm` first and then installing to `/mnt/ceph`.
+
+If that's not an option, you can use the `-pipe` option, e.g.:
 
 ```bash
-g++ -pipe simple_test.cpp
+g++     -pipe simple_test.cpp
 clang++ -pipe simple_test.cpp
-icpc -pipe simple_test.cpp
+icpc    -pipe simple_test.cpp
 ```
 
 __Note__: `-pipe` isn't supported by `nvhpc`
@@ -868,6 +912,58 @@ Analysis and results (with stats!)
 - Examples: 
 
 <center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
+
+
+
+# Activity
+
+<h3 style="color:#7e588aff">James Smith (CCQ)</h3>
+
+
+## Objective
+
+Use slurm's accounting system to track information about previous (or current) jobs
+
+
+## Finding a Job
+- Use `sacct` command to find the JobID for an old job of yours (or a friend's)
+
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
+sacct -u johndoe -S 2021-09-01
+</code>
+</pre>
+
+Where `2021-09-01` is when the jobs were started (pick a date that makes sense for your usage)
+
+
+## Getting Job Info
+
+TODO: Add info about SlurmUtil
+
+<pre style="font-size:.9em">
+<code data-trim class="language-bash">
+$ seff 1122721
+Job ID: 1122721
+Cluster: slurm
+User/Group: jsmith/jsmith
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 128
+CPU Utilized: 22:48:16
+CPU Efficiency: 94.04% of 1-00:14:56 core-walltime
+Job Wall-clock time: 00:11:22
+Memory Utilized: 43.35 GB
+Memory Efficiency: 4.34% of 1000.00 GB
+</code>
+</pre>
+
+
+## Activity
+
+Fill out [this Google form](https://forms.gle/yT45Do2hbYGvWJFo9) with some info about the job
+
+
 
 
 
