@@ -468,10 +468,9 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 # File Systems
 
-See the [wiki](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
-TODO: spell out which wiki page
+See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.php/Public:ClusterIO) for more detailed docs
 
-### James Smith (CCQ)
+<h3 style="color:#7e588aff">James Smith (CCQ)</h3>
 
 
 ## What is a file system?
@@ -489,7 +488,7 @@ TODO: spell out which wiki page
 <ul>
   <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code></li>
   <li class="fragment">Home directory is shared on all FI nodes (rusty, workstations, gateway)</li>
-  <li class="fragment">Popeye (SDSC) has the same structure, but a <em>different</em> home directory</li>
+  <li class="fragment">Popeye (SDSC) has the same structure, but it's a <em>different</em> home directory than on FI nodes</li>
 </ul>
 
 
@@ -542,7 +541,7 @@ TODO: spell out which wiki page
 ## Local Scratch
 
 - Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory)
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory), but be careful!
 - Both of these directories are cleaned up after _each_ job
   - Make sure you copy any important data/results over to `ceph` or your `home`
 
@@ -609,9 +608,11 @@ Don't use <code>du</code>, it's slow and taxing on the filesystem
 ## Monitoring Usage: `/mnt/ceph`
 
 List files in increasing order:
-  <pre style="font-size:1em">
-    <code data-trim>
-      ls -lASrh /mnt/ceph/users/johndoe/
+  <pre style="font-size:0.65em">
+    <code data-trim class="language-bash">
+      $ ls -ldh /mnt/ceph/users/johndoe/
+      -rw-rw-r-- 1 johndoe johndoe 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
+      -rw-rw-r-- 1 johndoe johndoe  83M Apr 30 00:39 QM9.tar.bz2
     </code>
   </pre>
 
@@ -621,14 +622,35 @@ List files in increasing order:
 Show the number of files in directory:
   <pre style="font-size:1em">
     <code class="language-bash" data-trim>
-      getfattr -n ceph.dir.rentries my_dir
+      $ getfattr -n ceph.dir.rentries my_dir
+      # file: datasets
+      ceph.dir.rentries="3"
     </code>
   </pre>
 
 
+## Moving Files
+- Use `mv` within a filesystem, __NOT__ in between them
+- Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below:
+
+```bash
+# Transfer
+rsync -a /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
+# Verify
+rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
+# Clean-up
+/bin/rm -r /mnt/home/johndoe/SourceDir 
+```
+
+
+## Speeding up your Workflow
+
+If file IO to HOME is slowing down your workflow, try writing to `/tmp` or `/dev/shm` instead
+
+
 ## Use Data-Pipes on `/mnt/ceph`
 
-Writing to filesystems is slow, if your workflow looks like this:
+Still, writing to filesystems can be slow, if your workflow looks like this:
 
 <pre style="font-size:1em">
 <code class="language-bash" data-trim>
@@ -657,12 +679,14 @@ Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm`
 
 ## Compiling on `/mnt/ceph`
 
-If compiling is going to generate a lot of temporary files, you can you the `-pipe` option, e.g.:
+`/mnt/ceph` is not great for compiling, trying compiling on `/tmp` or `/dev/shm` first and then installing to `/mnt/ceph`.
+
+If that's not an option, you can use the `-pipe` option, e.g.:
 
 ```bash
-g++ -pipe simple_test.cpp
+g++     -pipe simple_test.cpp
 clang++ -pipe simple_test.cpp
-icpc -pipe simple_test.cpp
+icpc    -pipe simple_test.cpp
 ```
 
 __Note__: `-pipe` isn't supported by `nvhpc`
