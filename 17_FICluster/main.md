@@ -202,8 +202,7 @@ How to run jobs efficiently on Flatiron's clusters
 ## Slurm
 - Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
 - Flatiron has two clusters (rusty & popeye), each with multiple kinds of nodes (see the slides from earlier)
-- The [Wiki](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
-TODO: spell out which wiki page
+- The [Iron Cluster Wiki page](https://docs.simonsfoundation.org/index.php/Public:Instructions_Iron_Cluster) lists all the node options and what Slurm flags to use to request them
 - Run any of these Slurm commands from a command line on your Flatiron workstation (`module load slurm`)
 
 
@@ -211,23 +210,18 @@ TODO: spell out which wiki page
 
 - Write a "batch file" (special kind of bash script) that specifies the resources needed:
 
-TODO: change to just one program (no for loop)
-
 ```bash
 #!/bin/bash
 # File: myjob.sbatch
 # These comments are interpreted by Slurm as sbatch flags
 #SBATCH --mem=1G          # Memory?
 #SBATCH --time=02:00:00   # Time? (2 hours)
-#SBATCH --ntasks=1        # Parallel tasks?
 #SBATCH --cpus-per-task=1 # Cores?
 #SBATCH --partition=genx
 
 module load gcc python3
 
-for filename in *.hdf5; do
-    ./myjob $filename
-done
+./myjob data1.hdf5
 ```
 
 - Submit the job to the queue with `sbatch myjob.sbatch`
@@ -241,7 +235,26 @@ done
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
-TODO: add for loop background multiple tasks wait
+## What if you have multiple jobs?
+
+- Let's say we have 10 files, each using 1 GB and 1 CPU
+
+```bash
+#!/bin/bash
+#SBATCH --mem=10G           # Request 10x the memory
+#SBATCH --time=02:00:00     # Same time
+#SBATCH --cpus-per-task=10  # Request 10x the CPUs
+#SBATCH --partition=genx
+
+module load gcc python3
+
+for filename in data{1..10}.hdf5; do
+    ./myjob $filename &  # << the "&" runs the task in the background
+done
+wait  # << wait for all background tasks to complete
+```
+
+- This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -285,7 +298,7 @@ TODO: add for loop background multiple tasks wait
    ```
 - Each file can be processed independently
 - Ready to use rusty! ... but how?
-- Recommendation: don't submit more than ~50 jobs at once
+- Running 1000 independent jobs will be really slow: Slurm won't even look at more than 50
 
 
 ## Running Jobs in Parallel
@@ -413,6 +426,11 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Option 2: disBatch
 - When the job runs, it will write a `status.txt` file, one line per task
+
+```text
+0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
+1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+```
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
 
@@ -425,9 +443,11 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 - disBatch Advantages
     - Dynamic scheduling handles variable-length jobs
-    - Status file of successful and failed jobs
-    - Easy retries of failed jobs
-    - Scales beyond 10K+ jobs
+    - Easy way to make good use of exclusive nodes
+    - Status file of job success; easily retry failed jobs
+    - Scales beyond 10K+ jobs, low overhead for short jobs
+    - Can modify execution resources on the fly
+    - Can be used outside of Slurm, e.g. on a workstation
 
 
 ## Summary of Parallel Jobs
