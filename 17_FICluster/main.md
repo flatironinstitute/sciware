@@ -808,22 +808,22 @@ Testing how to get the best performance out of your jobs
 
 ## JUBE Configuration Files (2)
 Parameter sets: NAS Parallel Benchmarks, single node
-```xml
-<parameterset name="param_set"> <!-- Benchmark configuration -->
-    <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
-    <parameter name="size" type="string">A,B,C,D</parameter>
-</parameterset>
-<parameterset name="executeset"> <!-- Slurm job configuration -->
-    <parameter name="submit_cmd">sbatch</parameter>
-    <parameter name="job_file">npb_mpi.run</parameter>
-    <parameter name="max_num_ranks_per_node" type="int">128</parameter>
-    <parameter name="exec">num_ranks=1; 
+```yaml
+parameterset:
+  - name: benchmark_configuration
+    parameter:
+      - {name: kernel, type: string, "_": "bt,cg,ep,ft,is,lu,mg,sp"}
+      - {name: size, type: string, "_": "A,B,C,D"}
+  - name: slurm_job_configuration
+    parameter:
+      - {name: submit_cmd, "_": sbatch}
+      - {name: job_file, "_": npb_mpi.run
+      - {name: max_num_ranks_per_node, type:int, _:"128"}
+      - {name: exec, _: num_ranks=1; 
         while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
-            mpirun -np $$num_ranks --bind-to core ./$kernel.$size.x; 
-            num_ranks=$$[$$num_ranks*2];
-        done
-    </parameter>
-</parameterset>
+          mpirun -np $$num_ranks --bind-to core ./$kernel.$size.x; 
+          num_ranks=$$[$$num_ranks*2];
+        done}
 ```
 
 
