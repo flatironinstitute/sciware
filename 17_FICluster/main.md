@@ -685,7 +685,7 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 Testing how to get the best performance out of your jobs
 
-### Geraud Krawezik (SCC)
+### G&eacute;raud Krawezik (SCC)
 
 
 ## Why benchmarking?
@@ -702,6 +702,7 @@ Testing how to get the best performance out of your jobs
 
 ## When to benchmark?
 
+- Once your code runs small samples
 - Before you type `sbatch --time=a-lot!`
 - For new projects
 - For known projects: batch scripts are not "one size fits all"
@@ -766,7 +767,7 @@ Parameter sets: NAS Parallel Benchmarks, single node
 ```xml
 <parameterset name="param_set"> <!-- Benchmark configuration -->
     <parameter name="kernel" type="string">bt,cg,ep,ft,is,lu,mg,sp</parameter>
-    <parameter name="class" type="string">A,B,C,D</parameter>
+    <parameter name="size" type="string">A,B,C,D</parameter>
 </parameterset>
 <parameterset name="executeset"> <!-- Slurm job configuration -->
     <parameter name="submit_cmd">sbatch</parameter>
@@ -774,7 +775,7 @@ Parameter sets: NAS Parallel Benchmarks, single node
     <parameter name="max_num_ranks_per_node" type="int">128</parameter>
     <parameter name="exec">num_ranks=1; 
         while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
-            mpirun -np $$num_ranks --bind-to core ./$kernel.$class.x; 
+            mpirun -np $$num_ranks --bind-to core ./$kernel.$size.x; 
             num_ranks=$$[$$num_ranks*2];
         done
     </parameter>
@@ -837,6 +838,7 @@ Analysis and results (with stats!)
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
 <li>Simulation stopped after a few iterations</li>
+<li>Time limit set in Gadget4 config file</li>
 <li>Gadget4 gives detailed timings</li>
 <i>Simulation config courtesy Yin Li (CCA)</i>
 </ul>
