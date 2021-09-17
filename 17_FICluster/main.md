@@ -783,7 +783,7 @@ Testing how to get the best performance out of your jobs
 ## Using JUBE: Example 
 
 ```console
-~$ jube run mybenchmark.xml
+user@rusty:~$ jube run mybenchmark.xml
 ######################################################################
 # benchmark: npb3.4.1
 # id: 0
@@ -793,10 +793,10 @@ Testing how to get the best performance out of your jobs
 
 Running workpackages (#=done, 0=wait, E=error):
 0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
-~$ jube continue mybenchmark_title --id=0
+user@rusty:~$ jube continue mybenchmark_title --id=0
 Running workpackages (#=done, 0=wait, E=error):
 #############00000000000000000000000000000000000000000000000 ( 13/ 48)
-~$ jube result mybenchmark_title --id=0
+user@rusty:~$ jube result mybenchmark_title --id=0
 result:
 | kernel | class | num_ranks_used | time_in_seconds |    mflops |
 |--------|-------|----------------|-----------------|-----------|
@@ -812,7 +812,7 @@ result:
 
 
 ## JUBE Config (1) Parameter sets
-Parameter sets
+What parameter sets to use, generic run settings
 ```yaml
 parameterset: # NAS Parallel Benchmarks, single node strong scaling
   - name: benchmark_configuration # The parameter space
@@ -831,6 +831,7 @@ parameterset: # NAS Parallel Benchmarks, single node strong scaling
 
 
 ## JUBE Config (2) Analysis
+Regular expressions to extract the results from the output file
 ```yaml
 patternset:
   name: regex_patterns
@@ -847,7 +848,8 @@ patternset:
 ```
 
 
-## JUBE Config (3) Dependecies Results
+## JUBE Config (3) Dependencies
+From job submission to getting the results
 ```yaml
 step:
   name: submit
