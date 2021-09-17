@@ -893,6 +893,58 @@ Analysis and results (with stats!)
 
 
 
+# Activity
+
+<h3 style="color:#7e588aff">James Smith (CCQ)</h3>
+
+
+## Objective
+
+Use slurm's accounting system to track information about previous (or current) jobs
+
+
+## Finding a Job
+- Use `sacct` command to find the JobID for an old job of yours (or a friend's)
+
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
+sacct -u johndoe -S 2021-09-01
+</code>
+</pre>
+
+Where `2021-09-01` is when the jobs were started (pick a date that makes sense for your usage)
+
+
+## Getting Job Info
+
+TODO: Add info about SlurmUtil
+
+<pre style="font-size:.9em">
+<code data-trim class="language-bash">
+$ seff 1122721
+Job ID: 1122721
+Cluster: slurm
+User/Group: jsmith/jsmith
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 128
+CPU Utilized: 22:48:16
+CPU Efficiency: 94.04% of 1-00:14:56 core-walltime
+Job Wall-clock time: 00:11:22
+Memory Utilized: 43.35 GB
+Memory Efficiency: 4.34% of 1000.00 GB
+</code>
+</pre>
+
+
+## Activity
+
+Fill out [this Google form](https://forms.gle/yT45Do2hbYGvWJFo9) with some info about the job
+
+
+
+
+
 # Survey
 
 https://bit.ly/fi-clusters
