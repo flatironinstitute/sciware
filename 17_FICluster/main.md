@@ -779,78 +779,85 @@ Testing how to get the best performance out of your jobs
   - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
 
 
-## Using JUBE 
+## Using JUBE: Example 
 
-1. Create an XML (or YAML) file describing the benchmark
-1. Launch using `jube run mybenchmark.xml`
-1. While running with a batch scheduler:
-  - `jube continue mybenchmark --id=N`: status
-  - `jube result mybenchmark --id=N`: partial results
-1. Once finished, get the complete results:
-  - Formatted table: `jube result mybenchmark --id=N`
-  - CSV: `jube result mybenchmark --id=N -s csv`
+```console
+~$ jube run mybenchmark.xml
+######################################################################
+# benchmark: npb3.4.1
+# id: 0
+#
+# NPB3.4.1 Icelake Single node MPI gcc/7.4.0 skylake
+######################################################################
 
-
-## JUBE Configuration Files (1)
-
-- XML/YAML Structure:
-  1. Benchmark configuration: number of nodes, input files
-    - Parameters can be dynamic (python, shell)
-  1. Execution configuration: processor type, runtime
-    - Can submit jobs to a batch scheduler
-  1. Benchmark definition: which steps to run, in what order
-  1. Regular expressions to extract results
-  1. Results printing: inputs, outputs, in what order
-- If needed, templates for other files, filled at runtime
-  - batch scheduler job
-  - input parameter files
-
-
-## JUBE Configuration Files (2)
-Parameter sets: NAS Parallel Benchmarks, single node
-```yaml
-parameterset:
-  - name: benchmark_configuration # The parameter space
-    parameter:
-      - { name: kernel, type: string, _: "bt,cg,ep,ft,is,lu,mg,sp" }
-      - { name: size, type: string, _: "A,B,C,D" }
-  - name: job_configuration # Will be sub'ed in the slurm template file
-    parameter:
-      - { name: submit_cmd, _: sbatch }
-      - { name: job_file, _: npb_mpi.run }
-      - { name: max_num_ranks_per_node, type: int, _: 128 }
-      - { name: exec, _: num_ranks=1; 
-        while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
-          mpirun -np $$num_ranks --bind-to core ./$kernel.$size.x; 
-          num_ranks=$$[$$num_ranks*2];
-        done }
+Running workpackages (#=done, 0=wait, E=error):
+0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
+~$ jube continue mybenchmark_title --id=0
+Running workpackages (#=done, 0=wait, E=error):
+#############00000000000000000000000000000000000000000000000 ( 13/ 48)
+~$ jube result mybenchmark_title --id=0
+result:
+| kernel | class | num_ranks_used | time_in_seconds |    mflops |
+|--------|-------|----------------|-----------------|-----------|
+|     cg |     A |              1 |            1.03 |   1459.09 |
+|     cg |     A |              4 |            0.24 |   6183.24 |
+|     cg |     A |             16 |            0.08 |   19800.6 |
+|     cg |     A |             64 |            0.06 |  23779.14 |
+|     cg |     B |              1 |            42.2 |   1296.53 |
+|     cg |     B |              4 |           10.23 |   5350.09 |
+|     cg |     B |             16 |             2.9 |  18884.73 |
+|     cg |     B |             64 |            1.45 |  37621.67 |
 ```
 
 
-## JUBE Configuration Files (3)
-Analysis of the output file using regex
+## JUBE Config (1) Parameter sets
+Parameter sets
+```yaml
+parameterset: # NAS Parallel Benchmarks, single node strong scaling
+  - name: benchmark_configuration # The parameter space
+    parameter:
+      - { name: kernel, type: string, _: "bt,cg,ep,ft,is,lu,mg,sp" }
+      - { name: size,   type: string, _: "A,B,C,D" }
+      - { name: nranks, type: int,    _: "1,2,4,8,16,32,64,128" }
+  - name: job_configuration # Will be sub'ed in the slurm template file
+    parameter:
+      - { name: submit_cmd,         type: string, _: sbatch }
+      - { name: job_file,           type: string, _: npb_mpi.run }
+      - { name: exec,               type: string, _: 
+            mpirun -np $nranks --bind-to core ./$kernel.$size.x; 
+        }
+```
+
+
+## JUBE Config (2) Analysis
 ```yaml
 patternset:
   name: regex_patterns
   pattern:
-    - { name: num_ranks_used, type: int, _: Total processes = \s+$jube_pat_int }
-    - { name: time_in_seconds, type: float, _: Time in seconds = $jube_pat_fp }
-    - { name: mflops, type: float, _: Mop/s total     =\s+$jube_pat_fp }
+    - name: num_ranks_used
+      type: int
+      _:    Total processes = \s+$jube_pat_int
+    - name: time_in_seconds
+      type: float
+      _:    Time in seconds = $jube_pat_fp
+    - name: mflops
+      type: float
+      _:    Mop/s total     =\s+$jube_pat_fp 
 ```
 
 
-## JUBE Configurations (4)
+## JUBE Config (3) Dependecies Results
 ```yaml
 step:
   name: submit
-  use: [ benchmark_configuration, job_configuration, files, sub_job ]
+  use:  [ benchmark_configuration, job_configuration, files, sub_job ]
   do:
-    done_file: $ready_file
+    done_file: $ready_file   # Job is done when that file is created
     _: $submit_cmd $job_file # shell command
 
 analyser:
   name: analyse
-  use: regex_patterns
+  use:  regex_patterns 
   analyse:
     step: submit
     file: $out_file
@@ -858,7 +865,7 @@ analyser:
 result:
   use: analyse
   table:
-    name: result
+    name:   result
     column: [ kernel, size, num_ranks, mflops_avg, time_in_seconds_avg ]
 ```
 
@@ -877,16 +884,17 @@ result:
 </small>
 </div>
 
-```xml
-<parameterset name="param_set">
-    <parameter name="num_nodes">1,2,3,4,5,6,7,8,9,10</parameter>
-    <parameter name="ranks_per_node">128,64,32,16</parameter>
-</parameterset>
-<parameterset name="execute_set">
-    <parameter name="cores_per_node">128</parameter>
-    <parameter name="threads_per_rank">$procs_per_node/$cores_per_node</parameter>
-    <parameter name="num_rank">$num_nodes*$ranks_per_node</parameter>
-</parameterset>
+```yaml
+parameterset
+  - name: param_set
+    parameter:
+      - { name: num_nodes,        _: "1,2,3,4,5,6,7,8,9,10" }
+      - { name: ranks_per_node,   _: "128,64,32,16" }
+  - name="execute_set">
+    parameter:
+      - { name: cores_per_node,   _: 128 }
+      - { name: threads_per_rank, _: $procs_per_node/$cores_per_node }
+      - { name: num_rank,         _: $num_nodes*$ranks_per_node }
 ```
 
 
@@ -905,18 +913,18 @@ result:
 </small>
 </div>
 
-```xml
-<parameterset name="compile_set">
-    <parameter name="toolchain">gcc_openmpi, intel</parameter>
-    <parameter name="compiler">
-      { "gcc_openmpi" : "gcc/7.4.0",
-        "intel"       : "intel/compiler/2017-4" }
-    </parameter>
-    <parameter name="mpi_library">
-      { "gcc_openmpi" : "openmpi4/4.0.5",
-        "intel"       : "intel/mpi/2017-4" }
-    </parameter>
-</parameterset>
+```yaml
+parameterset:
+  name="compile_set">
+    parameter:
+      - name: toolchain
+        _: "gcc_openmpi, intel"
+      - name: compiler
+        _: "{ 'gcc_openmpi' : 'gcc/7.4.0',
+              'intel'       : 'intel/compiler/2017-4' }"
+      - name: mpi_library
+        _: "{ 'gcc_openmpi' : 'openmpi4/4.0.5',
+              'intel'       : 'intel/mpi/2017-4' }"
 ```
 
 
