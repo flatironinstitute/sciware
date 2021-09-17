@@ -783,20 +783,20 @@ Testing how to get the best performance out of your jobs
 ## Using JUBE: Example 
 
 ```console
-> jube run mybenchmark.xml
-######################################################################
-# benchmark: npb3.4.1
-# id: 0
-#
-# NPB3.4.1 Icelake Single node MPI gcc/7.4.0 skylake
-######################################################################
+# jube run mybenchmark.xml
++---------------------------------------------------------------------
+| benchmark: npb3.4.1
+| id: 0
+|
+| NPB3.4.1 Icelake Single node MPI gcc/7.4.0 skylake
++---------------------------------------------------------------------
 
 Running workpackages (#=done, 0=wait, E=error):
 0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
-> jube continue mybenchmark_title --id=0
+# jube continue mybenchmark_title --id=0
 Running workpackages (#=done, 0=wait, E=error):
-#############00000000000000000000000000000000000000000000000 ( 13/ 48)
-> jube result mybenchmark_title --id=0
+-############00000000000000000000000000000000000000000000000 ( 13/ 48)
+# jube result mybenchmark_title --id=0
 result:
 | kernel | class | num_ranks_used | time_in_seconds |    mflops |
 |--------|-------|----------------|-----------------|-----------|
