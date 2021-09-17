@@ -208,7 +208,7 @@ How to run jobs efficiently on Flatiron's clusters
 
 ## Slurm Basics
 
-- Write a "batch file" (special kind of bash script) that specifies the resources needed:
+- Write a "batch file" (special kind of script) that specifies the resources needed:
 
 ```bash
 #!/bin/bash
@@ -224,18 +224,19 @@ module load gcc python3
 ./myjob data1.hdf5
 ```
 
-- Submit the job to the queue with `sbatch myjob.sbatch`
-- Check the status with: `squeue --me`
+- Submit the job to the queue with `sbatch myjob.sbatch`: \
+  `Submitted batch job 1234567`
+- Check the status with: `squeue --me` or `squeue -j 1234567`
 
 
 ## Where is my output?
 
 - By default, anything printed to `stdout` ends up in `slurm-<jobid>.out` in your current directory
-- Can set `-o outfile.log`, `-e stderr.log`
+- Can set `#SBATCH -o outfile.log` `-e stderr.log`
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
-## What if you have multiple jobs?
+## What if you have multiple things to run?
 
 - Let's say we have 10 files, each using 1 GB and 1 CPU
 
@@ -279,7 +280,7 @@ wait  # << wait for all background tasks to complete
 ## Slurm Tip \#2: Choosing a Partition (CPUs)
     
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
-  - `gen` has smaller limits and higher priority
+  - `gen` has small limits and higher priority
 - The center and general partitions (`ccX` and `gen`) always allocate whole nodes
   - **All cores, all memory**, reserved for you to make use of
 - If your job doesn't use a whole node, you can use the `genx` partition (allows multiple jobs per node)
