@@ -782,9 +782,9 @@ Testing how to get the best performance out of your jobs
 
 ## Using JUBE: Example 
 
-<code class="bash hljs">
-<span class="hljs-string">user@rusty:~$ jube run mybenchmark.xml</span>
-"######################################################################
+```console
+> jube run mybenchmark.xml
+######################################################################
 # benchmark: npb3.4.1
 # id: 0
 #
@@ -792,12 +792,12 @@ Testing how to get the best performance out of your jobs
 ######################################################################
 
 Running workpackages (#=done, 0=wait, E=error):
-0000000000000000000000000000000000000000000000000000-------- (  0/ 48)"
-<span class="hljs-string">user@rusty:~$ jube continue mybenchmark_title --id=0</span>
-"Running workpackages (#=done, 0=wait, E=error):
-#############00000000000000000000000000000000000000000000000 ( 13/ 48)"
-<span class="hljs-string">user@rusty:~$ jube result mybenchmark_title --id=0</span>
-"result:
+0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
+> jube continue mybenchmark_title --id=0
+Running workpackages (#=done, 0=wait, E=error):
+#############00000000000000000000000000000000000000000000000 ( 13/ 48)
+> jube result mybenchmark_title --id=0
+result:
 | kernel | class | num_ranks_used | time_in_seconds |    mflops |
 |--------|-------|----------------|-----------------|-----------|
 |     cg |     A |              1 |            1.03 |   1459.09 |
@@ -807,8 +807,8 @@ Running workpackages (#=done, 0=wait, E=error):
 |     cg |     B |              1 |            42.2 |   1296.53 |
 |     cg |     B |              4 |           10.23 |   5350.09 |
 |     cg |     B |             16 |             2.9 |  18884.73 |
-|     cg |     B |             64 |            1.45 |  37621.67 |"
-</code>
+|     cg |     B |             64 |            1.45 |  37621.67 |
+```
 
 
 ## JUBE Config (1) Parameter sets
