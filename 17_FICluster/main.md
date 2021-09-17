@@ -810,41 +810,56 @@ Testing how to get the best performance out of your jobs
 Parameter sets: NAS Parallel Benchmarks, single node
 ```yaml
 parameterset:
-  - name: benchmark_configuration
+  - name: benchmark_configuration # The parameter space
     parameter:
-      - {name: kernel, type: string, "_": "bt,cg,ep,ft,is,lu,mg,sp"}
-      - {name: size, type: string, "_": "A,B,C,D"}
-  - name: slurm_job_configuration
+      - { name: kernel, type: string, _: "bt,cg,ep,ft,is,lu,mg,sp" }
+      - { name: size, type: string, _: "A,B,C,D" }
+  - name: job_configuration # Will be sub'ed in the slurm template file
     parameter:
-      - {name: submit_cmd, "_": sbatch}
-      - {name: job_file, "_": npb_mpi.run
-      - {name: max_num_ranks_per_node, type:int, _:"128"}
-      - {name: exec, _: num_ranks=1; 
+      - { name: submit_cmd, _: sbatch }
+      - { name: job_file, _: npb_mpi.run }
+      - { name: max_num_ranks_per_node, type: int, _: 128 }
+      - { name: exec, _: num_ranks=1; 
         while [ $$num_ranks -le ${max_num_ranks_per_node} ]; 
           mpirun -np $$num_ranks --bind-to core ./$kernel.$size.x; 
           num_ranks=$$[$$num_ranks*2];
-        done}
+        done }
 ```
 
 
 ## JUBE Configuration Files (3)
-Analysis and results (with stats!)
-```xml
-<patternset name="pattern"> <!-- Regex pattern -->
-  <pattern name="num_ranks_used" type="int">Total processes =\s+$jube_pat_int</pattern>
-  <pattern name="time_in_seconds" type="float">Time in seconds = $jube_pat_fp</pattern>
-  <pattern name="mflops" type="float">Mop/s total     =\s+$jube_pat_fp</pattern>
-</patternset>
-<result> <!-- Create result table -->
-  <use>analyse</use>
-  <table name="result" style="csv" sort="kernel,class,num_ranks_used">
-    <column>kernel</column>
-    <column>class</column>
-    <column>num_ranks_used</column>
-    <column>time_in_seconds_avg</column><!-- Stats: avg, sum, min, max, std,... -->
-    <column>mflops_avg</column>
-  </table>
-</result>
+Analysis of the output file using regex
+```yaml
+patternset:
+  name: regex_patterns
+  pattern:
+    - { name: num_ranks_used, type: int, _: Total processes = \s+$jube_pat_int }
+    - { name: time_in_seconds, type: float, _: Time in seconds = $jube_pat_fp }
+    - { name: mflops, type: float, _: Mop/s total     =\s+$jube_pat_fp }
+```
+
+
+## JUBE Configurations (4)
+```yaml
+step:
+  name: submit
+  use: [ benchmark_configuration, job_configuration, files, sub_job ]
+  do:
+    done_file: $ready_file
+    _: $submit_cmd $job_file # shell command
+
+analyser:
+  name: analyse
+  use: regex_patterns
+  analyse:
+    step: submit
+    file: $out_file
+
+result:
+  use: analyse
+  table:
+    name: result
+    column: [ kernel, size, num_ranks, mflops_avg, time_in_seconds_avg ]
 ```
 
 
