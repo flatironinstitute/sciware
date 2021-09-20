@@ -943,7 +943,7 @@ parameterset:
 
 <center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
 
-<center><span style="color:#990000">Contact me if you would like to help expand the set of benchmarks we can use in future clusters acquisitions</span></center>
+<center><span style="color:#990000">Contact me if you would like to help expand the set of benchmarks we can use for future clusters acquisitions</span></center>
 
 
 
