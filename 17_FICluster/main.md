@@ -798,16 +798,16 @@ Running workpackages (#=done, 0=wait, E=error):
 
 [user@rusty:~] jube result mybenchmark_title --id=0
 result:
-| kernel | class | num_ranks_used | time_in_seconds |    mflops |
-|--------|-------|----------------|-----------------|-----------|
-|     cg |     A |              1 |            1.03 |   1459.09 |
-|     cg |     A |              4 |            0.24 |   6183.24 |
-|     cg |     A |             16 |            0.08 |   19800.6 |
-|     cg |     A |             64 |            0.06 |  23779.14 |
-|     cg |     B |              1 |            42.2 |   1296.53 |
-|     cg |     B |              4 |           10.23 |   5350.09 |
-|     cg |     B |             16 |             2.9 |  18884.73 |
-|     cg |     B |             64 |            1.45 |  37621.67 |
+| kernel | size | num_ranks_used | time_in_seconds_avg |    mflops_avg |
+|--------|------|----------------|---------------------|---------------|
+|     cg |    A |              1 |                1.03 |       1459.09 |
+|     cg |    A |              4 |                0.24 |       6183.24 |
+|     cg |    A |             16 |                0.08 |       19800.6 |
+|     cg |    A |             64 |                0.06 |      23779.14 |
+|     cg |    B |              1 |                42.2 |       1296.53 |
+|     cg |    B |              4 |               10.23 |       5350.09 |
+|     cg |    B |             16 |                 2.9 |      18884.73 |
+|     cg |    B |             64 |                1.45 |      37621.67 |
 ```
 
 
@@ -939,6 +939,7 @@ parameterset:
 
 <center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
 
+<span style="color:#990000">- Contact me if you would like to help expand the set of benchmarks we can use in future clusters acquisitions</span>
 
 
 # Activity
