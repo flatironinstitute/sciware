@@ -747,12 +747,13 @@ Testing how to get the best performance out of your jobs
 
 ## When to benchmark?
 
-- Once your code runs small samples
+- Once your code runs small samples (aka: it works!)
 - Before you type `sbatch --time=a-lot!`
 - For new projects
 - For known projects: batch scripts are not "one size fits all"
   - Especially if your scripts come from another HPC center
   - Even locally we have very diverse machines!
+  - Drastically new inputs can require new benchmarks
   - New software versions can mean new configuration
 
 
@@ -762,7 +763,7 @@ Testing how to get the best performance out of your jobs
   - Represent your whole run in a short period of time
   - eg: a couple of iterations instead of 1000s of them
   - Use a production run configuration
-- Be wary of "toy benchmarks":
+- Start small, but be wary of "toy benchmarks":
   - They might benefit from requiring less memory, I/O, ...
   - If possible run with your real problem, but not to completion!
 
@@ -783,7 +784,7 @@ Testing how to get the best performance out of your jobs
 ## Using JUBE: Example 
 
 ```
-[user@rusty:~] jube run mybenchmark.xml
+[user@rusty:~] jube run mybenchmark.yaml
 ######################################################################
 # benchmark: npb3.4.1
 # id: 0
@@ -797,7 +798,6 @@ Running workpackages (#=done, 0=wait, E=error):
 #############00000000000000000000000000000000000000000000000 ( 13/ 48)
 
 [user@rusty:~] jube result mybenchmark_title --id=0
-result:
 | kernel | size | num_ranks_used | time_in_seconds_avg |    mflops_avg |
 |--------|------|----------------|---------------------|---------------|
 |     cg |    A |              1 |                1.03 |       1459.09 |
@@ -877,8 +877,10 @@ result:
 <div style="display: flex;">
 <small>
 <ul>
+The questions:
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
+The method:
 <li>GROMACS can be told to stop after <i>N</i> minutes</li>
 <li>It provides performance numbers</li>
 <i>System courtesy Sonya Hanson (CCB)</i>
@@ -905,8 +907,10 @@ parameterset
 <div style="display: flex;">
 <small>
 <ul>
+The questions:
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
+The method:
 <li>Simulation stopped after a few iterations</li>
 <li>Time limit set in Gadget4 config file</li>
 <li>Gadget4 gives detailed timings</li>
