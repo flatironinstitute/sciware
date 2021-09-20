@@ -877,10 +877,10 @@ result:
 <div style="display: flex;">
 <small>
 <ul>
-The questions:
+<b>The questions:</b>
 <li>How many nodes to use?</li>
 <li>How to distribute threads/ranks inside nodes?</li>
-The method:
+<b>The method:</b>
 <li>GROMACS can be told to stop after <i>N</i> minutes</li>
 <li>It provides performance numbers</li>
 <i>System courtesy Sonya Hanson (CCB)</i>
@@ -907,10 +907,10 @@ parameterset
 <div style="display: flex;">
 <small>
 <ul>
-The questions:
+<b>The questions:</b>
 <li>Compare Intel MPI with OpenMPI</li>
 <li>Weak scaling for a given problem type</li>
-The method:
+<b>The method:</b>
 <li>Simulation stopped after a few iterations</li>
 <li>Time limit set in Gadget4 config file</li>
 <li>Gadget4 gives detailed timings</li>
