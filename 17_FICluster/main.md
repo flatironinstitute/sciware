@@ -791,11 +791,11 @@ Testing how to get the best performance out of your jobs
 # NPB3.4.1 Icelake Single node MPI gcc/7.4.0 skylake
 ######################################################################
 Running workpackages (#=done, 0=wait, E=error):
-0000000000000000000000000000000000000000000000000000-------- (  0/ 48)
+00000--- (  0/  8)
 
 [user@rusty:~] jube continue mybenchmark_title --id=0
 Running workpackages (#=done, 0=wait, E=error):
-#############00000000000000000000000000000000000000000000000 ( 13/ 48)
+##000000 (  2/  8)
 
 [user@rusty:~] jube result mybenchmark_title --id=0
 | kernel | size | num_ranks_used | time_in_seconds_avg |    mflops_avg |
@@ -817,15 +817,15 @@ What parameters to explore, and generic run settings
 parameterset: # NAS Parallel Benchmarks, single node strong scaling
   - name: benchmark_configuration # The parameter space
     parameter:
-      - { name: kernel, type: string, _: "bt,cg,ep,ft,is,lu,mg,sp" }
-      - { name: size,   type: string, _: "A,B,C,D" }
-      - { name: nranks, type: int,    _: "1,2,4,8,16,32,64,128" }
+      - { name: kernel, type: string, _: "bt, cg, ep, ft, is, lu, mg, sp" }
+      - { name: size,   type: string, _: "A, B, C, D" }
+      - { name: nranks, type: int,    _: "1, 2, 4, 8, 16, 32, 64, 128" }
   - name: job_configuration # Will be sub'ed in the slurm template file
     parameter:
       - { name: submit_cmd,         type: string, _: sbatch }
       - { name: job_file,           type: string, _: npb_mpi.run }
       - { name: exec,               type: string, _: 
-            mpirun -np $nranks --bind-to core ./$kernel.$size.x; 
+            mpirun -np $nranks --bind-to core ./$kernel.$size.x
         }
 ```
 
@@ -893,8 +893,8 @@ result:
 parameterset
   - name: param_set
     parameter:
-      - { name: num_nodes,        _: "1,2,3,4,5,6,7,8,9,10" }
-      - { name: ranks_per_node,   _: "128,64,32,16" }
+      - { name: num_nodes,        _: "1, 2, 3, 4, 5, 6, 7, 8, 9, 10" }
+      - { name: ranks_per_node,   _: "128, 64, 32, 16" }
   - name: execute_set
     parameter:
       - { name: cores_per_node,   _: 128 }
