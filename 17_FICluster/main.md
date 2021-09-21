@@ -831,7 +831,7 @@ parameterset: # NAS Parallel Benchmarks, single node strong scaling
 
 
 ## JUBE Config (2) Analysis
-Regular expressions to extract the results from the output file(s)
+Regular expressions to parse the results from the output file(s)
 ```yaml
 patternset:
   name: regex_patterns
@@ -895,11 +895,11 @@ parameterset
     parameter:
       - { name: num_nodes,        _: "1,2,3,4,5,6,7,8,9,10" }
       - { name: ranks_per_node,   _: "128,64,32,16" }
-  - name="execute_set">
+  - name: execute_set
     parameter:
       - { name: cores_per_node,   _: 128 }
-      - { name: threads_per_rank, _: $procs_per_node/$cores_per_node }
-      - { name: num_rank,         _: $num_nodes*$ranks_per_node }
+      - { name: threads_per_rank, _: $cores_per_node / $ranks_per_node }
+      - { name: num_rank,         _: $num_nodes * $ranks_per_node }
 ```
 
 
