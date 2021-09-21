@@ -816,11 +816,11 @@ What parameters to explore, and generic run settings
 ```yaml
 parameterset: # NAS Parallel Benchmarks, single node strong scaling
   - name: benchmark_configuration # The parameter space
-    parameter:
+    parameter:                    # 8 x 4 x 8 Slurm jobs would be generated!
       - { name: kernel, type: string, _: "bt, cg, ep, ft, is, lu, mg, sp" }
       - { name: size,   type: string, _: "A, B, C, D" }
       - { name: nranks, type: int,    _: "1, 2, 4, 8, 16, 32, 64, 128" }
-  - name: job_configuration # Will be sub'ed in the slurm template file
+  - name: job_configuration # Will be substituted in the Slurm template file
     parameter:
       - { name: submit_cmd,         type: string, _: sbatch }
       - { name: job_file,           type: string, _: npb_mpi.run }
