@@ -65,18 +65,12 @@ Activities where participants all actively work to foster an environment which e
 
 ## Rusty @ FI
 
-<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
-
-
-## Rusty @ FI
-
-- Bright Cluster Manager
-- ⚠️ These memory nodes are not for long term storage!
+<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
 
 
 ## Rusty @ CoreSite (NY2)
 
-<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
+<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
 
 
 ## Rusty @ CoreSite (NY2)
@@ -87,17 +81,12 @@ Activities where participants all actively work to foster an environment which e
 
 ## Popeye @ SDSC
 
-<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/popeye.png">
-
-
-## Popeye | Rusty
-
-- ⚠️ No direct fiber connection between Popeye and Rusty.
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/popeye.png">
 
 
 ## Network
 
-<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/network.png">
+<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/network.png">
 
 
 ## 1 Cluster 2 Sites !?!
@@ -108,17 +97,22 @@ Activities where participants all actively work to foster an environment which e
 
 ## Storage
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/storage.png">
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storage.png">
+
+
+## Storage
+
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storagepic.jpg">
 
 
 ## Energy
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/energy.png">
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/energy.png">
 
 
 ## Power Consumption
 
-<img height=80% width=80% margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
+<img height="65%" width="65%" margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
 
 
 
