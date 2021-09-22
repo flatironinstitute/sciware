@@ -711,7 +711,7 @@ $ du -s --inodes *
 - Just use `ls -l`!
 - List files and directories in increasing order:
 
-  <pre style="font-size:0.7em">
+<pre style="font-size:0.7em">
     <code data-trim class="language-bash">
 $ ls -lASrh
 total 4.9G
@@ -719,7 +719,7 @@ drwxrwsr-x 2 jsmith jsmith  83M Sep 22 15:27 qm_datasets
 -rw-rw-r-- 1 jsmith jsmith 2.5G Sep 22 15:26 malonaldehyde_500K.tar.gz
 -rw-rw-r-- 1 jsmith jsmith 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
     </code>
-  </pre>
+</pre>
 
 
 ## Monitoring Usage: `/mnt/ceph`
