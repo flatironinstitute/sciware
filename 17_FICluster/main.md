@@ -645,7 +645,7 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 
 ## Local Scratch
 
-- Each node as a `/tmp` (or `/scratch`) disk of ~ 1 TB
+- Each node as a `/tmp` (or `/scratch`) disk of &ge; 1 TB
 - For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (shared memory), but be careful!
 - Both of these directories are cleaned up after _each_ job
   - Make sure you copy any important data/results over to `ceph` or your `home`
