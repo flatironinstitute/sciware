@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="28px" viewBox="0 0 22 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Planning / Travel / location--star--filled / 32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Planning-/-Travel-/-location--star--filled-/-32">
+            <path d="M11,0 C4.92792869,0.00738340358 0.00738340358,4.92792869 -1.1373684e-05,11 C-0.00344355125,13.3832648 0.775140176,15.7018374 2.2163,17.6 C2.2163,17.6 2.5163,17.9945 2.5645,18.0517 L11,28 L19.439,18.0474 C19.4834,17.9941 19.7837,17.5996 19.7837,17.5996 L19.7852,17.5972 C21.2255009,15.6997465 22.0035499,13.3821804 22.0000121,11 C21.9926166,4.92792869 17.0720713,0.00738340358 11,0 Z M14.6,16 L11,13.7085 L7.4,16 L8,11.9258 L5,9.1729 L9.2,8.6665 L11,5 L12.9116,8.6665 L17,9.1729 L14,11.9258 L14.6,16 Z" id="Fill" fill="#000000"></path>
+            <polygon id="_inner-path_" points="11 5 12.912 8.667 17 9.173 14 11.926 14.6 16 11 13.708 7.4 16 8 11.926 5 9.173 9.2 8.667"></polygon>
+        </g>
+    </g>
+</svg>
