@@ -110,7 +110,7 @@ Activities where participants all actively work to foster an environment which e
 
 - Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
-  - Downloaded/built/installed by you
+  - Downloaded/built/installed by you (usually using compiler/library modules)
 - By default you only see the "base system" software (CentOS7), which is often rather old
 
 
