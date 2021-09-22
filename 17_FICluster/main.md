@@ -38,7 +38,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Oct 7: Chat & office hour 
+- Oct 7: Chat & office hour
 - Oct 21: An introduction to scientific visualization with Blender (Brian Kent, NRAO)
 - Suggest topics and vote on options in #sciware Slack
 
@@ -52,6 +52,56 @@ Activities where participants all actively work to foster an environment which e
 - Performance and benchmarking
 - Activity: monitoring jobs
 - Reception (roof)
+
+
+
+# Cluster overview
+
+### Liz Lovero (SCC)
+
+
+# Two Clusters, Three Locations, More than 130,000 Cores
+
+- Image
+
+
+# Rusty @ FI
+
+- Image
+- Bright Cluster Manager
+- Reminder - these memory nodes are not for long term storage!
+
+
+# Rusty @ CoreSite (NY2)
+
+- Image
+- Rome nodes at CoreSite contain 1TB of memory. No other compute cluster has as much memory per node.
+- Rusty is the first cluster to have 144 of the Nvidia A100’s.
+
+
+# Popeye @ SDSC
+
+- Image
+- No direct network connection between Popeye and Rusty.
+
+
+# Network
+
+- Image
+- DWDM dark fiber network enables a single cluster to operate across two sites (FI/CoreSite).
+- One Infiniband node can send a small message to another in about the time light travels from 5th to 6th Avenue.
+
+
+# Storage
+
+### Three Spaces: GPFS, Ceph, Tape
+- Image
+
+
+# Energy
+
+### Mindful Consumption
+- Image
 
 
 
@@ -195,7 +245,7 @@ How to run jobs efficiently on Flatiron's clusters
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
-  
+
 <img width="30%" src="./assets/Slurm_logo.png">
 
 
@@ -278,7 +328,7 @@ wait  # << wait for all background tasks to complete
 
 
 ## Slurm Tip \#2: Choosing a Partition (CPUs)
-    
+
 - Use `-p gen` to submit small/test jobs, `-p ccX` for real jobs
   - `gen` has small limits and higher priority
 - The center and general partitions (`ccX` and `gen`) always allocate whole nodes
@@ -344,23 +394,23 @@ wait  # << wait for all background tasks to complete
 
 ```bash
     # File: job.slurm
-    
+
     #SBATCH -p ccX      # or "-p genx" if your job won't fill a node
     #SBATCH -N 1        # 1 node
     #SBATCH --mem=128G  # ccX always gets all memory on the node, require at least...
     #SBATCH -t 1:00:00  # 1 hour
-    
+
     # the file with the list of files to process
     fn_list=$1
-    
+
     # the job array index
     # the task ID is automatically set by Slurm
     i=$SLURM_ARRAY_TASK_ID
-    
+
     # get the line of the file belonging to this job
     # make sure your `sbatch --array=1-X` command uses 1 as the starting index
     fn=$(sed -n "${i}p" ${fn_list})
-    
+
     echo "About to process $fn"
     ./my_analysis_script.py $fn
 ```
@@ -398,7 +448,7 @@ wait  # << wait for all background tasks to complete
 - Simplify as:
 ```bash
 # File: jobs.disbatch
-#DISBATCH PREFIX ./my_analysis_script.py 
+#DISBATCH PREFIX ./my_analysis_script.py
 data1.hdf5
 data2.hdf5
 ```
@@ -437,7 +487,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 
 ## Job Arrays vs. disBatch
-    
+
 - Job Array Advantages
     - No external dependencies
     - Jobs can be scheduled by Slurm independently
@@ -455,7 +505,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 - Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
     - Slurm job arrays or disBatch work better than MPI
 - Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
-  
+
 <img width="20%" src="./assets/slurm_futurama.webp">
 
 
@@ -660,7 +710,7 @@ rsync -a /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
 # Verify
 rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
 # Clean-up
-/bin/rm -r /mnt/home/johndoe/SourceDir 
+/bin/rm -r /mnt/home/johndoe/SourceDir
 ```
 
 
@@ -769,7 +819,7 @@ Testing how to get the best performance out of your jobs
 
 
 ## How to benchmark?
-  
+
 - Domain-specific benchmarking tools
   - [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
 - Generic frameworks
@@ -781,7 +831,7 @@ Testing how to get the best performance out of your jobs
   - <span style="color:#990000">Fill the Slurm queues with jobs: run in multiple steps! (or use disBatch when possible)</span>
 
 
-## Using JUBE: Example 
+## Using JUBE: Example
 
 ```
 [user@rusty:~] jube run mybenchmark.yaml
@@ -824,7 +874,7 @@ parameterset: # NAS Parallel Benchmarks, single node strong scaling
     parameter:
       - { name: submit_cmd,         type: string, _: sbatch }
       - { name: job_file,           type: string, _: npb_mpi.run }
-      - { name: exec,               type: string, _: 
+      - { name: exec,               type: string, _:
             mpirun -np $nranks --bind-to core ./$kernel.$size.x
         }
 ```
@@ -844,7 +894,7 @@ patternset:
       _:    Time in seconds = $jube_pat_fp
     - name: mflops
       type: float
-      _:    Mop/s total     =\s+$jube_pat_fp 
+      _:    Mop/s total     =\s+$jube_pat_fp
 ```
 
 
@@ -860,7 +910,7 @@ step:
 
 analyser:
   name: analyse
-  use:  regex_patterns 
+  use:  regex_patterns
   analyse:
     step: submit  # Dependency: applies to submit's results
     file: $out_file
@@ -939,7 +989,7 @@ parameterset:
 
 - Try and benchmark when you are starting a new large project on the FI machines
 - Using a toolkit like JUBE can simplify your life
-- Examples: 
+- Examples:
 
 <center><a href="https://github.com/gkrawezik/BENCHMARKS">https://github.com/gkrawezik/BENCHMARKS</a></center>
 

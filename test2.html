@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a map on a webpage</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.marker {
+  background-image: url('location-black.svg');
+  background-size: cover;
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(100px);
+}
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZWxvdmVybyIsImEiOiJja3RvZ3pja3cwY3I3Mm9wOThyeTRiNG5hIn0.tBK7GERT9q0Ew9juN6Aa2w';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/carbondesignsystem/ck7c8cfpp08h61irrudv7f1xg', // style URL
+        center: [-95.58, 38.83], // starting position [lng, lat]
+        zoom: 4 // starting zoom
+    });
+
+// const geojson = {
+//   "type": "FeatureCollection",
+//   "features": [
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "title": "Flatiron Institute",
+//         "description": "Rusty"
+//       },
+//       "geometry": {
+//         "coordinates": [-73.99023, 40.74062],
+//         "type": "Point"
+//       }
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "title": "CoreSite",
+//         "description": "Rusty"
+//       },
+//       "geometry": {
+//         "coordinates": [-74.06487, 40.78463],
+//         "type": "Point"
+//       }
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "title": "SDSC",
+//         "description": "Popeye"
+//       },
+//       "geometry": {
+//         "coordinates": [-117.23900, 32.88457],
+//         "type": "Point"
+//       }
+//     },
+//   ]
+// };
+
+
+// add markers to map
+// for (const { geometry, properties } of geojson.features) {
+//   // create a HTML element for each feature
+//   const el = document.createElement('div');
+//   el.className = 'marker';
+
+//   // make a marker for each feature and add to the map
+//   new mapboxgl.Marker(el)
+//     .setLngLat(geometry.coordinates)
+//     .setPopup( new mapboxgl.Popup({ offset: 25 }) // add popups
+//       .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`)
+//   ).addTo(map);
+// }
+
+    //Create a default Marker and add it to the map.
+    const flatiron = new mapboxgl.Marker({ color: '#002d9c', rotation: 10 })
+    .setLngLat([-73.99023, 40.74062])
+    .addTo(map);
+
+    const coresite = new mapboxgl.Marker({ color: '#002d9c', rotation: -10 })
+    .setLngLat([-74.06487, 40.78463])
+    .addTo(map);
+
+    const sdsc = new mapboxgl.Marker({ color: '#002d9c' })
+    .setLngLat([-117.23900, 32.88457])
+    .addTo(map);
+</script>
+
+</body>
+</html>
+
+<!-- FI: 40.74062, -73.99023 -->
+<!-- Coresite: 40.78463, -74.06487 -->
+<!-- SDSC: 32.88457, -117.23900-->
