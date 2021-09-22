@@ -638,16 +638,11 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 - Pronounced as "sef"
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
-- For large data storage
+- For large, high-bandwidth data storage
 - No backups<sup>\*</sup>
 - Do not put &#x2273; 1000 files in a directory
 
 <small><sup>\*</sup> <code>.snap</code> is coming soon</small>
-
-
-## Timing for Ceph vs. Home
-TODO ADD NUMBER
-
 
 
 ## Local Scratch
@@ -681,6 +676,22 @@ $ /cm/shared/apps/fi/bin/pq
 
 ## Monitoring Usage: `/mnt/home`
 
+To track down large files use:
+<pre style="font-size:1em">
+<code data-trim class="language-bash">
+$ du -sh *
+
+64K     CHANGELOG
+64K     CONTRIBUTING.md
+1.8M    examples
+64K     FEATURES
+...
+</code>
+</pre>
+
+
+## Monitoring Usage: `/mnt/home`
+
 To track down large file counts use:
 
 <pre style="font-size:1em">
@@ -696,29 +707,11 @@ $ du -s --inodes *
 </pre>
 
 
-## Monitoring Usage: `/mnt/home`
-
-To track down large files use:
-<pre style="font-size:1em">
-<code data-trim class="language-bash">
-$ du -sh *
-
-64K     CHANGELOG
-64K     CONTRIBUTING.md
-1.8M    examples
-64K     FEATURES
-...
-</code>
-</pre>
-
-
 ## Monitoring Usage: `/mnt/ceph`
 
-Don't use <code>du</code>, it's slow and taxing on the filesystem
-
-
-## Monitoring Usage: `/mnt/ceph`
-List files in increasing order:
+- Don't use <code>du</code>, it's slow
+- Just use `ls -l`!
+- List files and directories in increasing order:
   <pre style="font-size:0.7em">
     <code data-trim class="language-bash">
 $ ls -lASrh
@@ -732,12 +725,12 @@ drwxrwsr-x 2 jsmith jsmith  83M Sep 22 15:27 qm_datasets
 
 ## Monitoring Usage: `/mnt/ceph`
 
-Show the number of files in directory:
+Show the number of total files in directory:
   <pre style="font-size:0.75em">
     <code data-trim class="language-text">
-    $ getfattr -n ceph.dir.rentries bad_dir
+    $ getfattr -n ceph.dir.rentries big_dir
     # file: bad_dir
-    ceph.dir.rentries="1002"
+    ceph.dir.rentries="4372"
     </code>
   </pre>
 
@@ -745,8 +738,8 @@ Show the number of files in directory:
 ## Moving Files
 - Use `mv` within a filesystem, __NOT__ in between them
 - Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below
-- `rsync` allows to stopy in the middle, then resume
-- `rsync` verify the transfer
+- `rsync` allows to stop in the middle, then resume
+- `rsync` can verify the transfer before removal
 
 ```bash
 # Transfer
@@ -754,7 +747,7 @@ rsync -a /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
 # Verify
 rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
 # Clean-up
-/bin/rm -r /mnt/home/johndoe/SourceDir
+rm -r /mnt/home/johndoe/SourceDir
 ```
 
 
