@@ -738,9 +738,9 @@ Testing how to get the best performance out of your jobs
 - Use the resources more efficiently
 - Are you sure you are running optimally?
   - What processor architecture?
+  - How many nodes?
   - Which libraries? (eg: OpenBLAS vs MKL)
   - What MPI ranks / OpenMP threads ratio?
-  - How many nodes?
 - A 15 minutes benchmark can help your week-long computation get you more results
   - Or reduce it to a day-long computation!
 
@@ -899,7 +899,7 @@ parameterset
     parameter:
       - { name: cores_per_node,   _: 128 }
       - { name: threads_per_rank, _: $cores_per_node / $ranks_per_node }
-      - { name: num_rank,         _: $num_nodes * $ranks_per_node }
+      - { name: num_ranks,        _: $num_nodes * $ranks_per_node }
 ```
 
 
