@@ -639,8 +639,15 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups
+- No backups<sup>\*</sup>
 - Do not put &#x2273; 1000 files in a directory
+
+<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
+
+
+## Timing for Ceph vs. Home
+TODO ADD NUMBER
+
 
 
 ## Local Scratch
@@ -711,13 +718,14 @@ Don't use <code>du</code>, it's slow and taxing on the filesystem
 
 
 ## Monitoring Usage: `/mnt/ceph`
-
 List files in increasing order:
-  <pre style="font-size:0.65em">
+  <pre style="font-size:0.7em">
     <code data-trim class="language-bash">
-      $ ls -ldh /mnt/ceph/users/johndoe/
-      -rw-rw-r-- 1 johndoe johndoe 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
-      -rw-rw-r-- 1 johndoe johndoe  83M Apr 30 00:39 QM9.tar.bz2
+$ ls -lASrh
+total 4.9G
+drwxrwsr-x 2 jsmith jsmith  83M Sep 22 15:27 qm_datasets
+-rw-rw-r-- 1 jsmith jsmith 2.5G Sep 22 15:26 malonaldehyde_500K.tar.gz
+-rw-rw-r-- 1 jsmith jsmith 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
     </code>
   </pre>
 
@@ -725,18 +733,20 @@ List files in increasing order:
 ## Monitoring Usage: `/mnt/ceph`
 
 Show the number of files in directory:
-  <pre style="font-size:1em">
-    <code class="language-bash" data-trim>
-      $ getfattr -n ceph.dir.rentries my_dir
-      # file: datasets
-      ceph.dir.rentries="3"
+  <pre style="font-size:0.75em">
+    <code data-trim class="language-text">
+    $ getfattr -n ceph.dir.rentries bad_dir
+    # file: bad_dir
+    ceph.dir.rentries="1002"
     </code>
   </pre>
 
 
 ## Moving Files
 - Use `mv` within a filesystem, __NOT__ in between them
-- Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below:
+- Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below
+- `rsync` allows to stopy in the middle, then resume
+- `rsync` verify the transfer
 
 ```bash
 # Transfer
@@ -748,12 +758,32 @@ rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
 ```
 
 
-## Speeding up your Workflow
+## Tape Storage
+
+- We have 10PB "cold storage" tape archive at FI
+- Can be used to backup things you don't expect to need but don't want to lose
+- Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
+- Restores by request (please allow a few weeks)
+- Avoid archiving many small files with long names (use tar)
+- Optional Globus endpoint coming soon
+
+
+## Summary
+
+| Partition |                         Moving Large Files                         |                     Moving Lots of Small Files                     |        Back Up        |
+| :-------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: | :-------------------: |
+| /mnt/home |                       <span>&#128034;</span>                       |                       <span>&#128007;</span>                       | <span>&#x2705;</span> |
+| /mnt/ceph |                       <span>&#128007;</span>                       |            <span>&#128034;</span><span>&#128034;</span>            | <span>&#x274C;</span> |
+| /dev/shm  |           <span>&#128007;</span> <span>&#128007;</span>            |            <span>&#128007;</span><span>&#128007;</span>            | <span>&#x274C;</span> |
+|   tape    | <span>&#128034;</span><span>&#128034;</span><span>&#128034;</span> | <span>&#128034;</span><span>&#128034;</span><span>&#128034;</span> | <span>&#x274C;</span> |
+
+
+## BONUS: Speeding up your Workflow
 
 If file IO to HOME is slowing down your workflow, try writing to `/tmp` or `/dev/shm` instead
 
 
-## Use Data-Pipes on `/mnt/ceph`
+## BONUS: Use Data-Pipes on `/mnt/ceph`
 
 Still, writing to filesystems can be slow, if your workflow looks like this:
 
@@ -768,7 +798,7 @@ rm awkFilteredData
 </pre>
 
 
-## Use Data-Pipes on `/mnt/ceph`
+## BONUS: Use Data-Pipes on `/mnt/ceph`
 
 Try consolidating with the `|` command to speed things up and avoid writing intermediate files
 
@@ -782,7 +812,7 @@ myProgram -i <(gunzip -c data.gz | awk '...') \
 Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm` or `/tmp` for intermediate files)
 
 
-## Compiling on `/mnt/ceph`
+## BONUS: Compiling on `/mnt/ceph`
 
 `/mnt/ceph` is not great for compiling, trying compiling on `/tmp` or `/dev/shm` first and then installing to `/mnt/ceph`
 
@@ -795,16 +825,6 @@ icpc    -pipe simple_test.cpp
 ```
 
 __Note__: `-pipe` isn't supported by `nvhpc`
-
-
-## Tape Storage
-
-- We have 10PB "cold storage" tape archive at FI
-- Can be used to backup things you don't expect to need but don't want to lose
-- Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
-- Restores by request (please allow a few weeks)
-- Avoid archiving many small files with long names (use tar)
-- Optional Globus endpoint coming soon
 
 
 
@@ -882,16 +902,16 @@ Running workpackages (#=done, 0=wait, E=error):
 ##000000 (  2/  8)
 
 [user@rusty:~] jube result mybenchmark_title --id=0
-| kernel | size | num_ranks_used | time_in_seconds_avg |    mflops_avg |
-|--------|------|----------------|---------------------|---------------|
-|     cg |    A |              1 |                1.03 |       1459.09 |
-|     cg |    A |              4 |                0.24 |       6183.24 |
-|     cg |    A |             16 |                0.08 |       19800.6 |
-|     cg |    A |             64 |                0.06 |      23779.14 |
-|     cg |    B |              1 |                42.2 |       1296.53 |
-|     cg |    B |              4 |               10.23 |       5350.09 |
-|     cg |    B |             16 |                 2.9 |      18884.73 |
-|     cg |    B |             64 |                1.45 |      37621.67 |
+| kernel | size | num_ranks_used | time_in_seconds_avg | mflops_avg |
+| ------ | ---- | -------------- | ------------------- | ---------- |
+| cg     | A    | 1              | 1.03                | 1459.09    |
+| cg     | A    | 4              | 0.24                | 6183.24    |
+| cg     | A    | 16             | 0.08                | 19800.6    |
+| cg     | A    | 64             | 0.06                | 23779.14   |
+| cg     | B    | 1              | 42.2                | 1296.53    |
+| cg     | B    | 4              | 10.23               | 5350.09    |
+| cg     | B    | 16             | 2.9                 | 18884.73   |
+| cg     | B    | 64             | 1.45                | 37621.67   |
 ```
 
 
