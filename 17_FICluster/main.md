@@ -114,7 +114,7 @@ Activities where participants all actively work to foster an environment which e
 
 - Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
   - In a "module" we provide
-  - Downloaded/built/installed by you
+  - Downloaded/built/installed by you (usually using compiler/library modules)
 - By default you only see the "base system" software (CentOS7), which is often rather old
 
 
@@ -217,6 +217,8 @@ And "source" it when needed:
 - We will soon transition to a new set of modules
 - Most things work the same, but some names change
 - New versions of packages
+- Short alias: `ml` (list), `ml gcc -python` (load, unload)
+- Dynamic modules for MPI, BLAS, compilers
 - Will replace current modules and `modules-nix`
 - Try them now: `module load modules-new`
 
@@ -616,7 +618,7 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 
 ## Ceph
 
-- Pronounces as "sef"
+- Pronounced as "sef"
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
