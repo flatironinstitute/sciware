@@ -712,6 +712,7 @@ $ du -s --inodes *
 - Don't use <code>du</code>, it's slow
 - Just use `ls -l`!
 - List files and directories in increasing order:
+
   <pre style="font-size:0.7em">
     <code data-trim class="language-bash">
 $ ls -lASrh
