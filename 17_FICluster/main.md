@@ -509,16 +509,19 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 <img width="20%" src="./assets/slurm_futurama.webp">
 
 
-### OpenMP and threads
+### Scheduling tasks and threads
 
-```
-#SBATCH --cpus-per-task=4 # number of threads per task
+- For flexibility across nodes, prefer `-n`/`--ntasks` to specify total tasks (not `-N`/`--nodes` + `--ntasks-per-nodes`)
+- Always make sure `-c` and thread count match:
+   ```bash
+   #SBATCH --cpus-per-task=4 # number of threads per task
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-export MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
+   export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+   export MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-run
-```
+   run
+   ```
+- Total cores is `-c` * `-n`
 
 
 ## GPUs
@@ -544,7 +547,7 @@ run
 - `srun` can run interactive jobs (builds, tests, etc.)
 - `salloc` can allocate multi-node interactive jobs for testing
 - Inside `sbatch` scripts, `srun` is only useful for running many identical instances of a program in parallel
-   - Use `mpirun` for MPI
+   - Use `mpirun` for MPI (without `-np`)
    - Unnecessary for running single tasks
 
 
