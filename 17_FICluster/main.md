@@ -121,6 +121,7 @@ Activities where participants all actively work to foster an environment which e
 <img height=80% width=80% margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
 
 
+
 # Modules & software
 
 ### Dylan Simon (SCC)
