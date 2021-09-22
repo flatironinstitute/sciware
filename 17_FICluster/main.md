@@ -639,8 +639,10 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups
+- No backups<sup>\*</sup>
 - Do not put &#x2273; 1000 files in a directory
+
+<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
 
 
 ## Local Scratch
