@@ -60,47 +60,44 @@ Activities where participants all actively work to foster an environment which e
 ### Liz Lovero (SCC)
 
 
-## Two Clusters, Three Locations, More than 130,000 Cores
 <img max-height=80% max-width=80% src="./assets/overview/overview1.png">
 
 
 ## Rusty @ FI
 
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/rustyatfi.png">
 - Bright Cluster Manager
 - Reminder - these memory nodes are not for long term storage!
 
 
 ## Rusty @ CoreSite (NY2)
 
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/rustyatcoresite.png">
 - Rome nodes at CoreSite contain 1TB of memory. No other compute cluster has as much memory per node.
 - Rusty is the first cluster to have 144 of the Nvidia A100’s.
 
 
 ## Popeye @ SDSC
 
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/popeye.png">
 - No direct network connection between Popeye and Rusty.
 
 
 ## Network
 
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/network.png">
 - DWDM dark fiber network enables a single cluster to operate across two sites (FI/CoreSite).
 - One Infiniband node can send a small message to another in about the time light travels from 5th to 6th Avenue.
 
 
 ## Storage
 
-### GPFS < Ceph < Tape
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/storage.png">
 
 
-# Energy
+## Energy Use
 
-### Mindful Consumption
-- Image
+<img max-height=80% max-width=80% src="./assets/overview/energy.png">
 
 
 
