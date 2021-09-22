@@ -869,7 +869,7 @@ result:
   use: analyse    # Dependency: use results from analyse
   table:
     name:   result
-    column: [ kernel, size, num_ranks, mflops_avg, time_in_seconds_avg ]
+    column: [ kernel, size, num_ranks_used, time_in_seconds_avg, mflops_avg ]
 ```
 
 
