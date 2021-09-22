@@ -459,6 +459,18 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 <img width="20%" src="./assets/slurm_futurama.webp">
 
 
+### OpenMP and threads
+
+```
+#SBATCH --cpus-per-task=4 # number of threads per task
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+run
+```
+
+
 ## GPUs
 
 - For GPU nodes, you should specify:
