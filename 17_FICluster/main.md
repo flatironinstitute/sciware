@@ -65,7 +65,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Rusty @ FI
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
+<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
 
 
 ## Rusty @ FI
@@ -76,7 +76,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Rusty @ CoreSite (NY2)
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
+<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
 
 
 ## Rusty @ CoreSite (NY2)
@@ -87,7 +87,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Popeye @ SDSC
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/popeye.png">
+<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/popeye.png">
 
 
 ## Popeye | Rusty
@@ -97,7 +97,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Network
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/network.png">
+<img height=70% width=70% margin="10px auto" class="plain" src="./assets/overview/network.png">
 
 
 ## 1 Cluster 2 Sites !?!
@@ -639,8 +639,10 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
-- No backups
+- No backups<sup>\*</sup>
 - Do not put &#x2273; 1000 files in a directory
+
+<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
 
 
 ## Timing for Ceph vs. Home
