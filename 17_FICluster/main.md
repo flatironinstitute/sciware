@@ -57,8 +57,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Cluster overview
 
-### Liz Lovero (SCC)
-
+<h3 style="color:#484848">Liz Lovero (SCC)</h3>
 
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview1.png">
 
@@ -124,7 +123,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Modules & software
 
-### Dylan Simon (SCC)
+<h3 style="color:#484848">Dylan Simon (SCC)</h3>
 
 
 ## Overview
@@ -256,8 +255,7 @@ If you need something not in the base system, modules, or pip:
 
 How to run jobs efficiently on Flatiron's clusters
 
-### Lehman Garrison (CCA)
-
+<h3 style="color:#ce3232">Lehman Garrison (CCA)</h3>
 
 ## Slurm
 
@@ -827,7 +825,7 @@ __Note__: `-pipe` isn't supported by `nvhpc`
 
 Testing how to get the best performance out of your jobs
 
-### G&eacute;raud Krawezik (SCC)
+<h3 style="color:#484848">G&eacute;raud Krawezik (SCC)</h3>
 
 
 ## Why benchmarking?
