@@ -128,7 +128,7 @@ module load jupyter-kernels
 python3 -m make-custom-kernel projkernel
 ```
 
-Reload jupyterhub and "projkernel" will show up providing the same environment.
+Reload jupyterhub and "projkernel" will show up providing the same environment
 
 
 ## Batch scripts
@@ -193,7 +193,7 @@ How to run jobs efficiently on Flatiron's clusters
 ## Slurm
 
 - How do you share a set of computational resources among cycle-hungry scientists?
-  - With a job scheduler! Also known as a queue system.
+  - With a job scheduler! Also known as a queue system
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
   
 <img width="30%" src="./assets/Slurm_logo.png">
@@ -260,7 +260,7 @@ wait  # << wait for all background tasks to complete
 
 ## Slurm Tip \#1: Estimating Resource Requirements
 
-- Jobs don't necessarily run in order; most run via "backfill".
+- Jobs don't necessarily run in order; most run via "backfill"
   - Implication: specifying the smallest set of resources for your job will help it run **sooner**
   - But don't short yourself!
 - Memory requirements can be hard to assess, especially if you're running someone else's code
@@ -269,7 +269,7 @@ wait  # << wait for all background tasks to complete
 ## Slurm Tip \#1: Estimating Resource Requirements
 
 - How to estimate resource requirements:
-  1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read.
+  1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read
   1. Run a test job
   1. Check the actual usage of the test job with:\
   `seff -j <jobid>`
@@ -533,7 +533,7 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 
 1. Large data sets downloaded from other sites
 2. Intermediate files generated and then deleted during the course of a computation
-3. Large output files.
+3. Large output files
 
 <p style="text-align:left;"><b>You are limited to 900,000 files and 900 GB</b> (if you go beyond this you will not be able to log in)</p>
 
@@ -712,7 +712,7 @@ Gotcha: pipes do __NOT__ support random access (as an alternative use `/dev/shm`
 
 ## Compiling on `/mnt/ceph`
 
-`/mnt/ceph` is not great for compiling, trying compiling on `/tmp` or `/dev/shm` first and then installing to `/mnt/ceph`.
+`/mnt/ceph` is not great for compiling, trying compiling on `/tmp` or `/dev/shm` first and then installing to `/mnt/ceph`
 
 If that's not an option, you can use the `-pipe` option, e.g.:
 
@@ -983,8 +983,6 @@ Where `2021-09-01` is when the jobs were started (pick a date that makes sense f
 
 ## Getting Job Info
 
-TODO: Add info about SlurmUtil
-
 <pre style="font-size:.9em">
 <code data-trim class="language-bash">
 $ seff 1122721
@@ -1003,11 +1001,18 @@ Memory Efficiency: 4.34% of 1000.00 GB
 </pre>
 
 
+### Slurm Util
+
+If you're on the FI network, visit:
+
+http://mon7.flatironinstitute.org:8126/
+
+Click on "search" icon in upper-right and enter user name or job id
+
+
 ## Activity
 
 Fill out [this Google form](https://forms.gle/yT45Do2hbYGvWJFo9) with some info about the job
-
-
 
 
 
