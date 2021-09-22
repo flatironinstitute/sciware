@@ -75,8 +75,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Rusty @ CoreSite (NY2)
 
-- Rome nodes at CoreSite contain 1TB of memory. No other compute cluster has as much memory per node.
-- Rusty is the first cluster to have 144 of the Nvidia A100’s.
+<img height="50%" width="05%" margin="10px auto" class="plain" src="./assets/overview/coresitepic.png">
+<small>🏆 Most average memory per node.</small>
+<small>🥇 First cluster to have this many Nvidia A100's.</small>
 
 
 ## Popeye @ SDSC
@@ -92,7 +93,7 @@ Activities where participants all actively work to foster an environment which e
 ## 1 Cluster 2 Sites !?!
 
 - Dense Wavelength Division Multiplexing (DWDM) or dark fiber is a dedicated and reliable, high capacity, low-latency network makes it possible.
-- One Infiniband node can send a small message to another in about the time light travels from 5th to 6th Avenue. ☀️
+- 1.6TB/second - 1600 times faster than Fios! 🚀
 
 
 ## Storage
@@ -100,9 +101,14 @@ Activities where participants all actively work to foster an environment which e
 <img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storage.png">
 
 
-## Storage
+## JBODs
 
 <img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storagepic.jpg">
+
+
+## Tape Archive Robot
+
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/tapeRobot.jpg">
 
 
 ## Energy
