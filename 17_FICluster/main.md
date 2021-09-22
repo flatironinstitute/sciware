@@ -612,7 +612,7 @@ See the [SF wiki page on filesystems](https://docs.simonsfoundation.org/index.ph
 
 ## Ceph
 
-- Pronounces as "sef"
+- Pronounced as "sef"
 - Rusty: `/mnt/ceph`
 - Popeye: `/mnt/sdceph`
 - For large data storage
