@@ -213,6 +213,8 @@ And "source" it when needed:
 - We will soon transition to a new set of modules
 - Most things work the same, but some names change
 - New versions of packages
+- Short alias: `ml` (list), `ml gcc -python` (load, unload)
+- Dynamic modules for MPI, BLAS, compilers
 - Will replace current modules and `modules-nix`
 - Try them now: `module load modules-new`
 
