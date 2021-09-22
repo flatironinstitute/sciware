@@ -66,13 +66,21 @@ Activities where participants all actively work to foster an environment which e
 ## Rusty @ FI
 
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
+
+
+## Rusty @ FI
+
 - Bright Cluster Manager
-- Reminder - these memory nodes are not for long term storage!
+- ⚠️ These memory nodes are not for long term storage!
 
 
 ## Rusty @ CoreSite (NY2)
 
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
+
+
+## Rusty @ CoreSite (NY2)
+
 - Rome nodes at CoreSite contain 1TB of memory. No other compute cluster has as much memory per node.
 - Rusty is the first cluster to have 144 of the Nvidia A100’s.
 
@@ -80,14 +88,22 @@ Activities where participants all actively work to foster an environment which e
 ## Popeye @ SDSC
 
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/popeye.png">
-- No direct network connection between Popeye and Rusty.
+
+
+## Popeye | Rusty
+
+- ⚠️ No direct fiber connection between Popeye and Rusty.
 
 
 ## Network
 
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/network.png">
-- DWDM dark fiber network enables a single cluster to operate across two sites (FI/CoreSite).
-- One Infiniband node can send a small message to another in about the time light travels from 5th to 6th Avenue.
+
+
+## 1 Cluster 2 Sites !?!
+
+- Dense Wavelength Division Multiplexing (DWDM) or dark fiber is a dedicated and reliable, high capacity, low-latency network makes it possible.
+- One Infiniband node can send a small message to another in about the time light travels from 5th to 6th Avenue. ☀️
 
 
 ## Storage
