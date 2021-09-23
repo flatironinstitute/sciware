@@ -555,7 +555,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 ## Other resources
 
 - `-p mem`: "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
-- `-p preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+- `-p preempt -q preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
     - This is a great option if your job writes regular checkpoints
 
 
