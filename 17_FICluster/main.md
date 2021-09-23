@@ -59,6 +59,7 @@ Activities where participants all actively work to foster an environment which e
 
 <h3 style="color:#484848">Liz Lovero (SCC)</h3>
 
+
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview1.png">
 
 
@@ -74,7 +75,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Rusty @ CoreSite (NY2)
 
-<img height="50%" width="05%" margin="10px auto" class="plain" src="./assets/overview/coresitepic.png">
+<img height="50%" width="50%" margin="10px auto" class="plain" src="./assets/overview/coresitepic.png">
 <small>🏆 Most average memory per node.</small>
 <small>🥇 First cluster to have this many Nvidia A100's.</small>
 
@@ -91,8 +92,10 @@ Activities where participants all actively work to foster an environment which e
 
 ## 1 Cluster 2 Sites !?!
 
-- Dense Wavelength Division Multiplexing (DWDM) or dark fiber is a dedicated and reliable, high capacity, low-latency network makes it possible.
-- 1.6TB/second - 1600 times faster than Fios! 🚀
+<ul>
+<li>Dense Wavelength Division Multiplexing (DWDM) or dark fiber is a dedicated and reliable, high capacity, low-latency network makes it possible.</li>
+<li class="fragment">1.6TB/second - 1600 times faster than Fios! 🚀 </li>
+</ul>
 
 
 ## Storage
@@ -103,11 +106,12 @@ Activities where participants all actively work to foster an environment which e
 ## JBODs
 
 <img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storagepic.jpg">
+<small>FI boasts the largest Ceph in the World. 🐙</small>
 
 
 ## Tape Archive Robot
 
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/tapeRobot.jpg">
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/taperobot.png">
 
 
 ## Energy
@@ -115,7 +119,14 @@ Activities where participants all actively work to foster an environment which e
 <img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/energy.png">
 
 
-## Power Consumption
+## Natural Gas
+
+<p>Using the State level energy source percentages from June 2021 to extrapolate, FI + SDSC use 3263 MwH of natural gas annually. </p>
+<p class="fragment">According to the EPA,  natural gas electricity generation releases 407kg CO2/Mwh.</p>
+<p class="fragment"><img height="35%" width="35%" margin="10px auto" class="plain" src="./assets/overview/carbon.png"></p>
+
+
+## Greta
 
 <img height="65%" width="65%" margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
 
@@ -256,6 +267,7 @@ If you need something not in the base system, modules, or pip:
 How to run jobs efficiently on Flatiron's clusters
 
 <h3 style="color:#ce3232">Lehman Garrison (CCA)</h3>
+
 
 ## Slurm
 
