@@ -63,65 +63,25 @@ Activities where participants all actively work to foster an environment which e
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview1.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatfi1.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview2.png">
 
 
-## Rusty @ CoreSite (NY2)
-
-<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/rustyatcoresite.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview3.png">
 
 
-## Rusty @ CoreSite (NY2)
-
-<img height="50%" width="50%" margin="10px auto" class="plain" src="./assets/overview/coresitepic.png">
-<small>🏆 Most average memory per node.</small>
-<small>🥇 First cluster to have this many Nvidia A100's.</small>
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview4.png">
 
 
-## Popeye @ SDSC
-
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/popeye.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview5.png">
 
 
-## Network
-
-<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/network.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview6.png">
 
 
-## 1 Cluster 2 Sites !?!
-
-<ul>
-<li>Dense Wavelength Division Multiplexing (DWDM) or dark fiber is a dedicated and reliable, high capacity, low-latency network makes it possible.</li>
-<li class="fragment">1.6TB/second - 1600 times faster than Fios! 🚀 </li>
-</ul>
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview7.png">
 
 
-## Storage
-
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storage.png">
-
-
-## JBODs
-
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/storagepic.jpg">
-<small>FI boasts the largest Ceph in the World. 🐙</small>
-
-
-## Tape Archive Robot
-
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/tapes.png">
-
-
-## Energy
-
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/energy.png">
-
-
-## Natural Gas
-
-<p>Using the State level energy source percentages from June 2021 to extrapolate, FI + SDSC use 3263 MwH of natural gas annually. </p>
-<p class="fragment">According to the EPA,  natural gas electricity generation releases 407kg CO2/Mwh.</p>
-<p class="fragment"><img height="35%" width="35%" margin="10px auto" class="plain" src="./assets/overview/carbon.png"></p>
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview8.png">
 
 
 ## Greta
