@@ -63,9 +63,7 @@ Activities where participants all actively work to foster an environment which e
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview1.png">
 
 
-## Rusty @ FI
-
-<img height="65%" width="65%" margin="10px auto" class="plain" src="./assets/overview/rustyatfi.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/rustyatfi1.png">
 
 
 ## Rusty @ CoreSite (NY2)
@@ -111,7 +109,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Tape Archive Robot
 
-<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/taperobot.png">
+<img height="65%" width="65%"  margin="10px auto" class="plain" src="./assets/overview/tapes.png">
 
 
 ## Energy
