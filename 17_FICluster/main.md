@@ -63,25 +63,25 @@ Activities where participants all actively work to foster an environment which e
 <img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview1.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview2.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview2.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview3.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview3.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview4.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview4.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview5.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview5.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview6.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview6.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview7.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview7.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview8.png">
+<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview8.png">
 
 
 ## Greta
