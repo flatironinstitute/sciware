@@ -567,7 +567,7 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 ## Other resources
 
 - `-p mem`: "Big memory" nodes: 4 nodes with 3-6TB memory, 96-192 cores
-- `-p preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
+- `-p preempt -q preempt`: submit very large jobs (beyond your normal limit) which run on idle nodes, but may be killed as resources are requested by others
     - This is a great option if your job writes regular checkpoints
 
 
@@ -723,7 +723,7 @@ $ du -s --inodes *
 - Just use `ls -l`!
 - List files and directories in increasing order:
 
-  <pre style="font-size:0.7em">
+<pre style="font-size:0.7em">
     <code data-trim class="language-bash">
 $ ls -lASrh
 total 4.9G
@@ -731,7 +731,7 @@ drwxrwsr-x 2 jsmith jsmith  83M Sep 22 15:27 qm_datasets
 -rw-rw-r-- 1 jsmith jsmith 2.5G Sep 22 15:26 malonaldehyde_500K.tar.gz
 -rw-rw-r-- 1 jsmith jsmith 2.5G Jul 10  2017 malonaldehyde_300K.tar.gz
     </code>
-  </pre>
+</pre>
 
 
 ## Monitoring Usage: `/mnt/ceph`
