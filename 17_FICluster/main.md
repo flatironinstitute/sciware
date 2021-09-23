@@ -257,6 +257,7 @@ How to run jobs efficiently on Flatiron's clusters
 
 <h3 style="color:#ce3232">Lehman Garrison (CCA)</h3>
 
+
 ## Slurm
 
 - How do you share a set of computational resources among cycle-hungry scientists?
