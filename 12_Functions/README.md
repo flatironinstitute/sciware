@@ -5,5 +5,5 @@
 - Zoom
 
 - [Agenda & Planning doc](https://docs.google.com/document/d/1K6rxREpBa5v55PTQOwI8epaziMZm26qyg8-tTqVKrI4/edit)
-- [slides](https://flatironinstitute.github.io/sciware/12_Functions/slides.html) ([source](main.md))
+- [slides](https://sciware.flatironinstitute.org/12_Functions/slides.html) ([source](main.md))
 

@@ -116,7 +116,7 @@ One often hears these terms used interchangeably. Let's clarify.
 
 ## Environment variables (Nick)
 
-[EnvironmentVariables.md](https://flatironinstitute.github.io/sciware/10_EnvShell/EnvironmentVariables.html)
+[EnvironmentVariables.md](https://sciware.flatironinstitute.org/10_EnvShell/EnvironmentVariables.html)
 
 
 

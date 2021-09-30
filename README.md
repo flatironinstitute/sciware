@@ -13,7 +13,7 @@ A developing series of meetings about software development for science.
 - May 14, 2020 [Introduction to Julia](08_Julia)
 - Jun 18, 2020 Intel VTune
 - Aug 13, 2020 [Shells and Environments](10_EnvShell): environment variables, shell features
-- Sep 24--Oct 1, 2020 [Git](https://flatironinstitute.github.io/sciware-swc-2020-09-git/) with Software Carpentry
+- Sep 24--Oct 1, 2020 [Git](https://sciware.flatironinstitute.org-swc-2020-09-git/) with Software Carpentry
 - Nov 06, 2020 [Functions](12_Functions): what is a function, when and how to write them, code structure and strategies
 - Mar 04, 2021 [Debugging](13_Debugging): a whirlwind tour of various debugging tools
 - Apr 29, 2021 [Testing and Packaging Workshop](14_TestingPackaging): a hands-on workshop for building and running tests in a python package

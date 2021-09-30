@@ -12,9 +12,9 @@ pip3 install distributed # or conda install distributed
 ./sdcScale.sh
 ```
 
-- [intro](https://flatironinstitute.github.io/sciware/05_Parallelization/slides-intro.html) ([source](intro.md))
-- [terminology](https://flatironinstitute.github.io/sciware/05_Parallelization/slides-terms.html) ([source](terminology.md))
-- [APIs](https://flatironinstitute.github.io/sciware/05_Parallelization/slides-apis.html) ([source](apis.md))
+- [intro](https://sciware.flatironinstitute.org/05_Parallelization/slides-intro.html) ([source](intro.md))
+- [terminology](https://sciware.flatironinstitute.org/05_Parallelization/slides-terms.html) ([source](terminology.md))
+- [APIs](https://sciware.flatironinstitute.org/05_Parallelization/slides-apis.html) ([source](apis.md))
 
 ## Planning Resources and Notes
 - [google doc](https://docs.google.com/document/d/10wQfbWyu7WyOiLnvr9b5qgf9fzjH9JZoWDrG0EBuh3g/edit)
