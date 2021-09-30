@@ -365,7 +365,7 @@ body:before {
 }
 
 body:after {
-  content: url("/sciware/Theme_Demo/assets/sciware-final-footer.png");
+  content: url("/Theme_Demo/assets/sciware-final-footer.png");
   position: fixed;
   bottom: 30px;
   left: 177px;
