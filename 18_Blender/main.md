@@ -73,12 +73,11 @@ After setting the environment up, one can execute run_batch_blender.py to start 
 
 # Questions
 
-<img height=80% width=80% src="./assets/gifs/help.gif">
 If you have a Blender question/topic you'd like to discuss in a future session, please add it to [this Google list](https://docs.google.com/spreadsheets/d/1m-WAz8p3UzOVs4fYggYqjRviC4CgVsWXiiRntRt2na8/edit?usp=sharing).
 
 
 ## Break
-<img height=80% width=80% src="./assets/gifs/pikachu.gif">
+<img height=65% width=65% src="./assets/gifs/pikachu.gif">
 
 
 # Demo 2 - Datacube
