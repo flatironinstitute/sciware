@@ -1793,7 +1793,15 @@ input, select, textarea {
 	header.major h2 {
 		font-size: 2em;
 	}
+	header.major h2 a {
+		border-bottom: none;
+    color: #3F519D;
+	}
 
+	header.major h2 a:hover {
+		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    border-bottom: dotted 1px;
+	}
 /* Form */
 
 	form {
