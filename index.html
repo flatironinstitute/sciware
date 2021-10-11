@@ -1,289 +1,530 @@
----
-title: index
----
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Sciware: a scientific software development learning community</title>
+	<head>
+		<title>Sciware: a scientific software development learning community</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
     <link rel="manifest" href="/icons/site.webmanifest">
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#404f9d">
     <link rel="shortcut icon" href="/icons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileColor" content="#3F519D">
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="{{ site.baseurl }}/flatiron.css" id="theme" />
-    <style>
-      /*********************************************
-      * LANDING PAGE
-      *********************************************/
-      body.landing:before, body.landing:after {
-        content: none;
-      }
+    <meta name="theme-color" content="#3F519D">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
 
-      body.landing {
-        background-color: #3F519D;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="#" class="image avatar"><img src="assets/sciware.png" alt="" /></a>
+					<h1><strong>Sciware</strong>, a scientific<br />
+						software learning community <br />
+					at the <a href="http://flatironinstitute.org">Flatiron Institute</a>.</h1>
+				</div>
+			</header>
 
-      body.landing > header.banner, body.landing > section, body.landing > footer {
-        margin: 0 auto 2.75rem auto;
-        max-width: 980px;
-        padding: 2.75rem 2rem;
-        background-color: white;
-        box-shadow: 0.25rem 0.125rem 0 rgb(0 0 0 / 3%);
-        border-color: #e9ecef;
-        border-radius: .25rem;
-        border-width: .125rem;
-      }
+		<!-- Main -->
+			<div id="main">
 
-      @media only screen
-        and (max-device-width: 812px) {
-          body.landing > header.banner, body.landing > section {
-            width: auto;
-          }
-      }
+				<!-- News -->
+					<section id="news">
+						<header class="major">
+							<div class="row">
+								<div class="col-3 col-12-small">
+									<small>Thursday </small>
+									<h1>Oct 21</h1>
+								</div>
+								<div class="col-9 col-12-small">
+									<h2><a href="#s-18">Intro to 3D Scientific Visualization with Blender</a></h2>
+									<p>3 PM   Third floor classroom</p>
+								</div>
+							</div>
+						</header>
+						<header class="major">
+							<div class="row">
+								<div class="col-3 col-12-small">
+									<small>Thursday </small>
+									<h1>Nov 4</h1>
+								</div>
+								<div class="col-9 col-12-small">
+									<h2><a href="#s-17">Performance-focused Guide to Flatiron Clusters</a></h2>
+									<p>3 PM   Second floor auditorium </br>
+										5 PM   Rooftop reception</p>
+								</div>
+							</div>
+						</header>
+					</section>
+					<section id="past">
+						<h2>Past Sessions</h2>
+						<p> In addition to the session slides listed below, many of the recordings from past events are available on <a href="https://vimeo.com/showcase/sciware">Vimeo</a>. Please see the <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="sciware slack">#sciware </a>Slack channel for the password.</p>
+						<!-- <h5>Alternate</h5> -->
+						<ul class="alt">
+							<li>
+								Session #00: <a href="https://sciware.flatironinstitute.org/00_Founding/slides.html">Founding</a>
+							</li>
+							<li>
+								Session #01: <a href="https://sciware.flatironinstitute.org/01_Overview/reveal.html">Overview</a>
+							</li>
+							<li>
+								Session #02: <a href="https://sciware.flatironinstitute.org/02_Testing/reveal.html">Testing Scientific Software</a>
+							</li>
+							<li>
+								Session #03:<a href="https://sciware.flatironinstitute.org/03_ToolsWorkflows/slides.html"> Tools and Workflows Show and Tell Intro</a>
+							</li>
+							<li>
+								Session #04a:<a href="https://sciware.flatironinstitute.org/04_Debugging/slides1.html"> Debugging Strategies</a>
+							</li>
+							<li>
+								Session #04b: <a href="https://sciware.flatironinstitute.org/04_Debugging/slides2.html">Debugging: System Tools</a>
+							</li>
+							<li>
+								Session #05a: <a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-apis.html">Parallel and Distributed APIs</a>
+							</li>
+							<li>
+								Session #05b:<a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-intro.html"> Parallel and Distributed Computing</a>
+							</li>
+							<li>
+								Session #05c: <a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-terms.html">Parallel and Distributed terminology</a>
+							</li>
+							<li>
+								Session #06: <a href="https://sciware.flatironinstitute.org/06_ModernC++/slides.html">Modern C++</a>
+							</li>
+							<li>
+								Session #07:<a href="https://sciware.flatironinstitute.org/07_RemoteWork/slides.html"> Working Remotely</a>
+							</li>
+							<li>
+								Session #08: <a href="https://sciware.flatironinstitute.org/08_Julia/slides.html">Intro to Julia</a>
+							</li>
+							<li>
+								Session #10: <a href="https://sciware.flatironinstitute.org/10_EnvShell/slides.html">Shells and Environments</a>
+							</li>
+							<li>
+								Session #12: <a href="https://sciware.flatironinstitute.org/12_Functions/slides.html">Functions</a>
+							</li>
+							<li>
+								Session #13: <a href="https://sciware.flatironinstitute.org/13_Debugging/slides.html">Debugging</a>
+							</li>
+							<li>
+								Session #14a: <a href="https://sciware.flatironinstitute.org/14_TestingPackaging/slides.html">Testing and packaging workshop</a>
+							</li>
+							<li>
+								Session #14b: <a href="https://sciware.flatironinstitute.org/14_TestingPackaging/guide.html">Testing workshop guide</a>
+							</li>
+							<li>
+								Session #15 day 1: <a href="https://sciware.flatironinstitute.org/15_IntroGithub/slides1.html">Intro to Github</a>
+							</li>
+							<li>
+								Session #15 day 2: <a href="https://sciware.flatironinstitute.org/15_IntroGithub/slides2.html">Collaboration with Github</a>
+							</li>
+							<li>
+								Session #16: <a href="https://sciware.flatironinstitute.org/16_EditorsVSCode/slides.html">Intro to code editors</a>
+							</li>
+						</ul>
+					</section>
+					<section id="upcoming">
+						<h2>Upcoming Sessions</h2>
+						<p>Currently sessions are hybrid, with remote and in-person attendance options. For Zoom details, please consult Indico or reach out via the <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="#sciware Slack Channel" >#sciware </a>Slack channel.</p>
+						<h3 id="s-18">Session #18: Intro to 3D Scientific Visualization with Blender</h3>
+						<h5>Thursday Oct 21, 3-5 PM</h5>
+						<p><span class="image left"><img src="assets/sciware-avatar.png" alt="avatar" /></span>This session will introduce the software program Blender, a 3D graphics tool originally designed for animators that has become increasingly popular with scientists. Using scientific examples, this workshop will cover generating models, applying textures, creating animations, controlling cameras and exporting final products. We will also address issues of interest to the Flatiron community including python scripting.</p>
+						<p>Dr. Brian R. Kent is a scientist with the National Radio Astronomy Observatory in Charlottesville, Virginia. His publications and studies in astrophysics and computing include scientific visualizations of a variety of theoretical and observational phenomena. He is interested in visualizing data for scientific analysis as well as reaching a broad audience with the stunning visuals that modern 3D graphics can provide. Dr. Kent received his Ph.D. in Astronomy and Space Sciences from Cornell University. Learn about <a href="https://www.cv.nrao.edu/~bkent/">his work</a>.</p>
+						<h3 id="s-17">Session #17: Performance-focused guide to using Flatiron Clusters</h3>
+						<h5>Thursday Nov 4, 3 PM <i>(rescheduled)</i> </h5>
+						<h5>Rooftop reception, 5 PM</h5>
+						<p><span class="image right"><img src="assets/sciware-avatar.png" alt="avatar" /></span>For this Sciware event, we will focus on our local (and remote) Flatiron resources and ways to use them more effectively. We'll talk about the available hardware resources, submitting slurm jobs, making use of the various filesystems and storage, accessing software, and monitoring jobs and resource usage, all with an eye on performance and efficiency. This workshop presumes you already have a cluster account.</p>
+					</section>
+				<!-- Four -->
+					<section id="about">
+						<h2>About</h2>
+						<div class="row">
+							<div class="col-8 col-12-small">
+								<p><b>Sciware</b> is a Flatiron-wide activity to share and build scientific software development and computing skills in a variety of areas. Our goal is to create an environment where everyone can discuss technologies, tools, and tricks that make their research process more efficient, across all experience levels, language and technology choices, and scientific disciplines.</p>
+								<p>We meet roughly once a month on Thursdays at 3pm and focus on a specific topic, bringing Flatiron (and occasionally external) expertise together to demonstrate and discuss everything from debuggers to editors to file formats, optimization to packaging. Events are open to all Flatiron and Simons Foundation researchers, as well as their external students and collaborators.</p>
+								<p>There is also a <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="#sciware Slack Channel" >#sciware </a> channel on the Simons Foundation Slack that everyone is encouraged to join and ask questions, share knowledge, or request code reviews.</p>
+							</div>
+							<div class="col-4 col-12-small">
+								<h3>Organizers</h3>
+								<ul>
+									<li>Dylan Simon, SCC</li>
+									<li>Kelle Cruz, Flatiron</li>
+									<li>Alex Barnett, CCM</li>
+									<li>Robert Blackwell, SCC</li>
+									<li>Lehman Garrison, CCA</li>
+									<li>Adam Lamson, CCB</li>
+									<li>Liz Lovero, SCC</li>
+									<li>James Smith, CCQ</li>
+									<li>Jeff Soules, CCM</li>
+								</ul>
+								<h3>Contact</h3>
+								<ul class="labeled-icons">
+									<li>
+										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
+										<a href="mailto:sciware@flatironinstitute.org">sciware@flatironinstitute.org</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				<!-- Five -->
+					<!-- <section id="five">
+						<h2>Elements</h2>
 
-      body.landing > footer.landing-footer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+						<section>
+							<h4>Text</h4>
+							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+							<hr />
+							<header>
+								<h4>Heading with a Subtitle</h4>
+								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+							</header>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+							<header>
+								<h5>Heading with a Subtitle</h5>
+								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+							</header>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+							<hr />
+							<h2>Heading Level 2</h2>
+							<h3>Heading Level 3</h3>
+							<h4>Heading Level 4</h4>
+							<h5>Heading Level 5</h5>
+							<h6>Heading Level 6</h6>
+							<hr />
+							<h5>Blockquote</h5>
+							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+							<h5>Preformatted</h5>
+							<pre><code>i = 0;
 
-      h1.banner-title {
-        font-size: 4em;
-        text-align: center;
-      }
+while (!deck.isInOrder()) {
+print 'Iteration ' + i;
+deck.shuffle();
+i++;
+}
 
-      .banner-image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+						</section>
 
-      .banner-image > img {
-        max-width: 200px;
-        margin-bottom: 2rem;
-      }
+						<section>
+							<h4>Lists</h4>
+							<div class="row">
+								<div class="col-6 col-12-xsmall">
+									<h5>Unordered</h5>
+									<ul>
+										<li>Dolor pulvinar etiam magna etiam.</li>
+										<li>Sagittis adipiscing lorem eleifend.</li>
+										<li>Felis enim feugiat dolore viverra.</li>
+									</ul>
+									<h5>Alternate</h5>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam magna etiam.</li>
+										<li>Sagittis adipiscing lorem eleifend.</li>
+										<li>Felis enim feugiat dolore viverra.</li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<h5>Ordered</h5>
+									<ol>
+										<li>Dolor pulvinar etiam magna etiam.</li>
+										<li>Etiam vel felis at lorem sed viverra.</li>
+										<li>Felis enim feugiat dolore viverra.</li>
+										<li>Dolor pulvinar etiam magna etiam.</li>
+										<li>Etiam vel felis at lorem sed viverra.</li>
+										<li>Felis enim feugiat dolore viverra.</li>
+									</ol>
+									<h5>Icons</h5>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+										<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+										<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+									</ul>
+								</div>
+							</div>
+							<h5>Actions</h5>
+							<ul class="actions">
+								<li><a href="#" class="button primary">Default</a></li>
+								<li><a href="#" class="button">Default</a></li>
+							</ul>
+							<ul class="actions small">
+								<li><a href="#" class="button primary small">Small</a></li>
+								<li><a href="#" class="button small">Small</a></li>
+							</ul>
+							<div class="row">
+								<div class="col-6 col-12-small">
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary small">Small</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary fit">Default</a></li>
+										<li><a href="#" class="button fit">Default</a></li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary small fit">Small</a></li>
+										<li><a href="#" class="button small fit">Small</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
 
-      .banner-subtitle {
-        text-align: center;
-      }
+						<section>
+							<h4>Table</h4>
+							<h5>Default</h5>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Description</th>
+											<th>Price</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Item One</td>
+											<td>Ante turpis integer aliquet porttitor.</td>
+											<td>29.99</td>
+										</tr>
+										<tr>
+											<td>Item Two</td>
+											<td>Vis ac commodo adipiscing arcu aliquet.</td>
+											<td>19.99</td>
+										</tr>
+										<tr>
+											<td>Item Three</td>
+											<td> Morbi faucibus arcu accumsan lorem.</td>
+											<td>29.99</td>
+										</tr>
+										<tr>
+											<td>Item Four</td>
+											<td>Vitae integer tempus condimentum.</td>
+											<td>19.99</td>
+										</tr>
+										<tr>
+											<td>Item Five</td>
+											<td>Ante turpis integer aliquet porttitor.</td>
+											<td>29.99</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="2"></td>
+											<td>100.00</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
 
-      .landing h1,
-      .landing h2 {
-        margin: 0 0 20px 0;
-        color: #3F519D;
-        font-family: "Open Sans", Arial, Helvetica, sans-serif;
-        font-weight: normal;
-        line-height: 1.2;
-        letter-spacing: normal;
-        text-transform: none;
-        text-shadow: none;
-        word-wrap: break-word;
-      }
+							<h5>Alternate</h5>
+							<div class="table-wrapper">
+								<table class="alt">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Description</th>
+											<th>Price</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Item One</td>
+											<td>Ante turpis integer aliquet porttitor.</td>
+											<td>29.99</td>
+										</tr>
+										<tr>
+											<td>Item Two</td>
+											<td>Vis ac commodo adipiscing arcu aliquet.</td>
+											<td>19.99</td>
+										</tr>
+										<tr>
+											<td>Item Three</td>
+											<td> Morbi faucibus arcu accumsan lorem.</td>
+											<td>29.99</td>
+										</tr>
+										<tr>
+											<td>Item Four</td>
+											<td>Vitae integer tempus condimentum.</td>
+											<td>19.99</td>
+										</tr>
+										<tr>
+											<td>Item Five</td>
+											<td>Ante turpis integer aliquet porttitor.</td>
+											<td>29.99</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="2"></td>
+											<td>100.00</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</section>
 
-      ul.nav-links {
-        display: block;
-        list-style-type: disc;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 0;
-        text-align: center;
-      }
+						<section>
+							<h4>Buttons</h4>
+							<ul class="actions">
+								<li><a href="#" class="button primary">Primary</a></li>
+								<li><a href="#" class="button">Default</a></li>
+							</ul>
+							<ul class="actions">
+								<li><a href="#" class="button large">Large</a></li>
+								<li><a href="#" class="button">Default</a></li>
+								<li><a href="#" class="button small">Small</a></li>
+							</ul>
+							<ul class="actions fit">
+								<li><a href="#" class="button primary fit">Fit</a></li>
+								<li><a href="#" class="button fit">Fit</a></li>
+							</ul>
+							<ul class="actions fit small">
+								<li><a href="#" class="button primary fit small">Fit + Small</a></li>
+								<li><a href="#" class="button fit small">Fit + Small</a></li>
+							</ul>
+							<ul class="actions">
+								<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+								<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+							</ul>
+							<ul class="actions">
+								<li><span class="button primary disabled">Primary</span></li>
+								<li><span class="button disabled">Default</span></li>
+							</ul>
+						</section>
 
-      ul.nav-links li {
-        display:inline-block;
-        width: fit-content;
-        margin: 0 1vw;
-      }
+						<section>
+							<h4>Form</h4>
+							<form method="post" action="#">
+								<div class="row gtr-uniform gtr-50">
+									<div class="col-6 col-12-xsmall">
+										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+									</div>
+									<div class="col-12">
+										<select name="demo-category" id="demo-category">
+											<option value="">- Category -</option>
+											<option value="1">Manufacturing</option>
+											<option value="1">Shipping</option>
+											<option value="1">Administration</option>
+											<option value="1">Human Resources</option>
+										</select>
+									</div>
+									<div class="col-4 col-12-small">
+										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+										<label for="demo-priority-low">Low Priority</label>
+									</div>
+									<div class="col-4 col-12-small">
+										<input type="radio" id="demo-priority-normal" name="demo-priority">
+										<label for="demo-priority-normal">Normal Priority</label>
+									</div>
+									<div class="col-4 col-12-small">
+										<input type="radio" id="demo-priority-high" name="demo-priority">
+										<label for="demo-priority-high">High Priority</label>
+									</div>
+									<div class="col-6 col-12-small">
+										<input type="checkbox" id="demo-copy" name="demo-copy">
+										<label for="demo-copy">Email me a copy of this message</label>
+									</div>
+									<div class="col-6 col-12-small">
+										<input type="checkbox" id="demo-human" name="demo-human" checked>
+										<label for="demo-human">I am a human and not a robot</label>
+									</div>
+									<div class="col-12">
+										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+						</section>
 
-      ul.nav-links li a {
-        font-size: 120%;
-        font-weight: bold;
-      }
+						<section>
+							<h4>Image</h4>
+							<h5>Fit</h5>
+							<div class="box alt">
+								<div class="row gtr-50 gtr-uniform">
+									<div class="col-12"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
+								</div>
+							</div>
+							<h5>Left &amp; Right</h5>
+							<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						</section>
 
-      .landing a, ul li a {
-        color: #3F519D;
-        text-decoration: none;
-        -webkit-transition: color 0.15s ease;
-        -moz-transition: color 0.15s ease;
-        transition: color 0.15s ease;
-      }
+					</section>
 
-      .landing a:hover, ul li a:hover {
-        /* color: #304e77; */
-        color: #537eba;
-        text-shadow: none;
-        border: none;
-      }
+			</div> -->
 
-      i.fab {
-        font-size: 2em;
-      }
-      .upcoming-description:first-of-type {
-        margin-bottom: 2.75rem;
-        margin-top: 2rem;
-      }
-    </style>
-  </head>
-  <body class="landing">
-    <header class="banner">
-      <h1 class="banner-title">Sciware</h1>
-      <div class="banner-image"><img src="./icons/sciware-final-logo.png"></img></div>
-      <!-- <div class="banner-subtitle">
-        <h3>Activities facilitating scientific software development skills <br></br>at the Flatiron Institute</h3>
-      </div> -->
-        <nav class="banner-nav">
-          <ul class="nav-links">
-            <li><a href="#upcoming">Upcoming</a></li>
-            <li><a href="#past">Past</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section id="upcoming">
-      <h2>Upcoming sessions</h2>
-        <p>
-          Currently sessions are hybrid, with remote and in-person attendance options. For Zoom details, please consult <a href="https://indico.flatironinstitute.org/event/2581/">Indico</a> or reach out via the <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5">#sciware Slack channel</a>.
-        </p>
-        <div class="upcoming-description">
-          <h3>Session #18: Intro to 3D Scientific Visualization with Blender</h3>
-          <h4>Thursday, Oct 21, 3-5pm</h4>
-            <p>This session will introduce the software program Blender, a 3D graphics tool originally designed for animators that has become increasingly popular with scientists. Using scientific examples, this workshop will cover generating models, applying textures, creating animations, controlling cameras and exporting final products. We will also address issues of interest to the Flatiron community including python scripting.</p>
-            <p>Dr. Brian R. Kent is a scientist with the National Radio Astronomy Observatory in Charlottesville, Virginia. His publications and studies in astrophysics and computing include scientific visualizations of a variety of theoretical and observational phenomena. He is interested in visualizing data for scientific analysis as well as reaching a broad audience with the stunning visuals that modern 3D graphics can provide. Dr. Kent received his Ph.D. in Astronomy and Space Sciences from Cornell University. Learn about his work <a href="https://www.cv.nrao.edu/~bkent/">here</a>.</p>
-        </div>
-        <div class="upcoming-description">
-          <h3> Session #17: Performance-focused guide to using Flatiron Clusters</h3>
-          <h4>Thursday, Nov 4, 3-5pm (rescheduled)</h4>
-          <p>For this Sciware event, we will focus on our local (and remote) Flatiron resources and ways to use them more effectively.  We'll talk about the available hardware resources, submitting slurm jobs, making use of the various filesystems and storage, accessing software, and monitoring jobs and resource usage, all with an eye on performance and efficiency.</p>
-          <p>This workshop presumes you already have a cluster account.</p>
-        </div>
-    </section>
-    <section id="past">
-      <h2>Past sessions</h2>
-      <p> In addition to the session slides listed below, many of the recordings from past events are available on our <a href="https://vimeo.com/showcase/sciware">Vimeo Sciware channel</a>. Please see the #sciware channel on the Simons Foundation Slack for password information.
-          Materials are also available in the <a href="https://github.com/flatironinstitute/sciware">Sciware Github repository</a>.</p>
-      <ul>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/00_Founding/slides.html">Session #00: Founding</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/01_Overview/reveal.html">Session #01: Overview</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/02_Testing/reveal.html">Session #02: Testing Scientific Software</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/03_ToolsWorkflows/slides.html">Session #03: Tools and Workflows Show and Tell Intro</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/04_Debugging/slides1.html">Session #04: Debugging Strategies</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/04_Debugging/slides2.html">Session #04: Debugging: System Tools</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-apis.html">Session #05: Parallel and Distributed APIs</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-intro.html">Session #05: Parallel and Distributed Computing</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/05_Parallelization/slides-terms.html">Session #05: Parallel and Distributed terminology</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/06_ModernC++/slides.html">Session #06: Modern C++</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/07_RemoteWork/slides.html">Session #07: Working Remotely</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/08_Julia/slides.html">Session #08: Intro to Julia</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/10_EnvShell/slides.html">Session #10: Shells and Environments</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/12_Functions/slides.html">Session #12: Functions</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/13_Debugging/slides.html">Session #13: Debugging</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/14_TestingPackaging/slides.html">Session #14: Testing and packaging workshop</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/14_TestingPackaging/guide.html">Session #14: Testing workshop guide</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/15_IntroGithub/slides1.html">Session #15 day 1: Intro to Github</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/15_IntroGithub/slides2.html">Session #15 day 2: Collaboration with Github</a>
-          </li>
-          <li>
-            <a href="https://sciware.flatironinstitute.org/16_EditorsVSCode/slides.html">Session #16: Intro to code editors</a>
-          </li>
-      </ul>
-    </section>
-    <section id="about">
-      <h2>About</h2>
-      <div class="grid grid-2">
-        <div class="about-content">
-          <p><b>Sciware</b> is a Flatiron-wide activity to share
-            and build scientific software development and computing skills in a variety of
-            areas. Our goal is to create an environment where everyone can discuss
-            technologies, tools, and tricks that make their research process more
-            efficient, across all experience levels, language and technology choices, and
-            scientific disciplines.</p>
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li>
+							<a href="https://github.com/flatironinstitute/sciware" class="icon brands fa-github"  alt="Sciware Github">
+								<span class="label">Github</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" class="icon brands fa-slack" alt="#sciware Slack Channel" >
+								<span class="label">Slack</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://vimeo.com/showcase/sciware" class="icon brands fa-vimeo" alt="Sciware Vimeo">
+								<span class="label">Vimeo</span>
+							</a>
+						</li>
+						<li>
+							<a href="#mailto:sciware@flatironinstitute.org" class="icon solid fa-envelope">
+								<span class="label">Email</span>
+							</a>
+						</li>
+					</ul>
+					<ul class="copyright">
+						<li><a href="#about">About</a></li><li><a alt="Sciware indico" href="https://indico.flatironinstitute.org/category/76/">Indico</a></li>
+					</ul>
+				</div>
+			</footer>
 
-            <p>We meet roughly once a month on Thursdays at 3pm and
-              focus on a specific topic, bringing Flatiron (and occasionally external)
-              expertise together to demonstrate and discuss everything from debuggers to
-              editors to file formats, optimization to packaging.  Events are open to all
-              Flatiron and Simons Foundation researchers, as well as their external students
-              and collaborators.</p>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-            <p>There is also a <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5">#sciware channel</a> on the Simons Foundation Slack that everyone is encouraged to
-              join and ask questions, share knowledge, or request code reviews.</p>
-            <p>Not on the Simons Foundation Slack? Email us: sciware [at] flatironinstitute [dot] org.</p>
-        </div>
-        <div class="about-people">
-          <h3>Organizers</h3>
-          <ul>
-            <li>Dylan Simon, SCC</li>
-            <li>Kelle Cruz, Flatiron</li>
-            <li>Alex Barnett, CCM</li>
-            <li>Robert Blackwell, SCC</li>
-            <li>Lehman Garrison, CCA</li>
-            <li>Adam Lamson, CCB</li>
-            <li>Liz Lovero, SCC</li>
-            <li>James Smith, CCQ</li>
-            <li>Jeff Soules, CCM</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <footer class="landing-footer">
-      <h3>Sciware</h3>
-      <ul class="nav-links">
-        <li><a href="https://github.com/flatironinstitute/sciware" alt="Sciware Github"><i  class="fab fa-github"></i></a></li>
-        <li><a alt="#sciware Slack Channel" href="https://simonsfoundation.slack.com/archives/CDU1EE9V5"><i  class="fab fa-slack-hash"></i></a></li>
-        <li><a href="https://vimeo.com/showcase/sciware" alt="Sciware Vimeo"><i title="Sciware Vimeo" class="fab fa-vimeo"></i></a></li>
-      </ul>
-    </footer>
-    <script src="https://kit.fontawesome.com/ec9b67ae0c.js" crossorigin="anonymous"></script>
-  </body>
+	</body>
 </html>
