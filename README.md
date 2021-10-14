@@ -19,3 +19,4 @@ A developing series of meetings about software development for science.
 - Apr 29, 2021 [Testing and Packaging Workshop](14_TestingPackaging): a hands-on workshop for building and running tests in a python package
 - Jun 16--17, 2021 [Intro to git and Github](15_IntroGithub): a hands-on workshop to learn git and Github basics for cloning, pushing, PRs, and collaboration
 - Jul 08, 2021 [Intro to editing code](16_EditorsVSCode): an introduction to using IDEs and code editors, using VSCode as an example
+- Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender)
