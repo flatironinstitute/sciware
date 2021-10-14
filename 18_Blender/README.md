@@ -1,10 +1,9 @@
-# Using the Flatiron Clusters
-## Performance and Efficiency
-- Sept 23, 2021
+# Intro to 3D Scientific Visualization with Blender
+- Oct 21, 2021
 - 3:00-5:00pm
 - Zoom
 
-- [slides](https://flatironinstitute.github.io/sciware/17_FICluster/slides.html) ([source](main.md))
+- [slides](https://flatironinstitute.github.io/sciware/18_Blender/slides.html) ([source](main.md))
 
 ## Pre-workshop prep
 - Install [Blender](https://www.blender.org)
