@@ -1,7 +1,7 @@
 # Intro to 3D Scientific Visualization with Blender
 - Oct 21, 2021
 - 3:00-5:00pm
-- Zoom
+- Zoom / 3rd floor classroom
 
 - [slides](https://flatironinstitute.github.io/sciware/18_Blender/slides.html) ([source](main.md))
 
