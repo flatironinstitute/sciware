@@ -100,4 +100,4 @@ If you have a Blender question/topic you'd like to discuss in a future session, 
 
 # Survey
 
-https://bit.ly/fi-clusters
+https://bit.ly/blender-feedback
