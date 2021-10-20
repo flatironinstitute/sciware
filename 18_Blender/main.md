@@ -39,14 +39,16 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Nov 4: Flatiron Clusters (rescheduled)
+- Nov 4: Flatiron Clusters
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's agenda
 
+https://github.com/brkent/flatiron-sciware-blender-2021
+
 - Demo 1: Catalog rendering
-- Offline cluster rendering
+- CCA examples
 - Questions / Break
 - Demo 2: Datacube rendering
 
@@ -54,7 +56,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Demo 1 - Catalog
 
-https://github.com/brkent/flatiron-sciware-blender-2021
+[slides](https://github.com/brkent/flatiron-sciware-blender-2021/blob/main/Catalog-BKent-Flatiron-Blender-Tutorial-2021.pdf)
 
 
 
@@ -92,7 +94,7 @@ If you have a Blender question/topic you'd like to discuss in a future session, 
 
 # Demo 2 - Datacube
 
-https://github.com/brkent/flatiron-sciware-blender-2021
+[slides](https://github.com/brkent/flatiron-sciware-blender-2021/blob/main/Datacube-BKent-Flatiron-Blender-Tutorial-2021.pdf)
 
 
 
