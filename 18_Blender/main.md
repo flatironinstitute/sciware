@@ -66,15 +66,15 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 
 
 ### Gas mixing simulation from Athena by Drummond Fielding
-<iframe src="https://drive.google.com/file/d/1B6sXCA3r2nF1vodTCpa8S3aJ-9AfG3JR/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="./assets/videos/MixingLayerMoving.mp4" width="640" height="480" allow="autoplay"></iframe>
 
 
 ### Cosmological simulation from Camels by Francisco Villaescusa-Navarro
-<iframe src="https://drive.google.com/file/d/1y8evj_k6cgt9O47HLXf4IOyglFhkzbRQ/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="./assets/videos/Camels_flyin.mp4" width="640" height="480" allow="autoplay"></iframe>
 
 
 ### Galaxy cluster simulation from Gadget by Ulrich Steinwandel
-<iframe src="https://drive.google.com/file/d/1UW9DmDhjyiOto_KVlpxmeo_2-iV9kVUV/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="./assets/videos/Gadget_cluster.mp4" width="640" height="480" allow="autoplay"></iframe>
 
 
 ## Contact
