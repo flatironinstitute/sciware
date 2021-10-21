@@ -39,18 +39,18 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Nov 4: Flatiron Clusters
+- Nov 4: Flatiron Clusters (for everyone who uses the cluster)
 - Suggest topics and vote on options in #sciware Slack
 
 
 ## Today's agenda
 
-https://github.com/brkent/flatiron-sciware-blender-2021
-
 - Demo 1: Catalog rendering
-- CCA examples
+- Examples from CCA
 - Questions / Break
 - Demo 2: Datacube rendering
+
+https://github.com/brkent/flatiron-sciware-blender-2021
 
 
 
