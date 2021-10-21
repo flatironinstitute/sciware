@@ -74,11 +74,19 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 
 
 ### Cosmological simulation from Camels by Francisco Villaescusa-Navarro
-<iframe src="./assets/videos/Camels_flyin.mp4" width="640" height="480" allow="autoplay"></iframe>
+<video  data-autoplay controls width="640" height="480" >
+  <source src="./assets/videos/Camels_flyin.mp4" type="video/mp4">
+  <source s src="./assets/videos/Camels_flyin.ogg" type="video/ogg">
+  <p>Your browser cannot play the provided video file.</p>
+</video>
 
 
 ### Galaxy cluster simulation from Gadget by Ulrich Steinwandel
-<iframe src="./assets/videos/Gadget_cluster.mp4" width="640" height="480" allow="autoplay"></iframe>
+<video  data-autoplay controls width="640" height="480" >
+  <source src="./assets/videos/Gadget_cluster.mp4" type="video/mp4">
+  <source s src="./assets/videos/Gadget_cluster.ogg" type="video/ogg">
+  <p>Your browser cannot play the provided video file.</p>
+</video>
 
 
 ## Contact
