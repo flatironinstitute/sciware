@@ -66,7 +66,7 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 
 
 ### Gas mixing simulation from Athena by Drummond Fielding
-<iframe src="./assets/videos/MixingLayerMoving.mp4" width="640" height="480" allow="autoplay"></iframe>
+<video data-autoplay src="./assets/videos/MixingLayerMoving.mp4" width="640" height="480" allow="autoplay"></video>
 
 
 ### Cosmological simulation from Camels by Francisco Villaescusa-Navarro
