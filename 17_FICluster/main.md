@@ -125,6 +125,7 @@ Activities where participants all actively work to foster an environment which e
    openmpi4  -> openmpi/4
    ```
 
+
 ### `module avail`: Core
 
 ```text
@@ -140,7 +141,7 @@ python/3.9.6
 
 ### `module load` or `ml`
 
-- Load modules with `module load NAME[/VERSION] ...` or `ml NAME[/VERSION]` (defaults to highest version if not specified)
+- Load modules with `module load NAME[/VERSION] ...` or `ml NAME[/VERSION]`
    ```text
    > gcc -v
    gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
@@ -189,7 +190,7 @@ python/3.9.6
 - Load them using full name (with `-mpi` suffix)
 
 
-### BLAS
+### flexiBLAS
 
 - Any module that needs BLAS (e.g., numpy) will use whichever BLAS module you have loaded:
    - `openblas`: `-threaded` (pthreads), `-openmp`, or `single` (no threads)
