@@ -114,7 +114,6 @@ Activities where participants all actively work to foster an environment which e
 ### `module avail`: aliases
 
 - See what's available: `module avail`
-- Display has a few sections
 - Aliases for backwards-compatibility: some names have changed
    ```text
    ------- Aliases -------
@@ -123,6 +122,7 @@ Activities where participants all actively work to foster an environment which e
    lib/hdf5  -> hdf5
    python3   -> python/3
    openmpi4  -> openmpi/4
+   ...
    ```
 
 
@@ -136,6 +136,7 @@ gcc/11.2.0
 openblas/0.3.15-threaded (S,L,D)
 python/3.8.11            (D)
 python/3.9.6
+...
 ```
 
 
@@ -150,10 +151,10 @@ python/3.9.6
    > gcc -v
    gcc version 7.5.0 (Spack GCC)
    ```
-- Can use partial versions
+- Can use partial versions, and also switch
    ```text
    > module load gcc/10
-   The following have been reloaded:
+   The following have been reloaded: (don't be alarmed)
      openblas    gcc
    > gcc -v
    gcc version 10.2.0 (Spack GCC)
@@ -171,6 +172,7 @@ python/3.9.6
    openblas   ...
    ```
 - These modules were built with/for this compiler
+- Switching compilers automatically switches loaded modules to match
 - *Note:* modules are not built for `gcc/11` (uses `gcc/10` modules)
 - *Note:* cuda is not (yet) available with `gcc/10`
 
@@ -185,7 +187,7 @@ python/3.9.6
    openmpi-intel         (to use icc for mpicc)
    openmpi-opa           (to use opa nodes)
    python-mpi/3.8.11-mpi (for mpi4py, h5py)
-
+   ...
    ```
 - Load them using full name (with `-mpi` suffix)
 
@@ -204,9 +206,9 @@ python/3.9.6
 - `module list` to see what you've loaded
 - `module purge` to unload all modules (except slurm, blas)
 - `module key WORD` to search all modules
-- `module spider NAME` to see how to find module
-- `module whatis NAME` to see a description
-- `module show NAME` to see exactly what a module does (probably sets PATH)
+- `module spider MODULE` to see how to load a module
+- `module whatis MODULE` to see a description
+- `module show MODULE` to see exactly what a module does
 
 
 ## Python packages
