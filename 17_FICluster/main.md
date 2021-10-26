@@ -103,37 +103,109 @@ Activities where participants all actively work to foster an environment which e
 - By default you only see the "base system" software (CentOS7), which is often rather old
 
 
-## Modules
+## New modules
+
+- On Monday, Nov 8, we will switch to a new set of modules
+- Try them now: `module load modules-new`
+- To switch back: `module load modules-traditional`
+- Newer versions of most packages
+
+
+### `module avail`: aliases
 
 - See what's available: `module avail`
-```
-gcc/7.4.0(default)
+- Display has a few sections
+- Aliases for backwards-compatibility: some names have changed
+   ```text
+   ------- Aliases -------
+   intel/mkl -> intel-mkl  (see also intel-oneapi-*)
+   lib/fftw3 -> fftw/3
+   lib/hdf5  -> hdf5
+   python3   -> python/3
+   openmpi4  -> openmpi/4
+   ```
+
+### `module avail`: Core
+
+```text
+------------- Core --------------
+gcc/7.5.0                (D)
 gcc/10.2.0
-gcc/11.1.0
-...
-python3/3.6.2
-python3/3.7.3
+gcc/11.2.0
+openblas/0.3.15-threaded (S,L,D)
+python/3.8.11            (D)
+python/3.9.6
 ```
-- Load modules with `module load NAME[/VERSION] ...` (defaults to highest version if not specified)
 
 
-### `module load`
+### `module load` or `ml`
 
-```
-> gcc -v
-gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
-> module load gcc
-> gcc -v
-gcc version 7.4.0 (GCC)
-> module unload gcc
-```
+- Load modules with `module load NAME[/VERSION] ...` or `ml NAME[/VERSION]` (defaults to highest version if not specified)
+   ```text
+   > gcc -v
+   gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
+
+   > module load gcc
+   > gcc -v
+   gcc version 7.5.0 (Spack GCC)
+   ```
+- Can use partial versions
+   ```text
+   > module load gcc/10
+   The following have been reloaded:
+     openblas    gcc
+   > gcc -v
+   gcc version 10.2.0 (Spack GCC)
+   ```
+- Remove with `module unload NAME` or `ml -NAME`
+
+
+### `module avail`: compilers
+
+- When you load a compiler module, you may see a separate section
+   ```text
+   ---- gcc/10.2.0 ----
+   fftw       openmpi
+   hdf5       python
+   openblas   ...
+   ```
+- These modules were built with/for this compiler
+- Note: modules are not built for `gcc/11` (uses `gcc/10` modules)
+- Note: cuda is not (yet) available with `gcc/10`
+
+
+### `module avail`: MPI
+
+- To access MPI-enabled modules, load an MPI module
+   ```text
+   --- openmpi/4.0.6 ---
+   fftw/3.3.9-mpi
+   hdf5/1.10.7-mpi
+   openmpi-intel         (to use icc for mpicc)
+   openmpi-opa           (to use opa nodes)
+   python-mpi/3.8.11-mpi (for mpi4py, h5py)
+
+   ```
+- Load them using full name (with `-mpi` suffix)
+
+
+### BLAS
+
+- Any module that needs BLAS (e.g., numpy) will use whichever BLAS module you have loaded:
+   - `openblas`: `-threaded` (pthreads), `-openmp`, or `single` (no threads)
+   - `intel-mkl`
+   - `intel-oneapi-mkl
+- BLAS modules replace each other and won't get removed by default
 
 
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module purge` to unload all modules
-- `module show NAME` to see what a module does (probably sets PATH)
+- `module purge` to unload all modules (except slurm, blas)
+- `module key WORD` to search all modules
+- `module spider NAME` to see how to find module
+- `module whatis NAME` to see a description
+- `module show NAME` to see exactly what a module does (probably sets PATH)
 
 
 ## Python packages
@@ -142,13 +214,13 @@ gcc version 7.4.0 (GCC)
 - If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
 
 ```bash
-module load gcc python3
+ml python
 python3 -m venv --system-site-packages ~/myvenv
 source ~/myvenv/bin/activate
 pip install ...
 ```
 
-- Repeat the `module load` and `source activate` to return in a new shell
+- Repeat the `ml` and `source activate` to return in a new shell
 
 
 ### Jupyter
@@ -156,11 +228,11 @@ pip install ...
 You can also use modules and virtual environments in JupyterHub:
 ```bash
 # setup your environment
-module load gcc python ...
+ml python ...
 source ~/projenv/bin/activate
 # capture it into a new kernel
-module load jupyter-kernels
-python3 -m make-custom-kernel projkernel
+ml jupyter-kernels
+python -m make-custom-kernel projkernel
 ```
 
 Reload jupyterhub and "projkernel" will show up providing the same environment
@@ -174,7 +246,7 @@ Good practice to load the modules you need in the script:
 #!/bin/sh
 #SBATCH -p ccx
 module purge
-module load gcc python3
+module load gcc python
 source ~/myvenv/bin/activate
 
 python3 myscript.py
@@ -195,17 +267,6 @@ And "source" it when needed:
 ```
 
 - Avoid putting module loads in `~/.bashrc`
-
-
-## New modules
-
-- We will soon transition to a new set of modules
-- Most things work the same, but some names change
-- New versions of packages
-- Short alias: `ml` (list), `ml gcc -python` (load, unload)
-- Dynamic modules for MPI, BLAS, compilers
-- Will replace current modules and `modules-nix`
-- Try them now: `module load modules-new`
 
 
 ## Other software
