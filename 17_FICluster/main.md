@@ -138,11 +138,14 @@ python/3.8.11            (D)
 python/3.9.6
 ...
 ```
+- `D`: default version (also used to build other packages)
+- `L`: currently loaded
+- `S`: sticky (see BLAS below)
 
 
 ### `module load` or `ml`
 
-- Load modules with `module load NAME[/VERSION] ...` or `ml NAME[/VERSION]`
+- Load modules with `module load` or `ml NAME[/VERSION] ...`
    ```text
    > gcc -v
    gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
@@ -173,20 +176,21 @@ python/3.9.6
    ```
 - These modules were built with/for this compiler
 - Switching compilers automatically switches loaded modules to match
-- *Note:* modules are not built for `gcc/11` (uses `gcc/10` modules)
-- *Note:* cuda is not (yet) available with `gcc/10`
+   - *Note:* modules are not built for `gcc/11` (uses `gcc/10` modules)
+   - *Note:* cuda is not (yet) available with `gcc/10`
 
 
 ### `module avail`: MPI
 
 - To access MPI-enabled modules, load an MPI module
    ```text
-   --- openmpi/4.0.6 ---
+   > `ml openmpi`
+   ----- openmpi/4.0.6 -----
    fftw/3.3.9-mpi
    hdf5/1.10.7-mpi
-   openmpi-intel         (to use icc for mpicc)
-   openmpi-opa           (to use opa nodes)
-   python-mpi/3.8.11-mpi (for mpi4py, h5py)
+   openmpi-intel             (to use icc for mpicc)
+   openmpi-opa               (to use opa nodes)
+   python-mpi/3.8.11-mpi     (for mpi4py, h5py)
    ...
    ```
 - Load them using full name (with `-mpi` suffix)
@@ -198,13 +202,13 @@ python/3.9.6
    - `openblas`: `-threaded` (pthreads), `-openmp`, or `single` (no threads)
    - `intel-mkl`
    - `intel-oneapi-mkl
-- BLAS modules replace each other and won't get removed by default
+- BLAS modules replace each other and won't get removed by default (`S`)
 
 
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module purge` to unload all modules (except slurm, blas)
+- `module purge` to unload all modules (except `S` slurm, blas)
 - `module key WORD` to search all modules
 - `module spider MODULE` to see how to load a module
 - `module whatis MODULE` to see a description
@@ -269,6 +273,7 @@ And "source" it when needed:
 . ~/amods
 ```
 
+- Or use `module save`, `module restore`
 - Avoid putting module loads in `~/.bashrc`
 
 
