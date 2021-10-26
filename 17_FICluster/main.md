@@ -171,8 +171,8 @@ python/3.9.6
    openblas   ...
    ```
 - These modules were built with/for this compiler
-- Note: modules are not built for `gcc/11` (uses `gcc/10` modules)
-- Note: cuda is not (yet) available with `gcc/10`
+- *Note:* modules are not built for `gcc/11` (uses `gcc/10` modules)
+- *Note:* cuda is not (yet) available with `gcc/10`
 
 
 ### `module avail`: MPI
