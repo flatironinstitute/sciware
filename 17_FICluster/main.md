@@ -108,7 +108,8 @@ Activities where participants all actively work to foster an environment which e
 - On Monday, Nov 8, we will switch to a new set of modules
 - Try them now: `module load modules-new`
 - To switch back: `module load modules-traditional`
-- Newer versions of most packages
+   - These will stay around for a while, but no longer maintained
+- Newer versions of most packages (replacing old versions)
 
 
 ### `module avail`: aliases
@@ -120,7 +121,7 @@ Activities where participants all actively work to foster an environment which e
    intel/mkl -> intel-mkl  (see also intel-oneapi-*)
    lib/fftw3 -> fftw/3
    lib/hdf5  -> hdf5
-   python3   -> python/3
+   python3   -> python/3   (no more python 2)
    openmpi4  -> openmpi/4
    ...
    ```
