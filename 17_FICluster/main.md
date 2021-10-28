@@ -60,34 +60,34 @@ Activities where participants all actively work to foster an environment which e
 <h3 style="color:#484848">Liz Lovero (SCC)</h3>
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-1.svg">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-1.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-2.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-2.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-3.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-3.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-4.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-4.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-5.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-5.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-6.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-6.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-7.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-7.png">
 
 
-<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-8.svg">
+<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-8.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-9.svg">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-9.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-10.svg">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-10.png">
 
 
 <img height="65%" width="65%" margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
