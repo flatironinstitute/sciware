@@ -102,9 +102,9 @@ Activities where participants all actively work to foster an environment which e
 ## Overview
 
 - Most software you'll use on the cluster (rusty, popeye, linux workstations) will either be:
-  - In a "module" we provide
+  - In a *module* we provide
   - Downloaded/built/installed by you (usually using compiler/library modules)
-- By default you only see the "base system" software (CentOS7), which is often rather old
+- By default you only see the *base system* software (CentOS7), which is often rather old
 
 
 ## New modules
@@ -155,7 +155,7 @@ python/3.9.6
    > gcc -v
    gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
 
-   > module load gcc
+   > ml gcc
    > gcc -v
    gcc version 7.5.0 (Spack GCC)
    ```
@@ -214,9 +214,17 @@ python/3.9.6
 
 - `module list` to see what you've loaded
 - `module purge` to unload all modules (except `S` slurm, blas)
-- `module key WORD` to search all modules
-- `module spider MODULE` to see how to load a module
-- `module whatis MODULE` to see a description
+- `module spider MODULE` to search for a module or package
+   ```text
+   > module spider h5py
+   h5py: h5py/3.4.0
+
+      python/3.8.11
+      python/3.8.11 (gcc/10.2.0)
+      python/3.9.6
+      python-mpi/3.8.11-mpi (openmpi/4.0.6)
+      ...
+   ```
 - `module show MODULE` to see exactly what a module does
 
 
@@ -226,7 +234,7 @@ python/3.9.6
 - If you need something more, create a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
 
 ```bash
-ml python
+module load python
 python3 -m venv --system-site-packages ~/myvenv
 source ~/myvenv/bin/activate
 pip install ...
