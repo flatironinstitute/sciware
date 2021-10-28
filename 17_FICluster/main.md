@@ -38,8 +38,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Oct 7: Chat & office hour
-- Oct 21: An introduction to scientific visualization with Blender (Brian Kent, NRAO)
+- Nov 18: Chat & Office Hour
+- Poll: profiling, optimization, storage formats, containerization, virtual environments
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -159,6 +159,7 @@ python/3.9.6
    > gcc -v
    gcc version 7.5.0 (Spack GCC)
    ```
+- Remove with `module unload NAME` or `ml -NAME`
 - Can use partial versions, and also switch
    ```text
    > module load gcc/10
@@ -167,7 +168,6 @@ python/3.9.6
    > gcc -v
    gcc version 10.2.0 (Spack GCC)
    ```
-- Remove with `module unload NAME` or `ml -NAME`
 
 
 ### `module avail`: compilers
@@ -189,7 +189,7 @@ python/3.9.6
 
 - To access MPI-enabled modules, load an MPI module
    ```text
-   > `ml openmpi`
+   > ml openmpi
    ----- openmpi/4.0.6 -----
    fftw/3.3.9-mpi
    hdf5/1.10.7-mpi
@@ -206,7 +206,7 @@ python/3.9.6
 - Any module that needs BLAS (e.g., numpy) will use whichever BLAS module you have loaded:
    - `openblas`: `-threaded` (pthreads), `-openmp`, or `single` (no threads)
    - `intel-mkl`
-   - `intel-oneapi-mkl
+   - `intel-oneapi-mkl`
 - BLAS modules replace each other and won't get removed by default (`S`)
 
 
@@ -237,17 +237,17 @@ pip install ...
 
 ### Jupyter
 
-You can also use modules and virtual environments in JupyterHub:
-```bash
-# setup your environment
-ml python ...
-source ~/projenv/bin/activate
-# capture it into a new kernel
-ml jupyter-kernels
-python -m make-custom-kernel projkernel
-```
-
-Reload jupyterhub and "projkernel" will show up providing the same environment
+1. Run `jupyter notebook` from command line
+2. Use JupyterHub https://jupyter.flatironinstitute.org by setting up a kernel
+   ```bash
+   # setup your environment
+   ml python ...
+   source ~/projenv/bin/activate
+   # capture it into a new kernel
+   ml jupyter-kernels
+   python -m make-custom-kernel projkernel
+   ```
+   Reload jupyterhub and "projkernel" will show up providing the same environment
 
 
 ## Batch scripts
@@ -288,7 +288,7 @@ If you need something not in the base system, modules, or pip:
 - Download and install it yourself
   - Many packages provide install instructions
   - Load modules to find dependencies
-- Ask!
+- Ask!  #sciware, #scicomp@, Sciware Office Hours
 
 
 
