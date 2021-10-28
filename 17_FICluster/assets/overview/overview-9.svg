@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="851px" height="300px" viewBox="0 0 851 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Energy and Emissions</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Energy-and-Emissions" transform="translate(-60.000000, -41.000000)">
+            <text font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-size="32" font-weight="500" fill="#161616">
+                <tspan x="338" y="65">Energy and Emissions</tspan>
+            </text>
+            <g id="Energy-Table" transform="translate(443.000000, 118.000000)">
+                <g id="Group">
+                    <g id="Tools-/-Technology-/-plug-/-32" fill="#000000">
+                        <path d="M22,8 L21,8 L21,2 L19,2 L19,8 L13,8 L13,2 L11,2 L11,8 L10,8 C8.8954305,8 8,8.8954305 8,10 L8,16 C8.00653468,20.0278988 11.0040932,23.4240042 15,23.9307 L15,30 L17,30 L17,23.9307 C20.9959068,23.4240042 23.9934653,20.0278988 24,16 L24,10 C24,8.8954305 23.1045695,8 22,8 Z M22,16 C22,19.3137085 19.3137085,22 16,22 C12.6862915,22 10,19.3137085 10,16 L10,10 L22,10 L22,16 Z" id="Fill"></path>
+                    </g>
+                    <text id="Renewable-Energy-Ran" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-size="16" font-weight="500" line-spacing="22" fill="#1A1A1A">
+                        <tspan x="60" y="21">Renewable Energy Rankings</tspan>
+                    </text>
+                </g>
+                <g id="432-cascadelake" transform="translate(77.000000, 93.000000)" font-weight="normal">
+                    <text id="🥈-SDSC" font-family="AppleColorEmoji, Apple Color Emoji" font-size="16" line-spacing="22" fill="#1A1A1A">
+                        <tspan x="0" y="20">🥈	</tspan>
+                        <tspan x="23.662" y="21.7438965" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="500">SDSC </tspan>
+                    </text>
+                    <text id="workers" transform="translate(259.500000, 12.000000) rotate(-360.000000) translate(-259.500000, -12.000000) " font-family="Helvetica" font-size="12" line-spacing="16" fill="#171717">
+                        <tspan x="120" y="15">47% Natural Gas / 44% Renewable / 9% Nuclear</tspan>
+                    </text>
+                </g>
+                <g id="icelake" transform="translate(76.000000, 135.000000)" font-weight="normal">
+                    <text id="🥉-FI" font-family="AppleColorEmoji, Apple Color Emoji" font-size="16" line-spacing="22" fill="#1A1A1A">
+                        <tspan x="0" y="20">🥉</tspan>
+                        <tspan x="21.35" y="21.7438965" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="500">	FI </tspan>
+                    </text>
+                    <text id="workers" transform="translate(257.000000, 12.000000) rotate(-360.000000) translate(-257.000000, -12.000000) " font-family="Helvetica" font-size="12" line-spacing="16" fill="#171717">
+                        <tspan x="121" y="15">52% Natural Gas / 27% Renewable / 21% Nuclear </tspan>
+                    </text>
+                </g>
+                <g id="Coresite" transform="translate(77.000000, 51.000000)" font-weight="normal">
+                    <text id="🥇-CoreSite" font-family="AppleColorEmoji, Apple Color Emoji" font-size="16" line-spacing="22" fill="#1A1A1A">
+                        <tspan x="0" y="20">🥇</tspan>
+                        <tspan x="16.662" y="21.7438965" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="500"> 	CoreSite</tspan>
+                    </text>
+                    <text id="Y-label-Copy-2" transform="translate(190.000000, 12.000000) rotate(-360.000000) translate(-190.000000, -12.000000) " font-family="Helvetica" font-size="12" line-spacing="16" fill="#171717">
+                        <tspan x="120" y="15">100% Renewable Wind</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="Group-2" transform="translate(60.000000, 113.000000)" fill="#161616">
+                <text id="Using-the-state-leve" font-family="IBMPlexSans-Regular, IBM Plex Sans" font-size="14" font-weight="normal" line-spacing="20">
+                    <tspan x="0" y="74">Using the state-level energy source percentages from </tspan>
+                    <tspan x="0" y="94">June 2021 to extrapolate, FI + SDSC use 3263 MwH of </tspan>
+                    <tspan x="0" y="114">natural gas annually.  </tspan>
+                    <tspan x="0" y="134"></tspan>
+                    <tspan x="0" y="154">According to the EPA,  natural gas electricity </tspan>
+                    <tspan x="0" y="174">generation releases 407kg CO2/Mwh.</tspan>
+                </text>
+                <text id="🏭-1328-metric-tons" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-size="16" font-weight="500" line-spacing="22">
+                    <tspan x="0.35" y="197"></tspan>
+                    <tspan x="0" y="217" font-family="AppleColorEmoji, Apple Color Emoji" font-weight="normal">🏭</tspan>
+                    <tspan x="16.662" y="218.743896">  1328 metric tons of CO</tspan>
+                    <tspan x="194.406" y="219">2</tspan>
+                    <tspan x="204.006" y="218.743896"> released annually</tspan>
+                </text>
+                <text id="Carbon-Emissions" font-family="Helvetica" font-size="24" font-weight="normal" line-spacing="28">
+                    <tspan x="0" y="23">Carbon Emissions</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
