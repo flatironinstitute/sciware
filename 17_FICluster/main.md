@@ -941,17 +941,17 @@ Testing how to get the best performance out of your jobs
 
 ```
 [user@rusty:~] jube run mybenchmark.yaml
-######################################################################
+#####################################################################
 # benchmark: npb3.4.1
 # id: 0
 # NPB3.4.1 Icelake Single node MPI gcc/7.4.0 skylake
-######################################################################
+#####################################################################
 Running workpackages (#=done, 0=wait, E=error):
-00000--- (  0/  8)
+00000------------------------------------------------------ (  1/  8)
 
 [user@rusty:~] jube continue mybenchmark_title --id=0
 Running workpackages (#=done, 0=wait, E=error):
-##000000 (  2/  8)
+###############00000000000000000000000000000000000000000000 (  2/  8)
 
 [user@rusty:~] jube result mybenchmark_title --id=0
 | kernel | size | num_ranks_used | time_in_seconds_avg | mflops_avg |
