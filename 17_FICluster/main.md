@@ -376,7 +376,7 @@ How to run jobs efficiently on Flatiron's clusters
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
-<img src="assets/slurm/genxbg1.svg">
+<img src="assets/slurm/genxbg10.svg">
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
