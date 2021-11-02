@@ -335,6 +335,7 @@ How to run jobs efficiently on Flatiron's clusters
 # These comments are interpreted by Slurm as sbatch flags
 #SBATCH --mem=1G          # Memory?
 #SBATCH --time=02:00:00   # Time? (2 hours)
+#SBATCH --ntasks=1        # Run one instance
 #SBATCH --cpus-per-task=1 # Cores?
 #SBATCH --partition=genx
 
@@ -363,6 +364,7 @@ module load gcc python3
 #!/bin/bash
 #SBATCH --mem=10G           # Request 10x the memory
 #SBATCH --time=02:00:00     # Same time
+#SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
 #SBATCH --cpus-per-task=10  # Request 10x the CPUs
 #SBATCH --partition=genx
 
