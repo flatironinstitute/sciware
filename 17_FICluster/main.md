@@ -328,22 +328,20 @@ How to run jobs efficiently on Flatiron's clusters
 ## Slurm Basics
 
 - Write a "batch file" (special kind of script) that specifies the resources needed:
+   ```bash
+   #!/bin/bash
+   # File: myjob.sbatch
+   # These comments are interpreted by Slurm as sbatch flags
+   #SBATCH --mem=1G          # Memory?
+   #SBATCH --time=02:00:00   # Time? (2 hours)
+   #SBATCH --ntasks=1        # Run one instance
+   #SBATCH --cpus-per-task=1 # Cores?
+   #SBATCH --partition=genx
 
-```bash
-#!/bin/bash
-# File: myjob.sbatch
-# These comments are interpreted by Slurm as sbatch flags
-#SBATCH --mem=1G          # Memory?
-#SBATCH --time=02:00:00   # Time? (2 hours)
-#SBATCH --ntasks=1        # Run one instance
-#SBATCH --cpus-per-task=1 # Cores?
-#SBATCH --partition=genx
+   module load gcc python3
 
-module load gcc python3
-
-./myjob data1.hdf5
-```
-
+   ./myjob data1.hdf5
+   ```
 - Submit the job to the queue with `sbatch myjob.sbatch`: \
   `Submitted batch job 1234567`
 - Check the status with: `squeue --me` or `squeue -j 1234567`
@@ -359,23 +357,21 @@ module load gcc python3
 ## What if you have multiple things to run?
 
 - Let's say we have 10 files, each using 1 GB and 1 CPU
+   ```bash
+   #!/bin/bash
+   #SBATCH --mem=10G           # Request 10x the memory
+   #SBATCH --time=02:00:00     # Same time
+   #SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
+   #SBATCH --cpus-per-task=10  # Request 10x the CPUs
+   #SBATCH --partition=genx
 
-```bash
-#!/bin/bash
-#SBATCH --mem=10G           # Request 10x the memory
-#SBATCH --time=02:00:00     # Same time
-#SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
-#SBATCH --cpus-per-task=10  # Request 10x the CPUs
-#SBATCH --partition=genx
+   module load gcc python3
 
-module load gcc python3
-
-for filename in data{1..10}.hdf5; do
-    ./myjob $filename &  # << the "&" runs the task in the background
-done
-wait  # << wait for all background tasks to complete
-```
-
+   for filename in data{1..10}.hdf5; do
+       ./myjob $filename &  # << the "&" runs the task in the background
+   done
+   wait  # << wait for all background tasks to complete
+   ```
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
@@ -441,49 +437,50 @@ wait  # << wait for all background tasks to complete
 
 
 ## Option 1: Slurm Job Arrays
-- Recommend organizing into two scripts: `launch_slurm.sh` and `job.slurm`
+Recommend organizing into two scripts: `launch_slurm.sh` and `job.slurm`
+
 ```bash
-    #!/bin/bash
-    # File: launch_slurm.sh
+#!/bin/bash
+# File: launch_slurm.sh
 
-    # Recommendation: keep scripts in $HOME, and data in ceph
-    projdir="$HOME/ceph/myproj/"  # dir with data*.hdf5
-    jobname="job1"  # change for new jobs
-    jobdir="$projdir/$jobname"
+# Recommendation: keep scripts in $HOME, and data in ceph
+projdir="$HOME/ceph/myproj/"  # dir with data*.hdf5
+jobname="job1"  # change for new jobs
+jobdir="$projdir/$jobname"
 
-    mkdir -p $jobdir
+mkdir -p $jobdir
 
-    # Use the "find" command to write the list of files to process, 1 per line
-    fn_list="$jobdir/fn_list.txt"
-    find $projdir -name 'data*.hdf5' | sort > $fn_list
-    nfiles=$(wc -l $fn_list)
+# Use the "find" command to write the list of files to process, 1 per line
+fn_list="$jobdir/fn_list.txt"
+find $projdir -name 'data*.hdf5' | sort > $fn_list
+nfiles=$(wc -l $fn_list)
 
-    # Launch a Slurm job array with $nfiles entries
-    sbatch --array=1-$nfiles job.slurm $fn_list
+# Launch a Slurm job array with $nfiles entries
+sbatch --array=1-$nfiles job.slurm $fn_list
 ```
 
 
 ```bash
-    # File: job.slurm
+# File: job.slurm
 
-    #SBATCH -p ccX      # or "-p genx" if your job won't fill a node
-    #SBATCH -N 1        # 1 node
-    #SBATCH --mem=128G  # ccX reserves all memory on the node, require at least...
-    #SBATCH -t 1:00:00  # 1 hour
+#SBATCH -p ccX      # or "-p genx" if your job won't fill a node
+#SBATCH -N 1        # 1 node
+#SBATCH --mem=128G  # ccX reserves all memory on the node, require at least...
+#SBATCH -t 1:00:00  # 1 hour
 
-    # the file with the list of files to process
-    fn_list=$1
+# the file with the list of files to process
+fn_list=$1
 
-    # the job array index
-    # the task ID is automatically set by Slurm
-    i=$SLURM_ARRAY_TASK_ID
+# the job array index
+# the task ID is automatically set by Slurm
+i=$SLURM_ARRAY_TASK_ID
 
-    # get the line of the file belonging to this job
-    # make sure your `sbatch --array=1-X` command uses 1 as the starting index
-    fn=$(sed -n "${i}p" ${fn_list})
+# get the line of the file belonging to this job
+# make sure your `sbatch --array=1-X` command uses 1 as the starting index
+fn=$(sed -n "${i}p" ${fn_list})
 
-    echo "About to process $fn"
-    ./my_analysis_script.py $fn
+echo "About to process $fn"
+./my_analysis_script.py $fn
 ```
 
 
