@@ -545,10 +545,10 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Option 2: disBatch
 - When the job runs, it will write a `status.txt` file, one line per task
-   ```text
-   0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
-   1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
-   ```
+```text
+0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
+1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+```
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
 
