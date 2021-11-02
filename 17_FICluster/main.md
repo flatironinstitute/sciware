@@ -345,7 +345,7 @@ How to run jobs efficiently on Flatiron's clusters
 - Check the status with: `squeue --me` or `squeue -j 1234567`
 
 
-<img src="assets/slurm/genx1.svg">
+<img height="80%" src="assets/slurm/genx1.svg">
 
 
 ## Where is my output?
@@ -376,7 +376,7 @@ How to run jobs efficiently on Flatiron's clusters
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
-<img src="assets/slurm/genxbg10.svg">
+<img height="80%" src="assets/slurm/genxbg10.svg">
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -487,7 +487,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg">
+<img height="80%" src="assets/slurm/array.svg">
 
 
 ## Option 1: Slurm Job Arrays
@@ -549,13 +549,13 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
 
-<img src="assets/slurm/disbatch.svg">
+<img height="80%" src="assets/slurm/disbatch.svg">
 
 
-<img src="assets/slurm/disbatch2.svg">
+<img height="80%" src="assets/slurm/disbatch2.svg">
 
 
-<img src="assets/slurm/disbatch3.svg">
+<img height="80%" src="assets/slurm/disbatch3.svg">
 
 
 ## Option 2: disBatch
