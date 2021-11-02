@@ -426,7 +426,7 @@ wait  # << wait for all background tasks to complete
 - This pattern of independent parallel jobs is known as "embarrassingly parallel" or "pleasantly parallel"
 - Two good options for pleasantly parallel jobs:
   - Slurm job arrays
-  - disBatch
+  - disBatch (`module load disBatch`)
 - Note: this job is a bad candidate for MPI
   - If the jobs don't need to communicate with each other, **no need for MPI**!
 
