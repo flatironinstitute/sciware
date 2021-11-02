@@ -350,7 +350,7 @@ module load gcc python3
 
 ## Where is my output?
 
-- By default, anything printed to `stdout` ends up in `slurm-<jobid>.out` in your current directory
+- By default, anything printed to `stdout` or `stderr` ends up in `slurm-<jobid>.out` in your current directory
 - Can set `#SBATCH -o outfile.log` `-e stderr.log`
 - You can also run interactive jobs with `srun --pty ... bash`
 
@@ -453,7 +453,7 @@ wait  # << wait for all background tasks to complete
 
     # Use the "find" command to write the list of files to process, 1 per line
     fn_list="$jobdir/fn_list.txt"
-    find $projdir -name 'data*.hdf5' | sort > ${fn_list}
+    find $projdir -name 'data*.hdf5' | sort > $fn_list
     nfiles=$(wc -l $fn_list)
 
     # Launch a Slurm job array with $nfiles entries
@@ -466,7 +466,7 @@ wait  # << wait for all background tasks to complete
 
     #SBATCH -p ccX      # or "-p genx" if your job won't fill a node
     #SBATCH -N 1        # 1 node
-    #SBATCH --mem=128G  # ccX always gets all memory on the node, require at least...
+    #SBATCH --mem=128G  # ccX reserves all memory on the node, require at least...
     #SBATCH -t 1:00:00  # 1 hour
 
     # the file with the list of files to process
@@ -509,18 +509,18 @@ wait  # << wait for all background tasks to complete
 
 ## Option 2: disBatch
 - Write a "task file" with one command-line command per line:
-```bash
-# File: jobs.disbatch
-./my_analysis_script.py data1.hdf5
-./my_analysis_script.py data2.hdf5
-```
+   ```bash
+   # File: jobs.disbatch
+   ./my_analysis_script.py data1.hdf5
+   ./my_analysis_script.py data2.hdf5
+   ```
 - Simplify as:
-```bash
-# File: jobs.disbatch
-#DISBATCH PREFIX ./my_analysis_script.py
-data1.hdf5
-data2.hdf5
-```
+   ```bash
+   # File: jobs.disbatch
+   #DISBATCH PREFIX ./my_analysis_script.py
+   data1.hdf5
+   data2.hdf5
+   ```
 - Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
 `sbatch [...] disBatch jobs.disbatch`
 
@@ -546,11 +546,10 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 ## Option 2: disBatch
 - When the job runs, it will write a `status.txt` file, one line per task
-
-```text
-0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
-1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
-```
+   ```text
+   0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
+   1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+   ```
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
 
@@ -560,7 +559,6 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 - Job Array Advantages
     - No external dependencies
     - Jobs can be scheduled by Slurm independently
-
 - disBatch Advantages
     - Dynamic scheduling handles variable-length jobs
     - Easy way to make good use of exclusive nodes
