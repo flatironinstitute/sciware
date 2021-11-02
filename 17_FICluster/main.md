@@ -345,6 +345,9 @@ How to run jobs efficiently on Flatiron's clusters
 - Check the status with: `squeue --me` or `squeue -j 1234567`
 
 
+<img src="assets/slurm/genx1.svg">
+
+
 ## Where is my output?
 
 - By default, anything printed to `stdout` or `stderr` ends up in `slurm-<jobid>.out` in your current directory
@@ -371,6 +374,9 @@ How to run jobs efficiently on Flatiron's clusters
    wait  # << wait for all background tasks to complete
    ```
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
+
+
+<img src="assets/slurm/genxbg1.svg">
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -461,7 +467,7 @@ sbatch --array=1-$nfiles job.slurm $fn_list
 # File: job.slurm
 
 #SBATCH -p ccX      # or "-p genx" if your job won't fill a node
-#SBATCH -N 1        # 1 node
+#SBATCH --ntasks=1  # run one thing per job
 #SBATCH --mem=128G  # ccX reserves all memory on the node, require at least...
 #SBATCH -t 1:00:00  # 1 hour
 
@@ -479,6 +485,9 @@ fn=$(sed -n "${i}p" ${fn_list})
 echo "About to process $fn"
 ./my_analysis_script.py $fn
 ```
+
+
+<img src="assets/slurm/array.svg">
 
 
 ## Option 1: Slurm Job Arrays
@@ -535,9 +544,18 @@ taskfn="$jobdir/tasks.disbatch"
 echo "#DISBATCH PREFIX ./my_analysis_script.py" > $taskfn
 find $projdir -name 'data*.hdf5' | sort >> $taskfn
 
-# Submit the Slurm job: run 16 at a time, each with 8 cores
-sbatch -p ccX -n16 -c8 disBatch $taskfn
+# Submit the Slurm job: run 10 at a time, each with 8 cores
+sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
+
+
+<img src="assets/slurm/disbatch.svg">
+
+
+<img src="assets/slurm/disbatch2.svg">
+
+
+<img src="assets/slurm/disbatch3.svg">
 
 
 ## Option 2: disBatch
