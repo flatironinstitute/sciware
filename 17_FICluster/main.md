@@ -330,8 +330,7 @@ How to run jobs efficiently on Flatiron's clusters
 - Write a "batch file" (special kind of script) that specifies the resources needed:
    ```bash
    #!/bin/bash
-   # File: myjob.sbatch
-   # These comments are interpreted by Slurm as sbatch flags
+   # File: myjob.sbatch. These comments are interpreted by Slurm as sbatch flags
    #SBATCH --mem=1G          # Memory?
    #SBATCH --time=02:00:00   # Time? (2 hours)
    #SBATCH --ntasks=1        # Run one instance
@@ -339,7 +338,6 @@ How to run jobs efficiently on Flatiron's clusters
    #SBATCH --partition=genx
 
    module load gcc python3
-
    ./myjob data1.hdf5
    ```
 - Submit the job to the queue with `sbatch myjob.sbatch`: \
@@ -354,7 +352,7 @@ How to run jobs efficiently on Flatiron's clusters
 - You can also run interactive jobs with `srun --pty ... bash`
 
 
-## What if you have multiple things to run?
+## What about multiple things?
 
 - Let's say we have 10 files, each using 1 GB and 1 CPU
    ```bash
@@ -385,13 +383,12 @@ How to run jobs efficiently on Flatiron's clusters
 
 ## Slurm Tip \#1: Estimating Resource Requirements
 
-- How to estimate resource requirements:
-  1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read
-  1. Run a test job
-  1. Check the actual usage of the test job with:\
-  `seff -j <jobid>`
-    - `Job Wall-clock time`: how long it took in "real world" time; corresponds to `#SBATCH -t`
-    - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
+1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read
+2. Run a test job
+3. Check the actual usage of the test job with:\
+`seff -j <jobid>`
+  - `Job Wall-clock time`: how long it took in "real world" time; corresponds to `#SBATCH -t`
+  - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
 
 
 ## Slurm Tip \#2: Choosing a Partition (CPUs)
@@ -544,11 +541,12 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 
 
 ## Option 2: disBatch
-- When the job runs, it will write a `status.txt` file, one line per task
 ```text
 0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
 1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
 ```
+
+- When the job runs, it will write a `status.txt` file, one line per task
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
 
