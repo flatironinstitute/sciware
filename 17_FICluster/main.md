@@ -551,6 +551,21 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 `disBatch -r status.txt -R`
 
 
+### Slurm Tip \#3: Tasks and threads
+
+- For flexibility across nodes, prefer `-n`/`--ntasks` to specify total tasks (not `-N`/`--nodes` + `--ntasks-per-nodes`)
+- Always make sure `-c` and thread count match:
+   ```bash
+   #SBATCH --cpus-per-task=4 # number of threads per task
+
+   export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+   export MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+   run
+   ```
+- Total cores is `-c` * `-n`
+
+
 ## Job Arrays vs. disBatch
 
 - Job Array Advantages
@@ -571,21 +586,6 @@ sbatch -p ccX -n16 -c8 disBatch $taskfn
 - Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
 
 <img width="20%" src="./assets/slurm_futurama.webp">
-
-
-### Scheduling tasks and threads
-
-- For flexibility across nodes, prefer `-n`/`--ntasks` to specify total tasks (not `-N`/`--nodes` + `--ntasks-per-nodes`)
-- Always make sure `-c` and thread count match:
-   ```bash
-   #SBATCH --cpus-per-task=4 # number of threads per task
-
-   export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-   export MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
-
-   run
-   ```
-- Total cores is `-c` * `-n`
 
 
 ## GPUs
