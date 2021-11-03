@@ -384,15 +384,15 @@ body:after {
 }
 
 section .two-column {
-  display: grid; 
-  grid-template-columns: repeat(1fr, 300px);
-  grid-gap: 20px;
+  display: inline-flex !important;
   align-items: center;
   justify-content: space-between;   
 }
-.grid-item {
-  justify-self: start;
+.grid-item > pre {
+  margin: 0;
+  width: 100%;
 }
-.grid-item:nth-child(2){
-  justify-self: end;
+
+.grid-item > pre code {
+  margin: 0;
 }
