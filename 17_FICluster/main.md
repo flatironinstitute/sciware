@@ -327,7 +327,10 @@ How to run jobs efficiently on Flatiron's clusters
 
 ## Slurm Basics
 
-- Write a "batch file" (special kind of script) that specifies the resources needed:
+Write a _batch file_ that specifies the resources needed.
+
+<section class="two-column">  
+  <div class="grid-item">
    ```bash
    #!/bin/bash
    # File: myjob.sbatch. These comments are interpreted by Slurm as sbatch flags
@@ -340,12 +343,16 @@ How to run jobs efficiently on Flatiron's clusters
    module load gcc python3
    ./myjob data1.hdf5
    ```
+  </div>
+  <div class="grid-item">
+    <img src="assets/slurm/genx1.svg">
+  </div>
+</section>
+
+## Slurm Basics
 - Submit the job to the queue with `sbatch myjob.sbatch`: \
   `Submitted batch job 1234567`
 - Check the status with: `squeue --me` or `squeue -j 1234567`
-
-
-<img src="assets/slurm/genx1.svg">
 
 
 ## Where is my output?

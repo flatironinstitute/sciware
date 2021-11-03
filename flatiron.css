@@ -382,3 +382,17 @@ body:after {
 .spacer {
   padding: 10px 0;
 }
+
+section .two-column {
+  display: grid; 
+  grid-template-columns: repeat(1fr, 300px);
+  grid-gap: 20px;
+  align-items: center;
+  justify-content: space-between;   
+}
+.grid-item {
+  justify-self: start;
+}
+.grid-item:nth-child(2){
+  justify-self: end;
+}
