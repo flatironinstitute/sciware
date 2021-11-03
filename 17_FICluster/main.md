@@ -329,7 +329,7 @@ How to run jobs efficiently on Flatiron's clusters
 
 Write a _batch file_ that specifies the resources needed.
 
-<section class="two-column">  
+<div class="two-column">  
   <div class="grid-item r-stack">
     <div class="fragment fade-out" data-fragment-index="0">
 
@@ -360,7 +360,7 @@ module load gcc python3
   <div class="grid-item">
     <img src="assets/slurm/basics.svg" class="plain" width="600">
   </div>
-</section>
+</div>
 
 
 ## Where is my output?
@@ -374,7 +374,7 @@ module load gcc python3
 
 Let's say we have 10 files, each using 1 GB and 1 CPU
 
-<section class="two-column">  
+<div class="two-column">  
   <div class="grid-item">
 
 ```bash
@@ -396,7 +396,7 @@ wait  # << wait for all background tasks to complete
   <div class="grid-item">
     <img src="assets/slurm/genxbg10.svg" class="plain" width="500"></img>
   </div>
-</section>
+</div>
 
 This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
@@ -570,13 +570,11 @@ find $projdir -name 'data*.hdf5' | sort >> $taskfn
 sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
-<section>
-  <div class="r-stack">
-    <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
-    <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
-    <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
-  </div>
-</section>
+<div class="r-stack">
+  <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
+</div>
 
 
 ## Option 2: disBatch

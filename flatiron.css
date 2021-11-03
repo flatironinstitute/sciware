@@ -383,7 +383,7 @@ body:after {
   padding: 10px 0;
 }
 
-section .two-column {
+div.two-column {
   display: inline-flex !important;
   align-items: center;
   justify-content: space-between;   
