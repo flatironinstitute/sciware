@@ -199,15 +199,6 @@
      id="layer1"
      transform="translate(-41.406226,-13.036039)">
     <rect
-       rx="0"
-       ry="0"
-       style="font-size:11px;display:inline;overflow:visible;visibility:visible;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000080;stroke-width:0.778301;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
-       id="rect8854"
-       width="70.998482"
-       height="20.058168"
-       x="44.169308"
-       y="15.207808" />
-    <rect
        y="13.550364"
        x="41.920551"
        height="71.159943"
@@ -271,7 +262,9 @@
        width="41.07674"
        height="16.953394"
        x="45.47316"
-       y="16.88689" />
+       y="16.88689"
+       rx="1"
+       ry="1" />
     <text
        id="text1770"
        y="33.330196"
@@ -536,8 +529,8 @@
          y="34.793674"
          style="font-size:4.65506px;line-height:1.25;font-family:sans-serif;text-align:end;text-anchor:end;stroke-width:0.332504px">Job 1234567</tspan></text>
     <rect
-       rx="0"
-       ry="0"
+       rx="1"
+       ry="1"
        style="font-size:11px;display:inline;overflow:visible;visibility:visible;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000080;stroke-width:0.778301;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
        id="rect2336"
        width="70.998482"
@@ -556,8 +549,8 @@
          y="56.492386"
          style="font-size:4.36102px;line-height:1.25;font-family:sans-serif;text-align:end;text-anchor:end;stroke-width:0.311501px">Job 1234543</tspan></text>
     <rect
-       rx="0"
-       ry="0"
+       rx="1"
+       ry="1"
        style="font-size:11px;display:inline;overflow:visible;visibility:visible;opacity:0.5;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000080;stroke-width:0.578;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
        id="rect2391"
        width="70.998482"
@@ -576,8 +569,8 @@
          y="78.188576"
          style="font-size:4.32567px;line-height:1.25;font-family:sans-serif;text-align:end;text-anchor:end;stroke-width:0.308976px">Job 1234578</tspan></text>
     <rect
-       rx="0"
-       ry="0"
+       rx="1"
+       ry="1"
        style="font-size:11px;display:inline;overflow:visible;visibility:visible;opacity:0.5;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000080;stroke-width:0.578;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
        id="rect2399"
        width="70.998482"

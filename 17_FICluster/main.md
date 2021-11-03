@@ -245,17 +245,18 @@ pip install ...
 
 ### Jupyter
 
-1. Run `jupyter notebook` from command line
-2. Use JupyterHub https://jupyter.flatironinstitute.org by setting up a kernel
-   ```bash
-   # setup your environment
-   ml python ...
-   source ~/projenv/bin/activate
-   # capture it into a new kernel
-   ml jupyter-kernels
-   python -m make-custom-kernel projkernel
-   ```
-   Reload jupyterhub and "projkernel" will show up providing the same environment
+- Run `jupyter notebook` from command line
+- Use JupyterHub https://jupyter.flatironinstitute.org
+  - Create a kernel with the environment
+     ```bash
+     # setup your environment
+     ml python ...
+     source ~/projenv/bin/activate
+     # capture it into a new kernel
+     ml jupyter-kernels
+     python -m make-custom-kernel projkernel
+     ```
+  - Reload jupyterhub and "projkernel" will show up providing the same environment
 
 
 ## Batch scripts
@@ -509,7 +510,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" class="plain" height="650"></img>
+<img src="assets/slurm/array.svg" class="plain" width="100%">
 
 
 ## Option 1: Slurm Job Arrays
@@ -572,21 +573,22 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 
 
 <div class="r-stack">
-  <img src="assets/slurm/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch2.svg" class="plain fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch3.svg" class="plain fragment" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" height="700"></img>
+  <img src="assets/slurm/disbatch2.svg" class="plain fragment current-visible" data-fragment-index="0" height="700"></img>
+  <img src="assets/slurm/disbatch3.svg" class="plain fragment" height="700"></img>
 </div>
 
 
 ## Option 2: disBatch
-```text
-0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
-1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
-```
 
 - When the job runs, it will write a `status.txt` file, one line per task
 - Resubmit any jobs that failed with:\
 `disBatch -r status.txt -R`
+
+```text
+0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
+1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+```
 
 
 ### Slurm Tip \#3: Tasks and threads
