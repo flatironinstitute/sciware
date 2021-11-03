@@ -60,34 +60,34 @@ Activities where participants all actively work to foster an environment which e
 <h3 style="color:#484848">Liz Lovero (SCC)</h3>
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-1.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview_1.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-2.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_2.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-3.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_3.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-4.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_4.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-5.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_5.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-6.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_6.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-7.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_7.png">
 
 
-<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-8.png">
+<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview_8.png">
 
 
-<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview-9.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_9.png">
 
 
-<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview-10.png">
+<img height=80% width=80% margin="10px auto" class="plain" src="./assets/overview/overview_10.png">
 
 
 <img height="65%" width="65%" margin="10px auto" class="plain" src="https://media.giphy.com/media/dvJB5AxWGgkpjTtIDU/giphy.gif">
@@ -344,7 +344,7 @@ Write a _batch file_ that specifies the resources needed.
       #SBATCH --partition=genx
 
       module load gcc python3
-      
+
       ./myjob data1.hdf5
    ```
   </div>
