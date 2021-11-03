@@ -330,34 +330,38 @@ How to run jobs efficiently on Flatiron's clusters
 Write a _batch file_ that specifies the resources needed.
 
 <section class="two-column">  
-  <div class="grid-item">
+  <div class="grid-item r-stack">
+    <div class="fragment">
 
-   ```bash
-      #!/bin/bash
-      # File: myjob.sbatch. 
-      # These comments are interpreted by Slurm as sbatch flags
+```bash
+#!/bin/bash
+# File: myjob.sbatch. 
+# These comments are interpreted by Slurm as sbatch flags
 
-      #SBATCH --mem=1G          # Memory?
-      #SBATCH --time=02:00:00   # Time? (2 hours)
-      #SBATCH --ntasks=1        # Run one instance
-      #SBATCH --cpus-per-task=1 # Cores?
-      #SBATCH --partition=genx
+#SBATCH --mem=1G          # Memory?
+#SBATCH --time=02:00:00   # Time? (2 hours)
+#SBATCH --ntasks=1        # Run one instance
+#SBATCH --cpus-per-task=1 # Cores?
+#SBATCH --partition=genx
 
-      module load gcc python3
+module load gcc python3
 
-      ./myjob data1.hdf5
-   ```
+./myjob data1.hdf5
+```
+
+    </div>
+    <div class="fragment">
+
+- Submit the job to the queue with `sbatch myjob.sbatch`: \
+  `Submitted batch job 1234567`
+- Check the status with: `squeue --me` or `squeue -j 1234567`
+
+    </div>
   </div>
   <div class="grid-item">
     <img src="assets/slurm/genx1.svg" class="plain" height="auto">
   </div>
 </section>
-
-
-## Slurm Basics
-- Submit the job to the queue with `sbatch myjob.sbatch`: \
-  `Submitted batch job 1234567`
-- Check the status with: `squeue --me` or `squeue -j 1234567`
 
 
 ## Where is my output?
