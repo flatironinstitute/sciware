@@ -246,16 +246,17 @@ pip install ...
 ### Jupyter
 
 - Run `jupyter notebook` from command line
-- Use JupyterHub https://jupyter.flatironinstitute.org by setting up a kernel
-   ```bash
-   # setup your environment
-   ml python ...
-   source ~/projenv/bin/activate
-   # capture it into a new kernel
-   ml jupyter-kernels
-   python -m make-custom-kernel projkernel
-   ```
-   Reload jupyterhub and "projkernel" will show up providing the same environment
+- Use JupyterHub https://jupyter.flatironinstitute.org
+  - setting up a kernel
+     ```bash
+     # setup your environment
+     ml python ...
+     source ~/projenv/bin/activate
+     # capture it into a new kernel
+     ml jupyter-kernels
+     python -m make-custom-kernel projkernel
+     ```
+  - Reload jupyterhub and "projkernel" will show up providing the same environment
 
 
 ## Batch scripts
