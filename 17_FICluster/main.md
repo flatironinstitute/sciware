@@ -331,21 +331,22 @@ Write a _batch file_ that specifies the resources needed.
 
 <section class="two-column">  
   <div class="grid-item">
-   ```bash
-   #!/bin/bash
-   # File: myjob.sbatch. These comments are interpreted by Slurm as sbatch flags
-   #SBATCH --mem=1G          # Memory?
-   #SBATCH --time=02:00:00   # Time? (2 hours)
-   #SBATCH --ntasks=1        # Run one instance
-   #SBATCH --cpus-per-task=1 # Cores?
-   #SBATCH --partition=genx
 
-   module load gcc python3
-   ./myjob data1.hdf5
+   ```bash
+      #!/bin/bash
+      # File: myjob.sbatch. These comments are interpreted by Slurm as sbatch flags
+      #SBATCH --mem=1G          # Memory?
+      #SBATCH --time=02:00:00   # Time? (2 hours)
+      #SBATCH --ntasks=1        # Run one instance
+      #SBATCH --cpus-per-task=1 # Cores?
+      #SBATCH --partition=genx
+
+      module load gcc python3
+      ./myjob data1.hdf5
    ```
   </div>
   <div class="grid-item">
-    <img src="assets/slurm/genx1.svg" style="border:0" height="800">
+    <img src="assets/slurm/genx1.svg" style="border:0" height="800"></img>
   </div>
 </section>
 
