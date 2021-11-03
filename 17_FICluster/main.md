@@ -315,7 +315,7 @@ How to run jobs efficiently on Flatiron's clusters
   - With a job scheduler! Also known as a queue system
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
 
-<img width="30%" src="./assets/Slurm_logo.png">
+<img width="30%" src="./assets/Slurm_logo.png"></img>
 
 
 ## Slurm
@@ -377,25 +377,24 @@ Let's say we have 10 files, each using 1 GB and 1 CPU
 <section class="two-column">  
   <div class="grid-item">
 
-```bash
-#!/bin/bash
-#SBATCH --mem=10G           # Request 10x the memory
-#SBATCH --time=02:00:00     # Same time
-#SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
-#SBATCH --cpus-per-task=10  # Request 10x the CPUs
-#SBATCH --partition=genx
+    ```bash
+    #!/bin/bash
+    #SBATCH --mem=10G           # Request 10x the memory
+    #SBATCH --time=02:00:00     # Same time
+    #SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
+    #SBATCH --cpus-per-task=10  # Request 10x the CPUs
+    #SBATCH --partition=genx
 
-module load gcc python3
+    module load gcc python3
 
-for filename in data{1..10}.hdf5; do
-    ./myjob $filename &  # << the "&" runs the task in the background
-done
-wait  # << wait for all background tasks to complete
-```
-
-</div>
+    for filename in data{1..10}.hdf5; do
+        ./myjob $filename &  # << the "&" runs the task in the background
+    done
+    wait  # << wait for all background tasks to complete
+    ```
+  </div>
   <div class="grid-item">
-    <img src="assets/slurm/genxbg10.svg" class="plain" width="500">
+    <img src="assets/slurm/genxbg10.svg" class="plain" width="500"></img>
   </div>
 </section>
 
@@ -510,7 +509,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" class="plain" height="800">
+<img src="assets/slurm/array.svg" class="plain" height="800"></img>
 
 
 ## Option 1: Slurm Job Arrays
@@ -573,9 +572,9 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 
 
 <div class="r-stack">
-  <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800">
-  <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800">
-  <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800">
+  <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
 </div>
 
 
@@ -624,7 +623,7 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
     - Slurm job arrays or disBatch work better than MPI
 - Both are good solutions, but I (Lehman) tend to use disBatch more than job arrays these days, even when I just need static scheduling
 
-<img width="20%" src="./assets/slurm_futurama.webp">
+<img width="20%" src="./assets/slurm_futurama.webp"></img>
 
 
 ## GPUs
