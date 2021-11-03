@@ -509,7 +509,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" class="plain" height="800"></img>
+<img src="assets/slurm/array.svg" class="plain" height="650"></img>
 
 
 ## Option 1: Slurm Job Arrays
@@ -570,10 +570,11 @@ find $projdir -name 'data*.hdf5' | sort >> $taskfn
 sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
+
 <div class="r-stack">
-  <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch2.svg" class="plain fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
+  <img src="assets/slurm/disbatch3.svg" class="plain fragment" width="600" height="800"></img>
 </div>
 
 
