@@ -355,7 +355,7 @@ module load gcc python3
   `Submitted batch job 1234567`
 - Check the status with: `squeue --me` or `squeue -j 1234567`
 
-</div>
+  </div>
   </div>
   <div class="grid-item">
     <img src="assets/slurm/basics.svg" class="plain" width="600">
@@ -377,21 +377,21 @@ Let's say we have 10 files, each using 1 GB and 1 CPU
 <section class="two-column">  
   <div class="grid-item">
 
-    ```bash
-    #!/bin/bash
-    #SBATCH --mem=10G           # Request 10x the memory
-    #SBATCH --time=02:00:00     # Same time
-    #SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
-    #SBATCH --cpus-per-task=10  # Request 10x the CPUs
-    #SBATCH --partition=genx
+```bash
+#!/bin/bash
+#SBATCH --mem=10G           # Request 10x the memory
+#SBATCH --time=02:00:00     # Same time
+#SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
+#SBATCH --cpus-per-task=10  # Request 10x the CPUs
+#SBATCH --partition=genx
 
-    module load gcc python3
+module load gcc python3
 
-    for filename in data{1..10}.hdf5; do
-        ./myjob $filename &  # << the "&" runs the task in the background
-    done
-    wait  # << wait for all background tasks to complete
-    ```
+for filename in data{1..10}.hdf5; do
+    ./myjob $filename &  # << the "&" runs the task in the background
+done
+wait  # << wait for all background tasks to complete
+```
   </div>
   <div class="grid-item">
     <img src="assets/slurm/genxbg10.svg" class="plain" width="500"></img>
@@ -570,12 +570,13 @@ find $projdir -name 'data*.hdf5' | sort >> $taskfn
 sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
-
-<div class="r-stack">
-  <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
-  <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
-</div>
+<section>
+  <div class="r-stack">
+    <img src="assets/slurm/disbatch.svg"  class="fragment fade-out" data-fragment-index="0" width="600" height="800"></img>
+    <img src="assets/slurm/disbatch2.svg" class="fragment current-visible" data-fragment-index="0" width="600" height="800"></img>
+    <img src="assets/slurm/disbatch3.svg" class="fragment" width="600" height="800"></img>
+  </div>
+</section>
 
 
 ## Option 2: disBatch
