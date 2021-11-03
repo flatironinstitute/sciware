@@ -81,7 +81,7 @@ Activities where participants all actively work to foster an environment which e
 <img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_7.png">
 
 
-<img height=100% width=80% margin="10px auto" class="plain" src="./assets/overview/overview_8.png">
+<img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_8.png">
 
 
 <img height=100% width=100% margin="10px auto" class="plain" src="./assets/overview/overview_9.png">
