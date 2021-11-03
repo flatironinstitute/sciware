@@ -334,7 +334,9 @@ Write a _batch file_ that specifies the resources needed.
 
    ```bash
       #!/bin/bash
-      # File: myjob.sbatch. These comments are interpreted by Slurm as sbatch flags
+      # File: myjob.sbatch. 
+      # These comments are interpreted by Slurm as sbatch flags
+
       #SBATCH --mem=1G          # Memory?
       #SBATCH --time=02:00:00   # Time? (2 hours)
       #SBATCH --ntasks=1        # Run one instance
@@ -342,11 +344,12 @@ Write a _batch file_ that specifies the resources needed.
       #SBATCH --partition=genx
 
       module load gcc python3
+      
       ./myjob data1.hdf5
    ```
   </div>
   <div class="grid-item">
-    <img src="assets/slurm/genx1.svg" class="plain" height="800">
+    <img src="assets/slurm/genx1.svg" class="plain" height="auto">
   </div>
 </section>
 
