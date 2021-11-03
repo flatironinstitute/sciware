@@ -345,7 +345,7 @@ How to run jobs efficiently on Flatiron's clusters
 - Check the status with: `squeue --me` or `squeue -j 1234567`
 
 
-<img src="assets/slurm/genx1.svg" style="border:0" height="800">
+<img src="assets/slurm/genx1.svg" class="plain" height="800">
 
 
 ## Where is my output?
@@ -376,7 +376,7 @@ How to run jobs efficiently on Flatiron's clusters
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
-<img src="assets/slurm/genxbg10.svg" style="border:0" height="800">
+<img src="assets/slurm/genxbg10.svg" class="plain" height="800">
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -487,7 +487,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" style="border:0" height="800">
+<img src="assets/slurm/array.svg" class="plain" height="800">
 
 
 ## Option 1: Slurm Job Arrays
@@ -549,13 +549,11 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
 
-<img src="assets/slurm/disbatch.svg" style="border:0" height="800">
-
-
-<img src="assets/slurm/disbatch2.svg" style="border:0" height="800">
-
-
-<img src="assets/slurm/disbatch3.svg" style="border:0" height="800">
+<div class="r-stack">
+<img src="assets/slurm/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" height="800">
+<img src="assets/slurm/disbatch2.svg" class="plain fragment fade-in-then-out" data-fragment-index="0" height="800">
+<img src="assets/slurm/disbatch3.svg" class="plain fragment fade-in" height="800">
+</div>
 
 
 ## Option 2: disBatch
