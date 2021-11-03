@@ -345,9 +345,10 @@ Write a _batch file_ that specifies the resources needed.
    ```
   </div>
   <div class="grid-item">
-    <img src="assets/slurm/genx1.svg">
+    <img src="assets/slurm/genx1.svg" style="border:0" height="800">
   </div>
 </section>
+
 
 ## Slurm Basics
 - Submit the job to the queue with `sbatch myjob.sbatch`: \
@@ -383,7 +384,7 @@ Write a _batch file_ that specifies the resources needed.
 - This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
-<img src="assets/slurm/genxbg1.svg">
+<img src="assets/slurm/genxbg10.svg" style="border:0" height="800">
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
@@ -494,7 +495,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg">
+<img src="assets/slurm/array.svg" style="border:0" height="800">
 
 
 ## Option 1: Slurm Job Arrays
@@ -556,13 +557,13 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 ```
 
 
-<img src="assets/slurm/disbatch.svg">
+<img src="assets/slurm/disbatch.svg" style="border:0" height="800">
 
 
-<img src="assets/slurm/disbatch2.svg">
+<img src="assets/slurm/disbatch2.svg" style="border:0" height="800">
 
 
-<img src="assets/slurm/disbatch3.svg">
+<img src="assets/slurm/disbatch3.svg" style="border:0" height="800">
 
 
 ## Option 2: disBatch
