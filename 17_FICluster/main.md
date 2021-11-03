@@ -510,7 +510,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" class="plain" width="800"></img>
+<img src="assets/slurm/array.svg" class="plain" width="100%">
 
 
 ## Option 1: Slurm Job Arrays
