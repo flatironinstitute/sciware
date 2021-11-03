@@ -335,9 +335,8 @@ Write a _batch file_ that specifies the resources needed.
 
 ```bash
 #!/bin/bash
-# File: myjob.sbatch. 
+# File: myjob.sbatch
 # These comments are interpreted by Slurm as sbatch flags
-
 #SBATCH --mem=1G          # Memory?
 #SBATCH --time=02:00:00   # Time? (2 hours)
 #SBATCH --ntasks=1        # Run one instance
@@ -359,7 +358,7 @@ module load gcc python3
 </div>
   </div>
   <div class="grid-item">
-    <img src="assets/slurm/genx1.svg" class="plain" height="auto">
+    <img src="assets/slurm/basics.svg" class="plain" width="600">
   </div>
 </section>
 
@@ -373,26 +372,34 @@ module load gcc python3
 
 ## What about multiple things?
 
-- Let's say we have 10 files, each using 1 GB and 1 CPU
-   ```bash
-   #!/bin/bash
-   #SBATCH --mem=10G           # Request 10x the memory
-   #SBATCH --time=02:00:00     # Same time
-   #SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
-   #SBATCH --cpus-per-task=10  # Request 10x the CPUs
-   #SBATCH --partition=genx
+Let's say we have 10 files, each using 1 GB and 1 CPU
 
-   module load gcc python3
+<section class="two-column">  
+  <div class="grid-item">
 
-   for filename in data{1..10}.hdf5; do
-       ./myjob $filename &  # << the "&" runs the task in the background
-   done
-   wait  # << wait for all background tasks to complete
-   ```
-- This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
+```bash
+#!/bin/bash
+#SBATCH --mem=10G           # Request 10x the memory
+#SBATCH --time=02:00:00     # Same time
+#SBATCH --ntasks=1          # Run one instance (packed with 10 "tasks")
+#SBATCH --cpus-per-task=10  # Request 10x the CPUs
+#SBATCH --partition=genx
 
+module load gcc python3
 
-<img src="assets/slurm/genxbg10.svg" class="plain" height="800">
+for filename in data{1..10}.hdf5; do
+    ./myjob $filename &  # << the "&" runs the task in the background
+done
+wait  # << wait for all background tasks to complete
+```
+
+</div>
+  <div class="grid-item">
+    <img src="assets/slurm/genxbg10.svg" class="plain" width="500">
+  </div>
+</section>
+
+This all still runs on a single node. But we have a whole cluster, let's talk about how to use multiple nodes!
 
 
 ## Slurm Tip \#1: Estimating Resource Requirements
