@@ -331,7 +331,7 @@ Write a _batch file_ that specifies the resources needed.
 
 <section class="two-column">  
   <div class="grid-item r-stack">
-    <div class="fragment">
+    <div class="fragment fade-out" data-fragment-index="0">
 
 ```bash
 #!/bin/bash
@@ -349,14 +349,14 @@ module load gcc python3
 ./myjob data1.hdf5
 ```
 
-    </div>
-    <div class="fragment">
+</div>
+<div class="fragment fade-in" data-fragment-index="0">
 
 - Submit the job to the queue with `sbatch myjob.sbatch`: \
   `Submitted batch job 1234567`
 - Check the status with: `squeue --me` or `squeue -j 1234567`
 
-    </div>
+</div>
   </div>
   <div class="grid-item">
     <img src="assets/slurm/genx1.svg" class="plain" height="auto">
