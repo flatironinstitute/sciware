@@ -247,7 +247,7 @@ pip install ...
 
 - Run `jupyter notebook` from command line
 - Use JupyterHub https://jupyter.flatironinstitute.org
-  - setting up a kernel
+  - Create a kernel with the environment
      ```bash
      # setup your environment
      ml python ...
@@ -510,7 +510,7 @@ echo "About to process $fn"
 ```
 
 
-<img src="assets/slurm/array.svg" class="plain" height="650"></img>
+<img src="assets/slurm/array.svg" class="plain" width="800"></img>
 
 
 ## Option 1: Slurm Job Arrays
