@@ -563,8 +563,8 @@ sbatch -p ccX -n10 -c8 disBatch $taskfn
 
 <div class="r-stack">
 <img src="assets/slurm/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" height="800">
-<img src="assets/slurm/disbatch2.svg" class="plain fragment fade-in-then-out" data-fragment-index="0" height="800">
-<img src="assets/slurm/disbatch3.svg" class="plain fragment fade-in" height="800">
+<img src="assets/slurm/disbatch2.svg" class="plain fragment current-visible" data-fragment-index="0" height="800">
+<img src="assets/slurm/disbatch3.svg" class="plain fragment" height="800">
 </div>
 
 
