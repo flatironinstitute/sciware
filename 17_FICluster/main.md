@@ -27,18 +27,17 @@ Activities where participants all actively work to foster an environment which e
 </small>
 
 
-## Zoom Specific
+## Hybrid Meetings
 
 - If comfortable, please keep video on so we can all see each other's faces.
 - OK to break in for quick, clarifying questions.
 - Use Raise Hand feature for new topics or for more in-depth questions.
-- Please stay muted if not speaking. (Host may mute you.)
+- Remember to use a mic in the room when talking.
 - We are recording. Link will be posted on #sciware Slack.
 
 
 ## Future Sessions
 
-- Nov 18: Chat & Office Hour
 - Poll: profiling, optimization, storage formats, containerization, virtual environments
 - Suggest topics and vote on options in #sciware Slack
 
