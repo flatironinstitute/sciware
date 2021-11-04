@@ -204,7 +204,7 @@ python/3.9.6
 ### flexiBLAS
 
 - Any module that needs BLAS (e.g., numpy) will use whichever BLAS module you have loaded:
-   - `openblas`: `-threaded` (pthreads), `-openmp`, or `single` (no threads)
+   - `openblas`: `-threaded` (pthreads), `-openmp`, or `-single` (no threads)
    - `intel-mkl`
    - `intel-oneapi-mkl`
 - BLAS modules replace each other and won't get removed by default (`S`)
@@ -213,7 +213,7 @@ python/3.9.6
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module purge` to unload all modules (except `S` slurm, blas)
+- `module purge` to unload all modules (except `S`: slurm, blas)
 - `module spider MODULE` to search for a module or package
    ```text
    > module spider h5py
