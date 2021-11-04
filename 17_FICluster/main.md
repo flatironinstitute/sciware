@@ -3,7 +3,7 @@
 ## Flatiron Clusters
 ## Performance and Efficiency
 
-https://github.com/flatironinstitute/sciware/tree/main/17_FICluster
+https://sciware.flatironinstitute.org/17_FICluster
 
 
 ## Rules of Engagement
