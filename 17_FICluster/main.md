@@ -40,7 +40,9 @@ Activities where participants all actively work to foster an environment which e
 
 - Poll: profiling, optimization, storage formats, containerization, virtual environments
   - Suggest more topics and vote on options in #sciware Slack
-- If you're not based at Flatiron, please email Dylan (dsimon@flatironinstitute.org) or Kelle (kellecruz@gmail.com) to receive emails about future Sciware activities.
+- If you're not based at Flatiron, please email Dylan and/or Kelle to receive emails about future Sciware activities.
+  - dsimon@flatironinstitute.org 
+  - kellecruz@gmail.com
 
 
 ## Today's agenda
