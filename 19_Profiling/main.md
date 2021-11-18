@@ -1,7 +1,7 @@
 # Sciware
 
 ## Finding Where Your Code Spends Time
-## Performance Troubleshooting and Python Profiling
+### Performance Troubleshooting and Profiling
 
 https://github.com/flatironinstitute/sciware/tree/main/19_Profiling
 

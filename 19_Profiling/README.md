@@ -1,4 +1,4 @@
-# Finding Where Your Code Spends Time: Performance Troubleshooting and Python Profiling
+# Finding Where Your Code Spends Time: Performance Troubleshooting and Profiling
 - Jan 27, 2022
 - 3:00-5:00pm
 - Zoom / 3rd floor classroom
