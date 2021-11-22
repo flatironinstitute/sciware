@@ -57,7 +57,7 @@ def block_diag_csr_matrix_scipy(mats):
 
 
 if __name__ == "__main__":
-    nmats = 10000
+    nmats = 100000
     mats = []
     nrows_arr = np.zeros(nmats, dtype='int64')
     ncols_arr = np.zeros(nmats, dtype='int64')
@@ -73,7 +73,6 @@ if __name__ == "__main__":
     block_diag_csr_matrix_index_ptrs_numba(mats[0:2])
 
     # make it take some time for cProfile
-    for i in range(10):
-        compressed_scipy = block_diag_csr_matrix_scipy(mats)
-        compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
-        compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
+    compressed_scipy = block_diag_csr_matrix_scipy(mats)
+    compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
+    compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
