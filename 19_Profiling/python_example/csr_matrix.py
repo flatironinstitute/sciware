@@ -72,6 +72,8 @@ if __name__ == "__main__":
     block_diag_csr_matrix_rowcol_numba(mats[0:2])
     block_diag_csr_matrix_index_ptrs_numba(mats[0:2])
 
-    compressed_scipy = block_diag_csr_matrix_scipy(mats)
-    compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
-    compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
+    # make it take some time for cProfile
+    for i in range(10):
+        compressed_scipy = block_diag_csr_matrix_scipy(mats)
+        compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
+        compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
