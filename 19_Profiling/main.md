@@ -44,14 +44,46 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's agenda
 
-- :)
+- Intro
+- Time
+- Python
+- Julia
+- C
+
+
+
+# Profiling Intro
+
+### Dylan Simon
+
+
+
+# Simple timing
+
+### Lehman Garrison
+
+
+
+# Python profiling
+
+### Robert Blackwell
+
+
+
+# Julia profiling
+
+### James Smith
+
+
+
+# C profiling
+
+### Dylan Simon
+
 
 
 # Questions
 
-If you have a Blender question/topic you'd like to discuss in a future session, please add it to [this Google list](https://docs.google.com/spreadsheets/d/1m-WAz8p3UzOVs4fYggYqjRviC4CgVsWXiiRntRt2na8/edit?usp=sharing).
-
 
 # Survey
 
-https://bit.ly/blender-feedback
