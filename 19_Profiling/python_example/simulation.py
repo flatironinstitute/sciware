@@ -56,8 +56,6 @@ def simulate(pos, traj_file, write_fun):
 
 
 if __name__ == '__main__':
-    write_fun = write_handle
-
     coords = np.zeros(shape=(n_dim, n_particles))
     cleanup(traj_file)
     simulate(coords, traj_file, write_append)
