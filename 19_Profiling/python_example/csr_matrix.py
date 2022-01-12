@@ -3,6 +3,34 @@ from scipy.sparse import csr_matrix, block_diag
 from utils import *
 
 
+def unpack_shapes(mats):
+    shapes = [mat.shape for mat in mats]
+    zipped = zip(*shapes)
+    rows, cols = list(zipped)
+    return np.array(rows, dtype='int64'), np.array(cols, dtype='int64')
+
+
+def unpack_shapes_map(mats):
+    shapes = list(map(lambda mat: mat.shape, mats))
+    zipped = zip(*shapes)
+    rows, cols = list(zipped)
+    return np.array(rows, dtype='int64'), np.array(cols, dtype='int64')
+
+
+def unpack_shapes_other(mats):
+    shapes = (mat.shape for mat in mats)
+    rows, cols = list(zip(*shapes))
+    return np.array(rows, dtype='int64'), np.array(cols, dtype='int64')
+
+
+
+def unpack_shapes_alt(mats):
+    nrows_arr = np.empty(len(mats), dtype='int64')
+    ncols_arr = np.empty(len(mats), dtype='int64')
+    for i, mat in enumerate(mats):
+        nrows_arr[i] = mat.shape[0]
+        ncols_arr[i] = mat.shape[1]
+
 def block_diag_csr_matrix_rowcol_numba(mats):
     # linear array of non-zero output matrix elements
     data = concatenate_list(mats)
@@ -56,9 +84,16 @@ def block_diag_csr_matrix_scipy(mats):
     return csr_matrix(block_diag_mat)
 
 
-if __name__ == "__main__":
+def benchmark(mats):
+    # make it take some time for cProfile
+    compressed_scipy = block_diag_csr_matrix_scipy(mats)
+    compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
+    compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
+
+
+mats = []
+def main():
     nmats = 100000
-    mats = []
     nrows_arr = np.zeros(nmats, dtype='int64')
     ncols_arr = np.zeros(nmats, dtype='int64')
     for i in range(nmats):
@@ -72,7 +107,8 @@ if __name__ == "__main__":
     block_diag_csr_matrix_rowcol_numba(mats[0:2])
     block_diag_csr_matrix_index_ptrs_numba(mats[0:2])
 
-    # make it take some time for cProfile
-    compressed_scipy = block_diag_csr_matrix_scipy(mats)
-    compressed_rowcol = block_diag_csr_matrix_rowcol_numba(mats)
-    compressed_index_ptrs = block_diag_csr_matrix_index_ptrs_numba(mats)
+    benchmark(mats)
+
+
+if __name__ == "__main__":
+    main()
