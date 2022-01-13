@@ -56,6 +56,19 @@ Activities where participants all actively work to foster an environment which e
 
 ### Dylan Simon
 
+- Always want code to run faster
+- First step is finding what takes time
+- "What": instruction, LoC, function, executable
+- How often, how many times vs. how much time
+- (Something *has* to take time, so that's not necessarily a bad thing)
+- "Can this be faster?"
+- "Is this necessary?"
+- Also useful is this doing the right thing (being called as expected)
+- Heisenberg: runs slower
+
+
+## Time
+
 
 
 # Simple timing
@@ -78,8 +91,16 @@ Activities where participants all actively work to foster an environment which e
 
 # C profiling
 
+## with gprof
+
 ### Dylan Simon
 
+- `gcc -g -pg`
+- `gmon.out`
+- `gprof a.out gmon.out`
+
+
+## Alternatives
 
 
 # Questions
