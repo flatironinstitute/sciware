@@ -13,4 +13,7 @@ gmon_%: run_%
 gprof_%: gmon_%
 	gprof run_$* $< > $@
 
+clean:
+	rm -f run_* gmon_* gprof_*
+
 .SECONDARY:

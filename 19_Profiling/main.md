@@ -95,12 +95,28 @@ Activities where participants all actively work to foster an environment which e
 
 ### Dylan Simon
 
-- `gcc -g -pg`
-- `gmon.out`
-- `gprof a.out gmon.out`
+
+## Building
+
+- Compile and link all files with `-g -pg`
+- Better to disable optimization (no `-O`)
+- Works with `gcc`, `g++`, `gfortran`, `clang`, `clang++`
+
+
+## Running
+
+- Run your program normally to produce `gmon.out` (must not be killed/crash)
+- `GMON_OUT_PREFIX=foo ./myprog` produces `foo.PID`
+- Analyze with: `gprof myprog gmon.out`
+
+[*Example*](cpp_example)
 
 
 ## Alternatives
+
+- oprofile (full system)
+- vtune (processor stats)
+
 
 
 # Questions

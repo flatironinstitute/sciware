@@ -37,7 +37,7 @@ static void fill(MyTable<double> &table) {
 }
 
 static double addup(MyTable<double> &table) {
-	double t;
+	double t = 0;
 	srand(1);
 	for (unsigned x = STRIDE; x; x += STRIDE)
 		t += table.get(rand());
