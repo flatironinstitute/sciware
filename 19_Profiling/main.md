@@ -85,7 +85,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Julia profiling
 
-### James Smith
+<h3 style="color:#7e588aff">James Smith (CCQ)</h3>
 
 
 
