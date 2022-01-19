@@ -12,6 +12,7 @@ class MyTable {
 #ifdef USE_UNORDERED_MAP
 	std::unordered_map<unsigned, V> map;
 #else
+	/* allocate a 4G array */
 	V *map;
 public:
 	MyTable() {
@@ -31,11 +32,13 @@ public:
 	}
 };
 
+/* set values in some subset of table entries (every STRIDE) */
 static void fill(MyTable<double> &table) {
 	for (unsigned x = STRIDE; x; x += STRIDE)
 		table.set(x, sqrt(x));
 }
 
+/* add up some (pseudo-)random entries */
 static double addup(MyTable<double> &table) {
 	double t = 0;
 	srand(1);

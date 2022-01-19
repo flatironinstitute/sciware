@@ -19,4 +19,6 @@ A developing series of meetings about software development for science.
 - Apr 29, 2021 [Testing and Packaging Workshop](14_TestingPackaging): a hands-on workshop for building and running tests in a python package
 - Jun 16--17, 2021 [Intro to git and Github](15_IntroGithub): a hands-on workshop to learn git and Github basics for cloning, pushing, PRs, and collaboration
 - Jul 08, 2021 [Intro to editing code](16_EditorsVSCode): an introduction to using IDEs and code editors, using VSCode as an example
-- Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender)
+- Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender): and introduction and demo to visualising scientific data in blender
+- Nov 04, 2021 [Using the Flatiron Cluster](17_FICluster): a performance-minded guide to using the computing clusters available at Flatiron Institute
+- Jan 27, 2021 [Performance troubleshooting and profiling](19_Profiling): Using profiling tools to improve the performance of your code

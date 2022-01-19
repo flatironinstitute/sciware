@@ -109,14 +109,16 @@ Activities where participants all actively work to foster an environment which e
 - `GMON_OUT_PREFIX=foo ./myprog` produces `foo.PID`
 - Analyze with: `gprof myprog gmon.out`
 
-[*Example*](cpp_example)
+[*Example*](gprof_example)
+
 
 
 ## Alternatives
 
 - oprofile (full system)
 - vtune (processor stats)
-
+- ...
+- what do you use?
 
 
 # Questions
