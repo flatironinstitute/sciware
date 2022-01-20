@@ -133,6 +133,34 @@ Activities where participants all actively work to foster an environment which e
 <h3 style="color:#7e588aff">James Smith (CCQ)</h3>
 
 
+# Examples
+
+- All examples are in `sciware/19_profiling/julia_example`
+- To following along you'll need Julia and the following Julia packages:
+  - `PProf`
+  - `CSV`
+  - `DataFrames`
+- You can install them by running `install_prereqs.jl`
+
+
+# Example 1: Using the `@time`
+
+- Array/Matrix/Tensor memory access matters
+- This example shows how much slower it is to access memory the "wrong" way
+
+```zsh
+➜  julia_example git:(main) ✗ julia 01_timer.jl 
+Copying vector to columns
+  0.354818 seconds (2 allocations: 762.939 MiB, 1.12% gc time)
+Copying vector to rows
+  1.033734 seconds (2 allocations: 762.939 MiB, 3.08% gc time)
+```
+
+# Example 2: Profiling with PProf
+
+# Example 3: Line profiling
+
+
 
 # C profiling
 
