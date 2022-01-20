@@ -118,7 +118,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Simple timing
 
-### Lehman Garrison
+### Jeff Soules
 
 
 
