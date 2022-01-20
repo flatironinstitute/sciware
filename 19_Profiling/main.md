@@ -57,11 +57,13 @@ Activities where participants all actively work to foster an environment which e
 ### Dylan Simon
 
 
+## Goal
+
 - We always want everything to take less time
 - Need a way to quantify "less". And measure "time".
 - It's easy to figure out how much time something takes... right?
 
-<img width="80%" src="assets/clock-time.jpg">
+<img height="60%" src="assets/clock-time.jpg">
 
 
 ## "Wall time"
@@ -98,10 +100,10 @@ Activities where participants all actively work to foster an environment which e
 ## Bite-sized pieces
 
 - Break calculations into smaller pieces
-   - Smaller data sets, fewer loops
+   - Smaller data sets, fewer iterations
 - Profiling doesn't require getting results, just running code
 - Can use smaller profiling results to infer longer run times (multiply!)
-- Heisenberg: code when observed, runs slower
+- Heisenberg: code when observed... runs slower
 
 
 ## Time units
