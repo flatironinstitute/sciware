@@ -71,8 +71,8 @@ Activities where participants all actively work to foster an environment which e
 - Useful baseline measure
 - Can compare changes (algorithms, dependencies, architectures, anything...)
 - Which parts take time?
-- What if it takes weeks?
-- Wall time is a noisy measure
+- What if it takes weeks? (Or milliseconds?)
+- Wall time is a noisy measure (system, scheduling, filesystem, network overhead)
 
 
 ## Profilers
@@ -82,7 +82,7 @@ Activities where participants all actively work to foster an environment which e
    - Function: time how long each function takes, how many times
    - Line of code
    - Machine instruction
-- Each of these can run multiple times
+- Each of these might run multiple times
    - total time, number of executions, average time/execution
 
 

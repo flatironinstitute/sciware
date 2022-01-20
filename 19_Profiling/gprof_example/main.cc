@@ -5,14 +5,16 @@
 #include <unistd.h>
 #include <unordered_map>
 
-#define STRIDE (1<<8)
+#define STRIDE 256
+#define COUNT (UINT32_MAX/STRIDE)
 
 template <class V>
 class MyTable {
 #ifdef USE_UNORDERED_MAP
+	/* sparse array */
 	std::unordered_map<unsigned, V> map;
 #else
-	/* allocate a 4G array */
+	/* dense array (4B) */
 	V *map;
 public:
 	MyTable() {
@@ -24,25 +26,28 @@ public:
 #endif
 
 public:
-	V get(unsigned i) {
+	V &index(unsigned i) {
 		return map[i];
 	}
+	V get(unsigned i) {
+		return this->index(i);
+	}
 	void set(unsigned i, V x) {
-		map[i] = x;
+		this->index(i) = x;
 	}
 };
 
 /* set values in some subset of table entries (every STRIDE) */
 static void fill(MyTable<double> &table) {
-	for (unsigned x = STRIDE; x; x += STRIDE)
-		table.set(x, sqrt(x));
+	for (unsigned x = 0; x < COUNT; x++)
+		table.set(STRIDE*x, sqrt((double)x));
 }
 
 /* add up some (pseudo-)random entries */
 static double addup(MyTable<double> &table) {
 	double t = 0;
 	srand(1);
-	for (unsigned x = STRIDE; x; x += STRIDE)
+	for (unsigned x = 0; x < COUNT; x ++)
 		t += table.get(rand());
 	return t;
 }
