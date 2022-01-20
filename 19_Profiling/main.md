@@ -56,18 +56,61 @@ Activities where participants all actively work to foster an environment which e
 
 ### Dylan Simon
 
-- Always want code to run faster
-- First step is finding what takes time
-- "What": instruction, LoC, function, executable
-- How often, how many times vs. how much time
-- (Something *has* to take time, so that's not necessarily a bad thing)
-- "Can this be faster?"
-- "Is this necessary?"
-- Also useful is this doing the right thing (being called as expected)
-- Heisenberg: runs slower
+
+- We always want everything to take less time
+- Need a way to quantify "less". And measure "time".
+- It's easy to figure out how much time something takes... right?
+
+<img width="80%" src="assets/clock-time.jpg">
 
 
-## Time
+## "Wall time"
+
+- Useful baseline measure
+- Can compare changes (algorithms, dependencies, architectures, anything...)
+- Which parts take time?
+- What if it takes weeks?
+- Wall time is a noisy measure
+
+
+## Profilers
+
+- Tools to break down which parts of your code take time
+   - Program: entire run of executable
+   - Function: time how long each function takes, how many times
+   - Line of code
+   - Machine instruction
+- Each of these can run multiple times
+   - total time, number of executions, average time/execution
+
+
+## Strategies
+
+- Is this what I expected?
+   - Is this part running too many times?
+   - Do the counts make sense (think about loops, sanity check)?
+   - Are unexpected parts slow?
+- Can this be faster?
+- Is this necessary?
+- Calculation *has* to take time...
+
+
+## Bite-sized pieces
+
+- Break calculations into smaller pieces
+   - Smaller data sets, fewer loops
+- Profiling doesn't require getting results, just running code
+- Can use smaller profiling results to infer longer run times (multiply!)
+- Heisenberg: code when observed, runs slower
+
+
+## Time units
+
+- "Wall time" = time
+- "CPU time" = cpu cores * time
+   - Multiple threads
+   - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
+   - "CPU hours": cluster usage (allocated, may be idle), 130k cores = 1.1B cpu hours/year
 
 
 
