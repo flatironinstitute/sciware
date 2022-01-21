@@ -1,13 +1,16 @@
 #!/bin/bash
 
+DIR=$(dirname "${BASH_SOURCE[0]}")
+DIR=$(realpath "${DIR}")
+
 PIDS=()
-python ./simulation.py &
+python "$DIR/simulation.py" &
 PIDS[0]=$!
 #echo "${PIDS[0]}"
-python ./simulation.py &
+python "$DIR/simulation.py" &
 PIDS[1]=$!
 #echo "${PIDS[1]}"
-python ./simulation.py &
+python "$DIR/simulation.py" &
 PIDS[2]=$!
 #echo "${PIDS[2]}"
 echo "All pids: ${PIDS[@]}"

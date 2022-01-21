@@ -139,8 +139,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Calling `time`
 
+- Use as `$ /usr/bin/time -p EXECUTABLE`
 - Examples drawn from sciware repo `sciware/19_Profiiling/python_example/`
-- use as `$ /usr/bin/time -p CODE`
 
 So on my laptop:
 `$ /usr/bin/time -p src/sciware/19_Profiling/python_example/simulation.py`
@@ -155,11 +155,11 @@ So on my laptop:
 
 <img src="assets/time-response-example.png"/>
 
+
 ## What `time` doesn't show
 
 - Only measures *your* process, not child threads/processes
 - Does not tell you *why*
-- Need to look at context!
 - (More sophisticated tools exist to help with this)
 
 
@@ -167,6 +167,10 @@ So on my laptop:
 
 - Startup cost for first run of Python interpreter
 <img src="assets/time-response-twoCalls.png"/>
+
+
+## Selected examples
+
 - Subprocesses not captured
 <img src="assets/multirun-example.png" />
 - Workstation worse than laptop?
@@ -206,6 +210,7 @@ So on my laptop:
 - Number of times your code sample was run, per trial (`100000 loops`)
 - Number of trials (5, because `best of 5`)
 - The average speed per loop of the fastest trial (sec, msec, usec...)
+
 <img src="assets/timeit-out.png"/>
 
 
@@ -213,7 +218,6 @@ So on my laptop:
 
 - Compare two versions of the same code
 <img src="assets/timeit-ab.png"/>
-- Run in terminal
 - Left version (loops): ~80 microsec/loop
 - Right version (numpy): ~320 usec/loop
 - Numpy's not faster????
@@ -221,18 +225,10 @@ So on my laptop:
 
 ## Complexity Never Goes Away
 
-- Suppress screen printing by adding `2> /dev/null`
-  - loop version now takes ~30 usec/loop (down from 80)
-  - numpy version now takes ~260 usec/loop (down from 320)
+- Suppress screen printing by adding `2>/dev/null`
+  - loop version now: ~30 usec/loop (down from 80)
+  - numpy version now: ~260 usec/loop (down from 320)
 - I/O time is non-negligible! (Observation affects results)
-- Remove the `print` statements entirely?
-  - loop version now ~17 usec/loop
-  - numpy version now ~2 usec/loop (!)
-  - (Turns out converting numpy arrays to strings is really expensive!)
-
-
-## Complexity Never Goes Away
-
 - Increase the number ranges to 1 million instead of 100
   - loop version now takes 324 msec/loop (vs 30 usec)
   - numpy version now takes ~3 msec/loop (vs 300 usec)
@@ -242,9 +238,17 @@ So on my laptop:
 
 ## Complexity Never Goes Away
 
+- Remove the `print` statements entirely?
+  - loop version now ~17 usec/loop
+  - numpy version now ~2 usec/loop (!)
+  - (Turns out converting numpy arrays to strings is really expensive!)
+
+
+## Complexity Never Goes Away
+
 - High- and low-level tools are essential for monitoring
 - But implementation & context details matter
-- Let's see some tools that help dive into complexity
+- Next up: some tools that help dive into complexity
 
 
 

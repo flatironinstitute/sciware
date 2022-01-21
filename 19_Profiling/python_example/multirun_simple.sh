@@ -1,6 +1,9 @@
 #!/bin/bash
 
-python ~/src/sciware/19_Profiling/python_example/simulation.py &
-python ~/src/sciware/19_Profiling/python_example/simulation.py &
-python ~/src/sciware/19_Profiling/python_example/simulation.py &
+DIR=$(dirname "${BASH_SOURCE[0]}")
+DIR=$(realpath "${DIR}")
+
+python "$DIR/simulation.py" &
+python "$DIR/simulation.py" &
+python "$DIR/simulation.py" &
 echo "Run complete"
