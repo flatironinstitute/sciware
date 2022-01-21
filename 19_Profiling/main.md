@@ -121,6 +121,132 @@ Activities where participants all actively work to foster an environment which e
 ### Jeff Soules
 
 
+## Smallest and largest scales
+
+- `time` utility -- program timing
+- `timeit` (Python) -- testing small Python snippets
+- Rest of session focuses on tools in the middle
+
+
+## `time`
+
+- System utility installed in `/usr/bin/time` or `/bin/time`
+  - NOT the same as `time` (a shell built-in)
+- Used to time whole program execution
+- Reports `real`, `user`, `sys` times
+- "The Beginning and End of profiling"
+
+
+## Calling `time`
+
+- Examples drawn from sciware repo `sciware/19_Profiiling/python_example/`
+- use as `$ /usr/bin/time -p CODE`
+
+So on my laptop:
+`$ /usr/bin/time -p src/sciware/19_Profiling/python_example/simulation.py`
+
+
+## What `time` shows
+
+- `real` = wall time
+- `user` = time executing YOUR code
+- `sys` = time in operating system calls
+- `real` likely isn't `user + sys`
+
+<img src="assets/time-response-example.png"/>
+
+## What `time` doesn't show
+
+- Only measures *your* process, not child threads/processes
+- Does not tell you *why*
+- Need to look at context!
+- (More sophisticated tools exist to help with this)
+
+
+## Selected examples
+
+- Startup cost for first run of Python interpreter
+<img src="assets/time-response-twoCalls.png"/>
+- Subprocesses not captured
+<img src="assets/multirun-example.png" />
+- Workstation worse than laptop?
+<img src="assets/ceph-example.png"/>
+
+
+## Understanding `time`
+
+- Need to look at context!
+  - System load? (`htop`!)
+  - Hardware issues? (`iowait`)
+  - Memory? (garbage collection, swapping...)
+  - Concurrency/system interactions? (network latency...)
+  - etc
+- **Complexity does not go away just because you put it in a black-box**
+
+
+## `timeit`
+
+- Python utility for testing small snippets of code
+- Command-line or in-script use
+- Runs small snippets until ~0.2 s has passed
+  - Smooths out statistical anomalies or startup costs
+- Great for A/B testing, optimizing small decisions
+
+
+## How to `timeit`
+
+- Command line:
+`python -m timeit 'print("Hello world!")'`
+- From inside a script
+- (See https://docs.python.org/3/library/timeit.html)
+
+
+## `timeit` output
+
+- Number of times your code sample was run, per trial (`100000 loops`)
+- Number of trials (5, because `best of 5`)
+- The average speed per loop of the fastest trial (sec, msec, usec...)
+<img src="assets/timeit-out.png"/>
+
+
+## A/B Testing
+
+- Compare two versions of the same code
+<img src="assets/timeit-ab.png"/>
+- Run in terminal
+- Left version (loops): ~80 microsec/loop
+- Right version (numpy): ~320 usec/loop
+- Numpy's not faster????
+
+
+## Complexity Never Goes Away
+
+- Suppress screen printing by adding `2> /dev/null`
+  - loop version now takes ~30 usec/loop (down from 80)
+  - numpy version now takes ~260 usec/loop (down from 320)
+- I/O time is non-negligible! (Observation affects results)
+- Remove the `print` statements entirely?
+  - loop version now ~17 usec/loop
+  - numpy version now ~2 usec/loop (!)
+  - (Turns out converting numpy arrays to strings is really expensive!)
+
+
+## Complexity Never Goes Away
+
+- Increase the number ranges to 1 million instead of 100
+  - loop version now takes 324 msec/loop (vs 30 usec)
+  - numpy version now takes ~3 msec/loop (vs 300 usec)
+  - numpy now 100x faster than loop
+- Test cases need to be representative of data
+
+
+## Complexity Never Goes Away
+
+- High- and low-level tools are essential for monitoring
+- But implementation & context details matter
+- Let's see some tools that help dive into complexity
+
+
 
 # Python profiling
 
