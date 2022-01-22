@@ -5,17 +5,16 @@
 #include <unistd.h>
 #include <unordered_map>
 
-#define STRIDE 256
-#define COUNT (UINT32_MAX/STRIDE)
-
 template <class V>
 class MyTable {
 #ifdef USE_UNORDERED_MAP
-	/* sparse array */
+	/* sparse array: only store values as assigned */
 	std::unordered_map<unsigned, V> map;
+
 #else
-	/* dense array (4B) */
+	/* dense array: pre-allocate 4B entries */
 	V *map;
+
 public:
 	MyTable() {
 		map = (V *)calloc(UINT32_MAX, sizeof(V));
@@ -30,12 +29,19 @@ public:
 		return map[i];
 	}
 	V get(unsigned i) {
+#ifdef USE_UNORDERED_MAP
+		if (!map.contains(i))
+			return 0;
+#endif
 		return this->index(i);
 	}
 	void set(unsigned i, V x) {
 		this->index(i) = x;
 	}
 };
+
+#define STRIDE 256
+#define COUNT (UINT32_MAX/STRIDE)
 
 /* set values in some subset of table entries (every STRIDE) */
 static void fill(MyTable<double> &table) {
@@ -57,7 +63,7 @@ int main() {
 
 	fill(table);
 	double r = addup(table);
-	printf("%g\n", r);
+	printf("sum=%g\n", r);
 
 	return 0;
 }

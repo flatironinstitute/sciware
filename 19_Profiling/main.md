@@ -118,7 +118,7 @@ Activities where participants all actively work to foster an environment which e
 
 # Simple timing
 
-### Lehman Garrison
+### Jeff Soules
 
 
 
@@ -364,11 +364,20 @@ julia> pprof(g)
 
 ## Running
 
-- Run your program normally to produce `gmon.out` (must not be killed/crash)
+- Run your program normally to produce `gmon.out`
 - `GMON_OUT_PREFIX=foo ./myprog` produces `foo.PID`
+- Program must not be killed/crash
 - Analyze with: `gprof myprog gmon.out`
 
-[*Example*](gprof_example)
+[*Example*: 19_Profiling/gprof_example](gprof_example)
+
+
+## Takeaways
+
+- Only profiles functions compiled with profiling
+- Consider memory vs. time tradeoffs
+   - Sometimes using more memory can allow faster approaches
+   - (Our nodes have a lot of memory)
 
 
 
