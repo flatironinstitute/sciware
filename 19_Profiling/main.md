@@ -133,7 +133,7 @@ Activities where participants all actively work to foster an environment which e
 <h3 style="color:#7e588aff">James Smith (CCQ)</h3>
 
 
-# Examples
+## Examples
 
 - All examples are in `sciware/19_profiling/julia_example`
 - To following along you'll need Julia and the following Julia packages:
@@ -143,7 +143,7 @@ Activities where participants all actively work to foster an environment which e
 - You can install them by running `install_prereqs.jl`
 
 
-# Using `@time` Pt. 1
+## Using `@time` Pt. 1
 
 - Array/Matrix/Tensor memory access matters
 <div style="display: table; clear:both; width:100%;">
@@ -178,7 +178,7 @@ end
 </div>
 
 
-# Using `@time` Pt. 2
+## Using `@time` Pt. 2
 - To run the comparison, we can do the following:
 ```julia
 function main()
@@ -193,7 +193,7 @@ end
 ```
 
 
-# Using `@time` Pt. 3
+## Using `@time` Pt. 3
 ```zsh
 ➜  julia 01_timer.jl 
 Copying vector to columns
@@ -203,7 +203,7 @@ Copying vector to rows
 ```
 
 
-# Using `@profile` Pt. 1
+## Using `@profile` Pt. 1
 <div style="display: table; clear:both; width:100%;">
    <div style="float:left; width:50%">
       <pre  style="font-size:0.6em; width:100%">
@@ -228,7 +228,7 @@ end
 </div>
 
 
-# Using `@profile` Pt. 2
+## Using `@profile` Pt. 2
 - To run the comparison, we can do the following:
   
 ```julia
@@ -249,7 +249,7 @@ end
 ```
 
 
-# Using `@profile` Pt. 3
+## Using `@profile` Pt. 3
 <pre style="font-size:0.4em"><code data-trim data-noescape  class="language-zsh" data-line-numbers="13,17-19,21,22">
 Showing the profiling info
 Overhead ╎ [+additional indent] Count File:Line; Function
@@ -277,7 +277,7 @@ Total snapshots: 800
 </code></pre>
 
 
-# Using `PProf` Pt. 1
+## Using `PProf` Pt. 1
 - Now let's look at a more complicated function
 
 ```julia
@@ -301,7 +301,7 @@ end
 ```
 
 
-# Using `PProf` Pt. 2
+## Using `PProf` Pt. 2
 - Use `@profile` to collect information about our the function of interest (`analyze_data()`)
 - Save to a file `_03_profile_data.jlprof`
  
@@ -318,7 +318,7 @@ end
 ```
 
 
-# Using `PProf` Pt. 3
+## Using `PProf` Pt. 3
 - Open the Julia REPL (like a shell)
 - Load the data
 - Using `pprof()` to analyze the profiling data
@@ -331,12 +331,12 @@ julia> pprof(g)
 ```
 
 
-# Using `PProf` Pt. 3
+## Using `PProf` Pt. 3
 - Open the `PProf` interface in a browser (something like: http://localhost:57599)
 ![](../assets/../19_Profiling/assets/julia_03_using_pprof.gif)
 
 
-# Using `PProf` Pt. 4
+## Using `PProf` Pt. 4
 - Now we can examine the lines one-by-one!
 
 ![](../assets/../19_Profiling/assets/julia_03_source_view.png)
