@@ -1,10 +1,8 @@
 # This example is modified version of the array access example
 # https://julia-doc.readthedocs.io/en/latest/manual/performance-tips/
 using Profile
-using PProf
 
 function add_no_prealloc(x::Vector{Float64})
-    # x_new = zeros(Float64, length(x))
     x_new = x .+ 3.0
     return x_new
 end
@@ -34,6 +32,7 @@ function main()
         end
     )
 
+    println("\nShowing the profiling info")
     # Profile and collect data
     Profile.clear()
     @profile (
@@ -42,12 +41,8 @@ function main()
             add_prealloc!(x)
         end
     )
-    Profile.print(format = :tree, maxdepth = 12)
+    Profile.print(format = :tree, maxdepth = 9)
 
-    # Visualize Results with PProf
-    # See http://localhost:57599
-    pprof()
-    sleep(60) # Make longer to tinker with PProf longer
 end
 
 main()

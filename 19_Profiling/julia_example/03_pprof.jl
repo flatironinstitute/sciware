@@ -2,6 +2,7 @@ using CSV, DataFrames
 using Profile
 using PProf
 using LinearAlgebra
+using FileIO
 
 
 
@@ -19,7 +20,7 @@ end
 
 function analyze_data()
     # Read in data
-    df = CSV.read("data/noisy_data.csv", DataFrame)
+    df = CSV.read("data/noisy_data.csv", DataFrame; types = [Float64, Float64])
 
     # Shorthands
     x = Vector{Float64}(df[!, "X"])
@@ -37,16 +38,26 @@ end
 
 
 function main()
+    # Unused in this example, but here for transparency
     # _generate_data()
+
+    # Uncomment to see if the profile data changes
+    # @time analyze_data() 
 
     # Profile and collect data
     Profile.clear()
     @profile analyze_data()
-    Profile.print(format = :tree, maxdepth = 13)
+    Profile.print(format = :tree, maxdepth = 9)
 
-    # Visualize Results with PProf see http://localhost:57599
-    pprof()
-    sleep(60) # Make longer to tinker with PProf longer
+    # Save the data for later
+    save("_03_profile_data.jlprof", Profile.retrieve()...)
+
+    # Open julia REPL and visualize the data with pprof
+
+    # using PProf, FlameGraphs, FileIO
+    # julia> data = load("_03_profile_data.jlprof")
+    # julia> g = flamegraph(data[1]; lidict=data[2])
+    # julia> pprof(g)
 end
 
 main()

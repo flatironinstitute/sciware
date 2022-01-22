@@ -143,22 +143,208 @@ Activities where participants all actively work to foster an environment which e
 - You can install them by running `install_prereqs.jl`
 
 
-# Example 1: Using the `@time`
+# Using `@time` Pt. 1
 
 - Array/Matrix/Tensor memory access matters
-- This example shows how much slower it is to access memory the "wrong" way
+<div style="display: table; clear:both; width:100%;">
+   <div style="float:left; width:50%">
+      <pre  style="font-size:0.6em; width:100%">
+    <code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
+function copy_cols(x::Vector{Float64})
+    n = size(x, 1)
+    out = zeros(Float64, n, n)
+    for i = 1:n
+        out[:, i] = x
+    end
+    out
+end
+    </code>
+    </pre>
+   </div>
+   <div style="float:left; width:50%">
+     <pre  style="font-size:0.6em; width:100%">
+      <code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
+function copy_rows(x::Vector{Float64})
+    n = size(x, 1)
+    out = zeros(Float64, n, n)
+    for i = 1:n
+        out[i, :] = x
+    end
+    out
+end
+      </code>
+    </pre>
+   </div>
+</div>
 
+
+# Using `@time` Pt. 2
+- To run the comparison, we can do the following:
+```julia
+function main()
+    N = Int(1e4)
+    x = randn(N)
+
+    println("Copying vector to columns")
+    @time copy_cols(x)
+    println("Copying vector to rows")
+    @time copy_rows(x)
+end
+```
+
+
+# Using `@time` Pt. 3
 ```zsh
-➜  julia_example git:(main) ✗ julia 01_timer.jl 
+➜  julia 01_timer.jl 
 Copying vector to columns
   0.354818 seconds (2 allocations: 762.939 MiB, 1.12% gc time)
 Copying vector to rows
   1.033734 seconds (2 allocations: 762.939 MiB, 3.08% gc time)
 ```
 
-# Example 2: Profiling with PProf
 
-# Example 3: Line profiling
+# Using `@profile` Pt. 1
+<div style="display: table; clear:both; width:100%;">
+   <div style="float:left; width:50%">
+      <pre  style="font-size:0.6em; width:100%">
+    <code data-trim data-noescape  class="language-julia">
+function add_no_prealloc(x::Vector{Float64})
+    x_new = x .+ 3.0
+    return x_new
+end
+    </code>
+    </pre>
+   </div>
+   <div style="float:left; width:50%">
+     <pre  style="font-size:0.6em; width:100%">
+      <code data-trim data-noescape  class="language-julia">
+function add_prealloc!(x::Vector{Float64})
+    x .+= 3.0
+    nothing
+end
+      </code>
+    </pre>
+   </div>
+</div>
+
+
+# Using `@profile` Pt. 2
+- To run the comparison, we can do the following:
+  
+```julia
+function main()
+    x = zeros(10)
+
+    println("\nShowing the profiling info")
+    Profile.clear()
+    @profile (
+        for i = 1:1e7
+            add_no_prealloc(x)
+            add_prealloc!(x)
+        end
+    )
+    Profile.print(format = :tree, maxdepth = 12)
+
+end
+```
+
+
+# Using `@profile` Pt. 3
+<pre style="font-size:0.4em"><code data-trim data-noescape  class="language-zsh" data-line-numbers="13,17-19,21,22">
+Showing the profiling info
+Overhead ╎ [+additional indent] Count File:Line; Function
+=========================================================
+   ╎398 @Base/client.jl:495; _start()
+   ╎ 398 @Base/client.jl:292; exec_options(opts::Base.JLOptions)
+   ╎  398 @Base/Base.jl:418; include(mod::Module, _path::String)
+   ╎   398 @Base/loading.jl:1253; _include(mapexpr::Function, mod::Module, _path::String)
+   ╎    398 @Base/loading.jl:1196; include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+   ╎     398 @Base/boot.jl:373; eval
+ 12╎    ╎ 12  ...ojects/sciware/19_Profiling/julia_example/02_profiling.jl:5; add_no_prealloc(x::Vector{Float64})
+  4╎    ╎ 4   ...ojects/sciware/19_Profiling/julia_example/02_profiling.jl:7; add_no_prealloc(x::Vector{Float64})
+  1╎    ╎ 1   ...ojects/sciware/19_Profiling/julia_example/02_profiling.jl:10; add_prealloc!(x::Vector{Float64})
+   ╎    ╎ 381 ...ojects/sciware/19_Profiling/julia_example/02_profiling.jl:38; main()
+   ╎    ╎  381 ...k-src/usr/share/julia/stdlib/v1.7/Profile/src/Profile.jl:28; macro expansion
+  7╎    ╎   332 ...jects/sciware/19_Profiling/julia_example/02_profiling.jl:40; macro expansion
+  3╎    ╎    3   @Base/simdloop.jl:0; add_no_prealloc(x::Vector{Float64})
+ 10╎    ╎    10  ...jects/sciware/19_Profiling/julia_example/02_profiling.jl:5; add_no_prealloc(x::Vector{Float64})
+   ╎    ╎    311 ...jects/sciware/19_Profiling/julia_example/02_profiling.jl:6; add_no_prealloc(x::Vector{Float64})
+  1╎    ╎    1   ...jects/sciware/19_Profiling/julia_example/02_profiling.jl:7; add_no_prealloc(x::Vector{Float64})
+  2╎    ╎   49  ...jects/sciware/19_Profiling/julia_example/02_profiling.jl:41; macro expansion
+   ╎    ╎    41  ...ects/sciware/19_Profiling/julia_example/02_profiling.jl:11; add_prealloc!(x::Vector{Float64})
+  6╎    ╎    6   ...ects/sciware/19_Profiling/julia_example/02_profiling.jl:12; add_prealloc!(x::Vector{Float64})
+Total snapshots: 800
+</code></pre>
+
+
+# Using `PProf` Pt. 1
+- Now let's look at a more complicated function
+
+```julia
+function analyze_data()
+    # Read in data
+    df = CSV.read("data/noisy_data.csv", DataFrame; types = [Float64, Float64])
+
+    # Shorthands
+    x = Vector{Float64}(df[!, "X"])
+    y = Vector{Float64}(df[!, "Y"])
+
+    # Setup X for solving
+    X = zeros(Float64, (length(x), 2))
+    X[:, 1] = sin.(x)
+    X[:, 2] = x .^ 2
+
+    # Solve  Xβ=y
+    β = X \ y
+    println(β)
+end
+```
+
+
+# Using `PProf` Pt. 2
+- Use `@profile` to collect information about our the function of interest (`analyze_data()`)
+- Save to a file `_03_profile_data.jlprof`
+ 
+```julia
+function main()
+
+    Profile.clear()
+    @profile analyze_data()
+    Profile.print(format = :tree, maxdepth = 9)
+
+    save("_03_profile_data.jlprof", Profile.retrieve()...)
+
+end
+```
+
+
+# Using `PProf` Pt. 3
+- Open the Julia REPL (like a shell)
+- Load the data
+- Using `pprof()` to analyze the profiling data
+
+```julia
+julia> using PProf, FlameGraphs, FileIO
+julia> data = load("_03_profile_data.jlprof")
+julia> g = flamegraph(data[1]; lidict=data[2])
+julia> pprof(g)
+```
+
+
+# Using `PProf` Pt. 3
+- Open the `PProf` interface in a browser (something like: http://localhost:57599)
+![](../assets/../19_Profiling/assets/julia_03_using_pprof.gif)
+
+
+# Using `PProf` Pt. 4
+- Now we can examine the lines one-by-one!
+
+![](../assets/../19_Profiling/assets/julia_03_source_view.png)
+
+
+# Julia Wrap-Up
+
+- Check out the examples in the [sciware repo](https://github.com/flatironinstitute/sciware/tree/main/19_Profiling/julia_example) for even more details!
 
 
 
