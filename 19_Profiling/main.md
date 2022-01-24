@@ -432,7 +432,7 @@ end
 
 
 ## Using `PProf` Pt. 2
-- Use `@profile` to collect information about our the function of interest (`analyze_data()`)
+- Use `@profile` to collect information about our function of interest (`analyze_data()`)
 - Save to a file `_03_profile_data.jlprof`
  
 ```julia
