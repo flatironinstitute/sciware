@@ -45,7 +45,15 @@ def timestep(pos):
 
 def cleanup(traj_file):
     for filepath in glob.glob(traj_file + "*"):
-        os.remove(filepath)
+        try:
+            os.remove(filepath)
+        except (FileNotFoundError):
+            # Trying to remove the 'traj.dat' file but it's already been removed.
+            # This can happen sometimes due to a race condition if multiple instances
+            # of the script are running. In production code, we would avoid this
+            # by using formal temp files/directories, but for this example we don't
+            # care as long as the file's gone, so just ignore the error.
+            pass
 
 
 def simulate(pos, traj_file, write_fun):
