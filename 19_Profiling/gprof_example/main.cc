@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <unordered_map>
+#include <omp.h>
 
 template <class V>
 class MyTable {
@@ -58,12 +59,21 @@ static double addup(MyTable<double> &table) {
 	return t;
 }
 
-int main() {
-	MyTable<double> table;
+static inline double timer() {
+	/* see also gettimeofday, std::chrono */
+	return omp_get_wtime();
+}
 
+int main() {
+	double t0, t1, t2, t3;
+	t0 = timer();
+	MyTable<double> table;
+	t1 = timer();
 	fill(table);
+	t2 = timer();
 	double r = addup(table);
-	printf("sum=%g\n", r);
+	t3 = timer();
+	printf("init=%f fill=%f add=%f sum=%g\n", t1-t0, t2-t1, t3-t2, r);
 
 	return 0;
 }
