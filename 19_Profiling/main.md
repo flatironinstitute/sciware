@@ -263,7 +263,9 @@ So on my laptop:
 
 - Example script is in `sciware/19_profiling/python_example/simulation.py`
 - To follow along, you'll `python3` with `numpy`, `snakeviz`, and `line-profiler`
-- A local display (or X forwarding) is needed for snakeviz
+- A local display (or X forwarding) is needed for snakeviz, though this is a minor part
+- Due to the nature of profiling, your results may vary significantly from your local machine
+  and the cluster used in this presentation
 - On an FI machine (or use conda/pip to install packages):
 ```bash
 module load python
