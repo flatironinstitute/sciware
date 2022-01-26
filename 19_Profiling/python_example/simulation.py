@@ -3,6 +3,7 @@ import os
 import glob
 import tempfile
 
+working_dir = "/mnt/ceph/users/rblackwell" # Path for our simulation data
 n_steps = 10000 # number of timesteps
 n_write = 10 # how many timesteps between each flush to file
 n_particles = 1000 # number of particles in our chain
@@ -63,7 +64,7 @@ def simulate(pos, traj_file, write_fun):
 
 if __name__ == '__main__':
     coords = np.zeros(shape=(n_dim, n_particles))
-    with tempfile.TemporaryDirectory(dir='.') as working_dir:
-        traj_file = os.path.join(working_dir, 'traj.dat')
+    with tempfile.TemporaryDirectory(dir=working_dir) as tmpdir:
+        traj_file = os.path.join(tmpdir, 'traj.dat')
         simulate(coords, traj_file, write_single)
         finalize()
