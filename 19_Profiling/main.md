@@ -246,6 +246,11 @@ So on my laptop:
 
 ## Complexity Never Goes Away
 
+<img src="assets/code-iceberg.jpg" height="600" width="450" />
+
+
+## Complexity Never Goes Away
+
 - High- and low-level tools are essential for monitoring
 - But implementation & context details matter
 - Next up: some tools that help dive into complexity
