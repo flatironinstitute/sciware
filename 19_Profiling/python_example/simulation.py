@@ -3,23 +3,24 @@ import os
 import glob
 import tempfile
 
-working_dir = "."                          # Path for our simulation data
-n_steps = 10000                            # number of timesteps
-n_write = 10                               # how many timesteps between each flush to file
-n_particles = 20                           # number of particles in our chain
-n_dim = 3                                  # number of dimensions or chain lives in
-D = 1.0                                    # diffusion coefficient
-dt = 0.01                                  # timestep
-kT = 1.0                                   # energy
-gamma = kT / D                             # drag
-k_spring = 0.1                             # spring constant between points on our chain
+working_dir = "."          # Path for our simulation data
+n_steps = 10000            # number of timesteps
+n_write = 10               # how many timesteps between each flush to file
+n_particles = 20           # number of particles in our chain
+n_dim = 3                  # number of dimensions or chain lives in
+D = 1.0                    # diffusion coefficient
+dt = 0.01                  # timestep
+kT = 1.0                   # energy
+gamma = kT / D             # drag
+k_spring = 0.1             # spring constant between points on our chain
 
 
 def write_handle(pos, traj_file, index=None):
-    """Write each simulation frame by appending to file, maintaining an open file handle"""
-    # Note: Using static variables like this is not good practice in most cases, but suits for
-    # simplicity in this example to maintain the same function signature. Better practice is to
-    # just pass a file handle in.
+    """Write each simulation frame by appending to file, maintaining an open file
+    handle"""
+    # Note: Using static variables like this is not good practice in most cases,
+    # but suits for simplicity in this example to maintain the same function
+    # signature. Better practice is to just pass a file handle in.
     if not hasattr(write_handle, 'f'):
         write_handle.f = open(traj_file, 'wb')
     write_handle.f.write(pos)
