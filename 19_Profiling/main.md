@@ -140,7 +140,7 @@ Activities where participants all actively work to foster an environment which e
 ## Calling `time`
 
 - Use as `$ /usr/bin/time -p EXECUTABLE`
-- Examples drawn from sciware repo `sciware/19_Profiiling/python_example/`
+- Examples drawn from sciware repo `sciware/19_Profiling/python_example/`
 
 So on my laptop:
 `$ /usr/bin/time -p src/sciware/19_Profiling/python_example/simulation.py`
@@ -254,9 +254,40 @@ So on my laptop:
 
 # Python profiling
 
-### Robert Blackwell
+### Robert Blackwell (SCC)
 
+## Examples
 
+- Example script is in `sciware/19_profiling/python_example/simulation.py`
+- To follow along, you'll `python3` with `numpy`, `snakeviz`, and `line-profiler`
+- A local display (or X forwarding) is needed for snakeviz
+- On an FI machine (or use conda/pip to install packages):
+```bash
+module load python
+source ~rblackwell/envs/sciware_19/bin/activate
+```
+
+## Python CPU profilers
+
+- Way too many to choose from, with different costs and benefits
+- cProfile/profile (built-in and our focus today)
+- line-profiler
+- scalene
+- pyFlame
+- py-spy
+- Palanteer
+
+## cProfile
+
+- Deterministic (hits every function)
+- Typically moderate overhead
+- No programmer setup cost - just works
+- No full call stack information (hard to tell what called what)
+- Great for a quick overview of where your program is spending time
+
+## Let's try it out!
+
+- `sciware/19_profiling/python_example/simulation.py`
 
 # Julia profiling
 
@@ -266,7 +297,7 @@ So on my laptop:
 ## Examples
 
 - All examples are in `sciware/19_profiling/julia_example`
-- To following along you'll need Julia and the following Julia packages:
+- To follow along you'll need Julia and the following Julia packages:
   - `PProf`
   - `FlameGraphs`
   - `FileIO`
