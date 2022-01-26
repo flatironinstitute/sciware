@@ -256,6 +256,9 @@ So on my laptop:
 
 ### Robert Blackwell (SCC)
 
+- Premature optimization is the root of all evil -- Donald Knuth
+
+
 ## Examples
 
 - Example script is in `sciware/19_profiling/python_example/simulation.py`
@@ -267,6 +270,7 @@ module load python
 source ~rblackwell/envs/sciware_19/bin/activate
 ```
 
+
 ## Python CPU profilers
 
 - Way too many to choose from, with different costs and benefits
@@ -277,6 +281,7 @@ source ~rblackwell/envs/sciware_19/bin/activate
 - py-spy
 - Palanteer
 
+
 ## cProfile
 
 - Deterministic (hits every function)
@@ -284,6 +289,7 @@ source ~rblackwell/envs/sciware_19/bin/activate
 - No programmer setup cost - just works
 - No full call stack information (hard to tell what called what)
 - Great for a quick overview of where your program is spending time
+
 
 ## Let's try it out!
 
