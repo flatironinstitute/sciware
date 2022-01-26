@@ -268,8 +268,8 @@ So on my laptop:
 - All examples are in `sciware/19_profiling/julia_example`
 - To following along you'll need Julia and the following Julia packages:
   - `PProf`
-  - `CSV`
-  - `DataFrames`
+  - `FlameGraphs`
+  - `FileIO`
 - You can install them by running `install_prereqs.jl`
 
 
@@ -278,8 +278,7 @@ So on my laptop:
 - Array/Matrix/Tensor memory access matters
 <div style="display: table; clear:both; width:100%;">
    <div style="float:left; width:50%">
-      <pre  style="font-size:0.6em; width:100%">
-    <code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
+      <pre  style="font-size:0.6em; width:100%"><code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
 function copy_cols(x::Vector{Float64})
     n = size(x, 1)
     out = zeros(Float64, n, n)
@@ -292,8 +291,7 @@ end
     </pre>
    </div>
    <div style="float:left; width:50%">
-     <pre  style="font-size:0.6em; width:100%">
-      <code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
+     <pre  style="font-size:0.6em; width:100%"><code data-trim data-noescape data-line-numbers="1,5" class="language-julia">
 function copy_rows(x::Vector{Float64})
     n = size(x, 1)
     out = zeros(Float64, n, n)
@@ -336,8 +334,7 @@ Copying vector to rows
 ## Using `@profile` Pt. 1
 <div style="display: table; clear:both; width:100%;">
    <div style="float:left; width:50%">
-      <pre  style="font-size:0.6em; width:100%">
-    <code data-trim data-noescape  class="language-julia">
+      <pre  style="font-size:0.6em; width:100%"><code data-trim data-noescape  class="language-julia">
 function add_no_prealloc(x::Vector{Float64})
     x_new = x .+ 3.0
     return x_new
@@ -346,8 +343,7 @@ end
     </pre>
    </div>
    <div style="float:left; width:50%">
-     <pre  style="font-size:0.6em; width:100%">
-      <code data-trim data-noescape  class="language-julia">
+     <pre  style="font-size:0.6em; width:100%"><code data-trim data-noescape  class="language-julia">
 function add_prealloc!(x::Vector{Float64})
     x .+= 3.0
     nothing
@@ -366,7 +362,6 @@ function main()
     x = zeros(10)
 
     println("\nShowing the profiling info")
-    Profile.clear()
     @profile (
         for i = 1:1e7
             add_no_prealloc(x)
@@ -408,40 +403,48 @@ Total snapshots: 800
 
 
 ## Using `PProf` Pt. 1
-- Now let's look at a more complicated function
-
-```julia
-function analyze_data()
-    # Read in data
-    df = CSV.read("data/noisy_data.csv", DataFrame; types = [Float64, Float64])
-
-    # Shorthands
-    x = Vector{Float64}(df[!, "X"])
-    y = Vector{Float64}(df[!, "Y"])
-
+ <pre  style="font-size:0.5em; width:60%"><code data-trim data-noescape  class="language-julia">
+function complicated_func()
+    # Pick parameters for our function
+    p = [0.1, -0.5, 0.42, -3, 0.01, -0.2]
+    n = 2000000
+    
+    # Setting up our data
+    x = LinRange(0, 10, n)
+    y = zeros(length(x))
+    
+    for i = 1:length(p)
+        y .+= p[i] * x .^ i
+    end
+    
+    # Add some noise
+    y .+= rand(n) * 0.01
+    
     # Setup X for solving
-    X = zeros(Float64, (length(x), 2))
-    X[:, 1] = sin.(x)
-    X[:, 2] = x .^ 2
-
+    X = zeros(Float64, (length(x), length(p)))
+    for i = 1:length(p)
+        X[:, i] = x .^ i
+    end
+    
     # Solve  Xβ=y
     β = X \ y
-    println(β)
-end
-```
+    error = (β - p) / norm(p)
+    println("Relative error in coefficients ", error)
+end      
+</code></pre>
 
 
 ## Using `PProf` Pt. 2
-- Use `@profile` to collect information about our function of interest (`analyze_data()`)
+- Use `@profile` to collect information about our function of interest (`complicated_func()`)
 - Save to a file `_03_profile_data.jlprof`
  
 ```julia
 function main()
 
-    Profile.clear()
-    @profile analyze_data()
+    @profile complicated_func()
     Profile.print(format = :tree, maxdepth = 9)
 
+    # Save the data for later
     save("_03_profile_data.jlprof", Profile.retrieve()...)
 
 end
