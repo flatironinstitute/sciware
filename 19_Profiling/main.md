@@ -544,7 +544,14 @@ julia> pprof(g)
 - Program must not be killed/crash
 - Analyze with: `gprof myprog gmon.out`
 
-[*Example*: 19_Profiling/gprof_example](gprof_example)
+
+## Example
+
+- Two implementations of a table (selected by `#define`):
+   - Simple dense array: fast & big
+   - Sparse `unordered_map`: small & slow
+
+[`19_Profiling/gprof_example`](gprof_example)
 
 
 ## Takeaways
