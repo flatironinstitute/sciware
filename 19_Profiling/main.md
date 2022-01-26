@@ -60,7 +60,7 @@ Activities where participants all actively work to foster an environment which e
 ## Goal
 
 - We always want everything to take less time
-- Need a way to quantify "less". And measure "time".
+- Need a way to measure "less". And quantify "time".
 - It's easy to figure out how much time something takes... right?
 
 <img height="60%" src="assets/clock-time.jpg">

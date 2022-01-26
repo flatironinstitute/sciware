@@ -41,21 +41,19 @@ public:
 	}
 };
 
-#define STRIDE 256
-#define COUNT (UINT32_MAX/STRIDE)
+#define COUNT (UINT32_MAX/256)
 
 /* set values in some subset of table entries (every STRIDE) */
 static void fill(MyTable<double> &table) {
 	for (unsigned x = 0; x < COUNT; x++)
-		table.set(STRIDE*x, sqrt((double)x));
+		table.set(rand(), sqrt((double)x));
 }
 
 /* add up some (pseudo-)random entries */
 static double addup(MyTable<double> &table) {
 	double t = 0;
-	srand(1);
 	for (unsigned x = 0; x < COUNT; x ++)
-		t += table.get(rand());
+		t += sqrt(table.get(rand()));
 	return t;
 }
 
@@ -66,6 +64,8 @@ static inline double timer() {
 
 int main() {
 	double t0, t1, t2, t3;
+	srand(1);
+
 	t0 = timer();
 	MyTable<double> table;
 	t1 = timer();
@@ -73,7 +73,7 @@ int main() {
 	t2 = timer();
 	double r = addup(table);
 	t3 = timer();
-	printf("init=%f fill=%f add=%f sum=%g\n", t1-t0, t2-t1, t3-t2, r);
+	printf("init=%f fill=%f add=%f total=%f res=%g\n", t1-t0, t2-t1, t3-t2, t3-t0, r);
 
 	return 0;
 }
