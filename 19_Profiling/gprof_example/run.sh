@@ -17,5 +17,5 @@ echo
 GMON_OUT_PREFIX=gmon_map   run \time ./run_map
 mv gmon_map.*   gmon_map
 
-gprof run_array gmon_array > gprof_array
-gprof run_map   gmon_map   > gprof_map
+gprof run_array gmon_array > gprof_array.txt
+gprof run_map   gmon_map   > gprof_map.txt

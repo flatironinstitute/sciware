@@ -1,6 +1,6 @@
 # gprof example
 - [code](main.cc)
-- [run script](run), example output:
+- [run script](run.sh), example output:
    ```
    g++ -g -pg -Wall -std=c++20 -fopenmp -o run_array main.cc
    g++ -g -pg -Wall -std=c++20 -fopenmp -DUSE_UNORDERED_MAP=1 -o run_map main.cc
@@ -13,4 +13,4 @@
    init=0.000004 fill=24.568832 add=10.684079 sum=1.2692e+08
    38.09user 0.62system 0:38.71elapsed 99%CPU (0avgtext+0avgdata 719400maxresident)k
    ```
-- example gprof output: [array](gprof_array), [map](gprof_map)
+- example gprof output: [array](gprof_array.txt), [map](gprof_map.txt)

@@ -523,7 +523,7 @@ julia> pprof(g)
 
 
 
-# C profiling
+# C/C++ profiling
 
 ## with gprof
 
