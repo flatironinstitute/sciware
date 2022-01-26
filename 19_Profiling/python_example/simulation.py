@@ -3,7 +3,7 @@ import os
 import glob
 import tempfile
 
-working_dir = "/mnt/ceph/users/rblackwell" # Path for our simulation data
+working_dir = "."                          # Path for our simulation data
 n_steps = 10000                            # number of timesteps
 n_write = 10                               # how many timesteps between each flush to file
 n_particles = 1000                         # number of particles in our chain
