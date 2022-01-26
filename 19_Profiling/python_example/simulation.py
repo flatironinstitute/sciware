@@ -6,7 +6,7 @@ import tempfile
 working_dir = "."                          # Path for our simulation data
 n_steps = 10000                            # number of timesteps
 n_write = 10                               # how many timesteps between each flush to file
-n_particles = 1000                         # number of particles in our chain
+n_particles = 20                           # number of particles in our chain
 n_dim = 3                                  # number of dimensions or chain lives in
 D = 1.0                                    # diffusion coefficient
 dt = 0.01                                  # timestep
@@ -37,16 +37,29 @@ def write_single(pos, traj_file, index):
         f.write(pos)
 
 
-def timestep(pos):
+def timestep_vector(pos):
     """Steps a chain via a Brownian walk"""
-    dx_diffusion = np.random.normal(loc=0.0,
-                                    scale=np.sqrt(2 * dt * D),
-                                    size=pos.shape)
-    dx_spring = k_spring * (pos[:, 1:-1] - pos[:, 0:-2]) * dt / gamma
-    pos[:, 0:-2] += dx_spring
-    pos[:, 1:-1] -= dx_spring
-    pos += dx_diffusion
+    dx_spring = k_spring * (pos[1:-1, :] - pos[0:-2, :]) * dt / gamma
+    pos[0:-2, :] += dx_spring
+    pos[1:-1, :] -= dx_spring
+    pos += np.random.normal(loc=0.0,
+                            scale=np.sqrt(2 * dt * D),
+                            size=pos.shape)
 
+
+def timestep_loop(pos):
+    """Steps a chain via a Brownian walk"""
+    # Add systemic link interaction terms
+    for i_part in range(0, n_particles - 1):
+        j_part = i_part + 1
+        dx_spring = k_spring * (pos[j_part, :] - pos[i_part, :]) * dt / gamma
+        pos[i_part, :] += dx_spring
+        pos[j_part, :] -= dx_spring
+
+    # Add diffusive term
+    pos += np.random.normal(loc=0.0,
+                            scale=np.sqrt(2 * dt * D),
+                            size=pos.shape)
 
 def finalize():
     """Closes any open file handles"""
@@ -57,13 +70,13 @@ def finalize():
 def simulate(pos, traj_file, write_fun):
     """Simulates a chain, writing to file every n_write timesteps"""
     for i_step in range(n_steps):
-        timestep(pos)
+        timestep_loop(pos)
         if i_step % n_write == 0:
             write_fun(pos, traj_file, i_step // n_write)
 
 
 if __name__ == '__main__':
-    coords = np.zeros(shape=(n_dim, n_particles))
+    coords = np.zeros(shape=(n_particles, n_dim))
     with tempfile.TemporaryDirectory(dir=working_dir) as tmpdir:
         traj_file = os.path.join(tmpdir, 'traj.dat')
         simulate(coords, traj_file, write_single)
