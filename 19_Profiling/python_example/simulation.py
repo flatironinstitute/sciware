@@ -4,15 +4,15 @@ import glob
 import tempfile
 
 working_dir = "/mnt/ceph/users/rblackwell" # Path for our simulation data
-n_steps = 10000 # number of timesteps
-n_write = 10 # how many timesteps between each flush to file
-n_particles = 1000 # number of particles in our chain
-n_dim = 3 # number of dimensions or chain lives in
-D = 1.0 # diffusion coefficient
-dt = 0.01 # timestep
-kT = 1.0 # energy
-gamma = kT / D # drag
-k_spring = 0.1 # spring constant between points on our chain
+n_steps = 10000                            # number of timesteps
+n_write = 10                               # how many timesteps between each flush to file
+n_particles = 1000                         # number of particles in our chain
+n_dim = 3                                  # number of dimensions or chain lives in
+D = 1.0                                    # diffusion coefficient
+dt = 0.01                                  # timestep
+kT = 1.0                                   # energy
+gamma = kT / D                             # drag
+k_spring = 0.1                             # spring constant between points on our chain
 
 
 def write_handle(pos, traj_file, index=None):

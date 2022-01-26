@@ -273,7 +273,8 @@ source ~rblackwell/envs/sciware_19/bin/activate
 
 ## Python CPU profilers
 
-- Way too many to choose from, with different costs and benefits
+### Way too many to choose from, with different costs and benefits
+
 - cProfile/profile (built-in and our focus today)
 - line-profiler
 - scalene
@@ -282,7 +283,7 @@ source ~rblackwell/envs/sciware_19/bin/activate
 - Palanteer
 
 
-## cProfile
+## cProfile - a python staple
 
 - Deterministic (hits every function)
 - Typically moderate overhead
@@ -294,6 +295,8 @@ source ~rblackwell/envs/sciware_19/bin/activate
 ## Let's try it out!
 
 - `sciware/19_profiling/python_example/simulation.py`
+
+
 
 # Julia profiling
 
