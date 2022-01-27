@@ -75,6 +75,16 @@ Activities where participants all actively work to foster an environment which e
 - Which parts take time?
 
 
+## Time units
+
+- "Wall time" = time
+- "CPU time" = cpu cores * time
+   - Multiple threads
+   - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
+   - "CPU hours": cluster usage (allocated, may be idle), 130k cores = 1.1B cpu hours/year
+- \\[ \frac{\text{CPU time}}{\text{Wall time}} = \text{%CPU} \\] (average number of cores used)
+
+
 ## Profilers
 
 - Tools to break down which parts of your code take time
@@ -106,15 +116,6 @@ Activities where participants all actively work to foster an environment which e
 - Code when observed... runs slower
 
 <img width="35%" src="assets/heisenberg.png" class="plain">
-
-
-## Time units
-
-- "Wall time" = time
-- "CPU time" = cpu cores * time
-   - Multiple threads
-   - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
-   - "CPU hours": cluster usage (allocated, may be idle), 130k cores = 1.1B cpu hours/year
 
 
 
