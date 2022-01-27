@@ -605,15 +605,15 @@ julia> pprof(g)
 ## Example
 
 - Two implementations of a table (selected by `#define`):
-   - Simple dense array: fast & big
-   - Sparse `unordered_map`: small & slow
+   - Dense array
+   - Sparse `unordered_map`
 
 [`19_Profiling/gprof_example`](gprof_example)
 
 
 ## Takeaways
 
-- Only profiles functions compiled with profiling
+- Only functions compiled with profiling included in report, timing
 - Consider memory vs. time tradeoffs
    - Sometimes using more memory can allow faster approaches
    - (Our nodes have a lot of memory)
