@@ -82,7 +82,7 @@ Activities where participants all actively work to foster an environment which e
    - Multiple threads
    - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
    - "CPU hours": cluster usage (allocated, may be idle), 130k cores = 1.1B cpu hours/year
-- \\[ \frac{\text{CPU time}}{\text{Wall time}} = \text{%CPU} \\] (average number of cores used)
+- \\[ \frac{\text{CPU time}}{\text{Wall time}} = %\text{CPU} \\] (average number of cores used)
 
 
 ## Profilers
