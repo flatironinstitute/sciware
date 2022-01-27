@@ -146,7 +146,9 @@ Activities where participants all actively work to foster an environment which e
 - Examples drawn from sciware repo `sciware/19_Profiling/python_example/`
 
 So on my laptop:
-`$ /usr/bin/time -p src/sciware/19_Profiling/python_example/simulation.py`
+<pre>
+$ /usr/bin/time -p src/sciware/19_Profiling/python_example/simulation.py
+</pre>
 
 
 ## What `time` shows
@@ -185,7 +187,7 @@ So on my laptop:
 - Need to look at context!
   - System load? (`htop`!)
   - Hardware issues? (`iowait`)
-  - Memory? (garbage collection, swapping...)
+  - Memory? (garbage collection, swapping, cache...)
   - Concurrency/system interactions? (network latency...)
   - etc
 - **Complexity does not go away just because you put it in a black-box**
@@ -202,7 +204,7 @@ So on my laptop:
 
 ## How to `timeit`
 
-- Command line:
+- Command line:<br/>
 `python -m timeit 'print("Hello world!")'`
 - From inside a script
 - (See https://docs.python.org/3/library/timeit.html)
@@ -226,25 +228,72 @@ So on my laptop:
 - Numpy's not faster????
 
 
-## Complexity Never Goes Away
+## A
+
+Vector manipuations with built-in arrays and explicit loops:
+
+```
+python -m timeit "
+a = range(100)
+b = range(99, -1, -1)
+c = []
+for x, index in enumerate(a):
+  c.append(x + b[index])
+d = []
+for x in a:
+  d.append(6 * x)
+print(c, file=sys.stderr)
+print(d, file=sys.stderr)
+"
+```
+
+
+## B
+
+The same vector manipulations with numpy arrays:
+
+```
+python -m timeit "
+import numpy as np
+a = np.arange(100)
+b = np.arange(99, -1, -1)
+c = a + b
+d = 6 * a
+print(c, file=sys.stderr)
+print(d, file=sys.stderr)
+"
+```
+
+
+## I/O Makes A Difference
+
+```
+...
+print(d, file=sys.stderr)
+" 2>/dev/null
+```
 
 - Suppress screen printing by adding `2>/dev/null`
   - loop version now: ~30 usec/loop (down from 80)
   - numpy version now: ~260 usec/loop (down from 320)
 - I/O time is non-negligible! (Observation affects results)
+
+
+## Use Representative Data
+
 - Increase the number ranges to 1 million instead of 100
-  - loop version now takes 324 msec/loop (vs 30 usec)
+  - loop version now takes ~300 msec/loop (vs 30 usec)
   - numpy version now takes ~3 msec/loop (vs 300 usec)
   - numpy now 100x faster than loop
 - Test cases need to be representative of data
 
 
-## Complexity Never Goes Away
+## Small Changes, Big Effects
 
 - Remove the `print` statements entirely?
   - loop version now ~17 usec/loop
   - numpy version now ~2 usec/loop (!)
-  - (Turns out converting numpy arrays to strings is really expensive!)
+  - (Converting numpy arrays to strings is really expensive!)
 
 
 ## Complexity Never Goes Away
@@ -254,8 +303,8 @@ So on my laptop:
 
 ## Complexity Never Goes Away
 
-- High- and low-level tools are essential for monitoring
-- But implementation & context details matter
+- Basic tools are useful but tricky
+- **Details count!** (implementation & context)
 - Next up: some tools that help dive into complexity
 
 
