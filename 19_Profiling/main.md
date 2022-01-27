@@ -48,7 +48,7 @@ Activities where participants all actively work to foster an environment which e
 - Time
 - Python
 - Julia
-- C
+- C/C++
 
 
 
@@ -60,7 +60,7 @@ Activities where participants all actively work to foster an environment which e
 ## Goal
 
 - We always want everything to take less time
-- Need a way to measure "less". And quantify "time".
+- Need a way to define "less". And quantify "time".
 - It's easy to figure out how much time something takes... right?
 
 <img height="60%" src="assets/clock-time.jpg">
@@ -70,9 +70,9 @@ Activities where participants all actively work to foster an environment which e
 
 - Useful baseline measure
 - Can compare changes (algorithms, dependencies, architectures, anything...)
-- Which parts take time?
 - What if it takes weeks? (Or milliseconds?)
-- Wall time is a noisy measure (system, scheduling, filesystem, network overhead)
+   - Wall time is a noisy measure (system, scheduling, filesystem, network overhead)
+- Which parts take time?
 
 
 ## Profilers
@@ -92,8 +92,8 @@ Activities where participants all actively work to foster an environment which e
    - Is this part running too many times?
    - Do the counts make sense (think about loops, sanity check)?
    - Are unexpected parts slow?
-- Can this be faster?
 - Is this necessary?
+- Can this be faster?
 - Calculation *has* to take time...
 
 
@@ -103,7 +103,9 @@ Activities where participants all actively work to foster an environment which e
    - Smaller data sets, fewer iterations
 - Profiling doesn't require getting results, just running code
 - Can use smaller profiling results to infer longer run times (multiply!)
-- Heisenberg: code when observed... runs slower
+- Code when observed... runs slower
+
+<img width="30%" src="assets/heisenberg.png">
 
 
 ## Time units
