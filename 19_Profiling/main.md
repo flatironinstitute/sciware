@@ -63,7 +63,7 @@ Activities where participants all actively work to foster an environment which e
 - Need a way to define "less". And quantify "time".
 - It's easy to figure out how much time something takes... right?
 
-<img height="60%" src="assets/clock-time.jpg">
+<img height="60%" src="assets/clock-time.jpg" class="plain">
 
 
 ## "Wall time"
@@ -105,7 +105,7 @@ Activities where participants all actively work to foster an environment which e
 - Can use smaller profiling results to infer longer run times (multiply!)
 - Code when observed... runs slower
 
-<img width="30%" src="assets/heisenberg.png">
+<img width="35%" src="assets/heisenberg.png" class="plain">
 
 
 ## Time units
@@ -573,7 +573,7 @@ julia> pprof(g)
 ## Alternatives
 
 - oprofile (full system)
-- vtune (processor stats)
+- vtune (processor stats, Sciware 2020-Jun-18 recording)
 - ...
 - what do you use?
 
