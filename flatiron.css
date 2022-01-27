@@ -396,3 +396,7 @@ div.two-column {
 .grid-item > pre code {
   margin: 0;
 }
+
+.big-math > span {
+  font-size: 100% !important;
+}
