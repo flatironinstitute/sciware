@@ -317,6 +317,7 @@ source ~rblackwell/envs/sciware_19/bin/activate
 
 - All examples are in `sciware/19_profiling/julia_example`
 - To follow along you'll need Julia and the following Julia packages:
+  - `BenchmarkTools`
   - `PProf`
   - `FlameGraphs`
   - `FileIO`
