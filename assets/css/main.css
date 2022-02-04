@@ -2043,6 +2043,16 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
+		.inline-icon:before {
+			padding-left: .5rem;
+		}
+
+		.inline-date {
+			padding-left: .5rem;
+			font-size: 75%;
+			color: #787878;
+		}
+
 /* Image */
 
 	.image {
