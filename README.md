@@ -21,4 +21,4 @@ A developing series of meetings about software development for science.
 - Jul 08, 2021 [Intro to editing code](16_EditorsVSCode): an introduction to using IDEs and code editors, using VSCode as an example
 - Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender): and introduction and demo to visualising scientific data in blender
 - Nov 04, 2021 [Using the Flatiron Cluster](17_FICluster): a performance-minded guide to using the computing clusters available at Flatiron Institute
-- Jan 27, 2021 [Performance troubleshooting and profiling](19_Profiling): Using profiling tools to improve the performance of your code
+- Jan 27, 2022 [Performance troubleshooting and profiling](19_Profiling): Using profiling tools to improve the performance of your code

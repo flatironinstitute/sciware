@@ -4,15 +4,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <unordered_map>
+#include <stdexcept>
 #include <omp.h>
 
 template <class V>
 class MyTable {
-#ifdef USE_UNORDERED_MAP
-	/* sparse array: only store values as assigned */
-	std::unordered_map<unsigned, V> map;
-
-#else
+#ifndef USE_UNORDERED_MAP
 	/* dense array: pre-allocate 4B entries */
 	V *map;
 
@@ -23,12 +20,15 @@ public:
 	~MyTable() {
 		free(map);
 	}
+#else
+	/* sparse array: only store values as assigned */
+	std::unordered_map<unsigned, V> map;
 #endif
 
-public:
 	V &index(unsigned i) {
 		return map[i];
 	}
+public:
 	V get(unsigned i) {
 #ifdef USE_UNORDERED_MAP
 		if (!map.contains(i))

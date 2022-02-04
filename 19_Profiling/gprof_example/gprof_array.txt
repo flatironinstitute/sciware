@@ -3,15 +3,14 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls   s/call   s/call  name    
- 74.40      7.16     7.16 16777215     0.00     0.00  MyTable<double>::set(unsigned int, double)
- 24.71      9.53     2.38 16777215     0.00     0.00  MyTable<double>::get(unsigned int)
-  0.63      9.59     0.06 33554430     0.00     0.00  MyTable<double>::index(unsigned int)
-  0.52      9.64     0.05        1     0.05     2.46  addup(MyTable<double>&)
-  0.05      9.65     0.01                             main
-  0.00      9.65     0.00        4     0.00     0.00  timer()
-  0.00      9.65     0.00        1     0.00     7.19  fill(MyTable<double>&)
-  0.00      9.65     0.00        1     0.00     0.00  MyTable<double>::MyTable()
-  0.00      9.65     0.00        1     0.00     0.00  MyTable<double>::~MyTable()
+ 73.92      7.05     7.05 16777215     0.00     0.00  MyTable<double>::set(unsigned int, double)
+ 24.92      9.43     2.38 16777215     0.00     0.00  MyTable<double>::get(unsigned int)
+  0.63      9.49     0.06        1     0.06     2.46  addup(MyTable<double>&)
+  0.42      9.53     0.04 33554430     0.00     0.00  MyTable<double>::index(unsigned int)
+  0.42      9.57     0.04        1     0.04     7.11  fill(MyTable<double>&)
+  0.00      9.57     0.00        4     0.00     0.00  timer()
+  0.00      9.57     0.00        1     0.00     0.00  MyTable<double>::MyTable()
+  0.00      9.57     0.00        1     0.00     0.00  MyTable<double>::~MyTable()
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -49,36 +48,36 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 0.10% of 9.65 seconds
+granularity: each sample hit covers 2 byte(s) for 0.10% of 9.57 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.01    9.64                 main [1]
-                0.00    7.19       1/1           fill(MyTable<double>&) [3]
-                0.05    2.41       1/1           addup(MyTable<double>&) [4]
+[1]    100.0    0.00    9.57                 main [1]
+                0.04    7.07       1/1           fill(MyTable<double>&) [2]
+                0.06    2.40       1/1           addup(MyTable<double>&) [4]
                 0.00    0.00       4/4           timer() [13]
                 0.00    0.00       1/1           MyTable<double>::MyTable() [14]
                 0.00    0.00       1/1           MyTable<double>::~MyTable() [15]
 -----------------------------------------------
-                7.16    0.03 16777215/16777215     fill(MyTable<double>&) [3]
-[2]     74.5    7.16    0.03 16777215         MyTable<double>::set(unsigned int, double) [2]
-                0.03    0.00 16777215/33554430     MyTable<double>::index(unsigned int) [6]
+                0.04    7.07       1/1           main [1]
+[2]     74.3    0.04    7.07       1         fill(MyTable<double>&) [2]
+                7.05    0.02 16777215/16777215     MyTable<double>::set(unsigned int, double) [3]
 -----------------------------------------------
-                0.00    7.19       1/1           main [1]
-[3]     74.5    0.00    7.19       1         fill(MyTable<double>&) [3]
-                7.16    0.03 16777215/16777215     MyTable<double>::set(unsigned int, double) [2]
+                7.05    0.02 16777215/16777215     fill(MyTable<double>&) [2]
+[3]     73.9    7.05    0.02 16777215         MyTable<double>::set(unsigned int, double) [3]
+                0.02    0.00 16777215/33554430     MyTable<double>::index(unsigned int) [6]
 -----------------------------------------------
-                0.05    2.41       1/1           main [1]
-[4]     25.5    0.05    2.41       1         addup(MyTable<double>&) [4]
-                2.38    0.03 16777215/16777215     MyTable<double>::get(unsigned int) [5]
+                0.06    2.40       1/1           main [1]
+[4]     25.7    0.06    2.40       1         addup(MyTable<double>&) [4]
+                2.38    0.02 16777215/16777215     MyTable<double>::get(unsigned int) [5]
 -----------------------------------------------
-                2.38    0.03 16777215/16777215     addup(MyTable<double>&) [4]
-[5]     24.9    2.38    0.03 16777215         MyTable<double>::get(unsigned int) [5]
-                0.03    0.00 16777215/33554430     MyTable<double>::index(unsigned int) [6]
+                2.38    0.02 16777215/16777215     addup(MyTable<double>&) [4]
+[5]     25.1    2.38    0.02 16777215         MyTable<double>::get(unsigned int) [5]
+                0.02    0.00 16777215/33554430     MyTable<double>::index(unsigned int) [6]
 -----------------------------------------------
-                0.03    0.00 16777215/33554430     MyTable<double>::set(unsigned int, double) [2]
-                0.03    0.00 16777215/33554430     MyTable<double>::get(unsigned int) [5]
-[6]      0.6    0.06    0.00 33554430         MyTable<double>::index(unsigned int) [6]
+                0.02    0.00 16777215/33554430     MyTable<double>::set(unsigned int, double) [3]
+                0.02    0.00 16777215/33554430     MyTable<double>::get(unsigned int) [5]
+[6]      0.4    0.04    0.00 33554430         MyTable<double>::index(unsigned int) [6]
 -----------------------------------------------
                 0.00    0.00       4/4           main [1]
 [13]     0.0    0.00    0.00       4         timer() [13]
@@ -180,6 +179,6 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [3] fill(MyTable<double>&) (main.cc) [5] MyTable<double>::get(unsigned int) [14] MyTable<double>::MyTable()
-   [4] addup(MyTable<double>&) (main.cc) [2] MyTable<double>::set(unsigned int, double) [15] MyTable<double>::~MyTable()
-  [13] timer() (main.cc)       [6] MyTable<double>::index(unsigned int) [1] main
+   [2] fill(MyTable<double>&) (main.cc) [5] MyTable<double>::get(unsigned int) [14] MyTable<double>::MyTable()
+   [4] addup(MyTable<double>&) (main.cc) [3] MyTable<double>::set(unsigned int, double) [15] MyTable<double>::~MyTable()
+  [13] timer() (main.cc)       [6] MyTable<double>::index(unsigned int)
