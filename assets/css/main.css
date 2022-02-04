@@ -2047,6 +2047,10 @@ input, select, textarea {
 			padding-left: .5rem;
 		}
 
+		.inline-icon:hover{
+			color: #787878 !important;
+		}
+
 		.inline-date {
 			padding-left: .5rem;
 			font-size: 75%;
