@@ -22,3 +22,4 @@ A developing series of meetings about software development for science.
 - Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender): and introduction and demo to visualising scientific data in blender
 - Nov 04, 2021 [Using the Flatiron Cluster](17_FICluster): a performance-minded guide to using the computing clusters available at Flatiron Institute
 - Jan 27, 2022 [Performance troubleshooting and profiling](19_Profiling): Using profiling tools to improve the performance of your code
+- Mar 03, 2022 [Documentation: How to Win Users and Influence Science]: Creating documentation that makes software friendlier to yourself and to others.
