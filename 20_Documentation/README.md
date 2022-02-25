@@ -1,6 +1,6 @@
 # Documentation
 ### How to win users and influence science
-- Mar 3, 2022
+- Mar 24, 2022
 - 3:00-5:00pm
 - Zoom / 3rd floor classroom
 
