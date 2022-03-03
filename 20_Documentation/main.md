@@ -44,3 +44,39 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's agenda
 
+
+# Tools to Generate Documentation
+
+
+## Tools to Generate Documentation
+
+- Let's break "documentation" into two categories
+    - **Narrative** documentation: high-level, "instruction manual" prose
+    - **API** documentation: granular technical specifications
+
+
+## Tools for Narrative Documentation
+- In order of increasing feature-richness and complexity
+    - The `README`
+    - Wiki
+    - Jekyll + static web hosting (e.g. GitHub Pages)
+    - Sphinx + ReadTheDocs
+
+
+## Narrative Documentation: the `README`
+- The simplest form of top-level documentation
+- Highly portable, easily rendered into a webpage or read in a terminal
+- Often where you will start documentation—don't underestimate the usefulness!
+    - Great idea to jot down the steps to run your code in a `README` as soon as you start
+    - We all promise ourselves we'll set up beautiful documentation later, but in case that doesn't happen, a `README` is a lifesaver
+- GitHub and other code hosting sites will render your `README`
+
+
+## Formatting the `README`
+- Two popular languages to make your plain-text `README` look nice online:
+    - Markdown (`README.md`)
+    - reStructuredText (`README.rst`)
+- Either one will help you render text
+
+<img width="40%" src="assets/raw_readme_md.png" class="plain">
+<img width="30%" src="assets/rendered_md.png" class="plain">
