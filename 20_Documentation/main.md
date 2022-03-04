@@ -55,7 +55,8 @@ Activities where participants all actively work to foster an environment which e
 Anything that helps explain or understand code!
 
 - Code itself?
-  - (Insert pointer to "functions" sciware video & repo here)
+  - name of a function and names of its args are a form of doc:
+  https://github.com/ahbarnett/sciware/tree/main/12_Functions
 - Papers?
 - A manual?
 
@@ -89,7 +90,7 @@ We'll talk about other scales and audiences again in the future
 
 ## Audience: Who are you talking to
 
-Documentation isn't there "just because," it should be saying something useful to someone.
+Documentation isn't there "just because," it should be saying something useful to someone.-
 
 - Messages only have meaning in relation to an audience
 - What does your audience want to accomplish?
@@ -122,10 +123,15 @@ Tell your audience things they don't know but can understand
   - Function-by-function may not be the only or best way to organize/analyze what your code can do
   - You must never confuse lengthiness with completeness! --> This point might belong elsewhere
 
+Insert good and bad function API doc examples.
+- make up one. Then give improved one.
+
+<!--
 (Ex: psycopg2 (Postgres database adapter in Python) only allows Python tuples for a `WHERE foo IN (%s)` clause,
 and only allows Python lists for a `WHERE foo = ANY (%s)`. The two expressions do almost the exact same thing,
 but the valid data inputs are in complementary distribution. This is documented as a throwaway in one
 sentence of a several-thousand-line API documentation doc.)
+-->
 
 - Use any time you're releasing an API for public use
 
@@ -136,20 +142,25 @@ Q: What order should you write these in?
 A: Write them all at once!
 Good practices are mutually interdependent (I try to make this point every SciWare)
 
+Personally: write doc first, then test, then function body.
 
 ## Readmes
 
-- "How do I get and run this package"
+- "How do I get and run this package"   - link to good example
 - Audience:
   - New users of the software
   - People who may be calling your code as a step in a pipeline (rather than interacting with your functions as an API)
 - Tells users how to install the package & make sure it works
 - Describes some of the functionality but probably only scratches the surface of what your code can do
+- Include a minimal usage example, eg:
+     https://emcee.readthedocs.io/en/stable/
 - Needed for any package, but it's probably only the start
 
 ## Narrative Documentation
 
-- "What-all can this package do" to "Tell me technical details about this package"
+- "What-all can this package do" to "Tell me technical details about this package", user manual. FINUFFT manual.
+   https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
+
 - Audience:
   - More sophisticated users who want to know how to handle the non-modal use case
   - People who want to know more about how your system works
@@ -167,6 +178,7 @@ Good practices are mutually interdependent (I try to make this point every SciWa
   - All users, from basic to sophisticated uses
   - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
   - Can be a "cookbook", a gallery, or if extensive enough, a way to show exhaustively what your tool can do
+  - how to string together may funcs in a package.  Use FINUFFT tutorial.
 - Fully worked (and working!) examples
   - Ideally cover the full gamut of what people would want to do with your tool
   - Distinction: Unlike API documentation, this does *not* need to be organized the same way as your implementation/code!
@@ -219,7 +231,7 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 
 
 
-# Writing API Documentation
+# Writing API Documentation (Bob)
 
 ## The doc/test/code triangle
 
