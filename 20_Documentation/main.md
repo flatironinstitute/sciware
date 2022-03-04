@@ -225,12 +225,13 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 
 - When desiging a function, consider together
     1. **Documentation**: says what the code does
-    2. **Testing**: tests it does what it says it does
-    3. **Code**: the code itself
+  	2. **Testing**: tests it does what it says it does
+	  3. **Code**: the code itself
 - Bad smells
-  - if code is hard to doc, it's probably badly designed
-  - if code is hard to test from the doc, either the code is badly
-    designed or the doc is incomplete
+    - if code is hard to doc, it's probably badly designed
+    - if code is hard to test from the doc, either the code is badly
+      designed or the doc is incomplete
+
 
 ## Exercise 1
 
@@ -255,12 +256,12 @@ Things to document:
 
 # Answer 1: Tests
 
-- What do we test?
-  - throw the appropriate exception when argument is wrong shape
-  - when arg is empty, return 0 (unit under addition is always the base value)
- length 1 input, and at least one longer input
-  - behavior when one or more arguments is not-a-number or infinite?
-  - behavior when no argument is given?
+* What do we test?
+    - throw the appropriate exception when argument is wrong shape
+    - when arg is empty, return 0 (unit under addition is always the base value)
+	  - length 1 input, and at least one longer input
+    - behavior when one or more arguments is not-a-number or infinite?
+    - behavior when no argument is given?
 
 # Answer 1: Code
 
@@ -293,19 +294,20 @@ def mySum(v: np.array) -> np.float64:
 
 - Consider how the above code might break with different type
 arguments.
-  - Does the type hint save you or should there be more code?
+    - Does the type hint save you or should there be more code?
 
 - Consider generalizing `mySum` to deal with different type and
 different shape arguments.
-  - How does the doc differ?
-  - Will it be enough to base testing on?
+    - How does the doc differ?
+    - Will it be enough to base testing on?
+    - Does the type hint save you or should there be more code?
 
 ## Thought Exercises 3, 4
 
 - Consider writing a function `myAvg` to calculate the average of an array.
-  - How much different is this than `mySum` in terms of code?
-  - How does the documentation differ?
-  - How will testing differ?
+    - How much different is this than `mySum` in terms of code?
+    - How does the documentation differ?
+    - How will testing differ?
 
 - Do the same for `mySD` that calculates the standard deviation of an array.
 
@@ -314,11 +316,14 @@ different shape arguments.
 - The main difference is that `myAvg` is not well defined for
 zero-length inputs.
 - Did you decide to
-  - return not-a-number because that follows the divide-by-zero
+    - return not-a-number because that follows the divide-by-zero
       floating-point arithmetic?
-  - throw an exception to help the user by failing early?
+    - throw an exception to help the user by failing early?
 
 - `mySD` has two standard definitions
-  - divide by `size` is the maximum likelihood estimate
-  - dividing by `size - 1` gives an unbiased estimate
-  - how do these affect the code and doc?
+    - divide by `size` is the maximum likelihood estimate
+    - dividing by `size - 1` gives an unbiased estimate
+    - how do these affect the code and doc?
+    - return not-a-number because that follows the divide-by-zero
+      floating-point arithmetic?
+    - throw an exception to help the user by failing early?
