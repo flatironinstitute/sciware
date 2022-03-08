@@ -44,17 +44,26 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's agenda
 
+Documentation
 
-# Principles and Definitions
+- why: overview, examples, and scope for today
 
-(These all need examples, screenshots, tone polishing, etc. This is just an extended outline.)
+- how:
+  - tools for nice docs (web-facing, manuals, etc)
+  - writing API docs (ie docs for a function)
+
+
+
+# Documentation: Principles and Definitions
 
 
 ## What is documentation?
 
-Anything that helps explain or understand code!
+Helps someone use and understand a code or software tool
 
-- Code itself?
+(cut this)
+
+- The code itself?
   - name of a function and names of its args are a form of doc:
   https://github.com/ahbarnett/sciware/tree/main/12_Functions
 - Papers?
@@ -63,23 +72,52 @@ Anything that helps explain or understand code!
 Explain _to whom_? Understand _by whom_?
 
 
-## Okay sure, but what documentation are we talking about today?
+## What documentation are we talking about today?
 
-Today's session looks at documentation that:
+- User-facing: users (not developers) of your code
+  - this includes _your future self_: <6 months you forget how to use own code!
+- Text that can be seen without opening a code editor (or reading a journal)
+  - eg typing in {\tt ipython}
+    ```python
+    ?range
+    ```
 
-- Can be seen without opening a code editor (or a journal subscription)
-- Intended for people who run the code but aren't contributing to it
+    (give output). Called inline doc
 
-We'll talk about other scales and audiences again in the future
+  - eg typing in {\tt MATLAB/octave}
+    ```matlab
+>> help linspace
+ LINSPACE Linearly spaced vector.
+    LINSPACE(X1, X2) generates a row vector of 100 linearly
+    equally spaced points between X1 and X2.
+ 
+    LINSPACE(X1, X2, N) generates N points between X1 and X2.
+    For N = 1, LINSPACE returns X2.
+ 
+    Class support for inputs X1,X2:
+       float: double, single
+ 
+    See also LOGSPACE, COLON.
+    ```
 
 
-## Types of documentation that are in scope
+## Won't talk about today, but important:
 
-- API documentation
+- writing tests for your code/function
+- choosing a good interface (API) for your code/func
+- your algorithms :)  (the body of your code)
+- good commenting of code
+- discussion/documentation of bugs (eg git Issues)
+- academic papers showcasing your package
+
+
+## Types of documentation for today
+
+- API documentation = how to use a given function
   - Ex: docstrings, doxygen, ...
 - Basic installation/Getting Started
-  - "How to make sure the system works at all"
-  - Frequently in Readme.md
+  - "How to make sure the code"
+  - Frequently in a Readme.md on github: the first thing a potential user sees
 - More extensive narrative documentation
   - Wikis, compiled manuals, ...
   - More detailed use cases, system design & choices, etc.
@@ -136,6 +174,10 @@ sentence of a several-thousand-line API documentation doc.)
 - Use any time you're releasing an API for public use
 
 
+Bad API docs:
+https://portal.hdfgroup.org/display/HDF5/HDF5
+
+
 ## The Triangle: API, Test, Documentation
 
 Q: What order should you write these in?
@@ -146,7 +188,7 @@ Personally: write doc first, then test, then function body.
 
 ## Readmes
 
-- "How do I get and run this package"   - link to good example
+- "How do I get and run this package" - link to good example
 - Audience:
   - New users of the software
   - People who may be calling your code as a step in a pipeline (rather than interacting with your functions as an API)
