@@ -235,7 +235,7 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 
 
 
-# Tools to Generate Documentation
+# Tools to Generate Documentation (Lehman)
 
 - Let's break "documentation" into two categories
   - **Narrative** documentation: high-level, "instruction manual" prose
@@ -245,7 +245,7 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 ## Tools for Narrative Documentation
 
 - In order of increasing feature-richness and complexity
-  - The `README`
+  - `README` (Markdown and reStructuredText)
   - Wiki
   - Jekyll + static web hosting (e.g. GitHub Pages)
   - Sphinx + ReadTheDocs
@@ -266,10 +266,90 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 - Two popular languages to make your plain-text `README` look nice online:
   - Markdown (`README.md`)
   - reStructuredText (`README.rst`)
-- Either one will help you render text
+- Markdown is a little easier to write, RST is more feature-complete
+- ["GitHub-Flavored Markdown"]((https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)) is used throughout GitHub; RST is commonly used on ReadTheDocs with Sphinx
 
 <img width="40%" src="assets/raw_readme_md.png" class="plain">
 <img width="30%" src="assets/rendered_md.png" class="plain">
+
+
+## Formatting the `README`: Markdown
+
+- Plain text format for writing structured documents
+  - Highly readable in its raw form
+  - but also renders into pretty HTML (or PDF, etc)
+- These slides are written in Markdown!
+
+
+## Formatting the `README`: Markdown Example
+File: `README.md`
+````markdown
+# my-cool-project
+A one-sentence description of how **cool** my project is
+
+## Installation
+`pip install my-cool-project`
+
+## Example
+```python
+import my_cool_project
+my_cool_project.go()
+```
+````
+
+
+## Formatting the `README`: Markdown Example
+TODO: screenshot of rendered markdown
+
+
+## Formatting the `README`: reStructuredText
+
+- Still a plain text format, slightly more complicated than Markdown
+- Supports more directives than Markdown
+   - Textual substitution
+   - References & footnotes
+   - Links between sections and pages
+   - Admonitions (call-out boxes)
+- Sphinx has a good [RST primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
+
+
+## Formatting the `README`: reStructuredText Example
+File: `README.rst`
+````rst
+my-cool-project
+===============
+A one-sentence description of how **cool** my project is
+
+Installation
+------------
+`pip install my-cool-project`
+
+Example
+-------
+.. code-block:: python
+
+  import my_cool_project
+  my_cool_project.go()
+
+If the example doesn't work, try :ref:`Installation`.
+
+````
+
+
+## Formatting the `README`: reStructuredText Example
+TODO: screenshot of rendered RST
+
+
+## Tools for Narrative Documentation: Wiki
+- GitHub and other sites have built-in support for Wikis
+    - Good for long-form documentation (e.g. design philosophy, implementation details, extended examples)
+    - An easy next step when your documentation is too big for a single `README` file
+    - Can clone from GitHub as its own repo: <code>git clone https://github.com/google/sanitizers.<b>wiki</b>.git</code>
+- Lehman's commentary: GitHub Wiki usage seems to be declining in research software circles, in favor of ReadTheDocs
+
+
+## Tools for Narrative Documentation: Wiki Example
+- TODO screenshot/example of a wiki
 
 
 
