@@ -235,9 +235,15 @@ Remember: your work only makes a difference if people use it. Science isn't sale
 
 
 
-# Tools to Generate Documentation (Lehman)
+# Tools to Generate Documentation
 
-- Let's break "documentation" into two categories
+How do people write user documentation for scientific software projects?
+
+(Lehman)
+
+
+## Categories of Documentation
+- As before, let's consider tools in two categories of documentation
   - **Narrative** documentation: high-level, "instruction manual" prose
   - **API** documentation: granular technical specifications
 
@@ -352,6 +358,60 @@ TODO: screenshot of rendered RST
 - TODO screenshot/example of a wiki
 
 
+## Tools for Narrative Documentation: Jekyll + Static Hosting
+- Jekyll is a tool for generating websites from plain text files, like Markdown
+- Generates static webpages
+  - Can be hosted on any HTTP server
+  - No need to run a "Jekyll server", or maintain a database, etc.
+
+
+## Tools for Narrative Documentation: Jekyll + Static Hosting
+- [GitHub Pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll) natively supports Jekyll and will host the generated sites (`username.github.io/mycoolproject`)
+  - Will be built and deployed as a GitHub Action, similar to CI
+- TODO example of Jekyll + GitHub Pages
+
+
+## Tools for Narrative Documentation: Sphinx + ReadTheDocs
+- Sphinx is a tool that builds a website from plain text files
+  - Reads in reStructuredText (or Markdown)
+  - Outputs a website
+- ReadTheDocs is a web host and cloud service
+   - ReadTheDocs pulls your GitHub repo
+   - Runs Sphinx on their servers to build the website
+   - Hosts the docs at `mycoolproject.readthedocs.io`
+   - Even hosts past versions (based on git branches/tags)
+- Sphinx + ReadTheDocs is a powerful, popular combo!
+
+
+## Tools for Narrative Documentation: Sphinx + ReadTheDocs
+- Sphinx
+  - Controlled by `conf.py`: supports themes, extensions, and extensive customization
+  - Inserts rich navigation features: search, outline in the sidebar, table of contents, etc
+- `docs/index.rst` will become `mycoolproject.readthedocs.io/en/latest/index.html` (main page); `docs/installation.rst` will become `.../installation.html`, etc.
+
+
+## Tools for Narrative Documentation: Sphinx + ReadTheDocs
+Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html))
+
+```python
+  # conf.py
+
+  extensions = [
+      'sphinx.ext.autodoc', 'sphinx.ext.autosectionlabel'
+  ]
+
+  # General information about the project.
+  project = "mycoolproject"
+  html_theme = "sphinx_rtd_theme"  # the theme we all know and love
+  # but there are many others, like "sphinx_book_theme"
+
+  autosectionlabel_prefix_document = True
+```
+
+
+
+## Tools for Narrative Documentation: Sphinx + ReadTheDocs
+- TODO show rendered examples? More about where to 
 
 # Writing API Documentation (Bob)
 
