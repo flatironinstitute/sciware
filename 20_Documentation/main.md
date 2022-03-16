@@ -50,7 +50,7 @@ Documentation
 
 - how:
   - tools for nice docs (web-facing, manuals, etc)
-  - writing API docs (ie docs for a function)
+  - writing docs for functions
 
 
 
@@ -59,96 +59,99 @@ Documentation
 
 ## What is documentation?
 
-Helps someone use and understand a code or software tool
+Text that helps one use and understand a code or software tool
 
-(cut this)
+Precise description of inputs & outputs for one or more routines
+- fancy name: "API" = application programming interface
+- often: self-contained text or comment block at top of each function
+- can be posted to web docs automatically (eg doxygen)
 
-- The code itself?
-  - name of a function and names of its args are a form of doc:
-  https://github.com/ahbarnett/sciware/tree/main/12_Functions
-- Papers?
-- A manual?
+Equally useful: "narrative" docs (free-form)
+- motivation: what does tool do, why/when do you need it?
+- why better than tools X, Y? (eg: it's 100x faster, etc)
+- install instructions, examples, tutorials, pretty figures, bugs
+- how to run a "hello world" example to test your installation
+- often in `README.md` (the first thing web user sees) on GitHub
+- or more extensive: PDF manual, wiki, own website, design choices...
 
-Explain _to whom_? Understand _by whom_?
+
+## Who is your audience?
+
+Thinking from your audience's point of view is crucial
+- eg API: these two functions _do exactly the same thing_
+(the code inside could be identical):
+```
+beta = linear_regression(X,y) estimates regression weights beta
+given a feature matrix X and response vector y.
+```
+```
+x = linsolve(A,b) solves in the least-squares sense the possibly
+rectangular linear system Ax=b, where A is a MxN matrix, etc...
+```
+Stats audience vs math audience---which do you want? (math, clearly :)
+
+- Choosing a good _name_ for the function (= what it does) is part of its doc!
+- Choosing good/common names for the arguments in the docs (`beta` is a typical
+name for unknown vector in stats, but in physics super-confusing...)
+- see: https://github.com/ahbarnett/sciware/tree/main/12_Functions
+
+Can you avoid biology/physics/etc jargon in your docs? (maybe not)
+
+Is the task performed more widely useful---write simply for general
+science/math audience?
 
 
-## What documentation are we talking about today?
+## What focus on today?
 
 - User-facing: users (not developers) of your code
-  - this includes _your future self_: <6 months you forget how to use own code!
-- Text that can be seen without opening a code editor (or reading a journal)
-  - eg typing in {\tt ipython}
-    ```python
-    ?range
+  - this includes _your future self_: <6 months you forget how to call own code!
+
+- The API often accessed without opening a code editor, eg
+  ```python
+In [1]: ?range
+Init signature: range(self, /, *args, **kwargs)
+Docstring:     
+range(stop) -> range object
+range(start, stop[, step]) -> range object
+
+Return an object that produces a sequence of integers from start (inclusive)
+to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+These are exactly the valid indices for a list of 4 elements.
+When step is given, it specifies the increment (or decrement).
     ```
+Called *inline doc*.
 
-    (give output). Called inline doc
+The `range(4)` example is good. The bang (!) is just weird.
+  
 
-  - eg typing in {\tt MATLAB/octave}
-    ```matlab
->> help linspace
- LINSPACE Linearly spaced vector.
-    LINSPACE(X1, X2) generates a row vector of 100 linearly
-    equally spaced points between X1 and X2.
- 
-    LINSPACE(X1, X2, N) generates N points between X1 and X2.
-    For N = 1, LINSPACE returns X2.
- 
-    Class support for inputs X1,X2:
-       float: double, single
- 
-    See also LOGSPACE, COLON.
-    ```
+## 
+
+- In low-level languages one also writes docs as comment block at start
+of each function. (Fortran/C/C++ either read source code or ma
 
 
-## Won't talk about today, but important:
+## Won't talk about today, but important to do:
 
-- writing tests for your code/function
-- choosing a good interface (API) for your code/func
+- writing tests for your code/function (even can integrate into docs)
+- choosing a good interface (API) for your code/func: what args?
 - your algorithms :)  (the body of your code)
-- good commenting of code
+- good commenting of code:
+   - comments are not docs! user should *not* have to look in there!
 - discussion/documentation of bugs (eg git Issues)
 - academic papers showcasing your package
 
 
-## Types of documentation for today
-
-- API documentation = how to use a given function
-  - Ex: docstrings, doxygen, ...
-- Basic installation/Getting Started
-  - "How to make sure the code"
-  - Frequently in a Readme.md on github: the first thing a potential user sees
-- More extensive narrative documentation
-  - Wikis, compiled manuals, ...
-  - More detailed use cases, system design & choices, etc.
-- Tutorials/Case Studies
-  - Notebooks; also wiki etc.
-- Developer documentation (not our audience)
-
-
-## Audience: Who are you talking to
-
-Documentation isn't there "just because," it should be saying something useful to someone.-
-
-- Messages only have meaning in relation to an audience
-- What does your audience want to accomplish?
-- What does your audience already know?
-- What does your audience need to know?
-- What do you need to add to bridge that gap?
-
-Tell your audience things they don't know but can understand
-
-
 ## API Documentation
 
+(change to good and bad example driven)
+
 - "How do I call Function X"
-- Audience: People who want to call your software's functionality from their software
+  - you cannot often be too precise about the inputs: be as specific as you can!
+  - what are the edge cases? What behavior should happen in those cases?
   - Assumes an audience that is already invested in using your work
-  - (Does little to sell your work to new users)
+     (Does little to sell your work to new users)
   - (Not the best way to express the full scope of utility of your code)
-- Should describe the functionality you expose
-  - What are the inputs and outputs?
-  - What are the edge cases? What behavior should happen in those cases?
 
 
 ## API Documentation (cnt'd)
@@ -186,7 +189,8 @@ Good practices are mutually interdependent (I try to make this point every SciWa
 
 Personally: write doc first, then test, then function body.
 
-## Readmes
+
+## READMEs
 
 - "How do I get and run this package" - link to good example
 - Audience:
@@ -197,6 +201,7 @@ Personally: write doc first, then test, then function body.
 - Include a minimal usage example, eg:
      https://emcee.readthedocs.io/en/stable/
 - Needed for any package, but it's probably only the start
+
 
 ## Narrative Documentation
 
@@ -217,7 +222,7 @@ Personally: write doc first, then test, then function body.
 
 - "How can I solve ABC using XYZ"
 - Audience:
-  - All users, from basic to sophisticated uses
+  - All users, starting with basic, then sophisticated
   - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
   - Can be a "cookbook", a gallery, or if extensive enough, a way to show exhaustively what your tool can do
   - how to string together may funcs in a package.  Use FINUFFT tutorial.
