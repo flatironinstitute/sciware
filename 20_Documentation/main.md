@@ -63,8 +63,6 @@ Text that helps one use and understand a code or software tool
 
 Precise description of inputs & outputs for one or more routines
 - fancy name: "API" = application programming interface
-- often: self-contained text or comment block at top of each function
-- can be posted to web docs automatically (eg doxygen)
 
 Equally useful: "narrative" docs (free-form)
 - motivation: what does tool do, why/when do you need it?
@@ -107,7 +105,7 @@ science/math audience?
   - this includes _your future self_: <6 months you forget how to call own code!
 
 - API docs: often accessed without opening a code editor, eg
-  ```python
+```python
 In [1]: ?range
 Init signature: range(self, /, *args, **kwargs)
 Docstring:     
@@ -119,18 +117,20 @@ to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
 start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
 These are exactly the valid indices for a list of 4 elements.
 When step is given, it specifies the increment (or decrement).
-    ```
+```
 Called *inline doc*.
-
 The `range(4)` example is good. The bang (!) is just weird.
 
 
 ## today? (cnt'd)
 
+
+- API is often: self-contained text or comment block at top of each function
+- printed when do `help` or `?`, can be collected to website (eg via doxygen)
 - API docs of course exist in low-level languages too:
 Fortran/C/C++ users often must read (just top of) source code
 
-- We'll do some detail on tools for narrative docs
+- Later we'll do some detail on tools for narrative docs
   - web-facing
   - auto-generated docs
 (finish)
@@ -159,6 +159,11 @@ Fortran/C/C++ users often must read (just top of) source code
   - (Not the best way to express the full scope of utility of your code)
 
 
+
+
+
+
+
 ## API Documentation (cnt'd)
 
 - Advantages:
@@ -168,7 +173,9 @@ Fortran/C/C++ users often must read (just top of) source code
   - Not a good format for describing things other than local functionality
   - Function-by-function may not be the only or best way to organize/analyze what your code can do
 
-Insert good and bad function API doc examples.
+Insert good and bad function API doc examples, using python.
+In Python, docstring = simply whatever you put in the "docstring" between triple-quotes
+
 - make up one. Then give improved one.
 
 <!--
