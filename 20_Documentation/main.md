@@ -46,11 +46,11 @@ Activities where participants all actively work to foster an environment which e
 
 Documentation
 
-- why: overview, examples, and scope for today
+- why: overview, warm-up examples, and scope for today
 
 - how:
   - tools for nice docs (web-facing, manuals, etc)
-  - writing docs for functions
+  - writing docs for functions - with exercises
 
 
 
@@ -106,7 +106,7 @@ science/math audience?
 - User-facing: users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-- The API often accessed without opening a code editor, eg
+- API docs: often accessed without opening a code editor, eg
   ```python
 In [1]: ?range
 Init signature: range(self, /, *args, **kwargs)
@@ -123,21 +123,26 @@ When step is given, it specifies the increment (or decrement).
 Called *inline doc*.
 
 The `range(4)` example is good. The bang (!) is just weird.
-  
-
-## 
-
-- In low-level languages one also writes docs as comment block at start
-of each function. (Fortran/C/C++ either read source code or ma
 
 
-## Won't talk about today, but important to do:
+## today? (cnt'd)
+
+- API docs of course exist in low-level languages too:
+Fortran/C/C++ users often must read (just top of) source code
+
+- We'll do some detail on tools for narrative docs
+  - web-facing
+  - auto-generated docs
+(finish)
+
+
+## Won't talk about today, but related & important
 
 - writing tests for your code/function (even can integrate into docs)
 - choosing a good interface (API) for your code/func: what args?
-- your algorithms :)  (the body of your code)
-- good commenting of code:
-   - comments are not docs! user should *not* have to look in there!
+- um, your algorithms :)  (the body of your code)
+- good commenting of code, but...
+   - comments are not docs! user should *not* have to look down there!
 - discussion/documentation of bugs (eg git Issues)
 - academic papers showcasing your package
 
@@ -162,7 +167,6 @@ of each function. (Fortran/C/C++ either read source code or ma
 - Limitations:
   - Not a good format for describing things other than local functionality
   - Function-by-function may not be the only or best way to organize/analyze what your code can do
-  - You must never confuse lengthiness with completeness! --> This point might belong elsewhere
 
 Insert good and bad function API doc examples.
 - make up one. Then give improved one.
@@ -185,9 +189,12 @@ https://portal.hdfgroup.org/display/HDF5/HDF5
 
 Q: What order should you write these in?
 A: Write them all at once!
-Good practices are mutually interdependent (I try to make this point every SciWare)
+Good practices are mutually interdependent (Jeff makes this point every SciWare)
 
-Personally: write doc first, then test, then function body.
+Alex recommends: write doc first, then test, only then function body!
+ - this gets the brain thinking about what task you want to do first
+ - then how you'll know you did it right
+ - Ok, finally you have to do the task
 
 
 ## READMEs
@@ -218,7 +225,8 @@ Personally: write doc first, then test, then function body.
 - Should probably be included for any reasonably mature package
 
 
-## Tutorials
+## Tutorials  (cut waaay down)
+
 
 - "How can I solve ABC using XYZ"
 - Audience:
@@ -238,6 +246,8 @@ Personally: write doc first, then test, then function body.
 
 Remember: your work only makes a difference if people use it. Science isn't sales, but people spend entire careers re-inventing poorly-publicized wheels. If you want your work to matter, you need to it easy to find, easy to use, and easy to understand, for people across the broadest possible spectrum of disciplines.
 
+
+(Alex+Jeff intro done)
 
 
 # Tools to Generate Documentation
