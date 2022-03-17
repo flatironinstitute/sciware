@@ -275,23 +275,21 @@ https://finufft.readthedocs.io/en/latest/index.html
 - Essential for any reasonably mature package
 
 
-## Tutorials  (cut waaay down)
+## Tutorials overview
 
 - "How can I solve ABC using XYZ"
 
    https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
 
-- Audience:
-  - All users, starting with basic, then sophisticated
-  - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
-  - Can be a "cookbook", a gallery, or if extensive enough, a way to show exhaustively what your tool can do
-  - how to string together may funcs in a package.  Use FINUFFT tutorial.
+how to string together many functions in a package to solve a problem
+
 - Fully worked (and working!) examples
   - Ideally cover the full gamut of what people would want to do with your tool
   - Distinction: Unlike API documentation, this does *not* need to be organized the same way as your implementation/code!
-  - Better to focus on typical/paradigmatic *problems* in the field
-  - Or use examples from several different fields/subfields, if your tool is more broadly applicable
-- Needs additional work to make sure it stays up to date as your methods/design decisions change
+- Audience:
+  - All users: start with basic, then sophisticated
+  - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
+- make sure it stays up to date as your methods/design decisions change
 - Include any time you want to maximize the utility of your package
   - Or when your users are from many fields, may not immediately be familiar with your method, or have lots of packages to choose from
 
