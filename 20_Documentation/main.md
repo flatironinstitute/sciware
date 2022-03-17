@@ -162,7 +162,7 @@ The `range(4)` example is good. The bang (!) is just weird.
 
 You should aim to break up any repeated task (no matter how small) into
 self-contained function, and you must write a docstring for it.
-Eg a MATLAB/Octave quadrature code (from luminary in the field):
+Eg a MATLAB/Octave quadrature code (not part of core language):
 ```matlab
 % GAUSS  nodes x (Legendre points) and weights w
 %
@@ -186,13 +186,17 @@ Hmm, why not useful?
 Better:
 <pre><code class="matlab">
 >> help gauss
-  GAUSS  nodes (Legendre points) and weights for Gaussian quadrature on [-1,1]
+  GAUSS   Nodes (Legendre points) and weights for Gaussian quadrature on [-1,1]
 
-  [x,w] = gauss(N) returns a N-element row vector x of real
-
-
+  [x,w] = gauss(N) computes nodes x and weights w for Gaussian quadrature on
+  the 1D interval [-1,1]. The run-time scales as O(N^3). Then for f a smooth
+  function, dot(f(x)*w) approximates the integral of f from -1 to 1.
+  Inputs:
+        N - positive integer (recommended less than 1000)
+  Outputs:
+        x - N*1 double-precision vector of nodes lying in [-1,1]
+        w - 1*N double-precision vector of corresponding weights
 </code></pre>
-
 </div>
 
 
