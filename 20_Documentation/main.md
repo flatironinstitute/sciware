@@ -54,6 +54,7 @@ Documentation
 
 
 
+
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 <!-- I want default left-justify everywhere:  -->
 <style type="text/css">
@@ -62,8 +63,6 @@ Documentation
   }
  </style>
 <!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
-
-
 
 # Documentation: Principles and Definitions
 
