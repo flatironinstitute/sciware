@@ -52,10 +52,6 @@ Documentation
 
 - how: writing docs for functions, with exercises (Bob)
 
-
-
-
-
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 <!-- I want default left-justify everywhere:  -->
 <style type="text/css">
@@ -64,6 +60,8 @@ Documentation
   }
  </style>
 <!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
+
+
 
 # Documentation: Principles and Definitions
 
@@ -76,12 +74,12 @@ Text that helps one use and understand a code or software tool
   - fancy name: "API" = application programming interface
 
 - Equally useful: "narrative" docs (free-form)
-  - motivation: what does tool do?
-  - why better than tools X, Y? (eg: it's 100x faster...)
+  - motivation: what does this tool do?
+  - why better than tools X, Y? (eg: it's 10x faster...)
   - install instructions, examples, tutorials, pretty figures, bugs
   - how to run a "hello world" example, test your install
    (often in `README.md`: the first thing web user sees on GitHub)
-  - or more extensive: PDF manual, wiki, own website, design choices...
+  - or more extensive: PDF manual, wiki, website...
 
 
 ## Who is your audience?
@@ -97,12 +95,12 @@ given a feature matrix X and response vector y.
 x = linsolve(A,b) solves in the least-squares sense the possibly
 rectangular linear system Ax=b, where A is a MxN matrix, etc...
 ```
-Stats audience vs math audience - which want?
+Stats audience vs math audience - which do you want?
 
-- Choosing a _good name_ for function (= what it does), part of doc!
+- Choosing a _good name_ for the function (= what it does), is part of good doc!
 
 - Choose good names for arguments in the docs (`beta` is a typical
-name for unknown vector in stats, but in physics super-confusing...)
+name for unknown vector in stats, but in physics/math would confuse...)
 
 <!-- - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions -->
 
@@ -112,9 +110,9 @@ name for unknown vector in stats, but in physics super-confusing...)
 - User-facing: read by users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-- Later
-  - detail on tools for narrative docs, including web-facing
-  - API doc exercises
+- I give overview & general advice
+  - later: tools for narrative docs, including web-facing
+  - API doc pitfalls and exercises
 
 
 ## Won't talk about today, but related & important
@@ -157,18 +155,22 @@ When step is given, it specifies the increment (or decrement).
 
 This is called *inline documentation*.
 
-The `range(4)` example is good. The bang (!) sentence is a little unclear
+The `range(4)` example is good: can read to understand quickly
+
+Many people simply modify examples for their purposes
+
+The bang (!) sentence we find a bit unclear!
 </div>
 
 
 ## API (cnt'd)
 
 You should aim to break up any repeated task (no matter how small) into
-a self-contained function, and you must write a docstring for it.
+a self-contained function with a docstring.
+
 Eg a MATLAB/Octave quadrature code `gauss.m` (not part of core language):
 ```matlab
 % GAUSS  nodes x (Legendre points) and weights w
-%
 function [x,w] = gauss(N)
   beta = .5./sqrt(1-(2*(1:N-1)).^(-2));
   T = diag(beta,1) + diag(beta,-1);
@@ -177,8 +179,7 @@ function [x,w] = gauss(N)
   w = 2*V(1,i).^2;
 end
 ```
-Then in the MATLAB command line (interactive mode) it prints whatever's
-in the first `%` comment block:
+When you ask for (interactive) help, prints first `%` comment block:
 ```
 >> help gauss
   GAUSS  nodes x (Legendre points) and weights w
@@ -190,9 +191,8 @@ Hmm, why not useful?
 </div>
 
 
-## Better docs for gauss.m
+## Better docs for `gauss.m`
 
-Better:
 <pre><code class="matlab">
 >> help gauss
   GAUSS   Nodes (Legendre points) and weights for Gaussian quadrature on [-1,1]
@@ -202,13 +202,14 @@ Better:
   function, [x,w]=gauss(16); dot(f(x),w) approximates the integral of f from -1 to 1.
 
   Inputs:
-        N - number of nodes, a positive integer (recommended less than 1000)
+        N - number of nodes, a positive integer (recommend 1000 or less)
   Outputs:
-        x - N*1 double-precision vector of nodes lying in [-1,1]
+        x - N*1 double-precision vector of nodes, which each lie in [-1,1]
         w - 1*N double-precision vector of corresponding weights
 
-  Note: increasing N generally leads to more accuracy in the approximation to the integral.
+  Note: increasing N usually gives more accuracy in the approximating the integral.
 </code></pre>
+Note: precise math description, types/sizes of inputs & outputs, helpful advice to newbies
 
 - API docs crucial in low-level languages too:
 Fortran/C/C++ users just read source code comment block at top of each function.
@@ -216,17 +217,14 @@ Fortran/C/C++ users just read source code comment block at top of each function.
 
 ## API (cnt'd)
 
-- learn and follow docstring style for your language
-  - eg how to annotate variable types, optional inputs (square brackets?)
-- Can you avoid biology/physics/etc terms in your docs? Think about widest
-possible audience.
-- API advantage: docstring right next to source code, easy to maintain
-- API limitations:
-  - Function-by-function may not be best way to explain how to use package
+- Learn and follow docstring style for your language
+  - eg: how to annotate variable types, [optional] inputs
+- Can you avoid biology/physics/etc terms in your docs?
+  - avoid jargon if your routine could be more widely useful
+- API doc advantage: docstring right next to source code, easy to maintain
+- Limitation: function-by-function not always best way to understand a pkg
 
-<!--
-API docs: https://portal.hdfgroup.org/display/HDF5/HDF5
--->
+  - case in point: https://portal.hdfgroup.org/display/HDF5/HDF5
 
 
 ## The Triangle: API, Test, Documentation
@@ -238,14 +236,14 @@ Good practices are mutually interdependent (Jeff makes this point every SciWare)
 Alex recommends: write doc first, then test, only then function body!
  - this gets the brain thinking about what task you want to do first
  - then how you'll know you did it right
- - Ok, finally you have to do the task
+ - ok, finally you have to figure out how to code the solution
 
 
 ## READMEs overview
 
-- "What is this package and how do I get and run it?"
+"What is this package and how do I get and run it?"
 
-https://github.com/danfortunato/ultraSEM
+- eg: https://github.com/danfortunato/ultraSEM
 
 - Audience:
   - New users of the software
@@ -254,7 +252,6 @@ https://github.com/danfortunato/ultraSEM
 - Describes some of the functionality but probably only scratches the surface of what your code can do
 - Sometimes a good README simply redirects to a more elaborate website doc:
      https://github.com/dfm/emcee
-- Needed for any package, but it's probably only the start
 
 
 ## Narrative docs overview
@@ -308,7 +305,6 @@ It is just as important as publishing papers, conference talks, etc
 
 How do people write user documentation for scientific software projects?
 
-(Lehman)
 
 
 ## Categories of Documentation
