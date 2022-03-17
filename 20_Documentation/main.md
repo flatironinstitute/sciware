@@ -281,7 +281,7 @@ https://finufft.readthedocs.io/en/latest/index.html
 
    https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
 
-how to string together many functions in a package to solve a problem
+How to string together many functions in a package to solve a problem
 
 - Fully worked (and working!) examples
   - Ideally cover the full gamut of what people would want to do with your tool
@@ -289,9 +289,7 @@ how to string together many functions in a package to solve a problem
 - Audience:
   - All users: start with basic, then sophisticated
   - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
-- make sure it stays up to date as your methods/design decisions change
-- Include any time you want to maximize the utility of your package
-  - Or when your users are from many fields, may not immediately be familiar with your method, or have lots of packages to choose from
+- make sure it stays up-to-date as your methods/APIs/design decisions change!
 
 
 ## Documention is a form of publication
