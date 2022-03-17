@@ -71,16 +71,16 @@ Documentation
 
 Text that helps one use and understand a code or software tool
 
-- Precise description of inputs & outputs for one or more routines
- - fancy name: "API" = application programming interface
+- describe inputs & outputs for one or more routines
+  - fancy name: "API" = application programming interface
 
 - Equally useful: "narrative" docs (free-form)
- - motivation: what does tool do?
- - why better than tools X, Y? (eg: it's 100x faster...)
- - install instructions, examples, tutorials, pretty figures, bugs
- - how to run a "hello world" example, test your install
+  - motivation: what does tool do?
+  - why better than tools X, Y? (eg: it's 100x faster...)
+  - install instructions, examples, tutorials, pretty figures, bugs
+  - how to run a "hello world" example, test your install
    (often in `README.md`: the first thing web user sees on GitHub)
- - or more extensive: PDF manual, wiki, own website, design choices...
+  - or more extensive: PDF manual, wiki, own website, design choices...
 
 
 ## Who is your audience?
@@ -250,8 +250,9 @@ later we gathered all into `docs/` directory to be web-facing.
 
 - learn and follow docstring style for your language
  - Eg Python docstring is whatever's between triple backquotes
+ - are any inputs optional? what are default values?
 - Can you avoid biology/physics/etc jargon in your docs? (maybe not)
-- API Advantage: docstring right next to source code, easy to maintain
+- API ddvantage: docstring right next to source code, easy to maintain
 - API limitations:
   - Function-by-function may not be best way to explain how to use package
 
