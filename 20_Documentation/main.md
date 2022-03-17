@@ -344,6 +344,8 @@ How do people write user documentation for scientific software projects?
 - Markdown is a little easier to write, RST is more feature-complete
 - ["GitHub-Flavored Markdown"]((https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)) is used throughout GitHub; RST is commonly used on ReadTheDocs with Sphinx
 
+TODO: break out into new slide
+
 <img width="40%" src="assets/raw_readme_md.png" class="plain">
 <img width="30%" src="assets/rendered_md.png" class="plain">
 
@@ -363,13 +365,17 @@ File: `README.md`
 A one-sentence description of how **cool** my project is
 
 ## Installation
+1. First step is to run this command:
 `pip install my-cool-project`
+2. Then try to follow the example below!
 
 ## Example
 ```python
 import my_cool_project
 my_cool_project.go()
 ```
+
+TODO: cross-ref
 ````
 
 
@@ -430,14 +436,16 @@ TODO: screenshot of rendered RST
 ## Tools for Narrative Documentation: Jekyll + Static Hosting
 - Jekyll is a tool for generating websites from plain text files, like Markdown
 - Generates static webpages
-  - Can be hosted on any HTTP server
+  - Can be hosted on any HTTP server (including Flatiron user www)
   - No need to run a "Jekyll server", or maintain a database, etc.
+  - These slides are rendered with Jekyll!
 
 
 ## Tools for Narrative Documentation: Jekyll + Static Hosting
 - [GitHub Pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll) natively supports Jekyll and will host the generated sites (`username.github.io/mycoolproject`)
   - Will be built and deployed as a GitHub Action, similar to CI
-- TODO example of Jekyll + GitHub Pages
+- Go to the [Sciware GitHub](https://github.com/flatironinstitute/sciware/) for a real example of Jekyll + GitHub pages!
+- Source files are in GitHub-flavored Markdown, output is HTML website (the slides)
 
 
 ## Tools for Narrative Documentation: Sphinx + ReadTheDocs
@@ -457,10 +465,13 @@ TODO: screenshot of rendered RST
   - Controlled by `conf.py`: supports themes, extensions, and extensive customization
   - Inserts rich navigation features: search, outline in the sidebar, table of contents, etc
 - `docs/index.rst` will become `mycoolproject.readthedocs.io/en/latest/index.html` (main page); `docs/installation.rst` will become `.../installation.html`, etc.
+- TODO: slide on *what* to put in narrative docs?
 
 
 ## Tools for Narrative Documentation: Sphinx + ReadTheDocs
 Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html))
+
+TODO: spend a whole slide on autodoc. Mention doxygen extension.
 
 ```python
   # conf.py
@@ -477,9 +488,13 @@ Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/mas
   autosectionlabel_prefix_document = True
 ```
 
+TODO: link to example 
 
 ## Tools for Narrative Documentation: Sphinx + ReadTheDocs
 - TODO show rendered examples? More about where to 
+
+
+TODO: slide with other tools (Jupyter notebooks? DFM's thing?)
 
 
 
@@ -489,8 +504,8 @@ Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/mas
 
 - When designing a function, consider together
     1. **Documentation**: says what the code does
-  	2. **Testing**: tests it does what it says it does
-	  3. **Code**: the code itself
+    2. **Testing**: tests it does what it says it does
+    3. **Code**: the code itself
 - Bad smells
     - if code is hard to doc, it's probably badly designed
     - if code is hard to test from the doc, either the code is badly
@@ -525,7 +540,7 @@ Things to document:
 * What do we test?
     - throw the appropriate exception when argument is wrong shape
     - when arg is empty, return 0 (unit under addition is always the base value)
-	  - length 1 input, and at least one longer input
+    - length 1 input, and at least one longer input
     - behavior when one or more arguments is not-a-number or infinite?
     - behavior when no argument is given?
 
@@ -536,23 +551,24 @@ Things to document:
 
 ```python
 import numpy as np
-def mySum(v: np.array) -> np.float64:
+def mySum(v):
     """Return the sum of the elements of v or 0 if v is size 0.
 
     Arguments:
     v -- array to sum
 
     Exceptions:
-    RuntimeError if v is not a one-dimensional array.
+    ValueError if v is not a one-dimensional array.
 
     Return:
     Sum of the elements of v, or 0 if v is empty.
     """
-    if len(v.shape) != 1:
-        raise RuntimeError('Require 1D array argument') from None
+    if v.ndim != 1:
+        raise ValueError('Require 1D array argument')
     sum = 0
-    for n in range(v.size()):
-        sum += v[n]
+    #for n in range(v.size):
+    for q in v:
+        sum += q
     return sum
 ```
 
