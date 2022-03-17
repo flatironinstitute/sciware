@@ -46,11 +46,22 @@ Activities where participants all actively work to foster an environment which e
 
 Documentation
 
-- why: overview, warm-up examples, and scope for today
+- what & why: overview and scope for today (Alex + Jeff)
 
-- how:
-  - tools for nice docs (web-facing, manuals, etc)
-  - writing docs for functions - with exercises
+- how: tools for nice docs (web-facing, manuals, etc) (Lehman)
+
+- how: writing docs for functions, with exercises (Bob)
+
+
+
+<!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
+<!-- I want default left-justify everywhere:  -->
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+ </style>
+<!-- see: https://stackoverflow.com/questions/41024596/r-markdown-slides-with-reveal-js-how-to-left-align-list-items-bullets-and-numb/41047550#41047550    -->
 
 
 
@@ -61,16 +72,16 @@ Documentation
 
 Text that helps one use and understand a code or software tool
 
-Precise description of inputs & outputs for one or more routines
-- fancy name: "API" = application programming interface
+- Precise description of inputs & outputs for one or more routines
+ - fancy name: "API" = application programming interface
 
-Equally useful: "narrative" docs (free-form)
-- motivation: what does tool do, why/when do you need it?
-- why better than tools X, Y? (eg: it's 100x faster, etc)
-- install instructions, examples, tutorials, pretty figures, bugs
-- how to run a "hello world" example to test your installation
-- often in `README.md` (the first thing web user sees) on GitHub
-- or more extensive: PDF manual, wiki, own website, design choices...
+- Equally useful: "narrative" docs (free-form)
+ - motivation: what does tool do?
+ - why better than tools X, Y? (eg: it's 100x faster...)
+ - install instructions, examples, tutorials, pretty figures, bugs
+ - how to run a "hello world" example, test your install
+   (often in `README.md`: the first thing web user sees on GitHub)
+ - or more extensive: PDF manual, wiki, own website, design choices...
 
 
 ## Who is your audience?
@@ -86,54 +97,23 @@ given a feature matrix X and response vector y.
 x = linsolve(A,b) solves in the least-squares sense the possibly
 rectangular linear system Ax=b, where A is a MxN matrix, etc...
 ```
-Stats audience vs math audience---which do you want? (math, clearly :)
+Stats audience vs math audience---which want? (math, clearly :)
 
-- Choosing a good _name_ for the function (= what it does) is part of its doc!
-- Choosing good/common names for the arguments in the docs (`beta` is a typical
+- Choosing a _good name_ for function (= what it does), part of doc!
+
+- Choose good names for arguments in the docs (`beta` is a typical
 name for unknown vector in stats, but in physics super-confusing...)
-- see: https://github.com/ahbarnett/sciware/tree/main/12_Functions
-
-Can you avoid biology/physics/etc jargon in your docs? (maybe not)
-
-Is the task performed more widely useful---write simply for general
-science/math audience?
+  - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions
 
 
 ## What focus on today?
 
-- User-facing: users (not developers) of your code
+- User-facing: read by users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-- API docs: often accessed without opening a code editor, eg
-```python
-In [1]: ?range
-Init signature: range(self, /, *args, **kwargs)
-Docstring:     
-range(stop) -> range object
-range(start, stop[, step]) -> range object
-
-Return an object that produces a sequence of integers from start (inclusive)
-to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
-start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
-These are exactly the valid indices for a list of 4 elements.
-When step is given, it specifies the increment (or decrement).
-```
-Called *inline doc*.
-The `range(4)` example is good. The bang (!) is just weird.
-
-
-## today? (cnt'd)
-
-
-- API is often: self-contained text or comment block at top of each function
-- printed when do `help` or `?`, can be collected to website (eg via doxygen)
-- API docs of course exist in low-level languages too:
-Fortran/C/C++ users often must read (just top of) source code
-
-- Later we'll do some detail on tools for narrative docs
-  - web-facing
-  - auto-generated docs
-(finish)
+- Later
+  - detail on tools for narrative docs, including web-facing
+  - API doc exercises
 
 
 ## Won't talk about today, but related & important
@@ -147,46 +127,130 @@ Fortran/C/C++ users often must read (just top of) source code
 - academic papers showcasing your package
 
 
-## API Documentation
+## API Documentation: how do I call function X?
 
-(change to good and bad example driven)
+- self-contained text "docstring" or comment block at top of each function
+- printed when do `help` or `?` and/or collected to website (eg via doxygen)
+- be as precise and specific as you can about inputs and outputs
+- what are the edge cases? what behavior should happen in those cases?
+- assumes an audience that is already invested in using your work
+     (does little to explain big picture or sell your work to new users)
+     
+<div class="fragment">
+In high-level languages, accessed from command line, eg
+<pre><code class="python hljs">
 
-- "How do I call Function X"
-  - you cannot often be too precise about the inputs: be as specific as you can!
-  - what are the edge cases? What behavior should happen in those cases?
-  - Assumes an audience that is already invested in using your work
-     (Does little to sell your work to new users)
-  - (Not the best way to express the full scope of utility of your code)
+In [1]: ?range
+Init signature: range(self, /, *args, **kwargs)
+Docstring:     
+range(stop) -> range object
+range(start, stop[, step]) -> range object
+
+Return an object that produces a sequence of integers from start (inclusive)
+to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+These are exactly the valid indices for a list of 4 elements.
+When step is given, it specifies the increment (or decrement).
+</code></pre>
+
+Called *inline doc*.
+The `range(4)` example is good. The bang (!) is just weird.
+</div>
 
 
+## API (cnt'd)
+
+You should aim to break up any repeated task (no matter how small) into
+self-contained function, and you must write a docstring for it.
+Eg a MATLAB/Octave quadrature code (from luminary in the field):
+```matlab
+% GAUSS  nodes x (Legendre points) and weights w
+%
+function [x,w] = gauss(N)
+beta = .5./sqrt(1-(2*(1:N-1)).^(-2));
+T = diag(beta,1) + diag(beta,-1);
+[V,D] = eig(T);
+x = diag(D); [x,i] = sort(x);
+w = 2*V(1,i).^2;
+```
+Then in the MATLAB command line (interactive mode) it prints whatever's
+in the first `%` comment block:
+```
+>> help gauss
+  GAUSS  nodes x (Legendre points) and weights w
+```
+Hmm, why not useful?
+
+<div class="fragment">
+- missing input args? missing order of outputs! no use example! no math help!
+Better:
+<pre><code class="matlab">
+>> help gauss
+  GAUSS  nodes (Legendre points) and weights for Gaussian quadrature on [-1,1]
+
+  [x,w] = gauss(N) returns a N-element row vector x of real
 
 
+</code></pre>
+
+</div>
 
 
+## API (cnt'd)
 
-## API Documentation (cnt'd)
+API docs crucial in low-level languages too:
+Fortran/C/C++ users just read (top of) source code comment block, eg:
 
-- Advantages:
-  - Integrated with code (how so?)
-  - (Explain why that's good)
-- Limitations:
-  - Not a good format for describing things other than local functionality
-  - Function-by-function may not be the only or best way to organize/analyze what your code can do
+```c
+int finufft1d1(int64_t M, double* x, complex<double>* c, int iflag, double eps,
+ int64_t N1, complex<double>* f, nufft_opts* opts) {
+ /*
+   1D complex nonuniform FFT of type 1 (nonuniform to uniform).
+ 
+   Computes to precision eps, via a fast algorithm, one or more transforms of th
+e form:
+ 
+               M-1
+      f[k1] =  SUM c[j] exp(+/-i k1 x(j))  for -N1/2 <= k1 <= (N1-1)/2
+               j=0            
+ 
+   Inputs:
+     ntr    how many transforms (only for vectorized "many" functions, else ntr=
+1)
+     M      number of nonuniform point sources
+     x      nonuniform points in [-3pi,3pi) (length M real array)
+     c      source strengths (size M*ntr complex array)
+     iflag  if >=0, uses +i in complex exponential, otherwise -i
+     eps    desired relative precision; smaller is slower. This can be chosen
+            from 1e-1 down to ~ 1e-14 (in double precision) or 1e-6 (in single)
+     N1     number of output Fourier modes to be computed
+     opts   pointer to options struct (see opts.rst), or NULL for defaults
+ 
+   Outputs:
+     f      Fourier mode coefficients (size N1*ntr complex array)
+     return value  0: success, 1: success but warning, >1: error (see error.rst)
+ 
+   Notes:
+     * complex arrays interleave Re, Im values, and their size is stated with
+       dimensions ordered fastest to slowest.
+     * Fourier frequency indices in each dimension i are the integers lying
+       in [-Ni/2, (Ni-1)/2]. See above, and modeord in opts.rst for possible ord
+erings.
+ */
+```
+- note equation done in text: useful to explain *what is being computed*
+- these started out as comment blocks on each function;
+later we gathered all into `docs/` directory to be web-facing.
 
-Insert good and bad function API doc examples, using python.
-In Python, docstring = simply whatever you put in the "docstring" between triple-quotes
 
-- make up one. Then give improved one.
+## API (cnt'd)
 
-<!--
-(Ex: psycopg2 (Postgres database adapter in Python) only allows Python tuples for a `WHERE foo IN (%s)` clause,
-and only allows Python lists for a `WHERE foo = ANY (%s)`. The two expressions do almost the exact same thing,
-but the valid data inputs are in complementary distribution. This is documented as a throwaway in one
-sentence of a several-thousand-line API documentation doc.)
--->
-
-- Use any time you're releasing an API for public use
-
+- learn and follow docstring style for your language
+ - Eg Python docstring is whatever's between triple backquotes
+- Can you avoid biology/physics/etc jargon in your docs? (maybe not)
+- API Advantage: docstring right next to source code, easy to maintain
+- API limitations:
+  - Function-by-function may not be best way to explain how to use package
 
 Bad API docs:
 https://portal.hdfgroup.org/display/HDF5/HDF5
@@ -204,9 +268,12 @@ Alex recommends: write doc first, then test, only then function body!
  - Ok, finally you have to do the task
 
 
-## READMEs
+## READMEs overview
 
-- "How do I get and run this package" - link to good example
+- "What is this package and wow do I get and run it?"
+
+https://github.com/danfortunato/ultraSEM
+
 - Audience:
   - New users of the software
   - People who may be calling your code as a step in a pipeline (rather than interacting with your functions as an API)
@@ -217,25 +284,30 @@ Alex recommends: write doc first, then test, only then function body!
 - Needed for any package, but it's probably only the start
 
 
-## Narrative Documentation
+## Narrative docs overview
 
-- "What-all can this package do" to "Tell me technical details about this package", user manual. FINUFFT manual.
-   https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
+- "What-all can this package do" to "Tell me technical details about this package", user manual.
+
+Eg FINUFFT web docs (readthedocs + sphinx + mathjax for yummy LaTeX):
+
+https://finufft.readthedocs.io/en/latest/index.html
 
 - Audience:
-  - More sophisticated users who want to know how to handle the non-modal use case
   - People who want to know more about how your system works
   - People you're trying to convince why they should use your tools at all
+  - More sophisticated users who want to know how to handle the non-modal use case
 - Can include rationale, design decisions, or more sophisticated configurations
 - Can include more detailed discussion of how and why to use different features
 - Needs additional work to make sure it stays up to date as design decisions change
-- Should probably be included for any reasonably mature package
+- Essential for any reasonably mature package
 
 
 ## Tutorials  (cut waaay down)
 
-
 - "How can I solve ABC using XYZ"
+
+   https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
+
 - Audience:
   - All users, starting with basic, then sophisticated
   - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
@@ -253,8 +325,6 @@ Alex recommends: write doc first, then test, only then function body!
 
 Remember: your work only makes a difference if people use it. Science isn't sales, but people spend entire careers re-inventing poorly-publicized wheels. If you want your work to matter, you need to it easy to find, easy to use, and easy to understand, for people across the broadest possible spectrum of disciplines.
 
-
-(Alex+Jeff intro done)
 
 
 # Tools to Generate Documentation
