@@ -102,7 +102,8 @@ Stats audience vs math audience---which want? (math, clearly :)
 
 - Choose good names for arguments in the docs (`beta` is a typical
 name for unknown vector in stats, but in physics super-confusing...)
-  - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions
+
+<!-- - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions -->
 
 
 ## What focus on today?
