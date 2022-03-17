@@ -364,12 +364,12 @@ body:before {
   left: 12px;
 }
 
-body:after {
+/* body:after {
   content: url("/Theme_Demo/assets/sciware-final-footer.png");
   position: fixed;
   bottom: 30px;
   left: 177px;
-}
+} */
 
 .align-left {
   text-align: left !important;
