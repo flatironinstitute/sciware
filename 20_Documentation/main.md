@@ -478,15 +478,16 @@ Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/mas
 ```
 
 
-
 ## Tools for Narrative Documentation: Sphinx + ReadTheDocs
 - TODO show rendered examples? More about where to 
+
+
 
 # Writing API Documentation (Bob)
 
 ## The doc/test/code triangle
 
-- When desiging a function, consider together
+- When designing a function, consider together
     1. **Documentation**: says what the code does
   	2. **Testing**: tests it does what it says it does
 	  3. **Code**: the code itself
@@ -508,6 +509,7 @@ import numpy as np
 def mySum(v: np.array) -> np.float64:
 ```
 
+
 ## Answer 1: Documentation
 
 Things to document:
@@ -517,6 +519,7 @@ Things to document:
 3. result when argument is empty
 4. error conditions and behavior
 
+
 # Answer 1: Tests
 
 * What do we test?
@@ -525,6 +528,7 @@ Things to document:
 	  - length 1 input, and at least one longer input
     - behavior when one or more arguments is not-a-number or infinite?
     - behavior when no argument is given?
+
 
 # Answer 1: Code
 
@@ -553,7 +557,7 @@ def mySum(v: np.array) -> np.float64:
 ```
 
 
-## Thought Exericse 2
+## Thought Exercise 2
 
 - Consider how the above code might break with different type
 arguments.
@@ -565,6 +569,7 @@ different shape arguments.
     - Will it be enough to base testing on?
     - Does the type hint save you or should there be more code?
 
+
 ## Thought Exercises 3, 4
 
 - Consider writing a function `myAvg` to calculate the average of an array.
@@ -574,7 +579,8 @@ different shape arguments.
 
 - Do the same for `mySD` that calculates the standard deviation of an array.
 
-## Exericse 3, 4: Answers
+
+## Exercise 3, 4: Answers
 
 - The main difference is that `myAvg` is not well defined for
 zero-length inputs.
