@@ -55,6 +55,7 @@ Documentation
 
 
 
+
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 <!-- I want default left-justify everywhere:  -->
 <style type="text/css">
@@ -96,7 +97,7 @@ given a feature matrix X and response vector y.
 x = linsolve(A,b) solves in the least-squares sense the possibly
 rectangular linear system Ax=b, where A is a MxN matrix, etc...
 ```
-Stats audience vs math audience---which want? (math, clearly :)
+Stats audience vs math audience - which want?
 
 - Choosing a _good name_ for function (= what it does), part of doc!
 
@@ -118,12 +119,12 @@ name for unknown vector in stats, but in physics super-confusing...)
 
 ## Won't talk about today, but related & important
 
-- writing tests for your code/function (even can integrate into docs)
-- choosing a good interface (API) for your code/func: what args?
+- writing tests for your code/function (can integrate into docs)
+- choosing a good interface (API) for your code/func
 - um, your algorithms :)  (the body of your code)
 - good commenting of code, but...
    - comments are not docs! user should *not* have to look down there!
-- discussion/documentation of bugs (eg git Issues)
+- discussion/documentation of bugs (eg GitHub Issues)
 - academic papers showcasing your package
 
 
@@ -135,11 +136,12 @@ name for unknown vector in stats, but in physics super-confusing...)
 - what are the edge cases? what behavior should happen in those cases?
 - assumes an audience that is already invested in using your work
      (does little to explain big picture or sell your work to new users)
-     
-<div class="fragment">
-In high-level languages, accessed from command line, eg
-<pre><code class="python hljs">
 
+
+##
+
+In high-level languages, API doc accessed from command line, eg
+```python
 In [1]: ?range
 Init signature: range(self, /, *args, **kwargs)
 Docstring:     
@@ -151,27 +153,29 @@ to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
 start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
 These are exactly the valid indices for a list of 4 elements.
 When step is given, it specifies the increment (or decrement).
-</code></pre>
+```
 
-Called *inline doc*.
-The `range(4)` example is good. The bang (!) is just weird.
+This is called *inline documentation*.
+
+The `range(4)` example is good. The bang (!) sentence is a little unclear
 </div>
 
 
 ## API (cnt'd)
 
 You should aim to break up any repeated task (no matter how small) into
-self-contained function, and you must write a docstring for it.
-Eg a MATLAB/Octave quadrature code (not part of core language):
+a self-contained function, and you must write a docstring for it.
+Eg a MATLAB/Octave quadrature code `gauss.m` (not part of core language):
 ```matlab
 % GAUSS  nodes x (Legendre points) and weights w
 %
 function [x,w] = gauss(N)
-beta = .5./sqrt(1-(2*(1:N-1)).^(-2));
-T = diag(beta,1) + diag(beta,-1);
-[V,D] = eig(T);
-x = diag(D); [x,i] = sort(x);
-w = 2*V(1,i).^2;
+  beta = .5./sqrt(1-(2*(1:N-1)).^(-2));
+  T = diag(beta,1) + diag(beta,-1);
+  [V,D] = eig(T);
+  x = diag(D); [x,i] = sort(x);
+  w = 2*V(1,i).^2;
+end
 ```
 Then in the MATLAB command line (interactive mode) it prints whatever's
 in the first `%` comment block:
@@ -182,83 +186,47 @@ in the first `%` comment block:
 Hmm, why not useful?
 
 <div class="fragment">
-- missing input args? missing order of outputs! no use example! no math help!
+- missing input args? missing order of outputs! no use example! no teaching!
+</div>
+
+
+## Better docs for gauss.m
+
 Better:
 <pre><code class="matlab">
 >> help gauss
   GAUSS   Nodes (Legendre points) and weights for Gaussian quadrature on [-1,1]
 
-  [x,w] = gauss(N) computes nodes x and weights w for Gaussian quadrature on
-  the 1D interval [-1,1]. The run-time scales as O(N^3). Then for f a smooth
-  function, dot(f(x)*w) approximates the integral of f from -1 to 1.
+  [x,w] = gauss(N) computes N nodes x and N weights w for Gaussian quadrature
+  on the 1D interval [-1,1]. The run-time scales as O(N^3). For example, for f a smooth
+  function, [x,w]=gauss(16); dot(f(x),w) approximates the integral of f from -1 to 1.
+
   Inputs:
-        N - positive integer (recommended less than 1000)
+        N - number of nodes, a positive integer (recommended less than 1000)
   Outputs:
         x - N*1 double-precision vector of nodes lying in [-1,1]
         w - 1*N double-precision vector of corresponding weights
+
+  Note: increasing N generally leads to more accuracy in the approximation to the integral.
 </code></pre>
-</div>
 
-
-## API (cnt'd)
-
-API docs crucial in low-level languages too:
-Fortran/C/C++ users just read (top of) source code comment block, eg:
-
-```c
-int finufft1d1(int64_t M, double* x, complex<double>* c, int iflag, double eps,
- int64_t N1, complex<double>* f, nufft_opts* opts) {
- /*
-   1D complex nonuniform FFT of type 1 (nonuniform to uniform).
- 
-   Computes to precision eps, via a fast algorithm, one or more transforms of th
-e form:
- 
-               M-1
-      f[k1] =  SUM c[j] exp(+/-i k1 x(j))  for -N1/2 <= k1 <= (N1-1)/2
-               j=0            
- 
-   Inputs:
-     ntr    how many transforms (only for vectorized "many" functions, else ntr=
-1)
-     M      number of nonuniform point sources
-     x      nonuniform points in [-3pi,3pi) (length M real array)
-     c      source strengths (size M*ntr complex array)
-     iflag  if >=0, uses +i in complex exponential, otherwise -i
-     eps    desired relative precision; smaller is slower. This can be chosen
-            from 1e-1 down to ~ 1e-14 (in double precision) or 1e-6 (in single)
-     N1     number of output Fourier modes to be computed
-     opts   pointer to options struct (see opts.rst), or NULL for defaults
- 
-   Outputs:
-     f      Fourier mode coefficients (size N1*ntr complex array)
-     return value  0: success, 1: success but warning, >1: error (see error.rst)
- 
-   Notes:
-     * complex arrays interleave Re, Im values, and their size is stated with
-       dimensions ordered fastest to slowest.
-     * Fourier frequency indices in each dimension i are the integers lying
-       in [-Ni/2, (Ni-1)/2]. See above, and modeord in opts.rst for possible ord
-erings.
- */
-```
-- note equation done in text: useful to explain *what is being computed*
-- these started out as comment blocks on each function;
-later we gathered all into `docs/` directory to be web-facing.
+- API docs crucial in low-level languages too:
+Fortran/C/C++ users just read source code comment block at top of each function.
 
 
 ## API (cnt'd)
 
 - learn and follow docstring style for your language
- - Eg Python docstring is whatever's between triple backquotes
- - are any inputs optional? what are default values?
-- Can you avoid biology/physics/etc jargon in your docs? (maybe not)
-- API ddvantage: docstring right next to source code, easy to maintain
+  - eg how to annotate variable types, optional inputs (square brackets?)
+- Can you avoid biology/physics/etc terms in your docs? Think about widest
+possible audience.
+- API advantage: docstring right next to source code, easy to maintain
 - API limitations:
   - Function-by-function may not be best way to explain how to use package
 
-Bad API docs:
-https://portal.hdfgroup.org/display/HDF5/HDF5
+<!--
+API docs: https://portal.hdfgroup.org/display/HDF5/HDF5
+-->
 
 
 ## The Triangle: API, Test, Documentation
@@ -275,7 +243,7 @@ Alex recommends: write doc first, then test, only then function body!
 
 ## READMEs overview
 
-- "What is this package and wow do I get and run it?"
+- "What is this package and how do I get and run it?"
 
 https://github.com/danfortunato/ultraSEM
 
@@ -284,16 +252,16 @@ https://github.com/danfortunato/ultraSEM
   - People who may be calling your code as a step in a pipeline (rather than interacting with your functions as an API)
 - Tells users how to install the package & make sure it works
 - Describes some of the functionality but probably only scratches the surface of what your code can do
-- Include a minimal usage example, eg:
-     https://emcee.readthedocs.io/en/stable/
+- Sometimes a good README simply redirects to a more elaborate website doc:
+     https://github.com/dfm/emcee
 - Needed for any package, but it's probably only the start
 
 
 ## Narrative docs overview
 
-- "What-all can this package do" to "Tell me technical details about this package", user manual.
+- "What can this package do" to "Tell me technical details about this package", user manual.
 
-Eg FINUFFT web docs (readthedocs + sphinx + mathjax for yummy LaTeX):
+Eg FINUFFT web docs (ReadTheDocs + sphinx + mathjax for yummy LaTeX):
 
 https://finufft.readthedocs.io/en/latest/index.html
 
@@ -323,12 +291,20 @@ https://finufft.readthedocs.io/en/latest/index.html
   - Distinction: Unlike API documentation, this does *not* need to be organized the same way as your implementation/code!
   - Better to focus on typical/paradigmatic *problems* in the field
   - Or use examples from several different fields/subfields, if your tool is more broadly applicable
-- It's important not to leave out the middle: it's easy to jump from basic examples to "pet" sophisticated ones but miss a lot of other useful functionality and/or start assuming your audience knows more than they do
 - Needs additional work to make sure it stays up to date as your methods/design decisions change
 - Include any time you want to maximize the utility of your package
   - Or when your users are from many fields, may not immediately be familiar with your method, or have lots of packages to choose from
 
-Remember: your work only makes a difference if people use it. Science isn't sales, but people spend entire careers re-inventing poorly-publicized wheels. If you want your work to matter, you need to it easy to find, easy to use, and easy to understand, for people across the broadest possible spectrum of disciplines.
+
+## Documention is a form of publication
+
+Your work only makes a difference if people use it.
+
+It will only get widely used if it's easy to understand and use.
+
+Once you have written a stable code, writing docs takes time, but is well worth it!
+
+It is just as important as publishing papers, conference talks, etc
 
 
 
