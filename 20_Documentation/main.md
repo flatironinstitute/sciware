@@ -110,9 +110,9 @@ name for unknown vector in stats, but in physics/math would confuse...)
 - User-facing: read by users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-- I give overview & general advice
+- this is overview & general advice
   - later: tools for narrative docs, including web-facing
-  - API doc pitfalls and exercises
+  - then: API doc pitfalls and exercises
 
 
 ## Won't talk about today, but related & important
@@ -235,8 +235,8 @@ Good practices are mutually interdependent (Jeff makes this point every SciWare)
 
 Alex recommends: write doc first, then test, only then function body!
  - this gets the brain thinking about what task you want to do first
- - then how you'll know you did it right
- - ok, finally you have to figure out how to code the solution
+ - then how you'll know your code did it right
+ - ok, finally you have to figure out how actually to code it :)
 
 
 ## READMEs overview
@@ -258,34 +258,29 @@ Alex recommends: write doc first, then test, only then function body!
 
 - "What can this package do" to "Tell me technical details about this package", user manual.
 
-Eg FINUFFT web docs (ReadTheDocs + sphinx + mathjax for yummy LaTeX):
+Eg FINUFFT (ReadTheDocs+sphinx+mathjax for yummy LaTeX):
 
 https://finufft.readthedocs.io/en/latest/index.html
 
 - Audience:
-  - People who want to know more about how your system works
   - People you're trying to convince why they should use your tools at all
-  - More sophisticated users who want to know how to handle the non-modal use case
+  - People who want to know more details about features, how package works
 - Can include rationale, design decisions, or more sophisticated configurations
-- Can include more detailed discussion of how and why to use different features
-- Needs additional work to make sure it stays up to date as design decisions change
+- Needs additional work to make sure it stays up to date as code changes
 - Essential for any reasonably mature package
 
 
 ## Tutorials overview
 
-- "How can I solve ABC using XYZ"
+- "Step-by-step example of solving ABC using XYZ"
 
-   https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
+https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
+https://github.com/fruzsinaagocs/oscode/blob/master/examples/cosmology.ipynb
 
-How to string together many functions in a package to solve a problem
-
-- Fully worked (and working!) examples
+- Fully worked (and working!) examples: many of us learn by example
   - Ideally cover the full gamut of what people would want to do with your tool
-  - Distinction: Unlike API documentation, this does *not* need to be organized the same way as your implementation/code!
-- Audience:
-  - All users: start with basic, then sophisticated
-  - People who want to know *how to solve a particular problem* rather than *how to use a particular function*
+- *how to solve a particular problem* rather than *how to use a particular function*
+- Audience: everyone, but start with novice user, advanced later
 - make sure it stays up-to-date as your methods/APIs/design decisions change!
 
 
