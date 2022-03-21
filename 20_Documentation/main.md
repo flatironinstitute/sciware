@@ -284,7 +284,7 @@ https://github.com/fruzsinaagocs/oscode/blob/master/examples/cosmology.ipynb
 - make sure it stays up-to-date as your methods/APIs/design decisions change!
 
 
-## Documention is a form of publication
+## Documentation is a form of publication
 
 Your work only makes a difference if people use it.
 
@@ -603,3 +603,9 @@ zero-length inputs.
     - return not-a-number because that follows the divide-by-zero
       floating-point arithmetic?
     - throw an exception to help the user by failing early?
+
+
+
+# Survey
+
+https://bit.ly/sciware-docs
