@@ -296,199 +296,6 @@ It is just as important as publishing papers, conference talks, etc
 
 
 
-# Tools to Generate Documentation
-
-How do people write user documentation for scientific software projects?
-
-
-
-## Categories of Documentation
-- As before, let's consider tools in two categories of documentation
-  - **Narrative** documentation: high-level, "instruction manual" prose
-  - **API** documentation: granular technical specifications
-
-
-## Tools for Narrative Documentation
-
-- In order of increasing feature-richness and complexity
-  - `README` (Markdown and reStructuredText)
-  - Wiki
-  - Jekyll + static web hosting (e.g. GitHub Pages)
-  - Sphinx + ReadTheDocs
-
-
-## Narrative Documentation: the `README`
-
-- The simplest form of top-level documentation
-- Highly portable, easily rendered into a webpage or read in a terminal
-- Often where you will start documentation—don't underestimate the usefulness!
-  - Great idea to jot down the steps to run your code in a `README` as soon as you start
-  - We all promise ourselves we'll set up beautiful documentation later, but in case that doesn't happen, a `README` is a lifesaver
-- GitHub and other code hosting sites will render your `README`
-
-
-## Formatting the `README`
-
-- Two popular languages to make your plain-text `README` look nice online:
-  - Markdown (`README.md`)
-  - reStructuredText (`README.rst`)
-- Markdown is a little easier to write, RST is more feature-complete
-- ["GitHub-Flavored Markdown"]((https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)) is used throughout GitHub; RST is commonly used on ReadTheDocs with Sphinx
-
-TODO: break out into new slide
-
-<img width="40%" src="assets/raw_readme_md.png" class="plain">
-<img width="30%" src="assets/rendered_md.png" class="plain">
-
-
-## Formatting the `README`: Markdown
-
-- Plain text format for writing structured documents
-  - Highly readable in its raw form
-  - but also renders into pretty HTML (or PDF, etc)
-- These slides are written in Markdown!
-
-
-## Formatting the `README`: Markdown Example
-File: `README.md`
-````markdown
-# my-cool-project
-A one-sentence description of how **cool** my project is
-
-## Installation
-1. First step is to run this command:
-`pip install my-cool-project`
-2. Then try to follow the example below!
-
-## Example
-```python
-import my_cool_project
-my_cool_project.go()
-```
-
-TODO: cross-ref
-````
-
-
-## Formatting the `README`: Markdown Example
-TODO: screenshot of rendered markdown
-
-
-## Formatting the `README`: reStructuredText
-
-- Still a plain text format, slightly more complicated than Markdown
-- Supports more directives than Markdown
-   - Textual substitution
-   - References & footnotes
-   - Links between sections and pages
-   - Admonitions (call-out boxes)
-- Sphinx has a good [RST primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
-
-
-## Formatting the `README`: reStructuredText Example
-File: `README.rst`
-````rst
-my-cool-project
-===============
-A one-sentence description of how **cool** my project is
-
-Installation
-------------
-`pip install my-cool-project`
-
-Example
--------
-.. code-block:: python
-
-  import my_cool_project
-  my_cool_project.go()
-
-If the example doesn't work, try :ref:`Installation`.
-
-````
-
-
-## Formatting the `README`: reStructuredText Example
-TODO: screenshot of rendered RST
-
-
-## Tools for Narrative Documentation: Wiki
-- GitHub and other sites have built-in support for Wikis
-    - Good for long-form documentation (e.g. design philosophy, implementation details, extended examples)
-    - An easy next step when your documentation is too big for a single `README` file
-    - Can clone from GitHub as its own repo: <code>git clone https://github.com/google/sanitizers.<b>wiki</b>.git</code>
-- Lehman's commentary: GitHub Wiki usage seems to be declining in research software circles, in favor of ReadTheDocs
-
-
-## Tools for Narrative Documentation: Wiki Example
-- TODO screenshot/example of a wiki
-
-
-## Tools for Narrative Documentation: Jekyll + Static Hosting
-- Jekyll is a tool for generating websites from plain text files, like Markdown
-- Generates static webpages
-  - Can be hosted on any HTTP server (including Flatiron user www)
-  - No need to run a "Jekyll server", or maintain a database, etc.
-  - These slides are rendered with Jekyll!
-
-
-## Tools for Narrative Documentation: Jekyll + Static Hosting
-- [GitHub Pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll) natively supports Jekyll and will host the generated sites (`username.github.io/mycoolproject`)
-  - Will be built and deployed as a GitHub Action, similar to CI
-- Go to the [Sciware GitHub](https://github.com/flatironinstitute/sciware/) for a real example of Jekyll + GitHub pages!
-- Source files are in GitHub-flavored Markdown, output is HTML website (the slides)
-
-
-## Tools for Narrative Documentation: Sphinx + ReadTheDocs
-- Sphinx is a tool that builds a website from plain text files
-  - Reads in reStructuredText (or Markdown)
-  - Outputs a website
-- ReadTheDocs is a web host and cloud service
-   - ReadTheDocs pulls your GitHub repo
-   - Runs Sphinx on their servers to build the website
-   - Hosts the docs at `mycoolproject.readthedocs.io`
-   - Even hosts past versions (based on git branches/tags)
-- Sphinx + ReadTheDocs is a powerful, popular combo!
-
-
-## Tools for Narrative Documentation: Sphinx + ReadTheDocs
-- Sphinx
-  - Controlled by `conf.py`: supports themes, extensions, and extensive customization
-  - Inserts rich navigation features: search, outline in the sidebar, table of contents, etc
-- `docs/index.rst` will become `mycoolproject.readthedocs.io/en/latest/index.html` (main page); `docs/installation.rst` will become `.../installation.html`, etc.
-- TODO: slide on *what* to put in narrative docs?
-
-
-## Tools for Narrative Documentation: Sphinx + ReadTheDocs
-Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html))
-
-TODO: spend a whole slide on autodoc. Mention doxygen extension.
-
-```python
-  # conf.py
-
-  extensions = [
-      'sphinx.ext.autodoc', 'sphinx.ext.autosectionlabel'
-  ]
-
-  # General information about the project.
-  project = "mycoolproject"
-  html_theme = "sphinx_rtd_theme"  # the theme we all know and love
-  # but there are many others, like "sphinx_book_theme"
-
-  autosectionlabel_prefix_document = True
-```
-
-TODO: link to example 
-
-## Tools for Narrative Documentation: Sphinx + ReadTheDocs
-- TODO show rendered examples? More about where to 
-
-
-TODO: slide with other tools (Jupyter notebooks? DFM's thing?)
-
-
-
 # Writing API Documentation (Bob)
 
 ## The doc/test/code triangle
@@ -603,6 +410,253 @@ zero-length inputs.
     - return not-a-number because that follows the divide-by-zero
       floating-point arithmetic?
     - throw an exception to help the user by failing early?
+
+
+
+# Tools to Generate Documentation
+
+How do people write user documentation for scientific software projects?
+
+
+## Categories of Documentation
+
+- As before, let's consider tools in two categories of documentation
+  - **Narrative** documentation: high-level, "instruction manual" prose
+  - **API** documentation: granular technical specifications
+
+
+## Tools for Narrative Documentation
+
+- In order of increasing feature-richness and complexity
+  - `README` (Markdown and reStructuredText)
+  - Wiki
+  - Jekyll + static web hosting (e.g. GitHub Pages)
+  - Sphinx + ReadTheDocs
+
+
+## Narrative Documentation: the `README`
+
+- Simplest form of top-level documentation
+- Highly portable, easily read as a webpage or in a terminal
+- Often where you will start documentation—don't underestimate the usefulness!
+  - Great idea to jot down the steps to run your code in a `README` as soon as you start
+  - We all promise ourselves we'll set up beautiful documentation later, but in case that doesn't happen, a `README` is a lifesaver
+- GitHub and other hosting sites will render your `README`
+
+
+## Formatting the `README`
+
+- Two popular languages to make your plain-text `README` look nice online:
+  - Markdown (`README.md`)
+  - reStructuredText (`README.rst`)
+- Markdown is a little easier to write, RST is more feature-complete
+- ["GitHub-Flavored Markdown"]((https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)) is used throughout GitHub; RST is commonly used on ReadTheDocs with Sphinx
+
+
+## Formatting the `README`
+<img width="40%" src="assets/raw_readme_md.png" class="plain">
+<img width="30%" src="assets/rendered_md.png" class="plain">
+
+
+## Formatting the `README`: Markdown
+
+- Plain text format for writing structured documents
+  - Highly readable in its raw form
+  - but also renders into pretty HTML (or PDF, etc)
+- These slides are written in Markdown!
+
+
+## Formatting the `README`: Markdown Example
+File: `README.md`
+````markdown
+# my-cool-project
+A one-sentence description of how **cool** my project is
+
+## Installation
+1. First step is to run this command:
+`pip install my-cool-project`
+2. Then try to follow the example below!
+
+## Example
+```python
+import my_cool_project
+my_cool_project.go()
+```
+If the example doesn't work, check the [Installation](#installation).
+````
+
+
+## Formatting the `README`: Markdown Example
+<img width=60% src="assets/rendered_readme.md.2.png" class="plain">
+
+
+## Formatting the `README`: reStructuredText
+
+- Still a plain text format, slightly more complicated than Markdown
+- Supports more directives than Markdown
+   - Textual substitution
+   - Good integration with LaTeX
+   - References & footnotes
+   - Links between sections and pages
+   - Admonitions (call-out boxes)
+- Sphinx has a good [RST primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
+
+
+## Formatting the `README`: reStructuredText Example
+File: `README.rst` (renders the same as the Markdown example)
+````rst
+my-cool-project
+===============
+A one-sentence description of how **cool** my project is
+
+Installation
+------------
+``pip install my-cool-project``
+
+Example
+-------
+.. code-block:: python
+
+  import my_cool_project
+  my_cool_project.go()
+
+If the example doesn't work, try `Installation <#installation>`_.
+````
+
+
+## Tools for Narrative Documentation: Wiki
+- GitHub and other sites have built-in support for Wikis
+    - Good for long-form documentation (e.g. design philosophy, implementation details, etc)
+    - An easy next step when your documentation is too big for a single `README` file
+    - Can clone from GitHub as its own repo: <code>git clone https://github.com/google/sanitizers.<b>wiki</b>.git</code>
+- GitHub Wiki usage seems to be declining in research software, in favor of ReadTheDocs
+
+
+## Tools for Narrative Documentation: Wiki Example
+<img width="65%" src="assets/wiki.png" class="plain">
+
+
+## Documentation Tools: Jekyll + Static Hosting
+- [Jekyll](https://jekyllrb.com/) is a tool for generating websites from plain text files, like Markdown
+- Generates static webpages
+  - Can be hosted on any HTTP server (including [Flatiron user www](https://docs.simonsfoundation.org/index.php/PublicWWW))
+  - No need to run a "Jekyll server", or maintain a database, etc.
+  - These slides are rendered with Jekyll!
+
+
+## Documentation Tools: Jekyll + Static Hosting
+- [GitHub Pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll) natively supports Jekyll and will host the generated sites (`username.github.io/mycoolproject`)
+  - Will be built and deployed as a GitHub Action, like CI
+- Go to the [Sciware GitHub](https://github.com/flatironinstitute/sciware/) for a real example of Jekyll + GitHub pages!
+- Source files are in GitHub-flavored Markdown, output is HTML website (the slides)
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+- Sphinx is a tool that builds a website from plain text files
+  - Reads in reStructuredText (or Markdown)
+  - Outputs a website
+- ReadTheDocs is a web host and cloud service
+   - ReadTheDocs pulls your GitHub repo
+   - Runs Sphinx on their servers to build the website
+   - Hosts the docs at `mycoolproject.readthedocs.io`
+   - Even hosts past versions (based on git branches/tags)
+- Sphinx + ReadTheDocs is a powerful, popular combo!
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+<img width="80%" src="assets/abacusutils_screenshot.png" class="plain">
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+<img width="80%" src="assets/tinygp_screenshot.png" class="plain">
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+- Sphinx
+  - Controlled by `conf.py`: supports themes, extensions, and extensive customization
+  - Inserts rich navigation features: search, outline in the sidebar, table of contents, etc
+- `docs/index.rst` will become `index.html` (main page); `docs/installation.rst` will become `installation.html`, etc.
+
+
+## What to put in narrative docs
+<img width="80%" src="assets/tinygp_toc.png" class="plain">
+
+
+## What to put in narrative docs
+- Overview
+  - What problem does your package solve?
+- Installation
+- Usage / Examples
+- Tutorials
+- Release Notes / Changelog
+- How to contribute (and link to repo!)
+- How to report issues
+- How to cite
+- API (Sphinx autodoc can help generate this)
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+Sphinx `conf.py` example ([Full Documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html))
+
+```python
+  # conf.py
+
+  extensions = [
+      'sphinx.ext.autodoc', 'sphinx.ext.autosectionlabel'
+  ]
+
+  # General information about the project.
+  project = "mycoolproject"
+  html_theme = "sphinx_rtd_theme"  # the theme we all know and love
+  # but there are many others, like "sphinx_book_theme"
+
+  autosectionlabel_prefix_document = True
+```
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+An example of `sphinx.ext.autosectionlabel`:
+
+File: `index.rst`
+```rst
+Introduction
+------------
+
+Hello, there! This is some text.
+
+A link back to the section header: :ref:`index:Introduction`.
+```
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+<img width="80%" src="assets/sphinx_autosectionlabel.png" class="plain">
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+Example of API doc generation with `sphinx.ext.autodoc`:
+
+<img width="80%" src="assets/tinygp_api.png" class="plain">
+
+
+## Documentation Tools: Sphinx + ReadTheDocs
+<img width="80%" src="assets/tinygp_api_src.png" class="plain">
+
+
+## Other Useful Sphinx Extensions
+- [MyST-NB](https://myst-nb.readthedocs.io/en/latest/)
+  - Executable documentation with [sphinx-book-theme](https://sphinx-book-theme.readthedocs.io/en/stable/)
+  - Write docs/examples in a Jupyter notebook
+  - MyST extension renders them as a Sphinx webpage
+  - Allow user to launch notebook in Binder/Colab
+- [Breathe](https://www.breathe-doc.org/)
+  - Bridge between Doxygen (C/C++ docs) XML and Sphinx RST
+- [Built-in extensions](https://www.sphinx-doc.org/en/master/usage/extensions/index.html)
+  - doctest, githubpages, intersphinx, napoleon
+
+
+## Getting Started
+- ReadTheDocs tutorial here, using a Sphinx template: https://docs.readthedocs.io/en/stable/tutorial/
+- Create a Sphinx project from scratch: https://www.sphinx-doc.org/en/master/usage/quickstart.html
 
 
 
