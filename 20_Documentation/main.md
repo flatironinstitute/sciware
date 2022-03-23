@@ -47,10 +47,9 @@ Activities where participants all actively work to foster an environment which e
 Documentation
 
 - what & why: overview and scope for today (Alex + Jeff)
-
+- how: writing docs for functions, with exercises (Bob)
 - how: tools for nice docs (web-facing, manuals, etc) (Lehman)
 
-- how: writing docs for functions, with exercises (Bob)
 
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 <!-- I want default left-justify everywhere:  -->
@@ -658,6 +657,14 @@ Example of API doc generation with `sphinx.ext.autodoc`:
 - ReadTheDocs tutorial here, using a Sphinx template: https://docs.readthedocs.io/en/stable/tutorial/
 - Create a Sphinx project from scratch: https://www.sphinx-doc.org/en/master/usage/quickstart.html
 
+
+# New Flatiron Wiki
+
+[wiki.flatironinstitute.org](https://wiki.flatironinstitute.org/)
+
+_We'd greatly appreciate your feedback._
+- Slack: @Geraud Krawezik / @Liz 
+- Email: gkrawezik@flatironinstitute.org / elovero@flatironinstitute.org
 
 
 # Survey
