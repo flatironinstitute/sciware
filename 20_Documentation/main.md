@@ -339,17 +339,16 @@ T mySum(const std::vector<T>& v) ...
 ```cpp
 /**
  * Return the sum of the specified inputs.  Starting from
- * the nullary constructor for the return type, elements of the
- * argument list are added elementwise with `operator+=<T>()`.
+ * a nullary value for the return type, elements of the
+ * argument are added in order using `operator+=<T>()`.
  *
- * Example usage:
+ * Example usage and output:
  * ```cpp
  * double x = mySum<double>({});
  * int n = mySum(vector<int>{1, 2, 3});
  * string s = mySum(vector<string>{"hello", " ", "world"});
  * cout << "x = " x << "; n = " << n << "; s = " << s << endl;
  * ```
- * prints
  * ```
  * x = 0; n = 6; s = hello world
  * ```
@@ -366,6 +365,7 @@ T mySum(const std::vector<T>& v) {
 }
 ```
 
+
 ## Answer 1: More questions
 
 * C++ is very strict
@@ -374,11 +374,9 @@ T mySum(const std::vector<T>& v) {
 	- the **concept** (usage of `T`) requires `T` to support `T()` and
     `operator+=<T>`.
 * What about R, Python, or Julia?
-    - how did you document argument and return types?
-    - what types of objects can be passed in?  what shapes? (e.g.,
-      matrix, 3D array, list, etc)
+    - how did you document argument and return types? and shapes?
     - did you consider non-numeric inputs?
-    - how about clients adding integers and strings?
+    - how about clients mixing numbers and strings?
 
 
 ## Exericse 2
@@ -387,24 +385,16 @@ T mySum(const std::vector<T>& v) {
     - How does the documentation differ?
     - How will testing differ?
 
-- Do the same for `mySD` that calculates the standard deviation of an array.
+- Do the same for `mySD` that calculates the sample standard deviation of an array.
 
 
-## Exericse 2, Answers
+## Exericse 2, More questions
 
-- The main difference is that `myAvg` is not well defined for
-zero-length inputs.
-- Did you decide to
-    - return not-a-number because that follows the divide-by-zero
-      floating-point arithmetic?
-    - throw an exception to help the user by failing early?
-
-- `mySD` has two standard definitions
+- What about `myAvg` and zero-length inputs? (div by 0?)
+- Inputs are numeric, what is output type for integer input?
+- What about the two definitions of `mySD`?
     - divide by `size` is the maximum likelihood estimate
     - dividing by `size - 1` gives an unbiased estimate
-	- first requires size at least 1, second at least size 2 to avoid
-      divide by zero
-    - how do these affect the code and doc?
 
 
 # New Flatiron Wiki
