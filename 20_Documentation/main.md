@@ -300,17 +300,19 @@ It is just as important as publishing papers, conference talks, etc
 
 ### Bob Carpenter (CCM)
 
-
 ## The doc/test/code triangle
 
-- When designing a function, consider together
+- When desiging a function, consider together
     1. **Documentation**: says what the code does
-    2. **Testing**: tests it does what it says it does
-    3. **Code**: the code itself
-- Bad smells
-    - if code is hard to doc, it's probably badly designed
-    - if code is hard to test from the doc, either the code is badly
-      designed or the doc is incomplete
+	2. **Testing**: tests it does what it says it does
+	3. **Code**: the code itself
+
+
+## Hints of trouble
+
+- if code is hard to doc, it's probably badly designed
+- if code is hard to test, it's probably badly designed or
+  poorly documented or both
 
 
 ## Exercise 1
@@ -318,86 +320,75 @@ It is just as important as publishing papers, conference talks, etc
 1. In your favorite language, design a function to sum a sequence of
 numbers.
 2. Write documentation for it.
-3. Can you write tests for it looking only at the doc?
+3. Ask yourself i you can write complete tests for it only looking at
+   the doc.
 
 ```python
-import numpy as np
-def mySum(v: np.array) -> np.float64:
+def mySum(v) ...
+```
+
+```cpp
+template <typename T>
+T mySum(const std::vector<T>& v) ...
 ```
 
 
-## Answer 1: Documentation
+## Answer 1: C++ Documentation with Doxygen
 
-Things to document:
-
-1. argument type and shape assumptions
-2. return type
-3. result when argument is empty
-4. error conditions and behavior
-
-
-# Answer 1: Tests
-
-* What do we test?
-    - throw the appropriate exception when argument is wrong shape
-    - when arg is empty, return 0 (unit under addition is always the base value)
-    - length 1 input, and at least one longer input
-    - behavior when one or more arguments is not-a-number or infinite?
-    - behavior when no argument is given?
-
-
-# Answer 1: Code
-
-- I've included typehints, but these could be documented some other way
-
-```python
-import numpy as np
-def mySum(v):
-    """Return the sum of the elements of v or 0 if v is size 0.
-
-    Arguments:
-    v -- array to sum
-
-    Exceptions:
-    ValueError if v is not a one-dimensional array.
-
-    Return:
-    Sum of the elements of v, or 0 if v is empty.
-    """
-    if v.ndim != 1:
-        raise ValueError('Require 1D array argument')
-    sum = 0
-    #for n in range(v.size):
-    for q in v:
-        sum += q
-    return sum
+```cpp
+/**
+ * Return the sum of the specified inputs.  Starting from
+ * the nullary constructor for the return type, elements of the
+ * argument list are added elementwise with `operator+=<T>()`.
+ *
+ * Example usage:
+ * ```cpp
+ * double x = mySum<double>({});
+ * int n = mySum(vector<int>{1, 2, 3});
+ * string s = mySum(vector<string>{"hello", " ", "world"});
+ * cout << "x = " x << "; n = " << n << "; s = " << s << endl;
+ * ```
+ * prints
+ * ```
+ * x = 0; n = 6; s = hello world
+ * ```
+ *
+ * @tparam T type of arguments
+ * @param v vector of arguments
+ * @return sum of the elements of v
+ */
+template <typename T>
+T mySum(const std::vector<T>& v) {
+  T sum = T();
+  for (const T& x : v) sum += x;
+  return sum;
+}
 ```
 
+## Answer 1: More questions
 
-## Thought Exercise 2
+* C++ is very strict
+    - all arguments have to be of same type because argument type is
+    `vector<T>` and there's no `Object` like in Java
+	- the **concept** (usage of `T`) requires `T` to support `T()` and
+    `operator+=<T>`.
+* If you chose to answer in a language like R, Python, or Julia,
+    - how did you document types?
+    - what types of objects can be passed in?  what shapes? (e.g.,
+      matrix, 3D array, list, etc)
+    - did you consider non-numeric inputs?
+    - how about clients adding integers and strings?
 
-- Consider how the above code might break with different type
-arguments.
-    - Does the type hint save you or should there be more code?
 
-- Consider generalizing `mySum` to deal with different type and
-different shape arguments.
-    - How does the doc differ?
-    - Will it be enough to base testing on?
-    - Does the type hint save you or should there be more code?
-
-
-## Thought Exercises 3, 4
+## Exericse 2
 
 - Consider writing a function `myAvg` to calculate the average of an array.
-    - How much different is this than `mySum` in terms of code?
     - How does the documentation differ?
     - How will testing differ?
 
 - Do the same for `mySD` that calculates the standard deviation of an array.
 
-
-## Exercise 3, 4: Answers
+## Exericse 2, Answers
 
 - The main difference is that `myAvg` is not well defined for
 zero-length inputs.
@@ -409,11 +400,9 @@ zero-length inputs.
 - `mySD` has two standard definitions
     - divide by `size` is the maximum likelihood estimate
     - dividing by `size - 1` gives an unbiased estimate
+	- first requires size at least 1, second at least size 2 to avoid
+      divide by zero
     - how do these affect the code and doc?
-    - return not-a-number because that follows the divide-by-zero
-      floating-point arithmetic?
-    - throw an exception to help the user by failing early?
-
 
 
 # New Flatiron Wiki
