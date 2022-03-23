@@ -416,6 +416,21 @@ zero-length inputs.
 
 
 
+# New Flatiron Wiki
+
+[wiki.flatironinstitute.org](https://wiki.flatironinstitute.org/)
+
+_We'd greatly appreciate your feedback._
+- Slack: @Geraud Krawezik / @Liz 
+- Email: gkrawezik@flatironinstitute.org / elovero@flatironinstitute.org
+
+
+# Survey
+
+https://bit.ly/sciware-docs
+
+
+
 # Tools to Generate Documentation
 
 How do people write user documentation for scientific software projects?
@@ -664,15 +679,3 @@ Example of API doc generation with `sphinx.ext.autodoc`:
 - Create a Sphinx project from scratch: https://www.sphinx-doc.org/en/master/usage/quickstart.html
 
 
-# New Flatiron Wiki
-
-[wiki.flatironinstitute.org](https://wiki.flatironinstitute.org/)
-
-_We'd greatly appreciate your feedback._
-- Slack: @Geraud Krawezik / @Liz 
-- Email: gkrawezik@flatironinstitute.org / elovero@flatironinstitute.org
-
-
-# Survey
-
-https://bit.ly/sciware-docs
