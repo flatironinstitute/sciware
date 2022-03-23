@@ -300,6 +300,7 @@ It is just as important as publishing papers, conference talks, etc
 
 ### Bob Carpenter (CCM)
 
+
 ## The doc/test/code triangle
 
 - When desiging a function, consider together
@@ -318,9 +319,9 @@ It is just as important as publishing papers, conference talks, etc
 ## Exercise 1
 
 1. In your favorite language, design a function to sum a sequence of
-numbers.
+values.
 2. Write documentation for it.
-3. Ask yourself i you can write complete tests for it only looking at
+3. Ask yourself if you can write complete tests for it only looking at
    the doc.
 
 ```python
@@ -372,8 +373,8 @@ T mySum(const std::vector<T>& v) {
     `vector<T>` and there's no `Object` like in Java
 	- the **concept** (usage of `T`) requires `T` to support `T()` and
     `operator+=<T>`.
-* If you chose to answer in a language like R, Python, or Julia,
-    - how did you document types?
+* What about R, Python, or Julia?
+    - how did you document argument and return types?
     - what types of objects can be passed in?  what shapes? (e.g.,
       matrix, 3D array, list, etc)
     - did you consider non-numeric inputs?
@@ -387,6 +388,7 @@ T mySum(const std::vector<T>& v) {
     - How will testing differ?
 
 - Do the same for `mySD` that calculates the standard deviation of an array.
+
 
 ## Exericse 2, Answers
 
