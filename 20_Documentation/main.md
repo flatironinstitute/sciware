@@ -47,10 +47,9 @@ Activities where participants all actively work to foster an environment which e
 Documentation
 
 - what & why: overview and scope for today (Alex + Jeff)
-
+- how: writing docs for functions, with exercises (Bob)
 - how: tools for nice docs (web-facing, manuals, etc) (Lehman)
 
-- how: writing docs for functions, with exercises (Bob)
 
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 <!-- I want default left-justify everywhere:  -->
