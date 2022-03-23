@@ -46,9 +46,9 @@ Activities where participants all actively work to foster an environment which e
 
 Documentation
 
-- what & why: overview and scope for today (Alex + Jeff)
-- how: writing docs for functions, with exercises (Bob)
-- how: tools for nice docs (web-facing, manuals, etc) (Lehman)
+- what & why: overview and scope for today
+- how: writing docs for functions, with exercises
+- how: tools for nice docs (web-facing, manuals, etc)
 
 
 <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
@@ -63,6 +63,8 @@ Documentation
 
 
 # Documentation: Principles and Definitions
+
+### Alex Barnett (CCM)
 
 
 ## What is documentation?
@@ -178,6 +180,8 @@ function [x,w] = gauss(N)
   w = 2*V(1,i).^2;
 end
 ```
+
+
 When you ask for (interactive) help, prints first `%` comment block:
 ```
 >> help gauss
@@ -228,9 +232,9 @@ Fortran/C/C++ users just read source code comment block at top of each function.
 
 ## The Triangle: API, Test, Documentation
 
-Q: What order should you write these in?
-A: Write them all at once!
-Good practices are mutually interdependent (Jeff makes this point every SciWare)
+Q: What order should you write these in?\
+A: Write them all at once!\
+Good practices are mutually interdependent (Jeff makes this point every Sciware)
 
 Alex recommends: write doc first, then test, only then function body!
  - this gets the brain thinking about what task you want to do first
@@ -256,11 +260,8 @@ Alex recommends: write doc first, then test, only then function body!
 ## Narrative docs overview
 
 - "What can this package do" to "Tell me technical details about this package", user manual.
-
-Eg FINUFFT (ReadTheDocs+sphinx+mathjax for yummy LaTeX):
-
-https://finufft.readthedocs.io/en/latest/index.html
-
+  - Eg FINUFFT (ReadTheDocs+sphinx+mathjax for yummy LaTeX):
+    https://finufft.readthedocs.io/en/latest/index.html
 - Audience:
   - People you're trying to convince why they should use your tools at all
   - People who want to know more details about features, how package works
@@ -295,7 +296,10 @@ It is just as important as publishing papers, conference talks, etc
 
 
 
-# Writing API Documentation (Bob)
+# Writing API Documentation
+
+### Bob Carpenter (CCM)
+
 
 ## The doc/test/code triangle
 
@@ -415,6 +419,8 @@ zero-length inputs.
 # Tools to Generate Documentation
 
 How do people write user documentation for scientific software projects?
+
+### Lehman Garrison (CCA)
 
 
 ## Categories of Documentation
