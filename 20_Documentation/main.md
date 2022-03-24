@@ -3,6 +3,8 @@
 # Documentation
 ### How to win users and influence science
 
+https://sciware.flatironinstitute.org/20_Documentation/
+
 https://github.com/flatironinstitute/sciware/tree/main/20_Documentation
 
 
