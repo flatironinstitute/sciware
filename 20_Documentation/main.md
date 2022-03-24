@@ -301,6 +301,8 @@ Once you have written a stable code, writing docs takes time, but is well worth 
 
 It is just as important as publishing papers, conference talks, etc
 
+Job candidates in scientific computing are assessed by their docs & code
+
 
 
 # Writing API Documentation
