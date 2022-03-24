@@ -74,7 +74,6 @@ Text that helps one use and understand a code or software tool
 - describe inputs & outputs for one or more routines
   - fancy name: "API" = application programming interface
 
-<div class="fragment">
 - Equally useful: "narrative" docs (free-form)
   - motivation: what does this tool do?
   - why better than tools X, Y? (eg: it's 10x faster...)
@@ -82,7 +81,6 @@ Text that helps one use and understand a code or software tool
   - how to run a "hello world" example, test your install
    (often in `README.md`: the first thing web user sees on GitHub)
   - or more extensive: PDF manual, wiki, website...
-</div>
 
 ## Who is your audience?
 
@@ -99,25 +97,21 @@ rectangular linear system Ax=b, where A is a MxN matrix, etc...
 ```
 Stats audience vs math audience - which do you want?
 
-<div class="fragment">
 - Choosing a _good name_ for the function (= what it does), is part of good doc!
 
 - Choose good names for arguments in the docs (`beta` is a typical
 name for unknown vector in stats, but in physics/math would confuse...)
 
 <!-- - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions -->
-</div>
 
 ## What focus on today?
 
 - User-facing: read by users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-<di class="fragment">
 - Overview, general advice, pointers
   - later: API docs, with exercises!
   - finally: nice tools for narrative docs, including web-facing
-</div>
 
 
 ## Won't talk about today, but related & important
