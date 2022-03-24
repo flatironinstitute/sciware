@@ -84,6 +84,7 @@ Text that helps one use and understand a code or software tool
    (often in `README.md`: the first thing web user sees on GitHub)
   - or more extensive: PDF manual, wiki, website...
 
+
 ## Who is your audience?
 
 Thinking from your audience's point of view is crucial
@@ -105,6 +106,7 @@ Stats audience vs math audience - which do you want?
 name for unknown vector in stats, but in physics/math would confuse...)
 
 <!-- - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions -->
+
 
 ## What focus on today?
 
