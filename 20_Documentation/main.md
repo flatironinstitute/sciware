@@ -74,6 +74,7 @@ Text that helps one use and understand a code or software tool
 - describe inputs & outputs for one or more routines
   - fancy name: "API" = application programming interface
 
+<div class="fragment">
 - Equally useful: "narrative" docs (free-form)
   - motivation: what does this tool do?
   - why better than tools X, Y? (eg: it's 10x faster...)
@@ -81,7 +82,7 @@ Text that helps one use and understand a code or software tool
   - how to run a "hello world" example, test your install
    (often in `README.md`: the first thing web user sees on GitHub)
   - or more extensive: PDF manual, wiki, website...
-
+</div>
 
 ## Who is your audience?
 
@@ -98,22 +99,25 @@ rectangular linear system Ax=b, where A is a MxN matrix, etc...
 ```
 Stats audience vs math audience - which do you want?
 
+<div class="fragment">
 - Choosing a _good name_ for the function (= what it does), is part of good doc!
 
 - Choose good names for arguments in the docs (`beta` is a typical
 name for unknown vector in stats, but in physics/math would confuse...)
 
 <!-- - see: https://github.com/ahbarnett/sciware/tree/main/12_Functions -->
-
+</div>
 
 ## What focus on today?
 
 - User-facing: read by users (not developers) of your code
   - this includes _your future self_: <6 months you forget how to call own code!
 
-- this is overview & general advice
-  - later: tools for narrative docs, including web-facing
-  - then: API doc pitfalls and exercises
+<di class="fragment">
+- Overview, general advice, pointers
+  - later: API docs, with exercises!
+  - finally: nice tools for narrative docs, including web-facing
+</div>
 
 
 ## Won't talk about today, but related & important
@@ -130,7 +134,7 @@ name for unknown vector in stats, but in physics/math would confuse...)
 ## API Documentation: how do I call function X?
 
 - self-contained text "docstring" or comment block at top of each function
-- printed when do `help` or `?` and/or collected to website (eg via doxygen)
+- printed when do `help` or `?`. Can be gathered to website (eg via Doxygen)
 - be as precise and specific as you can about inputs and outputs
 - what are the edge cases? what behavior should happen in those cases?
 - assumes an audience that is already invested in using your work
@@ -160,16 +164,16 @@ The `range(4)` example is good: can read to understand quickly
 
 Many people simply modify examples for their purposes
 
-The bang (!) sentence we find a bit unclear!
+The bang (!) sentence we find unclear ("stop" is bad argument name?)
 </div>
 
 
-## API (cnt'd)
+## API docs for a function
 
 You should aim to break up any repeated task (no matter how small) into
 a self-contained function with a docstring.
 
-Eg a MATLAB/Octave quadrature code `gauss.m` (not part of core language):
+Eg, well-known and useful MATLAB/Octave quadrature function `gauss.m` (not part of core language):
 ```matlab
 % GAUSS  nodes x (Legendre points) and weights w
 function [x,w] = gauss(N)
@@ -181,16 +185,21 @@ function [x,w] = gauss(N)
 end
 ```
 
+It's clear from *source code* that outputs are `x` and `w`, but...
 
-When you ask for (interactive) help, prints first `%` comment block:
+
+When you ask for (interactive) help, it prints only the docstring, which in MATLAB/Octave is the first contiguous `%` comment block:
 ```
 >> help gauss
   GAUSS  nodes x (Legendre points) and weights w
 ```
-Hmm, why not useful?
+Hmm, why not useful? [Please shout out the many reasons why]
 
 <div class="fragment">
-- missing input args? missing order of outputs! no use example! no teaching!
+- missing input args, their meaning and types!
+- missing output args, their order, types, meaning...
+- no use example!
+- no mention of quadrature (or teaching that it approximates an integral)
 </div>
 
 
@@ -212,22 +221,22 @@ Hmm, why not useful?
 
   Note: increasing N usually gives more accuracy in the approximating the integral.
 </code></pre>
-Note: precise math description, types/sizes of inputs & outputs, helpful advice to newbies
+Note: precise math description, types/sizes of inputs & outputs, helpful advice to newbies teaching example of quadrature use
 
 - API docs crucial in low-level languages too:
 Fortran/C/C++ users just read source code comment block at top of each function.
 
 
-## API (cnt'd)
+## Final API advice
 
 - Learn and follow docstring style for your language
   - eg: how to annotate variable types, [optional] inputs
 - Can you avoid biology/physics/etc terms in your docs?
-  - avoid jargon if your routine could be more widely useful
-- API doc advantage: docstring right next to source code, easy to maintain
-- Limitation: function-by-function not always best way to understand a pkg
+  - avoid jargon, instead try describe using accessible math
+- API docs are easy to maintain: docstring right next to source code!
+- Limitation: function-by-function not often the best way to understand a package
 
-  - case in point: https://portal.hdfgroup.org/display/HDF5/HDF5
+  - case in point re complex package: https://portal.hdfgroup.org/display/HDF5/HDF5
 
 
 ## The Triangle: API, Test, Documentation
@@ -260,11 +269,11 @@ Alex recommends: write doc first, then test, only then function body!
 ## Narrative docs overview
 
 - "What can this package do" to "Tell me technical details about this package", user manual.
-  - Eg FINUFFT (ReadTheDocs+sphinx+mathjax for yummy LaTeX):
+  - Eg FINUFFT (ReadTheDocs+sphinx+mathjax for LaTeX):
     https://finufft.readthedocs.io/en/latest/index.html
 - Audience:
-  - People you're trying to convince why they should use your tools at all
-  - People who want to know more details about features, how package works
+  - People you're trying to convince to use your tool
+  - Those seeking details about features and workings
 - Can include rationale, design decisions, or more sophisticated configurations
 - Needs additional work to make sure it stays up to date as code changes
 - Essential for any reasonably mature package
@@ -277,11 +286,11 @@ Alex recommends: write doc first, then test, only then function body!
 https://emcee.readthedocs.io/en/stable/tutorials/quickstart/
 https://github.com/fruzsinaagocs/oscode/blob/master/examples/cosmology.ipynb
 
-- Fully worked (and working!) examples: many of us learn by example
+- Fully worked (and working!) examples: many learn by example
   - Ideally cover the full gamut of what people would want to do with your tool
 - *how to solve a particular problem* rather than *how to use a particular function*
-- Audience: everyone, but start with novice user, advanced later
-- make sure it stays up-to-date as your methods/APIs/design decisions change!
+- Audience: everyone, start with novice user, then advanced
+- make sure it stays up-to-date as your code/APIs/design decisions change!
 
 
 ## Documentation is a form of publication
