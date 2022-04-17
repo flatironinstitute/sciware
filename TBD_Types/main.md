@@ -6,13 +6,13 @@
 
 # Applying Types
 
-* *Not* type theory (a branch of mathematics involving propositional logic and category theory
-* c.f., algebraic data types
+* *Not* type theory (a branch of mathematics involving propositional logic and category theory)
+* algebraic data types
 
 
 ## Types
 
-If you think about types at all, you probably think about storage, bits:
+If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
 
 But you interact with lots of other types, too:
@@ -27,11 +27,11 @@ Think of a type as representing a set of possible values:
 
 $$
 \begin{align}
-	\texttt{bool} &= \\{\textsf{FALSE}, \textsf{TRUE}\\} & \left|\texttt{bool}\right| &= 2 \\\\
-	\texttt{uint8} &= \\{0,1,\dots,255\\} & \left|\texttt{uint8}\right| &= 2^8 \\\\
-        \texttt{int32} &= \\{-2^{31},\dots,2^{31}-1\\} & \left|\texttt{int32}\right| &= 2^{32} \\\\
-        \texttt{int} &\approx \mathbb{Z} \\\\
-        \texttt{float} &\approx \mathbb{Q} \approx \mathbb{R}
+	\texttt{Bool} &= \\{\textsf{FALSE}, \textsf{TRUE}\\} & \left|\texttt{Bool}\right| &= 2 \\\\
+	\texttt{UInt8} &= \\{0,1,\dots,255\\} & \left|\texttt{UInt8}\right| &= 2^8 \\\\
+        \texttt{Int32} &= \\{-2^{31},\dots,2^{31}-1\\} & \left|\texttt{Int32}\right| &= 2^{32} \\\\
+        \texttt{Int} &\approx \mathbb{Z} \\\\
+        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R}
 \end{align}
 $$
 
@@ -46,13 +46,13 @@ A couple simple types may seem silly but are quite useful:
 
 $$
 \begin{align}
-	\texttt{unit} &= \\{()\\} & \left|\texttt{unit}\right| &= 1 \\\\
-	\texttt{void} &= \emptyset = \\{\\} & \left|\texttt{void}\right| &= 0
+	\texttt{Unit} &= \\{()\\} & \left|\texttt{Unit}\right| &= 1 \\\\
+	\texttt{Void} &= \emptyset = \\{\\} & \left|\texttt{Void}\right| &= 0
 \end{align}
 $$
 
-* `unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia, `void` in C)
-* `void` is the empty type with no possible values (never, impossible, a value that can never exist, the return value of a function that never returns)
+* `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia, `void` in C)
+* `Void` is the empty type with no possible values (never, impossible, a value that can never exist, the return value of a function that never returns)
 * All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
 
 
@@ -64,10 +64,10 @@ $$
 	\\{1,2,3,4\\} \qquad
 	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
 	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} ~ \text{(enum*)}  \\\\
-	[0,1] \cap \texttt{float} ~ (\\{x : 0 \le x \le 1\\}) \\\\
-	\mathbb{P} \cap \texttt{int} \qquad
+	[0,1] \cap \texttt{Float} ~ (\\{x : 0 \le x \le 1\\}) \\\\
+	\mathbb{P} \cap \texttt{Int} \qquad
 	\mathbb{R}^+ ~ (\\{x : x \ge 0\\}) \\\\
-	\texttt{float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
+	\texttt{Float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
 	(T \setminus S = \\{ x \in T : x \notin S \\} = T - S)
 $$
 
@@ -106,26 +106,26 @@ Different languages use a variety of syntax to represent types
 
 ## Sum types (disjoint unions)
 
-Sometimes a value can be different things, so we make a new type by combining other types with a union:
+Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
 
 $$
 \begin{align}
 	T + S &= T \sqcup S \\\\
-	\texttt{bool} + \texttt{uint32} &= \\{\textsf{FALSE},\textsf{TRUE},0,1,2,\dots\\} \\\\
+	\texttt{Bool} + \texttt{UInt32} &= \\{\textsf{FALSE},\textsf{TRUE},0,1,2,\dots\\} \\\\
 	\left|T + S\right| &= \left|T\right| + \left|S\right| \\\\
-	\texttt{uint8} + \texttt{uint32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\} \\\\
-		&\ne \texttt{uint8} \cup \texttt{uint32}
+	\texttt{UInt8} + \texttt{UInt32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\} \\\\
+		&\ne \texttt{UInt8} \cup \texttt{UInt32}
 \end{align}
 $$
 
 * Sometimes called a "tagged" union because values are tagged by which type they're from
-* "discriminated", unlike a C `union`: each value is either `T` or `S` (and you can tell)
+* "discriminated", unlike a C `union`: each value is either from `T` or `S` (and you can tell)
 
 
 ## Type parameters, more syntax
 
 * Types can have parameters (arguments) of other types
-* \\(+\\) is an operator (function) that builds existing types into a new one: \\( T+S = \textsf{Union}(T,S) \\)
+* \\(+\\) is an operator (function) that builds existing types into a new one: \\( T+S = \texttt{Union}(T,S) \\)
 * Different languages have different syntax for these parameterized types (and different names for unions):
 
 | \\( T + S \\)      | language          |
@@ -137,31 +137,33 @@ $$
 | `variant<T, S>`    | C++ |
 
 
-## More simple types
+## Other simple types
 
-* Adding \texttt{unit} to a type is often useful
+* Adding \\( \texttt{Unit} \\) to a type is often useful
 
 $$
-	\texttt{unit} + \texttt{T} = \\{(), \dots\\} \\\\
-	\texttt{unit} + \texttt{bool} = \\{(), \textsf{F}, \textsf{T}\\}
+	\texttt{Unit} + \texttt{T} = \\{(), \dots\\} \\\\
+	\texttt{Unit} + \texttt{Bool} = \\{(), \textsf{F}, \textsf{T}\\}
 $$
 
 * Provides a "missing" option (`NULL`, `None`, `nothing`, `NA`)
-* Often has a special name: `Optional[T] = Union[T,None]`
+* Often has a special name:
+   * `Optional[T] = Union[T,None]` (Python)
+   * `Maybe T` (Haskell)
 
 
 ## Product types
 
-* Unions can only have one value, either one type or the other
-* Products allow one value from each time
+* Unions can only have one value, one type OR the other
+* Products allow one value from each type (AND)
 * Represents every possible combination of two types (cross product, outer product)
 
 $$
 \begin{align}
 	T \times S &= \\{ (x, y) : x \in T, y \in S \\} \\\\
-	\texttt{bool} \times \texttt{uint8} &= \\{(\textsf{F},0),(\textsf{T},0),(\textsf{F},1),(\textsf{T},1),\dots\\} \\\\
+	\texttt{Bool} \times \texttt{UInt8} &= \\{(\textsf{F},0),(\textsf{T},0),(\textsf{F},1),(\textsf{T},1),\dots\\} \\\\
 	\left|T \times S\right| &= \left|T\right|\left|S\right| \\\\
-	\texttt{float} \times \texttt{float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R}
+	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R}
 \end{align}
 $$
 
@@ -172,22 +174,102 @@ $$
 
 $$
 	\prod_{i=1}^n T_i = T_1 \times T_2 \times \cdots \times T_n = \texttt{Tuple}(T_1, T_2, \dots, T_n) \\\\
-		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\} \\\\
-	\texttt{Tuple}() = ? \\\\
-	\left| \texttt{Tuple}() \right| = \prod_{i=1}^0 \left|T_i\right| = 1 \\\\
-	\texttt{Tuple}() = \texttt{unit} = \\{()\\}
+		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\}
+$$
+
+$$
+\begin{align}
+	\texttt{Tuple}() &= ??? \\\\
+	\left| \texttt{Tuple}() \right| &= \prod_{i=1}^0 \left|T_i\right| = 1 \\\\
+	\texttt{Tuple}() &= \texttt{Unit} = \\{()\\}
+\end{align}
 $$
 
 
 ## Empty sum?
 
 $$
-	\sum_{i=1}^0 T_i = \texttt{void}
+\begin{align}
+	\sum_{i=1}^n T_i &= T_1 + \cdots + T_n \\\\
+	\sum_{i=1}^0 T_i &= \texttt{Void}
+\end{align}
 $$
 
-* Julia: `Union{}`
+* `Union{}` (Julia)
+
+Quiz:
+$$
+	T + \texttt{Void} = ??? \\\\
+	T \times \texttt{Unit} = ??? \\\\
+	T \times \texttt{Void} = ???
+$$
+
+
+## Arrays = Lists
+
+* Fixed-length arrays are equivalent to tuples:
+   $$
+	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n
+   $$
+* Variable-length arrays can be thought of in a couple ways:
+   $$
+   \begin{align}
+	\texttt{Array}(T) &= \sum_{n=0}^\infty T^n = \texttt{Unit} + T + T^2 + \cdots \\\\
+	\texttt{Array}(\texttt{Bool}) &= \\{(), (\mathsf{F}), (\mathsf{T}), (\mathsf{F},\mathsf{F}), (\mathsf{T},\mathsf{F}), \dots \\} \\\\
+	\texttt{List}(T) &= \texttt{Unit} + (T \times \texttt{List}(T))
+   \end{align}
+   $$
+
+
+## Array syntax
+
+| \\( \texttt{Array}\_{[n]}(T) \\)      | language          |
+|--------------------|--------------------|
+| `List[T]`   | Python |
+| `Array{T}`  | Julia |
+| `T[]`, `Array<T>`  | TypeScript |
+| `[T]`  | Haskell |
+| `list<T>`, `vector<T>` | C++ |
+| `T x[n]` | C |
+| `T * n`, `x(n)`, `DIMENSION` | Fortran |
+
+
+## Real Numbers
+
+$$
+\begin{align}
+	\texttt{Digit} &= \\{0,1,2,3,4,5,6,7,8,9\\} \\\\
+	\mathbb{N} \cong \texttt{Natural} &= \texttt{Array}(\texttt{Digit}) \qquad 85 \cong (8,5) \\\\
+	\mathbb{Z} \cong \texttt{Integer} &= \texttt{Bool} \times \texttt{Natural} \quad -85 \cong (\mathsf{T},(8,5)) \\\\
+	\mathbb{Q} \cong \texttt{Rational} &= \texttt{Integer} \times \texttt{Natural} \\\\
+	-8.5 &= \frac{-17}{2} \cong ((\mathsf{T},(1,7)),(2))
+\end{align}
+$$
+
+
+## Subtypes
+
+If one type is a subset of another, we call it a subtype:
+
+$$
+	S \subseteq T \qquad \forall x, x \in S \Rightarrow x \in T \\\\
+	S \times U \subseteq T \times U \\\\
+	S + U \subseteq T + U \\\\
+	\texttt{Array}(S) \subseteq \texttt{Array}(T) \\\\
+	T \subseteq T + U \\\\
+	\texttt{Int8} \subset \texttt{Int16} \subset \texttt{Int32}
+$$
+
+* Similar to inheritance: if \\( C \\) inherits from \\( B \\), then \\( C \subset B \\)
 
 
 ## Functions
+
+$$
+	f(x) = x^2 \\\\
+	f : \mathbb{R} \to \mathbb{R} \\\\
+	f \in T \to S \\\\
+	x \in T, \quad f(x) \in S
+$$
 
 
