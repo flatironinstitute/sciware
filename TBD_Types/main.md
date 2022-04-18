@@ -234,7 +234,7 @@ $$
 | `[T]`  | Haskell |
 | `list<T>`, `vector<T>` | C++ |
 | `T x[n]` | C |
-| `T * n`, `x(n)`, `DIMENSION` | Fortran |
+| `x(n)`, `DIMENSION` | Fortran |
 
 
 ## Real Numbers
