@@ -12,11 +12,11 @@
 
 ## Types
 
-If you think about types at all, you probably think storage, bits:
+* If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
-
-But you interact with lots of other types, too:
    * `list` (of what?), `complex`, `struct`, `class`
+* Types are not about how things are represented in bits, but about what those bits represent
+* Thinking abstractly about your data (not the algorithm or implementation)
 
 So what is a type?
 
@@ -177,6 +177,8 @@ $$
 		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\}
 $$
 
+Larger tuples with labeled fields are "structs" or "records"
+
 $$
 \begin{align}
 	\texttt{Tuple}() &= ??? \\\\
@@ -211,7 +213,7 @@ $$
    $$
 	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n
    $$
-* Variable-length arrays can be thought of in a couple ways:
+* Variable-length arrays can be thought of in a couple (equivalent) ways:
    $$
    \begin{align}
 	\texttt{Array}(T) &= \sum_{n=0}^\infty T^n = \texttt{Unit} + T + T^2 + \cdots \\\\
@@ -219,6 +221,7 @@ $$
 	\texttt{List}(T) &= \texttt{Unit} + (T \times \texttt{List}(T))
    \end{align}
    $$
+* By restricting \( \sum_{n=a}^b \) we can represent arrays of certain lengths (non-empty, at most 10, etc.)
 
 
 ## Array syntax
@@ -246,6 +249,8 @@ $$
 \end{align}
 $$
 
+Strings?
+
 
 ## Subtypes
 
@@ -268,8 +273,59 @@ $$
 $$
 	f(x) = x^2 \\\\
 	f : \mathbb{R} \to \mathbb{R} \\\\
-	f \in T \to S \\\\
-	x \in T, \quad f(x) \in S
+	f \in T \to R \\\\
+	x \in T, \quad f(x) \in R
 $$
 
 
+## Function syntax
+
+| \\( T \to R \\)      | language          |
+|--------------------|--------------------|
+| `Callable[[T], R]`   | Python |
+| `(x: T) => R`, `Function`  | TypeScript |
+| `T -> R`  | Haskell |
+| `R (*)(T)` | C (function pointer) |
+| `function<R(T)>`, `Callable` | C++ |
+| `Function` | Julia |
+
+
+## Types in practice
+
+```python
+def f(x: T, y: S) -> R:
+	z: R = something
+	return z
+```
+
+```typescript
+function f(x: T, y: S) => R {
+	let z: R = something;
+	return z;
+}
+```
+
+```julia
+function f(x::T, y::S)::R
+	z::R = something
+	z
+end
+```
+
+```c
+R f(T x, S y) {
+	R z = something;
+	return z;
+}
+```
+
+```haskell
+f :: T -> S -> R
+f x y = something
+```
+
+
+## Dynamic/Static Types
+
+
+## Classes as types
