@@ -38,7 +38,7 @@
 
     <script>
       Reveal.initialize({
-	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.mathjax2],
+	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
         controlsTutorial: false,
         slideNumber: true,
         width: 1200,
@@ -46,10 +46,10 @@
         fragmentInURL: true,
         center: true,
         // history: true,
-	mathjax2: {
-	  mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-	  config: 'TeX-AMS_CHTML',
-	},
+    math: {
+      // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+      config: 'TeX-AMS_CHTML',
+    },
       });
     </script>
   </body>
