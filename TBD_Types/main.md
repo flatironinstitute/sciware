@@ -337,11 +337,14 @@ f x y = haskell
 * Much of the advantage of types comes from checking them to make sure they hold
 * This can be done in one of two ways:
    * "Statically": before the program runs, by the compiler or static analysis tool
+      * Lets you catch errors (typos, bugs) before they happen
    * "Dynamically": while the program runs, as values are created or used
-* Most languages end up with a mix of both
+      * Extra checks can slow down your code
+* Most languages end up using a mix of both
 
 
 ## Classes as types
 
-* In many languages you can use classes to represent types
+* In many languages you can use classes to represent your own types
 * If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
+* It's nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
