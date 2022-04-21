@@ -38,7 +38,7 @@
     <script src="{{ site.baseurl }}/reveal.js/plugin/math/math.js"></script>
 
     <script>
-      const rev =  Reveal.initialize({
+      Reveal.initialize({
 	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2],
         controlsTutorial: false,
         slideNumber: true,
@@ -49,20 +49,15 @@
         // history: true,
     mathjax2: {
       // mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
-      config: 'TeX-AMS_HTML-full',
+      config: 'TeX-AMS_CHTML',
     },
       });
     </script>
     <script>
-      if(window.MathJax) {
-        MathJax.Hub.Config({
-        CommonHTML: {matchFontHeight: false},
-        "HTML-CSS": {matchFontHeight: false},
-        SVG: {matchFontHeight: false}
+      MathJax.Hub.Config({
+        CommonHTML: {matchFontHeight: false}
       });
-      } else {
-        console.log('Mathjax not loaded');
-      }
+      console.log('MathJax called', MathJax);
     </script>
   </body>
 </html>
