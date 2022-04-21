@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ page.title }}</title>
 
     <link rel="stylesheet" href="{{ site.baseurl }}/reveal.js/dist/reveal.css" />
@@ -38,7 +39,7 @@
 
     <script>
       Reveal.initialize({
-	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2],
         controlsTutorial: false,
         slideNumber: true,
         width: 1200,
@@ -46,11 +47,16 @@
         fragmentInURL: true,
         center: true,
         // history: true,
-    math: {
-      // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+    mathjax2: {
+      // mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
       config: 'TeX-AMS_CHTML',
     },
       });
+      MathJax.Hub.Config({
+        CommonHTML: {matchFontHeight: false},
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false}
+      })
     </script>
   </body>
 </html>
