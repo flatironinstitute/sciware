@@ -290,42 +290,58 @@ $$
 | `Function` | Julia |
 
 
+## Exercise
+
+* How would you represent the position and mass of a particle in the 3D unit box?
+* What about an arbitrary number of particles?
+* What's the type of a function that calculates the center of mass for these particles?
+
+
 ## Types in practice
 
 ```python
 def f(x: T, y: S) -> R:
-	z: R = something
+	z: R = python
 	return z
 ```
 
 ```typescript
 function f(x: T, y: S) => R {
-	let z: R = something;
+	let z: R = typescript;
 	return z;
 }
 ```
 
 ```julia
 function f(x::T, y::S)::R
-	z::R = something
+	z::R = julia
 	z
 end
 ```
 
 ```c
 R f(T x, S y) {
-	R z = something;
+	R z = c;
 	return z;
 }
 ```
 
 ```haskell
 f :: T -> S -> R
-f x y = something
+f x y = haskell
 ```
 
 
-## Dynamic/Static Types
+## Checking types
+
+* Much of the advantage of types comes from checking them to make sure they hold
+* This can be done in one of two ways:
+   * "Statically": before the program runs, by the compiler or static analysis tool
+   * "Dynamically": while the program runs, as values are created or used
+* Most languages end up with a mix of both
 
 
 ## Classes as types
+
+* In many languages you can use classes to represent types
+* If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
