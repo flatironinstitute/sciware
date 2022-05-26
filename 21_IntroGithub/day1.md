@@ -28,9 +28,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Zoom Specific
 
-- If comfortable, please keep video on so we can all see each other's faces.
-- Ok to break in for quick, clarifying questions.
-- Use Raise Hand feature for new topics or for more in-depth questions.
+- Dedicated Zoom moderator to field questions.
 - Please stay muted if not speaking. (Host may mute you.)
 - We are recording. Link will be posted on #sciware Slack.
 
@@ -38,7 +36,7 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Tomorrow: Github Part 2: collaboration
-- July 8: Intro to IDEs and Debugging
+- July date TBD: Tools to make programming easier: Intro to code editors and debugging
 - Suggest topics and vote on options in #sciware Slack
 
 
@@ -91,7 +89,7 @@ Activities where participants all actively work to foster an environment which e
 git version 2.30.1
 </code></pre>
 
-<p class="align-left">If this returns an error, please raise your hand and someone can help you in a breakout room.
+<p class="align-left">If this returns an error, please raise your hand and put a red flag on your laptop.
 </p>  
 
 
@@ -253,7 +251,7 @@ https://github.com/explore
 
 # Survey
 
-## http://bit.ly/sciware-github1-2021
+## http://bit.ly/sciware-github1-2022
 
 
 
@@ -267,7 +265,7 @@ https://github.com/explore
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
 > cd silly_repo
 > touch silly_code.py
-> touch silly_funct.py
+> touch silly_file.txt
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
@@ -390,6 +388,7 @@ Use the `git push` command to upload the committed changes to the Github repo.
 
 # Activity
 
+## Push `silly_code.py` to the repo
 ## Put one of your projects into a new Github repo
 
 
@@ -433,4 +432,4 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 # Survey
 
-## http://bit.ly/sciware-github1-2021
+## http://bit.ly/sciware-github1-2022
