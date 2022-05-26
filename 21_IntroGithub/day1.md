@@ -2,7 +2,7 @@
 
 ## Intro to Github
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/master/15_IntroGithub
+https://github.com/flatironinstitute/learn-sciware-dev/tree/master/21_IntroGithub
 
 
 ## Rules of Engagement
