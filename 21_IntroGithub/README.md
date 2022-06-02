@@ -1,10 +1,10 @@
 # Intro to Github
-- Jun 16-17 2021
-- 3:00-5:00pm
-- Zoom
+- Jun 21-22 2022
+- 10:00am-12:00pm
+- IDA
 
-- [day 1: github](https://sciware.flatironinstitute.org/15_IntroGithub/slides1.html) ([source](day1.md))
-- [day 2: collaboration](https://sciware.flatironinstitute.org/15_IntroGithub/slides2.html) ([source](day2.md))
+- [day 1: github](https://sciware.flatironinstitute.org/21_IntroGithub/slides1.html) ([source](day1.md))
+- [day 2: collaboration](https://sciware.flatironinstitute.org/21_IntroGithub/slides2.html) ([source](day2.md))
 
 ## Pre-workshop prep
 
