@@ -9,5 +9,27 @@
 ## Pre-workshop prep
 
 - Create a [Github account](https://github.com/join) if you don't already have one.
-- Make sure you have a working terminal on your laptop (`ls` works)
-- Make sure you have git installed (`git version` works)
+- If you have are running Windows, [install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+- Make sure you have a working terminal on your laptop
+  launch a terminal (such as `Terminal.app` on OS X or `WSL`/`Ubuntu` on Windows)
+  and ensure that you see something similar when running `echo $SHELL` in the terminal.
+  ```
+  > echo $SHELL
+  /usr/bin/bash
+  ```
+   you also might see `/usr/bin/zsh` or `/bin/bash` or `/bin/zsh`, depending on your environment. If you instead see
+   `$SHELL`, you are probably running a Windows `command` prompt, and should contact us for further help in either the
+   #sciware slack channel or via email at sciware@flatironinstitute.org.
+- Make sure you have git installed. In your terminal:
+  ```
+  > git --version
+  git version 1.8.3
+  ```
+  if you have a higher version, that is perfectly fine.
+- Make sure you have ssh-keygen:
+  ```
+  > which ssh-keygen
+  /usr/bin/ssh-keygen
+  ```
+  or something similar should be returned. If not, please contact us for further help in either the
+  #sciware slack channel or via email at sciware@flatironinstitute.org.
