@@ -9,7 +9,7 @@
 ## Pre-workshop prep
 
 - Create a [Github account](https://github.com/join) if you don't already have one.
-- If you have are running Windows, [install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+- If you are running Windows, [install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
 - Make sure you have a working terminal on your laptop
   launch a terminal (such as `Terminal.app` on OS X or `WSL`/`Ubuntu` on Windows)
   and ensure that you see something similar when running `echo $SHELL` in the terminal.
