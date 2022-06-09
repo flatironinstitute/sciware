@@ -1,7 +1,7 @@
 # Intro to Github
 - Jun 21-22 2022
 - 10:00am-12:00pm
-- IDA
+- Flatiron 2nd floor IDA
 
 - [day 1: github](https://sciware.flatironinstitute.org/21_IntroGithub/slides1.html) ([source](day1.md))
 - [day 2: collaboration](https://sciware.flatironinstitute.org/21_IntroGithub/slides2.html) ([source](day2.md))
