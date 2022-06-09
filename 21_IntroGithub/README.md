@@ -18,8 +18,7 @@
   /usr/bin/bash
   ```
    you also might see `/usr/bin/zsh` or `/bin/bash` or `/bin/zsh`, depending on your environment. If you instead see
-   `$SHELL`, you are probably running a Windows `command` prompt, and should contact us for further help in either the
-   #sciware slack channel or via email at sciware@flatironinstitute.org.
+   `$SHELL`, you are probably running a Windows `command` prompt and not in WSL.
 - Make sure you have git installed. In your terminal:
   ```
   > git --version
@@ -31,5 +30,6 @@
   > which ssh-keygen
   /usr/bin/ssh-keygen
   ```
-  or something similar should be returned. If not, please contact us for further help in either the
-  #sciware slack channel or via email at sciware@flatironinstitute.org.
+  or something similar should be returned.
+- If you have trouble with any of the above steps, please don't hesitate to contact us in either the #sciware
+  slack channel or via email at sciware@flatironinstitute.org
