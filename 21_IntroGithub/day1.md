@@ -295,20 +295,19 @@ https://github.com/explore
 </div>
 
 
-## Initialize the directory to use with GitHub
+### Initialize the directory to use with GitHub
 
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git init
 > git status
 </code></pre>
 
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:350px">
+<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
 ## Name the primary *branch* `main`
 
-It's possible to have multiple *branches* of the code where different things are being worked on. 
-
-The primary branch is usually called *main*. 
+- It's possible to have multiple *branches* of the code where different things are being worked on. 
+- The primary branch is usually called *main*. 
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
 > git status
@@ -350,12 +349,12 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## What's a commit message?
+## What's in a commit message?
+
+<img src="https://imgs.xkcd.com/comics/git_commit.png" style="width: 80vh">
 
 - Like a comment in your code
 - Says what you changed, why
-
-<img src="https://imgs.xkcd.com/comics/git_commit.png" style="width: 80vh">
 
 
 ## Connect the repo to GitHub
@@ -401,9 +400,9 @@ Alternatively, you can commit directly from the command line:
 # Troubleshooting
 
 - Find GitHub buddies 
-  - The best way to figure things out is by asking folks for help
+- The best way to figure things out is by asking folks for help
 
-<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:50vh">
+<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh">
 
 
 ## Troubleshooting
@@ -432,7 +431,6 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 ### Using GitHub to collaborate
 
 <img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
-
 
 
 # Survey
