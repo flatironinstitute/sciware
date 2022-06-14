@@ -70,12 +70,18 @@ Activities where participants all actively work to foster an environment which e
 
 *an open-source, distributed, command-line, version-control tool*
 
-* released in 2005 by Linus Torvalds for developing Linux, as an alternative to older tools (CVS, svn)
-* now the dominant tool for academic and industry software development
-* **distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other
+<div style="display: flex;">
+<img src="https://imgs.xkcd.com/comics/git.png" style="height=12em; float: right;">
+<ul>
+<li>released in 2005 by Linus Torvalds for Linux kernel (alternative to CVS, svn, ...)</li>
+<li>dominant tool for academic and industry software development</li>
+<li>**distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other</li>
+</ul>
 
 
 ## GitHub
+
+<a href="https://github.com/"><img src="assets/Octocat.png" style="height: 3em; border: none; box-shadow: none;"></a>
 
 * A central website for storing and sharing git repositories
 * Started in 2008 as a freemium service, now owned by Microsoft
@@ -97,38 +103,45 @@ git version 2.30.1
 
 ## Setting your name in Git 
 
-**See what name is currently set**
+See what name is currently set
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name
 </code></pre>
 
 <div class="spacer"></div>
 
-**Set your name**
+Set your name
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name "Mona Lisa"
 </code></pre>
 
 
 ## Setting your email address
 
-### See what email address is currently set
+See what email address is currently set
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.email
 </code></pre>
 
-### Set an email address
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "your_email@example.com"
+Set an email address
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "youremail@flatironinstitute.org"
 </code></pre>
-(Ideally set to the same email address you used for Github.)
+(Ideally set to the same email address you used for Github)
 
 
 ## Setup SSH
 <div class="spacer"></div>
 
-### Generate an SSH key and copy it to the clipboard
+### Generate an SSH key
+
+We're going to generate a new key (one you hopefully don't have already)
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; ssh-keygen -t ed25519
-> cat ~/.ssh/id_ed25519.pub
 </code></pre>
 
 It is easiest to leave the password blank.
+
+<pre style="font-size:1em;"> <code data-trim data-noescape>&gt; cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 AAA..... user@host
+</code></pre>
+
+Copy this whole line to the clipboard
 
 
 ## Add the SSH key to GitHub
@@ -151,14 +164,14 @@ It is easiest to leave the password blank.
 
 <div class="spacer"></div>
 
-- So that you don't get stuck in vi:
+So that you don't get stuck in vi:
 
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global core.editor "nano -w"
 </code></pre>
 
 <div class="spacer"></div>
 
-- How to set up your favorite editor with Git:
+How to set up your favorite editor with Git:
 
 > https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
 
@@ -350,6 +363,9 @@ Alternatively, you can commit directly from the command line:
 
 <pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git status
 </code></pre>
+
+
+<img src="https://imgs.xkcd.com/comics/git_commit.png">
 
 
 ## Connect the folder to Github
