@@ -80,7 +80,7 @@ Activities where participants all actively work to foster an environment which e
 </div>
 
 
-<h2>GitHub <a href="https://github.com/"><img src="assets/Octocat.png" style="height: 3em; border: none; box-shadow: none;"></a></h2>
+<h2>GitHub <a href="https://github.com/"><img src="assets/Octocat.png" style="height: 2em; border: none; box-shadow: none;"></a></h2>
 
 * A central website for storing and sharing git repositories
 * Started in 2008 as a freemium service, now owned by Microsoft
@@ -186,7 +186,7 @@ How to set up your favorite editor with Git:
 <div style="display: flex;">
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
 <ul>
-<li>Folder containing the code<ul>
+<li>Directory containing the code<ul>
   <li><i>repository</i> or <i>repo</i>, for short</li>
 </ul></li>
 <li> "Download the code"<ul>
@@ -208,7 +208,7 @@ How to set up your favorite editor with Git:
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
 <ul>
 <li>Go to the repo on the GitHub website<ul>
-  <li>https://github.com/flatironinstitute/sciware21-git-intro</li></ul>
+  <li>https://github.com/ flatironinstitute/sciware21-git-intro</li></ul>
 </li>
 <li>Click Green Code button</li>
 <li>Choose SSH tab</li>
@@ -227,15 +227,14 @@ How to set up your favorite editor with Git:
 
 <div class="spacer"></div>
 
-A folder will be created containing all of the files in the repo. 
-
-The folder name will be the repo name.
+- A directory will be created containing all of the files in the repo. 
+- The directory name will be the repo name.
 
 
 ## What does `git clone` do?
-Using the `git clone` command connects the folder to the repo on GitHub in case you ever wanted to interact with it later.
 
-- It generates hidden folder `.git`
+- Using the `git clone` command connects the directory to the repo on GitHub in case you ever wanted to interact with it later.
+- It generates hidden directory `.git`
 
 <pre  style="font-size:1em; margin-top:-25px"> <code data-trim data-noescape>&gt; ls -a
 </code></pre>
@@ -272,7 +271,7 @@ https://github.com/explore
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote.png" alt="Push to remote graphic" style="height:550px; margin-right:10px">
 
 
-# Make a project folder
+## Make a project directory (folder)
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
 > cd silly_repo
@@ -299,9 +298,7 @@ https://github.com/explore
 ## Initialize the directory to use with GitHub
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
-</code></pre>
-
-<pre  style="font-size:1.1em"> <code data-trim data-noescape>> git status
+> git status
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:350px">
@@ -314,9 +311,7 @@ It's possible to have multiple *branches* of the code where different things are
 The primary branch is usually called *main*. 
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
-</code></pre>
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
+> git status
 </code></pre>
 
 Notice:
@@ -329,12 +324,8 @@ Notice:
 Use the `git add` command to specify exactly which files you want to transfer to GitHub.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
-</code></pre>
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git add silly_file.txt
-</code></pre>
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
+> git add silly_file.txt
+> git status
 </code></pre>
 
 Notice:
@@ -344,44 +335,43 @@ Notice:
 
 ## Save the changes
 
-Use the `git commit` to save the local changes.
+- Use the `git commit` to save the local changes.
+- Add a *commit message* to document the changes.
+- Launch a text editor where you can type the commit message:
 
-Add a *commit message* to document the changes.
-
-Launch a text editor where you can type the commit message:
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git commit
 </code></pre>
 
 <div class="spacer"></div>
 
 Alternatively, you can commit directly from the command line:
-<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git commit -m "add silly file"
+<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape>> git commit -m "add silly file"
+> git status
 </code></pre>
 
-<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape> > git status
-</code></pre>
+
+## What's a commit message?
+
+- Like a comment in your code
+- Says what you changed, why
+
+<img src="https://imgs.xkcd.com/comics/git_commit.png" style="width: 80vh">
 
 
-<img src="https://imgs.xkcd.com/comics/git_commit.png">
+## Connect the repo to GitHub
 
-
-## Connect the folder to GitHub
-
-Use `git remote add` to provide the URL to the GitHub repo.
-
-The repo that is in your personal profile is usually called `origin`
+- Use `git remote add` to provide the URL to the GitHub repo.
+- The repo that is in your personal profile is usually called `origin`
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote -v 
-</code></pre>
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote add origin git@github.com:kelle/silly_project.git
-</code></pre>
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote -v
+> git remote add origin git@github.com:kelle/silly_project.git
+> git remote -v
 </code></pre>
 
 
-## Upload the folder contents to GitHub
+## Upload the repo contents to GitHub
 
-Use the `git push` command to upload the committed changes to the GitHub repo.
+- Use the `git push` command to upload the committed changes to the GitHub repo.
 
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push origin main
 </code></pre>
@@ -403,8 +393,8 @@ Use the `git push` command to upload the committed changes to the GitHub repo.
 
 # Activity
 
-## Push `silly_code.py` to the repo
-## Put one of your projects into a new GitHub repo
+- Push `silly_code.py` to the repo
+- Put one of your projects into a new GitHub repo
 
 
 
@@ -413,7 +403,7 @@ Use the `git push` command to upload the committed changes to the GitHub repo.
 - Find GitHub buddies 
   - The best way to figure things out is by asking folks for help
 
-<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:500px">
+<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:50vh">
 
 
 ## Troubleshooting
@@ -431,9 +421,9 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 # Troubleshooting
 
 - There are many resources for common git and GitHub problems on the internet.
-  - Consider discussing with a buddy before copy/pasting.
+- Consider discussing with a buddy before copy/pasting.
 
-<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:500px">
+<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:400px">
 
 
 
