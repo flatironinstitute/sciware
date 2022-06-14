@@ -1,6 +1,6 @@
 # Sciware
 
-## Intro to Github
+## Intro to GitHub
 
 https://sciware.flatironinstitute.org/21_IntroGithub
 
@@ -37,7 +37,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Future Sessions
 
-- Tomorrow: Github Part 2: collaboration
+- Tomorrow: GitHub Part 2: collaboration
 - June 29: Showcase of code editors, development environments (show & tell)
 - July 21 (preliminary): Shells, environments, command-lines
 
@@ -71,17 +71,16 @@ Activities where participants all actively work to foster an environment which e
 *an open-source, distributed, command-line, version-control tool*
 
 <div style="display: flex;">
-<img src="https://imgs.xkcd.com/comics/git.png" style="height=12em; float: right;">
 <ul>
 <li>released in 2005 by Linus Torvalds for Linux kernel (alternative to CVS, svn, ...)</li>
 <li>dominant tool for academic and industry software development</li>
-<li>**distributed**: no central server, every repo is fully functional, independent, and can "sync" with any other</li>
+<li><b>distributed</b>: no central server, every repo is fully functional, independent, and can "sync" with any other</li>
 </ul>
+<img src="https://imgs.xkcd.com/comics/git.png" style="height=12em; float: right;">
+</div>
 
 
-## GitHub
-
-<a href="https://github.com/"><img src="assets/Octocat.png" style="height: 3em; border: none; box-shadow: none;"></a>
+<h2>GitHub <a href="https://github.com/"><img src="assets/Octocat.png" style="height: 3em; border: none; box-shadow: none;"></a></h2>
 
 * A central website for storing and sharing git repositories
 * Started in 2008 as a freemium service, now owned by Microsoft
@@ -123,19 +122,16 @@ See what email address is currently set
 Set an email address
 <pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "youremail@flatironinstitute.org"
 </code></pre>
-(Ideally set to the same email address you used for Github)
+(Ideally set to the same email address you used for GitHub)
 
 
-## Setup SSH
-<div class="spacer"></div>
+## Generate an SSH key
 
-### Generate an SSH key
-
-We're going to generate a new key (one you hopefully don't have already)
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; ssh-keygen -t ed25519
 </code></pre>
 
-It is easiest to leave the password blank.
+- We're going to generate a new key (one you hopefully don't have already)
+- It is easiest to leave the passphrase blank
 
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAA..... user@host
@@ -146,7 +142,7 @@ Copy this whole line to the clipboard
 
 ## Add the SSH key to GitHub
 
-- On Github:
+- On GitHub:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
   
 <img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
@@ -190,14 +186,15 @@ How to set up your favorite editor with Git:
 <div style="display: flex;">
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
 <ul>
-<li> Folder containing the code</li>
-  - <i>repository</i> or <i>repo</i>, for short
-
-<li> "Download the code"</li>
-  - <i>clone</i> the repo
-
-<li>Your computer harddrive </li>
-  - <i>local</i>
+<li>Folder containing the code<ul>
+  <li><i>repository</i> or <i>repo</i>, for short</li>
+</ul></li>
+<li> "Download the code"<ul>
+  <li><i>clone</i> the repo</li>
+</ul></li>
+<li>Your computer drive<ul>
+  <li><i>local</i></li>
+</ul></li>
 </ul>
 </div>
 
@@ -208,10 +205,10 @@ How to set up your favorite editor with Git:
 ## Clone the repo
 
 <div style="display: flex;">
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; margin-right: 5px; height: 450px">
+<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
 <ul>
-<li>Go to the repo on the Github website<ul>
-  <li>https://github.com/flatironinstitute/sciware15-git-intro</li></ul>
+<li>Go to the repo on the GitHub website<ul>
+  <li>https://github.com/flatironinstitute/sciware21-git-intro</li></ul>
 </li>
 <li>Click Green Code button</li>
 <li>Choose SSH tab</li>
@@ -224,8 +221,8 @@ How to set up your favorite editor with Git:
 
 - In a Terminal window, clone the repo:
 
-<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware15-git-intro
-> cd sciware15-git-intro
+<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware21-git-intro
+> cd sciware21-git-intro
 </code></pre>
 
 <div class="spacer"></div>
@@ -246,8 +243,8 @@ Using the `git clone` command connects the folder to the repo on GitHub in case 
 - It also saves the URL to the repo and names it *origin*
 
 <pre  style="font-size:0.9em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>&gt; git remote -v
-origin  git@github.com:flatironinstitute/sciware15-git-intro (fetch)
-origin  git@github.com:flatironinstitute/sciware15-git-intro (push)
+origin  git@github.com:flatironinstitute/sciware21-git-intro (fetch)
+origin  git@github.com:flatironinstitute/sciware21-git-intro (push)
 </code></pre>
 
 
@@ -286,12 +283,12 @@ https://github.com/explore
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
-## Create a repo on Github
+## Create a repo on GitHub
 
 <div style="display: flex;">
 <img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-left:20px; margin-right:10px">
 <ul>
-<li>Go to your homepage on Github</li>
+<li>Go to your homepage on GitHub</li>
 <li>Click the Repositories tab</li>
 <li>Click the green New button</li>
 <li>Name the repository <tt>silly_repo</tt></li>
@@ -299,7 +296,7 @@ https://github.com/explore
 </div>
 
 
-## Initialize the directory to use with Github
+## Initialize the directory to use with GitHub
 
 <pre  style="font-size:1.1em"> <code data-trim data-noescape>> git init
 </code></pre>
@@ -329,7 +326,7 @@ Notice:
 
 ## Specify which files that you want to transfer
 
-Use the `git add` command to specify exactly which files you want to transfer to Github.
+Use the `git add` command to specify exactly which files you want to transfer to GitHub.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 </code></pre>
@@ -368,9 +365,9 @@ Alternatively, you can commit directly from the command line:
 <img src="https://imgs.xkcd.com/comics/git_commit.png">
 
 
-## Connect the folder to Github
+## Connect the folder to GitHub
 
-Use `git remote add` to provide the URL to the Github repo.
+Use `git remote add` to provide the URL to the GitHub repo.
 
 The repo that is in your personal profile is usually called `origin`
 
@@ -382,9 +379,9 @@ The repo that is in your personal profile is usually called `origin`
 </code></pre>
 
 
-## Upload the folder contents to Github
+## Upload the folder contents to GitHub
 
-Use the `git push` command to upload the committed changes to the Github repo.
+Use the `git push` command to upload the committed changes to the GitHub repo.
 
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push origin main
 </code></pre>
@@ -392,9 +389,9 @@ Use the `git push` command to upload the committed changes to the Github repo.
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
 
 
-# Check Github
+# Check GitHub
 
-`silly_file.txt` should now be in the repo on the Github website.
+`silly_file.txt` should now be in the repo on the GitHub website.
 
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:400px">
 
@@ -407,13 +404,13 @@ Use the `git push` command to upload the committed changes to the Github repo.
 # Activity
 
 ## Push `silly_code.py` to the repo
-## Put one of your projects into a new Github repo
+## Put one of your projects into a new GitHub repo
 
 
 
 # Troubleshooting
 
-- Find Github buddies 
+- Find GitHub buddies 
   - The best way to figure things out is by asking folks for help
 
 <img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:500px">
@@ -433,7 +430,7 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 # Troubleshooting
 
-- There are many resources for common git and Github problems on the internet.
+- There are many resources for common git and GitHub problems on the internet.
   - Consider discussing with a buddy before copy/pasting.
 
 <img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:500px">
@@ -442,7 +439,7 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 ## Tomorrow
 
-### Using Github to collaborate
+### Using GitHub to collaborate
 
 <img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
 

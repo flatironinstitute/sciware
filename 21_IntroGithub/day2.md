@@ -1,6 +1,6 @@
 # Sciware
 
-## Intro to Github
+## Intro to GitHub
 
 https://sciware.flatironinstitute.org/21_IntroGithub
 
@@ -116,7 +116,7 @@ git version 2.30.1
 ### Set an email address
 <pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "your_email@example.com"
 </code></pre>
-(Ideally set to the same email address you used for Github.)
+(Ideally set to the same email address you used for GitHub.)
 
 
 
@@ -162,7 +162,7 @@ git version 2.30.1
     Next, we clone <em>our</em> fork of the repo:
     <pre  style="font-size:0.75em;">
         <code data-trim data-noescape class="language-zsh">
-        ➜ git clone git@github.com:your_user_name/sciware15-git-intro.git
+        ➜ git clone git@github.com:your_user_name/sciware21-git-intro.git
         </code>
     </pre>
 </div>
@@ -174,15 +174,15 @@ git version 2.30.1
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,6">
     ➜ git remote -v
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
+    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
+    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
     ➜ git remote rename origin upstream
-    ➜ git remote add origin git@github.com:jamesETsmith/sciware15-git-intro.git
+    ➜ git remote add origin git@github.com:jamesETsmith/sciware21-git-intro.git
     ➜ git remote -v
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
-    upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
-    upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
+    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (fetch)
+    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (push)
+    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
+    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
     </code>
 </pre>
 
@@ -283,26 +283,18 @@ Things to think about when making pull requests (PR):
 
 If the original repo from `flatironinstitute` isn't your upstream, set it now and then pull from it.
 
-If the original repo from `flatironinstitute` isn't your upstream, set it now and then pull from it.
-
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
     ➜ git remote -v
-<<<<<<< HEAD
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
-    origin  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
+    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
+    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
     ➜ git remote rename origin upstream
-    ➜ git remote add origin git@github.com:jamesETsmith/sciware15-git-intro.git
-=======
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
-    ➜ git remote add upstream git@github.com:flatironinstitute/sciware15-git-intro.git
->>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
+    ➜ git remote add origin git@github.com:jamesETsmith/sciware21-git-intro.git
     ➜ git remote -v
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (fetch)
-    origin  git@github.com:jamesETsmith/sciware15-git-intro.git (push)
-    upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (fetch)
-    upstream  git@github.com:flatironinstitute/sciware15-git-intro.git (push)
+    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (fetch)
+    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (push)
+    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
+    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
     ➜ git pull upstream main
     </code>
 </pre>
