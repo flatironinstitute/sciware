@@ -2,6 +2,8 @@
 
 ## Intro to Github
 
+https://sciware.flatironinstitute.org/21_IntroGithub
+
 https://github.com/flatironinstitute/learn-sciware-dev/tree/master/21_IntroGithub
 
 
@@ -36,8 +38,8 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Tomorrow: Github Part 2: collaboration
-- July date TBD: Tools to make programming easier: Intro to code editors and debugging
-- Suggest topics and vote on options in #sciware Slack
+- June 29: Showcase of code editors, development environments (show & tell)
+- July 21 (preliminary): Shells, environments, command-lines
 
 
 ## Today's Agenda
