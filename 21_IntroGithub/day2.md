@@ -238,53 +238,21 @@ As other students make PRs, go to the pull requests tab on GitHub.
 ![](./assets/pull_request_rev.png)
 
 
-<<<<<<< HEAD
-## Reviewing a Pull Request
-
-Choose another student's PR and click on it.
-
-![](./assets/pull_request_rev2.png)
-=======
 
 ## Reviewing a Pull Request
 
 As other students make PRs, go to the pull requests tab on GitHub.
 
 ![](./assets/pull_request_rev.png)
->>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
 
 
 ## Reviewing a Pull Request
 
-<<<<<<< HEAD
-Click on the commit to see the diff of their changes and hover over a line until you see the `+` sybmol.
-
-![](./assets/pull_request_rev3.png)
-
-
-
-## PR Case Study
-
-Here's an example of a PR _without_ a helpful description:
-
-![](./assets/pr_case_study_bad.png)
-
-
-## PR Case Study
-
-Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
-
-<img height=70% width=60% src="./assets/pr_case_study_good.png">
-
-
-
-=======
 Choose another student's PR and click on it.
 
 ![](./assets/pull_request_rev2.png)
 
 
-## Reviewing a Pull Request
 
 Click on the commit to see the diff of their changes and hover over a line until you see the `+` sybmol.
 
@@ -307,7 +275,6 @@ Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20
 
 
 
->>>>>>> 03e0cfdfb5860b54f3b80137b92244fe08f97673
 ## Extra Resources
 
 Check out and bookmark these tutorials for more information about git and the forking workflow:
