@@ -45,7 +45,12 @@ Activities where participants all actively work to foster an environment which e
 
 - Collaborating on GitHub
 
+## Step 0: Move Day 1 directory
 
+ If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
+<pre  style="font-size:0.75em;">
+    > mv sciware21-git-intro/ sciware21-git-intro-day1/
+</pre>
 
 ## We Need Something Different
 
@@ -93,26 +98,6 @@ Activities where participants all actively work to foster an environment which e
         </code>
     </pre>
 </div>
-
-
-## Step 1: Add an Upstream
-
- If you already have a copy of this repo from yesterday's workshop, that's ok, keep it!
-<pre  style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,6">
-    ➜ git remote -v
-    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
-    origin  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
-    ➜ git remote rename origin upstream
-    ➜ git remote add origin git@github.com:jamesETsmith/sciware21-git-intro.git
-    ➜ git remote -v
-    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (fetch)
-    origin  git@github.com:jamesETsmith/sciware21-git-intro.git (push)
-    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (fetch)
-    upstream  git@github.com:flatironinstitute/sciware21-git-intro.git (push)
-    </code>
-</pre>
-
 
 
 ## Step 2a: Add Your Code
