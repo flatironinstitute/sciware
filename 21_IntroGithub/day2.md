@@ -229,7 +229,7 @@ If the original repo from `flatironinstitute` isn't your upstream, set it now an
 
 # Survey
 
-## http://bit.ly/sciware-github2-2021
+## http://bit.ly/sciware-github2-2022
 
 ## Reviewing a Pull Request
 
@@ -286,4 +286,4 @@ Check out and bookmark these tutorials for more information about git and the fo
 
 # Survey
 
-## http://bit.ly/sciware-github2-2021
+## http://bit.ly/sciware-github2-2022
