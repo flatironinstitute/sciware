@@ -273,7 +273,8 @@ https://github.com/explore
 
 ## Make a project directory (folder)
 
-<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>> mkdir silly_project
+<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
+> mkdir silly_repo
 > cd silly_repo
 > touch silly_code.py
 > touch silly_file.txt
@@ -362,8 +363,9 @@ Alternatively, you can commit directly from the command line:
 - Use `git remote add` to provide the URL to the GitHub repo.
 - The repo that is in your personal profile is usually called `origin`
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git remote -v 
-> git remote add origin git@github.com:kelle/silly_project.git
+<pre  style="font-size:1.1em"><code data-trim data-noescape>
+> git remote -v 
+> git remote add origin git@github.com:kelle/silly_repo.git
 > git remote -v
 </code></pre>
 
@@ -372,7 +374,8 @@ Alternatively, you can commit directly from the command line:
 
 - Use the `git push` command to upload the committed changes to the GitHub repo.
 
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">> git push origin main
+<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">
+> git push origin main
 </code></pre>
 
 <img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
