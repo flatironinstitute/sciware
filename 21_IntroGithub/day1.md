@@ -96,7 +96,7 @@ Activities where participants all actively work to foster an environment which e
 git version 2.30.1
 </code></pre>
 
-<p class="align-left">If this returns an error, please raise your hand and put a red flag on your laptop.
+<p class="align-left">If this returns an error, please raise your hand or put a yellow sticky on your laptop.
 </p>  
 
 
