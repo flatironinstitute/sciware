@@ -231,12 +231,13 @@ If the original repo from `flatironinstitute` isn't your upstream, set it now an
 
 ## http://bit.ly/sciware-github2-2022
 
+
+
 ## Reviewing a Pull Request
 
 As other students make PRs, go to the pull requests tab on GitHub.
 
 ![](./assets/pull_request_rev.png)
-
 
 
 ## Reviewing a Pull Request
@@ -253,11 +254,9 @@ Choose another student's PR and click on it.
 ![](./assets/pull_request_rev2.png)
 
 
-
 Click on the commit to see the diff of their changes and hover over a line until you see the `+` sybmol.
 
 ![](./assets/pull_request_rev3.png)
-
 
 
 ## PR Case Study
