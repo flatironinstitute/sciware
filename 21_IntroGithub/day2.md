@@ -51,19 +51,23 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## Step 0: Move Day 1 directory
+## Step 0: A clean start
 
- If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
-<pre  style="font-size:0.75em;">
-    > mv sciware21-git-intro/ sciware21-git-intro-day1/
+If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
+
+<pre  style="font-size:0.75em;">> mv sciware21-git-intro/ sciware21-git-intro-day1/
 </pre>
 
+(Normally you'd re-use this repository, but just to make sure everyone's on the same page...)
 
-## We Need Something Different
 
-- When we want to make changes _separately_ from a main project
-- We want to take an existing project in a _new_ direction
-- Sometimes we want to make and track changes to repositories we don't have permissions to push to
+## Collaborating with others
+
+- We need something more than a single repo, if we want to...
+   - make changes _separately_ from a main project
+   - take an existing project in a _new_ direction
+   - make and track changes to repositories we don't have permissions to push to
+
 
 
 ## Forking to the Rescue
@@ -77,7 +81,6 @@ Activities where participants all actively work to foster an environment which e
 2. Add the code and push to your fork
 3. Merge code into the main project
 4. Keep your fork up to date
-
 
 
 ## Step 1: Fork and Clone
@@ -109,22 +112,21 @@ Activities where participants all actively work to foster an environment which e
 
 ## Step 2a: Add Your Code
 
-Add a file in `student_info` called `firstName_lastName.csv` with the following info:
-
-- Your full name
-- Your center
-- Your research focus
-- A fun fact
+- Add a file in `student_info` called `firstName_lastName.csv` with the following info:
+   - Your full name
+   - Your center
+   - Your research focus
+   - A fun fact
 
 
 ## Step 2a: Add Your Code
 
-Mine looks like this:
+For example:
 
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-plaintext">
-Name,Center,Research Focus, Fun Fact
-James Smith, CCQ, Quantum Chemistry, My initials are JETS
+Name,Center,Research Focus,Fun Fact
+James Smith,CCQ,Quantum Chemistry,My initials are JETS
     </code>
 </pre>
 
@@ -140,7 +142,7 @@ James Smith, CCQ, Quantum Chemistry, My initials are JETS
 - Commit it
 - Push to your fork
 
-Mine looks like this:
+For example:
 
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh">
@@ -217,13 +219,6 @@ TODO: update with "fetch upstream"
 
 ## http://bit.ly/sciware-github2-2022
 
-
-
-## Reviewing a Pull Request
-
-As other students make PRs, go to the pull requests tab on GitHub.
-
-![](./assets/pull_request_rev.png)
 
 
 ## Reviewing a Pull Request
