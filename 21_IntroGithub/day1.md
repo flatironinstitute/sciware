@@ -32,7 +32,7 @@ Activities where participants all actively work to foster an environment which e
 
 - Dedicated Zoom moderator to field questions.
 - Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted on #sciware Slack.
+- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/).
 
 
 ## Future Sessions
@@ -59,9 +59,9 @@ Activities where participants all actively work to foster an environment which e
 <div style="display: flex;">
 <img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" style="height: 16em; float: left;">
 <ul>
-<li>keeps track of history of one or more files</li>
-<li>helps with backup and collaboration</li>
-<li>makes it easier to combine changes to the same file</li>
+<li>keeps track of the edit history to one or more files</li>
+<li>serves as a backup</li>
+<li>makes it easier to collaborate and combine multiple changes to the same file</li>
 </ul>
 </div>
 
@@ -108,7 +108,7 @@ See what name is currently set
 
 <div class="spacer"></div>
 
-Set your name
+Set your full name
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name "Mona Lisa"
 </code></pre>
 
@@ -122,7 +122,7 @@ See what email address is currently set
 Set an email address
 <pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "youremail@flatironinstitute.org"
 </code></pre>
-(Ideally set to the same email address you used for GitHub)
+(Ideally set to the same email address you used for GitHub account)
 
 
 ## Generate an SSH key
@@ -208,7 +208,7 @@ How to set up your favorite editor with Git:
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
 <ul>
 <li>Go to the repo on the GitHub website<ul>
-  <li>https://github.com/ flatironinstitute/sciware21-git-intro</li></ul>
+  <li><a href="https://github.com/flatironinstitute/sciware21-git-intro">https://github.com/ flatironinstitute/sciware21-git-intro</a></li></ul>
 </li>
 <li>Click Green Code button</li>
 <li>Choose SSH tab</li>
@@ -355,7 +355,7 @@ Alternatively, you can commit directly from the command line:
 <img src="https://imgs.xkcd.com/comics/git_commit.png" style="width: 80vh">
 
 - Like a comment in your code
-- Says what you changed, why
+- Says what you changed and why
 
 
 ## Connect the repo to GitHub
