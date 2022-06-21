@@ -44,7 +44,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- What is Git and GitHub? 
+- What is Git and GitHub?
 - Setting up git and GitHub on your computer
 - Getting code off of GitHub
 - Putting code onto GitHub
@@ -98,10 +98,10 @@ git version 2.30.1
 </code></pre>
 
 <p class="align-left">If this returns an error, please raise your hand or put a yellow sticky on your laptop.
-</p>  
+</p>
 
 
-## Setting your name in Git 
+## Setting your name in Git
 
 See what name is currently set
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; git config --global user.name
@@ -145,7 +145,7 @@ Copy this whole line to the clipboard
 
 - On GitHub:
   - Profile Photo > Settings > SSH and GPG keys > New SSH Key
-  
+
 <img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
 <img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
 
@@ -199,7 +199,7 @@ How to set up your favorite editor with Git:
 </ul>
 </div>
 
-*Download the code to your computer* in GitHub-ese is   
+*Download the code to your computer* in GitHub-ese is
 **Clone the Repo to your local**
 
 
@@ -228,7 +228,7 @@ How to set up your favorite editor with Git:
 
 <div class="spacer"></div>
 
-- A directory will be created containing all of the files in the repo. 
+- A directory will be created containing all of the files in the repo.
 - The directory name will be the repo name.
 
 
@@ -248,7 +248,7 @@ origin  git@github.com:flatironinstitute/sciware21-git-intro (push)
 </code></pre>
 
 
-# Questions? 
+# Questions?
 
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
 
@@ -309,8 +309,8 @@ https://github.com/explore
 
 ## Name the primary *branch* `main`
 
-- It's possible to have multiple *branches* of the code where different things are being worked on. 
-- The primary branch is usually called *main*. 
+- It's possible to have multiple *branches* of the code where different things are being worked on.
+- The primary branch is usually called *main*.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
 > git status
@@ -332,7 +332,7 @@ Use the `git add` command to specify exactly which files you want to transfer to
 
 Notice:
 - `silly_file.txt` is now green
-- `silly_file.txt` needs to be committed 
+- `silly_file.txt` needs to be committed
 
 
 ## Save the changes
@@ -343,9 +343,6 @@ Notice:
 
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git commit
 </code></pre>
-
-<div class="spacer"></div>
-
 Alternatively, you can commit directly from the command line:
 <pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape>> git commit -m "add silly file"
 > git status
@@ -366,7 +363,7 @@ Alternatively, you can commit directly from the command line:
 - The repo that is in your personal profile is usually called `origin`
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>
-> git remote -v 
+> git remote -v
 > git remote add origin git@github.com:kelle/silly_repo.git
 > git remote -v
 </code></pre>
@@ -404,7 +401,7 @@ Alternatively, you can commit directly from the command line:
 
 # Troubleshooting
 
-- Find GitHub buddies 
+- Find GitHub buddies
 - The best way to figure things out is by asking folks for help
 
 <img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh">
