@@ -69,7 +69,6 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
    - make and track changes to repositories we don't have permissions to push to
 
 
-
 ## Forking to the Rescue
 
 <img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
@@ -81,6 +80,7 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
 2. Add the code and push to your fork
 3. Merge code into the main project
 4. Keep your fork up to date
+
 
 
 ## Step 1: Fork and Clone
