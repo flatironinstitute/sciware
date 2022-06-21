@@ -201,8 +201,8 @@ Things to think about when making pull requests (PR):
 <img width=80% src="./assets/fetch-upstream-1.png">
 
 
-TODO: update with "fetch upstream"
-<img width=80% src="./assets/Learn-Git-Graphics/Pull%20from%20upstream.png">
+## Step 4: Pull Other's Changes
+<img width=80% src="./assets/Learn-Git-Graphics/pull-from-upstream.png">
 
 
 ## Step 4: Pull Other's Changes
