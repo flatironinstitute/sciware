@@ -85,6 +85,7 @@ Activities where participants all actively work to foster an environment which e
 * A central website for storing and sharing git repositories
 * Started in 2008 as a freemium service, now owned by Microsoft
 * Provides repository management, permissions, collaboration tools, CI, etc.
+* Alternatives: gitlab, bitbucket, ...
 
 
 
@@ -274,6 +275,7 @@ https://github.com/explore
 ## Make a project directory (folder)
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
+> cd #out of sciware21-git-intro
 > mkdir silly_repo
 > cd silly_repo
 > touch silly_code.py
