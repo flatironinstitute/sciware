@@ -341,7 +341,6 @@ Notice:
 
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git commit
 </code></pre>
-
 Alternatively, you can commit directly from the command line:
 <pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape>> git commit -m "add silly file"
 > git status
