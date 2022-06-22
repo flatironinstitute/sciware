@@ -201,12 +201,6 @@ Things to think about when making pull requests (PR):
 
 
 
-# Survey
-
-## http://bit.ly/sciware-github2-2022
-
-
-
 ## Reviewing a Pull Request
 
 As other students make PRs, go to the pull requests tab on GitHub.
@@ -238,6 +232,12 @@ Here's an example of a PR _without_ a helpful description:
 Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
 
 <img height=70% width=60% src="./assets/pr_case_study_good.png">
+
+
+
+# Survey
+
+## http://bit.ly/sciware-github2-2022
 
 
 
