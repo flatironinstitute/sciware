@@ -62,7 +62,7 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
 <p>
 (Normally you'd re-use this repository, but just to make sure everyone's on the same page...)
 </p>
-<img src="https://imgs.xkcd.com/comics/git.png" style="height=12em; float: left;">
+<img src="https://imgs.xkcd.com/comics/git.png" style="height=16em; float: left;">
 </div>
 
 
