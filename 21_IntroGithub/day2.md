@@ -54,16 +54,12 @@ Activities where participants all actively work to foster an environment which e
 ## Step 0: A clean start
 
 <div style="display: flex;">
-<div>
-<p>
-If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
-</p>
+<ul>
+<li>If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
 <pre  style="font-size:0.75em;">> mv sciware21-git-intro/ sciware21-git-intro-day1/
-</pre>
-<p>
-(Normally you'd re-use this repository, but just to make sure everyone's on the same page...)
-</p>
-</div>
+</pre></li>
+<li>Normally you'd re-use this repository, but just to make sure everyone's on the same page...</li>
+</ul>
 <img src="https://imgs.xkcd.com/comics/git.png" style="height=16em; float: left;">
 </div>
 
