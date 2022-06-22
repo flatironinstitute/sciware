@@ -207,12 +207,10 @@ Things to think about when making pull requests (PR):
 
 
 ## Step 4: Pull Other's Changes
+
 <img width=80% src="./assets/fetch-upstream-1.png">
 
-
-## Step 4: Pull Other's Changes
-
-<pre  style="font-size:0.75em;">
+<pre class="fragment" style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
     ➜ git pull origin main
     </code>
