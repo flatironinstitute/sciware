@@ -201,23 +201,6 @@ Things to think about when making pull requests (PR):
 
 
 
-## Step 4: Pull Other's Changes
-
-<img width=80% src="./assets/fetch-upstream-3.png">
-
-
-## Step 4: Pull Other's Changes
-
-<img width=80% src="./assets/fetch-upstream-1.png">
-
-<pre class="fragment" style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
-    ➜ git pull origin main
-    </code>
-</pre>
-
-
-
 # Survey
 
 ## http://bit.ly/sciware-github2-2022
@@ -255,6 +238,23 @@ Here's an example of a PR _without_ a helpful description:
 Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
 
 <img height=70% width=60% src="./assets/pr_case_study_good.png">
+
+
+
+## Step 4: Pull Other's Changes
+
+<img width=80% src="./assets/fetch-upstream-3.png">
+
+
+## Step 4: Pull Other's Changes
+
+<img width=80% src="./assets/fetch-upstream-1.png">
+
+<pre class="fragment" style="font-size:0.75em;">
+    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
+    ➜ git pull origin main
+    </code>
+</pre>
 
 
 
