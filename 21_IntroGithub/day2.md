@@ -97,6 +97,7 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
 
 <div>
     First we need to fork the repo
+    https://github.com/flatironinstitute/sciware21-git-intro
     <img src="./assets/where_is_the_fork_button.png">
 </div>
 <style>
