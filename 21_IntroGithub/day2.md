@@ -194,9 +194,9 @@ Things to think about when making pull requests (PR):
 
 <ul>
 <li>Many projects have PR templates with information you need to fill out, <b><em>use them</em></b>!</li>
-<li class="fragment">Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
-<li class="fragment">Bug reports should <b><em>always</em></b> include a minimum working example.</li>
-<li class="fragment">PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
+<li>Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
+<li>Bug reports should <b><em>always</em></b> include a minimum working example.</li>
+<li>PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
 </ul>
 
 
