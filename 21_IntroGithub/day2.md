@@ -202,7 +202,7 @@ Things to think about when making pull requests (PR):
 
 
 ## Step 4: Pull Other's Changes
-<img width=80% src="./assets/Learn-Git-Graphics/fetch-upstream-2.png">
+<img width=80% src="./assets/fetch-upstream-2.png">
 
 
 ## Step 4: Pull Other's Changes
