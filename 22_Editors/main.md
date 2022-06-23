@@ -98,9 +98,15 @@ Translating ideas into code:
 
 - Sublime Text: proprietary editor with fancy navigation, focused on MacOS (2008)
 - PyCharm, Spyder: python-specific IDEs with focus on debugging (2010)
-- Atom: open-source cross-platform editor from Github, "web" (js) based, can be a bit slow (2014)
 - Visual Studio Code ("vscode"): open-source cross-platform editor from Microsoft (2015)
    - not to be confused with MS Visual Studio, an older Windows IDE (1997)
+
+
+### Notebooks
+
+- JupyterLab
+   - Notebooks..
+   - Editor
 
 
 ## Today
