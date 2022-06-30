@@ -22,4 +22,6 @@ A developing series of meetings about software development for science.
 - Oct 21, 2021 [Intro to Scientific Visualization with Blender](18_Blender): and introduction and demo to visualising scientific data in blender
 - Nov 04, 2021 [Using the Flatiron Cluster](17_FICluster): a performance-minded guide to using the computing clusters available at Flatiron Institute
 - Jan 27, 2022 [Performance troubleshooting and profiling](19_Profiling): Using profiling tools to improve the performance of your code
-- Mar 24, 2022 [Documentation: How to Win Users and Influence Science]: Creating documentation that makes software friendlier to yourself and to others.
+- Mar 24, 2022 [Documentation: How to Win Users and Influence Science](20_Documentation): Creating documentation that makes software friendlier to yourself and to others.
+- Jun 21--22, 2022 [Intro to git and GitHub](21_IntroGitHub): a hands-on workshop to learn git and Github basics for cloning, pushing, PRs, and collaboration
+- Jun 29, 2022 [Editors and IDEs show and tell](22_Editors): an introduction and survey of IDEs and code editors, with some focus on VSCode

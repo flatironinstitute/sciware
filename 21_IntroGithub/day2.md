@@ -53,12 +53,16 @@ Activities where participants all actively work to foster an environment which e
 
 ## Step 0: A clean start
 
-If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.
+<div style="display: flex;">
+<ul>
+<li>If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.</li>
+<li>Normally you'd re-use this repository, but just to make sure everyone's on the same page...</li>
+</ul>
+<img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
+</div>
 
 <pre  style="font-size:0.75em;">> mv sciware21-git-intro/ sciware21-git-intro-day1/
 </pre>
-
-(Normally you'd re-use this repository, but just to make sure everyone's on the same page...)
 
 
 ## Collaborating with others
@@ -67,7 +71,6 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
    - make changes _separately_ from a main project
    - take an existing project in a _new_ direction
    - make and track changes to repositories we don't have permissions to push to
-
 
 
 ## Forking to the Rescue
@@ -83,6 +86,7 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
 4. Keep your fork up to date
 
 
+
 ## Step 1: Fork and Clone
 
 <img width=80% src="./assets/Learn-Git-Graphics/Clone%20the%20Fork.png">
@@ -92,6 +96,7 @@ If you already have a copy of this repo from yesterday's workshop, navigate to t
 
 <div>
     First we need to fork the repo
+    https://github.com/flatironinstitute/sciware21-git-intro
     <img src="./assets/where_is_the_fork_button.png">
 </div>
 <style>
@@ -189,35 +194,10 @@ Things to think about when making pull requests (PR):
 
 <ul>
 <li>Many projects have PR templates with information you need to fill out, <b><em>use them</em></b>!</li>
-<li class="fragment">Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
-<li class="fragment">Bug reports should <b><em>always</em></b> include a minimum working example.</li>
-<li class="fragment">PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
+<li>Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
+<li>Bug reports should <b><em>always</em></b> include a minimum working example.</li>
+<li>PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
 </ul>
-
-
-
-## Step 4: Pull Other's Changes
-
-<img width=80% src="./assets/fetch-upstream-1.png">
-
-
-## Step 4: Pull Other's Changes
-<img width=80% src="./assets/Learn-Git-Graphics/pull-from-upstream.png">
-
-
-## Step 4: Pull Other's Changes
-
-<pre  style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
-    ➜ git pull origin main
-    </code>
-</pre>
-
-
-
-# Survey
-
-## http://bit.ly/sciware-github2-2022
 
 
 
@@ -252,6 +232,29 @@ Here's an example of a PR _without_ a helpful description:
 Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
 
 <img height=70% width=60% src="./assets/pr_case_study_good.png">
+
+
+
+# Survey
+
+## http://bit.ly/sciware-github2-2022
+
+
+
+## Step 4: Pull Other's Changes
+
+<img width=80% src="./assets/fetch-upstream-3.png">
+
+
+## Step 4: Pull Other's Changes
+
+<img width=80% src="./assets/fetch-upstream-1.png">
+
+<pre class="fragment" style="font-size:0.75em;">
+    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
+    ➜ git pull origin main
+    </code>
+</pre>
 
 
 
