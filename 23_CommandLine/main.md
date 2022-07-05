@@ -46,13 +46,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- Environment variables
-  - Introduction
-  - Specific variables
-  - Control
-- Shells
-  - Comparison
-  - Features
+- 
 
 
 
@@ -60,63 +54,89 @@ Activities where participants all actively work to foster an environment which e
 
 One often hears these terms used interchangeably. Let's clarify.
 
-* Kernel
+* Operating System
 * Shell
 * Terminal
 * Command Line
 * Console
 
 
-### Kernel & Operating System
+### Operating System
 
-- _Kernel_ is the bridge between application software and hardware.
-- _Operating System_ is comprised of a kernel + other applications.
+- The base programs and libraries that define and control what a computer runs
+- Made up of many parts:
+   - a kernel: controls hardware and manages processes
+   - "user space" processes: daemons (servers), applications, desktop
 
-<small>_Linux_ 🐧 can refer to a kernel or an OS built on that kernel.</small>
-
-
-### Shell
-
-- A _Shell_ is a program that takes commands, gives them to the operating system to perform, and returns output.
-- As opposed to a _graphical user interface_ (GUI), the shell is a _command line interface_ (CLI).
-
-<small>Remember: The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
-
-
-### Common Shells
-
-- On most Linux systems `bash` (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, `sh`, written by Steve Bourne) acts as the shell program.
--Besides bash, other shell programs include: `fish`, `ksh`, `tcsh`, and `zsh`.
+<small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small>
 
 
 ### Terminal
 
-- _Terminal_ is a program that runs and provides I/O to a shell (or other program).
-- Originally a physical device, now we run software terminal emulators.
-- Many different terminal emulators (Gnome-Terminal, iTerm, Terminator, xterm), but they all do the same thing - give you access to a shell session.
-- Opinions?
+- _Terminal_ is a program that provides I/O (input/output) between a shell (or other program) and a display
+- Originally a physical device to interact with remote computers, now we run software terminal _emulators_
+- Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
 
 
-### Console
+### Command Line
 
-- Console originally referred to the physical text entry and display device for system administration messages.
-- Now often used specifically in context of sys admin messages from BIOS, kernel, and the system logger, or the text mode of the OS (Alt-F1 in Linux).
+- Any programs that run inside the terminal, that only interact with text and typing
+  - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
+- _Console_ can be used to mean text terminal or command-line
+  - "Print to the console": display output on the command-line, which you see in the terminal ("standard out")
+  - Originally referred to the physical text entry and display device on a computer
+- While a terminal usually runs locally (on the computer in front of you), the programs in it may be running remotely (like over ssh)
 
-```javascript
-  console.log("👋 hello, you are in a web browser.");
+
+### Shell
+
+- A _Shell_ is a program that lets you enter commands, passes them to the operating system to run
+- Usually the first program that runs in a terminal
+
+<small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
+
+
+### Common Shells
+
+- `bash`: Bourne Again SHell, an enhanced version of the shell written by Steve Bourne
+   - default interactive on most Linux systems
+   - most common shell for shell scripts
+- `zsh` is another common interactive shell
+   - compatible with bash (mostly superset of features)
+   - default on MacOS (replacing bash in 2019, for licensing reasons)
+- Other shells: `fish`, `ksh`, `tcsh`, ...
+
+
+### Shell startup process
+
+- Shells run certain scripts when they start, commonly called "dotfiles"
+
+<table>
+<thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
+<tbody>
+<tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
+<tr>   <td><code>.bash_logout</code></td><td>-</td><td>-</td></tr>
+<tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
+<tr>   <td><code>.zprofile</code></td><td>-</td><td>-</td></tr>
+<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
+<tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+
+
+#### Changing your shell
+
+- Current shell: `$SHELL`, `ps`
+- Most systems: `chsh`
+- FI: https://fido.flatironinstitute.org/
+- caveat: some things only work out of the box in bash (modules, source)
+- alternative: exec different shell from `.bash_profile` (careful!)
+
+```sh
+if [[ $- == *i* && -x /bin/zsh ]] ; then
+	SHELL=/bin/zsh exec /bin/zsh -l
+fi
 ```
-
-
-### Bash Startup Process
-
-- The bash shell program uses a collection of startup files to help create an environment. Each file has a specific use and may affect login and interactive environments differently.
-- The files in the `/etc` directory generally provide global settings. If an equivalent file exists in your home directory it may override the global settings.
-
-
-
-## Environment variables (Nick)
-
-[EnvironmentVariables.md](https://sciware.flatironinstitute.org/10_EnvShell/EnvironmentVariables.html)
 
 
 
@@ -273,77 +293,6 @@ $ source setenv.sh
 
 
 ## Shells
-
-### Comparison (Dylan)
-
-
-#### History
-
-<img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
-
-- run commands, interactive
-- slowly developed more scripting features
-- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`)
-
-
-#### Evolution
-
-- ksh introduced functions
-- tcsh invented history, alias, other interactive features
-- POSIX.2 standardized minimal /bin/sh features (see `dash`)
-- bash developed (and spun off) readline, key bindings
-     - emacs mode, vi mode, custom bindings in `.inputrc`
-- zsh added sophisticated tab-completion, prompts
-     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
-     - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
-
-most modern shells copied, adopted similar, popular features
-
-
-#### Preferences
-
-- bash
-  - most common shell, especially for scripting
-  - often assumed default
-  - lags behind, catches up
-- tcsh: fallen out of favor, non-POSIX, still maintained
-- zsh
-  - large, superset of **compatible with bash** and tcsh
-  - many interactive and scripting features
-  - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
-- opinions?
-
-
-#### Dotfiles
-
-<table>
-<thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
-<tbody>
-<tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
-<tr>   <td><code>.bash_logout</code></td><td>-</td><td>-</td></tr>
-<tr><td rowspan='2'>tcsh</td><td colspan='3' style="text-align: center;"><code>.tcshrc</code> | <code>.cshrc</code></td></tr>
-<tr>   <td><code>.login</code>, <code>.logout</code></td><td>-</td><td>-</td></tr>
-<tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
-<tr>   <td><code>.zprofile</code></td><td>-</td><td>-</td></tr>
-<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
-<tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
-</tbody>
-</table>
-
-
-#### Changing your shell
-
-- Current shell: `$SHELL`, `ps`
-- Most systems: `chsh`
-- FI: email scicomp@flatironinstitute.org
-- caveat: some things only work out of the box in bash (modules, source)
-- alternative: exec different shell from `.bash_profile`
-
-```sh
-if [[ $- == *i* && -x /bin/zsh ]] ; then
-	SHELL=/bin/zsh exec /bin/zsh -l
-fi
-```
 
 
 
@@ -670,17 +619,56 @@ Globs match things (but are less awesome than regular expressions)
 
 
 
-## Future Sessions
-
-- Future sessions planned:
-  - git+github with Software Carpentry Sep 25-26 (2 day session!)
-  - Designing APIs and software library interfaces
-  - Data storage file formats (hdf5, numpy, parquet, sqlite, ...)
-- Suggest topics and vote on options in #sciware Slack
-
-
 ## Please give us feedback
 
 ### https://bit.ly/sciware-shells
 
 Most questions are optional
+
+
+
+## Other resources
+
+
+## Environment variables
+
+[EnvironmentVariables.md](https://sciware.flatironinstitute.org/10_EnvShell/EnvironmentVariables.html)
+
+
+### Shell Comparison
+
+#### History
+
+<img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
+
+- run commands, interactive
+- slowly developed more scripting features
+- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`)
+
+
+#### Evolution
+
+- ksh introduced functions
+- tcsh invented history, alias, other interactive features
+- POSIX.2 standardized minimal /bin/sh features (see `dash`)
+- bash developed (and spun off) readline, key bindings
+     - emacs mode, vi mode, custom bindings in `.inputrc`
+- zsh added sophisticated tab-completion, prompts
+     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
+     - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
+
+most modern shells copied, adopted similar, popular features
+
+
+#### Preferences
+
+- bash
+  - most common shell, especially for scripting
+  - often assumed default
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
+- zsh
+  - large, superset of **compatible with bash** and tcsh
+  - many interactive and scripting features
+  - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
+- opinions?
