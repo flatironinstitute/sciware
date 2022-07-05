@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1377px" height="493px" viewBox="0 0 1377 493" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>sheet</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sheet" transform="translate(0.671875, 1.000000)">
+            <rect id="Rectangle" stroke="#00D563" fill="#D8D8D8" x="0.328125" y="0" width="1375" height="491"></rect>
+            <rect id="Rectangle" fill="#FFFFFF" transform="translate(67.000000, 292.578125) rotate(90.000000) translate(-67.000000, -292.578125) " x="-113" y="246.578125" width="360" height="92"></rect>
+            <g id="Interactive-Non-Login" transform="translate(794.328125, 20.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="200" height="92"></rect>
+                <text id="LOGIN-SHELL-(--login" font-family="AvenirNext-DemiBold, Avenir Next" font-size="14" font-weight="500" fill="#77B7E9">
+                    <tspan x="55.812" y="32">INTERACTIVE </tspan>
+                    <tspan x="59.032" y="51">NON-LOGIN </tspan>
+                    <tspan x="79.885" y="70">SHELL</tspan>
+                </text>
+                <line x1="0.5" y1="0" x2="0.5" y2="471" id="Line" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+                <line x1="200.5" y1="0" x2="200.5" y2="471" id="Line-Copy" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+            </g>
+            <g id="Interactive-Login" transform="translate(112.328125, 20.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="1" y="0" width="682" height="92"></rect>
+                <text id="LOGIN-SHELL-(--login" font-family="AvenirNext-DemiBold, Avenir Next" font-size="14" font-weight="500" fill="#77B7E9">
+                    <tspan x="223.742" y="32">INTERACTIVE LOGIN SHELL (—login)</tspan>
+                </text>
+                <line x1="1.3625498" y1="0" x2="1" y2="467" id="Line" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+                <text id="Shell-that-is-run-wh" font-family="AvenirNext-DemiBold, Avenir Next" font-size="13" font-weight="500" fill="#77B7E9">
+                    <tspan x="119.114898" y="63.6402477">Shell that is run when you log in to a system, either via the terminal or via SSH.</tspan>
+                </text>
+            </g>
+            <g id="Non-interactive" transform="translate(994.328125, 20.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="360" height="92"></rect>
+                <text id="LOGIN-SHELL-(--login" font-family="AvenirNext-DemiBold, Avenir Next" font-size="14" font-weight="500" fill="#77B7E9">
+                    <tspan x="93.844" y="32">NON-INTERACTIVE SHELL</tspan>
+                </text>
+                <line x1="359.207921" y1="0" x2="359" y2="468" id="Line-Copy" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+            </g>
+            <g id="zsh" transform="translate(13.000000, 344.000000)">
+                <g id="Group" transform="translate(121.328125, 0.000000)">
+                    <g id="Rectangle-Copy-3">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="contents-of-/etc/zpr" font-family="AvenirNext-DemiBold, Avenir Next" font-size="12" font-weight="500" line-spacing="14" fill="#000000">
+                            <tspan x="38.58" y="37.5280762">contents of </tspan>
+                            <tspan x="28.2" y="55" font-family="PTMono-Regular, PT Mono" font-weight="normal">/etc/zprofile</tspan>
+                            <tspan x="121.8" y="55"></tspan>
+                            <tspan x="37.848" y="65.5280762">if they exist</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(164.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.zprofile" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="35.4" y="54">~/.zprofile</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(685.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.zshrc" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="46.2" y="54">~/.zshrc</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(882.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="/etc/zshenv" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="35.4" y="54">/etc/zshenv</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(1046.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.zshenv" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="42.6" y="54">~/.zshenv</tspan>
+                        </text>
+                    </g>
+                </g>
+                <line x1="1341.32813" y1="121" x2="0.328125" y2="132" id="Line" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+                <text font-family="AvenirNext-DemiBold, Avenir Next" font-size="14" font-weight="500" fill="#999999">
+                    <tspan x="46.258125" y="53">zsh</tspan>
+                </text>
+            </g>
+            <g id="Bash" transform="translate(13.000000, 65.000000)">
+                <g id="Group" transform="translate(121.328125, 0.000000)">
+                    <text id="A-shell-running-a-sc" font-family="AvenirNext-DemiBold, Avenir Next" font-size="13" font-weight="500" fill="#77B7E9">
+                        <tspan x="887.359" y="13">A shell running a script or a command passed on its </tspan>
+                        <tspan x="998.691" y="31">command line</tspan>
+                    </text>
+                    <path id="Line-2" d="M627,73 L641,80 L627,87 L627,81 L-1,81 L-1,79 L627,79 L627,73 Z" fill="#00D563" fill-rule="nonzero"></path>
+                    <path id="Line-2" d="M1178,256 L1192,263 L1178,270 L1178,264 L881,264 L881,262 L1178,262 L1178,256 Z" fill="#00D563" fill-rule="nonzero"></path>
+                    <g id="Rectangle-Copy-3" transform="translate(0.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="contents-of-/etc/pro" font-family="AvenirNext-DemiBold, Avenir Next" font-size="12" font-weight="500" line-spacing="14" fill="#000000">
+                            <tspan x="38.58" y="37.5280762">contents of </tspan>
+                            <tspan x="31.8" y="55" font-family="PTMono-Regular, PT Mono" font-weight="normal">/etc/profile</tspan>
+                            <tspan x="118.2" y="55"></tspan>
+                            <tspan x="37.848" y="65.5280762">if they exist</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(164.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.bash_profile" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="21" y="54">~/.bash_profile</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(685.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.bashrc" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="42.6" y="54">~/.bashrc</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-3" transform="translate(882.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="BASH_ENV" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="46.2" y="54">BASH_ENV</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-5" transform="translate(328.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.bash_login" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="28.2" y="54">~/.bash_login</tspan>
+                        </text>
+                    </g>
+                    <g id="Rectangle-Copy-6" transform="translate(491.000000, 110.000000)">
+                        <rect id="Rectangle" stroke="#999999" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="148" height="98" rx="10"></rect>
+                        <text id="~/.profile" font-family="PTMono-Regular, PT Mono" font-size="12" font-weight="normal" line-spacing="14" fill="#000000">
+                            <tspan x="39" y="54">~/.profile</tspan>
+                        </text>
+                    </g>
+                    <text id="When-you-start-a-she" font-family="AvenirNext-DemiBold, Avenir Next" font-size="13" font-weight="500" fill="#77B7E9">
+                        <tspan x="686.7125" y="66">When you start a shell in </tspan>
+                        <tspan x="688.4155" y="84">a terminal in an existing </tspan>
+                        <tspan x="738.121" y="102">session</tspan>
+                    </text>
+                </g>
+                <line x1="1340.32813" y1="242" x2="0.328125" y2="242" id="Line" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="18,7"></line>
+                <text id="bash" font-family="AvenirNext-DemiBold, Avenir Next" font-size="14" font-weight="500" fill="#999999">
+                    <tspan x="41.337125" y="166">bash</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

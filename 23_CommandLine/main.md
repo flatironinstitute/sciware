@@ -96,6 +96,9 @@ One often hears these terms used interchangeably. Let's clarify.
 <small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
+<img src="assets/desktop-terminal-shell.png" width="80%" style="border:0;box-shadow:none">
+
+
 ### Common Shells
 
 - `bash`: Bourne Again SHell, an enhanced version of the shell written by Steve Bourne
