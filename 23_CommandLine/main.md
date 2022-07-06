@@ -96,7 +96,7 @@ One often hears these terms used interchangeably. Let's clarify.
 <small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
-<img src="assets/desktop-terminal-shell.png" width="80%" style="border:0;box-shadow:none">
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
 ### Common Shells
@@ -104,7 +104,7 @@ One often hears these terms used interchangeably. Let's clarify.
 - `bash`: Bourne Again SHell, an enhanced version of the shell written by Steve Bourne
    - default interactive on most Linux systems
    - most common shell for shell scripts
-- `zsh` is another common interactive shell
+- `zsh`: a modern interactive shell
    - compatible with bash (mostly superset of features)
    - default on MacOS (replacing bash in 2019, for licensing reasons)
 - Other shells: `fish`, `ksh`, `tcsh`, ...
@@ -112,17 +112,17 @@ One often hears these terms used interchangeably. Let's clarify.
 
 ### Shell startup process
 
-- Shells run certain scripts when they start, commonly called "dotfiles"
+- Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
 
 <table>
-<thead><tr><th>shell</th><th>login</th><th>interactive</th><th>neither</th></tr></thead>
+<thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
 <tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
-<tr>   <td><code>.bash_logout</code></td><td>-</td><td>-</td></tr>
+<tr>   <td style="text-align: center;"><code>.bash_logout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
-<tr>   <td><code>.zprofile</code></td><td>-</td><td>-</td></tr>
-<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td>-</td></tr>
-<tr>   <td><code>.zlogin</code>, <code>.zlogout</code></td><td>-</td><td>-</td></tr>
+<tr>   <td style="text-align: center;"><code>.zprofile</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
+<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td style="text-align: center;">-</td></tr>
+<tr>   <td style="text-align: center;"><code>.zlogin</code>, <code>.zlogout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 </tbody>
 </table>
 
@@ -143,32 +143,16 @@ fi
 
 
 
-### Environment control (Robert)
-
-
-#### Shell variables
-
-- Similar to local variables - set for current shell, don't persist in child processes
-- Conventionally lower case ($history, $path, $aliases, etc.)
-- Can list via a bare `set` command (depending on shell/mode, will print environment variables as well)
-- Can delete with `unset var` command
-```sh
-$ fi="the best"
-$ echo "flatiron is... $fi"
-flatiron is... the best
-$ sh
-sh-4.2$ echo "flatiron is... $fi"
-flatiron is...
-```
+### Environment control
 
 
 #### Environment variables
 
-- Persist through to child processes
-- Conventionally upper case ($PATH, $HOME, etc.)
-- Can list via a bare `export` or `/usr/bin/env` command
+- Propagate to child processes
+- Conventionally upper case (`$PATH`, `$HOME`, etc.)
+- Can list with `export` or `env` command
 - Set with `export` command
-- Can delete with `unset` command
+- Delete with `unset` command
 - Set only for a child process by prepending
 ```sh
 $ export FI="the GOAT"
@@ -181,6 +165,22 @@ $ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
 Woo! Environment fun!
 $ echo "Woo! $MY_ENV_VAR"
 Woo!
+```
+
+
+#### Shell variables
+
+- Similar to local variables - set for current shell, don't propagate to child processes
+- Conventionally lower case (`$file`, `$dir`, `$x`, etc.)
+- List with `set` command (depending on shell/mode, will print environment variables as well)
+- Delete with `unset` command
+```sh
+$ fi="the best"
+$ echo "flatiron is... $fi"
+flatiron is... the best
+$ sh
+sh-4.2$ echo "flatiron is... $fi"
+flatiron is...
 ```
 
 

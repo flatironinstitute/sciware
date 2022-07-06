@@ -3,4 +3,4 @@
 - 3:00-5:00pm
 - Flatiron 3rd floor classroom
 
-- [intro](https://sciware.flatironinstitute.org/23_CommandLine/slides.html) ([source](main.md))
+- [slides](https://sciware.flatironinstitute.org/23_CommandLine/slides.html) ([source](main.md))
