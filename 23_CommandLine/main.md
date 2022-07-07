@@ -50,7 +50,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## Defining terms
+## Overview
 
 One often hears these terms used interchangeably. Let's clarify.
 
@@ -113,11 +113,13 @@ One often hears these terms used interchangeably. Let's clarify.
 ### Shell startup process
 
 - Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
+- Can easily break your shell, prevent logins (ex: `exit`)
 
+<!-- TODO: vertical borders -->
 <table>
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
-<tr><td rowspan='2'>bash</td><td><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td><code>.bashrc</code></td><td>-</td></tr>
+<tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code>.bashrc</code></td><td style="text-align: center;">-</td></tr>
 <tr>   <td style="text-align: center;"><code>.bash_logout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
 <tr>   <td style="text-align: center;"><code>.zprofile</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
@@ -129,18 +131,71 @@ One often hears these terms used interchangeably. Let's clarify.
 
 #### Changing your shell
 
-- Current shell: `$SHELL`, `ps`
 - Most systems: `chsh`
 - FI: https://fido.flatironinstitute.org/
 - caveat: some things only work out of the box in bash (modules, source)
-- alternative: exec different shell from `.bash_profile` (careful!)
 
-```sh
-if [[ $- == *i* && -x /bin/zsh ]] ; then
-	SHELL=/bin/zsh exec /bin/zsh -l
-fi
-```
 
+
+## Interacting
+
+
+### Tab completion
+
+- once, twice
+- zsh more
+
+
+### Navigating
+
+- left, right
+
+- ^A beginning
+- ^E end
+- ^K cut
+- ^Y paste
+
+- Alt-BS/^W
+- ^U
+
+
+### History
+
+- up (^N), down (^P)
+- `history`
+- ^R
+
+
+### Processes
+
+- ^C
+- ^D EOF
+- ^Z ...
+
+- bg, fg, jobs
+- %1
+- (interactive)
+- `&`
+- `wait`
+
+- tmux/screen?
+
+
+### Something
+
+what happens when you type something
+
+- which
+- `$PATH`
+
+- `alias`
+
+
+
+## TODO
+
+- prompt customization
+- scripting
 
 
 ### Environment control
@@ -148,7 +203,6 @@ fi
 
 #### Environment variables
 
-- Propagate to child processes
 - Conventionally upper case (`$PATH`, `$HOME`, etc.)
 - Can list with `export` or `env` command
 - Set with `export` command
@@ -158,9 +212,6 @@ fi
 $ export FI="the GOAT"
 $ echo "flatiron is... $FI"
 flatiron is... the GOAT
-$ sh
-sh-4.2$ echo "flatiron is... $FI"
-flatiron is... the GOAT
 $ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
 Woo! Environment fun!
 $ echo "Woo! $MY_ENV_VAR"
@@ -168,135 +219,34 @@ Woo!
 ```
 
 
-#### Shell variables
-
-- Similar to local variables - set for current shell, don't propagate to child processes
-- Conventionally lower case (`$file`, `$dir`, `$x`, etc.)
-- List with `set` command (depending on shell/mode, will print environment variables as well)
-- Delete with `unset` command
-```sh
-$ fi="the best"
-$ echo "flatiron is... $fi"
-flatiron is... the best
-$ sh
-sh-4.2$ echo "flatiron is... $fi"
-flatiron is...
-```
-
-
 #### Variable expansion
 
 - `foo=bar`, `file=mydata.csv`
 - Concatenate: `${foo}stool` -> `barstool`
-- Remove prefix: `${file##*.}` -> `csv`
-- Remove suffix: `${file%%.*}` -> `mydata`
-- Substitute prefix: `${file/#*./data.}` -> `data.csv`
-- Substitute suffix: `${file/%.*/.bin}` -> `mydata.bin`
-- Brace expansion: `{1..10..2}` -> `1 3 5 7 9`
 
 
-#### Executing shell scripts: `source`, `.`, and `chmod +x`
+#### Executing shell scripts: `source`
 
-- `source myscript.sh` and `. myscript.sh` will _generally_ execute the script in the current shell
+- `source myscript.sh` will execute the script in the current shell (as if you typed them)
    - all variables set in the file will persist in your shell after execution is complete
-   - `source` and `.` are handled differently in different shells, depending on the mode, but are largely identical for most purposes
 - Vs. running a script in a child process:
-   - `bash myscript.sh`, or
-   - make it executable (by adding `#!/bin/bash` and doing `chmod +x`) and run `./myscript.sh`
+   - `bash myscript.sh`
    - the variables will **not** persist into your current shell
-
-
-#### Startup files
-
-- Certain "dotfiles" or "rcfiles" are `source`'d during shell startup
-- Can easily break your shell, prevent logins (ex: `exit`)
-- Avoid generating output in non-login files, issues with `scp`:
-
-```sh
-if [[ -z $PS1 ]] ; then
-	return
-fi
-```
-
 
 
 ### Environment Management
 
-
-#### Modules
-
-- Manages environment by setting and modifying environment variables for you
-- `module avail` to see all available modules
-  - search: `module avail -t | grep <pattern>`
-- `module load <modulename>` to load module
-- `module unload <modulename>` to unload module
-- `module purge` to unload all modules
-- `module show <modulename>` to show what loading the module does
-
-
-#### Python (conda and venv/virtualenv)
-
-- Two main ways to manage multiple python environments
-- conda is a powerful, but heavier, one-stop-shop solution
-  - Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
-- venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
-
-
-#### Conda
-
-```sh
-    conda create -n myenvname # places inside conda
-    conda activate myenvname
-    conda install numpy
-    conda deactivate
-```
-
-- Pros:
-  - Cross-platform installs of non-python packages
-  - Handles complex packages well (e.g. tensorflow)
-  - Multiple environments in a central repository
-- Cons:
-  - Libraries can sometimes conflict: `shadowing`
-  - Uses a __lot__ of files. Can hit filecount quota
-  - [Un]installing packages (transactions) slow
-
-
-#### venv (virtualenv)
-
-```sh
-    python3 -m venv myenvname # places in cwd
-    source myenvname/bin/activate
-    pip install numpy
-    deactivate
-```
-
-- Pros:
-  - Lightweight - fast [un]installs
-  - Can build on SCC-supported and maintained python installations, better support
-  - More on-the-fly selecting of library/python
-- Cons:
-  - Restricted to use existing python binaries
-  - Some issues with compiled packages
-  - (Almost) no non-python packages (vim, emacs, etc.)
-
-
-#### Manual sourcing
-
-- Often useful to lump environment control commands into a single file
-- I often create an environment file in a project root
-
-```sh
-$ cat setenv.sh
-module purge
-module load gcc python3 intel/compiler/2020 --force
-module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl/2020
-source $HOME/projects/codes/fiber-private/env/bin/activate
-$ source setenv.sh
-```
+- there are a number of tools that change your environment, add things to PATH
+- can be used inside scripts (not in your .bashrc)
+- `module`
+- `conda`, `venv`, etc.
+- `source`
 
 
 
 ## Configuring your prompt 🎨
+
+- prompt can show information about your environment
 
 ### ⚠️ Warning ⚠️
 
@@ -614,7 +564,6 @@ Globs match things (but are less awesome than regular expressions)
 * command line editing
 * shell scripting
 * slurm
-* jupyter kernels
 * fzf
 
 
@@ -672,3 +621,110 @@ most modern shells copied, adopted similar, popular features
   - many interactive and scripting features
   - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
 - opinions?
+
+
+- change shell alternative: exec different shell from `.bash_profile` (careful!)
+
+```sh
+if [[ $- == *i* && -x /bin/zsh ]] ; then
+	SHELL=/bin/zsh exec /bin/zsh -l
+fi
+```
+
+
+- Remove prefix: `${file##*.}` -> `csv`
+- Remove suffix: `${file%%.*}` -> `mydata`
+- Substitute prefix: `${file/#*./data.}` -> `data.csv`
+- Substitute suffix: `${file/%.*/.bin}` -> `mydata.bin`
+- Brace expansion: `{1..10..2}` -> `1 3 5 7 9`
+
+
+#### Shell variables
+
+- Similar to local variables - set for current shell, don't propagate to child processes
+- Conventionally lower case (`$file`, `$dir`, `$x`, etc.)
+- List with `set` command (depending on shell/mode, will print environment variables as well)
+- Delete with `unset` command
+```sh
+$ fi="the best"
+$ echo "flatiron is... $fi"
+flatiron is... the best
+$ sh
+sh-4.2$ echo "flatiron is... $fi"
+flatiron is...
+```
+
+
+   - make it executable (by adding `#!/bin/bash` and doing `chmod +x myscript.sh`) and run `./myscript.sh`
+
+
+#### Modules
+
+- Manages environment by setting and modifying environment variables for you
+- `module avail` to see all available modules
+  - search: `module avail -t | grep <pattern>`
+- `module load <modulename>` to load module
+- `module unload <modulename>` to unload module
+- `module purge` to unload all modules
+- `module show <modulename>` to show what loading the module does
+
+
+#### Python (conda and venv/virtualenv)
+
+- Two main ways to manage multiple python environments
+- conda is a powerful, but heavier, one-stop-shop solution
+  - Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
+- venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
+
+
+#### Conda
+
+```sh
+    conda create -n myenvname # places inside conda
+    conda activate myenvname
+    conda install numpy
+    conda deactivate
+```
+
+- Pros:
+  - Cross-platform installs of non-python packages
+  - Handles complex packages well (e.g. tensorflow)
+  - Multiple environments in a central repository
+- Cons:
+  - Libraries can sometimes conflict: `shadowing`
+  - Uses a __lot__ of files. Can hit filecount quota
+  - [Un]installing packages (transactions) slow
+
+
+#### venv (virtualenv)
+
+```sh
+    python3 -m venv myenvname # places in cwd
+    source myenvname/bin/activate
+    pip install numpy
+    deactivate
+```
+
+- Pros:
+  - Lightweight - fast [un]installs
+  - Can build on SCC-supported and maintained python installations, better support
+  - More on-the-fly selecting of library/python
+- Cons:
+  - Restricted to use existing python binaries
+  - Some issues with compiled packages
+  - (Almost) no non-python packages (vim, emacs, etc.)
+
+
+#### Manual sourcing
+
+- Often useful to lump environment control commands into a single file
+- I often create an environment file in a project root
+
+```sh
+$ cat setenv.sh
+module purge
+module load gcc python3 intel/compiler/2020 --force
+module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl/2020
+source $HOME/projects/codes/fiber-private/env/bin/activate
+$ source setenv.sh
+```
