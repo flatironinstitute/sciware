@@ -5,8 +5,8 @@
  * Liz Lovero
  * Updated: 28 August 2019
 */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-@import url("https://fonts.googleapis.com/css?family=Tinos:400,700,400i,700i");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Tinos:400,700,400i,700i');
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -17,7 +17,7 @@ body {
 }
 
 .reveal {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: normal;
   color: #5c5c5c;
@@ -41,7 +41,7 @@ body {
   font-weight: inherit;
 }
 .landing {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: normal;
   color: #5c5c5c;
 }
@@ -57,7 +57,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #537eba;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
@@ -198,13 +198,22 @@ body {
   border-bottom: 1px solid;
 }
 
-.reveal table th[align="center"],
-.reveal table td[align="center"] {
+.reveal table.vert th,
+.reveal table.vert td {
+  border-left: 1px solid;
+}
+
+.reveal table.vert th:first-child .reveal table.vert td:first-child {
+  border-left: none;
+}
+
+.reveal table th[align='center'],
+.reveal table td[align='center'] {
   text-align: center;
 }
 
-.reveal table th[align="right"],
-.reveal table td[align="right"] {
+.reveal table th[align='right'],
+.reveal table td[align='right'] {
   text-align: right;
 }
 
@@ -358,7 +367,7 @@ code {
 }
 
 body:before {
-  content: url("https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png");
+  content: url('https://user-images.githubusercontent.com/44589448/63718873-9ae5cd80-c819-11e9-9395-8c8a60c8b89d.png');
   position: fixed;
   bottom: 30px;
   left: 12px;
@@ -386,7 +395,7 @@ body:before {
 div.two-column {
   display: inline-flex !important;
   align-items: center;
-  justify-content: space-between;   
+  justify-content: space-between;
 }
 .grid-item > pre {
   margin: 0;

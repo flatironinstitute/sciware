@@ -116,7 +116,7 @@ One often hears these terms used interchangeably. Let's clarify.
 - Can easily break your shell, prevent logins (ex: `exit`)
 
 <!-- TODO: vertical borders -->
-<table>
+<table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
 <tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code>.bashrc</code></td><td style="text-align: center;">-</td></tr>
