@@ -219,6 +219,7 @@ fi
 ```
 
 
+
 ### Environment Management
 
 
@@ -292,10 +293,6 @@ module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl
 source $HOME/projects/codes/fiber-private/env/bin/activate
 $ source setenv.sh
 ```
-
-
-
-## Shells
 
 
 
