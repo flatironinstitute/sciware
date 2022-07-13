@@ -181,7 +181,7 @@ One often hears these terms used interchangeably. Let's clarify.
 - tmux/screen?
 
 
-### Something
+### Evaluation
 
 what happens when you type something
 
@@ -360,7 +360,176 @@ Woo!
 
 
 
-### Shell Features (Jonathan)
+## Shell commands and scripting
+
+
+
+## Please give us feedback
+
+### TBD: survey link
+
+
+
+## Other resources
+
+
+* shell scripting
+* slurm
+* fzf
+
+
+## Environment variables
+
+[EnvironmentVariables.md](https://sciware.flatironinstitute.org/10_EnvShell/EnvironmentVariables.html)
+
+
+### Shell Comparison
+
+#### History
+
+<img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
+
+- run commands, interactive
+- slowly developed more scripting features
+- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`)
+
+
+#### Evolution
+
+- ksh introduced functions
+- tcsh invented history, alias, other interactive features
+- POSIX.2 standardized minimal /bin/sh features (see `dash`)
+- bash developed (and spun off) readline, key bindings
+     - emacs mode, vi mode, custom bindings in `.inputrc`
+- zsh added sophisticated tab-completion, prompts
+     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
+     - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
+
+most modern shells copied, adopted similar, popular features
+
+
+#### Preferences
+
+- bash
+  - most common shell, especially for scripting
+  - often assumed default
+  - lags behind, catches up
+- tcsh: fallen out of favor, non-POSIX, still maintained
+- zsh
+  - large, superset of **compatible with bash** and tcsh
+  - many interactive and scripting features
+  - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
+- opinions?
+
+
+- change shell alternative: exec different shell from `.bash_profile` (careful!)
+
+```sh
+if [[ $- == *i* && -x /bin/zsh ]] ; then
+	SHELL=/bin/zsh exec /bin/zsh -l
+fi
+```
+
+
+- Remove prefix: `${file##*.}` -> `csv`
+- Remove suffix: `${file%%.*}` -> `mydata`
+- Substitute prefix: `${file/#*./data.}` -> `data.csv`
+- Substitute suffix: `${file/%.*/.bin}` -> `mydata.bin`
+- Brace expansion: `{1..10..2}` -> `1 3 5 7 9`
+
+
+#### Shell variables
+
+- Similar to local variables - set for current shell, don't propagate to child processes
+- Conventionally lower case (`$file`, `$dir`, `$x`, etc.)
+- List with `set` command (depending on shell/mode, will print environment variables as well)
+- Delete with `unset` command
+```sh
+$ fi="the best"
+$ echo "flatiron is... $fi"
+flatiron is... the best
+$ sh
+sh-4.2$ echo "flatiron is... $fi"
+flatiron is...
+```
+
+
+   - make it executable (by adding `#!/bin/bash` and doing `chmod +x myscript.sh`) and run `./myscript.sh`
+
+
+#### Modules
+
+- Manages environment by setting and modifying environment variables for you
+- `module avail` to see all available modules
+  - search: `module avail -t | grep <pattern>`
+- `module load <modulename>` to load module
+- `module unload <modulename>` to unload module
+- `module purge` to unload all modules
+- `module show <modulename>` to show what loading the module does
+
+
+#### Python (conda and venv/virtualenv)
+
+- Two main ways to manage multiple python environments
+- conda is a powerful, but heavier, one-stop-shop solution
+  - Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
+- venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
+
+
+#### Conda
+
+```sh
+    conda create -n myenvname # places inside conda
+    conda activate myenvname
+    conda install numpy
+    conda deactivate
+```
+
+- Pros:
+  - Cross-platform installs of non-python packages
+  - Handles complex packages well (e.g. tensorflow)
+  - Multiple environments in a central repository
+- Cons:
+  - Libraries can sometimes conflict: `shadowing`
+  - Uses a __lot__ of files. Can hit filecount quota
+  - [Un]installing packages (transactions) slow
+
+
+#### venv (virtualenv)
+
+```sh
+    python3 -m venv myenvname # places in cwd
+    source myenvname/bin/activate
+    pip install numpy
+    deactivate
+```
+
+- Pros:
+  - Lightweight - fast [un]installs
+  - Can build on SCC-supported and maintained python installations, better support
+  - More on-the-fly selecting of library/python
+- Cons:
+  - Restricted to use existing python binaries
+  - Some issues with compiled packages
+  - (Almost) no non-python packages (vim, emacs, etc.)
+
+
+#### Manual sourcing
+
+- Often useful to lump environment control commands into a single file
+- I often create an environment file in a project root
+
+```sh
+$ cat setenv.sh
+module purge
+module load gcc python3 intel/compiler/2020 --force
+module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl/2020
+source $HOME/projects/codes/fiber-private/env/bin/activate
+$ source setenv.sh
+```
+
+
+### Shell features
 
 - Builtins
 - Quoting and Word Splitting
@@ -555,176 +724,3 @@ Globs match things (but are less awesome than regular expressions)
    - paginates output, so we can read it before it scrolls past
 - `cat`
    - does not
-
-
-
-### Other things!
-
-* tab completion, expansion
-* command line editing
-* shell scripting
-* slurm
-* fzf
-
-
-
-## Please give us feedback
-
-### https://bit.ly/sciware-shells
-
-Most questions are optional
-
-
-
-## Other resources
-
-
-## Environment variables
-
-[EnvironmentVariables.md](https://sciware.flatironinstitute.org/10_EnvShell/EnvironmentVariables.html)
-
-
-### Shell Comparison
-
-#### History
-
-<img src="img/evolve.svg" width="1000" style="border:0;box-shadow:none">
-
-- run commands, interactive
-- slowly developed more scripting features
-- control structure syntax: ALGOL (`fi`, `esac`), C (`{}`)
-
-
-#### Evolution
-
-- ksh introduced functions
-- tcsh invented history, alias, other interactive features
-- POSIX.2 standardized minimal /bin/sh features (see `dash`)
-- bash developed (and spun off) readline, key bindings
-     - emacs mode, vi mode, custom bindings in `.inputrc`
-- zsh added sophisticated tab-completion, prompts
-     - <small>`git diff <tab>`, `rsync host:<tab>`, `gcc -<tab>`</small>
-     - more permissive license, adopted by Apple as default (as of Catalina, Nov 2019)
-
-most modern shells copied, adopted similar, popular features
-
-
-#### Preferences
-
-- bash
-  - most common shell, especially for scripting
-  - often assumed default
-  - lags behind, catches up
-- tcsh: fallen out of favor, non-POSIX, still maintained
-- zsh
-  - large, superset of **compatible with bash** and tcsh
-  - many interactive and scripting features
-  - [oh my zsh](https://ohmyz.sh/) ([plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins), [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes))
-- opinions?
-
-
-- change shell alternative: exec different shell from `.bash_profile` (careful!)
-
-```sh
-if [[ $- == *i* && -x /bin/zsh ]] ; then
-	SHELL=/bin/zsh exec /bin/zsh -l
-fi
-```
-
-
-- Remove prefix: `${file##*.}` -> `csv`
-- Remove suffix: `${file%%.*}` -> `mydata`
-- Substitute prefix: `${file/#*./data.}` -> `data.csv`
-- Substitute suffix: `${file/%.*/.bin}` -> `mydata.bin`
-- Brace expansion: `{1..10..2}` -> `1 3 5 7 9`
-
-
-#### Shell variables
-
-- Similar to local variables - set for current shell, don't propagate to child processes
-- Conventionally lower case (`$file`, `$dir`, `$x`, etc.)
-- List with `set` command (depending on shell/mode, will print environment variables as well)
-- Delete with `unset` command
-```sh
-$ fi="the best"
-$ echo "flatiron is... $fi"
-flatiron is... the best
-$ sh
-sh-4.2$ echo "flatiron is... $fi"
-flatiron is...
-```
-
-
-   - make it executable (by adding `#!/bin/bash` and doing `chmod +x myscript.sh`) and run `./myscript.sh`
-
-
-#### Modules
-
-- Manages environment by setting and modifying environment variables for you
-- `module avail` to see all available modules
-  - search: `module avail -t | grep <pattern>`
-- `module load <modulename>` to load module
-- `module unload <modulename>` to unload module
-- `module purge` to unload all modules
-- `module show <modulename>` to show what loading the module does
-
-
-#### Python (conda and venv/virtualenv)
-
-- Two main ways to manage multiple python environments
-- conda is a powerful, but heavier, one-stop-shop solution
-  - Must be user installed, though install is straight forward (__please__ use our docs for installing conda)
-- venv is lighter weight and is handled natively by python modules, but is more difficult for some packages
-
-
-#### Conda
-
-```sh
-    conda create -n myenvname # places inside conda
-    conda activate myenvname
-    conda install numpy
-    conda deactivate
-```
-
-- Pros:
-  - Cross-platform installs of non-python packages
-  - Handles complex packages well (e.g. tensorflow)
-  - Multiple environments in a central repository
-- Cons:
-  - Libraries can sometimes conflict: `shadowing`
-  - Uses a __lot__ of files. Can hit filecount quota
-  - [Un]installing packages (transactions) slow
-
-
-#### venv (virtualenv)
-
-```sh
-    python3 -m venv myenvname # places in cwd
-    source myenvname/bin/activate
-    pip install numpy
-    deactivate
-```
-
-- Pros:
-  - Lightweight - fast [un]installs
-  - Can build on SCC-supported and maintained python installations, better support
-  - More on-the-fly selecting of library/python
-- Cons:
-  - Restricted to use existing python binaries
-  - Some issues with compiled packages
-  - (Almost) no non-python packages (vim, emacs, etc.)
-
-
-#### Manual sourcing
-
-- Often useful to lump environment control commands into a single file
-- I often create an environment file in a project root
-
-```sh
-$ cat setenv.sh
-module purge
-module load gcc python3 intel/compiler/2020 --force
-module load pvfmm/1e4bef5 home/stkfmm/59951f4 openmpi2/2.1.6-intel-hfi intel/mkl/2020
-source $HOME/projects/codes/fiber-private/env/bin/activate
-$ source setenv.sh
-```
