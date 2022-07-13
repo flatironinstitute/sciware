@@ -191,6 +191,12 @@ what happens when you type something
 - `alias`
 
 
+### Directories
+
+- `pwd`
+- `cd DIR`, `cd`, `cd -`
+
+
 
 ## TODO
 
@@ -361,6 +367,22 @@ Woo!
 
 
 ## Shell commands and scripting
+
+- `ls`
+- `rm`, `rm -r`
+- `mkdir`
+- `mv`
+
+- `cat`
+- `echo`
+- `>`, `>>`
+- `|`
+- a bit about stderr
+
+- quoting
+- globs
+
+- `if`, `for`
 
 
 
