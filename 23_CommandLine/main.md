@@ -148,22 +148,23 @@ One often hears these terms used interchangeably. Let's clarify.
 
 ### Navigating
 
-- left, right
+- left ←, right →
 
-- ^A beginning
-- ^E end
-- ^K cut
+- ^A move cursor to beginning of line
+- ^E move cursor to end of line
+- ^K cut from cursor to end of line
 - ^Y paste
 
-- Alt-BS/^W
-- ^U
+- Alt-BS/^W cut previous word
+- ^U cut from cursor to start of line
 
+(`^` means "while pressing the `ctrl` key")
 
 ### History
 
-- up (^N), down (^P)
+- up ↑ (^N), down ↓ (^P)
 - `history`
-- ^R
+- ^R Search through your history
 
 
 ### Processes
@@ -253,10 +254,15 @@ Woo!
 ## Configuring your prompt 🎨
 
 - prompt can show information about your environment
+- directly (text output) or even with styling!
+
 
 ### ⚠️ Warning ⚠️
 
 - Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
+- Remember, this code is executed every time you enter a command!
+  - (So maybe don't have it use `ping` to check whether a remote server is still up)
+- BUT custom styling can be informative (so you can work more efficiently) and fun (so you enjoy what you're doing more)!
 
 
 ### Prompt design
@@ -267,15 +273,17 @@ Woo!
  - Need inspo? ASCII Art Archive https://www.asciiart.eu/
  - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
  - Powerline: https://github.com/powerline/powerline
+ - There is TONS of prior art online if you search . . .
+   - but keep in mind these tools have been around >20 years, so you'll see some old advice too
 
 
 ### Off the shelf options
 
 - Oh-my-zsh:
-  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
-  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
+  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool.
+  - Can cause ⚠️ performance issues, so be attentive and be ready to roll back if things break
 
-<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
+<!-- <img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none"> -->
 
 
 ### Off the shelf options
@@ -288,8 +296,10 @@ Woo!
 
 ### Prompt variables (bash)
 
-- `PS1`: default interactive prompt.
-- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
+- `PS1`: default prompt for interactive use.
+  - Displays whatever text characters you like
+  - Also evaluates special control sequences: these can change text color, expand to show the date or working directory, make a bell-ring sound...
+- `PROMPT_COMMAND`: Executed just before PS1, often used for timestamps, but can execute any bash code you like.
 - Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
 - Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
 
@@ -303,28 +313,6 @@ Woo!
   function parse_git_branch {
     git symbolic-ref --short HEAD 2> /dev/null
   }
-```
-
-
-### Example prompt (bash)
-
-- Show some 💛 for FI with this prompt:
-
-```sh
-  # Define the prompt character
-  char="♥"
-
-  # Define some local colors
-  red="\[\e[0;31m\]"
-  blue="\[\e[0;34m\]"
-  green="\[\e[0;32m\]"
-  gray_text_blue_background="\[\e[37;44;1m\]"
-
-  # Define a variable to reset the text color
-  reset="\[\e[0m\]"
-
-  # Export PS1:  default interactive prompt
-  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
 ```
 
 
@@ -347,22 +335,7 @@ Woo!
 ```
 
 - Enable `vcs_info` function and call it in a pre-command.
-- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
-
-
-### Example prompt (bash)
-
-- `PROMPT_SUBST`: expands the parameters usable in the prompt.
-- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
-- The final `%F{black}%B%` sets the color for the
-- Showing the same FI love.
-
-```zsh
-  setopt PROMPT_SUBST
-  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
-```
-
-<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+- `zstyle`: builtin command is used to define and look up styles, stored as pairs of names and values.
 
 
 
@@ -746,3 +719,44 @@ Globs match things (but are less awesome than regular expressions)
    - paginates output, so we can read it before it scrolls past
 - `cat`
    - does not
+
+
+## Prompt customization examples
+
+
+### Example prompt (bash)
+
+- Show some 💛 for FI with this prompt:
+
+```sh
+  # Define the prompt character
+  char="♥"
+
+  # Define some local colors
+  red="\[\e[0;31m\]"
+  blue="\[\e[0;34m\]"
+  green="\[\e[0;32m\]"
+  gray_text_blue_background="\[\e[37;44;1m\]"
+
+  # Define a variable to reset the text color
+  reset="\[\e[0m\]"
+
+  # Export PS1:  default interactive prompt
+  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
+```
+
+
+### Example prompt (zsh)
+
+- `PROMPT_SUBST`: expands the parameters usable in the prompt.
+- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
+- The final `%F{black}%B%` sets the color for the text you type.
+- Showing the same FI love.
+
+```zsh
+  setopt PROMPT_SUBST
+  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+```
+
+<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
