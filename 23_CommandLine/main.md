@@ -139,6 +139,12 @@ One often hears these terms used interchangeably. Let's clarify.
 
 ## Interacting
 
+### Nomenclature/shorthand/tips
+- Default shell interaction is based on `Emacs` keybindings, though there are vim bindings as well
+- We use `^A` as shorthand for the 'chord' `Control + a` together
+- `Alt-X` keybindings might not work without proper terminal configuration (e.g. `Alt` sends `Meta` in `Iterm.app`)
+- `Alt-X` keybindings can be simulated by hitting `Esc` and then the character after releasing
+
 
 ### Tab completion
 
@@ -148,31 +154,37 @@ One often hears these terms used interchangeably. Let's clarify.
 
 ### Navigating
 
-- left, right
+- `Left` (`^B`), `Right` (`^F`) [Move back and forward a character]
+- `^Left` (`Alt-B`), `^Right` (`Alt-F`) [Move back and forward a word]
+- `Home` (`^A`) [Jump to beginning of line]
+- `End` (`^E`) [Jump to end of line]
 
-- ^A beginning
-- ^E end
-- ^K cut
-- ^Y paste
 
-- Alt-BS/^W
-- ^U
+### Editing
+Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the ring.
+
+- `^K` [Cut "kill" to end of line from cursor]
+- `^U` [Cut line from beginning to end]
+- `^W` (`Alt-BS`) [Cut previous word - repeating adds to the last cut]
+- `^Y` [Paste whatever was last cut, `Alt-Y` after to cycle through the kill ring]
 
 
 ### History
 
-- up (^N), down (^P)
-- `history`
-- ^R
+- `Up` (`^N`), `Down` (`^P`) [Go to previous/next command in history of commands]
+- `history 10` [Print last 10 commands you entered]
+- `^R` [Search history. After matching, pressing `^R` repeatedly will go to previous matches]
 
 
 ### Processes
 
-- ^C
-- ^D EOF
-- ^Z ...
+- ^C [Send 'interrupt' signal to current process, usually stopping it]
+- ^D EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc]
+- ^Z ... [Pause current running process and background it]
 
-- bg, fg, jobs
+- jobs [List currently backgrounded jobs]
+- bg [Unpause last backgrounded job, keeping in background]
+- fg [Unpause last backgrounded job, bringing back to foreground]
 - %1
 - (interactive)
 - `&`
