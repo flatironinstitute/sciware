@@ -179,7 +179,7 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 ### Processes
 
 - ^C [Send 'interrupt' signal to current process, usually stopping it]
-- ^D EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc]
+- ^D EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
 - ^Z ... [Pause current running process and background it]
 
 - jobs [List currently backgrounded jobs]
