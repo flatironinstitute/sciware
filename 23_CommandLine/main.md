@@ -395,7 +395,42 @@ Woo!
 
 ### Geraud
 
-- `ls`
+## Getting help
+- The basic documentation (manuals) is accessible using man pages with `man command`
+- Inside a man page, you can search for something using `/`, and navigate using the arrows/page Up/Page Down keys
+- Man pages also exist for programming! eg: `man fprintf` will show you the help for that C function
+- The *SEE ALSO* section often contains very useful related commands
+```sh
+man ls
+LS(1)                                                                              User Commands                                                                 LS(1)
+
+NAME
+       ls - list directory contents
+
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+
+DESCRIPTION
+       List information about the FILEs (the current directory by default).  Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -a, --all
+              do not ignore entries starting with .
+
+…
+
+SEE ALSO
+       The full documentation for ls is maintained as a Texinfo manual.  If the info and ls programs are properly installed at your site, the command
+
+              info coreutils 'ls invocation'
+
+       should give you access to the complete manual.
+```
+
+
+## Working with files
+- `ls` will show you the files in a given directory (the current one if no argument is provided)
 - `rm`, `rm -r`
 - `mkdir`
 - `mv`
@@ -410,9 +445,10 @@ Woo!
 - quoting
 - globs (`*`, `**` zsh only? bash config)
 
-- `man`
 
-- `if`, `for`
+## Simple control structures
+- `for` is used for loops
+- `if [ a test ]` is used to create simple control structures
 
 
 
