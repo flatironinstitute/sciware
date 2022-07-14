@@ -52,6 +52,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Overview
 
+### Jeff Soules
+
 One often hears these terms used interchangeably. Let's clarify.
 
 * Operating System
@@ -115,7 +117,6 @@ One often hears these terms used interchangeably. Let's clarify.
 - Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
 - Can easily break your shell, prevent logins (ex: `exit`)
 
-<!-- TODO: vertical borders -->
 <table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
@@ -138,6 +139,9 @@ One often hears these terms used interchangeably. Let's clarify.
 
 
 ## Interacting
+
+### Robert Blackwell (SCC)
+
 
 ### Nomenclature/shorthand/tips
 - Default shell interaction is based on `Emacs` keybindings, though there are vim bindings as well
@@ -201,6 +205,7 @@ what happens when you type something
 - `$PATH`
 
 - `alias`
+   - `alias rm="rm -i"`
 
 
 ### Directories
@@ -210,13 +215,9 @@ what happens when you type something
 
 
 
-## TODO
-
-- prompt customization
-- scripting
-
-
 ### Environment control
+
+### Nils 
 
 
 #### Environment variables
@@ -260,6 +261,18 @@ Woo!
 - `conda`, `venv`, etc.
 - `source`
 
+
+
+## github dotfiles
+
+- https://github.com/dylex/skel
+
+
+
+### Dylan
+
+- prompt customization
+- scripting
 
 
 ## Configuring your prompt 🎨
@@ -380,19 +393,24 @@ Woo!
 
 ## Shell commands and scripting
 
+### Geraud
+
 - `ls`
 - `rm`, `rm -r`
 - `mkdir`
 - `mv`
 
 - `cat`
+- `less`
 - `echo`
 - `>`, `>>`
 - `|`
 - a bit about stderr
 
 - quoting
-- globs
+- globs (`*`, `**` zsh only? bash config)
+
+- `man`
 
 - `if`, `for`
 
