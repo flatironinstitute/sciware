@@ -396,16 +396,15 @@ Woo!
 ### G&eacute;raud Krawezik (SCC)
 
 
-
-## Getting help
+### Getting help
 - man pages (manuals) are accessible using `man command`
-- You can search for something using `/`, and navigate with the keyboard
-- Man pages also exist for programming! eg: `man fprintf`
-- The *SEE ALSO* section contains very useful related commands
+- Search using `/`, and navigate with the keyboard
+- man pages also exist for programming! eg: `man fprintf`
+- The *SEE ALSO* section contains useful related commands
 
 ```sh
-man ls
-LS(1)                                                                              User Commands                                                                 LS(1)
+$ man ls
+LS(1)                          User Commands                     LS(1)
 
 NAME
        ls - list directory contents
@@ -432,7 +431,7 @@ SEE ALSO
 ```
 
 
-## Working with files
+### Working with files
 Most of these functions can take any number of arguments. When none is provided, the local directory is assumed
 - `ls` will show you all the files in a given directory
 - `rm`, `rm -r`: remove files, and (*r*ecursively) directories
@@ -440,19 +439,21 @@ Most of these functions can take any number of arguments. When none is provided,
 - `mv` to rename a file or move it
 
 
-## Text handling
-- `cat` prints the file content, when multiple files provided: concatenate
-- `less` prints the file content, scrolling by line or page, up or down
+### Text handling
+- `cat` prints the file(s) content, concatenated
+- `less` shows the file content, scrolling by line or page
 - `echo` prints text, including environment variables
-- `>`, `>>` 
-- `|`
+- You can redirect the output of commandsi to a file using `>`, `>>`
+   - `>` will create a new file
+   - `>>` will append to the end of an already existing file
+- Commands can be piped into one another with `|`: this lets one command use the output of another
 - a bit about stderr
 
 - quoting
 - globs (`*`, `**` zsh only? bash config)
 
 
-## Simple control structures
+### Simple control structures
 - `for` is used for loops
 - `if [ a test ]` is used to create simple control structures
 
