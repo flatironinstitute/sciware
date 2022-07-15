@@ -393,13 +393,16 @@ Woo!
 
 ## Shell commands and scripting
 
-### Geraud
+### G&eacute;raud Krawezik (SCC)
+
+
 
 ## Getting help
-- The basic documentation (manuals) is accessible using man pages with `man command`
-- Inside a man page, you can search for something using `/`, and navigate using the arrows/page Up/Page Down keys
-- Man pages also exist for programming! eg: `man fprintf` will show you the help for that C function
-- The *SEE ALSO* section often contains very useful related commands
+- man pages (manuals) are accessible using `man command`
+- You can search for something using `/`, and navigate with the keyboard
+- Man pages also exist for programming! eg: `man fprintf`
+- The *SEE ALSO* section contains very useful related commands
+
 ```sh
 man ls
 LS(1)                                                                              User Commands                                                                 LS(1)
@@ -430,15 +433,18 @@ SEE ALSO
 
 
 ## Working with files
-- `ls` will show you the files in a given directory (the current one if no argument is provided)
-- `rm`, `rm -r`
-- `mkdir`
-- `mv`
+Most of these functions can take any number of arguments. When none is provided, the local directory is assumed
+- `ls` will show you all the files in a given directory
+- `rm`, `rm -r`: remove files, and (*r*ecursively) directories
+- Create a new directory with `mkdir`
+- `mv` to rename a file or move it
 
-- `cat`
-- `less`
-- `echo`
-- `>`, `>>`
+
+## Text handling
+- `cat` prints the file content, when multiple files provided: concatenate
+- `less` prints the file content, scrolling by line or page, up or down
+- `echo` prints text, including environment variables
+- `>`, `>>` 
 - `|`
 - a bit about stderr
 
