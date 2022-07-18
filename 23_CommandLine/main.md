@@ -395,9 +395,9 @@ Woo!
 
 ### G&eacute;raud Krawezik (SCC)
 
-Most commands presented here can take between 0 to _N_ arguments. The command is usually just repeated on the _N_ arguments
+Most commands presented here take from 0 to _N_ arguments. The command is usually just repeated on the _N_ arguments
 
-We will not talk about putting everything inside a shell script (file)
+_We will not talk about shell scripts_
 
 
 ### Getting help
@@ -426,11 +426,11 @@ DESCRIPTION
 
 
 ### Working with files
-Most of these functions can take any number of arguments. When none is provided, the local directory is assumed
+_The local directory is assumed when no argument is provided_
 - `ls` will show you all the files in a given directory
-- `rm`, `rm -r`: remove files, and (**r**ecursively) directories
 - Create a new directory with `mkdir`
 - `mv filename new_filename_or_location` rename or move a file
+- `rm`, `rm -r`: remove files, and (**r**ecursively) directories
 
 
 ### Text handling
@@ -446,19 +446,19 @@ Most of these functions can take any number of arguments. When none is provided,
 - Programs usually print output and errors separately
    - stdout is used for output
    - stderr is used for error
-- If you are not redirecting anything, they appear together
-- But you can redirect them separately, or together
+- If you are not using redirection, they appear together
    - `>` redirects only stdout
    - `2>` redirects only stderr
    - `&>` redirects both together
    - eg: `my_program > program.out 2> program.err`
 
 
-### Redirection and tricks
-- Commands outputs can be piped as an input to another with `|`
-   - Left to right execution: `command1 | command2 | command3 | ...`
+### Reusing commands outputs
+- One command output can be piped as an input to another with `|` in a left to right execution
+   - `command1 | command2 | command3 | ...`
    - To read an input from a file, you can use `<`
 - Backticks `` ` `` are used when you want to store a result
+
 ```sh
 $ KERNEL_VERSION=`uname -r`
 $ echo $KERNEL_VERSION
@@ -466,10 +466,11 @@ $ echo $KERNEL_VERSION
 ```
 
 
-### Simple control structures
+### Control flow
 - `for` is used to create a loop
 - `if [ a test ]` is used for flow control
 - globs (`*`, `**` zsh only? bash config)
+
 
 
 ## Please give us feedback
