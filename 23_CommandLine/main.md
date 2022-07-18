@@ -397,12 +397,15 @@ Woo!
 
 Most commands presented here can take between 0 to _N_ arguments. The command is usually just repeated on the _N_ arguments
 
+We will not talk about putting everything inside a shell script (file)
+
 
 ### Getting help
 - man pages (manuals) are accessible using `man command`
 - Search using `/`, and navigate with the keyboard
 - man pages also exist for programming! eg: `man fprintf`
 - The **SEE ALSO** section contains useful related commands
+
 ```sh
 $ man ls
 LS(1)                              User Commands                         LS(1)
@@ -419,7 +422,6 @@ DESCRIPTION
        Mandatory arguments to long options are mandatory for short options too.
 
        -a, --all
-              do not ignore entries starting with .
 ```
 
 
@@ -428,7 +430,7 @@ Most of these functions can take any number of arguments. When none is provided,
 - `ls` will show you all the files in a given directory
 - `rm`, `rm -r`: remove files, and (**r**ecursively) directories
 - Create a new directory with `mkdir`
-- `mv filename new_filename_or_locatiom` to rename a file or move it
+- `mv filename new_filename_or_location` to rename a file or move it
 
 
 ### Text handling
@@ -438,30 +440,30 @@ Most of these functions can take any number of arguments. When none is provided,
 - Redirect the output of commands to a file using `>`, `>>`
    - `> file` will create a new file
    - `>> file` will append to the file
-- Commands can be piped into one another with `|`: one output is fed as an input
 
 
-### Output and errors
-- Programs using the standard ways print output and errors separately
+### Outputs and errors
+- Programs usually print output and errors separately
    - stdout is used for output
    - stderr is used for error
-- If you are not redirecting anything, they both appear together
+- If you are not redirecting anything, they appear together
 - But you can redirect them separately, or together
    - `>` redirects only stdout
-   - `2>` redirects only stdout
+   - `2>` redirects only stderr
    - `&>` redirects both together
    - eg: `my_program > program.out 2> program.err`
 
 
-###
-- quoting
-- globs (`*`, `**` zsh only? bash config)
+### Redirection and tricks
+- Commands can be piped into one another with `|`: one output is fed as an input
+   - To read an input from a file, you can use `<`
+- Backticks `\` are used when you want to store the result of an operation
 
 
 ### Simple control structures
-- `for` is used for loops
-- `if [ a test ]` is used to create simple control structures
-
+- `for` is used to create a loop
+- `if [ a test ]` is used for flow control
+- globs (`*`, `**` zsh only? bash config)
 
 
 ## Please give us feedback
