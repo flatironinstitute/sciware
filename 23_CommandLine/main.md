@@ -107,30 +107,32 @@ running a *shell* that lets the user direct the *operating system* to run other 
 - Any programs that only interact with text and typing
   - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
 - Non-shell programs can provide their own command line interface (e.g. `ipython`)
-- _Console_ is sometimes used to refer to command-line interfaces that aren't strictly terminals
-  - "Print to the console" = display output on the command-line (even if it isn't *really* a terminal)
+- _Console_ is sometimes used to refer to all command-line interfaces
+  - "Print to the console" = display output on the command-line
 
 
 ## Why have shells?
 
+
 Shells are:
 
-- *Interactive*: you can explore the file system & available commands, run things & see results in real-time
-- *Customizable*: you can control the environment where commands execute
-- *Programmable*: you can automate tasks by:
-  - building lists of commands to run together (& defining how they communicate)
-  - using programming constructs like variables, loops, and conditionals
-  - repeating commands you've run in the past (possibly with modifications)
-- *Standardized*: most scientific systems will provide a familiar shell interface by default
+- *Interactive*: explore the file system & available commands, run things & see results in real-time
+- *Customizable*: control the environment where commands execute
+- *Programmable*: automate tasks by:
+  - building lists of commands to run together
+  - defining how separate commands communicate
+  - using constructs like variables, loops, & conditionals
+  - repeating commands you've run in the past
+- *Standardized*: most scientific systems provide a familiar shell
 
 
 ### Why not a desktop GUI?
 
 - Both are interactive & discoverable
 - GUI has some advantages for exploration
-  - Though shells can make it easier to locate programs/commands
+  - But shells may make it easier to locate commands
 - Shell makes it easier to issue complex instructions (e.g. command-line arguments)
-- Shell has better support for automation and conditional programming
+- Shell has better support for automation & programming
 - GUI can be more resource-intensive and require more configuration to work on shared systems
 
 
@@ -147,23 +149,28 @@ Shells are:
 
 #### Changing your shell
 
-- To just try it out: type the shell executable name (`zsh`, `bash`) runs a new shell inside your old one
+- To just try it out: typing the shell executable name (`zsh`, `bash`) runs a new shell inside your old one
 - To change which shell gets started by default:
   - Most systems: `chsh`
   - FI: https://fido.flatironinstitute.org/
   - caveat: some commands on the cluster (`modules`, `source`) only work out of the box in bash
 
 
+### Types of shell sessions
+
+A shell instance can be `login`, `interactive`, or neither.
+- A `login` shell is a shell you had to log in to. (Username/password, key-based ssh, etc)
+- An `interactive` shell is one that reads and writes from the command line.
+- Most login shells are interactive, but interactive shells may not be login shells
+  - e.g. a new terminal windows in a desktop GUI
+  - typing `bash` from an existing login shell
+- When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
+
+
 ### Shell startup process
 
 - Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
 - Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
-- A shell instance can be `login`, `interactive`, or neither.
-  - A `login` shell is a shell you had to log in to. (Username/password, key-based ssh, etc)
-  - An `interactive` shell is one that reads and writes from the command line.
-  - Most login shells are interactive, but you can get an interactive shell that isn't a login shell: e.g. a
-  new terminal windows in a desktop GUI, or typing `bash` from an existing login shell
-  - When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
 
 
 ### Shell config files list
