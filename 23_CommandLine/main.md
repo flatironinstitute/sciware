@@ -266,57 +266,163 @@ what happens when you type something
 
 
 
-### Environment control
+## Environment control
 
-### Nils 
+### Nils Wentzell (CCQ)
 
 
-#### Environment variables
+### Shell and Enviroment variables - Live Demo
 
-- Conventionally upper case (`$PATH`, `$HOME`, etc.)
-- Can list with `export` or `env` command
-- Set with `export` command
-- Delete with `unset` command
-- Set only for a child process by prepending
 ```sh
-$ export FI="the GOAT"
-$ echo "flatiron is... $FI"
-flatiron is... the GOAT
-$ MY_ENV_VAR="Environment fun!" echo "Woo! $MY_ENV_VAR"
-Woo! Environment fun!
-$ echo "Woo! $MY_ENV_VAR"
-Woo!
+MYVAR="Hello there" # Define a shell variable
+echo $MYVAR         # Use $ to obtain the value
+
+# Shell variables are not seen by child process
+python -c "import os; print(os.getenv('MYVAR'))"
+
+# Convert into an environment variable using export
+export MYVAR
+
+# Environment variables are seen by child processes
+python -c "import os; print(os.getenv('MYVAR'))"
+
+# Definition and export in one line
+export ANOTHERVAR="Hello again"
+python -c "import os; print(os.getenv('ANOTHERVAR'))"
+
+# Variable expansion 
+echo "$MYVAR fellow coders"
+
+# Delete existing variables
+unset MYVAR
+
+# Inspect your environment
+env
+env | grep VAR
 ```
 
 
-#### Variable expansion
+### Environment Variables
 
-- `foo=bar`, `file=mydata.csv`
-- Concatenate: `${foo}stool` -> `barstool`
+* Local to each shell session
+* Influence the way your shell and processes behave
+* Conventionally upper case: `PATH`, `HOME`, ...
+* Make changes permanent in your `~/.bash_profile`
+<br />
+<br />
+
+| Env. Variable        | Description                                 |
+| -------------------- | ------------------------------------------- |
+| `PATH`               | List of directories searched or executables |
+| `USER`               | The current username                        |
+| `HOME`               | Home directory of the current user          |
+| `PWD`                | Path to the current working directory       |
 
 
-#### Executing shell scripts: `source`
+### Executing shell scripts: `source`
+<br />
 
-- `source myscript.sh` will execute the script in the current shell (as if you typed them)
-   - all variables set in the file will persist in your shell after execution is complete
-- Vs. running a script in a child process:
-   - `bash myscript.sh`
-   - the variables will **not** persist into your current shell
+```sh
+# -- myenv.sh
+export PATH=$HOME/mysoftware/bin:$PATH
+...
+```
+<br />
+
+✅ Execute script in current shell ➜ Script variables will persist
+```sh
+source myenv.sh
+```
+<br />
+
+⛔ Run script as child process ➜ Script variables will **not** persist
+```sh
+bash myenv.sh
+```
 
 
-### Environment Management
+### Environment Modules - Lmod
+<br />
 
-- there are a number of tools that change your environment, add things to PATH
-- can be used inside scripts (not in your .bashrc)
-- `module`
-- `conda`, `venv`, etc.
-- `source`
+FI Cluster: Use the `module` command to find and load software
+```
+$ git --version
+bash: git: command not found
+
+$ module spider git
+     ...
+     Versions:
+        git/2.31.1
+        git/2.35.1
+
+$ module load git
+$ git --version
+git version 2.35.1
+
+$ module show git
+...
+prepend_path("PATH","/mnt/sw/nix/store/wix1v2lrfbwrh4mar9ry07zzvsix82i5-git-2.35.1/bin")
+```
+We also have a modules intro in our [FI Wiki](https://docs.simonsfoundation.org/index.php/Public:SoftwareFlatiron)!
+
+
+### Managing Python Environments
+<br />
+
+<div style="text-align: left">
+
+* `virtualenv` ([user guide](https://virtualenv.pypa.io/en/latest/user_guide.html))
+
+```sh
+virtualenv /path/to/myenv
+source /path/to/myenv/bin/activate
+```
+<br />
+
+* `conda` ([user guide](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html))
+
+```sh
+conda create --name myenv
+conda activate myenv
+```
+
+</div>
+
+
+### Environment variables for software developement
+<br />
+
+| Env. Variable           | Description                               |
+| ----------------------- | ----------------------------------------- |
+| `PYTHONPATH`            | Searched for Python modules               |
+| `CC`, `CXX`             | C/C++ compiler                            |
+| `CFLAGS`,`CXXFLAGS`     | Compiler flags for C/C++                  |
+| `LDFLAGS`               | Flags for the linker                      |
+| `LIBRARY_PATH`          | Searched for libraries at linktime        |
+| `LD_LIBRARY_PATH`       | Searched for dyn. libraries at runtime    |
+| `CPATH`                 | Searched for C/C++ header files           |
+
+
+### Environment variables affecting OpenMP
+
+**Note:** Important when using MPI + OpenMP.
+Each MPI rank usually spawns an equal number of OpenMP threads.
+If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
+<br />
+<br />
+
+| Env. Variable          | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `OMP_NUM_THREADS`      | Number of OpenMP threads to use           |
+| `MKL_NUM_THREADS`      | Number of OpenMP threads to for Intel MKL |
+| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to for OpenBlas  |
 
 
 
 ## github dotfiles
 
 - https://github.com/dylex/skel
+- https://github.com/wentzell/dotfiles
 
 
 
