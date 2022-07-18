@@ -430,7 +430,7 @@ Most of these functions can take any number of arguments. When none is provided,
 - `ls` will show you all the files in a given directory
 - `rm`, `rm -r`: remove files, and (**r**ecursively) directories
 - Create a new directory with `mkdir`
-- `mv filename new_filename_or_location` to rename a file or move it
+- `mv filename new_filename_or_location` rename or move a file
 
 
 ### Text handling
@@ -455,9 +455,15 @@ Most of these functions can take any number of arguments. When none is provided,
 
 
 ### Redirection and tricks
-- Commands can be piped into one another with `|`: one output is fed as an input
+- Commands outputs can be piped as an input to another with `|`
+   - Left to right execution: `command1 | command2 | command3 | ...`
    - To read an input from a file, you can use `<`
-- Backticks `\` are used when you want to store the result of an operation
+- Backticks `` ` `` are used when you want to store a result
+```sh
+$ KERNEL_VERSION=`uname -r`
+$ echo $KERNEL_VERSION
+4.18.0-372.13.1.el8_6.x86_64
+```
 
 
 ### Simple control structures
