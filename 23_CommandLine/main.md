@@ -68,6 +68,7 @@ Here are some terms that people often get confused:
 A *terminal [emulator]* provides a *command line interface* to the computer. The computer is
 running a *shell* that lets the user direct the *operating system* to run other programs.
 
+
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
