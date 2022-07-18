@@ -114,7 +114,7 @@ running a *shell* that lets the user direct the *operating system* to run other 
 ## Why have shells?
 
 
-Shells are:
+### Shells are:
 
 - *Interactive*: explore the file system & available commands, run things & see results in real-time
 - *Customizable*: control the environment where commands execute
@@ -123,7 +123,7 @@ Shells are:
   - defining how separate commands communicate
   - using constructs like variables, loops, & conditionals
   - repeating commands you've run in the past
-- *Standardized*: most scientific systems provide a familiar shell
+- *Standardized*: most systems provide a familiar shell
 
 
 ### Why not a desktop GUI?
@@ -138,7 +138,7 @@ Shells are:
 
 ### Common Shells
 
-- `bash`: Bourne Again SHell (1989), an enhanced version of the shell written by Steve Bourne (1979)
+- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell written by Steve Bourne (1979)
    - default interactive on most Linux systems
    - most common shell for shell scripts
 - `zsh`: a modern interactive shell (1990)
@@ -158,11 +158,11 @@ Shells are:
 
 ### Types of shell sessions
 
-A shell instance can be `login`, `interactive`, or neither.
-- A `login` shell is a shell you had to log in to. (Username/password, key-based ssh, etc)
-- An `interactive` shell is one that reads and writes from the command line.
+A shell instance can be `login`, `interactive`, both, or neither.
+- A `login` shell is one you had to log in to.
+- A shell is `interactive` if it reads & writes from the command line.
 - Most login shells are interactive, but interactive shells may not be login shells
-  - e.g. a new terminal windows in a desktop GUI
+  - e.g. a new terminal window in a desktop GUI
   - typing `bash` from an existing login shell
 - When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
 
