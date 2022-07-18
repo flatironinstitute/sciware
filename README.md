@@ -25,3 +25,4 @@ A developing series of meetings about software development for science.
 - Mar 24, 2022 [Documentation: How to Win Users and Influence Science](20_Documentation): Creating documentation that makes software friendlier to yourself and to others.
 - Jun 21--22, 2022 [Intro to git and GitHub](21_IntroGitHub): a hands-on workshop to learn git and Github basics for cloning, pushing, PRs, and collaboration
 - Jun 29, 2022 [Editors and IDEs show and tell](22_Editors): an introduction and survey of IDEs and code editors, with some focus on VSCode
+- Jul 21, 2022 [Command-line interaction and shells](23_CommandLine): introduction to shells and the command line, terminal interaction, and shell customization

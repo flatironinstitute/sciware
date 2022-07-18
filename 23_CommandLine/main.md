@@ -54,20 +54,29 @@ Activities where participants all actively work to foster an environment which e
 
 ### Jeff Soules
 
-One often hears these terms used interchangeably. Let's clarify.
+
+## Definitions
+
+Here are some terms that people often get confused:
 
 * Operating System
-* Shell
 * Terminal
-* Command Line
 * Console
+* Shell
+* Command Line
+
+A *terminal [emulator]* provides a *command line interface* to the computer. The computer is
+running a *shell* that lets the user direct the *operating system* to run other programs.
+
+
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
 ### Operating System
 
-- The base programs and libraries that define and control what a computer runs
+- The base programs and libraries that define and control what a computer does
 - Made up of many parts:
-   - a kernel: controls hardware and manages processes
+   - a kernel: privileged code that controls hardware and manages processes
    - "user space" processes: daemons (servers), applications, desktop
 
 <small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small>
@@ -78,44 +87,93 @@ One often hears these terms used interchangeably. Let's clarify.
 - _Terminal_ is a program that provides I/O (input/output) between a shell (or other program) and a display
 - Originally a physical device to interact with remote computers, now we run software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
-
-
-### Command Line
-
-- Any programs that run inside the terminal, that only interact with text and typing
-  - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
-- _Console_ can be used to mean text terminal or command-line
-  - "Print to the console": display output on the command-line, which you see in the terminal ("standard out")
-  - Originally referred to the physical text entry and display device on a computer
-- While a terminal usually runs locally (on the computer in front of you), the programs in it may be running remotely (like over ssh)
+- "Console" is an old synonym for "terminal"--a physical control panel for a computer
+- While a terminal usually runs locally (on the computer in front of you), the programs in it may be running remotely (like over `ssh`)
 
 
 ### Shell
 
-- A _Shell_ is a program that lets you enter commands, passes them to the operating system to run
+- A _Shell_ is a program that lets you enter commands & passes them to the operating system to run
+  - e.g. execute program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`
 - Usually the first program that runs in a terminal
+- An old idea (late 1960s/early 1970s): software to replace the "expert computer operator" & punch-card interfaces
+  - Lots of variety & lots of layers of backward compatibility = many different ways to do things
 
 <small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
-<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
+### Command Line
+
+- Any programs that only interact with text and typing
+  - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
+- Non-shell programs can provide their own command line interface (e.g. `ipython`)
+- _Console_ is sometimes used to refer to all command-line interfaces
+  - "Print to the console" = display output on the command-line
+
+
+## Why have shells?
+
+
+### Shells are:
+
+- *Interactive*: explore the file system & available commands, run things & see results in real-time
+- *Customizable*: control the environment where commands execute
+- *Programmable*: automate tasks by:
+  - building lists of commands to run together
+  - defining how separate commands communicate
+  - using constructs like variables, loops, & conditionals
+  - repeating commands you've run in the past
+- *Standardized*: most systems provide a familiar shell
+
+
+### Why not a desktop GUI?
+
+- Both are interactive & discoverable
+- GUI has some advantages for exploration
+  - But shells may make it easier to locate commands
+- Shell makes it easier to issue complex instructions (e.g. command-line arguments)
+- Shell has better support for automation & programming
+- GUI can be more resource-intensive and require more configuration to work on shared systems
 
 
 ### Common Shells
 
-- `bash`: Bourne Again SHell, an enhanced version of the shell written by Steve Bourne
+- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell written by Steve Bourne (1979)
    - default interactive on most Linux systems
    - most common shell for shell scripts
-- `zsh`: a modern interactive shell
+- `zsh`: a modern interactive shell (1990)
    - compatible with bash (mostly superset of features)
    - default on MacOS (replacing bash in 2019, for licensing reasons)
 - Other shells: `fish`, `ksh`, `tcsh`, ...
 
 
+#### Changing your shell
+
+- To just try it out: typing the shell executable name (`zsh`, `bash`) runs a new shell inside your old one
+- To change which shell gets started by default:
+  - Most systems: `chsh`
+  - FI: https://fido.flatironinstitute.org/
+  - caveat: some commands on the cluster (`modules`, `source`) only work out of the box in bash
+
+
+### Types of shell sessions
+
+A shell instance can be `login`, `interactive`, both, or neither.
+- A `login` shell is one you had to log in to.
+- A shell is `interactive` if it reads & writes from the command line.
+- Most login shells are interactive, but interactive shells may not be login shells
+  - e.g. a new terminal window in a desktop GUI
+  - typing `bash` from an existing login shell
+- When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
+
+
 ### Shell startup process
 
 - Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
-- Can easily break your shell, prevent logins (ex: `exit`)
+- Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
+
+
+### Shell config files list
 
 <table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
@@ -128,13 +186,6 @@ One often hears these terms used interchangeably. Let's clarify.
 <tr>   <td style="text-align: center;"><code>.zlogin</code>, <code>.zlogout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 </tbody>
 </table>
-
-
-#### Changing your shell
-
-- Most systems: `chsh`
-- FI: https://fido.flatironinstitute.org/
-- caveat: some things only work out of the box in bash (modules, source)
 
 
 
