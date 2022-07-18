@@ -395,16 +395,17 @@ Woo!
 
 ### G&eacute;raud Krawezik (SCC)
 
+Most commands presented here can take between 0 to _N_ arguments. The command is usually just repeated on the _N_ arguments
+
 
 ### Getting help
 - man pages (manuals) are accessible using `man command`
 - Search using `/`, and navigate with the keyboard
 - man pages also exist for programming! eg: `man fprintf`
-- The *SEE ALSO* section contains useful related commands
-
+- The **SEE ALSO** section contains useful related commands
 ```sh
 $ man ls
-LS(1)                          User Commands                     LS(1)
+LS(1)                              User Commands                         LS(1)
 
 NAME
        ls - list directory contents
@@ -419,36 +420,40 @@ DESCRIPTION
 
        -a, --all
               do not ignore entries starting with .
-
-…
-
-SEE ALSO
-       The full documentation for ls is maintained as a Texinfo manual.  If the info and ls programs are properly installed at your site, the command
-
-              info coreutils 'ls invocation'
-
-       should give you access to the complete manual.
 ```
 
 
 ### Working with files
 Most of these functions can take any number of arguments. When none is provided, the local directory is assumed
 - `ls` will show you all the files in a given directory
-- `rm`, `rm -r`: remove files, and (*r*ecursively) directories
+- `rm`, `rm -r`: remove files, and (**r**ecursively) directories
 - Create a new directory with `mkdir`
-- `mv` to rename a file or move it
+- `mv filename new_filename_or_locatiom` to rename a file or move it
 
 
 ### Text handling
 - `cat` prints the file(s) content, concatenated
 - `less` shows the file content, scrolling by line or page
 - `echo` prints text, including environment variables
-- You can redirect the output of commandsi to a file using `>`, `>>`
-   - `>` will create a new file
-   - `>>` will append to the end of an already existing file
-- Commands can be piped into one another with `|`: this lets one command use the output of another
-- a bit about stderr
+- Redirect the output of commands to a file using `>`, `>>`
+   - `> file` will create a new file
+   - `>> file` will append to the file
+- Commands can be piped into one another with `|`: one output is fed as an input
 
+
+### Output and errors
+- Programs using the standard ways print output and errors separately
+   - stdout is used for output
+   - stderr is used for error
+- If you are not redirecting anything, they both appear together
+- But you can redirect them separately, or together
+   - `>` redirects only stdout
+   - `2>` redirects only stdout
+   - `&>` redirects both together
+   - eg: `my_program > program.out 2> program.err`
+
+
+###
 - quoting
 - globs (`*`, `**` zsh only? bash config)
 
