@@ -89,7 +89,7 @@ They aren't really interchangeable--so let's be precise.
 
 <img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
 
- 
+
 - Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
 - Terminal usually runs locally (on the computer in front of you)--but you may be interacting with a remote computer (like over `ssh`)
