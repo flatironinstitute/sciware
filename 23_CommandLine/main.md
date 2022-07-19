@@ -61,7 +61,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Definitions
 
-Here are some terms that people often get confused:
+Here are some terms that sometimes get mixed up:
 
 * Operating System
 * Terminal
@@ -69,50 +69,68 @@ Here are some terms that people often get confused:
 * Shell
 * Command Line
 
-A *terminal [emulator]* provides a *command line interface* to the computer. The computer is
-running a *shell* that lets the user direct the *operating system* to run other programs.
-
-
-<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
+They aren't really interchangeable--so let's be precise.
 
 
 ### Operating System
 
-- The base programs and libraries that define and control what a computer does
-- Made up of many parts:
-   - a kernel: privileged code that controls hardware and manages processes
-   - "user space" processes: daemons (servers), applications, desktop
+- The base programs & libraries that control what a computer does
+- Divided into:
+   - "kernel": privileged code that drives hardware and manages processes
+   - "user space" processes: daemons/servers, desktop, ...
 
 <small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small>
 
 
 ### Terminal
 
-- _Terminal_ is a program that provides I/O (input/output) between a shell (or other program) and a display
-- Originally a physical device to interact with remote computers, now we run software terminal _emulators_
+- A _terminal_ provides text input/output (_I/O_) with a computer
+- Originally a typewriter-like device
+
+<img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
+
+ 
+- Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
-- "Console" is an old synonym for "terminal"--a physical control panel for a computer
-- While a terminal usually runs locally (on the computer in front of you), the programs in it may be running remotely (like over `ssh`)
+- Terminal usually runs locally (on the computer in front of you)--but you may be interacting with a remote computer (like over `ssh`)
 
 
 ### Shell
 
-- A _Shell_ is a program that lets you enter commands & passes them to the operating system to run
-  - e.g. execute program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`
-- Usually the first program that runs in a terminal
-- An old idea (late 1960s/early 1970s): software to replace the "expert computer operator" & punch-card interfaces
-  - Lots of variety & lots of layers of backward compatibility = many different ways to do things
+- A _shell_ is a program that lets you send commands to the OS to run
+  - e.g. "run program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`"
+  - Notice: most commands are actually *other installed programs*
+- Shell is usually the first program that runs in a terminal
+- Idea dates back to 1970s
 
 <small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
 ### Command Line
 
-- Any programs that only interact with text and typing
-  - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
-- Non-shell programs can provide their own command line interface (e.g. `ipython`)
-- _Console_ is sometimes used to refer to all command-line interfaces
-  - "Print to the console" = display output on the command-line
+- Any program that interacts through text and typing
+  - _Command line interface_ (CLI) vs _graphical user interface_ (GUI)
+- "Command line" implies there are *commands!*
+- Non-shell programs may have a command line interface (e.g. `ipython`)
+  - But usually if we say "command line" we mean a shell
+
+
+### Console
+
+- Sometimes a synonym for a terminal (a physical control panel)
+- Sometimes used to mean any command line
+  - "Print to the console" = display text output (somewhere)
+- It's a little vague.
+
+
+### All Together
+
+A *terminal* lets you exchange text with a computer. The computer runs a *shell*
+that uses the terminal to offer a *command line interface*. Through that interface, the
+user can direct the *operating system* to run other programs.
+
+
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
 ## Why have shells?
@@ -130,7 +148,7 @@ running a *shell* that lets the user direct the *operating system* to run other 
 - *Standardized*: most systems provide a familiar shell
 
 
-### Why not a desktop GUI?
+### Comparison with GUI Desktop
 
 - Both are interactive & discoverable
 - GUI has some advantages for exploration
@@ -142,12 +160,12 @@ running a *shell* that lets the user direct the *operating system* to run other 
 
 ### Common Shells
 
-- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell written by Steve Bourne (1979)
+- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell (`sh`) written by Steve Bourne (1979)
    - default interactive on most Linux systems
    - most common shell for shell scripts
 - `zsh`: a modern interactive shell (1990)
-   - compatible with bash (mostly superset of features)
-   - default on MacOS (replacing bash in 2019, for licensing reasons)
+   - compatible with `bash` (mostly superset of features)
+   - default on MacOS (replacing `bash` in 2019, for licensing reasons)
 - Other shells: `fish`, `ksh`, `tcsh`, ...
 
 
@@ -175,6 +193,7 @@ A shell instance can be `login`, `interactive`, both, or neither.
 
 - Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
 - Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
+- Reference on next page--in practice you probably want `.bashrc` or `.zshrc`
 
 
 ### Shell config files list
@@ -549,6 +568,7 @@ Most commands presented here take from 0 to _N_ arguments. The command is usuall
 
 
 ### Getting help
+
 - man pages (manuals) are accessible using `man command`
 - Search using `/`, and navigate with the keyboard
 - man pages also exist for programming! eg: `man fprintf`
@@ -575,6 +595,7 @@ DESCRIPTION
 
 ### Working with files
 _The local directory is assumed when no argument is provided_
+
 - `ls` will show you all the files in a given directory
 - Create a new directory with `mkdir`
 - `mv filename new_filename_or_location` rename or move a file
@@ -582,6 +603,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Text handling
+
 - `cat` prints the file(s) content, concatenated
 - `less` shows the file content, scrolling by line or page
 - `echo` prints text, including environment variables
@@ -591,6 +613,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Outputs and errors
+
 - Programs usually print output and errors separately
    - stdout is used for output
    - stderr is used for error
@@ -602,6 +625,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Reusing commands outputs
+
 - One command output can be piped as an input to another with `|` in a left to right execution
    - `command1 | command2 | command3 | ...`
    - To read an input from a file, you can use `<`
@@ -615,6 +639,7 @@ $ echo $KERNEL_VERSION
 
 
 ### Control flow: loops
+
 - `for do done` is used to create a loop
 
 ```sh
@@ -623,14 +648,18 @@ for nprocs in 1 2 4 8 16 32; do
 done
 ```
 
-- globs (_shell globbing_) (`*`, `**` zsh only? bash config) are used to iterate over files/directories/subdirectories
+- globs (_shell globbing_) (`*`, `**`) are used to iterate over files/directories/subdirectories
+
 ```sh
-$ shopt -s globstar # Enable it
-$ ls  **/*.md       # Shows all the .md files in the directory and its subdirectories
+$ shopt -s globstar # Enable it on bash
+$ for f in **/*.md; do       # Shows all the .md files in the directory and its subdirectories
+    echo $f
+  done
 ```
 
 
 ### Control flow: tests
+
 - `if elif else then fi` are used for conditional operations.
 
 ```sh
@@ -645,18 +674,27 @@ fi
 
 
 ### Scripts
-You can create a new script (eg: `my_script.sh`) with the following (remember to make it executable with `chmod`)
+
+You can create complete scripts to perform common operations
 
 ```sh
 #!/bin/bash
 # The line above is the shebang, to tell Linux what interpreter to use
 # Comments start with hash
 
-list_files=`ls /tmp`
+today=`date +%Y%m%d`
+backup_folder=/tmp/save$today
+list_files=`ls $HOME/ceph/data/`
+
+mkdir $backup_folder
+
 for file in $list_files; do
-    mv $file ${file}.old
+    mv $file $backup_folder
 done
+
+tar czvf $backup_folder.tar.gz $backup_folder
 ```
+
 
 
 ## Please give us feedback
