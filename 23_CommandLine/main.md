@@ -448,8 +448,6 @@ Woo!
 
 Most commands presented here take from 0 to _N_ arguments. The command is usually just repeated on the _N_ arguments
 
-_We will not talk about shell scripts_
-
 
 ### Getting help
 - man pages (manuals) are accessible using `man command`
@@ -517,11 +515,49 @@ $ echo $KERNEL_VERSION
 ```
 
 
-### Control flow
-- `for` is used to create a loop
-- `if [ a test ]` is used for flow control
-- globs (`*`, `**` zsh only? bash config)
+### Control flow: loops
+- `for do done` is used to create a loop
 
+```sh
+for nprocs in 1 2 4 8 16 32; do
+    mpirun -np $nprocs ./program
+done
+```
+
+- globs (_shell globbing_) (`*`, `**` zsh only? bash config) are used to iterate over files/directories/subdirectories
+```sh
+$ shopt -s globstar # Enable it
+$ ls  **/*.md       # Shows all the .md files in the directory and its subdirectories
+```
+
+
+### Control flow: tests
+- `if elif else then fi` are used for conditional operations.
+
+```sh
+if [ $i -eq 0 ]; then
+    echo "Null value"
+elif [ $i -lt 5 ]; then
+    echo "Small value"
+else
+    echo "Large value"
+fi
+```
+
+
+### Scripts
+You can create a new script (eg: `my_script.sh`) with the following (remember to make it executable with `chmod`)
+
+```sh
+#!/bin/bash
+# The line above is the shebang, to tell Linux what interpreter to use
+# Comments start with hash
+
+list_files=`ls /tmp`
+for file in $list_files; do
+    mv $file ${file}.old
+done
+```
 
 
 ## Please give us feedback
