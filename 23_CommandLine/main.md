@@ -1143,7 +1143,6 @@ Globs match things (but are less awesome than regular expressions)
 - `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
 
 
-
 ###  Accessing git branch (zsh)
 
 ```zsh
