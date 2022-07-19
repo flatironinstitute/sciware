@@ -558,6 +558,7 @@ Most commands presented here take from 0 to _N_ arguments. The command is usuall
 
 
 ### Getting help
+
 - man pages (manuals) are accessible using `man command`
 - Search using `/`, and navigate with the keyboard
 - man pages also exist for programming! eg: `man fprintf`
@@ -584,6 +585,7 @@ DESCRIPTION
 
 ### Working with files
 _The local directory is assumed when no argument is provided_
+
 - `ls` will show you all the files in a given directory
 - Create a new directory with `mkdir`
 - `mv filename new_filename_or_location` rename or move a file
@@ -591,6 +593,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Text handling
+
 - `cat` prints the file(s) content, concatenated
 - `less` shows the file content, scrolling by line or page
 - `echo` prints text, including environment variables
@@ -600,6 +603,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Outputs and errors
+
 - Programs usually print output and errors separately
    - stdout is used for output
    - stderr is used for error
@@ -611,6 +615,7 @@ _The local directory is assumed when no argument is provided_
 
 
 ### Reusing commands outputs
+
 - One command output can be piped as an input to another with `|` in a left to right execution
    - `command1 | command2 | command3 | ...`
    - To read an input from a file, you can use `<`
@@ -624,6 +629,7 @@ $ echo $KERNEL_VERSION
 
 
 ### Control flow: loops
+
 - `for do done` is used to create a loop
 
 ```sh
@@ -632,14 +638,18 @@ for nprocs in 1 2 4 8 16 32; do
 done
 ```
 
-- globs (_shell globbing_) (`*`, `**` zsh only? bash config) are used to iterate over files/directories/subdirectories
+- globs (_shell globbing_) (`*`, `**`) are used to iterate over files/directories/subdirectories
+
 ```sh
-$ shopt -s globstar # Enable it
-$ ls  **/*.md       # Shows all the .md files in the directory and its subdirectories
+$ shopt -s globstar # Enable it on bash
+$ for f in **/*.md; do       # Shows all the .md files in the directory and its subdirectories
+    echo $f
+  done
 ```
 
 
 ### Control flow: tests
+
 - `if elif else then fi` are used for conditional operations.
 
 ```sh
@@ -654,18 +664,27 @@ fi
 
 
 ### Scripts
-You can create a new script (eg: `my_script.sh`) with the following (remember to make it executable with `chmod`)
+
+You can create complete scripts to perform common operations
 
 ```sh
 #!/bin/bash
 # The line above is the shebang, to tell Linux what interpreter to use
 # Comments start with hash
 
-list_files=`ls /tmp`
+today=`date +%Y%m%d`
+backup_folder=/tmp/save$today
+list_files=`ls $HOME/ceph/data/`
+
+mkdir $backup_folder
+
 for file in $list_files; do
-    mv $file ${file}.old
+    mv $file $backup_folder
 done
+
+tar czvf $backup_folder.tar.gz $backup_folder
 ```
+
 
 
 ## Please give us feedback
