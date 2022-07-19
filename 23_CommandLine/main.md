@@ -74,7 +74,7 @@ They aren't really interchangeable--so let's be precise.
 
 ### Operating System
 
-- The base programs & libraries that control what a computer does
+- Base programs & libraries that control what a computer does
 - Divided into:
    - "kernel": privileged code that drives hardware and manages processes
    - "user space" processes: daemons/servers, desktop, ...
@@ -97,9 +97,9 @@ They aren't really interchangeable--so let's be precise.
 
 ### Shell
 
-- A _shell_ is a program that lets you send commands to the OS to run
+- A _shell_ is a program that lets you pass commands to the OS
   - e.g. "run program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`"
-  - Notice: most commands are actually *other installed programs*
+  - Most commands are actually *other installed programs*
 - Shell is usually the first program that runs in a terminal
 - Idea dates back to 1970s
 
@@ -109,9 +109,9 @@ They aren't really interchangeable--so let's be precise.
 ### Command Line
 
 - Any program that interacts through text and typing
-  - _Command line interface_ (CLI) vs _graphical user interface_ (GUI)
-- "Command line" implies there are *commands!*
-- Non-shell programs may have a command line interface (e.g. `ipython`)
+- _Command line interface_ (CLI) vs _graphical user interface_ (GUI)
+  - "Command line" implies there are *commands!*
+- Non-shell programs may also have a command line interface (e.g. `ipython`)
   - But usually if we say "command line" we mean a shell
 
 
@@ -125,9 +125,9 @@ They aren't really interchangeable--so let's be precise.
 
 ### All Together
 
-A *terminal* lets you exchange text with a computer. The computer runs a *shell*
-that uses the terminal to offer a *command line interface*. Through that interface, the
-user can direct the *operating system* to run other programs.
+A *shell* is a program that uses a *terminal* to offer a *command line interface*,
+through which a user can direct the *operating system* to run other programs, whose
+output will also be displayed in the terminal.
 
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
