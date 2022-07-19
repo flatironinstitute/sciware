@@ -49,7 +49,7 @@ Activities where participants all actively work to foster an environment which e
 - Overview, terminology, shells
 - Shell interaction, navigation
 - Environment variables
-- Prompt customization
+- Shell and prompt customization
 - Shell commands and scripting
 
 
@@ -423,124 +423,115 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 
 
 
-## Prompt customization
+## Shell Customization
 
 ### Dylan Simon (SCC)
 
 
-## Configuring your prompt 🎨
-
-- prompt can show information about your environment
-
-### ⚠️ Warning ⚠️
-
-- Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
-
-
-### Prompt design
-
- - Only include what you will actually use.
- - That said, don't be afraid to add a little ✨.
- - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
- - Need inspo? ASCII Art Archive https://www.asciiart.eu/
- - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
- - Powerline: https://github.com/powerline/powerline
-
-
-### Off the shelf options
-
-- Oh-my-zsh:
-  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
-  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
-
-<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
-
-
-### Off the shelf options
-
-- Powerline:
-  - _ A statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile._
-
-<img src="img/powerline.png" width="1000" style="border:0;box-shadow:none">
-
-
-### Prompt variables (bash)
-
-- `PS1`: default interactive prompt.
-- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
-- Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
-- Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
-
-
-### Accessing git branch (bash)
-
-- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Otherwise you can use the following function to find the active git branch.
-
-```sh
-  function parse_git_branch {
-    git symbolic-ref --short HEAD 2> /dev/null
-  }
-```
-
-
-### Example prompt (bash)
-
-- Show some 💛 for FI with this prompt:
-
-```sh
-  # Define the prompt character
-  char="♥"
-
-  # Define some local colors
-  red="\[\e[0;31m\]"
-  blue="\[\e[0;34m\]"
-  green="\[\e[0;32m\]"
-  gray_text_blue_background="\[\e[37;44;1m\]"
-
-  # Define a variable to reset the text color
-  reset="\[\e[0m\]"
-
-  # Export PS1:  default interactive prompt
-  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
-```
-
-
-### Prompt variables (zsh)
-
-- `PROMPT`: default is `%m%#`
-  - %m: short form of the current hostname
-  - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
-- `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
+### Prompt ideas
 
 <img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
 
+- current directory (`pwd`)
+- time, error status
+- environments, modules
+- git status
+- cluster jobs? weather?
 
-###  Accessing git branch (zsh)
 
-```zsh
-  autoload -Uz vcs_info
-  precmd() {vcs_info}
-  zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+### Basic prompts
+
+bash: https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt
+```bash
+PS1='\u@\h:\w>'
+dylan@rusty:~>
 ```
 
-- Enable `vcs_info` function and call it in a pre-command.
-- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
-
-
-### Example prompt (bash)
-
-- `PROMPT_SUBST`: expands the parameters usable in the prompt.
-- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
-- The final `%F{black}%B%` sets the color for the
-- Showing the same FI love.
-
+zsh: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 ```zsh
-  setopt PROMPT_SUBST
-  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+PROMPT='%n@%m:%~>'
+dylan@rusty:~>
 ```
 
-<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
+### Color codes
+
+- bash
+   - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
+   - 256-color escapes: https://gilesorr.com/blog/bash-prompt-07-256-colours.html
+- zsh
+   - foreground: `%F{colorcode}`
+   - background: `%B{colorcode}`
+
+```zsh
+PROMPT='       %n       @       %m       :       %~      >  '
+PROMPT='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%F'
+```
+<img src="img/prompt-256.png" width="400" style="border:0;box-shadow:none">
+
+
+### Links for prompts
+
+- Interactive zsh prompt generator: https://zsh-prompt-generator.site/
+- Simple start for zsh: https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
+- General status line plugin: https://github.com/powerline/powerline
+- All-in-one zsh customization package: https://github.com/ohmyzsh/ohmyzsh 
+- Package to display lots of status: https://spaceship-prompt.sh/ 
+
+
+### Aside: `ls` colors
+
+Set the colors you see in `ls` output
+
+```
+dircolors -p > .dircolors
+edit .dircolors
+dircolors .dircolors >> ~/.bashrc
+```
+
+- `.dircolors` specifies how file types and extensions map to colors (same color codes as bash)
+- Add the output of `dircolors` (`LS_COLORS=`) to your bashrc/zshrc
+- (zsh tab completion can also respect these colors)
+
+
+### Including command output
+
+The simplest way to include extra information in your prompt
+
+```bash
+PS1='\u@\h:\w branch=$(git branch --show-current 2> /dev/null || echo NONE)>'
+```
+
+For zsh you may need to add:
+```zsh
+setopt prompt_subst
+```
+
+
+### Conditionals
+
+```zsh
+case $HOST in 
+	rusty*) color=blue ;;
+	laptop) color=red ;;
+esac
+PROMPT="%F{$color}..."
+```
+
+
+### zsh extras
+
+Right-aligned prompt
+```zsh
+RPROMPT='%T'
+```
+
+Options: https://zsh.sourceforge.io/Doc/Release/Options.html
+```zsh
+setopt autocd   # type directory names without cd
+setopt autolist # show options on single tab
+setopt nobeep   # stop making noise on every tab
+```
 
 
 ## github dotfiles
@@ -1028,3 +1019,117 @@ Globs match things (but are less awesome than regular expressions)
    - paginates output, so we can read it before it scrolls past
 - `cat`
    - does not
+
+
+## Configuring your prompt 🎨
+
+- prompt can show information about your environment
+
+### ⚠️ Warning ⚠️
+
+- Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
+
+
+### Prompt design
+
+ - Only include what you will actually use.
+ - That said, don't be afraid to add a little ✨.
+ - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
+ - Need inspo? ASCII Art Archive https://www.asciiart.eu/
+
+
+### Off the shelf options
+
+- Oh-my-zsh:
+  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
+  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
+
+<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
+
+
+### Off the shelf options
+
+- Powerline:
+  - _ A statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile._
+
+<img src="img/powerline.png" width="1000" style="border:0;box-shadow:none">
+
+
+### Prompt variables (bash)
+
+- `PS1`: default interactive prompt.
+- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
+- Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
+- Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
+
+
+### Accessing git branch (bash)
+
+- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
+- Otherwise you can use the following function to find the active git branch.
+
+```sh
+  function parse_git_branch {
+    git symbolic-ref --short HEAD 2> /dev/null
+  }
+```
+
+
+### Example prompt (bash)
+
+- Show some 💛 for FI with this prompt:
+
+```sh
+  # Define the prompt character
+  char="♥"
+
+  # Define some local colors
+  red="\[\e[0;31m\]"
+  blue="\[\e[0;34m\]"
+  green="\[\e[0;32m\]"
+  gray_text_blue_background="\[\e[37;44;1m\]"
+
+  # Define a variable to reset the text color
+  reset="\[\e[0m\]"
+
+  # Export PS1:  default interactive prompt
+  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
+```
+
+
+### Prompt variables (zsh)
+
+- `PROMPT`: default is `%m%#`
+  - %m: short form of the current hostname
+  - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
+- `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
+
+
+
+###  Accessing git branch (zsh)
+
+```zsh
+  autoload -Uz vcs_info
+  precmd() {vcs_info}
+  zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+```
+
+- Enable `vcs_info` function and call it in a pre-command.
+- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
+
+
+### Example prompt (bash)
+
+- `PROMPT_SUBST`: expands the parameters usable in the prompt.
+- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
+- The final `%F{black}%B%` sets the color for the
+- Showing the same FI love.
+
+```zsh
+  setopt PROMPT_SUBST
+  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+```
+
+<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
+
