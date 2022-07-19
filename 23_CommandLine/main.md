@@ -46,7 +46,11 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- 
+- Overview, terminology, shells
+- Shell interaction, navigation
+- Environment variables
+- Prompt customization
+- Shell commands and scripting
 
 
 
@@ -419,17 +423,9 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 
 
 
-## github dotfiles
+## Prompt customization
 
-- https://github.com/dylex/skel
-- https://github.com/wentzell/dotfiles
-
-
-
-### Dylan
-
-- prompt customization
-- scripting
+### Dylan Simon (SCC)
 
 
 ## Configuring your prompt 🎨
@@ -545,6 +541,12 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 ```
 
 <img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
+
+## github dotfiles
+
+- https://github.com/dylex/skel
+- https://github.com/wentzell/dotfiles
 
 
 
