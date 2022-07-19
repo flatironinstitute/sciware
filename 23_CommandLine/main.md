@@ -87,7 +87,7 @@ They aren't really interchangeable--so let's be precise.
 - A _terminal_ provides text input/output (_I/O_) with a computer
 - Originally a typewriter-like device
 
-<img src="assets/teletype-terminal" style="border:0;box-shadow:none" />
+<img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
 
  
 - Nowadays we use software terminal _emulators_
