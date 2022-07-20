@@ -109,9 +109,10 @@ They aren't really interchangeable--so let's be precise.
 ### Command Line
 
 - Any program that interacts through text and typing
-- _Command line interface_ (CLI) vs _graphical user interface_ (GUI)
   - "Command line" implies there are *commands!*
-- Non-shell programs may also have a command line interface (e.g. `ipython`)
+- _Command line interface_ (CLI) vs
+- _graphical user interface_ (GUI)
+- Non-shell programs can have a CLI (e.g. `ipython`)
   - But usually if we say "command line" we mean a shell
 
 
@@ -136,26 +137,25 @@ output will also be displayed in the terminal.
 ## Why have shells?
 
 
-### Shells are:
+### Why Shells?
 
-- *Interactive*: explore the file system & available commands, run things & see results in real-time
-- *Customizable*: control the environment where commands execute
-- *Programmable*: automate tasks by:
+- Originally: replaces "expert computer operator" who loads punch cards
+- Continues: As a more powerful (& maybe easier?) alternative to graphical desktop
+  - Particularly easier for complex commands
+  - And finding things (surprisingly)
+  - Shell less resource intensive than GUI
+
+
+### Shell Benefits:
+
+- *Interactive*--explore the file system & available commands, run them, & see results in real-time
+- *Customizable*--control the environment where commands execute
+- *Programmable*--automate tasks by:
   - building lists of commands to run together
   - defining how separate commands communicate
   - using constructs like variables, loops, & conditionals
   - repeating commands you've run in the past
-- *Standardized*: most systems provide a familiar shell
-
-
-### Comparison with GUI Desktop
-
-- Both are interactive & discoverable
-- GUI has some advantages for exploration
-  - But shells may make it easier to locate commands
-- Shell makes it easier to issue complex instructions (e.g. command-line arguments)
-- Shell has better support for automation & programming
-- GUI can be more resource-intensive and require more configuration to work on shared systems
+- *Standardized*--most systems provide a familiar shell
 
 
 ### Common Shells
@@ -171,29 +171,30 @@ output will also be displayed in the terminal.
 
 #### Changing your shell
 
-- To just try it out: typing the shell executable name (`zsh`, `bash`) runs a new shell inside your old one
+- To just try it out: type the shell executable name (`zsh`, `bash`); runs a new shell inside your old one
 - To change which shell gets started by default:
   - Most systems: `chsh`
   - FI: https://fido.flatironinstitute.org/
-  - caveat: some commands on the cluster (`modules`, `source`) only work out of the box in bash
+  - caveat: some commands on the cluster (`modules`, `source`) only work in bash by default
 
 
 ### Types of shell sessions
 
 A shell instance can be `login`, `interactive`, both, or neither.
-- A `login` shell is one you had to log in to.
+- A shell is `login` if you had to log in to it.
 - A shell is `interactive` if it reads & writes from the command line.
 - Most login shells are interactive, but interactive shells may not be login shells
   - e.g. a new terminal window in a desktop GUI
-  - typing `bash` from an existing login shell
+  - running `bash` from an existing login shell
 - When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
 
 
 ### Shell startup process
 
-- Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
+- Shells run certain scripts when they start ("dotfiles") containing configuration and setup
 - Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
-- Reference on next page--in practice you probably want `.bashrc` or `.zshrc`
+- Reference on the next slide
+  - In practice you probably want `.bashrc` or `.zshrc`
 
 
 ### Shell config files list
