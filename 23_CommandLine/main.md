@@ -255,14 +255,14 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 ### History
 
 - `Up` (`^N`), `Down` (`^P`) [Go to previous/next command in history of commands]
-- `history 10` [Print last 10 commands you entered]
+- `history 10` [Print last 10 commands you entered on `bash`, `zsh` different]
 - `^R` [Search history. After matching, pressing `^R` repeatedly will go to previous matches]
 
 
 ### Processes - Stopping
 
-- `^D` EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
 - `^C` [Send 'interrupt' signal to current process, usually stopping it]
+- `^D` EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
 - `^Z` [Pause current running process and background it]
 - `kill %1` [Kill last backgrounded process]
 - ...what if we don't want to kill it?
