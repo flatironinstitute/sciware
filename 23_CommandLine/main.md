@@ -611,7 +611,7 @@ _The local directory is assumed when no argument is provided_
    - `>` redirects only stdout
    - `2>` redirects only stderr
    - `&>` redirects both together
-   - eg: `my_program > program.out 2> program.err`
+   - eg: `my_program > program.out 2> program.err` _Note: this will overwrite!_
 
 
 ### Reusing commands outputs
@@ -633,7 +633,8 @@ $ echo $KERNEL_VERSION
 - `for do done` is used to create a loop
 
 ```sh
-for nprocs in 1 2 4 8 16 32; do
+for nprocs in 1 2 4 8 16 32
+do
     mpirun -np $nprocs ./program
 done
 ```
@@ -641,21 +642,24 @@ done
 - globs (_shell globbing_) (`*`, `**`) are used to iterate over files/directories/subdirectories
 
 ```sh
-$ shopt -s globstar # Enable it on bash
-$ for f in **/*.md; do       # Shows all the .md files in the directory and its subdirectories
+shopt -s globstar     # Enable globs on bash
+for f in **/*.md
+do  # Iterate over the .md files in the directory and its subdirectories
     echo $f
-  done
+done
 ```
 
 
 ### Control flow: tests
 
-- `if elif else then fi` are used for conditional operations.
+- `if elif else then fi` are used for conditional operations
 
 ```sh
-if [ $i -eq 0 ]; then
+if [[ $i -eq 0 ]]
+then
     echo "Null value"
-elif [ $i -lt 5 ]; then
+elif [[ $i -lt 5 ]]
+then
     echo "Small value"
 else
     echo "Large value"
@@ -665,12 +669,12 @@ fi
 
 ### Scripts
 
-You can create complete scripts to perform common operations
+Create complete scripts to perform common operations
 
 ```sh
 #!/bin/bash
 # The line above is the shebang, to tell Linux what interpreter to use
-# Comments start with hash
+# Comments start with hash/pound
 
 today=`date +%Y%m%d`
 backup_folder=/tmp/save$today
@@ -678,7 +682,8 @@ list_files=`ls $HOME/ceph/data/`
 
 mkdir $backup_folder
 
-for file in $list_files; do
+for file in $list_files
+do
     mv $file $backup_folder
 done
 
