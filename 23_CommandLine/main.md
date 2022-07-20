@@ -218,16 +218,20 @@ A shell instance can be `login`, `interactive`, both, or neither.
 
 
 ### Nomenclature/shorthand/tips
-- Default shell interaction is based on `Emacs` keybindings, though there are vim bindings as well
-- We use `^A` as shorthand for the 'chord' `Control + a` together
-- `Alt-X` keybindings might not work without proper terminal configuration (e.g. `Alt` sends `Meta` in `Iterm.app`)
+- Default shell interaction is based on `Emacs` keybindings, though there are `vim` bindings as well
+- We use `^A` as shorthand for `Control a` together
+- `Alt-X` keybindings might not work without proper terminal configuration, especially on macs
+  - `Terminal.app->Preferences->Profiles->Use Option as Meta key `
+  - `Iterm.app->Preferences->Profiles->Keys->Left option key: Esc+`
 - `Alt-X` keybindings can be simulated by hitting `Esc` and then the character after releasing
 
 
-### Tab completion
+### Tab key completion
 
-- once, twice
-- zsh more
+- Can be used to quickly fill out text such as directories, executables, and program arguments
+- Press once to complete your current text up to where it's no longer unique
+- Twice to show all possible completions if no longer unique
+- Can have fuzzy completion, cycling, and other neat tricks
 
 
 ### Navigating
@@ -254,21 +258,25 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 - `^R` [Search history. After matching, pressing `^R` repeatedly will go to previous matches]
 
 
-### Processes
+### Processes - Stopping
 
-- ^C [Send 'interrupt' signal to current process, usually stopping it]
-- ^D EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
-- ^Z ... [Pause current running process and background it]
+- `^D` EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
+- `^C` [Send 'interrupt' signal to current process, usually stopping it]
+- `^Z` [Pause current running process and background it]
+- `kill %1` [Kill last backgrounded process]
+- ...what if we don't want to kill it?
 
-- jobs [List currently backgrounded jobs]
-- bg [Unpause last backgrounded job, keeping in background]
-- fg [Unpause last backgrounded job, bringing back to foreground]
-- %1
-- (interactive)
-- `&`
-- `wait`
 
-- tmux/screen?
+### Controlling background processes
+`%<id>`: Identifier for job, where `<id>` is some number
+
+- `jobs` [List currently backgrounded jobs]
+- `bg` [Unpause last backgrounded job, keeping in background]
+- `fg` [Unpause last backgrounded job, bringing back to foreground]
+- `&` [Background job and start it]
+- `wait` [Wait until background jobs finish before doing more stuff]
+- `disown` [Detach last job from terminal/jobs - will continue running even if you disconnect]
+- `tmux` and `screen` are sometimes better utilities for persistent jobs
 
 
 ### Evaluation
