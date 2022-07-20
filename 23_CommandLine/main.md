@@ -46,7 +46,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- Overview, terminology, shells
+- Introduction, terminology, shells
 - Shell interaction, navigation
 - Environment variables
 - Shell and prompt customization
@@ -54,9 +54,9 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## Overview
+## Introduction
 
-### Jeff Soules
+### Jeff Soules (CCM)
 
 
 ## Definitions
@@ -202,11 +202,11 @@ A shell instance can be `login`, `interactive`, both, or neither.
 <table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
-<tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code>.bashrc</code></td><td style="text-align: center;">-</td></tr>
+<tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code><b>.bashrc</b></code></td><td style="text-align: center;">-</td></tr>
 <tr>   <td style="text-align: center;"><code>.bash_logout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
 <tr>   <td style="text-align: center;"><code>.zprofile</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
-<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td style="text-align: center;">-</td></tr>
+<tr>   <td colspan='2' style="text-align: center;"><code><b>.zshrc</b></code></td><td style="text-align: center;">-</td></tr>
 <tr>   <td style="text-align: center;"><code>.zlogin</code>, <code>.zlogout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 </tbody>
 </table>
@@ -472,15 +472,17 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 
 ### Basic prompts
 
-bash: https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt
+#### bash
+###### https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt
 ```bash
 PS1='\u@\h:\w>'
 dylan@rusty:~>
 ```
 
-zsh: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
+#### zsh
+###### https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 ```zsh
-PROMPT='%n@%m:%~>'
+PS1='%n@%m:%~>'
 dylan@rusty:~>
 ```
 
@@ -491,12 +493,12 @@ dylan@rusty:~>
    - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
    - 256-color escapes: https://gilesorr.com/blog/bash-prompt-07-256-colours.html
 - zsh
-   - foreground: `%F{colorcode}`
-   - background: `%B{colorcode}`
+   - foreground: `%F{colorcode}`, default: `%f`
+   - background: `%B{colorcode}`, default: `%b`
 
 ```zsh
-PROMPT='       %n       @       %m       :       %~      >  '
-PROMPT='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%F'
+PS1='       %n       @       %m       :       %~      >  '
+PS1='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%f'
 ```
 <img src="img/prompt-256.png" width="400" style="border:0;box-shadow:none">
 
@@ -505,16 +507,16 @@ PROMPT='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%F'
 
 - Interactive zsh prompt generator: https://zsh-prompt-generator.site/
 - Simple start for zsh: https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
-- General status line plugin: https://github.com/powerline/powerline
-- All-in-one zsh customization package: https://github.com/ohmyzsh/ohmyzsh 
-- Package to display lots of status: https://spaceship-prompt.sh/ 
+- General status line plugin: [https://github.com/powerline/powerline](https://powerline.readthedocs.io/en/latest/overview.html)
+- All-in-one zsh customization package: [https://github.com/ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
+- Customizable prompt displaying lots of status: https://spaceship-prompt.sh/ 
 
 
-### Aside: `ls` colors
+### File colors
 
 Set the colors you see in `ls` output
 
-```
+```bash
 dircolors -p > .dircolors
 edit .dircolors
 dircolors .dircolors >> ~/.bashrc
@@ -522,7 +524,7 @@ dircolors .dircolors >> ~/.bashrc
 
 - `.dircolors` specifies how file types and extensions map to colors (same color codes as bash)
 - Add the output of `dircolors` (`LS_COLORS=`) to your bashrc/zshrc
-- (zsh tab completion can also respect these colors)
+- (zsh [tab completion](https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Standard-Styles) can also respect these colors)
 
 
 ### Including command output
@@ -533,7 +535,9 @@ The simplest way to include extra information in your prompt
 PS1='\u@\h:\w branch=$(git branch --show-current 2> /dev/null || echo NONE)>'
 ```
 
-For zsh you may need to add:
+<img src="img/prompt-git.png" width="800" style="border:0;box-shadow:none">
+
+##### For zsh you may need to add
 ```zsh
 setopt prompt_subst
 ```
@@ -541,23 +545,34 @@ setopt prompt_subst
 
 ### Conditionals
 
+##### Display number of background jobs (if any)
+
+```zsh
+PS1='%n@%m:%~%1(j. [%j]).>'
+user@host:~ [NJOBS]>
+```
+
+##### Use different prompts in different places
+
 ```zsh
 case $HOST in 
 	rusty*) color=blue ;;
+	cc?lin*) color=green ;;
 	laptop) color=red ;;
 esac
-PROMPT="%F{$color}..."
+PS1="%F{$color}..."
 ```
 
 
 ### zsh extras
 
-Right-aligned prompt
+#### Right-aligned prompt
 ```zsh
-RPROMPT='%T'
+RPS1='%F{blue}%T%f'
 ```
 
-Options: https://zsh.sourceforge.io/Doc/Release/Options.html
+#### Options
+###### https://zsh.sourceforge.io/Doc/Release/Options.html
 ```zsh
 setopt autocd   # type directory names without cd
 setopt autolist # show options on single tab
@@ -1167,7 +1182,7 @@ Globs match things (but are less awesome than regular expressions)
 - `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
 
 
-### Example prompt (bash)
+### Example prompt (zsh)
 
 - `PROMPT_SUBST`: expands the parameters usable in the prompt.
 - `%F{green}%B%`: Named colors must be surrounded by the escape characters.
