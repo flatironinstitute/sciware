@@ -267,13 +267,16 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 - ...what if we don't want to kill it?
 
 
-### Controlling background processes
+### Controlling background processes (1)
 `%<id>`: Identifier for job, where `<id>` is some number
 
 - `jobs` [List currently backgrounded jobs]
 - `bg` [Unpause last backgrounded job, keeping in background]
 - `fg` [Unpause last backgrounded job, bringing back to foreground]
-- `&` [Background job and start it]
+
+
+### Controlling background processes (2)
+- `mylongcommand with args here &` [Background job and start it]
 - `wait` [Wait until background jobs finish before doing more stuff]
 - `disown` [Detach last job from terminal/jobs - will continue running even if you disconnect]
 - `tmux` and `screen` are sometimes better utilities for persistent jobs
