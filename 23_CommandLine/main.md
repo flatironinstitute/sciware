@@ -342,7 +342,7 @@ env | grep VAR
 * Local to each shell session
 * Influence the way your shell and processes behave
 * Conventionally upper case: `PATH`, `HOME`, ...
-* Make changes permanent in your `~/.bash_profile`
+* Make changes permanent in your `~/.bashrc` or `~/.zshrc`
 <br />
 <br />
 
@@ -409,7 +409,7 @@ We also have a modules intro in our [FI Wiki](https://docs.simonsfoundation.org/
 * `virtualenv` ([user guide](https://virtualenv.pypa.io/en/latest/user_guide.html))
 
 ```sh
-virtualenv /path/to/myenv
+python -m venv --system-site-packages /path/to/myenv
 source /path/to/myenv/bin/activate
 ```
 <br />
@@ -503,35 +503,13 @@ PS1='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%f'
 <img src="img/prompt-256.png" width="400" style="border:0;box-shadow:none">
 
 
-### Links for prompts
-
-- Interactive zsh prompt generator: https://zsh-prompt-generator.site/
-- Simple start for zsh: https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
-- General status line plugin: [https://github.com/powerline/powerline](https://powerline.readthedocs.io/en/latest/overview.html)
-- All-in-one zsh customization package: [https://github.com/ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
-- Customizable prompt displaying lots of status: https://spaceship-prompt.sh/ 
-
-
-### File colors
-
-Set the colors you see in `ls` output
-
-```bash
-dircolors -p > .dircolors
-edit .dircolors
-dircolors .dircolors >> ~/.bashrc
-```
-
-- `.dircolors` specifies how file types and extensions map to colors (same color codes as bash)
-- Add the output of `dircolors` (`LS_COLORS=`) to your bashrc/zshrc
-- (zsh [tab completion](https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Standard-Styles) can also respect these colors)
-
-
 ### Including command output
 
 The simplest way to include extra information in your prompt
 
 ```bash
+git branch --show-current
+main
 PS1='\u@\h:\w branch=$(git branch --show-current 2> /dev/null || echo NONE)>'
 ```
 
@@ -546,7 +524,7 @@ setopt prompt_subst
 ### Unicode!
 
 ```zsh
-PROMPT='%F{green}%c $(git branch --show-current 2> /dev/null) %F{blue} // %F{red} ♥ %f'
+PS1='%F{green}%c $(git branch --show-current 2> /dev/null) %F{blue} // %F{red} ♥ %f'
 ```
 
 <img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
@@ -592,7 +570,31 @@ setopt nobeep   # stop making noise on every tab
 ```
 
 
-## github dotfiles
+### Links for prompts
+
+- Interactive zsh prompt generator: https://zsh-prompt-generator.site/
+- Simple start for zsh: https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
+- General status line plugin: [https://github.com/powerline/powerline](https://powerline.readthedocs.io/en/latest/overview.html)
+- All-in-one zsh customization package: [https://github.com/ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
+- Customizable prompt displaying lots of status: https://spaceship-prompt.sh/ 
+
+
+### File colors (Linux/coreutils only)
+
+Set the colors you see in `ls` output
+
+```bash
+dircolors -p > .dircolors
+edit .dircolors
+dircolors .dircolors >> ~/.bashrc
+```
+
+- `.dircolors` specifies how file types and extensions map to colors (same color codes as bash)
+- Add the output of `dircolors` (`LS_COLORS=`) to your bashrc/zshrc
+- (zsh [tab completion](https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Standard-Styles) can also respect these colors)
+
+
+## dotfiles shared on github
 
 - https://github.com/dylex/skel
 - https://github.com/wentzell/dotfiles
