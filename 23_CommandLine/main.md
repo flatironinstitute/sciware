@@ -283,20 +283,20 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 
 
 ### Evaluation
+How does the shell decide what to do when you enter a command?
 
-what happens when you type something
-
-- which
-- `$PATH`
-
-- `alias`
-   - `alias rm="rm -i"`
+- `which ` [Show which command actually gets run when you typed a command]
+- `PATH` (`echo $PATH`): Environment variable that has a list of directories to search for executables
+- `alias` [List aliases -- usually shortcuts to run commands with basic arguments you like]
+   - `alias rm="rm -i"` [Defines alias have `rm` always prompt for deletions]
 
 
 ### Directories
 
-- `pwd`
-- `cd DIR`, `cd`, `cd -`
+- `pwd` [Print working directory -- where you are currently]
+- `cd DIR` [Change directory to DIR, where DIR is relative (`projects/codes`) or absolute (`/mnt/home/rblackwell/projects/codes`)]
+  - `cd` [Change to home directory]
+  - `cd -` [Change to last directory]
 
 
 
