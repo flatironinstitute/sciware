@@ -46,22 +46,22 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- Overview, terminology, shells
+- Introduction, terminology, shells
 - Shell interaction, navigation
 - Environment variables
-- Prompt customization
+- Shell and prompt customization
 - Shell commands and scripting
 
 
 
-## Overview
+## Introduction
 
-### Jeff Soules
+### Jeff Soules (CCM)
 
 
 ## Definitions
 
-Here are some terms that people often get confused:
+Here are some terms that sometimes get mixed up:
 
 * Operating System
 * Terminal
@@ -69,112 +69,132 @@ Here are some terms that people often get confused:
 * Shell
 * Command Line
 
-A *terminal [emulator]* provides a *command line interface* to the computer. The computer is
-running a *shell* that lets the user direct the *operating system* to run other programs.
-
-
-<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
+They aren't really interchangeable--so let's be precise.
 
 
 ### Operating System
 
-- The base programs and libraries that define and control what a computer does
-- Made up of many parts:
-   - a kernel: privileged code that controls hardware and manages processes
-   - "user space" processes: daemons (servers), applications, desktop
+- Base programs & libraries that control what a computer does
+- Divided into:
+   - "kernel": privileged code that drives hardware and manages processes
+   - "user space" processes: daemons/servers, desktop, ...
 
 <small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small>
 
 
 ### Terminal
 
-- _Terminal_ is a program that provides I/O (input/output) between a shell (or other program) and a display
-- Originally a physical device to interact with remote computers, now we run software terminal _emulators_
+- A _terminal_ provides text input/output (_I/O_) with a computer
+- Originally a typewriter-like device
+
+<img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
+
+
+- Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
-- "Console" is an old synonym for "terminal"--a physical control panel for a computer
-- While a terminal usually runs locally (on the computer in front of you), the programs in it may be running remotely (like over `ssh`)
+- Terminal usually runs locally (on the computer in front of you)--but you may be interacting with a remote computer (like over `ssh`)
 
 
 ### Shell
 
-- A _Shell_ is a program that lets you enter commands & passes them to the operating system to run
-  - e.g. execute program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`
-- Usually the first program that runs in a terminal
-- An old idea (late 1960s/early 1970s): software to replace the "expert computer operator" & punch-card interfaces
-  - Lots of variety & lots of layers of backward compatibility = many different ways to do things
+- A _shell_ is a program that lets you pass commands to the OS
+  - e.g. "run program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`"
+  - Most commands are actually *other installed programs*
+- Shell is usually the first program that runs in a terminal
+- Idea dates back to 1970s
 
 <small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
 
 
 ### Command Line
 
-- Any programs that only interact with text and typing
-  - _Command line interface_ (CLI), as opposed to a _graphical user interface_ (GUI)
-- Non-shell programs can provide their own command line interface (e.g. `ipython`)
-- _Console_ is sometimes used to refer to all command-line interfaces
-  - "Print to the console" = display output on the command-line
+- Any program that interacts through text and typing
+  - "Command line" implies there are *commands!*
+- _Command line interface_ (CLI) vs
+- _graphical user interface_ (GUI)
+- Non-shell programs can have a CLI (e.g. `ipython`)
+  - But usually if we say "command line" we mean a shell
+
+
+### Console
+
+- Sometimes a synonym for a terminal (a physical control panel)
+- Sometimes used to mean any command line
+  - "Print to the console" = display text output (somewhere)
+- It's a little vague.
+
+
+### All Together
+
+A *shell* is a program that uses a *terminal* to offer a *command line interface*,
+through which a user can direct the *operating system* to run other programs, whose
+output will also be displayed in the terminal.
+
+
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
 ## Why have shells?
 
 
-### Shells are:
+### Why Shells?
 
-- *Interactive*: explore the file system & available commands, run things & see results in real-time
-- *Customizable*: control the environment where commands execute
-- *Programmable*: automate tasks by:
+- Originally: replaces "expert computer operator" who loads punch cards
+- Continues: As a more powerful (& maybe easier?) alternative to graphical desktop
+  - Particularly easier for complex commands
+  - And finding things (surprisingly)
+  - Shell less resource intensive than GUI
+
+
+### Shell Benefits:
+
+- *Interactive*--explore the file system & available commands, run them, & see results in real-time
+- *Customizable*--control the environment where commands execute
+- *Programmable*--automate tasks by:
   - building lists of commands to run together
   - defining how separate commands communicate
   - using constructs like variables, loops, & conditionals
   - repeating commands you've run in the past
-- *Standardized*: most systems provide a familiar shell
-
-
-### Why not a desktop GUI?
-
-- Both are interactive & discoverable
-- GUI has some advantages for exploration
-  - But shells may make it easier to locate commands
-- Shell makes it easier to issue complex instructions (e.g. command-line arguments)
-- Shell has better support for automation & programming
-- GUI can be more resource-intensive and require more configuration to work on shared systems
+- *Standardized*--most systems provide a familiar shell
 
 
 ### Common Shells
 
-- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell written by Steve Bourne (1979)
+- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell (`sh`) written by Steve Bourne (1979)
    - default interactive on most Linux systems
    - most common shell for shell scripts
 - `zsh`: a modern interactive shell (1990)
-   - compatible with bash (mostly superset of features)
-   - default on MacOS (replacing bash in 2019, for licensing reasons)
+   - compatible with `bash` (mostly superset of features)
+   - default on MacOS (replacing `bash` in 2019, for licensing reasons)
 - Other shells: `fish`, `ksh`, `tcsh`, ...
 
 
 #### Changing your shell
 
-- To just try it out: typing the shell executable name (`zsh`, `bash`) runs a new shell inside your old one
+- To just try it out: type the shell executable name (`zsh`, `bash`); runs a new shell inside your old one
 - To change which shell gets started by default:
   - Most systems: `chsh`
   - FI: https://fido.flatironinstitute.org/
-  - caveat: some commands on the cluster (`modules`, `source`) only work out of the box in bash
+  - caveat: some commands on the cluster (`modules`, `source`) only work in bash by default
 
 
 ### Types of shell sessions
 
 A shell instance can be `login`, `interactive`, both, or neither.
-- A `login` shell is one you had to log in to.
+- A shell is `login` if you had to log in to it.
 - A shell is `interactive` if it reads & writes from the command line.
 - Most login shells are interactive, but interactive shells may not be login shells
   - e.g. a new terminal window in a desktop GUI
-  - typing `bash` from an existing login shell
+  - running `bash` from an existing login shell
 - When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
 
 
 ### Shell startup process
 
-- Shells run certain scripts when they start, commonly called "dotfiles", containing configuration and setup
+- Shells run certain scripts when they start ("dotfiles") containing configuration and setup
 - Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
+- Reference on the next slide
+  - In practice you probably want `.bashrc` or `.zshrc`
 
 
 ### Shell config files list
@@ -182,11 +202,11 @@ A shell instance can be `login`, `interactive`, both, or neither.
 <table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
 <tbody>
-<tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code>.bashrc</code></td><td style="text-align: center;">-</td></tr>
+<tr><td rowspan='2'>bash</td><td style="text-align: center;"><code>.bash_profile</code> | <code>.bash_login</code> | <code>.profile</code></td><td style="text-align: center;"><code><b>.bashrc</b></code></td><td style="text-align: center;">-</td></tr>
 <tr>   <td style="text-align: center;"><code>.bash_logout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 <tr><td rowspan='4'>zsh</td><td colspan='3' style="text-align: center;"><code>.zshenv</code></td></tr>
 <tr>   <td style="text-align: center;"><code>.zprofile</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
-<tr>   <td colspan='2' style="text-align: center;"><code>.zshrc</code></td><td style="text-align: center;">-</td></tr>
+<tr>   <td colspan='2' style="text-align: center;"><code><b>.zshrc</b></code></td><td style="text-align: center;">-</td></tr>
 <tr>   <td style="text-align: center;"><code>.zlogin</code>, <code>.zlogout</code></td><td style="text-align: center;">-</td><td style="text-align: center;">-</td></tr>
 </tbody>
 </table>
@@ -199,16 +219,20 @@ A shell instance can be `login`, `interactive`, both, or neither.
 
 
 ### Nomenclature/shorthand/tips
-- Default shell interaction is based on `Emacs` keybindings, though there are vim bindings as well
-- We use `^A` as shorthand for the 'chord' `Control + a` together
-- `Alt-X` keybindings might not work without proper terminal configuration (e.g. `Alt` sends `Meta` in `Iterm.app`)
+- Default shell interaction is based on `Emacs` keybindings, though there are `vim` bindings as well
+- We use `^A` as shorthand for `Control a` together
+- `Alt-X` keybindings might not work without proper terminal configuration, especially on macs
+  - `Terminal.app->Preferences->Profiles->Use Option as Meta key `
+  - `Iterm.app->Preferences->Profiles->Keys->Left option key: Esc+`
 - `Alt-X` keybindings can be simulated by hitting `Esc` and then the character after releasing
 
 
-### Tab completion
+### Tab key completion
 
-- once, twice
-- zsh more
+- Can be used to quickly fill out text such as directories, executables, and program arguments
+- Press once to complete your current text up to where it's no longer unique
+- Twice to show all possible completions if no longer unique
+- Can have fuzzy completion, cycling, and other neat tricks
 
 
 ### Navigating
@@ -231,42 +255,49 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 ### History
 
 - `Up` (`^N`), `Down` (`^P`) [Go to previous/next command in history of commands]
-- `history 10` [Print last 10 commands you entered]
+- `history 10` [Print last 10 commands you entered on `bash`, `zsh` different]
 - `^R` [Search history. After matching, pressing `^R` repeatedly will go to previous matches]
 
 
-### Processes
+### Processes - Stopping
 
-- ^C [Send 'interrupt' signal to current process, usually stopping it]
-- ^D EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
-- ^Z ... [Pause current running process and background it]
+- `^C` [Send 'interrupt' signal to current process, usually stopping it]
+- `^D` EOF [Kills most interactive sessions, if line is empty (your current shell, python repl, etc)]
+- `^Z` [Pause current running process and background it]
+- `kill %1` [Kill last backgrounded process]
+- ...what if we don't want to kill it?
 
-- jobs [List currently backgrounded jobs]
-- bg [Unpause last backgrounded job, keeping in background]
-- fg [Unpause last backgrounded job, bringing back to foreground]
-- %1
-- (interactive)
-- `&`
-- `wait`
 
-- tmux/screen?
+### Controlling background processes (1)
+`%<id>`: Identifier for job, where `<id>` is some number
+
+- `jobs` [List currently backgrounded jobs]
+- `bg` [Unpause last backgrounded job, keeping in background]
+- `fg` [Unpause last backgrounded job, bringing back to foreground]
+
+
+### Controlling background processes (2)
+- `mylongcommand with args here &` [Background job and start it]
+- `wait` [Wait until background jobs finish before doing more stuff]
+- `disown` [Detach last job from terminal/jobs - will continue running even if you disconnect]
+- `tmux` and `screen` are sometimes better utilities for persistent jobs
 
 
 ### Evaluation
+How does the shell decide what to do when you enter a command?
 
-what happens when you type something
-
-- which
-- `$PATH`
-
-- `alias`
-   - `alias rm="rm -i"`
+- `which ` [Show which command actually gets run when you typed a command]
+- `PATH` (`echo $PATH`): Environment variable that has a list of directories to search for executables
+- `alias` [List aliases -- usually shortcuts to run commands with basic arguments you like]
+   - `alias rm="rm -i"` [Defines alias have `rm` always prompt for deletions]
 
 
 ### Directories
 
-- `pwd`
-- `cd DIR`, `cd`, `cd -`
+- `pwd` [Print working directory -- where you are currently]
+- `cd DIR` [Change directory to DIR, where DIR is relative (`projects/codes`) or absolute (`/mnt/home/rblackwell/projects/codes`)]
+  - `cd` [Change to home directory]
+  - `cd -` [Change to last directory]
 
 
 
@@ -415,138 +446,157 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 <br />
 <br />
 
-| Env. Variable          | Description                               |
-| ---------------------- | ----------------------------------------- |
-| `OMP_NUM_THREADS`      | Number of OpenMP threads to use           |
-| `MKL_NUM_THREADS`      | Number of OpenMP threads to for Intel MKL |
-| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to for OpenBlas  |
+| Env. Variable          | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `OMP_NUM_THREADS`      | Number of OpenMP threads to use               |
+| `MKL_NUM_THREADS`      | Number of OpenMP threads to use for Intel MKL |
+| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to use for OpenBlas  |
 
 
 
-## Prompt customization
+## Shell Customization
 
 ### Dylan Simon (SCC)
 
 
-## Configuring your prompt 🎨
-
-- prompt can show information about your environment
-
-### ⚠️ Warning ⚠️
-
-- Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
-
-
-### Prompt design
-
- - Only include what you will actually use.
- - That said, don't be afraid to add a little ✨.
- - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
- - Need inspo? ASCII Art Archive https://www.asciiart.eu/
- - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
- - Powerline: https://github.com/powerline/powerline
-
-
-### Off the shelf options
-
-- Oh-my-zsh:
-  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
-  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
-
-<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
-
-
-### Off the shelf options
-
-- Powerline:
-  - _ A statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile._
-
-<img src="img/powerline.png" width="1000" style="border:0;box-shadow:none">
-
-
-### Prompt variables (bash)
-
-- `PS1`: default interactive prompt.
-- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
-- Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
-- Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
-
-
-### Accessing git branch (bash)
-
-- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
-- Otherwise you can use the following function to find the active git branch.
-
-```sh
-  function parse_git_branch {
-    git symbolic-ref --short HEAD 2> /dev/null
-  }
-```
-
-
-### Example prompt (bash)
-
-- Show some 💛 for FI with this prompt:
-
-```sh
-  # Define the prompt character
-  char="♥"
-
-  # Define some local colors
-  red="\[\e[0;31m\]"
-  blue="\[\e[0;34m\]"
-  green="\[\e[0;32m\]"
-  gray_text_blue_background="\[\e[37;44;1m\]"
-
-  # Define a variable to reset the text color
-  reset="\[\e[0m\]"
-
-  # Export PS1:  default interactive prompt
-  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
-```
-
-
-### Prompt variables (zsh)
-
-- `PROMPT`: default is `%m%#`
-  - %m: short form of the current hostname
-  - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
-- `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
+### Prompt ideas
 
 <img src="img/zsh-theme-3.png" width="1000" style="border:0;box-shadow:none">
 
+- current directory (`pwd`)
+- time, error status
+- environments, modules
+- git status
+- cluster jobs? weather?
 
-###  Accessing git branch (zsh)
 
-```zsh
-  autoload -Uz vcs_info
-  precmd() {vcs_info}
-  zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+### Basic prompts
+
+#### bash
+###### https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt
+```bash
+PS1='\u@\h:\w>'
+dylan@rusty:~>
 ```
 
-- Enable `vcs_info` function and call it in a pre-command.
-- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
+#### zsh
+###### https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
+```zsh
+PS1='%n@%m:%~>'
+dylan@rusty:~>
+```
 
 
-### Example prompt (bash)
+### Color codes
 
-- `PROMPT_SUBST`: expands the parameters usable in the prompt.
-- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
-- The final `%F{black}%B%` sets the color for the
-- Showing the same FI love.
+- bash
+   - ANSI escape sequences for colors: https://gist.github.com/vratiu/9780109
+   - 256-color escapes: https://gilesorr.com/blog/bash-prompt-07-256-colours.html
+- zsh
+   - foreground: `%F{colorcode}`, default: `%f`
+   - background: `%B{colorcode}`, default: `%b`
 
 ```zsh
-  setopt PROMPT_SUBST
-  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+PS1='       %n       @       %m       :       %~      >  '
+PS1='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%f'
+```
+<img src="img/prompt-256.png" width="400" style="border:0;box-shadow:none">
+
+
+### Links for prompts
+
+- Interactive zsh prompt generator: https://zsh-prompt-generator.site/
+- Simple start for zsh: https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/
+- General status line plugin: [https://github.com/powerline/powerline](https://powerline.readthedocs.io/en/latest/overview.html)
+- All-in-one zsh customization package: [https://github.com/ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
+- Customizable prompt displaying lots of status: https://spaceship-prompt.sh/ 
+
+
+### File colors
+
+Set the colors you see in `ls` output
+
+```bash
+dircolors -p > .dircolors
+edit .dircolors
+dircolors .dircolors >> ~/.bashrc
+```
+
+- `.dircolors` specifies how file types and extensions map to colors (same color codes as bash)
+- Add the output of `dircolors` (`LS_COLORS=`) to your bashrc/zshrc
+- (zsh [tab completion](https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Standard-Styles) can also respect these colors)
+
+
+### Including command output
+
+The simplest way to include extra information in your prompt
+
+```bash
+PS1='\u@\h:\w branch=$(git branch --show-current 2> /dev/null || echo NONE)>'
+```
+
+<img src="img/prompt-git.png" width="800" style="border:0;box-shadow:none">
+
+##### For zsh you may need to add
+```zsh
+setopt prompt_subst
+```
+
+
+### Unicode!
+
+```zsh
+PROMPT='%F{green}%c $(git branch --show-current 2> /dev/null) %F{blue} // %F{red} ♥ %f'
 ```
 
 <img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
+- ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ
+- Need inspo? ASCII Art Archive https://www.asciiart.eu/
+
+
+### Conditionals
+
+##### Display number of background jobs (if any)
+
+```zsh
+PS1='%n@%m:%~%1(j. [%j]).>'
+user@host:~ [NJOBS]>
+```
+
+##### Use different prompts in different places
+
+```zsh
+case $HOST in 
+	rusty*) color=blue ;;
+	cc?lin*) color=green ;;
+	laptop) color=red ;;
+esac
+PS1="%F{$color}..."
+```
+
+
+### zsh extras
+
+#### Right-aligned prompt
+```zsh
+RPS1='%F{blue}%T%f'
+```
+
+#### Options
+###### https://zsh.sourceforge.io/Doc/Release/Options.html
+```zsh
+setopt autocd   # type directory names without cd
+setopt autolist # show options on single tab
+setopt nobeep   # stop making noise on every tab
+```
 
 
 ## github dotfiles
 
 - https://github.com/dylex/skel
 - https://github.com/wentzell/dotfiles
+- https://github.com/topics/dotfiles
 
 
 
@@ -694,7 +744,7 @@ tar czvf $backup_folder.tar.gz $backup_folder
 
 ## Please give us feedback
 
-### TBD: survey link
+https://bit.ly/sciware-shells-2022
 
 
 
@@ -1052,3 +1102,116 @@ Globs match things (but are less awesome than regular expressions)
    - paginates output, so we can read it before it scrolls past
 - `cat`
    - does not
+
+
+## Configuring your prompt 🎨
+
+- prompt can show information about your environment
+
+### ⚠️ Warning ⚠️
+
+- Customizing your prompt can have hidden costs.  Avoid anything that hides expensive operations behind a "simple" interface (e.g., 🌈 ls aliases).
+
+
+### Prompt design
+
+ - Only include what you will actually use.
+ - That said, don't be afraid to add a little ✨.
+ - ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
+ - Need inspo? ASCII Art Archive https://www.asciiart.eu/
+
+
+### Off the shelf options
+
+- Oh-my-zsh:
+  - _ 🙃 A delightful community-driven framework for managing your zsh configuration. Includes 200+ optional plugins, over 140 themes to spice up your morning, and an auto-update tool._
+  - Can cause ⚠️ performance issues, so I recommend using the themes on github for inspiration.
+
+<img src="img/oh-my-zsh-themes.gif" width="600" style="border:0;box-shadow:none">
+
+
+### Off the shelf options
+
+- Powerline:
+  - _ A statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile._
+
+<img src="img/powerline.png" width="1000" style="border:0;box-shadow:none">
+
+
+### Prompt variables (bash)
+
+- `PS1`: default interactive prompt.
+- `PROMPT_COMMAND`: executed just before PS1, often used for timestamps.
+- Other prompt variables (PS2, 3, 4...) exist to manage specific conditions like select loops, continuation, and tracing.
+- Check out ss64 for reference info on `bash` prompt special characters, colors, and prompt variables:  https://ss64.com/bash/syntax-prompt.html
+
+
+### Accessing git branch (bash)
+
+- Homebrew bash autocompletion / git comes with `__git_ps1` predefined to display the branch.
+- Otherwise you can use the following function to find the active git branch.
+
+```sh
+  function parse_git_branch {
+    git symbolic-ref --short HEAD 2> /dev/null
+  }
+```
+
+
+### Example prompt (bash)
+
+- Show some 💛 for FI with this prompt:
+
+```sh
+  # Define the prompt character
+  char="♥"
+
+  # Define some local colors
+  red="\[\e[0;31m\]"
+  blue="\[\e[0;34m\]"
+  green="\[\e[0;32m\]"
+  gray_text_blue_background="\[\e[37;44;1m\]"
+
+  # Define a variable to reset the text color
+  reset="\[\e[0m\]"
+
+  # Export PS1:  default interactive prompt
+  PS1="\[\e]2;\u@\h\a[$gray_text_blue_background\t$reset]$red\$(parse_git_branch) $green\W\n$blue//$red $char $reset"
+```
+
+
+### Prompt variables (zsh)
+
+- `PROMPT`: default is `%m%#`
+  - %m: short form of the current hostname
+  - %#:  stands for a % or a #, depending on whether the shell is running as root or not.
+- `RPROMPT`: right side prompt variable. `RPROMPT='%t'`
+
+
+###  Accessing git branch (zsh)
+
+```zsh
+  autoload -Uz vcs_info
+  precmd() {vcs_info}
+  zstyle ':vcs_info:git:*' formats '%F{yellow}%B% (%b)'
+```
+
+- Enable `vcs_info` function and call it in a pre-command.
+- `zstyle`: builtin command is used to define and lookup styles stored as pairs of names and values.
+
+
+### Example prompt (zsh)
+
+- `PROMPT_SUBST`: expands the parameters usable in the prompt.
+- `%F{green}%B%`: Named colors must be surrounded by the escape characters.
+- The final `%F{black}%B%` sets the color for the
+- Showing the same FI love.
+
+```zsh
+  setopt PROMPT_SUBST
+  PROMPT='%F{green}%B% %c ${vcs_info_msg_0_} %F{blue}%B% // %F{red}%B% ♥ %F{black}%B%'
+```
+
+<img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
+
+
