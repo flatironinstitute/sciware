@@ -446,11 +446,11 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 <br />
 <br />
 
-| Env. Variable          | Description                               |
-| ---------------------- | ----------------------------------------- |
-| `OMP_NUM_THREADS`      | Number of OpenMP threads to use           |
-| `MKL_NUM_THREADS`      | Number of OpenMP threads to for Intel MKL |
-| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to for OpenBlas  |
+| Env. Variable          | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `OMP_NUM_THREADS`      | Number of OpenMP threads to use               |
+| `MKL_NUM_THREADS`      | Number of OpenMP threads to use for Intel MKL |
+| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to use for OpenBlas  |
 
 
 
