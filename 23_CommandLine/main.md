@@ -584,6 +584,7 @@ setopt nobeep   # stop making noise on every tab
 
 - https://github.com/dylex/skel
 - https://github.com/wentzell/dotfiles
+- https://github.com/topics/dotfiles
 
 
 
