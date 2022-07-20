@@ -551,9 +551,7 @@ PROMPT='%F{green}%c $(git branch --show-current 2> /dev/null) %F{blue} // %F{red
 
 <img src="img/fi-prompt.png" width="1000" style="border:0;box-shadow:none">
 
-- Only include what you will actually use.
-- Don't be afraid to add a little ✨.
-- ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ.
+- ♥ ☆ Try a new starting character(s) ʕ•ᴥ•ʔ
 - Need inspo? ASCII Art Archive https://www.asciiart.eu/
 
 
