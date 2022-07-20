@@ -255,7 +255,7 @@ Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the 
 ### History
 
 - `Up` (`^N`), `Down` (`^P`) [Go to previous/next command in history of commands]
-- `history 10` [Print last 10 commands you entered]
+- `history 10` [Print last 10 commands you entered on `bash`, `zsh` different]
 - `^R` [Search history. After matching, pressing `^R` repeatedly will go to previous matches]
 
 
