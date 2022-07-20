@@ -61,111 +61,120 @@ Activities where participants all actively work to foster an environment which e
 
 ## Definitions
 
-Here are some terms that sometimes get mixed up:
+You may hear people use these terms to mean the same thing:
 
 * Operating System
-* Terminal
-* Console
 * Shell
+* Terminal (console)
 * Command Line
 
-They aren't really interchangeable--so let's be precise.
+But there are some subtle differences. Let's do a quick review.
+
+
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
 ### Operating System
 
-- Base programs & libraries that control what a computer does
-- Divided into:
-   - "kernel": privileged code that drives hardware and manages processes
+- Base programs that control what a computer does
+- Divided into
+   - "kernel": privileged code that drives hardware, manages processes
    - "user space" processes: daemons/servers, desktop, ...
+<!-- <small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small> -->
 
-<small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small>
+We mention this mainly to explain the...
+
+
+### Shell
+
+<small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
+
+- A _shell_ is a program that lets you send commands to the OS
+  - Most commands are actually *other programs on the computer*
+- 50+ years of history
+  - Don't worry, we won't cover most of it 😀
 
 
 ### Terminal
 
 - A _terminal_ provides text input/output (_I/O_) with a computer
-- Originally a typewriter-like device
+- Originally a remotely operated automatic typewriter
 
 <img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
 
 
 - Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
-- Terminal usually runs locally (on the computer in front of you)--but you may be interacting with a remote computer (like over `ssh`)
-
-
-### Shell
-
-- A _shell_ is a program that lets you pass commands to the OS
-  - e.g. "run program `xyz.exe` on input files `a`, `b`, `c` and write the output to file `q.out`"
-  - Most commands are actually *other installed programs*
-- Shell is usually the first program that runs in a terminal
-- Idea dates back to 1970s
-
-<small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
+- Terminal runs locally (on the computer in front of you)
+  - but the *shell* may run on a different remote computer (accessed through `ssh`)
+- Usually closing the terminal also terminates the attached shell
 
 
 ### Command Line
 
-- Any program that interacts through text and typing
-  - "Command line" implies there are *commands!*
-- _Command line interface_ (CLI) vs
-- _graphical user interface_ (GUI)
+- "CLI" = _command line interface_
+- General term for programs you control with typed commands
+- Compare to GUI = _graphical user interface_
 - Non-shell programs can have a CLI (e.g. `ipython`)
-  - But usually if we say "command line" we mean a shell
-
-
-### Console
-
-- Sometimes a synonym for a terminal (a physical control panel)
-- Sometimes used to mean any command line
-  - "Print to the console" = display text output (somewhere)
-- It's a little vague.
+  - But usually "command line" means a shell
 
 
 ### All Together
 
 A *shell* is a program that uses a *terminal* to offer a *command line interface*,
-through which a user can direct the *operating system* to run other programs, whose
-output will also be displayed in the terminal.
+through which a user can direct the *operating system* to run other programs.
 
 
-<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
+<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none" />
 
 
-## Why have shells?
+### Shell Command Example
+
+<img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
+
+Here's a typical shell command, with four parts:
+
+- A **prompt** provided by the shell
+- A **command**, the other program I want to run
+- **Options** that customize the command's behavior
+  - Come in long and short forms
+  - Also known as *flags* or *switches*
+- (Positional) **Arguments** ("args") that are passed to the command program when it runs
+  - These are often files or directories to run on
 
 
-### Why Shells?
+### What happens when you run a command?
 
-- Originally: replaces "expert computer operator" who loads punch cards
-- Continues: As a more powerful (& maybe easier?) alternative to graphical desktop
-  - Particularly easier for complex commands
-  - And finding things (surprisingly)
-  - Shell less resource intensive than GUI
+- Shell finds the file with that program on the file system
+- Shell tells OS to execute it, passing in the rest of the command line
+  - We call this *running* or *spawning* a process
+  - Shell is the *parent process*
+  - Program is a *child process* (or just *job*)
+- Shell is unresponsive while the child runs
+- When child finishes, shell becomes active again
 
 
-### Shell Benefits:
+### Why not just use a GUI desktop?
 
-- *Interactive*--explore the file system & available commands, run them, & see results in real-time
-- *Customizable*--control the environment where commands execute
+Shells are:
+
+- *Customizable*--you can control the environment where commands execute
 - *Programmable*--automate tasks by:
   - building lists of commands to run together
   - defining how separate commands communicate
   - using constructs like variables, loops, & conditionals
   - repeating commands you've run in the past
-- *Standardized*--most systems provide a familiar shell
 
 
 ### Common Shells
 
-- `bash`: **B**ourne **A**gain **SH**ell (1989), an enhanced version of the shell (`sh`) written by Steve Bourne (1979)
-   - default interactive on most Linux systems
-   - most common shell for shell scripts
-- `zsh`: a modern interactive shell (1990)
-   - compatible with `bash` (mostly superset of features)
-   - default on MacOS (replacing `bash` in 2019, for licensing reasons)
+- `bash`: **B**ourne **A**gain **SH**ell (1989)
+   - enhanced version of Steve Bourne's 1979 shell (`sh`)
+   - Linux default
+   - most common shell scripting language
+- `zsh`(1990)
+   - MacOS default since 2019
+   - Understands `bash` scripts but offers more features in interactive mode
 - Other shells: `fish`, `ksh`, `tcsh`, ...
 
 
@@ -175,29 +184,23 @@ output will also be displayed in the terminal.
 - To change which shell gets started by default:
   - Most systems: `chsh`
   - FI: https://fido.flatironinstitute.org/
-  - caveat: some commands on the cluster (`modules`, `source`) only work in bash by default
+  - Note: some commands on the cluster (`modules`, `source`) need extra config in `zsh`
+- What shell am I running? Type `echo $SHELL` to find out
 
 
-### Types of shell sessions
+### Configuring your shell
 
-A shell instance can be `login`, `interactive`, both, or neither.
-- A shell is `login` if you had to log in to it.
-- A shell is `interactive` if it reads & writes from the command line.
-- Most login shells are interactive, but interactive shells may not be login shells
-  - e.g. a new terminal window in a desktop GUI
-  - running `bash` from an existing login shell
-- When is a shell neither login nor interactive? Usually when running scripts (e.g. `$ bash my_script.sh`)
-
-
-### Shell startup process
-
-- Shells run certain scripts when they start ("dotfiles") containing configuration and setup
-- Modify with care--these can easily break your shell, prevent logins (ex: `exit`) or hurt performance
-- Reference on the next slide
-  - In practice you probably want `.bashrc` or `.zshrc`
+- Shells automatically run certain scripts when they start ("dotfiles")
+  - Look for them in your home directory
+  - (The leading dot makes them hidden by default)
+- Dotfiles run your configuration and setup commands
+- Be careful! You can break your login (ex: `exit`) or hurt performance
 
 
 ### Shell config files list
+
+There's a lot!
+In practice, you probably just want to use `.bashrc` (if you run bash) or `.zshrc` (if you run zsh)
 
 <table class="vert">
 <thead><tr><th>shell</th><th style="text-align: center;">login (ssh)</th><th style="text-align: center;">interactive</th><th>neither</th></tr></thead>
