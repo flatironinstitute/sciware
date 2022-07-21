@@ -400,10 +400,10 @@ chmod u+x ~/bin/prog
 # See if prog is found
 which prog
 
-# Prepending ~/bin/prog to the PATH
+# Prepending ~/bin to the PATH
 export PATH=~/bin:$PATH
 
-# Check that now we can find it
+# Check that now we can find prog
 which prog
 ```
 
@@ -418,7 +418,7 @@ which prog
 ...
 
 # Make sure programs in ~/bin are found
-export PATH=$HOME/bin:$PATH
+export PATH=~/bin:$PATH
 
 # Set my Editor
 export VISUAL=nano
@@ -430,7 +430,7 @@ export VISUAL=nano
 
 ```sh
 # -- myenv.sh
-export PATH=$HOME/mysoftware/bin:$PATH
+export PATH=~/bin:$PATH
 export VISUAL=nano
 ...
 ```
@@ -455,6 +455,7 @@ FI Cluster: Use the `module` command to find and load software
 
 ```sh
 $ module load git/2.35.1
+
 $ which git
 /mnt/sw/nix/store/wix1v2lrfbwrh4mar9ry07zzvsix82i5-git-2.35.1/bin/git
 
