@@ -156,7 +156,7 @@ Here's a typical shell command, with four parts:
   - We call this *running* or *spawning* a *process*
   - Shell is the *parent process*
   - Program is a *child process* (or just *job*)
-- Shell waits while the child runs
+- Shell waits in background while child runs in foreground
 - When child finishes, shell becomes active again
 
 
