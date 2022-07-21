@@ -106,7 +106,7 @@ We mention this mainly to explain the...
 - Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
 - Terminal runs locally (on the computer in front of you)
-  - but the *shell* may run on a different remote computer (accessed through `ssh`)
+  - but the *shell* may run on a different remote computer (for example, accessed through `ssh`)
 - Closing terminal usually also terminates the attached shell
 
 
@@ -153,7 +153,7 @@ Here's a typical shell command, with four parts:
 
 - Shell finds the file with that program on the file system
 - Shell tells OS to execute it, passing in the rest of the command line
-  - We call this *running* or *spawning* a process
+  - We call this *running* or *spawning* a *process*
   - Shell is the *parent process*
   - Program is a *child process* (or just *job*)
 - Shell is unresponsive while the child runs
@@ -187,7 +187,7 @@ Shells are:
 
 #### Changing your shell
 
-- To just try it out: type the shell executable name (`zsh`, `bash`); runs a new shell inside your old one
+- To just try it out: type the shell executable name (`zsh`, `bash`); runs a new shell as a child of your old one
 - To change which shell gets started by default:
   - Most systems: `chsh`
   - FI: https://fido.flatironinstitute.org/
@@ -195,18 +195,17 @@ Shells are:
 - What shell am I running? Type `echo $SHELL` to find out
 
 
-### Configuring your shell
+### Dotfiles and shell configuration
 
 - Shells automatically run certain scripts when they start ("dotfiles")
   - Look for them in your home directory
   - (The leading dot makes them hidden by default)
-- Dotfiles run your configuration and setup commands
+- Dotfiles hold configuration and setup commands
 - Be careful! You can break your login (ex: `exit`) or hurt performance
 
 
 ### Shell config files list
 
-There's a lot!
 In practice, you probably just want to use `.bashrc` (if you run bash) or `.zshrc` (if you run zsh)
 
 <table class="vert">
