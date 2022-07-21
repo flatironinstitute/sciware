@@ -143,8 +143,8 @@ Here's a typical shell command, with four parts:
 <img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
 
 - **Options** that customize the command's behavior
-  - Come in long and short forms
   - Also known as *flags* or *switches*
+  - Come in long (`--`) and short (`-`) forms
 - (Positional) **Arguments** ("args") that are passed to the command program when it runs
   - These are often files or directories to run on
 
@@ -156,7 +156,7 @@ Here's a typical shell command, with four parts:
   - We call this *running* or *spawning* a *process*
   - Shell is the *parent process*
   - Program is a *child process* (or just *job*)
-- Shell is unresponsive while the child runs
+- Shell waits while the child runs
 - When child finishes, shell becomes active again
 
 
