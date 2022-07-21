@@ -107,13 +107,13 @@ We mention this mainly to explain the...
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
 - Terminal runs locally (on the computer in front of you)
   - but the *shell* may run on a different remote computer (accessed through `ssh`)
-- Usually closing the terminal also terminates the attached shell
+- Closing terminal usually also terminates the attached shell
 
 
 ### Command Line
 
 - "CLI" = _command line interface_
-- General term for programs you control with typed commands
+- Term for any program you control with typed commands
 - Compare to GUI = _graphical user interface_
 - Non-shell programs can have a CLI (e.g. `ipython`)
   - But usually "command line" means a shell
@@ -136,6 +136,12 @@ Here's a typical shell command, with four parts:
 
 - A **prompt** provided by the shell
 - A **command**, the other program I want to run
+
+
+### Shell Command Example
+
+<img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
+
 - **Options** that customize the command's behavior
   - Come in long and short forms
   - Also known as *flags* or *switches*
@@ -164,6 +170,7 @@ Shells are:
   - defining how separate commands communicate
   - using constructs like variables, loops, & conditionals
   - repeating commands you've run in the past
+- *Available*--lightweight standard interface for most systems
 
 
 ### Common Shells
@@ -174,7 +181,7 @@ Shells are:
    - most common shell scripting language
 - `zsh`(1990)
    - MacOS default since 2019
-   - Understands `bash` scripts but offers more features in interactive mode
+   - Can execute `bash` scripts & offers more features than bash in interactive mode
 - Other shells: `fish`, `ksh`, `tcsh`, ...
 
 
