@@ -330,40 +330,9 @@ How does the shell decide what to do when you enter a command?
 
 
 
-## Environment control
+## Environment Variables
 
 ### Nils Wentzell (CCQ)
-
-
-### Shell and Enviroment variables - Live Demo
-
-```sh
-MYVAR="Hello there" # Define a shell variable
-echo $MYVAR         # Use $ to obtain the value
-
-# Shell variables are not seen by child process
-python -c "import os; print(os.getenv('MYVAR'))"
-
-# Convert into an environment variable using export
-export MYVAR
-
-# Environment variables are seen by child processes
-python -c "import os; print(os.getenv('MYVAR'))"
-
-# Definition and export in one line
-export ANOTHERVAR="Hello again"
-python -c "import os; print(os.getenv('ANOTHERVAR'))"
-
-# Variable expansion 
-echo "$MYVAR fellow coders"
-
-# Delete existing variables
-unset MYVAR
-
-# Inspect your environment
-env
-env | grep VAR
-```
 
 
 ### Environment Variables
@@ -371,7 +340,6 @@ env | grep VAR
 * Local to each shell session
 * Influence the way your shell and processes behave
 * Conventionally upper case: `PATH`, `HOME`, ...
-* Make changes permanent in your `~/.bashrc` or `~/.zshrc`
 <br />
 <br />
 
@@ -381,6 +349,80 @@ env | grep VAR
 | `USER`               | The current username                        |
 | `HOME`               | Home directory of the current user          |
 | `PWD`                | Path to the current working directory       |
+| `VISUAL`             | Text editor                                 |
+
+
+### Enviroment Variables - Live Demo
+
+```sh
+FOO="Hello there" # Define a shell variable
+echo $FOO         # Use $ to obtain the value
+
+# Shell variables are not seen by child process
+bash -c 'echo $FOO'
+
+# Convert into an environment variable using export
+export FOO
+
+# Environment variables are seen by child processes
+bash -c 'echo $FOO'
+
+# Variable expansion 
+echo "$FOO fellow coders"
+
+# Delete existing variables
+unset FOO
+
+# Definition and export in one line
+export BAR="Hello again"
+
+# Inspect your environment
+env
+env | grep BAR
+```
+
+
+### Enviroment Variables - Live Demo
+
+```sh
+# PATH is a colon separated list of directories searched for programs
+echo $PATH
+
+# Create directory ~/bin for personal programs
+mkdir ~/bin
+
+# Create empty file ~/bin/prog
+touch ~/bin/prog
+
+# Make it executable
+chmod u+x ~/bin/prog
+
+# See if prog is found
+which prog
+
+# Prepending ~/bin/prog to the PATH
+export PATH=~/bin:$PATH
+
+# Check that now we can find it
+which prog
+```
+
+
+### Permanent Environment Variables
+
+* Make changes permanent in your `~/.bashrc` or `~/.zshrc`
+
+```sh
+# -- ~/.bashrc
+
+...
+
+# Make sure programs in ~/bin are found
+export PATH=$HOME/bin:$PATH
+
+# Set my Editor
+export VISUAL=nano
+```
 
 
 ### Executing shell scripts: `source`
@@ -389,6 +431,7 @@ env | grep VAR
 ```sh
 # -- myenv.sh
 export PATH=$HOME/mysoftware/bin:$PATH
+export VISUAL=nano
 ...
 ```
 <br />
@@ -409,25 +452,18 @@ bash myenv.sh
 <br />
 
 FI Cluster: Use the `module` command to find and load software
-```
-$ git --version
-bash: git: command not found
 
-$ module spider git
-     ...
-     Versions:
-        git/2.31.1
-        git/2.35.1
+```sh
+$ module load git/2.35.1
+$ which git
+/mnt/sw/nix/store/wix1v2lrfbwrh4mar9ry07zzvsix82i5-git-2.35.1/bin/git
 
-$ module load git
-$ git --version
-git version 2.35.1
-
-$ module show git
+$ module show git/2.35.1
 ...
 prepend_path("PATH","/mnt/sw/nix/store/wix1v2lrfbwrh4mar9ry07zzvsix82i5-git-2.35.1/bin")
 ```
-We also have a modules intro in our [FI Wiki](https://docs.simonsfoundation.org/index.php/Public:SoftwareFlatiron)!
+
+Instructions in our [FI Wiki](https://docs.simonsfoundation.org/index.php/Public:SoftwareFlatiron)!
 
 
 ### Managing Python Environments
@@ -453,6 +489,19 @@ conda activate myenv
 </div>
 
 
+### Environment variables affecting OpenMP
+
+Control the number of threads for parallel programs.
+<br />
+<br />
+
+| Env. Variable          | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `OMP_NUM_THREADS`      | Number of OpenMP threads to use               |
+| `MKL_NUM_THREADS`      | Number of OpenMP threads to use for Intel MKL |
+| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to use for OpenBlas  |
+
+
 ### Environment variables for software developement
 <br />
 
@@ -465,22 +514,6 @@ conda activate myenv
 | `LIBRARY_PATH`          | Searched for libraries at linktime        |
 | `LD_LIBRARY_PATH`       | Searched for dyn. libraries at runtime    |
 | `CPATH`                 | Searched for C/C++ header files           |
-
-
-### Environment variables affecting OpenMP
-
-**Note:** Important when using MPI + OpenMP.
-Each MPI rank usually spawns an equal number of OpenMP threads.
-If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
-<br />
-<br />
-
-| Env. Variable          | Description                                   |
-| ---------------------- | --------------------------------------------- |
-| `OMP_NUM_THREADS`      | Number of OpenMP threads to use               |
-| `MKL_NUM_THREADS`      | Number of OpenMP threads to use for Intel MKL |
-| `OPENBLAS_NUM_THREADS` | Number of OpenMP threads to use for OpenBlas  |
-
 
 
 ## Shell Customization
