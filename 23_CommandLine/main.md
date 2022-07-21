@@ -275,15 +275,17 @@ In practice, you probably just want to use `.bashrc` (if you run bash) or `.zshr
 - `^Left` (`Alt-B`), `^Right` (`Alt-F`) [Move back and forward a word]
 - `Home` (`^A`) [Jump to beginning of line]
 - `End` (`^E`) [Jump to end of line]
+- `^L` (`clear`) [Clear terminal]
 
 
 ### Editing
 Shells have a builtin clipboard 'kill ring' where 'cuts' add new entries to the ring.
 
 - `^K` [Cut "kill" to end of line from cursor]
-- `^U` [Cut line from beginning to end]
+- `^U` [Cut line from beginning to end(`zsh`)/cursor(`bash`)]
 - `^W` (`Alt-BS`) [Cut previous word - repeating adds to the last cut]
 - `^Y` [Paste whatever was last cut, `Alt-Y` after to cycle through the kill ring]
+- `^/` [Undo (repeatable)]
 
 
 ### History
