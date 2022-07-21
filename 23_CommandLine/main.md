@@ -230,6 +230,17 @@ In practice, you probably just want to use `.bashrc` (if you run bash) or `.zshr
 - `Alt-X` keybindings can be simulated by hitting `Esc` and then the character after releasing
 
 
+### Directories
+
+- `pwd` [Print working directory -- where you are currently]
+- `cd DIR` [Change directory to DIR, where DIR is relative (`projects/codes`) or absolute (`/mnt/home/rblackwell/projects/codes`)]
+  - `cd` [Change to home directory]
+  - `cd -` [Change to last directory]
+- `mkdir DIRNAME` [Create DIRNAME directory]
+- `rmdir DIRNAME` [Remove DIRNAME if empty]
+- `rm -r DIRNAME` [Remove DIRNAME recursively (all subdirectories and files). USE WITH CARE: `-rf` 'force' to ignore prompts. ]
+
+
 ### Tab key completion
 
 - Can be used to quickly fill out text such as directories, executables, and program arguments
@@ -293,15 +304,6 @@ How does the shell decide what to do when you enter a command?
 - `PATH` (`echo $PATH`): Environment variable that has a list of directories to search for executables
 - `alias` [List aliases -- usually shortcuts to run commands with basic arguments you like]
    - `alias rm="rm -i"` [Defines alias have `rm` always prompt for deletions]
-
-
-### Directories
-
-- `pwd` [Print working directory -- where you are currently]
-- `cd DIR` [Change directory to DIR, where DIR is relative (`projects/codes`) or absolute (`/mnt/home/rblackwell/projects/codes`)]
-  - `cd` [Change to home directory]
-  - `cd -` [Change to last directory]
-
 
 
 ## Environment control
