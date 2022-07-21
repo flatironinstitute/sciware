@@ -329,6 +329,7 @@ How does the shell decide what to do when you enter a command?
    - `alias rm="rm -i"` [Defines alias have `rm` always prompt for deletions]
 
 
+
 ## Environment control
 
 ### Nils Wentzell (CCQ)
