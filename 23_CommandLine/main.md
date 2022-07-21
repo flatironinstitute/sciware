@@ -139,7 +139,7 @@ Here's a typical shell command, with three parts:
 - A **prompt** provided by the shell
 - A **command**, the other program I want to run
 - The **arguments** -- additional text that will be passed in to the command
-  - Arguments often broken into *options* and (positional) *arguments*
+  - Often broken into *options* and (positional) *arguments*
 
 
 ### Shell Command Example
@@ -158,7 +158,7 @@ Here's a typical shell command, with three parts:
 <img src="assets/command-line-example-minor.png" width="60%" style="border:0;box-shadow:none" />
 
 - **Positional Arguments** ("args")
-  - Order *does* matter for some commands
+  - Order *does* matter for many commands
   - Often identify files or directories to run on
   - "arguments" by itself usually means positional arguments
 
