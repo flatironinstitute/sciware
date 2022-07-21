@@ -103,6 +103,8 @@ We mention this mainly to explain the...
 <img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
 
 
+### Terminal
+
 - Nowadays we use software terminal _emulators_
 - Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
 - Terminal runs locally (on the computer in front of you)
@@ -487,15 +489,15 @@ If you use one MPI rank per core you should `export OMP_NUM_THREADS=1`
 #### bash
 ###### https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt
 ```bash
-PS1='\u@\h:\w>'
-dylan@rusty:~>
+PS1='\u@\h:\w\$'
+dylan@rusty:~$
 ```
 
 #### zsh
 ###### https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 ```zsh
-PS1='%n@%m:%~>'
-dylan@rusty:~>
+PS1='%n@%m:%~$'
+dylan@rusty:~$
 ```
 
 
@@ -509,8 +511,8 @@ dylan@rusty:~>
    - background: `%B{colorcode}`, default: `%b`
 
 ```zsh
-PS1='       %n       @       %m       :       %~      >  '
-PS1='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}>%f'
+PS1='       %n       @       %m       :       %~      $  '
+PS1='%F{213}%n%F{177}@%F{141}%m%F{147}:%F{111}%~%F{75}$%f'
 ```
 <img src="img/prompt-256.png" width="400" style="border:0;box-shadow:none">
 
@@ -522,7 +524,7 @@ The simplest way to include extra information in your prompt
 ```bash
 git branch --show-current
 main
-PS1='\u@\h:\w branch=$(git branch --show-current 2> /dev/null || echo NONE)>'
+PS1='\u@\h:\w [$(git branch --show-current 2> /dev/null || echo NONE)]$'
 ```
 
 <img src="img/prompt-git.png" width="800" style="border:0;box-shadow:none">
@@ -550,8 +552,8 @@ PS1='%F{green}%c $(git branch --show-current 2> /dev/null) %F{blue} // %F{red} â
 ##### Display number of background jobs (if any)
 
 ```zsh
-PS1='%n@%m:%~%1(j. [%j]).>'
-user@host:~ [NJOBS]>
+PS1='%n@%m:%~%1(j. [%j].)$'
+user@host:~ [1]$
 ```
 
 ##### Use different prompts in different places
@@ -591,7 +593,7 @@ setopt nobeep   # stop making noise on every tab
 - Customizable prompt displaying lots of status: https://spaceship-prompt.sh/ 
 
 
-### File colors (Linux/coreutils only)
+### File colors (Linux/GNU coreutils only)
 
 Set the colors you see in `ls` output
 
