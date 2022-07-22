@@ -2,7 +2,7 @@ import signal
 import time
 
 def handler(signum, frame):
-    print('Why on earth did I make Control-C stop working?!')
+    print("There's no stopping this moo train!")
 
 signal.signal(signal.SIGINT, handler)
 
