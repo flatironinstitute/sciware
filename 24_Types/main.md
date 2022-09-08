@@ -10,13 +10,17 @@
 * algebraic data types
 
 
+start with example with bug that types would catch (repeat at end)
+
+
 ## Types
 
 * If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
    * `list` (of what?), `complex`, `struct`, `class`
-* Types are not about how things are represented in bits, but about what those bits represent
-* Thinking abstractly about your data (not the algorithm or implementation)
+* Types are not about how things are represented in bits, but about the values these bits represent
+* Types are for thinking abstractly about your data (not the algorithm or implementation)
+
 
 So what is a type?
 
@@ -37,7 +41,7 @@ $$
 
 By saying \\( x \\) has type \\( T \\) we mean
 $$ x \in T $$
-\\( \left|T\right| \\) is the cardinality of \\( T \\): the number of possible values
+\\( \left|T\right| \\) is the number of possible values in \\( T \\) (the *cardinality*)
 
 
 ## Special types
@@ -51,9 +55,12 @@ $$
 \end{align}
 $$
 
-* `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia, `void` in C)
+* `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia, `void` in C?)
 * `Void` is the empty type with no possible values (never, impossible, a value that can never exist, the return value of a function that never returns)
+
+
 * All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
+use enums on next o reinfonce iso types vs rep
 
 
 ## A set of values you choose
@@ -106,6 +113,8 @@ Different languages use a variety of syntax to represent types
 
 ## Sum types (disjoint unions)
 
+TODO: separate union from disjoin, tagged, explicit (Tag * (A \union B)) (L, A) \union (R, B)
+
 Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
 
 $$
@@ -149,6 +158,7 @@ $$
 * Provides a "missing" option (`NULL`, `None`, `nothing`, `NA`)
 * Often has a special name:
    * `Optional[T] = Union[T,None]` (Python)
+   * `optional<T>` (C++)
    * `Maybe T` (Haskell)
 
 
@@ -274,7 +284,7 @@ $$
 	f(x) = x^2 \\\\
 	f : \mathbb{R} \to \mathbb{R} \\\\
 	f \in T \to R \\\\
-	x \in T, \quad f(x) \in R
+	x \in T \implies f(x) \in R
 $$
 
 
@@ -348,3 +358,42 @@ f x y = haskell
 * In many languages you can use classes to represent your own types
 * If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
 * It's nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
+
+only data not operations (members not methods)
+classes do a lot more than this
+
+
+dimensional analysis? (1 slide)
+
+
+any (python union all types)
+
+
+how you interpret bits orthogonal
+
+
+how i think about writing code, data first
+
+
+error checking at beginning of functions
+
+
+motivation to start
+
+
+back to bits at end:
+  ieee
+
+
+type coersion:
+  check types through expression
+
+
+representation, performance:
+  double vs float
+  less precision, more iterations
+  general: reducing domain increases performance
+  example 
+
+
+
