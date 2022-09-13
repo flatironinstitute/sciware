@@ -1,8 +1,59 @@
 # Sciware
 
-# Types
+## Command line and Shell interaction
+
+https://sciware.flatironinstitute.org/24_Types
+
+https://github.com/flatironinstitute/learn-sciware-dev/tree/main/24_Types
 
 
+## Rules of Engagement
+
+### Goal:
+
+Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, *technology choices*\*, and scientific disciplines.
+
+<small>\*though sometimes we try to expand your options</small>
+
+
+## Rules of Engagement
+
+- Avoid discussions between a few people on a narrow topic
+- Provide time for people who haven't spoken to speak/ask questions
+- Provide time for experts to share wisdom and discuss
+- Work together to make discussions accessible to novices
+
+<small>
+(These will always be a work in progress and will be updated, clarified, or expanded as needed.)
+</small>
+
+
+## Zoom Specific
+
+- Dedicated Zoom moderator to field questions.
+- Please stay muted if not speaking. (Host may mute you.)
+- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/).
+
+
+## Future Sessions
+
+- Planning for the next few months:
+   - Modern C++
+   - File formats, data management, hdf5
+- Suggest topics or contribute to content in #sciware Slack
+
+
+## Today's Agenda
+
+- Thinking about types: concepts, syntax
+- Concrete types, storage, performance
+- Types in python: mypy
+
+
+
+# Type concepts
+
+### Dylan Simon (SCC)
 
 # Applying Types
 
@@ -10,7 +61,9 @@
 * algebraic data types
 
 
-start with example with bug that types would catch (repeat at end)
+## Motivation
+
+TODO: start with example with bug that types would catch (repeat at end)
 
 
 ## Types
@@ -18,7 +71,7 @@ start with example with bug that types would catch (repeat at end)
 * If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
    * `list` (of what?), `complex`, `struct`, `class`
-* Types are not about how things are represented in bits, but about the values these bits represent
+* Types are not about how many bits, but about the values these bits represent
 * Types are for thinking abstractly about your data (not the algorithm or implementation)
 
 
@@ -35,13 +88,13 @@ $$
 	\texttt{UInt8} &= \\{0,1,\dots,255\\} & \left|\texttt{UInt8}\right| &= 2^8 \\\\
         \texttt{Int32} &= \\{-2^{31},\dots,2^{31}-1\\} & \left|\texttt{Int32}\right| &= 2^{32} \\\\
         \texttt{Int} &\approx \mathbb{Z} \\\\
-        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R}
+        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} & \left|\textt{Float}\right| &\le 2^{32}
 \end{align}
 $$
 
 By saying \\( x \\) has type \\( T \\) we mean
 $$ x \in T $$
-\\( \left|T\right| \\) is the number of possible values in \\( T \\) (the *cardinality*)
+\\( \left|T\right| \\) is the number of possible values in \\( T \\) (the *cardinality*, possibly infinite, always countable)
 
 
 ## Special types
@@ -55,12 +108,10 @@ $$
 \end{align}
 $$
 
-* `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia, `void` in C?)
+* `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia)
 * `Void` is the empty type with no possible values (never, impossible, a value that can never exist, the return value of a function that never returns)
-
-
+   * `void` in C?
 * All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
-use enums on next o reinfonce iso types vs rep
 
 
 ## A set of values you choose
@@ -70,15 +121,15 @@ No need to limit yourself to established types!
 $$
 	\\{1,2,3,4\\} \qquad
 	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
-	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} ~ \text{(enum*)}  \\\\
+	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} ~ \text{(enum)} \\\\
 	[0,1] \cap \texttt{Float} ~ (\\{x : 0 \le x \le 1\\}) \\\\
 	\mathbb{P} \cap \texttt{Int} \qquad
-	\mathbb{R}^+ ~ (\\{x : x \ge 0\\}) \\\\
+	\mathbb{R}^+ ~ (\\{x : x > 0\\}) \\\\
 	\texttt{Float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
 	(T \setminus S = \\{ x \in T : x \notin S \\} = T - S)
 $$
 
-\*Many languages represent finite data types with labeled values as "enumerations"
+* Many languages represent "finite" data types with labeled values as *enumerations*
 
 
 ## Why is this useful?
@@ -111,9 +162,19 @@ Different languages use a variety of syntax to represent types
 | `T :: x`, `integer :: x` | Fortran 90   |
 
 
-## Sum types (disjoint unions)
+## Unions
 
-TODO: separate union from disjoin, tagged, explicit (Tag * (A \union B)) (L, A) \union (R, B)
+$$
+	\texttt{Bool} \cup \\{\textsf{UNKNOWN}\\} &= \\{\textsf{FALSE}, \textsf{TRUE}, \textsf{UNKNOWN}\\} \\\\
+	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} & (\texttt{Int8} \subset \texttt{Int32})
+$$
+
+* Simple unions are not particularly useful, as they can usually be represented by a different type
+   * Some exceptions: C `union`
+* Instead...
+
+
+## Sum types (disjoint unions)
 
 Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
 
@@ -128,7 +189,7 @@ $$
 $$
 
 * Sometimes called a "tagged" union because values are tagged by which type they're from
-* "discriminated", unlike a C `union`: each value is either from `T` or `S` (and you can tell)
+* "discriminated": each value is either from `T` or `S` (and you can tell)
 
 
 ## Type parameters, more syntax
@@ -152,7 +213,7 @@ $$
 
 $$
 	\texttt{Unit} + \texttt{T} = \\{(), \dots\\} \\\\
-	\texttt{Unit} + \texttt{Bool} = \\{(), \textsf{F}, \textsf{T}\\}
+	\texttt{Unit} + \texttt{Bool} = \\{(), \textsf{FALSE}, \textsf{TRUE}\\}
 $$
 
 * Provides a "missing" option (`NULL`, `None`, `nothing`, `NA`)
@@ -171,7 +232,7 @@ $$
 $$
 \begin{align}
 	T \times S &= \\{ (x, y) : x \in T, y \in S \\} \\\\
-	\texttt{Bool} \times \texttt{UInt8} &= \\{(\textsf{F},0),(\textsf{T},0),(\textsf{F},1),(\textsf{T},1),\dots\\} \\\\
+	\texttt{Bool} \times \texttt{UInt8} &= \\{(\textsf{FALSE},0),(\textsf{TRUE},0),(\textsf{FALSE},1),(\textsf{TRUE},1),\dots\\} \\\\
 	\left|T \times S\right| &= \left|T\right|\left|S\right| \\\\
 	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R}
 \end{align}
