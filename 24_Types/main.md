@@ -103,7 +103,7 @@ $$
 \begin{align}
         \texttt{Int} &\approx \mathbb{Z} \\\\
         \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} \\\\
-	\texttt{Float32}\right &\approx \pm 10^{\pm 38} \text{ with 7 digits} \\\\
+	\texttt{Float32} &\approx \pm 10^{\pm 38} \text{ with 7 digits} \\\\
 	\left|\texttt{Float32}\right| &\le 2^{32} \\\\
 	\left|\texttt{Float64}\right| &\le 2^{64}
 \end{align}
@@ -125,7 +125,7 @@ $$
 $$
 
 * `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia)
-* `Void` is the empty type with no possible values (never, impossible, a value that can never exist, the return value of a function that never returns)
+* `Void` is the empty type with no possible values (impossible, a value that can never exist, the return value of a function that never returns)
    * `void` in C?
 * All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
 
@@ -137,7 +137,7 @@ No need to limit yourself to established types!
 $$
 	\\{1,2,3\\} \qquad
 	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
-	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} ~ \text{(enum)} \\\\
+	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
 	\texttt{Float} \cap [0,1] ~ (\\{x \in \texttt{Float} : 0 \le x \le 1 \\}) \\\\
 	\texttt{Int} \cap \mathbb{P} \qquad
 	\mathbb{Q}^+ ~ (\\{x : x > 0\\}) \\\\
@@ -183,7 +183,8 @@ Different languages use a variety of syntax to represent types
 $$
 \begin{align}
 	\texttt{Bool} \cup \\{\textsf{UNKNOWN}\\} &= \\{\textsf{FALSE}, \textsf{TRUE}, \textsf{UNKNOWN}\\} \\\\
-	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} & (\texttt{Int8} \subset \texttt{Int32})
+	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} \\\\
+	(\texttt{Int8} \subset \texttt{Int32})
 \end{align}
 $$
 
@@ -201,8 +202,7 @@ $$
 	T + S &= T \sqcup S \\\\
 	\texttt{Bool} + \texttt{UInt32} &= \\{\textsf{FALSE},\textsf{TRUE},0,1,2,\dots\\} \\\\
 	\left|T + S\right| &= \left|T\right| + \left|S\right| \\\\
-	\texttt{UInt8} + \texttt{UInt32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\} \\\\
-		&\ne \texttt{UInt8} \cup \texttt{UInt32}
+	\texttt{UInt8} + \texttt{UInt32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\}
 \end{align}
 $$
 
@@ -214,15 +214,15 @@ $$
 
 * Types can have parameters (arguments) of other types
 * \\(+\\) is an operator (function) that builds existing types into a new one: \\( T+S = \texttt{Union}(T,S) \\)
-* Different languages have different syntax for these parameterized types (and different names for unions):
+* Syntax for type parameters (and unions):
 
 | \\( T + S \\)      | language          |
 |--------------------|--------------------|
 | `Union[T,S]`   | Python |
 | `Union<T,S>` (`T\|S`)    | TypeScript |
 | `Union{T,S}`  | Julia |
-| `Either T S`  | Haskell |
 | `variant<T, S>`    | C++ |
+| `Either T S`  | Haskell |
 
 
 ## Other simple types
@@ -252,7 +252,7 @@ $$
 	T \times S &= \\{ (x, y) : x \in T, y \in S \\} \\\\
 	\texttt{Bool} \times \texttt{UInt8} &= \\{(\textsf{FALSE},0),(\textsf{TRUE},0),(\textsf{FALSE},1),(\textsf{TRUE},1),\dots\\} \\\\
 	\left|T \times S\right| &= \left|T\right|\left|S\right| \\\\
-	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R}
+	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R} ~ \mathbb{C}
 \end{align}
 $$
 
@@ -292,16 +292,23 @@ Quiz:
 $$
 	T + \texttt{Void} = ??? \\\\
 	T \times \texttt{Unit} = ??? \\\\
-	T \times \texttt{Void} = ???
+	T \times \texttt{Void} = ??? \\\\\
+	T + T = T \times \texttt{Bool}
 $$
 
 
-## Arrays = Lists
+## Arrays, Lists
 
 * Fixed-length arrays are equivalent to tuples:
    $$
-	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n
+	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n \\\\
+	(x_1, x_2, \ldots, x_n) \in T^n \qquad x_i \in T \\\\
+	T^0 = \texttt{Unit}
    $$
+
+
+## Arrays, Lists
+
 * Variable-length arrays can be thought of in a couple (equivalent) ways:
    $$
    \begin{align}
@@ -310,6 +317,7 @@ $$
 	\texttt{List}(T) &= \texttt{Unit} + (T \times \texttt{List}(T))
    \end{align}
    $$
+* Infinite type
 * By restricting \( \sum_{n=a}^b \) we can represent arrays of certain lengths (non-empty, at most 10, etc.)
 
 
@@ -331,14 +339,14 @@ $$
 $$
 \begin{align}
 	\texttt{Digit} &= \\{0,1,2,3,4,5,6,7,8,9\\} \\\\
-	\mathbb{N} \cong \texttt{Natural} &= \texttt{Array}(\texttt{Digit}) \qquad 85 \cong (8,5) \\\\
-	\mathbb{Z} \cong \texttt{Integer} &= \texttt{Bool} \times \texttt{Natural} \quad -85 \cong (\mathsf{T},(8,5)) \\\\
+	\mathbb{N} \cong \texttt{Natural} &= \texttt{Array}(\texttt{Digit}) \qquad 852 \cong (8,5,2) \\\\
+	\mathbb{Z} \cong \texttt{Integer} &= \texttt{Bool} \times \texttt{Natural} \quad -852 \cong (\mathsf{T},(8,5,2)) \\\\
 	\mathbb{Q} \cong \texttt{Rational} &= \texttt{Integer} \times \texttt{Natural} \\\\
 	-8.5 &= \frac{-17}{2} \cong ((\mathsf{T},(1,7)),(2))
 \end{align}
 $$
 
-Strings?
+Exercise: Strings?
 
 
 ## Subtypes
@@ -362,20 +370,20 @@ $$
 $$
 	f(x) = x^2 \\\\
 	f : \mathbb{R} \to \mathbb{R} \\\\
-	f \in T \to R \\\\
-	x \in T \implies f(x) \in R
+	f \in T \to S \\\\
+	x \in T \implies f(x) \in S
 $$
 
 
 ## Function syntax
 
-| \\( T \to R \\)      | language          |
+| \\( T \to S \\)      | language          |
 |--------------------|--------------------|
-| `Callable[[T], R]`   | Python |
-| `(x: T) => R`, `Function`  | TypeScript |
-| `T -> R`  | Haskell |
-| `R (*)(T)` | C (function pointer) |
-| `function<R(T)>`, `Callable` | C++ |
+| `Callable[[T], S]`   | Python |
+| `(x: T) => S`, `Function`  | TypeScript |
+| `T -> S`  | Haskell |
+| `S (*)(T)` | C (function pointer) |
+| `function<S(T)>`, `Callable` | C++ |
 | `Function` | Julia |
 
 
@@ -386,7 +394,25 @@ $$
 * What's the type of a function that calculates the center of mass for these particles?
 
 
-## Types in practice
+## Multiple arguments
+
+* Approaches to functions with multiple arguments:
+
+$$
+	f \in (T, S) \to R \qquad \text{single tuple argument} \\\\
+	f \in T \to S \to R \qquad \text{currying}
+$$
+
+| \\( T, S \to R \\)      | language          |
+|--------------------|--------------------|
+| `Callable[[T, S], R]`   | Python |
+| `(x: T, y: S) => R`, `Function`  | TypeScript |
+| `T -> S -> R`  | Haskell |
+| `R (*)(T, S)` | C (function pointer) |
+| `function<R(T, S)>`, `Callable` | C++ |
+
+
+## Defining functions
 
 ```python
 def f(x: T, y: S) -> R:
@@ -410,7 +436,7 @@ end
 
 ```c
 R f(T x, S y) {
-	R z = c;
+	R z = c/c++;
 	return z;
 }
 ```
