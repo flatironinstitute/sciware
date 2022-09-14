@@ -26,4 +26,4 @@ A developing series of meetings about software development for science.
 - Jun 21--22, 2022 [Intro to git and GitHub](21_IntroGitHub): a hands-on workshop to learn git and Github basics for cloning, pushing, PRs, and collaboration
 - Jun 29, 2022 [Editors and IDEs show and tell](22_Editors): an introduction and survey of IDEs and code editors, with some focus on VSCode
 - Jul 21, 2022 [Command-line interaction and shells](23_CommandLine): introduction to shells and the command line, terminal interaction, and shell customization
-- Sep 22, 2022 [Types](24_Types): An theoretical introduction to how thinking about data types can improve code, and specific applications to mypy
+- Sep 29, 2022 [Types](24_Types): An theoretical introduction to how thinking about data types can improve code, and specific applications to mypy
