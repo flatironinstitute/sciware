@@ -55,6 +55,7 @@ Activities where participants all actively work to foster an environment which e
 
 ### Dylan Simon (SCC)
 
+
 # Applying Types
 
 * *Not* type theory (a branch of mathematics involving propositional logic and category theory)
@@ -88,7 +89,7 @@ $$
 	\texttt{UInt8} &= \\{0,1,\dots,255\\} & \left|\texttt{UInt8}\right| &= 2^8 \\\\
         \texttt{Int32} &= \\{-2^{31},\dots,2^{31}-1\\} & \left|\texttt{Int32}\right| &= 2^{32} \\\\
         \texttt{Int} &\approx \mathbb{Z} \\\\
-        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} & \left|\textt{Float}\right| &\le 2^{32}
+        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} & \left|\texttt{Float}\right| &\le 2^{32}
 \end{align}
 $$
 
