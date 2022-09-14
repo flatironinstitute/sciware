@@ -88,14 +88,29 @@ $$
 	\texttt{Bool} &= \\{\textsf{FALSE}, \textsf{TRUE}\\} & \left|\texttt{Bool}\right| &= 2 \\\\
 	\texttt{UInt8} &= \\{0,1,\dots,255\\} & \left|\texttt{UInt8}\right| &= 2^8 \\\\
         \texttt{Int32} &= \\{-2^{31},\dots,2^{31}-1\\} & \left|\texttt{Int32}\right| &= 2^{32} \\\\
-        \texttt{Int} &\approx \mathbb{Z} \\\\
-        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} & \left|\texttt{Float}\right| &\le 2^{32}
 \end{align}
 $$
 
 By saying \\( x \\) has type \\( T \\) we mean
 $$ x \in T $$
-\\( \left|T\right| \\) is the number of possible values in \\( T \\) (the *cardinality*, possibly infinite, always countable)
+
+* \\( \left|T\right| \\) is the number of possible values in \\( T \\) (the *cardinality*)
+
+
+## Common numeric types
+
+$$
+\begin{align}
+        \texttt{Int} &\approx \mathbb{Z} \\\\
+        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} \\\\
+	\texttt{Float32}\right &\approx \pm 10^{\pm 38} \text{ with 7 digits} \\\\
+	\left|\texttt{Float32}\right| &\le 2^{32} \\\\
+	\left|\texttt{Float64}\right| &\le 2^{64}
+\end{align}
+$$
+
+* Practically, cardinality is always finite (computers have finite memory)
+* We may define types with infinite cardinality, but always countably infinite!
 
 
 ## Special types
@@ -120,12 +135,12 @@ $$
 No need to limit yourself to established types!
 
 $$
-	\\{1,2,3,4\\} \qquad
+	\\{1,2,3\\} \qquad
 	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
 	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} ~ \text{(enum)} \\\\
-	[0,1] \cap \texttt{Float} ~ (\\{x : 0 \le x \le 1\\}) \\\\
-	\mathbb{P} \cap \texttt{Int} \qquad
-	\mathbb{R}^+ ~ (\\{x : x > 0\\}) \\\\
+	\texttt{Float} \cap [0,1] ~ (\\{x \in \texttt{Float} : 0 \le x \le 1 \\}) \\\\
+	\texttt{Int} \cap \mathbb{P} \qquad
+	\mathbb{Q}^+ ~ (\\{x : x > 0\\}) \\\\
 	\texttt{Float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
 	(T \setminus S = \\{ x \in T : x \notin S \\} = T - S)
 $$
@@ -166,8 +181,10 @@ Different languages use a variety of syntax to represent types
 ## Unions
 
 $$
+\begin{align}
 	\texttt{Bool} \cup \\{\textsf{UNKNOWN}\\} &= \\{\textsf{FALSE}, \textsf{TRUE}, \textsf{UNKNOWN}\\} \\\\
 	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} & (\texttt{Int8} \subset \texttt{Int32})
+\end{align}
 $$
 
 * Simple unions are not particularly useful, as they can usually be represented by a different type
