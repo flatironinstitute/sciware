@@ -501,4 +501,308 @@ representation, performance:
   example 
 
 
+# Practical Types in Python with mypy
+
+
+
+## Motivation
+
+### Catching subtle errors
+
+```Python
+def make_a_square_untyped(values):
+    root = math.sqrt(len(values))
+    int_root = int(root)
+    if root < 1 or root != int_root:
+        return None
+    array = np.asarray(values)
+    array = array.reshape((root, root))
+    return array
+
+if __name__ == '__main__':
+    input_int = 54
+    untyped = make_a_square_untyped(input_int)
+```
+
+
+### Useful contextual information
+
+[NEEDS SCREENSHOT]
+
+
+
+### Full documentation
+
+- [The Python documentation](https://docs.python.org/3/library/typing.html)
+- [mypy documentation](https://mypy.readthedocs.io/en/stable/)
+
+Note that these are both exhaustive (often with reference to PEPs, etc). We'll
+try to give you a much gentler introduction to the parts you'll actually need
+right away.
+
+
+## Basics
+
+### Installing mypy
+
+```bash
+$ pip install mypy
+```
+
+Can now run with:
+
+```bash
+$ mypy file_to_examine.py
+```
+
+
+### Known types
+
+- Primitive types: Basic data
+  - `int`
+  - `float`
+  - `bool`
+  - `str`
+  - `None`
+  - `Any` (this does need to be imported if you want to annotate it explicitly)
+- Complex types that "just work"
+  - `object`
+  - Specific classes that are in your namespace (e.g. `np.ndarray`)
+
+
+- Container types
+  - `List`
+  - `Dict`
+  - `Tuple`
+  - `Set`
+  - `Callable`
+  - `Literal`
+  - ...
+- Container types need *parameters*
+  - e.g. `List[int]`, not just `List`
+- Generally need to be imported from `typing` package
+- Recent changes: 3.10 lets you lowercase, and allows importing from `collections.abc`
+- Our examples will work in 3.10 or earlier versions
+
+
+### Syntax
+
+- Postfix type hints:
+  - `int_valued_variable: int = 5`
+  - Applies to any variable definition, including function parameters
+- Function return values use an arrow:
+  - `def f(x: int) -> float:`
+  - This says `f` is a function that takes an int and returns a float
+
+### Parameterizing container types
+
+- What's in that `List`?
+  - `my_int_list: List[int] = []`
+- `Dict[]` takes the key and value
+  - `x = Dict[str, float]`
+- `Callable[]` annotates functions with a parameter list and return type
+  - `f: Callable[[float], float] = lambda x: x**2`
+- These can stack (though it gets confusing):
+  - `grades = Dict[str, Dict[int, List[int]]]` is a dictionary that maps a string key
+  to a dictionary that maps integer keys to a list of integers...
+  - Concretely, then, `math_test_responses = grades['Lehman']` would be a list of Lehman's responses
+  for test 1, test 2, ...
+
+
+### Semantic value of Python types at runtime
+
+...there isn't any!
+
+Python typing is entirely for static code analysis. It goes away at runtime.
+
+
+## Using type analysis
+
+- Baked in to your editor
+  - e.g. mouseover information for variables, functions
+  - auto-completion of member reference (`my_ClassA_var.` pops up a list of methods from `ClassA`)
+  - auto-populates docstring skeleton
+- By running `mypy` on the command line
+  - Generates a report of detected type errors
+  - **ONLY** looks at functions that have some explicit type hinting
+
+
+### Simple Worked Example
+
+NOTE: Can also do this as a dynamic process using the code in simple_example.py.
+Start w/ untyped_buggy, move to untyped, add type hints.
+Demo running mypy on cli?
+
+```python
+def make_a_square_typed(values: List[int]) -> Union[np.ndarray, None]:
+    root = math.sqrt(len(values))
+    int_root = int(root)
+    if root < 1 or root != int_root:
+        return None
+    array: np.ndarray = np.asarray(values)
+    array = array.reshape((int_root, int_root))
+    return array
+```
+
+
+## Type Inference
+
+- If the analyzer can figure out what something's type is, it will tell you
+```Python
+def returns_int():
+    return 15
+
+a = returns_int()
+```
+Mousing over `a` in fact reveals it's not even an `int` but a `Literal[15]`
+
+
+```Python
+def really_returns_int(a):
+    return int(a)
+
+a = really_returns_int(26)
+```
+Mousing over `a` here shows `int` like you'd expect
+
+
+### Quick note on Literal, Final
+
+- `Literal` means a *specific* value
+- `Final` tells the linter that something shouldn't be changed
+  ```Python
+  x: Final[int] = 15
+  x = 22
+  ```
+  - This will give you a warning in your editor, but remember it isn't enforced at runtime
+
+
+### Narrowing
+
+- Static analyzer is reading your code and can give you greater precision
+- `Union` types can be interpreted more precisely if the context eliminates some possibilities
+
+```python
+def narrowing_example(a: Union[str, int]) -> str:
+    if isinstance(a, str):
+        return a
+    else:
+        # type checker now knows a is an int, because it wasn't a str
+        return str(a)
+```
+
+
+- `Optional` is a shorthand for `Union[__, None]` and benefits from narrowing:
+```python
+def narrowing_example(a: Optional[int]) -> None:
+    print(a) # here 'a' could be int or None
+    if (a == None):
+        raise Exception('Maybe handle this more gracefully than by throwing an exception!')
+    a # here a must be int, and mouseover shows it
+```
+
+
+### TypeGuards
+
+- A `TypeGuard` is a function that helps narrowing by checking if a variable meets criteria to be a given type.
+- Use `TypeGuard[]` as return type of a boolean function to invoke type checking on its result.
+- e.g.:
+```python
+def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
+    return all(isinstance(x, str) for x in val)
+```
+  - Other code can now call `is_str_list(some_list)` and branch on the result
+  - This lets you specify logic that works at runtime and is understood by the checker at write time
+- Don't worry about it
+
+
+### Casting
+
+- For when inference fails!
+- If you know better than the analyzer, you can tell it what something is
+
+```python
+def casting_example(parameters) -> None:
+    x0 = parameters['x0'] # here x0 is typed as 'Any' since we don't know what it is
+    x0 = cast(float, parameters['x0']) # here it's a float: I said so
+```
+
+
+## Generics
+
+- Sometimes you can say *something* about a type without knowing *everything* about it.
+```python
+def get_max(values: List[int]) -> int:
+    pass
+```
+  - It'll be a drag to make one of those for every type in existence.
+
+
+- Instead, you can use a *variable type parameter* using `TypeVar`:
+```python
+from typing import TypeVar
+
+T = TypeVar('T')
+def get_max(values: List[T]) -> T:
+    pass
+```
+- This now works for any type (as long as you can write logic that makes sense)
+- `TypeVar()` lets you add *constraints* to limit what generic types you support
+  - This is beyond the scope of this tutorial
+
+
+## Types and Classes
+
+- If your namespace recognizes a class, you can use it as a type
+- `None` is *not* a valid value for a class variable! (Even if it works in other languages)
+
+
+### Inheritance
+
+- Inheriting classes count as members of the parent class:
+```python
+b: MyClass = MyClass()
+c: MyOtherClass = MyOtherClass()
+d: MyOtherClass = b # fails; MyClass is not a MyOtherClass
+b = 5 # fails (naturally; 5 is not a MyClass)
+b = d # succeeds -- inheritance means any MyOtherClass is a MyClass
+```
+- Don't be fooled: pretty much everything counts as an `object`
+  - `b: object = 5` works, unlike the above
+
+
+### Defining your own class
+
+- Once you've defined a class, it can be used
+- Linter standards differ on whether you can use a class during definition
+  - example:
+```python
+class MyClass():
+    def __init__(self):
+        pass
+
+    def compare(self, other: MyClass) -> int:
+        return 5
+```
+  VSCode PyLance will complain about this, but mypy thinks it's fine
+  - You can get around it for VSCode by adding quotes: `... other: 'MyClass')`
+- `self` never needs type annotation: it's inferred
+  - BUT an `__init__(self)` won't be type-checked in mypy unless it has
+  annotated parameters or you explicitly say it returns `None`.
+
+
+### I/O Types? Anything special to say here?
+
+There are types for them? Honestly, maybe we just use them as an example somewhere.
+
+
+## Big Example
+
+See `reimann.py` in this directory; we can work through
+adding types and just review this code for some of the neat tricks.
+(The file as currently uploaded is the target final version--I might consider doing this
+as a live-coding session building toward this target from some untyped code.)
+
+It includes typed lambdas/using `Callable`, `Enum`s, optionally `dataclass` usage.
+Benefits greatly from typing and other static analysis features.
 
