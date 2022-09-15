@@ -711,7 +711,7 @@ def narrowing_example(a: Union[str, int]) -> str:
 ```
 
 
-- `Optional` is a shorthand for `Union[__, None]` and benefits from narrowing:
+- `Optional[xyz]` is a shorthand for `Union[xyz, None]` and benefits from narrowing:
 ```python
 def narrowing_example(a: Optional[int]) -> None:
     print(a) # here 'a' could be int or None
@@ -719,12 +719,13 @@ def narrowing_example(a: Optional[int]) -> None:
         raise Exception('Maybe handle this more gracefully than by throwing an exception!')
     a # here a must be int, and mouseover shows it
 ```
+This is useful for handling values that may be unset.
 
 
 ### TypeGuards
 
 - A `TypeGuard` is a function that helps narrowing by checking if a variable meets criteria to be a given type.
-- Use `TypeGuard[]` as return type of a boolean function to invoke type checking on its result.
+- Use `TypeGuard[_your_type_here_]` as return type of a boolean function to invoke type checking on its result.
 - e.g.:
 ```python
 def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
