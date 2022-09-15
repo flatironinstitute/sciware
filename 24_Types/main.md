@@ -62,9 +62,16 @@ Activities where participants all actively work to foster an environment which e
 * algebraic data types
 
 
-## Motivation
+## Motivation: dimensional analysis
 
-TODO: start with example with bug that types would catch (repeat at end)
+* In calculations, dimensional analysis can often be used to find mistakes: \\(\texttt{mass}/\textt{time}^2 \ne \texttt{force} \\)
+* Distinguishing different types of data (e.g., input, output) can help automatically detect coding mistakes
+
+```python
+def process(x0):
+    x1 = step(x0)
+    return x0
+```
 
 
 ## Types
@@ -374,10 +381,20 @@ $$
 	S + U \subseteq T + U \\\\
 	\texttt{Array}(S) \subseteq \texttt{Array}(T) \\\\
 	T \subseteq T + U \\\\
-	\texttt{Int8} \subset \texttt{Int16} \subset \texttt{Int32}
+	\texttt{Int8} \subset \texttt{Int16} \subset \texttt{Int32} \\\\
 $$
 
 * Similar to inheritance: if \\( C \\) inherits from \\( B \\), then \\( C \subset B \\)
+
+
+## "Any" types
+
+* Some languages have an "any" type representing union of all possible types, containing all possible values
+* `Any`, `void *`
+
+$$
+	\texttt{Void} \subseteq T \subseteq \texttt{Any} \quad \forall T
+$$
 
 
 ## Functions
@@ -464,7 +481,6 @@ f x y = haskell
 ```
 
 
-
 ## Checking types
 
 * Much of the advantage of types comes from checking them to make sure they hold
@@ -480,29 +496,16 @@ f x y = haskell
 
 * In many languages you can use classes to represent your own types
 * If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
-* It's nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
+   * Dynamic checking: optional, only in "debug" mode
+* Nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
 
 
-only data not operations (members not methods)
-classes do a lot more than this
+## Conclusions, tips
 
+* Try to think about your problem starting with data: how do you represent your input, state, etc.
+* Build functions that transform between representations to process data
+* Avoid error checking at the beginning of functions, shift to type
 
-dimensional analysis? (1 slide)
-
-
-any (python union all types)
-
-
-how you interpret bits orthogonal
-
-
-how i think about writing code, data first
-
-
-error checking at beginning of functions
-
-
-motivation to start
 
 
 back to bits at end:
