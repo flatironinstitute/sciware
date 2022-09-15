@@ -388,7 +388,7 @@ $$
 	f \in T \to S \\\\
 	x \in T \implies f(x) \in S \\\\
 	g(x) = \text{if } x \text{ then } 0 \text{ else } 1 \\\\
-	g \in \texttt{Bool} \to \textt{Int}
+	g \in \texttt{Bool} \to \texttt{Int}
 $$
 
 
