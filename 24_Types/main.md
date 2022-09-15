@@ -326,7 +326,7 @@ $$
 	(x_1, x_2, \ldots, x_n) \in T^n \qquad x_i \in T \\\\
 	T^0 = \texttt{Unit}
    $$
-* (Remember: focus on possible values, not representation)
+* (Reminder: focus on possible values, not representation)
 
 
 ## Arrays, Lists
