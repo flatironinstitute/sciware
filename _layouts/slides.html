@@ -25,9 +25,7 @@
           data-markdown="{{ page.markdown }}"
           data-separator="^\n\n\n"
           data-separator-vertical="^\n\n"
-          data-separator-notes="^#note:"
-
-        ></section>
+          data-separator-notes="^#note:"></section>
       </div>
     </div>
 
@@ -47,17 +45,17 @@
         fragmentInURL: true,
         center: true,
         // history: true,
-    mathjax2: {
-      // mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
-      config: 'TeX-AMS_HTML',
-    },
-      });
+        mathjax2: {
+          // mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+          config: 'TeX-AMS_HTML',
+        },
+      })
     </script>
-    <script>
+    <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
-        CommonHTML: {matchFontHeight: true}
+        "HTML-CSS": {minScaleAdjust: 100},
+        CommonHTML: {minScaleAdjust: 100}
       });
-      console.log('MathJax called', MathJax);
     </script>
   </body>
 </html>
