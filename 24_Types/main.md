@@ -494,7 +494,7 @@ f x y = haskell
 
 ## Classes as types
 
-* In many languages you can use classes to represent your own types
+* In some languages you can use classes to represent your own types
 * If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
    * Dynamic checking: optional, only in "debug" mode
 * Nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
@@ -508,19 +508,27 @@ f x y = haskell
 
 
 
-back to bits at end:
-  ieee
+# Bits, representations
 
+Lehman
+
+representations
 
 type coersion:
   check types through expression
 
+
+
+# Performance
+
+Geraud
 
 representation, performance:
   double vs float
   less precision, more iterations
   general: reducing domain increases performance
   example 
+
 
 
 # Practical Types in Python with mypy
@@ -550,7 +558,6 @@ if __name__ == '__main__':
 ### Useful contextual information
 
 [NEEDS SCREENSHOT]
-
 
 
 ### Full documentation
@@ -622,11 +629,11 @@ $ mypy file_to_examine.py
 - What's in that `List`?
   - `my_int_list: List[int] = []`
 - `Dict[]` takes the key and value
-  - `x = Dict[str, float]`
+  - `x: Dict[str, float]`
 - `Callable[]` annotates functions with a parameter list and return type
   - `f: Callable[[float], float] = lambda x: x**2`
 - These can stack (though it gets confusing):
-  - `grades = Dict[str, Dict[int, List[int]]]` is a dictionary that maps a string key
+  - `grades: Dict[str, Dict[int, List[int]]]` is a dictionary that maps a string key
   to a dictionary that maps integer keys to a list of integers...
   - Concretely, then, `math_test_responses = grades['Lehman']` would be a list of Lehman's responses
   for test 1, test 2, ...
@@ -757,7 +764,6 @@ def casting_example(parameters) -> None:
 - Sometimes you can say *something* about a type without knowing *everything* about it.
 ```python
 def get_max(values: List[int]) -> int:
-    pass
 ```
   - It'll be a drag to make one of those for every type in existence.
 
@@ -768,7 +774,6 @@ from typing import TypeVar
 
 T = TypeVar('T')
 def get_max(values: List[T]) -> T:
-    pass
 ```
 - This now works for any type (as long as you can write logic that makes sense)
 - `TypeVar()` lets you add *constraints* to limit what generic types you support
