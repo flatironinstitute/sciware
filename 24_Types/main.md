@@ -616,6 +616,7 @@ $ mypy file_to_examine.py
   - `def f(x: int) -> float:`
   - This says `f` is a function that takes an int and returns a float
 
+
 ### Parameterizing container types
 
 - What's in that `List`?
@@ -691,17 +692,17 @@ Mousing over `a` here shows `int` like you'd expect
 ### Quick note on Literal, Final
 
 - `Literal` means a *specific* value
-- `Final` tells the linter that something shouldn't be changed
+- `Final` tells the linter that a variable's value shouldn't be changed
   ```Python
   x: Final[int] = 15
   x = 22
   ```
-  - This will give you a warning in your editor, but remember it isn't enforced at runtime
+  - This will give you a warning in your editor--but remember: **it isn't enforced at runtime**
 
 
 ### Narrowing
 
-- Static analyzer is reading your code and can give you greater precision
+- Type checker is reading your code and can give you greater precision
 - `Union` types can be interpreted more precisely if the context eliminates some possibilities
 
 ```python
@@ -735,7 +736,7 @@ def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
     return all(isinstance(x, str) for x in val)
 ```
   - Other code can now call `is_str_list(some_list)` and branch on the result
-  - This lets you specify logic that works at runtime and is understood by the checker at write time
+  - This lets you specify logic that both works at runtime and is understood by the checker at write time
 - Don't worry about it
 
 
@@ -771,19 +772,23 @@ def get_max(values: List[T]) -> T:
 ```
 - This now works for any type (as long as you can write logic that makes sense)
 - `TypeVar()` lets you add *constraints* to limit what generic types you support
+  - e.g. `TypeVar('T', int, float)` means `T` must be an `int` or `float`.
   - This is beyond the scope of this tutorial
 
 
 ## Types and Classes
 
 - If your namespace recognizes a class, you can use it as a type
-- `None` is *not* a valid value for a class variable! (Even if it works in other languages)
+- `None` is *not* a valid value for a class variable! (Even if this works in other languages)
 
 
 ### Inheritance
 
-- Inheriting classes count as members of the parent class:
+- Child classes count as members of the parent class:
 ```python
+class MyClass(): pass
+class MyOtherClass(MyClass): pass
+
 b: MyClass = MyClass()
 c: MyOtherClass = MyOtherClass()
 d: MyOtherClass = b # fails; MyClass is not a MyOtherClass
@@ -810,13 +815,20 @@ class MyClass():
   VSCode PyLance will complain about this, but mypy thinks it's fine
   - You can get around it for VSCode by adding quotes: `... other: 'MyClass')`
 - `self` never needs type annotation: it's inferred
-  - BUT an `__init__(self)` won't be type-checked in mypy unless it has
+  - BUT an `__init__(self)` function won't be type-checked in mypy unless it has
   annotated parameters or you explicitly say it returns `None`.
 
 
 ### I/O Types? Anything special to say here?
 
 There are types for them? Honestly, maybe we just use them as an example somewhere.
+
+
+### Numpy
+
+- Defines more precise dtypes based on actual bit representation
+- Some extensions let you type the shape of ndarray objects
+- Do we even need to talk about this?
 
 
 ## Big Example
