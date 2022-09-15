@@ -1,5 +1,5 @@
 # Types
-- Jul 29 2022
+- Sep 29 2022
 - 2:00-4:00pm
 - Flatiron 3rd floor classroom
 

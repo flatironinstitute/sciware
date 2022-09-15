@@ -178,7 +178,7 @@ Different languages use a variety of syntax to represent types
 | `T :: x`, `integer :: x` | Fortran 90   |
 
 
-## Unions
+## Adding types: Unions
 
 $$
 \begin{align}
@@ -201,8 +201,8 @@ $$
 \begin{align}
 	T + S &= T \sqcup S \\\\
 	\texttt{Bool} + \texttt{UInt32} &= \\{\textsf{FALSE},\textsf{TRUE},0,1,2,\dots\\} \\\\
-	\left|T + S\right| &= \left|T\right| + \left|S\right| \\\\
-	\texttt{UInt8} + \texttt{UInt32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\}
+	\texttt{UInt8} + \texttt{UInt32} &= \\{0_8, 1_8, \dots, 255_8, 0_{32}, 1_{32}, \dots\\} \\\\
+	\left|T + S\right| &= \left|T\right| + \left|S\right|
 \end{align}
 $$
 
@@ -251,8 +251,8 @@ $$
 \begin{align}
 	T \times S &= \\{ (x, y) : x \in T, y \in S \\} \\\\
 	\texttt{Bool} \times \texttt{UInt8} &= \\{(\textsf{FALSE},0),(\textsf{TRUE},0),(\textsf{FALSE},1),(\textsf{TRUE},1),\dots\\} \\\\
-	\left|T \times S\right| &= \left|T\right|\left|S\right| \\\\
-	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R} ~ \mathbb{C}
+	\texttt{Float} \times \texttt{Float} &\approx \mathbb{R}^2 = \mathbb{R} \times \mathbb{R} \qquad (\mathbb{C}) \\\\
+	\left|T \times S\right| &= \left|T\right|\left|S\right|
 \end{align}
 $$
 
@@ -288,12 +288,24 @@ $$
 
 * `Union{}` (Julia)
 
-Quiz:
+
+### Quiz
 $$
-	T + \texttt{Void} = ??? \\\\
-	T \times \texttt{Unit} = ??? \\\\
-	T \times \texttt{Void} = ??? \\\\\
-	T + T = T \times \texttt{Bool}
+\begin{align*}
+	T + \texttt{Void} &= ??? \\\\
+	T \times \texttt{Unit} &= ??? \\\\
+	T \times \texttt{Void} &= ??? \\\\
+	T + T &= ???
+\end{align*}
+$$
+
+
+### Answers
+$$
+	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
+	T \times \texttt{Unit} &= T & \left|T\right| \times 1 \\\\
+	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
+	T + T &= \texttt{Bool} \times T & 2 \left|T\right|
 $$
 
 
@@ -305,6 +317,7 @@ $$
 	(x_1, x_2, \ldots, x_n) \in T^n \qquad x_i \in T \\\\
 	T^0 = \texttt{Unit}
    $$
+* (Remember: focus on possible values, not representation)
 
 
 ## Arrays, Lists
@@ -313,12 +326,12 @@ $$
    $$
    \begin{align}
 	\texttt{Array}(T) &= \sum_{n=0}^\infty T^n = \texttt{Unit} + T + T^2 + \cdots \\\\
-	\texttt{Array}(\texttt{Bool}) &= \\{(), (\mathsf{F}), (\mathsf{T}), (\mathsf{F},\mathsf{F}), (\mathsf{T},\mathsf{F}), \dots \\} \\\\
-	\texttt{List}(T) &= \texttt{Unit} + (T \times \texttt{List}(T))
+	\texttt{List}(T) &= \texttt{Unit} + (T \times \texttt{List}(T)) \\\\
+	\texttt{Array}(\texttt{Bool}) &= \\{(), (\mathsf{F}), (\mathsf{T}), (\mathsf{F},\mathsf{F}), (\mathsf{T},\mathsf{F}), \dots \\}
    \end{align}
    $$
 * Infinite type
-* By restricting \( \sum_{n=a}^b \) we can represent arrays of certain lengths (non-empty, at most 10, etc.)
+* By restricting \\( \sum_{n=a}^b T^n \\) we can represent arrays of certain lengths (non-empty, at most 10, etc.)
 
 
 ## Array syntax
@@ -327,14 +340,14 @@ $$
 |--------------------|--------------------|
 | `List[T]`   | Python |
 | `Array{T}`  | Julia |
-| `T[]`, `Array<T>`  | TypeScript |
+| `Array<T>`, `T[]`  | TypeScript |
 | `[T]`  | Haskell |
 | `list<T>`, `vector<T>` | C++ |
 | `T x[n]` | C |
 | `x(n)`, `DIMENSION` | Fortran |
 
 
-## Real Numbers
+## "Real" (Rational) Numbers
 
 $$
 \begin{align}
@@ -371,7 +384,9 @@ $$
 	f(x) = x^2 \\\\
 	f : \mathbb{R} \to \mathbb{R} \\\\
 	f \in T \to S \\\\
-	x \in T \implies f(x) \in S
+	x \in T \implies f(x) \in S \\\\
+	g(x) = \text{if } x \text{ then } 0 \text{ else } 1 \\\\
+	g \in \texttt{Bool} \to \textt{Int}
 $$
 
 
@@ -399,7 +414,7 @@ $$
 * Approaches to functions with multiple arguments:
 
 $$
-	f \in (T, S) \to R \qquad \text{single tuple argument} \\\\
+	f \in (T \times S) \to R \qquad \text{single tuple argument} \\\\
 	f \in T \to S \to R \qquad \text{currying}
 $$
 
