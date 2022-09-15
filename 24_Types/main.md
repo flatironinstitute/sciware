@@ -291,21 +291,23 @@ $$
 
 ### Quiz
 $$
-\begin{align*}
+\begin{align}
 	T + \texttt{Void} &= ??? \\\\
 	T \times \texttt{Unit} &= ??? \\\\
 	T \times \texttt{Void} &= ??? \\\\
 	T + T &= ???
-\end{align*}
+\end{align}
 $$
 
 
 ### Answers
 $$
+\begin{align}
 	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
 	T \times \texttt{Unit} &= T & \left|T\right| \times 1 \\\\
 	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
 	T + T &= \texttt{Bool} \times T & 2 \left|T\right|
+\end{align}
 $$
 
 
@@ -462,6 +464,7 @@ f x y = haskell
 ```
 
 
+
 ## Checking types
 
 * Much of the advantage of types comes from checking them to make sure they hold
@@ -478,6 +481,7 @@ f x y = haskell
 * In many languages you can use classes to represent your own types
 * If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
 * It's nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
+
 
 only data not operations (members not methods)
 classes do a lot more than this
