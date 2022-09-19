@@ -1,16 +1,11 @@
-from typing import List, Literal, Tuple, Callable, TypeAlias, Union
 from math import sin
 
-RuleType: TypeAlias = Union[Literal['left'], Literal['right'], Literal['midpoint'], Literal['trapezoidal']]
-# but consider whether this is better handled by an Enum!
-ParameterTuple: TypeAlias = Tuple[Callable[[float], float], float, float, str, RuleType, int]
-# But consider using a NamedTuple or dataclass!
 
-def get_interval_value(interval: Tuple[float, float], rule: RuleType, f: Callable[[float], float]) -> float:
+def get_interval_value(interval, rule, f):
     left = min(interval)
     right = max(interval)
     span = (right - left)
-    result: float = 0
+    result = 0
     if rule == 'left':
         result = f(left)
     elif rule == 'right':
@@ -22,11 +17,11 @@ def get_interval_value(interval: Tuple[float, float], rule: RuleType, f: Callabl
         b = f(right)
         result = (a + b) / 2
     else:
-        raise Exception("Can't happen: Unknown rule type.")
+        raise Exception("Unknown rule type.")
     return result * span
 
 
-def split_range(integral_range: Tuple[float, float], number_of_intervals: int) -> List[Tuple[float, float]]:
+def split_range(integral_range, number_of_intervals):
     x0 = min(integral_range)
     xf = max(integral_range)
     per_interval_span = (xf - x0) / number_of_intervals
@@ -38,20 +33,20 @@ def split_range(integral_range: Tuple[float, float], number_of_intervals: int) -
     return values
 
 
-def compute_sum(f: Callable[[float], float], x0: float, xf: float, rule: RuleType, number_of_intervals: int) -> float:
+def compute_sum(f, x0, xf, rule, number_of_intervals):
     intervals = split_range((x0, xf), number_of_intervals)
     return sum([get_interval_value(i, rule, f) for i in intervals])
 
 
-def report_run(parameters: ParameterTuple) -> None:
+def report_run(parameters):
     (fn, x0, xf, desc, rule, interval_count) = parameters
     print(f"Running {desc} with {interval_count} intervals over range ({x0}, {xf}) using {rule}")
     print(f"\tResult: {compute_sum(fn, x0, xf, rule, interval_count)}")
 
 
 if __name__ == '__main__':
-    fn: Callable[[float], float] = lambda x: x**2
-    square_runs: List[ParameterTuple] = [
+    fn = lambda x: x**2
+    square_runs = [
         (fn, 1.0, 5.0, "x^2", 'left', 4),
         (fn, 1.0, 5.0, "x^2", 'right', 4),
         (fn, 1.0, 5.0, "x^2", 'midpoint', 4),
@@ -64,8 +59,8 @@ if __name__ == '__main__':
     for d in square_runs:
         report_run(d)
 
-    f2: Callable[[float], float] = lambda x: sin(x)
-    sin_runs: List[ParameterTuple] = [
+    f2 = lambda x: sin(x)
+    sin_runs = [
         (f2, 1.0, 2.0, "sin(x)", 'left', 4),
         (f2, 1.0, 2.0, "sin(x)", 'right', 4),
         (f2, 1.0, 2.0, "sin(x)", 'midpoint', 4),

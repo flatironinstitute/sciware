@@ -529,18 +529,32 @@ representation, performance:
   general: reducing domain increases performance
   example 
 
+NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
+
 
 
 # Practical Types in Python with mypy
 
+### What, How, and Why of Type-Annotated Python
 
 
 ## Motivation
 
+### Annotations are *FOR YOU*
+
+The Python interpreter pays no attention to them. It does not care.
+
+Instead:
+- They make your intentions clearer
+- They make your expectations more consistent
+- They reduce the load on your human memory
+- They enable tooling that can help you even more
+
+
 ### Catching subtle errors
 
 ```Python
-def make_a_square_untyped(values):
+def turn_a_list_into_a_square_matrix(values):
     root = math.sqrt(len(values))
     int_root = int(root)
     if root < 1 or root != int_root:
@@ -551,23 +565,43 @@ def make_a_square_untyped(values):
 
 if __name__ == '__main__':
     input_int = 54
-    untyped = make_a_square_untyped(input_int)
+    untyped = turn_a_list_into_a_square_matrix(input_int)
+    ## oops! 54 isn't a list
 ```
 
 
 ### Useful contextual information
 
-[NEEDS SCREENSHOT]
+- Auto-completing members of variables with known class types
+
+<img src="assets/member-display.png" width="400" style="border:0;box-shadow:none">
 
 
-### Full documentation
+- Reminding you what a variable should contain
 
-- [The Python documentation](https://docs.python.org/3/library/typing.html)
-- [mypy documentation](https://mypy.readthedocs.io/en/stable/)
+<img src="assets/variable-id.png" width="400" style="border:0;box-shadow:none">
 
-Note that these are both exhaustive (often with reference to PEPs, etc). We'll
-try to give you a much gentler introduction to the parts you'll actually need
-right away.
+
+### Today is Python Typing 101
+
+- For further research, see the docs:
+  - [Full Python doc on type hinting](https://docs.python.org/3/library/typing.html)
+  - [Python's somewhat more basic type documentation](https://peps.python.org/pep-0483/)
+  - [mypy documentation](https://mypy.readthedocs.io/en/stable/)
+- Note these docs privilege exhaustiveness over readability...
+
+
+## Vocab
+
+- **Static analysis** (SA)--tools that tell you things about your code just from
+its structure, without running it.
+- **Type Checker**/**Type Analyzer**--SA tool that reasons about variable and function types (e.g. `mypy`)
+- **Linter**--broader SA tool that checks style, code reachability, and more
+  - I will say "type checker", "type analyzer", and "linter" pretty freely
+  - In a development environment, the linter probably provides type checking
+- **Duck typing**--"if it quacks like a duck, it's a duck"
+  - Many weakly typed languages will consider a variable to be of a type if it matches the type's required features
+  - (As opposed to strict typing which requires formal definitions)
 
 
 ## Basics
@@ -578,237 +612,231 @@ right away.
 $ pip install mypy
 ```
 
-Can now run with:
+- Can now run with:
 
 ```bash
-$ mypy file_to_examine.py
+$ mypy simple_example.py
 ```
 
-
-### Known types
-
-- Primitive types: Basic data
-  - `int`
-  - `float`
-  - `bool`
-  - `str`
-  - `None`
-  - `Any` (this does need to be imported if you want to annotate it explicitly)
-- Complex types that "just work"
-  - `object`
-  - Specific classes that are in your namespace (e.g. `np.ndarray`)
+<img src="assets/running-mypy.png" width="800" style="border:0;box-shadow:none">
 
 
-- Container types
-  - `List`
-  - `Dict`
-  - `Tuple`
-  - `Set`
-  - `Callable`
-  - `Literal`
-  - ...
-- Container types need *parameters*
-  - e.g. `List[int]`, not just `List`
-- Generally need to be imported from `typing` package
-- Recent changes: 3.10 lets you lowercase, and allows importing from `collections.abc`
-- Our examples will work in 3.10 or earlier versions
+## Annotating Types
 
 
 ### Syntax
 
 - Postfix type hints:
   - `int_valued_variable: int = 5`
-  - Applies to any variable definition, including function parameters
+  - Form is `<VARIABLE_NAME>: <TYPE_NAME>`
+  - Applies anywhere a variable is first used, including function parameters
 - Function return values use an arrow:
   - `def f(x: int) -> float:`
-  - This says `f` is a function that takes an int and returns a float
+  - This says `f` takes an int and returns a float
+  - Typing for a function is called a *type signature*
 
 
-### Parameterizing container types
+### What type names can you use?
 
-- What's in that `List`?
-  - `my_int_list: List[int] = []`
-- `Dict[]` takes the key and value
-  - `x: Dict[str, float]`
-- `Callable[]` annotates functions with a parameter list and return type
-  - `f: Callable[[float], float] = lambda x: x**2`
-- These can stack (though it gets confusing):
-  - `grades: Dict[str, Dict[int, List[int]]]` is a dictionary that maps a string key
-  to a dictionary that maps integer keys to a list of integers...
-  - Concretely, then, `math_test_responses = grades['Lehman']` would be a list of Lehman's responses
-  for test 1, test 2, ...
+- Primitive types: Basic data
+  - `int`
+  - `float`
+  - `bool`
+  - `str`
 
 
-### Semantic value of Python types at runtime
-
-...there isn't any!
-
-Python typing is entirely for static code analysis. It goes away at runtime.
-
-
-## Using type analysis
-
-- Baked in to your editor
-  - e.g. mouseover information for variables, functions
-  - auto-completion of member reference (`my_ClassA_var.` pops up a list of methods from `ClassA`)
-  - auto-populates docstring skeleton
-- By running `mypy` on the command line
-  - Generates a report of detected type errors
-  - **ONLY** looks at functions that have some explicit type hinting
+- Non-primitives
+  - `None` -- technically not a primitive
+  - `Any` -- Matches anything, but *turns off type checking*
+  - `object` -- Matches anything but does *not* turn off type checking
+  - Any classes in your namespace (e.g. `np.ndarray` if you did `import numpy as np`)
 
 
-### Simple Worked Example
-
-NOTE: Can also do this as a dynamic process using the code in simple_example.py.
-Start w/ untyped_buggy, move to untyped, add type hints.
-Demo running mypy on cli?
-
-```python
-def make_a_square_typed(values: List[int]) -> Union[np.ndarray, None]:
-    root = math.sqrt(len(values))
-    int_root = int(root)
-    if root < 1 or root != int_root:
-        return None
-    array: np.ndarray = np.asarray(values)
-    array = array.reshape((int_root, int_root))
-    return array
-```
+- Parameterized types
+  - Built-in container types:
+    - `List`
+    - `Set`
+    - `Tuple`
+    - `Dict`
+  - `Callable`
+  - `Literal`
+  - ...
+- This is the interesting part and what we'll spend most of this session on
 
 
-## Type Inference
+- Container types need *parameters*
+  - e.g. `List[int]`, not just `List`
+  - (What's in the list?)
+- Generally need to be imported from `typing` package
+- Recent changes: 3.10 lets you lowercase, and allows importing from `collections.abc`
+- Our examples work in 3.10 or earlier versions
 
-- If the analyzer can figure out what something's type is, it will tell you
-```Python
-def returns_int():
-    return 15
 
-a = returns_int()
-```
-Mousing over `a` in fact reveals it's not even an `int` but a `Literal[15]`
+## Parameterizing container types
 
+### List & Set
+
+- Parameters are supplied in square brackets: `List[str]` or `Set[int]`
 
 ```Python
-def really_returns_int(a):
-    return int(a)
-
-a = really_returns_int(26)
+def sum(items: List[int]) -> int:
+    pass
 ```
-Mousing over `a` here shows `int` like you'd expect
+
+- Now the linter can warn us of adding invalid values
+  - Or confirm that we're allowed to do something with one of the items
 
 
-### Quick note on Literal, Final
+### Tuple
 
-- `Literal` means a *specific* value
-- `Final` tells the linter that a variable's value shouldn't be changed
-  ```Python
-  x: Final[int] = 15
-  x = 22
-  ```
-  - This will give you a warning in your editor--but remember: **it isn't enforced at runtime**
+- A `Tuple` has a fixed number of elements in a certain order.
+  - Used whenever you pack values together, e.g. returning `(x, y)` together.
+
+```Python
+point: Tuple[float, float] = (1.5, 3.0)
+```
+
+- (An empty tuple is typed as `Tuple[()]`)
+- (A variadic tuple of one type is `Tuple[t1, ...]`)
 
 
-### Narrowing
+### Dict
 
-- Type checker is reading your code and can give you greater precision
-- `Union` types can be interpreted more precisely if the context eliminates some possibilities
+- Stores *values* that can be looked up by their unique *key*
+- We need to provide the type of the key and of the value
+
+```Python
+heights_per_person: Dict[str, float] = {}
+```
+
+- Again, along with variable naming, this helps you understand what is stored
+
+
+### Union
+
+- Sometimes we know a variable can be one of a few different types:
+
+```Python
+cash_on_hand: Union[int, float, None] = ...
+```
+
+- This allows flexibility while still providing guidance.
+
+
+### You can nest them...!
 
 ```python
-def narrowing_example(a: Union[str, int]) -> str:
-    if isinstance(a, str):
-        return a
-    else:
-        # type checker now knows a is an int, because it wasn't a str
-        return str(a)
+cash_per_person: Dict[str, Union[int, float, None]] = {...}
 ```
 
 
-- `Optional[xyz]` is a shorthand for `Union[xyz, None]` and benefits from narrowing:
-```python
-def narrowing_example(a: Optional[int]) -> None:
-    print(a) # here 'a' could be int or None
-    if (a == None):
-        raise Exception('Maybe handle this more gracefully than by throwing an exception!')
-    a # here a must be int, and mouseover shows it
-```
-This is useful for handling values that may be unset.
-
-
-### TypeGuards
-
-- A `TypeGuard` is a function that helps narrowing by checking if a variable meets criteria to be a given type.
-- Use `TypeGuard[_your_type_here_]` as return type of a boolean function to invoke type checking on its result.
-- e.g.:
-```python
-def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
-    return all(isinstance(x, str) for x in val)
-```
-  - Other code can now call `is_str_list(some_list)` and branch on the result
-  - This lets you specify logic that both works at runtime and is understood by the checker at write time
-- Don't worry about it
-
-
-### Casting
-
-- For when inference fails!
-- If you know better than the analyzer, you can tell it what something is
+### This can get long...
 
 ```python
-def casting_example(parameters) -> None:
-    x0 = parameters['x0'] # here x0 is typed as 'Any' since we don't know what it is
-    x0 = cast(float, parameters['x0']) # here it's a float: I said so
+points: Dict[str, Dict[int, List[float]]] = {...}
+# for each student, for each test number, store how many points they got on each question
 ```
 
+- ```points["Kushim"][1]``` is a list of how many points Kushim got on each question
+on the first Accounting exam at Uruk University.
 
-## Generics
 
-- Sometimes you can say *something* about a type without knowing *everything* about it.
+### Type Aliases
+
+- Instead we can define *type aliases*
+
 ```python
-def get_max(values: List[int]) -> int:
+from typing import TypeAlias
+
+Gradebook: TypeAlias = Dict[str, Dict[int, List[float]]]
+my_gradebook: Gradebook = get_gradebook_for_semester()
+grades_for_student = gradebook['Kushim']
 ```
-  - It'll be a drag to make one of those for every type in existence.
+
+- Lets you use a shorter but more meaningful name for something complex
+  - [typealias.py](./examples/typealias.py)
 
 
-- Instead, you can use a *variable type parameter* using `TypeVar`:
+- We could also do:
+
 ```python
-from typing import TypeVar
+from typing import TypeAlias
 
-T = TypeVar('T')
-def get_max(values: List[T]) -> T:
+PointsPerQuestion: TypeAlias = List[float]
+TestId: TypeAlias = int
+StudentName: TypeAlias = str
+Gradebook: TypeAlias = Dict[StudentName, Dict[TestId, PointsPerQuestion]]
+my_gradebook: Gradebook = get_gradebook_for_semester()
+kushim_points_test_one = gradebook['Kushim'][1]
 ```
-- This now works for any type (as long as you can write logic that makes sense)
-- `TypeVar()` lets you add *constraints* to limit what generic types you support
-  - e.g. `TypeVar('T', int, float)` means `T` must be an `int` or `float`.
-  - This is beyond the scope of this tutorial
 
 
-## Types and Classes
+### Type Aliases - Why?
 
-- If your namespace recognizes a class, you can use it as a type
-- `None` is *not* a valid value for a class variable! (Even if this works in other languages)
+- Pros:
+  - Meaningful names document *intention*
+  - Shorter = easier to read and type
+- Cons:
+  - Sometimes mouseover hints don't drill down enough
+    - (might just get `Gradebook` and not the actual structure)
+  - Consider whether you'd be better off with an actual class or a [dataclass](https://docs.python.org/3/library/dataclasses.html)
 
 
-### Inheritance
+### Callable
+
+- This describes the type of a function stored in a variable.
+- Takes a list with the parameter types (in order), then the return type
+
+```python
+from typing import Callable
+
+sum_then_square: Callable[[float, float], float]
+sum_then_square = lambda x, y: (x + y) ** 2
+```
+
+- *Very* useful higher-order programming & anonymous functions
+- Lets your code be much more generic while still staying (mostly) readable
+- You probably want to alias this
+
+
+### Classes
+
+- If a class is defined in your namespace, you can use it as a type
+  - This includes built-in classes and classes from imports
+  - This includes classes from your code
+- Child classes count as instances of the parent class
+
+
+- Built-in classes work (but you may need to import the types explicitly):
+
+```python
+from io import TextIOWrapper
+
+def write_to_file(msg: str, handle: TextIOWrapper) -> None:
+    handle.write(msg)
+```
+
+[filehandle.py](./examples/filehandle.py)
+
 
 - Child classes count as members of the parent class:
+
 ```python
 class MyClass(): pass
 class MyOtherClass(MyClass): pass
 
 b: MyClass = MyClass()
 c: MyOtherClass = MyOtherClass()
-d: MyOtherClass = b # fails; MyClass is not a MyOtherClass
-b = 5 # fails (naturally; 5 is not a MyClass)
-b = d # succeeds -- inheritance means any MyOtherClass is a MyClass
+d: MyOtherClass = b # error; MyClass is not a MyOtherClass
+b = 5 # error (naturally; 5 is not a MyClass)
+b = d # no error -- inheritance means MyOtherClass is a MyClass
 ```
-- Don't be fooled: pretty much everything counts as an `object`
-  - `b: object = 5` works, unlike the above
+
+- [classes.py](./examples/classes.py)
 
 
-### Defining your own class
-
-- Once you've defined a class, it can be used
 - Linter standards differ on whether you can use a class during definition
-  - example:
+
 ```python
 class MyClass():
     def __init__(self):
@@ -817,16 +845,173 @@ class MyClass():
     def compare(self, other: MyClass) -> int:
         return 5
 ```
-  VSCode PyLance will complain about this, but mypy thinks it's fine
-  - You can get around it for VSCode by adding quotes: `... other: 'MyClass')`
+
+- `mypy` thinks this is fine
+- VSCode PyLance will complain about using `MyClass` in `compare`
+  - You *can* use `MyClass` elsewhere, just not while it's still being defined
+  - To fix: put it in quotes (`other: 'MyClass'`) to defer parsing
+
+
 - `self` never needs type annotation: it's inferred
-  - BUT an `__init__(self)` function won't be type-checked in mypy unless it has
-  annotated parameters or you explicitly say it returns `None`.
+- `__init__` is inferred to return `None`
+  - BUT `mypy` won't type-check an `__init__(self)` function unless it has *some*
+  explicit type annotations
+  - (either from non-`self` parameters or by explicitly returning `None`)
 
 
-### I/O Types? Anything special to say here?
+### Literals
 
-There are types for them? Honestly, maybe we just use them as an example somewhere.
+- `Literal` means a *specific* value
+  - `Literal[15]` means the literal value `15` and not any other integer
+
+```python
+directions: Union[Literal['North'], Literal['South'], Literal['East'], Literal['West']] = 'west'
+```
+
+- [literal.py](./examples/literal.py)
+- Did you catch the error there?
+- It's probably better to use an [Enum](https://docs.python.org/3/library/enum.html) for this case
+
+
+### Final
+
+- Means that a variable should not be assigned to after it's defined
+  - Like `const` in JavaScript/TypeScript, C/C++/C#, etc.
+
+```python
+  x: Final[int] = 15
+  x = 22     # will generate a warning
+```
+
+- This is *great* for supporting [functional programming](https://en.wikipedia.org/wiki/Functional_programming)
+and reducing mistakes
+  - But it **is not** enforced at runtime!
+  - [final.py](./examples/final.py)
+
+
+## How you interact with types
+
+### At runtime
+
+- You pretty much don't!
+- Errors from your linter are not enforced at runtime
+- Python typing (per se) is entirely for static code analysis
+  - You *could* use `TypeGuard`s (see bonus content)
+
+
+### In your editor
+
+- e.g. mouseover information for variables, functions
+- auto-completion of member reference (`my_ClassA_var.` pops up a list of methods from `ClassA`)
+- auto-populates docstring skeleton
+
+
+### With separate analyzer (mypy)
+
+- Generates a report of detected type errors
+- **ONLY** looks at functions that have some explicit type hinting
+- *Stops tracking* variables which are annotated `Any`
+
+
+### Lists-to-Square-Matrix example
+
+[See list_to_square.py](./examples/list_to_square.py)
+
+
+## Type Inference
+
+- The analyzer can often figure out a type through static analysis, without hints:
+
+```Python
+def returns_int():
+    return 15
+
+a = returns_int() + 3 # Note: this will be a Literal[18], not int!
+```
+
+  - But it might not infer what you want!
+  - Mark it explicitly as `-> int` and `a` will be seen as `int`.
+  - [returns_int.py](./examples/returns_int.py)
+
+
+### Narrowing
+
+- `Union` types can be interpreted more precisely if the context eliminates some possibilities
+- Type checker understands a limited range of built-in functions
+  - Type is narrowed *only* within a conditional branch
+
+```python
+def narrowing_example(my_var: Union[str, int]) -> str:
+    if isinstance(my_var, str):
+        # If this branch got taken, we know my_var is a str, so mouseover will show that
+        return my_var
+    # type checker knows all strs hit the "return" statement
+    # So it knows by process of elimination that my_var is an int
+    return str(my_var)
+```
+
+
+- `isinstance()` actually works at runtime, so `mypy` knows this is safe
+  - (At least during the conditional)
+- Also supported:
+  - `issubclass(cls, MyClass)`
+  - `if (type(a) is int)`
+  - `if (callable(fn))` (though this doesn't distinguish `Callable`s with different signatures)
+- `mypy` also understands how `assert`, `return`, and exceptions work with conditionals
+
+
+- `Optional[xyz]` is a shorthand for `Union[xyz, None]` and benefits from narrowing:
+
+```python
+def narrowing_example_2(a: Optional[int]) -> None:
+    print(a) # here 'a' could be int or None
+    if (a is None):
+        raise Exception('Exception ends this branch!')
+    a # here a must be int, and mouseover shows it
+```
+
+- This is useful for handling user inputs or values that might be missing.
+
+
+### Casting
+
+- For when inference fails!
+- If you know better than the analyzer, you can overrule it
+
+```python
+import xarray as xr
+from typing import cast
+
+def load_xarray(filename: str) -> xr.Dataset:
+    # xarray's open_dataset returns Any, but we know it's returning a Dataset object.
+    # So use cast(TYPE, VALUE) to tell the checker that VALUE is of type TYPE
+    results = cast(xr.Dataset, xr.open_dataset(filename))
+    return results
+```
+
+- [casting_example.py](./examples/casting_example.py)
+- Note: in `mypy`, if a variable is *explicitly* marked `Any`, even casting it won't turn type checks back on.
+
+
+### Generics
+
+- Sometimes you can say *something* about a type without knowing *everything* about it.
+```python
+def prepend_to_list(value: int, values: List[int]) -> List[int]:
+    return [value] + values
+```
+  - Great, now do one for every other possible type of list...???
+
+
+- Instead, you can use a *variable type parameter* using `TypeVar`:
+```python
+from typing import TypeVar
+
+T = TypeVar('T')
+def prepend_to_list(value: T, values: List[T]) -> List[T]:
+    return [value] + values
+```
+- This now works for any type (as long as you can write logic that makes sense)
 
 
 ### Numpy
@@ -838,11 +1023,106 @@ There are types for them? Honestly, maybe we just use them as an example somewhe
 
 ## Big Example
 
-See `reimann.py` in this directory; we can work through
-adding types and just review this code for some of the neat tricks.
-(The file as currently uploaded is the target final version--I might consider doing this
-as a live-coding session building toward this target from some untyped code.)
+[riemann.py](./examples/riemann/riemann.py)
 
-It includes typed lambdas/using `Callable`, `Enum`s, optionally `dataclass` usage.
-Benefits greatly from typing and other static analysis features.
 
+## Bonus Content
+
+- Here are some topics which are beyond today's main scope.
+
+
+### TypeGuards
+
+- `TypeGuard`: a function that returns whether a variable is of a given type
+  - Connected to narrowing
+  - Code that both actually works at runtime...
+  - ...and is also understood by the type analyzer
+
+```python
+def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
+    return all(isinstance(x, str) for x in val)
+```
+
+  - This returns true if & only if every element of `val` is a `str`
+  - Other code can now call `is_str_list(some_list)` and branch on the result
+  - in a branch where `is_str_list(x)` returned `True`, the type checker knows `x` is a `List[str]`
+- You can do a *lot* with these [see doc](https://mypy.readthedocs.io/en/stable/type_narrowing.html#user-defined-type-guards)
+  - [typeguard.py](./examples/typeguard.py)
+
+
+### Generics and Constraints
+
+- `TypeVar()` lets you add *subtype constraints* to limit what generic types you support
+  - e.g. `TypeVar('T', int, float)` means `T` must be an `int` or `float`.
+  - How is that different from `Union[int, float]`?
+    - `List[T]` will have all members be `T` (either `int` or `float`)
+    - `List[Union[int, float]]` can be a mix of each
+- You can also declare subtypes:
+  - `TypeVar('S', bound=str)` means `S` has to extend `str` to qualify.
+  - This supports the possibility of more specific types while guaranteeing that certain functionality will be available
+- Only one of binding and subtype constraints can be used for any particular variable
+
+
+### Abstract Base Classes (ABCs)
+
+- Object-oriented programmers may be familiar with *interfaces*
+  - A defined set of properties/behaviors that lets one object "count as" another
+  - E.g. `Iterable` = any class that has elements that can be operated on in order
+- Python has lots of objects but no built-in explicit interfaces
+- Duck typing: if an object has the expected properties it "implements the interface"
+  - This is effectively a runtime check
+
+
+- If we want to define an interface explicitly we use
+**[Abstract Base Classes](https://docs.python.org/3/library/abc.html)**
+  - `from abc import ABC`
+- Defines an *abstract* class and *concrete* classes
+  - Base class = abstract
+  - Concrete class = implements the interface
+
+```python
+from abc import ABC
+class Animal(ABC):
+    @abstractmethod
+    def respire(self, compound): pass
+
+class Cat(Animal):
+    def respire(self, compound):
+        print(f"{compound} should be oxygen!")
+```
+
+
+- Concrete classes inherit from the ABC
+  - and must implement any methods marked `@abstractmethod`
+- Instantiating a base class directly is invalid (i.e. no `x = Animal()`)
+- `mypy` will check to make sure you do this right
+
+
+### Covariance and Contravariance
+
+[python doc](https://peps.python.org/pep-0483/#covariance-and-contravariance)
+[wikipedia](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science))
+
+- Suppose I have an `Animal` class which both `Cat` and `Dog` inherit from.
+- When can I use which classes in a `List` or `Callable` context?
+  - This is really about *container* types (that take a parameter) and how they complicate ordinary inheritance
+
+- *Covariant*: If `A` is a subtype of `B`, then `Generic[A]` is a subtype of `Generic[B]`.
+- *Contravariant*: If `A` is a subtype of `B`, then `Generic[B]` is a subtype of `Generic[A]`. (Note it's reversed!)
+- *Invariant*: the relationship is inconsistent.
+
+
+- Functions are "contravariant in parameters but covariant in returns":
+  - A function `f() -> Cat` is a subtype of `f() -> Animal`: any caller expecting an `Animal` can take a `Cat`.
+    - This is covariance
+  - *BUT* a function `f(x: Animal) -> None` is a *subtype* of `f(x: Cat) -> None`!
+    - Of all the functions that operate on `Cat`s, only some work on all `Animal`s.
+    - This is contravariance
+
+
+- Lists are *invariant*:
+  - All items from a `List[Dog]` can be added to a `List[Animal]`
+    - So `List[Dog]` is a subtype *when acting as a source*
+  - `List[Animal]` can receive all items that could be added to `List[Dog]`
+    - So `List[Animal]` is a subtype *when acting as a sink*
+  - Relationship is not fixed -- thus invariant
