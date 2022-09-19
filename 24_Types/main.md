@@ -1017,8 +1017,11 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
 ### Numpy
 
 - Defines more precise dtypes based on actual bit representation
-- Some extensions let you type the shape of ndarray objects
-- Do we even need to talk about this?
+  - Closer to types in C
+  - `mypy` and the Python typing spec don't handle these cases
+- Some extensions (`nptyping`) let you type the actual `dtype` and
+even shape of `ndarray` objects
+  - Useful if you plan to do linear algebra
 
 
 ## Big Example
