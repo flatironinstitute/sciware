@@ -128,7 +128,7 @@ $$
 	\\{1,2,3\\} \qquad
 	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \qquad
 	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
-	\mathbb{Q} \cap [0,1] ~ (\\{x \mathbb{Q} : 0 \le x \le 1 \\}) \\\\
+	\mathbb{Q} \cap [0,1] ~ (\\{x \in \mathbb{Q} : 0 \le x \le 1 \\}) \\\\
 	\mathbb{P} \qquad
 	\mathbb{Q}^+ \\\\
 	\texttt{Float} - \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
@@ -161,16 +161,14 @@ Documentation, optimization, error checking, logic!
 
 ```python
 def compute(order ∈ {1,2,3}):
-  if order == 1:
-    ...
-  elif order == 2:
-    ...
-  else: # order == 3
-    ...
+  if order == 1: ...
+  elif order == 2: ...
+  else: ... # order == 3
+  #if order == 0 (ERROR?)
 ```
 
 * Can be helpful for describing and thinking about code even if the types are not perfectly represented in the programming language
-* Once a variable is given a type, any value it has must be in that type
+* Once a variable has a type, its value must be in that type
 
 
 ## Type syntax
@@ -180,16 +178,18 @@ Different languages use a variety of syntax to represent types
 | \\( x \in T \\)             | languages          |
 |--------------------|--------------------|
 | `x: T`, `x: int`   | Python, TypeScript |
-| `x :: T`, `x::Int` | Julia, Haskell     |
+| `x :: T`, `x::Int` | Haskell, Julia     |
 | `T x`, `int x`     | C, C++, Fortran 77 |
 | `T :: x`, `integer :: x` | Fortran 90   |
 
 
 ## Adding types: Unions
 
+Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
+
 $$
 \begin{align}
-	\texttt{Bool} \cup \\{\textsf{UNKNOWN}\\} &= \\{\textsf{FALSE}, \textsf{TRUE}, \textsf{UNKNOWN}\\} \\\\
+	\texttt{Bool} \cup \texttt{Unit} &= \\{\textsf{FALSE}, \textsf{TRUE}, ()\\} \\\\
 	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} \\\\
 	(\texttt{Int8} \subset \texttt{Int32})
 \end{align}
@@ -202,7 +202,7 @@ $$
 
 ## Sum types (disjoint unions)
 
-Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
+Just like a union, but keeps all values (not just distinct)
 
 $$
 \begin{align}
