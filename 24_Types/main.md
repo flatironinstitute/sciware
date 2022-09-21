@@ -494,10 +494,17 @@ f x y = haskell
 
 ## Classes as types
 
-* In some languages you can use classes to represent your own types
-* If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
+* In OO languages you can use classes to help constrain types
+   * Additional constraints on the values beyond can be verified in the constructor
    * Dynamic checking: optional, only in "debug" mode
-* Nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
+
+```python
+class Order(int):
+    def __init__(self, val: int):
+        assert val in (1,2,3)
+
+def compute(order: Order) -> float:
+```
 
 
 ## Conclusions, tips
