@@ -284,7 +284,7 @@ $$
 \begin{align}
 	\texttt{Tuple}() &= ??? \\\\
 	\left| \texttt{Tuple}() \right| &= \prod_{i=1}^0 \left|T_i\right| = 1 \\\\
-	\texttt{Tuple}() &= \texttt{Unit} = \\{()\\}
+	\texttt{Tuple}() &\cong \texttt{Unit} = \\{()\\}
 \end{align}
 $$
 
@@ -294,7 +294,7 @@ $$
 $$
 \begin{align}
 	\sum_{i=1}^n T_i &= T_1 + \cdots + T_n \\\\
-	\sum_{i=1}^0 T_i &= \texttt{Void}
+	\sum_{i=1}^0 T_i &\cong \texttt{Void}
 \end{align}
 $$
 
@@ -304,10 +304,10 @@ $$
 ### Quiz
 $$
 \begin{align}
-	T + \texttt{Void} &= ??? \\\\
-	T \times \texttt{Unit} &= ??? \\\\
-	T \times \texttt{Void} &= ??? \\\\
-	T + T &= ???
+	T + \texttt{Void} &\cong ??? \\\\
+	T \times \texttt{Unit} &\cong ??? \\\\
+	T \times \texttt{Void} &\cong ??? \\\\
+	T + T &\cong ???
 \end{align}
 $$
 
@@ -315,10 +315,10 @@ $$
 ### Answers
 $$
 \begin{align}
-	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
-	T \times \texttt{Unit} &= T & \left|T\right| \times 1 \\\\
-	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
-	T + T &= \texttt{Bool} \times T & 2 \left|T\right|
+	T + \texttt{Void} &\cong T & \left|T\right| + 0 \\\\
+	T \times \texttt{Unit} &\cong T & \left|T\right| \times 1 \\\\
+	T \times \texttt{Void} &\cong \texttt{Void} & \left|T\right| \times 0 \\\\
+	T + T &\cong \texttt{Bool} \times T & 2 \left|T\right|
 \end{align}
 $$
 
@@ -329,7 +329,7 @@ $$
    $$
 	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n \\\\
 	(x_1, x_2, \ldots, x_n) \in T^n \qquad x_i \in T \\\\
-	T^0 = \texttt{Unit}
+	T^0 \cong \texttt{Unit}
    $$
 * (Reminder: focus on possible values, not representation)
 
