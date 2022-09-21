@@ -62,7 +62,7 @@ Activities where participants all actively work to foster an environment which e
 * algebraic data types
 
 
-## Motivation: dimensional analysis
+### Motivation: dimensional analysis
 
 * In calculations, dimensional analysis can often be used to find mistakes: \\(\frac{\texttt{mass}}{\texttt{time}^2} \ne \texttt{force} \\)
 * Distinguishing different types of data (e.g., input, output) can help automatically detect coding mistakes
@@ -78,7 +78,7 @@ def process(x0):
 
 * If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
-   * `list` (of what?), `complex`, `struct`, `class`
+   *  `complex`, `struct`, `class`, `list` (of what?)
 * Types are not about how many bits, but about the values these bits represent
 * Types are for thinking abstractly about your data (not the algorithm or implementation)
 
@@ -120,6 +120,25 @@ $$
 * We may define types with infinite cardinality, but always countably infinite!
 
 
+## A set of values you choose
+
+No need to limit yourself to established types!
+
+$$
+	\\{1,2,3\\} \qquad
+	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \qquad
+	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
+	\mathbb{Q} \cap [0,1] ~ (\\{x \mathbb{Q} : 0 \le x \le 1 \\}) \\\\
+	\mathbb{P} \qquad
+	\mathbb{Q}^+ \\\\
+	\texttt{Float} - \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
+	(T - S = T \setminus S = \\{ x \in T : x \notin S \\})
+$$
+
+* Many languages represent "finite" data types with labeled values as *enumerations*
+* All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
+
+
 ## Special types
 
 A couple simple types may seem silly but are quite useful:
@@ -134,25 +153,6 @@ $$
 * `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia)
 * `Void` is the empty type with no possible values (impossible, a value that can never exist, the return value of a function that never returns)
    * `void` in C?
-* All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
-
-
-## A set of values you choose
-
-No need to limit yourself to established types!
-
-$$
-	\\{1,2,3\\} \qquad
-	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
-	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
-	\texttt{Float} \cap [0,1] ~ (\\{x \in \texttt{Float} : 0 \le x \le 1 \\}) \\\\
-	\texttt{Int} \cap \mathbb{P} \qquad
-	\mathbb{Q}^+ ~ (\\{x : x > 0\\}) \\\\
-	\texttt{Float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
-	(T \setminus S = \\{ x \in T : x \notin S \\} = T - S)
-$$
-
-* Many languages represent "finite" data types with labeled values as *enumerations*
 
 
 ## Why is this useful?
