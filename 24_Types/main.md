@@ -62,9 +62,9 @@ Activities where participants all actively work to foster an environment which e
 * algebraic data types
 
 
-## Motivation: dimensional analysis
+### Motivation: dimensional analysis
 
-* In calculations, dimensional analysis can often be used to find mistakes: \\(\texttt{mass}/\textt{time}^2 \ne \texttt{force} \\)
+* In calculations, dimensional analysis can often be used to find mistakes: \\(\frac{\texttt{mass}}{\texttt{time}^2} \ne \texttt{force} \\)
 * Distinguishing different types of data (e.g., input, output) can help automatically detect coding mistakes
 
 ```python
@@ -78,7 +78,7 @@ def process(x0):
 
 * If you think about types at all, you probably think storage, bits:
    * `float`, `double`, `int32`, `string`
-   * `list` (of what?), `complex`, `struct`, `class`
+   *  `complex`, `struct`, `class`, `list` (of what?)
 * Types are not about how many bits, but about the values these bits represent
 * Types are for thinking abstractly about your data (not the algorithm or implementation)
 
@@ -120,6 +120,25 @@ $$
 * We may define types with infinite cardinality, but always countably infinite!
 
 
+## A set of values you choose
+
+No need to limit yourself to established types!
+
+$$
+	\\{1,2,3\\} \qquad
+	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \qquad
+	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
+	\mathbb{Q} \cap [0,1] ~ (\\{x \in \mathbb{Q} : 0 \le x \le 1 \\}) \\\\
+	\mathbb{P} \qquad
+	\mathbb{Q}^+ \\\\
+	\texttt{Float} - \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
+	(T - S = T \setminus S = \\{ x \in T : x \notin S \\})
+$$
+
+* Many languages represent "finite" data types with labeled values as *enumerations*
+* All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
+
+
 ## Special types
 
 A couple simple types may seem silly but are quite useful:
@@ -134,25 +153,6 @@ $$
 * `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia)
 * `Void` is the empty type with no possible values (impossible, a value that can never exist, the return value of a function that never returns)
    * `void` in C?
-* All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
-
-
-## A set of values you choose
-
-No need to limit yourself to established types!
-
-$$
-	\\{1,2,3\\} \qquad
-	\\{\textsf{YES}, \textsf{NO}, \textsf{MAYBE}\\} \\\\
-	\\{\textsf{RED}, \textsf{GREEN}, \textsf{BLUE}\\} \\\\
-	\texttt{Float} \cap [0,1] ~ (\\{x \in \texttt{Float} : 0 \le x \le 1 \\}) \\\\
-	\texttt{Int} \cap \mathbb{P} \qquad
-	\mathbb{Q}^+ ~ (\\{x : x > 0\\}) \\\\
-	\texttt{Float} \setminus \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
-	(T \setminus S = \\{ x \in T : x \notin S \\} = T - S)
-$$
-
-* Many languages represent "finite" data types with labeled values as *enumerations*
 
 
 ## Why is this useful?
@@ -161,16 +161,14 @@ Documentation, optimization, error checking, logic!
 
 ```python
 def compute(order ∈ {1,2,3}):
-  if order == 1:
-    ...
-  elif order == 2:
-    ...
-  else: # order == 3
-    ...
+  if order == 1: ...
+  elif order == 2: ...
+  else: ... # order == 3
+  #if order == 0 (ERROR?)
 ```
 
 * Can be helpful for describing and thinking about code even if the types are not perfectly represented in the programming language
-* Once a variable is given a type, any value it has must be in that type
+* Once a variable has a type, its value must be in that type
 
 
 ## Type syntax
@@ -180,16 +178,18 @@ Different languages use a variety of syntax to represent types
 | \\( x \in T \\)             | languages          |
 |--------------------|--------------------|
 | `x: T`, `x: int`   | Python, TypeScript |
-| `x :: T`, `x::Int` | Julia, Haskell     |
+| `x :: T`, `x::Int` | Haskell, Julia     |
 | `T x`, `int x`     | C, C++, Fortran 77 |
 | `T :: x`, `integer :: x` | Fortran 90   |
 
 
 ## Adding types: Unions
 
+Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
+
 $$
 \begin{align}
-	\texttt{Bool} \cup \\{\textsf{UNKNOWN}\\} &= \\{\textsf{FALSE}, \textsf{TRUE}, \textsf{UNKNOWN}\\} \\\\
+	\texttt{Bool} \cup \texttt{Unit} &= \\{\textsf{FALSE}, \textsf{TRUE}, ()\\} \\\\
 	\texttt{Int8} \cup \texttt{Int32} &= \texttt{Int32} \\\\
 	(\texttt{Int8} \subset \texttt{Int32})
 \end{align}
@@ -202,7 +202,7 @@ $$
 
 ## Sum types (disjoint unions)
 
-Sometimes we want to allow different types of values, so we make a new type by combining other types with a union:
+Just like a union, but keeps all values (not just distinct)
 
 $$
 \begin{align}
@@ -270,16 +270,21 @@ $$
 
 $$
 	\prod_{i=1}^n T_i = T_1 \times T_2 \times \cdots \times T_n = \texttt{Tuple}(T_1, T_2, \dots, T_n) \\\\
-		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\}
+		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\} \\\\
+	\left| \textt{Tuple}(T_1, T_2, \dots, T_n) \right| = \prod_{i=1}^n \left| T_i \right|
 $$
 
-Larger tuples with labeled fields are "structs" or "records"
+* `(1.2, 3.1, 5) : Tuple[Float,Float,Int]`
+* Larger tuples with labeled fields can be "structs" or "records"
+
+
+## Empty tuple?
 
 $$
 \begin{align}
 	\texttt{Tuple}() &= ??? \\\\
 	\left| \texttt{Tuple}() \right| &= \prod_{i=1}^0 \left|T_i\right| = 1 \\\\
-	\texttt{Tuple}() &= \texttt{Unit} = \\{()\\}
+	\texttt{Tuple}() &\cong \texttt{Unit} = \\{()\\}
 \end{align}
 $$
 
@@ -289,7 +294,7 @@ $$
 $$
 \begin{align}
 	\sum_{i=1}^n T_i &= T_1 + \cdots + T_n \\\\
-	\sum_{i=1}^0 T_i &= \texttt{Void}
+	\sum_{i=1}^0 T_i &\cong \texttt{Void}
 \end{align}
 $$
 
@@ -299,10 +304,10 @@ $$
 ### Quiz
 $$
 \begin{align}
-	T + \texttt{Void} &= ??? \\\\
-	T \times \texttt{Unit} &= ??? \\\\
-	T \times \texttt{Void} &= ??? \\\\
-	T + T &= ???
+	T + \texttt{Void} &\cong ??? \\\\
+	T \times \texttt{Unit} &\cong ??? \\\\
+	T \times \texttt{Void} &\cong ??? \\\\
+	T + T &\cong ???
 \end{align}
 $$
 
@@ -310,10 +315,10 @@ $$
 ### Answers
 $$
 \begin{align}
-	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
-	T \times \texttt{Unit} &= T & \left|T\right| \times 1 \\\\
-	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
-	T + T &= \texttt{Bool} \times T & 2 \left|T\right|
+	T + \texttt{Void} &\cong T & \left|T\right| + 0 \\\\
+	T \times \texttt{Unit} &\cong T & \left|T\right| \times 1 \\\\
+	T \times \texttt{Void} &\cong \texttt{Void} & \left|T\right| \times 0 \\\\
+	T + T &\cong \texttt{Bool} \times T & 2 \left|T\right|
 \end{align}
 $$
 
@@ -324,7 +329,7 @@ $$
    $$
 	\texttt{Array}\_n(T) = \prod_{i=1}^n T = T^n \qquad \left|T^n\right| = \left|T\right|^n \\\\
 	(x_1, x_2, \ldots, x_n) \in T^n \qquad x_i \in T \\\\
-	T^0 = \texttt{Unit}
+	T^0 \cong \texttt{Unit}
    $$
 * (Reminder: focus on possible values, not representation)
 
@@ -494,10 +499,17 @@ f x y = haskell
 
 ## Classes as types
 
-* In some languages you can use classes to represent your own types
-* If you want additional constraints on the values beyond their storage types, you can verify these in the constructor (\\( 0 \le x \le 1 \\))
+* In OO languages you can use classes to help constrain types
+   * Additional constraints on the values beyond can be verified in the constructor
    * Dynamic checking: optional, only in "debug" mode
-* Nice if storage representation for values is opaque (users of the class don't interact directly with the value), but this can be impractical for performance in some cases
+
+```python
+class Order(int):
+    def __init__(self, val: int):
+        assert val in (1,2,3)
+
+def compute(order: Order) -> float:
+```
 
 
 ## Conclusions, tips
