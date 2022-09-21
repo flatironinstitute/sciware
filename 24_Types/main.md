@@ -533,12 +533,12 @@ type coersion:
 
 # Performance
 
-* Remember that processors come with (short) vector optimizations: AVX2, AVX512, ...
-* A single CPU operation is multiple math operations depending on the type!
-* Performance differences for optimized software:
-   * GROMACS: hybrid single+double (the default) gives +40% more performance than double precision
-   * LAMMPS: on single node, single precision gives +28% more performance than double precision
-* GPUs specifications show how important it is for AI (when using cuDNN for instance)
+* Processors come with (short) vector units: AVX2, AVX512, ...
+* A single CPU operation is multiple math operations! 
+* Performance: single (fp32) vs double (fp64) precision
+   * GROMACS: hybrid (fp32+fp64) vs fp64: +40%
+   * LAMMPS: on single node, fp32 vs fp64:  +28%
+* GPUs specs show how type selection is important
 <img src="assets/a100.png" width="500" style="border:0;box-shadow:none">
 
 NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
