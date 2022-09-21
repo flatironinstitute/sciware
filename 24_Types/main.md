@@ -304,9 +304,9 @@ $$
 ### Quiz
 $$
 \begin{align}
-	T + \texttt{Void} &\cong ??? \\\\
-	T \times \texttt{Unit} &\cong ??? \\\\
-	T \times \texttt{Void} &\cong ??? \\\\
+	T + \texttt{Void} &= ??? \\\\
+	T \times \texttt{Unit} &= ??? \\\\
+	T \times \texttt{Void} &= ??? \\\\
 	T + T &\cong ???
 \end{align}
 $$
@@ -315,9 +315,9 @@ $$
 ### Answers
 $$
 \begin{align}
-	T + \texttt{Void} &\cong T & \left|T\right| + 0 \\\\
+	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
 	T \times \texttt{Unit} &\cong T & \left|T\right| \times 1 \\\\
-	T \times \texttt{Void} &\cong \texttt{Void} & \left|T\right| \times 0 \\\\
+	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
 	T + T &\cong \texttt{Bool} \times T & 2 \left|T\right|
 \end{align}
 $$
@@ -404,11 +404,18 @@ $$
 
 ## Functions
 
+Math has the concept of functions mapping
 $$
 	f(x) = x^2 \\\\
-	f : \mathbb{R} \to \mathbb{R} \\\\
+	f : \mathbb{R} \to \mathbb{R}
+$$
+Same idea here:
+$$
 	f \in T \to S \\\\
-	x \in T \implies f(x) \in S \\\\
+	x \in T \implies f(x) \in S
+$$
+Example:
+$$
 	g(x) = \text{if } x \text{ then } 0 \text{ else } 1 \\\\
 	g \in \texttt{Bool} \to \texttt{Int}
 $$
@@ -416,14 +423,14 @@ $$
 
 ## Function syntax
 
-| \\( T \to S \\)      | language          |
-|--------------------|--------------------|
-| `Callable[[T], S]`   | Python |
-| `(x: T) => S`, `Function`  | TypeScript |
-| `T -> S`  | Haskell |
-| `S (*)(T)` | C (function pointer) |
-| `function<S(T)>`, `Callable` | C++ |
-| `Function` | Julia |
+| \\( T \to S \\)  | \\( \texttt{Any} \to \texttt{Any} \\)  | language          |
+|------------------|-----------|--------------------|
+| `Callable[[T], S]` |    | Python |
+| `(x: T) => S` | `Function`  | TypeScript |
+| `T -> S`  |          | Haskell |
+| `S (*)(T)` |   | C (function pointer) |
+| `function<S(T)>` | `Callable` | C++ |
+|                | `Function` | Julia |
 
 
 ## Exercise
@@ -445,44 +452,44 @@ $$
 | \\( T, S \to R \\)      | language          |
 |--------------------|--------------------|
 | `Callable[[T, S], R]`   | Python |
-| `(x: T, y: S) => R`, `Function`  | TypeScript |
+| `(x: T, y: S) => R` | TypeScript |
 | `T -> S -> R`  | Haskell |
 | `R (*)(T, S)` | C (function pointer) |
-| `function<R(T, S)>`, `Callable` | C++ |
+| `function<R(T, S)>` | C++ |
 
 
 ## Defining functions
 
 ```python
 def f(x: T, y: S) -> R:
-	z: R = python
+	z: R = # ...python...
 	return z
 ```
 
 ```typescript
 function f(x: T, y: S) => R {
-	let z: R = typescript;
+	let z: R = /* ...typescript... */;
 	return z;
 }
 ```
 
 ```julia
 function f(x::T, y::S)::R
-	z::R = julia
+	z::R = # ...julia...
 	z
 end
 ```
 
 ```c
 R f(T x, S y) {
-	R z = c/c++;
+	R z = /* ...c/c++... */;
 	return z;
 }
 ```
 
 ```haskell
 f :: T -> S -> R
-f x y = haskell
+f x y = {- ...haskell... -}
 ```
 
 
