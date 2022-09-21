@@ -64,7 +64,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Motivation: dimensional analysis
 
-* In calculations, dimensional analysis can often be used to find mistakes: \\(\texttt{mass}/\textt{time}^2 \ne \texttt{force} \\)
+* In calculations, dimensional analysis can often be used to find mistakes: \\(\frac{\texttt{mass}}{\texttt{time}^2} \ne \texttt{force} \\)
 * Distinguishing different types of data (e.g., input, output) can help automatically detect coding mistakes
 
 ```python
