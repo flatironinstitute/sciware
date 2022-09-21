@@ -270,10 +270,15 @@ $$
 
 $$
 	\prod_{i=1}^n T_i = T_1 \times T_2 \times \cdots \times T_n = \texttt{Tuple}(T_1, T_2, \dots, T_n) \\\\
-		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\}
+		= \\{ (x_1,\dots,x_n) : x_1 \in T_1, \dots, x_n \in T_n \\} \\\\
+	\left| \textt{Tuple}(T_1, T_2, \dots, T_n) \right| = \prod_{i=1}^n \left| T_i \right|
 $$
 
-Larger tuples with labeled fields are "structs" or "records"
+* `(1.2, 3.1, 5) : Tuple[Float,Float,Int]`
+* Larger tuples with labeled fields can be "structs" or "records"
+
+
+## Empty tuple?
 
 $$
 \begin{align}
