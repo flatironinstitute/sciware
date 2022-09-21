@@ -521,13 +521,13 @@ type coersion:
 
 # Performance
 
-Geraud
-
-representation, performance:
-  double vs float
-  less precision, more iterations
-  general: reducing domain increases performance
-  example 
+* Remember that processors come with (short) vector optimizations: AVX2, AVX512, ...
+* A single CPU operation is multiple math operations depending on the type!
+* Performance differences for optimized software:
+   * GROMACS: hybrid single+double (the default) gives +40% more performance than double precision
+   * LAMMPS: on single node, single precision gives +28% more performance than double precision
+* GPUs specifications show how important it is for AI (when using cuDNN for instance)
+<img src="assets/a100.png" width="500" style="border:0;box-shadow:none">
 
 NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
 
