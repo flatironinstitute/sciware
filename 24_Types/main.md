@@ -543,15 +543,127 @@ def compute(order: Order) -> float:
 
 
 
-# Bits, representations
+# Bits & Representation, or When Bits can Byte You
 
-Lehman
+When do you need to worry about types of numeric data in your code?
 
-representations
+Lehman Garrison (SCC, formerly CCA)
 
-type coersion:
-  check types through expression
+## Numeric Data Types
 
+* In scientific computing, we often deal with numeric data: floats and ints
+* Don't always need to think about how these are represented by the computer
+  * Often, the computer just does the Right Thing
+* But sometimes it doesn't...
+
+## When Do You Need To Worry?
+
+* Broadly two categories of when you might worry about types of numeric data
+  * Performance
+  * Correctness
+
+## Types and Performance
+
+* Consider an array of 32-bit floats vs 64-bit floats:
+
+```python
+a32 = np.ones(10**9, dtype=np.float32)
+a64 = np.ones(10**9, dtype=np.float64)
+```
+
+* Each 32-bit float takes up 4 bytes, and 64-bit 8 bytes
+* Total sizes are 4 GB and 8 GB:
+
+```python
+>>> print(a32.nbytes/1e9)
+4.0
+>>> print(a64.nbytes/1e9)
+8.0
+```
+
+
+## Types and Performance
+
+* How long to multiply each array by a scalar?
+
+```python
+>>> %timeit 2*a32
+1.1 s ± 2.09 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+>>> %timeit 2*a64
+2.2 s ± 2.84 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+```
+
+* For simple arithmetic operations, memory bandwidth usually limits the performance
+  * As opposed to, e.g., CPU speed
+* Using a narrower dtype can be an easy 2x performance gain
+
+## Types and Performance
+
+* What about a more complex operation?
+
+```python
+>>> %timeit np.sin(a32)
+1.5 s ± 4.77 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+>>> %timeit np.sin(a64)
+9.12 s ± 19.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+```
+
+* Using 32-bit was 6x faster in this case
+* Factor 2x is often a good first estimate of potential speedup by switching types
+  * Speedup might be more, might be less
+  * Generally the relationship between type and performance is complex (see Geraud's slide on GROMACS and LAMMPS)
+
+## Types and Correctness
+
+* Why not use 32-bit floats all the time?
+  * When you need the accuracy of 64-bit
+
+```python
+>>> np.float32(10**8 + 1) - np.float32(10**8)
+0.0  # where did the 1 go?
+```
+
+```python
+>>> np.sin(np.float32(np.pi))
+-8.742278e-08  # not bad
+>>> np.sin(np.float32(np.pi * 100000))
+-0.015358375  # way off!
+>>> np.sin(np.float64(np.pi * 100000))
+-3.3960653996302193e-11  # much better (*)
+```
+
+* \* 64-bit works better here, but it's still good practice to ensure the arguments to trig functions are small
+
+## Type Coercion
+
+* Use `arr.dtype` to check the types of inputs and outputs in Python
+
+```python
+>>> print(a32.dtype)
+float32
+>>> print((np.float64(2.)*a32).dtype)
+float32
+>>> print((a32*a64).dtype)
+float64
+```
+
+* Use `arr.astype(dtype)` to forcibly cast an array to the type you want
+* See [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
+
+## Summary of Bits & Representation
+
+* Using smaller types for numeric data can speed up your code
+  * Most conversion is to use `float32` instead of `float64`
+* But smaller types can result in less accurate calculations
+* Important to have tests in place before modifying your code's types!
+* Formal [numerical stability](https://en.wikipedia.org/wiki/Numerical_stability) analysis may help you understand how your application will behave too (see Future SciWare)
+
+## References & Further Reading
+
+* "[Roofline model](https://en.wikipedia.org/wiki/Roofline_model)" for understanding performance
+* [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html) for looking up the CPU cost of instructions
+* [Numerical stability Wikipedia](https://en.wikipedia.org/wiki/Numerical_stability)
+* [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
 
 
 # Performance
