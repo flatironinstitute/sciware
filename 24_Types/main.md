@@ -549,6 +549,7 @@ When do you need to worry about types of numeric data in your code?
 
 Lehman Garrison (SCC, formerly CCA)
 
+
 ## Numeric Data Types
 
 * In scientific computing, we often deal with numeric data: floats and ints
@@ -556,11 +557,13 @@ Lehman Garrison (SCC, formerly CCA)
   * Often, the computer just does the Right Thing
 * But sometimes it doesn't...
 
+
 ## When Do You Need To Worry?
 
 * Broadly two categories of when you might worry about types of numeric data
   * Performance
   * Correctness
+
 
 ## Types and Performance
 
@@ -597,6 +600,7 @@ a64 = np.ones(10**9, dtype=np.float64)
   * As opposed to, e.g., CPU speed
 * Using a narrower dtype can be an easy 2x performance gain
 
+
 ## Types and Performance
 
 * What about a more complex operation?
@@ -612,6 +616,7 @@ a64 = np.ones(10**9, dtype=np.float64)
 * Factor 2x is often a good first estimate of potential speedup by switching types
   * Speedup might be more, might be less
   * Generally the relationship between type and performance is complex (see Geraud's slide on GROMACS and LAMMPS)
+
 
 ## Types and Correctness
 
@@ -634,6 +639,7 @@ a64 = np.ones(10**9, dtype=np.float64)
 
 * \* 64-bit works better here, but it's still good practice to ensure the arguments to trig functions are small
 
+
 ## Type Coercion
 
 * Use `arr.dtype` to check the types of inputs and outputs in Python
@@ -650,6 +656,7 @@ float64
 * Use `arr.astype(dtype)` to forcibly cast an array to the type you want
 * See [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
 
+
 ## Summary of Bits & Representation
 
 * Using smaller types for numeric data can speed up your code
@@ -658,12 +665,14 @@ float64
 * Important to have tests in place before modifying your code's types!
 * Formal [numerical stability](https://en.wikipedia.org/wiki/Numerical_stability) analysis may help you understand how your application will behave too (see Future SciWare)
 
+
 ## References & Further Reading
 
 * "[Roofline model](https://en.wikipedia.org/wiki/Roofline_model)" for understanding performance
 * [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html) for looking up the CPU cost of instructions
 * [Numerical stability Wikipedia](https://en.wikipedia.org/wiki/Numerical_stability)
 * [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
+
 
 
 # Performance
