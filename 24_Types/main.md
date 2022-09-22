@@ -401,10 +401,7 @@ If one type is a subset of another, we call it a subtype:
 
 $$
 	S \subseteq T \qquad \forall x, x \in S \Rightarrow x \in T \\\\
-	S \times U \subseteq T \times U \\\\
-	S + U \subseteq T + U \\\\
-	\texttt{Array}(S) \subseteq \texttt{Array}(T) \\\\
-	T \subseteq T + U \\\\
+	T \subseteq T + S \\\\
 	\texttt{Int8} \subset \texttt{Int16} \subset \texttt{Int32} \\\\
 $$
 
