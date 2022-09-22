@@ -56,10 +56,10 @@ Activities where participants all actively work to foster an environment which e
 ### Dylan Simon (SCC)
 
 
-# Applying Types
+# Type concepts
 
 * *Not* type theory (a branch of mathematics involving propositional logic and category theory)
-* algebraic data types
+* algebraic data types, set operations
 
 
 ### Motivation: dimensional analysis
@@ -359,6 +359,25 @@ $$
 | `list<T>`, `vector<T>` | C++ |
 | `T x[n]` | C |
 | `x(n)`, `DIMENSION` | Fortran |
+
+
+### Quiz
+$$
+\begin{align}
+	\texttt{Array}(\texttt{Unit}) &= ??? \\\\
+	\texttt{Array}(\texttt{Void}) &= ???
+\end{align}
+$$
+
+
+### Answers
+$$
+\begin{align}
+	\texttt{Array}(\texttt{Unit}) &= \\{(), \left(()\right), \left((), ()\right), \left((), (), ()\right), \dots \\} \\\\
+		&\cong \mathbb{N} \\\\
+	\texttt{Array}(\texttt{Void}) &= \\{()\\} \cong \textt{Unit}
+\end{align}
+$$
 
 
 ## "Real" (Rational) Numbers
