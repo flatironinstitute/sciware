@@ -375,7 +375,7 @@ $$
 \begin{align}
 	\texttt{Array}(\texttt{Unit}) &= \\{(), \left(()\right), \left((), ()\right), \left((), (), ()\right), \dots \\} \\\\
 		&\cong \mathbb{N} \\\\
-	\texttt{Array}(\texttt{Void}) &= \\{()\\} \cong \textt{Unit}
+	\texttt{Array}(\texttt{Void}) &= \\{()\\} \cong \texttt{Unit}
 \end{align}
 $$
 
