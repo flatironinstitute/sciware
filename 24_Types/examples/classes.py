@@ -12,12 +12,11 @@ class MyClass():
         return 6
 
 
-class MyOtherClass(MyClass): pass
+class Parent(): pass
+class Child(Parent): pass
 
 def example() -> None:
-    b: MyClass = MyClass()
-    c: MyOtherClass = MyOtherClass()
-    d: MyOtherClass = b
-    b = c # No warning: a MyOtherClass is a MyClass, so this is fine
-    e: MyOtherClass = b  # No warning: mypy knows b is now a MyOtherClass!
-    b = 5 # This is still an error
+    a: Parent = Parent()
+    b: Parent = Child()  # no problem: Child counts as Parent
+    c: Child = Parent()  # error: Parent does not count as Child
+    d: Child = b         # Works, because linter knows b is *actually* a child here
