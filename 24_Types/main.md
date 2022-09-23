@@ -204,7 +204,9 @@ NOTE: Encourage those who want to follow along in part 2 to install mypy over th
 # Type concepts
 
 * *Not* type theory (a branch of mathematics involving propositional logic and category theory)
-* algebraic data types, set operations
+* Abstract tools to approach coding a bit differently
+* Fun with math
+* "algebraic data types", set operations
 
 
 ### Motivation: dimensional analysis
@@ -253,8 +255,8 @@ $$ x \in T $$
 
 $$
 \begin{align}
-        \texttt{Int} &\approx \mathbb{Z} \\\\
-        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} \\\\
+        \texttt{Int} &\approx \mathbb{Z} \qquad \text{(integers)} \\\\
+        \texttt{Float} &\approx \mathbb{Q} \approx \mathbb{R} \qquad \text{(rationals, reals)} \\\\
 	\texttt{Float32} &\approx \pm 10^{\pm 38} \text{ with 7 digits} \\\\
 	\left|\texttt{Float32}\right| &\le 2^{32} \\\\
 	\left|\texttt{Float64}\right| &\le 2^{64}
@@ -281,9 +283,6 @@ $$
 $$
 
 * Many languages represent "finite" data types with labeled values as *enumerations*
-* All types with the same cardinality are isomorphic (can trivially substitute one for another by replacing values)
-
-TODO: remove isomorphism
 
 
 ## Special types
@@ -299,7 +298,7 @@ $$
 
 * `Unit` is the singleton type with only one possible value (`None` in python, `Nothing` in Julia)
 * `Void` is the empty type with no possible values (impossible, a value that can never exist, the return value of a function that never returns)
-   * `void` in C?
+   * `Never`, `void` in C?
 
 
 ## Why is this useful?
@@ -343,7 +342,7 @@ $$
 $$
 
 * Simple unions are not particularly useful, as they can usually be represented by a different type
-   * Some exceptions: C `union`
+   * C `union`
 * Instead...
 
 
@@ -373,7 +372,7 @@ $$
 | \\( T + S \\)      | language          |
 |--------------------|--------------------|
 | `Union[T,S]`   | Python |
-| `Union<T,S>` (`T\|S`)    | TypeScript |
+| `T\|S` (`Union<T,S>`)    | TypeScript |
 | `Union{T,S}`  | Julia |
 | `variant<T, S>`    | C++ |
 | `Either T S`  | Haskell |
@@ -449,27 +448,71 @@ $$
 
 
 ### Quiz
+
 $$
-\begin{align}
-	T + \texttt{Void} &= ??? \\\\
-	T \times \texttt{Unit} &= ??? \\\\
-	T \times \texttt{Void} &= ??? \\\\
-	T + T &\cong ???
-\end{align}
+	T + \texttt{Void} = ???
 $$
 
-# TODO: multiple choice, one per slide, raise hand
+<ol style="list-style-type: lower-alpha;">
+<li>\( T \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">none of the above</li>
+</ol>
+
+<div class="fragment fade-in" data-fragment-index="1">$$ \left|T\right| + 0 $$</div>
 
 
-### Answers
+### Quiz
+
 $$
-\begin{align}
-	T + \texttt{Void} &= T & \left|T\right| + 0 \\\\
-	T \times \texttt{Unit} &\cong T & \left|T\right| \times 1 \\\\
-	T \times \texttt{Void} &= \texttt{Void} & \left|T\right| \times 0 \\\\
-	T + T &\cong \texttt{Bool} \times T & 2 \left|T\right|
-\end{align}
+	T \times \texttt{Unit} = ???
 $$
+
+<ol style="list-style-type: lower-alpha;">
+<li>\( T \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">none of the above</li>
+</ol>
+
+<div class="fragment fade-in" data-fragment-index="1">$$ \left|T\right| \times 1 $$</div>
+
+
+### Quiz
+
+$$
+	T \times \texttt{Void} = ???
+$$
+
+<ol style="list-style-type: lower-alpha;">
+<li class="fragment fade-out" data-fragment-index="1">\( T \)</li>
+<li>\( \texttt{Void} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">none of the above</li>
+</ol>
+
+<div class="fragment fade-in" data-fragment-index="1">$$ \left|T\right| \times 0 $$</div>
+
+
+### Quiz
+
+$$
+	T + T = ???
+$$
+
+<ol style="list-style-type: lower-alpha;">
+<li class="fragment fade-out" data-fragment-index="2">\( T \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
+<li>none of the above</li>
+</ol>
+
+<div class="fragment fade-in" data-fragment-index="2">
+$$ 2 \left|T\right| \\\\
+  \texttt{Bool} \times T
+$$
+</div>
 
 
 ## Arrays, Lists
@@ -506,27 +549,48 @@ $$
 | `Array<T>`, `T[]`  | TypeScript |
 | `[T]`  | Haskell |
 | `list<T>`, `vector<T>` | C++ |
-| `T x[n]` | C |
-| `x(n)`, `DIMENSION` | Fortran |
+| `T v[n]` | C |
+| `v(n)`, `DIMENSION` | Fortran |
 
 
 ### Quiz
+
 $$
-\begin{align}
-	\texttt{Array}(\texttt{Unit}) &= ??? \\\\
-	\texttt{Array}(\texttt{Void}) &= ???
-\end{align}
+	\texttt{Array}(\texttt{Void}) = ???
 $$
 
+<ol style="list-style-type: lower-alpha;">
+<li class="fragment fade-out" data-fragment-index="1">\( \mathbb{N} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
+<li>\( \texttt{Unit} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">none of the above</li>
+</ol>
 
-### Answers
+<div class="fragment fade-in" data-fragment-index="1">
 $$
-\begin{align}
-	\texttt{Array}(\texttt{Unit}) &= \\{(), \left(()\right), \left((), ()\right), \left((), (), ()\right), \dots \\} \\\\
-		&\cong \mathbb{N} \\\\
-	\texttt{Array}(\texttt{Void}) &= \\{()\\} \cong \texttt{Unit}
-\end{align}
+	\{()\}
 $$
+</div>
+
+
+### Quiz
+
+$$
+	\texttt{Array}(\texttt{Unit}) = ???
+$$
+
+<ol style="list-style-type: lower-alpha;">
+<li>\( \mathbb{N} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
+<li class="fragment fade-out" data-fragment-index="1">none of the above</li>
+</ol>
+
+<div class="fragment fade-in" data-fragment-index="1">
+$$
+	\{(), \left(()\right), \left((), ()\right), \left((), (), ()\right), \dots \}
+$$
+</div>
 
 
 ## "Real" (Rational) Numbers
@@ -542,21 +606,6 @@ $$
 $$
 
 Exercise: Strings?
-
-
-## Subtypes
-
-If one type is a subset of another, we call it a subtype:
-
-$$
-	S \subseteq T \qquad \forall x, x \in S \Rightarrow x \in T \\\\
-	T \subseteq T + S \\\\
-	\texttt{Int8} \subset \texttt{Int16} \subset \texttt{Int32} \\\\
-$$
-
-* Similar to inheritance: if \\( C \\) inherits from \\( B \\), then \\( C \subset B \\)
-
-TODO: remove subtypes
 
 
 ## "Any" types
@@ -583,7 +632,7 @@ $$
 $$
 Example:
 $$
-	g(x) = \text{if } x \text{ then } 0 \text{ else } 1 \\\\
+	g(x) = \text{if } x \text{ then } 1 \text{ else } 2 \\\\
 	g \in \texttt{Bool} \to \texttt{Int}
 $$
 
@@ -598,17 +647,6 @@ $$
 | `S (*)(T)` |   | C (function pointer) |
 | `function<S(T)>` | `Callable` | C++ |
 |                | `Function` | Julia |
-
-
-## Exercise
-
-* How would you represent the position and mass of a particle in the 3D unit box?
-* What about an arbitrary number of particles?
-* What's the type of a function that calculates the center of mass for these particles?
-
-TODO: example
-Name types!
-defining types
 
 
 ## Multiple arguments
@@ -657,6 +695,43 @@ f x y = {- ...haskell... -}
 ```
 
 
+## Exercise
+
+* How would you represent the position and mass of a particle in the 3D unit box?
+* What about an arbitrary number of particles?
+* What's the type of a function that calculates the center of mass for these particles?
+
+
+### Particle types
+
+$$
+\begin{align}
+	\texttt{Float01} &= \texttt{Float} \cap [0,1] \\\\
+	\texttt{Position} &= \texttt{Float01}^3 = \texttt{Tuple}(\texttt{Float01},\texttt{Float01},\texttt{Float01}) \\\\
+	\texttt{Mass} &= \texttt{Float} \cap (0,\infty) \\\\
+	\texttt{Particle} &= \texttt{Position} \times \texttt{Mass} \\\\
+	\texttt{Particles} &= \texttt{Array}(\texttt{Particle}) \\\\
+	\texttt{COMFun} &= \texttt{Particles} \to \texttt{Position}
+\end{align}
+$$
+
+
+### Particle types (in python)
+
+* Name your types (type "aliases"), even simple ones
+* Use them to construct larger types
+
+```python
+Float01 = float # float bounded [0,1]
+Position = Tuple[Float01,Float01,Float01] # x,y,z
+Mass = float # positive
+Particle = Tuple[Position,Mass]
+Particles = List[Particle]
+
+def centerOfMass(particles: Particles) -> Position:
+```
+
+
 ## Checking types
 
 * Much of the advantage of types comes from checking them to make sure they hold
@@ -688,7 +763,7 @@ def compute(order: Order) -> float:
 * Try to think about your problem starting with data: how do you represent your input, state, etc.
 * Write down and name your types
 * Build functions that transform between representations to process data
-* Consider avoiding error checking at the beginning of functions, shift to type
+* Consider replacing error checking at the beginning of functions with constrained types
 
 
 
