@@ -23,7 +23,7 @@ def ex_2() -> None:
 
 
 def get_gradebook_for_semester() -> Gradebook:
-    pass
+    return {}
 
 def get_gradebook_for_semester2() -> Gradebook2:
-    pass
+    return {}

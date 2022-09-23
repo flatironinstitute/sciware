@@ -22,7 +22,7 @@ def might_be_int(x: Union[int, float], sent_you_a_float: bool) -> None:
         # mouseover shows analyzer now knows a is an int
         x
     else:
-        # *but* it cannot conclude anything from a False result
+        # *but* the typeguard returning False does not rule out the `int` type
         x
 
 # This version doesn't pretend to know something it doesn't.

@@ -798,8 +798,7 @@ https://bit.ly/sciware-typing-2022
 ```Python
 def turn_a_list_into_a_square_matrix(values):
     root = math.sqrt(len(values))
-    int_root = int(root)
-    if root < 1 or root != int_root:
+    if root < 1 or root % 1 != 0:
         return None
     array = np.asarray(values)
     array = array.reshape((root, root))
@@ -808,7 +807,7 @@ def turn_a_list_into_a_square_matrix(values):
 if __name__ == '__main__':
     input_int = 54
     untyped = turn_a_list_into_a_square_matrix(input_int)
-    ## oops! 54 isn't a list
+    ## oops! 54 isn't a list--so len(54) causes an error
 ```
 
 
@@ -833,6 +832,18 @@ if __name__ == '__main__':
 - Note these docs privilege exhaustiveness over readability...
 
 
+## Outline
+
+- Basics
+  - Installation
+  - Syntax
+  - Allowed types
+- Dealing with parameterized types
+- Using the Type System
+- Type Inference
+- Maybe some live coding?
+
+
 ## Vocab
 
 - **Static analysis** (SA)--tools that tell you things about your code just from
@@ -846,6 +857,7 @@ its structure, without running it.
 
 ## Basics
 
+
 ### Installing mypy
 
 ```bash
@@ -854,6 +866,17 @@ $ mypy simple_example.py
 ```
 
 <img src="assets/running-mypy.png" width="1200" style="border:0;box-shadow:none">
+
+
+### IDEs -- Turning On Typing
+
+- VSCode:
+  - Install Python and/or Pylance extensions
+  - File -> Preferences -> Settings (ctrl-,)
+    - Extensions -> Pylance -> Type Checking Mode (for pylance extension)
+    - Extensions -> Python -> Linting: Mypy Enabled, Mypy Path (for python extension)
+- Pycharm
+  - Install mypy executable, then mypy plugin from JetBrains plugin site
 
 
 ## Annotating Types
@@ -871,7 +894,7 @@ $ mypy simple_example.py
   - Typing for a function is called a *type signature*
 
 
-### What type names can you use?
+### What types are available?
 
 - Primitive types: Basic data
   - `int`
@@ -886,7 +909,7 @@ $ mypy simple_example.py
   - `Any` -- Matches anything; *turns off type checking*
   - `object` -- Matches anything; *doesn't* turn off checking
   - Any classes in your namespace
-    - (e.g. `np.ndarray` if you did `import numpy as np`)
+    - (e.g. `ddt.Client` if you did `import dask.distributed as ddt`)
 
 
 - Parameterized types
@@ -898,151 +921,10 @@ $ mypy simple_example.py
   - `Callable`
   - `Literal`
   - ...
-- We'll spend most of this session on these
+- We'll talk about these in detail in a minute
 
 
-- Container types need *parameters* to be useful
-  - e.g. `List[int]`, not just `List`
-  - (What's in the list?)
-- Generally need to be imported from `typing` package
-- Changes in 3.10 for built-in container types:
-  - Lowercase is ok (`list` vs `List`)
-  - You no longer need to import
-  - More complex types are imported from `collections.abc`
-- Our examples work in 3.10 or earlier versions
-
-
-## Parameterizing container types
-
-### List & Set
-
-- Parameters go in square brackets: `List[str]` or `Set[int]`
-
-```Python
-def sum(items: List[int]) -> int:
-    pass
-```
-
-- Now the linter can warn us of adding invalid values
-  - Or confirm that we're allowed to do something with one of the items
-
-
-### Tuple
-
-- A `Tuple` has a fixed number of elements in a certain order.
-  - Used whenever you pack values together, e.g. returning `(x, y)` as one unit
-
-```Python
-price_and_count: Tuple[float, int] = (1.5, 3)
-```
-
-- (An empty tuple is typed as `Tuple[()]`)
-- (A variadic tuple of one type is `Tuple[t1, ...]`)
-
-
-### Dict
-
-- Stores *values* that can be looked up by their unique *key*
-  - Must provide types for both
-
-```Python
-heights_per_person: Dict[str, float] = {}
-```
-
-- Along with variable naming, this helps you understand what is stored
-
-
-### Union
-
-- Sometimes a variable can be one of a few different types:
-
-```Python
-cash_on_hand: Union[int, float, None] = ...
-```
-
-- This allows flexibility while still providing guidance.
-  - In 3.10, can just use an `or` pipe: `cash: int | float | None`
-
-
-### You can nest them...!
-
-```python
-cash_per_person: Dict[str, Union[int, float, None]] = {...}
-```
-
-
-### This can get long...
-
-```python
-points: Dict[str, Dict[int, List[float]]] = {...}
-# for each student, for each test number, store how many points they got on each question
-```
-
-- ```points["Kushim"][1]``` is a list of how many points Kushim got on each question
-on the first Accounting exam at Uruk University
-
-
-### Type Aliases
-
-- Instead we can define *type aliases*
-
-```python
-from typing import TypeAlias
-
-Gradebook: TypeAlias = Dict[str, Dict[int, List[float]]]
-my_gradebook: Gradebook = get_gradebook_for_semester()
-grades_for_student = gradebook['Kushim']
-```
-
-- Lets you use a shorter but more meaningful name for something complex
-  - Note: explicitly adding `TypeAlias` is a 3.10 thing--previously it was inferred,
-    which led to some ambiguity.
- [typealias.py](./examples/typealias.py)
-
-
-- We could also do:
-
-```python
-from typing import TypeAlias
-
-PointsPerQuestion: TypeAlias = List[float]
-TestId: TypeAlias = int
-StudentName: TypeAlias = str
-
-Gradebook: TypeAlias = Dict[StudentName, Dict[TestId, PointsPerQuestion]]
-
-my_gradebook: Gradebook = get_gradebook_for_semester()
-kushim_points_test_one = gradebook['Kushim'][1]
-```
-
-
-### Why Use Type Aliases?
-
-- Pros:
-  - Meaningful names document *intention*
-  - Shorter: easier to read and type
-- Cons:
-  - Sometimes mouseover hints don't drill down enough
-    - (might just get `Gradebook`, not actual structure)
-  - Consider whether you'd be better off with an actual class or a [dataclass](https://docs.python.org/3/library/dataclasses.html)
-
-
-### Callable
-
-- Describes the type of a function stored in a variable.
-- Takes a list of parameter types (in order), then the return type
-
-```python
-from typing import Callable
-
-sum_then_square: Callable[[float, float], float]
-sum_then_square = lambda x, y: (x + y) ** 2
-```
-
-- Useful for higher-order programming, anonymous fns
-
-
-### Classes
+### Typing and Objects (Classes)
 
 - If a class is defined in your namespace, you can use it as a type
   - Built-in classes
@@ -1066,14 +948,14 @@ def write_to_file(msg: str, handle: TextIOWrapper) -> None:
 - Child classes count as members of the parent class:
 
 ```python
-class MyClass(): pass
-class MyOtherClass(MyClass): pass
+class Parent(): pass
+class Child(Parent): pass
 
-b: MyClass = MyClass()
-c: MyOtherClass = MyOtherClass()
-d: MyOtherClass = b # error; MyClass is not a MyOtherClass
-b = 5 # error (naturally; 5 is not a MyClass)
-b = d # no error -- inheritance means MyOtherClass is a MyClass
+def example() -> None:
+    a: Parent = Parent()
+    b: Parent = Child()  # no problem: Child counts as Parent
+    c: Child = Parent()  # error: Parent does not count as Child
+    d: Child = b         # Works! We know b *must* be a Child here
 ```
 
 [classes.py](./examples/classes.py)
@@ -1103,37 +985,167 @@ class MyClass():
   - Either from non-`self` parameters, or by explicitly returning `None`
 
 
+## Parameterizing container types
+
+
+- Container types need *parameters* to be useful
+  - e.g. `List[int]`, not just `List`
+  - (What's in the list?)
+- pre-3.10:
+  - Capital letters (`List`, `Set` etc)
+  - imported from `typing` package
+- 3.10+:
+  - No need to import `list`, `set`, `dict`, `tuple` (built-ins)
+  - These can now be lower-case
+  - More complex types now come from `collections.abc`
+- Examples below use the older syntax
+
+
+### List & Set
+
+- Parameters go in square brackets: `List[str]` or `Set[int]`
+
+```Python
+from typing import List
+def sum(items: List[int]) -> int:
+    pass
+```
+
+Or in 3.10+:
+```Python
+def sum(items: list[int]) -> int:
+    pass
+```
+
+
+### Tuple
+
+- A `Tuple` has a fixed* number of elements in a certain order.
+  - Used whenever you pack values together, e.g. returning `(x, y)` as one unit
+
+```Python
+price_and_count: Tuple[float, int] = (1.5, 3)
+```
+
+- (An empty tuple is typed as `Tuple[()]`)
+
+
+### Dict
+
+- Stores unique *keys* that point to *values*
+  - Must provide types for both (`Dict[KEYTYPE, VALUETYPE]`)
+
+```Python
+heights_per_person: Dict[str, float] = {}
+```
+
+- Along with variable naming, this documents the data structure
+
+
+### Union
+
+- Sometimes a variable can be one of a few different types:
+
+```Python
+cash_on_hand: Union[int, float, None] = ...
+```
+
+- This allows flexibility while still providing guidance.
+  - In 3.10, can just use an `or` pipe: `cash: int | float | None`
+
+
+### You can nest them...!
+
+```python
+cash_per_person: Dict[str, Union[int, float, None]] = {...}
+```
+
+But it gets long...
+
+```python
+points: Dict[str, Dict[int, List[float]]] = {...}
+# for each student, for each test number, store how many points they got on each question
+```
+
+- ```points["Kushim"][1]``` is a list of how many points Kushim got on each question
+on the first Accounting exam at Uruk University
+
+
+### Type Aliases
+
+- Instead we can define *type aliases*
+
+```python
+from typing import TypeAlias
+
+Gradebook: TypeAlias = Dict[str, Dict[int, List[float]]]
+my_gradebook: Gradebook = get_gradebook_for_semester()
+grades_for_student = gradebook['Kushim']
+```
+
+- Lets you use a shorter but more meaningful name for something complex
+  - Note: explicitly adding `TypeAlias` is a 3.10 thing--previously it was inferred,
+    which led to some ambiguity.
+ [typealias.py](./examples/typealias.py)
+
+
+- Or go even further:
+
+```python
+from typing import TypeAlias
+
+PointsPerQuestion: TypeAlias = List[float]
+TestId: TypeAlias = int
+StudentName: TypeAlias = str
+
+Gradebook: TypeAlias = Dict[StudentName, Dict[TestId, PointsPerQuestion]]
+
+my_gradebook: Gradebook = get_gradebook_for_semester()
+kushim_points_test_one = gradebook['Kushim'][1]
+```
+
+
+### Why Use Type Aliases?
+
+- Pros:
+  - Meaningful names document *intention*
+  - Shorter: easier to read and type
+- Cons:
+  - Sometimes mouseover hints don't drill down enough
+    - (might just get `Gradebook`, not actual structure)
+  - Might be better off with an actual class or a [dataclass](https://docs.python.org/3/library/dataclasses.html)
+
+
+### Callable
+
+- Describes the type of a function stored in a variable.
+- Takes a list of parameter types (in order), then the return type
+
+```python
+from typing import Callable
+
+sum_then_square: Callable[[float, float], float]
+sum_then_square = lambda x, y: (x + y) ** 2
+```
+[callable.py](./examples/callable.py)
+
+- Useful for higher-order programming & function composition
+
+
 ### Literals
 
 - `Literal` means a *specific* value
-  - `Literal[15]` means the literal value `15` and not any other integer
+  - `Literal[15]` means only `15`, and not any other integer
 
 ```python
-way: Union[Literal['North'], Literal['South'], Literal['East'], Literal['West']] \
-    = 'west'
+way: Union[Literal['North'], Literal['South'], Literal['East'], Literal['West']]
+way = 'west'
 ```
 [literal.py](./examples/literal.py)
 
 - Did you catch the error there?
-- It's probably better to use an [Enum](https://docs.python.org/3/library/enum.html) for this case
-- You'll mostly see this as a result of type inference
-
-
-### Final
-
-- Means you shouldn't change the variable's value
-  - Like `const` in JavaScript/TypeScript, C/C++/C#, etc.
-
-```python
-  x: Final[int] = 15
-  x = 22     # will generate a warning
-```
-[final.py](./examples/final.py)
-
-- This is *great* for supporting [functional programming](https://en.wikipedia.org/wiki/Functional_programming)
-and reducing mistakes
-  - But it **is not** enforced at runtime!
-- There are other not-strictly-type annotations available; see docs
+- You probably want an [Enum](https://docs.python.org/3/library/enum.html)
+  - `Literal` is mostly the result of type inference
 
 
 ## How you interact with types
@@ -1143,12 +1155,14 @@ and reducing mistakes
 
 - You pretty much don't!
 - Errors from your linter are not enforced at runtime
-- Python typing (per se) is entirely for static code analysis
+- Interpreter has its own separate type system & object model
+- Type hinting is entirely for static code analysis
   - You *could* use `TypeGuard`s (see bonus content)
 
 
 ### In your editor
 
+- Highlighting of type errors
 - mouseover information for variables, functions
 - auto-completion of member reference
   - (`my_ClassA_var.` pops up methods from `ClassA`)
@@ -1184,58 +1198,62 @@ and reducing mistakes
 
 ## Type Inference
 
+- Type annotations are most useful for documenting functions, key variables
 - The analyzer can often figure out a type through static analysis, without hints:
 
 ```Python
-def returns_int():
-    return 15
+def random_integer() -> int:
+    return 15   # TODO: use actual random integer
 
-a = returns_int() + 3 # Note: this will be a Literal[18], not int!
+def do_math() -> int:
+    a = random_integer() # linter knows a is an int!
+    b = random_integer()
+    c = a + b
+    return c
 ```
-
-  - But it might not infer what you want!
-  - Mark it explicitly as `-> int` and `a` will be seen as `int`.
-  - [returns_int.py](./examples/returns_int.py)
+[inference.py](./examples/returns_int.py)
 
 
 ### Narrowing
 
-- `Union` types can be interpreted more precisely if the context eliminates some possibilities
+- `Union` types can be understood more precisely when context eliminates some possibilities
 - Type checker understands a few built-in functions
   - Type is narrowed *only* within a conditional branch
-  - [narrowing.py](./examples/narrowing.py)
+  - Linter understands how `assert`, `return`, & exceptions affect this
 
 ```python
-def narrowing_example(my_var: Union[str, int]) -> str:
+def narrowing_example(my_var: Union[str, int]) -> int:
     if isinstance(my_var, str):
-        # If this branch got taken, we know my_var is a str, so mouseover shows str
-        return my_var
-    # type checker knows all strs hit the "return" statement
-    # So by process of elimination, my_var is an int
+        # In this branch, we know my_var is a str
+        return len(my_var)
+    # All strs exit the function at the "return" statement
+    # So by process of elimination, my_var must be an int
     # And mouseover will show 'int' here
-    return str(my_var)
+    return my_var + 1
 ```
+[narrowing.py](./examples/narrowing.py)
 
 
 - `isinstance()` actually works at runtime, so `mypy` knows this is safe
 - Also supported:
   - `issubclass(cls, MyClass)`
   - `if (type(a) is int)`
+  - `if (variable is None)`
   - `if (callable(fn))` (though this doesn't distinguish `Callable`s with different signatures)
-- `mypy` also understands how `assert`, `return`, and exceptions work with conditionals
+  - User-defined type guards
 
 
-- `Optional[xyz]` is short for `Union[xyz, None]` and benefits from narrowing:
+- `Optional[TYPE]` is short for `Union[TYPE, None]` and benefits from narrowing:
 
 ```python
 def narrowing_example_2(a: Optional[int]) -> None:
     print(a) # here 'a' could be int or None
     if (a is None):
         raise Exception('Exception ends this branch!')
-    a # here a must be int, and mouseover shows it
+    a # here a must be int
 ```
 
-- This is useful for handling user inputs or values that might be missing.
+- This is useful for handling user inputs
 
 
 ### Casting
@@ -1243,20 +1261,23 @@ def narrowing_example_2(a: Optional[int]) -> None:
 - For when inference fails!
 - If you know better than the analyzer, you can overrule it
 - Use sparingly: there is usually a better way
+  - Even if it's just type-hinting the receiving variable
 
 ```python
 import xarray as xr
 from typing import cast
 
 def load_xarray(filename: str) -> xr.Dataset:
-    # xarray's open_dataset returns Any, but we know it's returning a Dataset object.
+    unknown_results = xr.open_dataset(filename)
+    # xarray doesn't publish types (yet), so open_dataset is not annotated.
+    # But we know it returns a Dataset object.
     # So use cast(TYPE, VALUE) to tell the checker that VALUE is of type TYPE
-    results = cast(xr.Dataset, xr.open_dataset(filename))
+    results = cast(xr.Dataset, unknown_results)
     return results
 ```
+[casting_example.py](./examples/casting_example.py)
 
-- [casting_example.py](./examples/casting_example.py)
-- Note: in `mypy`, if a variable is *explicitly* marked `Any`, even casting it won't turn type checks back on.
+- If a variable is *explicitly* marked `Any`, even casting it won't turn type checks back on.
 
 
 ### Generics
@@ -1281,6 +1302,7 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
 ```
 
 - This now works for any type (as long as you can write logic that makes sense)
+- There are ways to add restrictions to the type parameter
 
 
 ### Numpy
@@ -1288,9 +1310,9 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
 - Runtime uses more precise types (`dtypes`)
   - Based on actual bit representation
   - Closer to types in C
-- Since 2021, `numpy` has `numpy.typing` ([official doc](https://numpy.org/devdocs/reference/typing.html))
-  - Annotating array shapes is not yet included
-  - 3rd-party extensions (`nptyping`) can allow typing array shape
+- Since 2021, `numpy` has `numpy.typing` ([official doc](https://numpy.org/doc/stable/reference/typing.html))
+  - Annotating array shapes is not yet supported
+  - 3rd-party extensions (`nptyping`) do allow typing array shape
 
 
 ## Big Example
@@ -1302,6 +1324,23 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
 ## Bonus Content
 
 - Here are some topics which are beyond today's main scope.
+
+
+### Final
+
+- Means you shouldn't change the variable's value
+  - Like `const` in JavaScript/TypeScript, C/C++/C#, etc.
+
+```python
+  x: Final[int] = 15
+  x = 22     # will generate a warning
+```
+[final.py](./examples/final.py)
+
+- This is *great* for supporting [functional programming](https://en.wikipedia.org/wiki/Functional_programming)
+and reducing mistakes
+  - But it **is not** enforced at runtime!
+- There are other not-strictly-type annotations available; see docs
 
 
 ### TypeGuards
