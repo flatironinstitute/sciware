@@ -543,7 +543,8 @@ def compute(order: Order) -> float:
 
 
 
-# Bits & Representation, or When Bits can Byte You
+# Bits & Representation
+## or When Bits can Byte You
 
 When do you need to worry about types of numeric data in your code?
 
@@ -575,6 +576,7 @@ a64 = np.ones(10**9, dtype=np.float64)
 ```
 
 * Each 32-bit float takes up 4 bytes, and 64-bit 8 bytes
+* 32-bit has $\mathcal{O}(10^{-7})$ fractional precision; 64-bit has $\mathcal{O}(10^{-16})$
 * Total sizes are 4 GB and 8 GB:
 
 ```python
@@ -613,9 +615,22 @@ a64 = np.ones(10**9, dtype=np.float64)
 ```
 
 * Using 32-bit was 6x faster in this case
-* Factor 2x is often a good first estimate of potential speedup by switching types
+* Factor 2x is often a good first estimate of potential speedup by halving the type width
   * Speedup might be more, might be less
-  * Generally the relationship between type and performance is complex (see Geraud's slide on GROMACS and LAMMPS)
+  * Generally the relationship between type and performance is complex (see next slide)
+
+
+## Performance
+
+* Processors come with (short) vector units: AVX2, AVX512, ...
+* A single CPU operation is multiple math operations! 
+* Performance: single (fp32) vs double (fp64) precision
+   * GROMACS: hybrid (fp32+fp64) vs fp64: **+40%**
+   * LAMMPS: on single node, fp32 vs fp64: **+28%**
+* GPUs specs show how type selection affects performance
+<img src="assets/a100.png" width="750" style="border:0;box-shadow:none">
+
+NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
 
 
 ## Types and Correctness
@@ -649,43 +664,32 @@ a64 = np.ones(10**9, dtype=np.float64)
 float32
 >>> print((np.float64(2.)*a32).dtype)
 float32
->>> print((a32*a64).dtype)
+>>> print((a64*a32).dtype)
 float64
 ```
 
 * Use `arr.astype(dtype)` to forcibly cast an array to the type you want
 * See [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
+* Use Python's builtin `type()` to check the result type of operations with native `float` and `int`
 
 
 ## Summary of Bits & Representation
 
 * Using smaller types for numeric data can speed up your code
-  * Most conversion is to use `float32` instead of `float64`
+  * Most common conversion is to use `float32` instead of `float64`
 * But smaller types can result in less accurate calculations
 * Important to have tests in place before modifying your code's types!
-* Formal [numerical stability](https://en.wikipedia.org/wiki/Numerical_stability) analysis may help you understand how your application will behave too (see Future SciWare)
+* Formal [numerical stability](https://en.wikipedia.org/wiki/Numerical_stability) analysis may help you understand how your application will behave too (look for a session at FWAM)
 
 
 ## References & Further Reading
 
-* "[Roofline model](https://en.wikipedia.org/wiki/Roofline_model)" for understanding performance
-* [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html) for looking up the CPU cost of instructions
-* [Numerical stability Wikipedia](https://en.wikipedia.org/wiki/Numerical_stability)
-* [Numpy doc on automatic type conversion rules](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html)
-
-
-
-# Performance
-
-* Processors come with (short) vector units: AVX2, AVX512, ...
-* A single CPU operation is multiple math operations! 
-* Performance: single (fp32) vs double (fp64) precision
-   * GROMACS: hybrid (fp32+fp64) vs fp64: **+40%**
-   * LAMMPS: on single node, fp32 vs fp64: **+28%**
-* GPUs specs show how type selection affects performance
-<img src="assets/a100.png" width="750" style="border:0;box-shadow:none">
-
-NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
+* [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754): the standard bit representation of floats
+* [Roofline model](https://en.wikipedia.org/wiki/Roofline_model) for understanding performance
+* [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html) for looking up the CPU cycle cost of instructions
+* [Numerical stability](https://en.wikipedia.org/wiki/Numerical_stability) article on Wikipedia
+* [Numpy doc](https://numpy.org/doc/stable/reference/generated/numpy.result_type.html) on automatic type conversion rules
+* [Kahan summation](https://en.wikipedia.org/wiki/Kahan_summation_algorithm) for reducing numerical error in sums of many floats
 
 
 
