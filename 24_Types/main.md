@@ -1,6 +1,6 @@
 # Sciware
 
-## Command line and Shell interaction
+## Data Types and Typing for Debugging and Writing Better Code
 
 https://sciware.flatironinstitute.org/24_Types
 
