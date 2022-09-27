@@ -625,8 +625,6 @@ $$
 
 ## Functions
 
-DYLAN -- This slide overflows on the last line
-
 Math has the concept of functions mapping
 $$
 	f(x) = x^2 \\\\
@@ -635,10 +633,7 @@ $$
 Same idea here:
 $$
 	f \in T \to S \\\\
-	x \in T \implies f(x) \in S
-$$
-Example:
-$$
+	x \in T \implies f(x) \in S \\\\
 	g(x) = \text{if } x \text{ then } 1 \text{ else } 2 \\\\
 	g \in \texttt{Bool} \to \texttt{Int}
 $$
