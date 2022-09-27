@@ -1,6 +1,6 @@
 # Sciware
 
-## Data Types and Typing for Debugging and Writing Better Code
+## Data Types and Typing for Writing Better Code
 
 https://sciware.flatironinstitute.org/24_Types
 
