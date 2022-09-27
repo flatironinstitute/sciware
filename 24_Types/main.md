@@ -131,12 +131,12 @@ a64 = np.ones(10**9, dtype=np.float64)
 ## Performance
 
 * Processors come with (short) vector units: AVX2, AVX512, ...
-* A single CPU operation is multiple math operations! 
-* Performance: single (fp32) vs double (fp64) precision
+* A single processor operation is multiple math operations! 
+* CPU Performance: single (fp32) vs double (fp64) precision
    * GROMACS: hybrid (fp32+fp64) vs fp64: **+40%**
-   * LAMMPS: on single node, fp32 vs fp64: **+28%**
 * GPUs specs show how type selection affects performance
 <img src="assets/a100.png" width="750" style="border:0;box-shadow:none">
+   * LAMMPS+GPU: on single node, fp32 vs fp64: **+28%**
 
 NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
 
