@@ -649,7 +649,7 @@ $$
 | \\( T \to S \\)  | \\( \texttt{Any} \to \texttt{Any} \\)  | language          |
 |------------------|-----------|--------------------|
 | `Callable[[T], S]` |    | Python |
-| `(x: T): S` | `Function`  | TypeScript |
+| `(x: T) => S` | `Function`  | TypeScript |
 | `T -> S`  |          | Haskell |
 | `S (*)(T)` |   | C (function pointer) |
 | `function<S(T)>` | `Callable` | C++ |
@@ -661,7 +661,7 @@ $$
 | \\( T, S \to R \\)      | language          |
 |--------------------|--------------------|
 | `Callable[[T, S], R]`   | Python |
-| `(x: T, y: S): R` | TypeScript |
+| `(x: T, y: S) => R` | TypeScript |
 | `T -> S -> R`  | Haskell |
 | `R (*)(T, S)` | C (function pointer) |
 | `function<R(T, S)>` | C++ |
