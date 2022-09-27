@@ -997,7 +997,7 @@ class MyClass():
   - Capital letters (`List`, `Set` etc)
   - imported from `typing` package
 - 3.10+:
-  - No need to import `list`, `set`, `dict`, `tuple` (built-ins)
+  - No need to import built-ins (`list`/`set`/`dict`/`tuple`)
   - These can now be lower-case
   - More complex types now come from `collections.abc`
 - Examples below use the older syntax
@@ -1035,7 +1035,8 @@ price_and_count: Tuple[float, int] = (1.5, 3)
 ### Dict
 
 - Stores unique *keys* that point to *values*
-  - Must provide types for both (`Dict[KEYTYPE, VALUETYPE]`)
+  - Must provide types for both\
+  (`Dict[KEYTYPE, VALUETYPE]`)
 
 ```Python
 heights_per_person: Dict[str, float] = {}
@@ -1053,7 +1054,8 @@ cash_on_hand: Union[int, float, None] = ...
 ```
 
 - This allows flexibility while still providing guidance.
-  - In 3.10, can just use an `or` pipe: `cash: int | float | None`
+  - In 3.10, can just use an `or` pipe:\
+  `cash: int | float | None`
 
 
 ### You can nest them...!
@@ -1085,10 +1087,11 @@ my_gradebook: Gradebook = get_gradebook_for_semester()
 grades_for_student = gradebook['Kushim']
 ```
 
+ [typealias.py](./examples/typealias.py)
+
 - Lets you use a shorter but more meaningful name for something complex
   - Note: explicitly adding `TypeAlias` is a 3.10 thing--previously it was inferred,
     which led to some ambiguity.
- [typealias.py](./examples/typealias.py)
 
 
 - Or go even further:
@@ -1121,7 +1124,7 @@ kushim_points_test_one = gradebook['Kushim'][1]
 ### Callable
 
 - Describes the type of a function stored in a variable.
-- Takes a list of parameter types (in order), then the return type
+- Takes list of parameter types, then return type
 
 ```python
 from typing import Callable
@@ -1137,7 +1140,7 @@ sum_then_square = lambda x, y: (x + y) ** 2
 ### Literals
 
 - `Literal` means a *specific* value
-  - `Literal[15]` means only `15`, and not any other integer
+  - `Literal[15]` means `15`, not any other integer
 
 ```python
 way: Union[Literal['North'], Literal['South'], Literal['East'], Literal['West']]
@@ -1175,7 +1178,7 @@ way = 'west'
 
 - Generates a report of detected type errors
 - By default:
-  - **ONLY** looks at functions that have some explicit type hinting
+  - **ONLY** looks at functions having explicit type hinting
   - *Stops tracking* variables which are annotated `Any`
 - `--strict` flag makes it more aggressive
 - Useful as a continuous integration step
@@ -1205,7 +1208,7 @@ way = 'west'
 
 ```Python
 def random_integer() -> int:
-    return 15   # TODO: use actual random integer
+    return 15   # TODO: Pick more-random number
 
 def do_math() -> int:
     a = random_integer() # linter knows a is an int!
@@ -1213,7 +1216,7 @@ def do_math() -> int:
     c = a + b
     return c
 ```
-[inference.py](./examples/returns_int.py)
+[inference.py](./examples/inference.py)
 
 
 ### Narrowing
@@ -1279,6 +1282,7 @@ def load_xarray(filename: str) -> xr.Dataset:
 ```
 [casting_example.py](./examples/casting_example.py)
 
+
 - If a variable is *explicitly* marked `Any`, even casting it won't turn type checks back on.
 
 
@@ -1314,12 +1318,13 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
   - Closer to types in C
 - Since 2021, `numpy` has `numpy.typing` ([official doc](https://numpy.org/doc/stable/reference/typing.html))
   - Annotating array shapes is not yet supported
-  - 3rd-party extensions (`nptyping`) do allow typing array shape
+  - 3rd-party extensions (`nptyping`) do allow typing array dimensions
 
 
 ## Big Example
 
 [riemann.py](./examples/riemann/riemann_base.py)
+
 [completed version](./examples/riemann/riemann-full.py)
 
 

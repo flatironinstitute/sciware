@@ -10,7 +10,9 @@ class MyClass():
     # PyLance successfully resolves this MyClass reference in quotes
     def vscode_compare(self, other: "MyClass") -> int:
         return 6
-
+        
+def test_use_of_MyClass_annotation() -> None:
+    a: MyClass = MyClass()
 
 class Parent(): pass
 class Child(Parent): pass
