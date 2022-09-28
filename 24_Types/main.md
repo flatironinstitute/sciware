@@ -138,8 +138,6 @@ a64 = np.ones(10**9, dtype=np.float64)
 <img src="assets/a100.png" width="750" style="border:0;box-shadow:none">
    * LAMMPS+GPU: on single node, fp32 vs fp64: **+28%**
 
-NOTE: Encourage those who want to follow along in part 2 to install mypy over the break?
-
 
 ## Types and Correctness
 
