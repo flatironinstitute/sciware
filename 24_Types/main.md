@@ -808,7 +808,25 @@ def turn_a_list_into_a_square_matrix(values):
 if __name__ == '__main__':
     input_int = 54
     untyped = turn_a_list_into_a_square_matrix(input_int)
+```
+
+
+### Catching subtle errors
+
+```Python
+def turn_a_list_into_a_square_matrix(values):
+    root = math.sqrt(len(values))
+    if root < 1 or root % 1 != 0:
+        return None
+    array = np.asarray(values)
+    array = array.reshape((root, root))
+    return array
+
+if __name__ == '__main__':
+    input_int = 54
+    untyped = turn_a_list_into_a_square_matrix(input_int)
     ## oops! 54 isn't a list--so len(54) causes an error
+    ## ...but did you catch the other error too?
 ```
 
 
@@ -847,11 +865,10 @@ if __name__ == '__main__':
 
 ## Vocab
 
-- **Static analysis** (SA)--tools that tell you things about your code just from
-its structure, without running it.
+- **Static analysis** (SA)--determining possible behavior of code just from
+its structure, without running it
 - **Type Checker**/**Type Analyzer**--SA tool that reasons about variable and function types (e.g. `mypy`)
 - **Linter**--SA tool that checks style, code reachability, & more
-  - I'll mix these terms today but I mean the same thing
 - **Duck typing**--"if it quacks like a duck, it's a duck"
   - If it has matching properties, it counts as a ___
 
@@ -863,7 +880,7 @@ its structure, without running it.
 
 ```bash
 $ pip install mypy
-$ mypy simple_example.py
+$ mypy list_to_square.py
 ```
 
 <img src="assets/running-mypy.png" width="1200" style="border:0;box-shadow:none">
@@ -874,8 +891,10 @@ $ mypy simple_example.py
 - VSCode:
   - Install Python and/or Pylance extensions
   - File -> Preferences -> Settings (ctrl-,)
-    - Extensions -> Pylance -> Type Checking Mode (for pylance extension)
-    - Extensions -> Python -> Linting: Mypy Enabled, Mypy Path (for python extension)
+    - Extensions -> Pylance -> Type Checking Mode\
+    (for pylance extension)
+    - Extensions -> Python -> Linting: Mypy Enabled, Mypy Path\
+    (for python extension)
 - Pycharm
   - Install mypy executable, then mypy plugin from JetBrains plugin site
 
@@ -897,12 +916,12 @@ $ mypy simple_example.py
 
 ### What types are available?
 
-- Primitive types: Basic data
+- Primitive types: Basic data\
+  (Types that actually exist in the interpreter)
   - `int`
   - `float`
   - `bool`
   - `str`
-- These types actually exist to the interpreter
 
 
 - Non-primitives
@@ -927,11 +946,11 @@ $ mypy simple_example.py
 
 ### Typing and Objects (Classes)
 
-- If a class is defined in your namespace, you can use it as a type
+- Any class defined in your namespace can be used as a type
   - Built-in classes
   - Classes from imports
   - Classes from your code
-- Child classes count as instances of the parent class
+- Child classes count as the parent class
 
 
 - Built-in classes work (but you may need to import the types explicitly):
@@ -973,6 +992,8 @@ class MyClass():
         return 5
 ```
 
+[defining_classes.py](./examples/defining_classes.py)
+
 - `mypy` thinks this is fine
 - VSCode complains about using `MyClass` in `compare`
   - To fix: put it in quotes (`other: 'MyClass'`)
@@ -981,9 +1002,9 @@ class MyClass():
 
 - `self` never needs type annotation: it's inferred
 - `__init__` is inferred to return `None`
-  - BUT `mypy` won't type-check an `__init__(self)` function unless it has *some*
-  explicit type annotations
-  - Either from non-`self` parameters, or by explicitly returning `None`
+  - BUT `mypy` skips functions without type annotations
+  - Fix: if you have no non-`self` parameters, explicitly return `None`
+  - Or use `--strict`
 
 
 ## Parameterizing container types
@@ -991,20 +1012,21 @@ class MyClass():
 
 - Container types need *parameters* to be useful
   - e.g. `List[int]`, not just `List`
-  - (What's in the list?)
+  - (What's in the list? Defaults to `Any`)
 - pre-3.10:
   - Capital letters (`List`, `Set` etc)
   - imported from `typing` package
 - 3.10+:
-  - No need to import built-ins (`list`/`set`/`dict`/`tuple`)
-  - These can now be lower-case
+  - Built-ins (`list`/`set`/`dict`/`tuple`) can be lower-case
+  - And don't need to be imported
   - More complex types now come from `collections.abc`
 - Examples below use the older syntax
 
 
 ### List & Set
 
-- Parameters go in square brackets: `List[str]` or `Set[int]`
+- Parameters go in square brackets:\
+  `List[str]` or `Set[int]`
 
 ```Python
 from typing import List
@@ -1021,14 +1043,13 @@ def sum(items: list[int]) -> int:
 
 ### Tuple
 
-- A `Tuple` has a fixed* number of elements in a certain order.
-  - Used whenever you pack values together, e.g. returning `(x, y)` as one unit
-
+- A `Tuple` has a fixed* number of ordered elements
+  - Used whenever you pack values together\
+    e.g. returning `(x, y)` as one unit\
 ```Python
 price_and_count: Tuple[float, int] = (1.5, 3)
 ```
-
-- (An empty tuple is typed as `Tuple[()]`)
+  - (An empty tuple is typed as `Tuple[()]`)
 
 
 ### Dict
