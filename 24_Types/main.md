@@ -164,7 +164,7 @@ a64 = np.ones(10**9, dtype=np.float64)
 
 ## Type Coercion
 
-* Use `arr.dtype` to check the types of inputs and outputs in Python
+* Use `arr.dtype` to check the types of Numpy arrays
 
 ```python
 >>> print(a32.dtype)
