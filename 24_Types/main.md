@@ -136,6 +136,7 @@ a64 = np.ones(10**9, dtype=np.float64)
    * GROMACS: hybrid (fp32+fp64) vs fp64: **+40%**
 * GPUs specs show how type selection affects performance
 <img src="assets/a100.png" width="750" style="border:0;box-shadow:none">
+
    * LAMMPS+GPU: on single node, fp32 vs fp64: **+28%**
 
 
