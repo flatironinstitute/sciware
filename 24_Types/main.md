@@ -84,7 +84,7 @@ a64 = np.ones(10**9, dtype=np.float64)
 ```
 
 * Each 32-bit float takes up 4 bytes, and 64-bit 8 bytes
-* 32-bit has $\mathcal{O}(10^{-7})$ fractional precision; 64-bit has $\mathcal{O}(10^{-16})$
+* 32-bit has ${\sim}10^{-7}$ fractional precision; 64-bit has ${\sim}10^{-16}$
 * Total sizes are 4 GB and 8 GB:
 
 ```python
