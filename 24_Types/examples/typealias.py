@@ -11,9 +11,9 @@ def ex_1() -> None:
 
 #### Alternatively ####
 
-PointsPerQuestion: TypeAlias = List[float]
-TestId: TypeAlias = int
 StudentName: TypeAlias = str
+TestId: TypeAlias = int
+PointsPerQuestion: TypeAlias = List[float]
 Gradebook2: TypeAlias = Dict[StudentName, Dict[TestId, PointsPerQuestion]]
 
 

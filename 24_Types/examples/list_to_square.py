@@ -33,5 +33,6 @@ if __name__ == '__main__':
     untyped = turn_a_list_into_a_square_matrix(input_int)
     untyped_bad_input = turn_a_list_into_a_square_matrix(input_str)
     typed_bad_input = turn_a_list_into_a_square_matrix_typed(input_int)
+    typed_worse_input = turn_a_list_into_a_square_matrix_typed(input_str)
     typed = turn_a_list_into_a_square_matrix_typed([1, 2, 3, 4, 5, 6, 7, 8, 9])
     print(typed)

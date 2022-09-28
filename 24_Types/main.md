@@ -891,10 +891,10 @@ $ mypy list_to_square.py
 - VSCode:
   - Install Python and/or Pylance extensions
   - File -> Preferences -> Settings (ctrl-,)
-    - Extensions -> Pylance -> Type Checking Mode\
-    (for pylance extension)
-    - Extensions -> Python -> Linting: Mypy Enabled, Mypy Path\
-    (for python extension)
+    - For pylance extension:\
+      Extensions -> Pylance -> Type Checking Mode
+    - For python extension:\
+      Extensions -> Python -> Linting: Mypy Enabled, Mypy Path
 - Pycharm
   - Install mypy executable, then mypy plugin from JetBrains plugin site
 
@@ -929,7 +929,8 @@ $ mypy list_to_square.py
   - `Any` -- Matches anything; *turns off type checking*
   - `object` -- Matches anything; *doesn't* turn off checking
   - Any classes in your namespace
-    - (e.g. `ddt.Client` if you did `import dask.distributed as ddt`)
+    - (e.g. `ddt.Client` if you did\
+      `import dask.distributed as ddt`)
 
 
 - Parameterized types
@@ -1013,6 +1014,10 @@ class MyClass():
 - Container types need *parameters* to be useful
   - e.g. `List[int]`, not just `List`
   - (What's in the list? Defaults to `Any`)
+
+
+### Recent syntax changes
+
 - pre-3.10:
   - Capital letters (`List`, `Set` etc)
   - imported from `typing` package
@@ -1045,7 +1050,7 @@ def sum(items: list[int]) -> int:
 
 - A `Tuple` has a fixed* number of ordered elements
   - Used whenever you pack values together\
-    e.g. returning `(x, y)` as one unit\
+    e.g. returning `(x, y)` as one unit
 ```Python
 price_and_count: Tuple[float, int] = (1.5, 3)
 ```
@@ -1055,27 +1060,26 @@ price_and_count: Tuple[float, int] = (1.5, 3)
 ### Dict
 
 - Stores unique *keys* that point to *values*
-  - Must provide types for both\
+- Must provide types for both\
   (`Dict[KEYTYPE, VALUETYPE]`)
-
 ```Python
 heights_per_person: Dict[str, float] = {}
 ```
-
 - Along with variable naming, this documents the data structure
 
 
 ### Union
 
 - Sometimes a variable can be one of a few different types:
-
 ```Python
 cash_on_hand: Union[int, float, None] = ...
 ```
 
 - This allows flexibility while still providing guidance.
-  - In 3.10, can just use an `or` pipe:\
-  `cash: int | float | None`
+  - In 3.10, can just use an `or` pipe:
+```Python
+cash: int | float | None
+```
 
 
 ### You can nest them...!
@@ -1119,9 +1123,9 @@ grades_for_student = gradebook['Kushim']
 ```python
 from typing import TypeAlias
 
-PointsPerQuestion: TypeAlias = List[float]
-TestId: TypeAlias = int
 StudentName: TypeAlias = str
+TestId: TypeAlias = int
+PointsPerQuestion: TypeAlias = List[float]
 
 Gradebook: TypeAlias = Dict[StudentName, Dict[TestId, PointsPerQuestion]]
 
@@ -1160,7 +1164,7 @@ sum_then_square = lambda x, y: (x + y) ** 2
 ### Literals
 
 - `Literal` means a *specific* value
-  - `Literal[15]` means `15`, not any other integer
+  - `Literal[15]` is `15`, not any other integer
 
 ```python
 way: Union[Literal['North'], Literal['South'], Literal['East'], Literal['West']]
@@ -1180,7 +1184,7 @@ way = 'west'
 
 - You pretty much don't!
 - Errors from your linter are not enforced at runtime
-- Interpreter has its own separate type system & object model
+- Interpreter has its own type & object system
 - Type hinting is entirely for static code analysis
   - You *could* use `TypeGuard`s (see bonus content)
 
@@ -1204,21 +1208,21 @@ way = 'west'
 - Useful as a continuous integration step
 
 
-- `mypy`'s behavior can be customized with command-line arguments
+- Customize `mypy` behavior with command-line arguments
   - [Full command line documentation](https://mypy.readthedocs.io/en/stable/command_line.html)
-  - Of particular interest are `--strict` and `--disallow-any-expr`
+  - In particular: `--strict` and `--disallow-any-expr`
   - `--strict` turns on a lot of checks that are skipped by default
-  - `--disallow-any-expr` reports every place you've used `Any`
+  - `--disallow-any-expr` reports every use of `Any`
 
 
 - `mypy` also prints out informative messages if you ask it to
-  - `reveal_type(x)` prints the type `x` has when the statement is encountered
+  - `reveal_type(x)` prints the type `x` has when the statement is encountered during `mypy` analysis
   - For more advice, see [the Type hints cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
 
 
-### Lists-to-Square-Matrix example
+### Brief review example
 
-[See list_to_square.py](./examples/list_to_square.py)
+[list_to_square.py](./examples/list_to_square.py)
 
 
 ## Type Inference
@@ -1303,7 +1307,8 @@ def load_xarray(filename: str) -> xr.Dataset:
 [casting_example.py](./examples/casting_example.py)
 
 
-- If a variable is *explicitly* marked `Any`, even casting it won't turn type checks back on.
+- If a variable is *explicitly* marked `Any`, it gets ignored from then on
+- Even casting it won't turn type checks back on for it
 
 
 ### Generics
@@ -1317,7 +1322,7 @@ def prepend_to_list(value: int, values: List[int]) -> List[int]:
   - Great, now do one for every other possible type of `list`...???
 
 
-- Instead, you can use a *variable type parameter* using `TypeVar`:
+- Instead, use a *variable type parameter* `TypeVar`:
 
 ```python
 from typing import TypeVar
@@ -1327,8 +1332,9 @@ def prepend_to_list(value: T, values: List[T]) -> List[T]:
     return [value] + values
 ```
 
-- This now works for any type (as long as you can write logic that makes sense)
-- There are ways to add restrictions to the type parameter
+- This now works for any type!
+- But some operations don't make sense for any arbitrary type?
+  - There are ways to add restrictions to the type parameter
 
 
 ### Numpy

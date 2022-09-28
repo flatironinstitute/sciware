@@ -16,12 +16,12 @@ def load_xarray_better(filename: str) -> xr.Dataset:
     return results
 
 
-def cast_any(v: Any) -> None:
+def cast_any(input_value: Any) -> None:
     # Since a is explicitly typed Any, it always remains Any.
     a: Any
-    a = cast(int, v)
+    a = cast(int, input_value)
     print(a)
     # On the other hand, b updates in response to the cast
     b: Union[int, float]
-    b = cast(int, v)
+    b = cast(int, input_value)
     print(b)
