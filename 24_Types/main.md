@@ -227,11 +227,11 @@ def process(x0):
 
 ## Types
 
-* If you think about types at all, you probably think storage, bits:
+* So far we've been talking about storage and performance, bits:
    * `float`, `double`, `int32`, `string`
    *  `complex`, `struct`, `class`, `list` (of what?)
-* Types are not about how many bits, but about the values these bits represent
-* Types are for thinking abstractly about your data (not the algorithm or implementation)
+* Types are really about the values these bits represent
+* Useful for thinking abstractly about your data (not the algorithm or implementation)
 
 
 So what is a type?
