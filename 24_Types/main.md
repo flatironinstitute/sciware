@@ -790,6 +790,7 @@ https://bit.ly/sciware-typing-2022
 - You want to annotate types because they:
   - make your intentions clearer
   - make your expectations more consistent
+  - help you think about code structure
   - reduce the load on your human memory
   - enable tooling that can help you even more
 
@@ -840,6 +841,13 @@ if __name__ == '__main__':
 - Reminding you what a variable should contain
 
 <img src="assets/variable-id.png" width="600" style="border:0;box-shadow:none">
+
+
+### Design & Refactor with confidence!
+
+- Forces you to think about design
+  - But gives you a framework for thinking
+- As design evolves, type checker can make sure you've caught everything
 
 
 ### Today is Python Typing 101
