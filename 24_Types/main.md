@@ -32,14 +32,14 @@ Activities where participants all actively work to foster an environment which e
 
 - Dedicated Zoom moderator to field questions.
 - Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/).
+- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
 
 
 ## Future Sessions
 
 - Planning for the next few months:
-   - Modern C++
-   - File formats, data management, hdf5
+   - Modern C++ (Oct 13?)
+   - File formats, data management, hdf5 (Nov)
 - Suggest topics or contribute to content in #sciware Slack
 
 
@@ -209,13 +209,13 @@ float64
 
 * *Not* type theory (a branch of mathematics involving propositional logic and category theory)
 * Abstract tools to approach coding a bit differently
-* Fun with math
-* "algebraic data types", set operations
+* "algebraic data types"
+* Fun with math, set operations, combinatorics
 
 
 ### Motivation: dimensional analysis
 
-* In calculations, dimensional analysis can often be used to find mistakes: \\(\frac{\texttt{mass}}{\texttt{time}^2} \ne \texttt{force} \\)
+* In calculations, units can often be used to find mistakes: \\(\frac{\texttt{mass}}{\texttt{time}^2} \ne \texttt{force} \\)
 * Distinguishing different types of data (e.g., input, output) can help automatically detect coding mistakes
 
 ```python
@@ -282,7 +282,7 @@ $$
 	\mathbb{Q} \cap [0,1] ~ (\\{x \in \mathbb{Q} : 0 \le x \le 1 \\}) \\\\
 	\mathbb{P} \qquad
 	\mathbb{Q}^+ \\\\
-	\texttt{Float} - \\{ \textsf{NaN}, \pm\textsf{Inf} \\} \quad
+	\texttt{Float} - \\{ \pm\textsf{Inf}, \textsf{NaN} \\} \quad
 	(T - S = T \setminus S = \\{ x \in T : x \notin S \\})
 $$
 
@@ -345,7 +345,7 @@ $$
 \end{align}
 $$
 
-* Simple unions are not particularly useful, as they can usually be represented by a different type
+* Set unions are not particularly useful, as they can usually be represented by a different type
    * C `union`
 * Instead...
 
@@ -443,6 +443,7 @@ $$
 
 $$
 \begin{align}
+	\texttt{Union}() &= ??? \\\\
 	\sum_{i=1}^n T_i &= T_1 + \cdots + T_n \\\\
 	\sum_{i=1}^0 T_i &\cong \texttt{Void}
 \end{align}
@@ -506,7 +507,7 @@ $$
 $$
 
 <ol style="list-style-type: lower-alpha;">
-<li class="fragment fade-out" data-fragment-index="2">\( T \)</li>
+<li class="fragment fade-out" data-fragment-index="2">\( T \) <span class="fragment fade-in" data-fragment-index="1">\( = T \cup T \)</span></li>
 <li class="fragment fade-out" data-fragment-index="1">\( \texttt{Void} \)</li>
 <li class="fragment fade-out" data-fragment-index="1">\( \texttt{Unit} \)</li>
 <li>none of the above</li>
