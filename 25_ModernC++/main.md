@@ -44,3 +44,22 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+- Background on status of C++ as a language and current paradigms
+- Important new(ish) language and standard library features
+- Time-saving and readability techniques in generic programming
+
+
+
+# Current state of C++
+## Nils
+
+
+# Working with data effectively and safely
+## Working with complicated types, data, loops, and return values
+
+Making your code cleaner, safer, and easier to refactor.
+
+Robert Blackwell (SCC)
+
+
+## 
