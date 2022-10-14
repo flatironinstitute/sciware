@@ -54,6 +54,7 @@ Activities where participants all actively work to foster an environment which e
 ## Nils
 
 
+
 # Working with data effectively and safely
 ## Working with complicated types, data, loops, and return values
 
@@ -62,4 +63,16 @@ Making your code cleaner, safer, and easier to refactor.
 Robert Blackwell (SCC)
 
 
-## 
+## auto
+
+
+## ranged based for
+
+
+## structured bindings, std::tie, auto &[a, b] = pair
+
+
+## Return-value-optimization
+
+
+## Live coding example
