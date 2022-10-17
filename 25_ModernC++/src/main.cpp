@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 
-void split_neg_pos(const std::vector<int> &nums, std::vector<int> &neg, std::vector<int> &pos) {
+void split_neg_pos(const std::vector<int> &nums, std::vector<int> &neg,
+                   std::vector<int> &pos) {
     neg.clear();
     pos.clear();
     for (int i = 0; i < nums.size(); ++i) {
