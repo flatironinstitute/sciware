@@ -51,7 +51,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 # Working with data effectively and safely
-## Working with arbitrary types, data, loops, and return values
 
 Robert Blackwell (SCC)
 
@@ -90,21 +89,26 @@ Robert Blackwell (SCC)
 ```
 
 
-## structured bindings, std::tie, auto &[a, b] = pair
+## Structured binding
 
 * Allows for multiple return values of a function
-* Can be used to unpack structs or other ordered data (tuples, pairs)
-* `std::tie` in `<tuple>`
+* Can generically be used to unpack structs or other ordered data (tuples, pairs)
+* `std::tie` can be used if you know the types to unpack or otherwise wish to return into
+  existing variables
 
 ```c++
-    std::tuple<int, int, double> mytup{0, 1, 2.};   // Tuple
+    auto myfunc() { return {obj1, obj2}; }
+    auto [obja, objb] = myfunc();
+
+    std::tuple<int, int, double> mytup{0, 1, 2.};   // tuple to unpack
     int a, b; double c;                             // already bound variables
     std::tie(a, b, c) = mytup;                      // unpack bound variables into copies
     auto [e, f, g] = mytup;                         // copies of elements
     auto &[h, i, j] = mytup;                        // References to elements in mytup
 ```
 
-## Return-value-optimization
+
+## Return-value-optimization (RVO)
 
 * Avoids expensive copies from return values of objects like containers
 * Allows for fast returning of values rather than passing in object pointers/references as
