@@ -66,6 +66,9 @@ Robert Blackwell (SCC)
     auto a = 5; // int
     auto b = 5.0f; // float
     auto c = some_function(a, b); // ??? do we care?
+    ...
+    auto f(double x) { return x * 2; } // function that returns a double in c++14 and later
+    auto f(double &x) { x *= 2; }      // function that returns nothing in c++14, but modifies x
 ```
 
 
@@ -95,9 +98,11 @@ Robert Blackwell (SCC)
 * Can generically be used to unpack structs or other ordered data (tuples, pairs)
 * `std::tie` can be used if you know the types to unpack or otherwise wish to return into
   existing variables
+* `C++17`: `auto &[a, b]` for references, `auto [a, b]` for copies.
 
 ```c++
     auto myfunc() { return {obj1, obj2}; }
+    ...
     auto [obja, objb] = myfunc();
 
     std::tuple<int, int, double> mytup{0, 1, 2.};   // tuple to unpack
