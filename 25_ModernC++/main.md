@@ -117,18 +117,18 @@ Robert Blackwell (SCC)
 
 * Avoids expensive copies from return values of objects like containers
 * Allows for fast returning of values rather than passing in object pointers/references as
-  arguments and modifying them (as in the early C++ days)
-* Essentially works by allocating data and "moving" it rather than copying it, i.e. changing
-  the object that owns the data
-* Usually "just works" even for composited objects (like structs, tuples, etc). Library
-  developer types who make custom containers and other big objects might need to understand
-  "move semantics"
+  arguments and modifying them
+* Essentially works by allocating data and "moving" ownership rather than copying it
+* Usually "just works" even for composited objects (like structs, tuples, etc)
+* Library developer types who might need to understand "move semantics"
 
 ```c++
-    std::vector<double> gimme_big_array() { ...; return big_array; }; // no-no in the olden days
+    // no-no in the olden days, but golden now
+    std::vector<double> gimme_big_array() { ...; return big_array; };
     ...
-    std::vector<double> x = gimme_big_array(); // no copy. just changes the data that x points to.
+    // no copy. just changes the data that x points to. single allocation and no copy.
+    std::vector<double> x = gimme_big_array();
 ```
 
 
-## Live coding example
+## Now let's put it into practice!
