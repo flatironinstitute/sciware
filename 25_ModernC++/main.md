@@ -50,36 +50,32 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# Working with data effectively and safely
+# Modern C++: effective and safe(r)!
 
 Robert Blackwell (SCC)
 
 
-## auto
+## Some code to modernize!
 
-* In variable declaration, automatically deduce type of an object from the right-hand-side
-* Extremely useful for complicated template types, variables with flexible types (in generic
-  programming, covered later!), structured unbinding, and range based loops
-* In C++14, also can be the return type of a function
+
+## auto
 
 ```c++
     auto a = 5; // int
     auto b = 5.0f; // float
     auto c = some_function(a, b); // ??? do we care?
     ...
-    auto f(double x) { return x * 2; } // function that returns a double in c++14 and later
-    auto f(double &x) { x *= 2; }      // function that returns nothing in c++14, but modifies x
+    auto f(double x) { return x * 2; } // returns double
+    auto f(double &x) { x *= 2; }      // modifies x in place
 ```
+
+* *At compile time*, automatically deduce type of an object from the right-hand-side
+* Infinitely useful -- common for template types, variables with flexible types (in generic
+  programming, covered later!), structured unbindings, and range based loops, but play around
+  and see what's good for you
 
 
 ## ranged based for
-
-* Builds on the auto type. Allows you to iterate on arbitrary containers easily!
-* Can also loop over references, and more
-* Doesn't care about container type, so long as it's iterable
-* Allows for easy swapping of container types (array->vector->list), and prevents overrunning buffers
-* Easily signals intent (const, by ref, etc)
-* Much more compact
 
 ```c++
     std::vector<int> a{0, 1, 2, 3, 4};
@@ -91,36 +87,32 @@ Robert Blackwell (SCC)
         el = 0;
 ```
 
+* Builds on the auto type. Allows you to iterate on arbitrary containers easily!
+* Easily signals intent (`const`, `&`, etc.)
+* Much more compact
+* Allows for easy swapping of container types (`array->vector->list`), and prevents overrunning buffers
+
 
 ## Structured binding
 
-* Allows for multiple return values of a function
-* Can generically be used to unpack structs or other ordered data (tuples, pairs)
-* `std::tie` can be used if you know the types to unpack or otherwise wish to return into
-  existing variables
-* `C++17`: `auto &[a, b]` for references, `auto [a, b]` for copies.
-
 ```c++
-    auto myfunc() { return {obj1, obj2}; }
+    auto myfunc() { ...; return {obja, objb}; }
     ...
     auto [obja, objb] = myfunc();
 
-    std::tuple<int, int, double> mytup{0, 1, 2.};   // tuple to unpack
-    int a, b; double c;                             // already bound variables
-    std::tie(a, b, c) = mytup;                      // unpack bound variables into copies
-    auto [e, f, g] = mytup;                         // copies of elements
-    auto &[h, i, j] = mytup;                        // References to elements in mytup
+    std::pair<int, double> mypair{0, 1.}; // tuple to unpack
+    auto [a, b] = mypair;                 // copies of elements
+    auto &[c, d] = mypair;                // References to elements in mypair
+
+    int e; double f;                      // already bound variables
+    std::tie(e, f) = mypair;              // unpack bound variables into copies
 ```
+
+* Allows for multiple return values of a function
+* Can generically be used to unpack structs or other ordered data (tuples, pairs, arrays, etc)
 
 
 ## Return-value-optimization (RVO)
-
-* Avoids expensive copies from return values of objects like containers
-* Allows for fast returning of values rather than passing in object pointers/references as
-  arguments and modifying them
-* Essentially works by allocating data and "moving" ownership rather than copying it
-* Usually "just works" even for composited objects (like structs, tuples, etc)
-* Library developer types who might need to understand "move semantics"
 
 ```c++
     // no-no in the olden days, but golden now
@@ -129,6 +121,11 @@ Robert Blackwell (SCC)
     // no copy. just changes the data that x points to. single allocation and no copy.
     std::vector<double> x = gimme_big_array();
 ```
+
+* Avoids expensive copies from return values of objects like containers
+* Changes ownership of data rather than copying it
+* Usually "just works" even for composited objects (like structs, tuples, etc)
+* Library developers and advanced users might need to understand "move semantics"
 
 
 ## Now let's put it into practice!
