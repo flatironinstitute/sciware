@@ -1,10 +1,17 @@
 #include <iostream>
 #include <vector>
+using std::cout; using std::endl;
+using vec_type = std::vector<int>;
 
-void split_neg_pos(const std::vector<int> &nums, std::vector<int> &neg,
-                   std::vector<int> &pos) {
-    neg.clear();
-    pos.clear();
+void print_vec(const vec_type &a) {
+    for (int i = 0; i < a.size(); ++i)
+        cout << a[i] << " ";
+    cout << endl;
+}
+
+void split_neg_pos(const vec_type &nums, vec_type &neg,
+                   vec_type &pos) {
+    neg.clear(); pos.clear();
     for (int i = 0; i < nums.size(); ++i) {
         if (nums[i] < 0)
             neg.push_back(nums[i]);
@@ -14,20 +21,12 @@ void split_neg_pos(const std::vector<int> &nums, std::vector<int> &neg,
 }
 
 int main(int argc, char *argv[]) {
-    std::vector<int> nums;
-    for (int i = 0; i < 20; ++i)
-        nums.push_back(i - 10);
+    vec_type nums, neg, pos;
+    for (int i = -10; i < 10; ++i) nums.push_back(i);
 
-    std::vector<int> neg, pos;
     split_neg_pos(nums, neg, pos);
-
-    for (int i = 0; i < neg.size(); ++i)
-        std::cout << neg[i] << " ";
-    std::cout << std::endl;
-
-    for (int i = 0; i < pos.size(); ++i)
-        std::cout << pos[i] << " ";
-    std::cout << std::endl;
+    print_vec(neg);
+    print_vec(pos);
 
     return 0;
 }
