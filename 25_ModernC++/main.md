@@ -58,7 +58,7 @@ Robert Blackwell (SCC)
 ## Some code to modernize!
 
 
-## auto
+## `auto` is everywhere
 
 ```c++
     auto a = 5; // int
