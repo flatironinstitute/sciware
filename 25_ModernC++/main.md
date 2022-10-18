@@ -57,6 +57,8 @@ Robert Blackwell (SCC)
 
 ## Old C++: some code to modernize!
 
+https://godbolt.org/z/69zz3j4Te
+
 
 ## `auto` is everywhere
 
@@ -129,6 +131,8 @@ Robert Blackwell (SCC)
 
 
 ## Now let's put it into practice!
+
+https://godbolt.org/z/69zz3j4Te
 
 * `auto` keyword
 * Range-based `for`
