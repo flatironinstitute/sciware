@@ -55,7 +55,7 @@ Activities where participants all actively work to foster an environment which e
 Robert Blackwell (SCC)
 
 
-## Some code to modernize!
+## Old C++: some code to modernize!
 
 
 ## `auto` is everywhere
@@ -75,7 +75,7 @@ Robert Blackwell (SCC)
   and see what's good for you
 
 
-## ranged based for
+## Ranged-based `for`
 
 ```c++
     std::vector<int> a{0, 1, 2, 3, 4};
