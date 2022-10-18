@@ -22,7 +22,8 @@ void split_neg_pos(const vec_type &nums, vec_type &neg,
 
 int main(int argc, char *argv[]) {
     vec_type nums, neg, pos;
-    for (int i = -10; i < 10; ++i) nums.push_back(i);
+    for (int i = -10; i < 10; ++i)
+        nums.push_back(i);
 
     split_neg_pos(nums, neg, pos);
     print_vec(neg);
