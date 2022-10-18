@@ -131,6 +131,6 @@ Robert Blackwell (SCC)
 ## Now let's put it into practice!
 
 * `auto` keyword
-* range based `for`
-* structured unbinding
-* return value optimization
+* Range-based `for`
+* Structured binding
+* Return value optimization
