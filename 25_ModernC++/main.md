@@ -82,11 +82,13 @@ https://godbolt.org/z/69zz3j4Te
 ```c++
     std::vector<int> a{0, 1, 2, 3, 4};
     for (auto el : a)
-        std::cout << el << " ";
-    std::cout << std::endl;
+        std::cout << el; // print 01234
+
+    for (auto el : a | std::views::drop(2) | std::views::take(2))
+        std::cout << el; // print 23
 
     for (auto &el : a)
-        el = 0;
+        el = 0; // zero out vectorg
 ```
 
 * Builds on the auto type. Allows you to iterate on arbitrary containers easily!
