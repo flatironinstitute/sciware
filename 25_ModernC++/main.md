@@ -88,13 +88,13 @@ https://godbolt.org/z/69zz3j4Te
         std::cout << el; // print 23
 
     for (auto &el : a)
-        el = 0; // zero out vectorg
+        el = 0; // zero out vector
 ```
 
-* Builds on the auto type. Allows you to iterate on arbitrary containers easily!
-* Easily signals intent (`const`, `&`, etc.)
-* Much more compact
-* Allows for easy swapping of container types (`array->vector->list`), and prevents overrunning buffers
+* More clearly signals intent (`const`, `&`, etc.)
+* Much more compact -- composable with `<ranges>`
+* Allows for easy swapping of container types
+* Prevents overrunning buffers
 
 
 ## Structured binding
