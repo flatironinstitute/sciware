@@ -17,7 +17,7 @@ auto split_neg_pos(const vec_type &nums) {
         else
             pos.push_back(num);
     }
-    return std::pair{neg, pos};
+    return std::pair{std::move(neg), std::move(pos)};
 }
 
 int main(int argc, char *argv[]) {
