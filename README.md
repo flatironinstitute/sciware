@@ -27,3 +27,5 @@ A developing series of meetings about software development for science.
 - Jun 29, 2022 [Editors and IDEs show and tell](22_Editors): an introduction and survey of IDEs and code editors, with some focus on VSCode
 - Jul 21, 2022 [Command-line interaction and shells](23_CommandLine): introduction to shells and the command line, terminal interaction, and shell customization
 - Sep 29, 2022 [Types](24_Types): An theoretical introduction to how thinking about data types can improve code, and specific applications to mypy
+- Oct 20, 2022 [Modern C++](25_ModernC++)
+- Dec 15, 2022 [File Formats and Storing Data](26_DataFormats)
