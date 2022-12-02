@@ -68,6 +68,7 @@ Robert Blackwell (SCC)
 ## Some generalities: the "pros"
 
 - Self-documenting
+- No special tooling required to inspect
 - Typically easy to read
 - Portable
 - Generally flexible/extendable
@@ -80,10 +81,19 @@ Robert Blackwell (SCC)
 3.953190
 ```
 
-* Pls don't
+* EXTREMELY slow/space inefficient
+* Difficult to extend
+* Blows up very very quickly at scale
 
 
-## JSON
+## JSON (1)
+
+```json
+
+```
+
+
+## JSON (2)
 
 * Flexible
 * Arbitrary structures
@@ -93,6 +103,9 @@ Robert Blackwell (SCC)
 
 ## CSV
 
+```csv
+```
+
 * Fixed table
 * Flexible types
 * Comments
@@ -101,15 +114,15 @@ Robert Blackwell (SCC)
 
 ## "TXT" et al.
 
-* Suited for documentation and logging
+* Typically suited for documentation and logging - not data
 * Since no standard format, hard to parse otherwise
 
 
 ## Some generalities: the "cons"
 
 * Size: Typically 2-??X larger than binary
-    * CSV: ~2x for floats
-    * JSON: minified ~2x, formatted ~10x (+?!)
+  * CSV: ~2x for floats
+  * JSON: minified ~2x, formatted ~10x (+?!)
 * Performance: Typically orders of magnitude slower than binary
 * Only sequential access -- No random access (in most cases)
 
