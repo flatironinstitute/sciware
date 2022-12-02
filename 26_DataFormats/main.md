@@ -42,3 +42,60 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+- Intro to _data_ and _files_
+- Basic overview of common file formats and their strengths/weaknesses
+- Moderately in-depth overview of the hdf5 file format and how to interact with hdf5 data in python (touching on other languages)
+
+
+
+# Background/motivation
+
+Jeff Soules (CCM)
+
+
+
+# Common "human readable" formats
+
+Robert Blackwell (SCC)
+
+
+## What do I mean by "human readable"
+
+- Text only -- a human can read it
+- ...That's about it
+
+
+## Some generalities: the "pros"
+
+- Self-documenting
+- Typically easy to read
+- Portable
+- Generally flexible/extendable
+
+
+## Simplest human readable format: one number
+
+```bash
+% cat Energy_K=1.0_Beta=2.5_Gamma=193.2
+3.953190
+```
+
+* Pls don't
+
+
+## JSON
+
+
+## CSV
+
+
+## "TXT"
+
+
+## Some generalities: the "cons"
+
+
+
+# Common binary formats
+
+Lehman Garrison (SCC)
