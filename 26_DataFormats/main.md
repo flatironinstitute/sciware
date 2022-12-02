@@ -85,15 +85,33 @@ Robert Blackwell (SCC)
 
 ## JSON
 
+* Flexible
+* Arbitrary structures
+* Verbose (introduce transposed formats)
+* No comments! (I assure you this is terrible)
+
 
 ## CSV
 
+* Fixed table
+* Flexible types
+* Comments
+* Very portable
 
-## "TXT"
+
+## "TXT" et al.
+
+* Suited for documentation and logging
+* Since no standard format, hard to parse otherwise
 
 
 ## Some generalities: the "cons"
 
+* Size: Typically 2-??X larger than binary
+    * CSV: ~2x for floats
+    * JSON: minified ~2x, formatted ~10x (+?!)
+* Performance: Typically orders of magnitude slower than binary
+* Only sequential access -- No random access (in most cases)
 
 
 # Common binary formats
