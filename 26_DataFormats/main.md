@@ -48,7 +48,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# Background/motivation
+# General Concepts
 
 ### Jeff Soules (CCM)
 
@@ -58,7 +58,7 @@ Activities where participants all actively work to foster an environment which e
 - Review definitions
 - Consider a few ways to characterize data
 - Discuss what we want files to support
-- Look at some high-level choices about how to structure files
+- Look at some high-level patterns among formats
 
 Today is about the **trade-offs** imposed by different formats,
 and making **choices** that fit our situation and goals.
@@ -78,9 +78,10 @@ and making **choices** that fit our situation and goals.
 
 - A discrete entity on a filesystem
 - A *representation* of some data
-  - with a *finite* series of *bits*
+  - using a *finite* series of *bits*
   - on some *persistent* electronic storage
   - *separate* from other data
+- Organizing separate files is its own expensive task
 
 
 ### Where is data when it's not in files?
@@ -96,84 +97,98 @@ In memory!
 - "Data that describes data"
 - Says how to interpret a representation/file
   - Often separate from the file itself
+  - Might not even be explicitly stated
 - Expresses assumptions made about the data
 
 
 ## Ways to characterize data
 
 - Different data lends itself to different formats
-- Let's think about properties of data and how they can influence choices
+- Let's look at some example data sets
+  - A novel
+  - A particle simulation
+  - An electronic medical record
+- What data do they each have?
 
 
-### Example Data Sets
+### Novel (_War and Peace_)
 
-- A novel
-- A particle simulation
-- An electronic medical record
-
-
-- _War and Peace_ (the novel)
-  - Text (in Russian? in English?)
-    - Broken into paragraphs? Pages? Chapters?
-  - Author, maybe a translator
-  - Publisher, publication year
+- Text
+  - In Russian? In English?
+  - Broken into paragraphs? Pages? Chapters?
+- Author, maybe a translator?
+- Publisher, publication year?
+- Edition, printing, etc?
 
 
-- Particle Position simulation
-  - Observations measured over some (consistently spaced?) time unit
-  - x, y, z coordinates of a set of particles
+### Particle Position Simulation
+
+- States grouped by (consistently spaced?) time unit
+- For each particle:
+  - x, y, z position coordinates
     - (What origin? What axes?)
-  - velocity, momenta, etc for particles
+  - and velocity, momentum, etc. in coordinates
+- Is the number of particles fixed?
+- Simulation parameters??
 
 
-- Electronic Medical Record
-  - Patient biographic/demographic data
-  - Natural-language notes from medical providers
-  - Quantitative vital signs (every 5 minutes)
-  - Medication notes (as administered)
+### Electronic Medical Record
+
+- Patient biographic/demographic data
+- Natural-language notes from medical providers
+- Quantitative vital signs
+  - Measured every 5 minutes?
+- Medication notes
+  - Dosing units?
+  - Time--whenever administered?
 
 
-### Data can be more or less strongly typed
+### Horizontal structure: Fields
 
-- Characters & text
-  - (But different encodings?)
-- Numbers
-  - Integers, reals?
-  - What precision, what encoding method?
-- Categorical
-  - Are all the categories known in advance?
+- Does the data have different **fields** ("columns")?
+  - Is the data composed of distinct parts?
+  - Does each field have a clear type?
+- Novel: text is pretty much one column
+- Particle simulation: each property is its own field
 
 
-### Data can be free-form or structured
-
-- Q: Does the data have different **fields** ("columns")?
-- Q: Does each field have a clear type?
-- Less structured: everything is one column
-  - Book contents, transcribed speech
-- More structured: distinct parts or columns
-  - Table of particle positions
-
-
-### Data can be regular or irregular
+### Vertical structure: Records
 
 - Is the data made of repeated **records** ("rows")?
-- Does each record have the same size, or set of values?
-- Less regular: variable number of values in some fields
-- More regular: rows are always distinct
+  - Does each record have the same set of fields?
+  - Does each record have 0, 1, or many values per field?
+- Particle simulation: one value per record per field
+- EMR: ?
+  - Vital signs recorded every 5 minutes
+  - Provider notes, not so much
+  - Medication doesn't follow the vital sign clock-tick
+
+
+### Fields can be more or less strongly typed
+
+- Characters & text
+  - Can come in different encodings
+  - How many characters per field?
+- Numbers
+  - Integers, reals? Units?
+  - Positives, negatives?
+  - What precision, what encoding method?
+- Categorical
+  - Are all the values in the category known in advance?
 
 
 ### Data can be complete or incomplete
 
-- Are there records that are missing fields?
+- Are there records that are missing some fields?
   - Because there was no value?
-  - or because we don't know what it was?
+  - Because we don't know what the value was?
 - Do we know all the fields when we start collecting the data?
   - Will we want to add more fields partway through?
 
 
-## What can an ideal file format do?
+## The Ideal File Format
 
-- We're Flatiron: today We focus on efficiency and clarity
+- This is Flatiron: we'll focus on efficiency and clarity
 - There are plenty of other desirable properties
   - Access control
   - Resilience
@@ -181,7 +196,7 @@ In memory!
 - These are out of scope for today
 
 
-### An ideal format could let us....
+### An ideal format would let us....
 
 - Read files fast
   - Sequentially (from start to finish)
@@ -193,17 +208,17 @@ In memory!
 - Understand the file contents without outside knowledge
 
 
-You can't have all of those things at once!
+**You can't have all of those things at once!**
 
 
-In general:
+### General Trade-Offs:
+
+**It's easy to come up with exceptions!**
 
 - Smaller files are faster to read than larger ones
-  - compression makes things complicated
+  - (...please don't mention file compression)
 - Transparency/self-documentation leads to added size
 - Reading speeds compete with writing speeds
-
-It's easy to come up with exceptions!
 
 
 ## Trade-offs in file format design
@@ -214,9 +229,10 @@ It's easy to come up with exceptions!
 ### General-purpose vs Specific
 
 - Some file formats can support arbitrary data
-- Others are specific to one type of data/record
-- The more general the format, the more explanation you need for any particular data set
-- The more specific the format, the more outside documentation you need
+- Others only store one type of data/record
+- Everything needs explanation
+  - General formats must put this in the file itself
+  - Specific formats (hopefully!) put it in external documentation
 
 
 ### Portable vs Machine-Dependent
@@ -224,31 +240,31 @@ It's easy to come up with exceptions!
 - Writing memory to disk is "easy"
   - ...but it won't make sense to anyone later
 - Portability requires encoding data
-  - That often means more space
-  - Or more documentation of encodings
-- Fortunately we have standards for this
+  - That often requires more space
+  - and documentation of the encoding system
+- Fortunately we have lots of standards
   - If you find yourself writing your own standard...
   - Maybe have a snack and reconsider
 
 
 ### Transparent vs Opaque
 
-- It's easy to inspect formats that can be opened with text editors
+- It's convenient to open files with a text editor
   - But character encodings have an overhead
   - "AGAGCT" could be 6 characters (48 to 192 bits)
-  - Or it could be 12 bits if we know there's only 4 possible letters
+  - Or 12 bits--there's only 4 possible letters
 - Some formats label fields internally (JSON, CSV)
   - Pro: the file is self-documenting
-  - Con: the file can be much larger
+  - Con: the file is (sometimes much) larger
 
 
-### Regular vs Irregular
+### Regular- vs Irregular-sized Records
 
 - Random access to records depends on regular sizing
   - Easy to find the 1001st character
   - Hard to find the 1001st word
-- But sparse data may not be worth storing in regular-sized chunks
-  - A 30 GB tensor that's 98% zeroes is probably not ideal for anything
+- Sparse data may not be worth storing regularly
+  - A 30 GB tensor that's 98% zeroes is probably not ideal
 
 
 ### Support for missing values
@@ -256,15 +272,15 @@ It's easy to come up with exceptions!
 - Think back to complete vs. incomplete data
 - Some representations imply that missing data is a negative observation
   - Edge list vs. adjacency matrix
-  - If you add a field to a CSV, you need to populate it for all records
-- It's possible to support data sets whose fields aren't all known in advance
+  - Need an explicit "unknown" value?
+- You can support data whose fields aren't all known upfront
   - but it costs you in efficiency and clarity
 
 
 ### Transposed/Deconstructed Data Layouts
 
-- "Natural" option: each record has one value for each of the fields
-- "Transposed" option: each field is a separate set of indexed records
+- "Natural": each record has one value for each of the fields
+- "Transposed": each field is its own list, indexed by record
 
 [DROP IN: Two spreadsheet snippets illustrating this]
 
@@ -276,6 +292,8 @@ It's easy to come up with exceptions!
 
 
 ## Rubric
+
+(Yeah, I need to make this an image or something)
 
 | Format | General | Portable | Character vs Binary | Self-documenting | Allows blanks | Flexible Layouts |
 | ---    | ------- | -------- |  ------------------ | ---------------- | ------------- |  --------------- |
