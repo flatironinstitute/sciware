@@ -511,17 +511,17 @@ GROUP "/" {
             (2): 1.398349
             ...
             }
-         }
-         ATTRIBUTE "software" {
-            DATATYPE  H5T_STRING {
-               STRSIZE 15;
-               STRPAD H5T_STR_NULLPAD;
-               CSET H5T_CSET_ASCII;
-               CTYPE H5T_C_S1;
-            }
-            DATASPACE  SCALAR
-            DATA {
-            (0): "PythonSimulator"
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                  STRSIZE 8;
+                  STRPAD H5T_STR_NULLPAD;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "furlongs"
+               }
             }
          }
       }
@@ -535,3 +535,115 @@ GROUP "/" {
 - Graphical viewer (and editor) for hdf5 files
 
 <img src="https://docs.hdfgroup.org/hdf5/develop/datasetwdata.png" width="80%" style="border:0;box-shadow:none">
+
+
+
+# HDF5 Libraries
+
+- There is only one full HDF5 implementation (in C): hdf5
+- Many interfaces built on top of this
+
+
+## C library
+
+```c
+/* Open an existing file. */
+hid_t file_id = H5Fopen(FILE, H5F_ACC_RDWR, H5P_DEFAULT);
+
+/* Open an existing dataset. */
+hid_t dataset_id = H5Dopen2(file_id, "/dset", H5P_DEFAULT);
+
+/* Read the dataset. */
+int dset_data[4][6];
+herr_t status = H5Dread(dataset_id, H5T_NATIVE_INT, H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data);
+
+/* Close the dataset. */
+status = H5Dclose(dataset_id);
+
+/* Close the file. */
+status = H5Fclose(file_id);
+```
+
+
+## h5py
+
+- h5py is the standard interface to hdf5 in python
+- Provides a low-level interface (that looks a lot like the C API)
+- More common high-level interface provides pythonic access
+
+
+### h5py Files and Groups
+
+- Open files with `h5py.File("file.h5", mode)`
+   - `mode` can be `"r"` (read) `"w"` (create/truncate), or `"r+"` (read/write)
+- Files can be closed using `with` (explicit scope) or automatically when unreferenced
+- Groups provide dict-like interface, index with `[]` and paths
+
+```python
+file = h5py.File("file.h5", "r")
+# <HDF5 file "file.h5" (mode r)>
+
+group = file["results"]["final"]
+group = file["results/final"]
+# <HDF5 group "/results/final" (4 members)>
+```
+
+
+### h5py Datasets
+
+- Datasets mostly look like numpy arrays, can be indexed with `[]`
+- Scalar values are accessed by `()`
+
+```python
+count = file["results/count"]
+# <HDF5 dataset "count": shape (), type "<i8">
+count[()]
+# 20
+
+x = group["x"]
+# <HDF5 dataset "x": shape (1000), type "<f8">
+x.dtype
+x.shape
+x[0]
+# 0.052104: numpy.float64
+x[10:20]
+# numpy.ndarray
+```
+
+
+### h5py Attributes
+
+- Groups and Datasets have `attrs`
+- Works like a simple dictionary
+
+```python
+group.attrs.keys()
+x.attrs["units"]
+```
+
+
+### h5py writing
+
+```python
+file = h5py.File("file.h5", "w")
+group = file.create_group("results/data")
+
+x = group.create_dataset("x", (1000,), dtype="f")
+
+x[0] = 0.052104
+
+x.attrs["units"] = "furlongs"
+```
+
+
+### h5py multi-dimensional arrays
+
+```python
+pos = group.create_dataset("Position", (1000,2), dtype="f")
+
+pos[10,1] = 3.5
+pos[10][1] # works for access, not assignment!
+
+pos[0,:]
+pos[20:29,0] = numpy.arange(10)
+```
