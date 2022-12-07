@@ -38,6 +38,7 @@ Activities where participants all actively work to foster an environment which e
 ## Future Sessions
 
 - Suggest topics or contribute to content in #sciware Slack
+- We're recruiting: looking for CCB representative, contributors
 
 
 ## Today's Agenda
@@ -378,3 +379,88 @@ Robert Blackwell (SCC)
 # Common binary formats
 
 Lehman Garrison (SCC)
+
+
+
+# HDF5
+
+Dylan Simon (SCC)
+
+
+## HDF5 concepts
+
+Largely taken from HDFGroup's [Introduction to HDF5](https://docs.hdfgroup.org/hdf5/develop/_intro_h_d_f5.html)
+
+"An HDF5 file can be thought of as a container (or group) that holds a variety of heterogeneous data objects (or datasets). The datasets can be images, tables, graphs, and even documents, such as PDF or Excel"
+
+
+### HDF5 Groups
+
+- Groups are like directories in a filesystem
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/group.png" width="80%" style="border:0;box-shadow:none">
+
+- UNIX path names are used to reference objects: `/SimOut/Mass`
+
+
+### HDF5 Datasets
+
+- Datasets store multi-dimensional blocks of data of a single type
+- Usually represent a single "column" of data
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/dataset.png" width="80%" style="border:0;box-shadow:none">
+
+
+### HDF5 Datatypes
+
+- Datatypes are designed to map to in-memory representations
+- Predefined datatypes: atomic values
+  - `H5T_IEEE_F32LE`, `H5T_NATIVE_FLOAT` (float)
+  - `H5T_INTEL_I32`, `H5T_STD_I32LE`, `H5T_NATIVE_INT` (int)
+  - `H5T_C_S1` (char, basis for fixed-length strings)
+- Derived datatypes: compound values composed of other types
+  - fixed-length strings
+
+
+### HDF5 Compound Datatypes
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/cmpnddtype.png" width="80%" style="border:0;box-shadow:none">
+
+- Compound types can be nested and include fixed-sized arrays
+
+
+### HDF5 Dataspaces
+
+- Dataspaces represent the size and dimensions of an array (scalar, vector, etc.)
+- Can be used to describe overall Dateset size, and subsets ("views", "slices") of data
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/dataspace.png" width="80%" style="border:0;box-shadow:none">
+
+
+### HDF5 Attributes
+
+- Attributes are metadata attached to an object (usually a Group or Dataset)
+- Have names and values
+- Values are the same as Dataset values, but are usually small
+  - Scalar value of simulation parameter
+  - String describing field, units, etc.
+
+
+### HDF5 Properties
+
+- Properties control how data is stored on disk
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/properties.png" width="80%" style="border:0;box-shadow:none">
+
+
+### And more...
+
+- Links (symlinks), Filters (compression, checksums)
+- Images, tables, units
+
+
+## HDF5 Inspection Tools
+
+- `h5ls -r`
+- `h5dump`
+- `hdfview`
