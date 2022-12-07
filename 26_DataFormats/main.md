@@ -432,7 +432,7 @@ Largely taken from HDFGroup's [Introduction to HDF5](https://docs.hdfgroup.org/h
 ### HDF5 Dataspaces
 
 - Dataspaces represent the size and dimensions of an array (scalar, vector, etc.)
-- Can be used to describe overall Dateset size, and subsets ("views", "slices") of data
+- Can be used to describe overall Dataset size, and subsets ("views", "slices") of data
 
 <img src="https://docs.hdfgroup.org/hdf5/develop/dataspace.png" width="80%" style="border:0;box-shadow:none">
 
@@ -459,8 +459,79 @@ Largely taken from HDFGroup's [Introduction to HDF5](https://docs.hdfgroup.org/h
 - Images, tables, units
 
 
+
 ## HDF5 Inspection Tools
 
+- h5ls
+- h5dump
+- hdfview
+
+
+### `h5ls`
+
+- Like ls for hdf5 structure
+- Useful for summarizing contents
 - `h5ls -r`
-- `h5dump`
-- `hdfview`
+
+```
+/                        Group
+/results                 Group
+/results/count           Dataset {SCALAR}
+/results/final           Group
+/results/final/x         Dataset {1000}
+/results/final/y         Dataset {1000}
+/results/final/Position  Dataset {1000, 2}
+/results/final/Mass      Dataset {1000}
+```
+
+
+### `h5dump`
+
+- Full text dump of all data
+- Can limit to certain groups (`-g /path`) or dataset (`-d /path/x`)
+
+```
+HDF5 "vasp.h5" {
+GROUP "/" {
+   GROUP "/results" {
+      DATASET "count" {
+         DATATYPE  H5T_STD_I64LE
+         DATASPACE  SCALAR
+         DATA {
+         (0): 20
+         }
+      }
+      GROUP "final" {
+         DATASET "x" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 1000 / 1000 ) }
+            DATA {
+            (0): 0.052104
+            (1): 0.139832
+            (2): 1.398349
+            ...
+            }
+         }
+         ATTRIBUTE "software" {
+            DATATYPE  H5T_STRING {
+               STRSIZE 15;
+               STRPAD H5T_STR_NULLPAD;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
+            DATASPACE  SCALAR
+            DATA {
+            (0): "PythonSimulator"
+            }
+         }
+      }
+   }
+}
+```
+
+
+### HDFView
+
+- Graphical viewer (and editor) for hdf5 files
+
+<img src="https://docs.hdfgroup.org/hdf5/develop/datasetwdata.png" width="80%" style="border:0;box-shadow:none">
