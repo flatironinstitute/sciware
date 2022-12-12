@@ -57,7 +57,8 @@ Activities where participants all actively work to foster an environment which e
 ## Outline
 
 - Review definitions
-- Consider a few ways to characterize data
+- Consider how to describe data
+  - Particularly beyond lists/tables
 - Discuss what we want files to support
 - Look at some high-level patterns among formats
 
@@ -69,10 +70,11 @@ and making **choices** that fit our situation and goals.
 
 - Input to or output from a computational process
 - Information we care about, such as:
-  - A table of values
-  - Some natural-language text
+  - X, Y, Z component of a particle's position
   - Edge weights on a graph
+  - Chunks of natural-language text
   - ...
+- Attempt to quantify some phenomenon
 
 
 ### What is a file?
@@ -83,14 +85,18 @@ and making **choices** that fit our situation and goals.
   - on some *persistent* electronic storage
   - *separate* from other data
 - Organizing separate files is its own expensive task
+- There are many ways to represent the same data
 
 
 ### Where is data when it's not in files?
 
 In memory!
 
-- The same representation trade-offs apply here too
-- Files have an additional task: getting the right data in & out of memory
+- Representation trade-offs apply here too
+- File-specific tasks include:
+  - Getting *the right* data to/from memory
+  - Persisting and duplicating data
+  - Data sharing/moving between systems
 
 
 ### What's metadata?
@@ -102,97 +108,117 @@ In memory!
 - Expresses assumptions made about the data
 
 
-## Ways to characterize data
+### More examples of metadata
 
-- Different data lends itself to different formats
-- Let's look at some example data sets
-  - A novel
-  - A particle simulation
-  - An electronic medical record
-- What data do they each have?
+- Data provenance? (Source, time, recording setup...)
+- Hyperparameter choices that generated the data?
+- Possible values for categorical observations ("data dictionary")
+  - e.g. 6 quark types, 4 DNA bases, ...
 
 
-### Novel (_War and Peace_)
+## Simple vs Composite Data
 
-- Text
-  - In Russian? In English?
-  - Broken into paragraphs? Pages? Chapters?
-- Author, maybe a translator?
-- Publisher, publication year?
-- Edition, printing, etc?
-
-
-### Particle Position Simulation
-
-- States grouped by (consistently spaced?) time unit
-- For each particle:
-  - x, y, z position coordinates
-    - (What origin? What axes?)
-  - and velocity, momentum, etc. in coordinates
-- Is the number of particles fixed?
-- Simulation parameters??
+- *Simple*: only one observation or type of observation
+  - e.g. Height of an object at time `t=0`, `t=1`, ...
+  - One set of numbers, representing the same observable
+- *Composite*: more than one type of observation
+  - e.g. Position, velocity, mass of object over time
+  - Observables have *distinct* meanings
+  - `t` groups them together into discrete sets
 
 
-### Electronic Medical Record
+### Parts of composite data
 
-- Patient biographic/demographic data
-- Natural-language notes from medical providers
-- Quantitative vital signs
-  - Measured every 5 minutes?
-- Medication notes
-  - Dosing units?
-  - Time--whenever administered?
+[DROP-IN: SCREENSHOT OF A SPREADSHEET]
 
-
-### Horizontal structure: Fields
-
-- Does the data have different **fields** ("columns")?
-  - Is the data composed of distinct parts?
-  - Does each field have a clear type?
-- Novel: text is pretty much one column
-- Particle simulation: each property is its own field
+- **Fields** are distinct observables
+  - the columns above, e.g. `mass`, `v_x`, etc
+- **Records** are repeated groups of fields that belong together
+  - the rows above, i.e. one per time
+- Does the row order mean anything?
 
 
-### Vertical structure: Records
+### Fields have types
 
-- Is the data made of repeated **records** ("rows")?
-  - Does each record have the same set of fields?
-  - Does each record have 0, 1, or many values per field?
-- Particle simulation: one value per record per field
-- EMR: ?
-  - Vital signs recorded every 5 minutes
-  - Provider notes, not so much
-  - Medication doesn't follow the vital sign clock-tick
-
-
-### Fields can be more or less strongly typed
-
-- Characters & text
-  - Can come in different encodings
-  - How many characters per field?
-- Numbers
-  - Integers, reals? Units?
-  - Positives, negatives?
-  - What precision, what encoding method?
-- Categorical
-  - Are all the values in the category known in advance?
+- This can be a property of the data
+  - Mass and velocity mean different things
+- Or it can be purely about representation
+  - `float32`? `float64`? Ints? Strings?
+  - Imperial? Metric? What's the scale/reference?
+- For categorical data, what defines the category values?
+  - Are those values all known in advance?
 
 
-### Data can be complete or incomplete
+## The map is not the terrain
 
-- Are there records that are missing some fields?
-  - Because there was no value?
-  - Because we don't know what the value was?
-- Do we know all the fields when we start collecting the data?
-  - Will we want to add more fields partway through?
+- And your data are not lists/tables
+- Those are *representations* of your data
+  - May or may not be a useful way to think about your data
+  - May or may not be a desirable file format
+- How does data fail to be tabular?
 
 
-## The Ideal File Format
+### Implicit Fields
+
+[DROP-IN: SAME SCREENSHOT OF A SPREADSHEET]
+
+- We assumed that:
+  - each row/record represents a new time
+  - each time is equally far apart
+- These are *choices* in representation
+  - i.e. choosing what *not* to represent
+- Even a list is composite if you include the implicit field
+
+
+### Incompatible Scales
+
+[DROP-IN: SCREENSHOT OF A SPREADSHEET "EHR"]
+
+- We assumed a record is "one of each field", but:
+- Sometimes fields evolve at different rates
+  - Femtosecond-scale is reasonable for chemical simulations
+    - but agonizingly short for protein folding
+  - Pulse rates change faster than height/weight
+- Data may be very unevenly distributed over a volume
+  - Imagine doing cosmology at a fixed scale
+
+
+### Missing fields & Evolving data
+
+- Fields might get added partway through data collection
+  - Cell division: objects appear!
+  - Perfectly inelastic collisions: objects disappear!
+- Fields' referents might change
+  - "Attractive force with nearest neighbor"
+  - Identity of that nearest neighbor varies
+- Some fields don't describe all records
+  - "Spouse" or "dependents" fields?
+
+
+### Higher-dimensional data
+
+- Suppose your data is a 6d tensor
+  - What dimension (field) separates the records?
+  - Is each record just one field with a 5d tensor?
+
+
+### Sparsity
+
+- What if your table is mostly blank?
+
+
+### Tables are not cancelled
+
+- Still useful for lots of scientific data
+- Just be aware of the limitations
+
+
+## Representations and Trade-Offs
 
 - This is Flatiron: we'll focus on efficiency and clarity
-- There are plenty of other desirable properties
+- There are plenty of other desirable properties for files
   - Access control
-  - Resilience
+  - Resilience to data corruption
   - Verifiability
 - These are out of scope for today
 
@@ -205,8 +231,9 @@ In memory!
 - Write files fast
 - Use minimal disk space
 - Open files on any machine
-- Read files without special tools
-- Understand the file contents without outside knowledge
+- Read files without special software
+- Interpret the contents without outside knowledge
+- Know when data is missing from a record
 
 
 **You can't have all of those things at once!**
@@ -217,46 +244,55 @@ In memory!
 **It's easy to come up with exceptions!**
 
 - Smaller files are faster to read than larger ones
-  - (...please don't mention file compression)
-- Transparency/self-documentation leads to added size
+  - There's less data to transfer
+- Flexibility and transparency require larger sizes
 - Reading speeds compete with writing speeds
+  - "Time" may not be the best way to structure a file
+- Random access competes with everything
+  - but enables using a subset of the full file
 
+
+### Solutions
+
+- The extremes:
+  - Flexible, transparent, but big
+  - Concise, efficient, but brittle
+- We sort of map these onto "human-readable" and "binary"
+- But in practice all formats try to balance these extremes
+
+
+
+<!-- 
 
 ## Trade-offs in file format design
 
 (Remember, much of this applies to all data representations!)
 
 
-### General-purpose vs Specific
+### Flexibility costs space
 
-- Some file formats can support arbitrary data
-- Others only store one type of data/record
-- Everything needs explanation
-  - General formats must put this in the file itself
-  - Specific formats (hopefully!) put it in external documentation
-
-
-### Portable vs Machine-Dependent
-
-- Writing memory to disk is "easy"
-  - ...but it won't make sense to anyone later
-- Portability requires encoding data
-  - That often requires more space
-  - and documentation of the encoding system
-- Fortunately we have lots of standards
-  - If you find yourself writing your own standard...
-  - Maybe have a snack and reconsider
+- `1234154516984556` vs
+- `1234 1545 1698 4556 `
+  - Omit the spaces: save 20%!
+  - BUT you can never support a five-digit number
 
 
-### Transparent vs Opaque
+- Also applies for text-based representations
+- Encoding into letters/numbers takes space
+  - `AGAGCT` could be 6 characters (48 to 192 bits)
+  - Or it could be 12 bits--there's only 4 possible letters
 
-- It's convenient to open files with a text editor
-  - But character encodings have an overhead
-  - "AGAGCT" could be 6 characters (48 to 192 bits)
-  - Or 12 bits--there's only 4 possible letters
-- Some formats label fields internally (JSON, CSV)
-  - Pro: the file is self-documenting
-  - Con: the file is (sometimes much) larger
+
+### Portability costs space
+
+- One extreme: write memory bits directly to disk
+  - Different machines interpret memory differently
+  - Any memory-address references won't make sense
+- Other extreme: XML
+  - External interpretive schema
+  - Every field is labeled
+- To be portable, your data must be *encoded*
+  - Encoding = padding = more space
 
 
 ### Regular- vs Irregular-sized Records
@@ -270,7 +306,6 @@ In memory!
 
 ### Support for missing values
 
-- Think back to complete vs. incomplete data
 - Some representations imply that missing data is a negative observation
   - Edge list vs. adjacency matrix
   - Need an explicit "unknown" value?
@@ -290,18 +325,9 @@ In memory!
   - random-access read speed
   - sequential read speed
   - internal consistency
-
-
-## Rubric
-
-(Yeah, I need to make this an image or something)
-
-| Format | General | Portable | Character vs Binary | Self-documenting | Allows blanks | Flexible Layouts |
-| ---    | ------- | -------- |  ------------------ | ---------------- | ------------- |  --------------- |
-| ...    |         |          |                     |                  |               |                  |
-
-
-
+  
+  
+-->
 # Common "human readable" formats
 
 Robert Blackwell (SCC)
