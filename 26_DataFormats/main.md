@@ -59,7 +59,7 @@ Activities where participants all actively work to foster an environment which e
 - Review definitions
 - Consider how to describe data
   - Particularly beyond lists/tables
-- Discuss what we want files to support
+- Discuss what we want from a file format
 - Look at some high-level patterns among formats
 
 Today is about the **trade-offs** imposed by different formats,
@@ -74,7 +74,7 @@ and making **choices** that fit our situation and goals.
   - Edge weights on a graph
   - Chunks of natural-language text
   - ...
-- Attempt to quantify some phenomenon
+- Attempt to *quantify* some phenomenon
 
 
 ### What is a file?
@@ -112,6 +112,7 @@ In memory!
 
 - Data provenance? (Source, time, recording setup...)
 - Hyperparameter choices that generated the data?
+  - Please don't cram all of this into the file name
 - Possible values for categorical observations ("data dictionary")
   - e.g. 6 quark types, 4 DNA bases, ...
 
@@ -121,10 +122,10 @@ In memory!
 - *Simple*: only one observation or type of observation
   - e.g. Height of an object at time `t=0`, `t=1`, ...
   - One set of numbers, representing the same observable
-- *Composite*: more than one type of observation
+- *Composite*: more than one type of observation that go together
   - e.g. Position, velocity, mass of object over time
   - Observables have *distinct* meanings
-  - `t` groups them together into discrete sets
+  - here `t` groups them together into discrete sets
 
 
 ### Parts of composite data
@@ -200,6 +201,7 @@ In memory!
 - Suppose your data is a 6d tensor
   - What dimension (field) separates the records?
   - Is each record just one field with a 5d tensor?
+- How would you slice along the different dimensions?
 
 
 ### Sparsity
@@ -207,7 +209,7 @@ In memory!
 - What if your table is mostly blank?
 
 
-### Tables are not cancelled
+### Rehabilitating tables
 
 - Still useful for lots of scientific data
 - Just be aware of the limitations
@@ -246,6 +248,7 @@ In memory!
 - Smaller files are faster to read than larger ones
   - There's less data to transfer
 - Flexibility and transparency require larger sizes
+  - Two-digit vs four-digit years
 - Reading speeds compete with writing speeds
   - "Time" may not be the best way to structure a file
 - Random access competes with everything
