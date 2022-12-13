@@ -391,8 +391,8 @@ Included here as possible source material
   - sequential read speed
   - internal consistency
 
-  
-  
+
+
 # Common "human readable" formats
 
 Robert Blackwell (SCC)
