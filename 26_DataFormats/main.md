@@ -154,7 +154,7 @@ choice of file formats. Let's look at that.
   - These require the most care and thought
 - Some files are for internal use or short duration
   - Everything lasts longer than you intend
-  - Everything turns out to be more important than you thought
+  - Everything becomes more important than you thought
   - You definitely forgot something in your file name
 - Many fields have standard practice
   - If you do something else, have a good reason
@@ -225,7 +225,7 @@ Here's how to describe that.
 
 - We assumed a record is "one of each field", but:
 - Sometimes fields evolve at different rates
-  - Femtosecond-scale is reasonable for chemical simulations
+  - Femtoseconds: reasonable for chemical simulations
     - but agonizingly short for protein folding
 - Data may be very unevenly distributed over a volume
   - Imagine doing cosmology at a fixed scale
@@ -251,6 +251,15 @@ Here's how to describe that.
 - How would you slice along the different dimensions?
 
 
+### Internal consistency
+
+<img src="assets/physics_table.png" width="350" style="border:0;box-shadow:none">
+
+- What if the change in `x` wasn't what `v_x` predicted?
+- Or if the `Mass` entry changed between rows?
+- Other representations can catch/prevent this better
+
+
 ### Sparsity
 
 - What if your table is mostly blank?
@@ -271,7 +280,8 @@ Now that we've thought about data, let's look at how we would like to record it.
 - There are plenty of other desirable properties for files
   - Access control
   - Resilience to data corruption
-  - Verifiability
+  - Verified authenticity
+  - ...
 - These are out of scope for today
 
 
@@ -312,7 +322,6 @@ Now that we've thought about data, let's look at how we would like to record it.
   - Concise, efficient, but brittle
 - We sort of map these onto "human-readable" and "binary"
 - But in practice all formats try to balance these extremes
-  - Lastly, consider precedents in your field!
 
 
 ## FOLLOWING SLIDES TO BE CUT BEFORE FINAL VERSION
