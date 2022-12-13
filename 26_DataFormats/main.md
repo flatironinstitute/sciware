@@ -56,14 +56,18 @@ Activities where participants all actively work to foster an environment which e
 
 ## Outline
 
-- Review definitions
-- Consider how to describe data
+- Basic definitions
+- Data-in-context
+- Data's internal structure
   - Particularly beyond lists/tables
-- Discuss what we want from a file format
-- Look at some high-level patterns among formats
+- Desirable properties of file formats
+- Overview of the trade-offs
 
 Today is about the **trade-offs** imposed by different formats,
 and making **choices** that fit our situation and goals.
+
+
+## Basic definitions
 
 
 ### What is data?
@@ -99,6 +103,12 @@ In memory!
   - Data sharing/moving between systems
 
 
+## Metadata and context
+
+There are considerations outside our data that may influence our
+choice of file formats. Let's look at that.
+
+
 ### What's metadata?
 
 - "Data that describes data"
@@ -112,12 +122,49 @@ In memory!
 
 - Data provenance? (Source, time, recording setup...)
 - Hyperparameter choices that generated the data?
-  - Please don't cram all of this into the file name
 - Possible values for categorical observations ("data dictionary")
   - e.g. 6 quark types, 4 DNA bases, ...
 
 
+### Where to store metadata
+
+- In the file itself
+  - Most reliable & secure
+  - Takes more space
+  - Format must support it (somehow)
+- In the filename or directory structure
+  - Easy and straightforward
+  - until you need to share or re-sort your data
+  - also leads to long filenames and incomplete storage
+
+
+### Where not to store metadata
+
+- Implicitly
+  - You know what's in `untitled_16_final_final.csv`
+  - ...don't you?
+- In the paper
+  - No
+- General tension: what is implicit vs explicit
+
+
+### What's the purpose of data?
+
+- Some files are for publication
+  - These require the most care and thought
+- Some files are for internal use or short duration
+  - Everything lasts longer than you intend
+  - Everything turns out to be more important than you thought
+  - You definitely forgot something in your file name
+- Many fields have standard practice
+  - If you do something else, have a good reason
+
+
 ## Simple vs Composite Data
+
+Data often has some sort of natural internal structure.
+Here's how to describe that.
+
 
 - *Simple*: only one observation or type of observation
   - e.g. Height of an object at time `t=0`, `t=1`, ...
@@ -130,12 +177,13 @@ In memory!
 
 ### Parts of composite data
 
-[DROP-IN: SCREENSHOT OF A SPREADSHEET]
+<img src="assets/physics_table.png" width="350" style="border:0;box-shadow:none">
 
 - **Fields** are distinct observables
   - the columns above, e.g. `mass`, `v_x`, etc
-- **Records** are repeated groups of fields that belong together
+- **Records** are groups of fields that belong as a unit
   - the rows above, i.e. one per time
+  - One of each of the fields
 - Does the row order mean anything?
 
 
@@ -161,7 +209,7 @@ In memory!
 
 ### Implicit Fields
 
-[DROP-IN: SAME SCREENSHOT OF A SPREADSHEET]
+<img src="assets/physics_table.png" width="350" style="border:0;box-shadow:none">
 
 - We assumed that:
   - each row/record represents a new time
@@ -173,13 +221,12 @@ In memory!
 
 ### Incompatible Scales
 
-[DROP-IN: SCREENSHOT OF A SPREADSHEET "EHR"]
+<img src="assets/EHR_table.png" width="350" style="border:0;box-shadow:none">
 
 - We assumed a record is "one of each field", but:
 - Sometimes fields evolve at different rates
   - Femtosecond-scale is reasonable for chemical simulations
     - but agonizingly short for protein folding
-  - Pulse rates change faster than height/weight
 - Data may be very unevenly distributed over a volume
   - Imagine doing cosmology at a fixed scale
 
@@ -216,6 +263,9 @@ In memory!
 
 
 ## Representations and Trade-Offs
+
+Now that we've thought about data, let's look at how we would like to record it.
+
 
 - This is Flatiron: we'll focus on efficiency and clarity
 - There are plenty of other desirable properties for files
@@ -262,10 +312,13 @@ In memory!
   - Concise, efficient, but brittle
 - We sort of map these onto "human-readable" and "binary"
 - But in practice all formats try to balance these extremes
+  - Lastly, consider precedents in your field!
 
 
+## FOLLOWING SLIDES TO BE CUT BEFORE FINAL VERSION
 
-<!-- 
+Included here as possible source material
+
 
 ## Trade-offs in file format design
 
@@ -328,9 +381,9 @@ In memory!
   - random-access read speed
   - sequential read speed
   - internal consistency
+
   
   
--->
 # Common "human readable" formats
 
 Robert Blackwell (SCC)
