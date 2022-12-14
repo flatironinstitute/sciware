@@ -710,7 +710,7 @@ squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289
 
 
 ## ASDF Details
-- Development led by astronomy community (STScI) as a FITS replacement
+- Development led by astronomy community (STScI) as a FITS replacement (all JWST data in ASDF)
 - [Greenfield, et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2213133715000645) lays out motivation: want human-readable headers; avoid complexity of HDF5 (is it really archival?); HDF5 doesn't represent certain data structures (e.g. Python dict) well
 - The reference implementation is in Python. Excellent integration with Numpy. C++ interface less mature.
 - Lehman prefers to use ASDF over HDF5 when it makes sense
