@@ -702,6 +702,12 @@ squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289
 
 
 
+# Break
+
+Survey
+
+
+
 # HDF5
 
 Dylan Simon (SCC)
@@ -716,9 +722,9 @@ Largely taken from HDFGroup's [Introduction to HDF5](https://docs.hdfgroup.org/h
 
 ### HDF5 Groups
 
-- Groups are like directories in a filesystem
+Groups are like directories in a filesystem
 
-<img src="https://docs.hdfgroup.org/hdf5/develop/group.png" width="80%" style="border:0;box-shadow:none">
+<img src="https://docs.hdfgroup.org/hdf5/develop/group.png" width="70%" style="border:0;box-shadow:none">
 
 - UNIX path names are used to reference objects: `/SimOut/Mass`
 
@@ -800,7 +806,7 @@ Largely taken from HDFGroup's [Introduction to HDF5](https://docs.hdfgroup.org/h
 /results/final           Group
 /results/final/x         Dataset {1000}
 /results/final/y         Dataset {1000}
-/results/final/Position  Dataset {1000, 2}
+/results/final/Velocity  Dataset {1000, 2}
 /results/final/Mass      Dataset {1000}
 ```
 
@@ -945,21 +951,21 @@ x.attrs["units"]
 ### h5py writing
 
 ```python
-file = h5py.File("file.h5", "w")
-group = file.create_group("results/data")
+with h5py.File("file.h5", "w") as file:
+    group = file.create_group("results/data")
 
-x = group.create_dataset("x", (1000,), dtype="f")
+    x = group.create_dataset("x", (1000,), dtype="f")
 
-x[0] = 0.052104
+    x[0] = 0.052104
 
-x.attrs["units"] = "furlongs"
+    x.attrs["units"] = "furlongs"
 ```
 
 
 ### h5py multi-dimensional arrays
 
 ```python
-pos = group.create_dataset("Position", (1000,2), dtype="f")
+pos = group.create_dataset("Velocity", (1000,2), dtype="f")
 
 pos[10,1] = 3.5
 pos[10][1] # works for access, not assignment!
@@ -967,3 +973,17 @@ pos[10][1] # works for access, not assignment!
 pos[0,:]
 pos[20:29,0] = numpy.arange(10)
 ```
+
+
+## Tips
+
+- Avoid opening files (or objects) repeatedly
+- Combine related data in the same file
+- Add any relevant metadata in attributes
+   - software version, timestamp, parameters, configuration
+   - parameter descriptions, units
+- HDF5 provides a parallel-enabled (MPI) interface: you don't generally need it
+   - better to do all writes from a single rank
+
+
+# Survey
