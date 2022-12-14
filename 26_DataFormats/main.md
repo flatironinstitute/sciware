@@ -955,8 +955,9 @@ with h5py.File("file.h5", "w") as file:
     group = file.create_group("results/data")
 
     x = group.create_dataset("x", (1000,), dtype="f")
-
     x[0] = 0.052104
+
+    y = group.create_dataset("y", data=np.arange(1000))
 
     x.attrs["units"] = "furlongs"
 ```
@@ -972,6 +973,19 @@ pos[10][1] # works for access, not assignment!
 
 pos[0,:]
 pos[20:29,0] = numpy.arange(10)
+```
+
+
+### h5py extendable datasets
+
+- HDF5 allows incremental resizing of Datasets (like appending to a CSV)
+
+```python
+mass = f.create_dataset("Mass", (10,), maxshape=(None,))
+mass[0:9] = ...
+
+mass.resize((20,))
+mass[10:19] = ...
 ```
 
 
