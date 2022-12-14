@@ -63,6 +63,10 @@ Activities where participants all actively work to foster an environment which e
 - Desirable properties of file formats
 - Overview of the trade-offs
 
+This section is fairly abstract--don't worry, we'll be looking
+at examples soon!
+
+
 Today is about the **trade-offs** imposed by different formats,
 and making **choices** that fit our situation and goals.
 
@@ -92,17 +96,6 @@ and making **choices** that fit our situation and goals.
 - There are many ways to represent the same data
 
 
-### What is a file format?
-
-- Particular choice of rules for:
-  - What data to store
-  - How to represent it in bits
-  - How to organize it on hardware
-- Allowing conversion
-  - in either direction
-  - consistently and repeatably
-
-
 ### Where is data when it's not in files?
 
 In memory!
@@ -112,6 +105,18 @@ In memory!
   - Getting *the right* data to/from memory
   - Persisting and duplicating data
   - Data sharing/moving between systems
+
+
+### What is a file format?
+
+- *Not* the file extension (e.g. `.txt`)
+- Particular choice of rules for:
+  - *What* data to store,
+  - How to represent it in bits
+  - How to organize it on disk
+- Allowing conversion
+  - in either direction
+  - consistently and repeatably
 
 
 ## Metadata and context
@@ -124,6 +129,7 @@ choice of file formats. Let's look at that.
 
 - "Data that describes data"
 - Says how to interpret a representation/file
+  - Both by the humans and the machines
   - Often separate from the file itself
   - Might not even be explicitly stated
 - Expresses assumptions made about the data
@@ -150,11 +156,17 @@ choice of file formats. Let's look at that.
   - leads to long filenames, incomplete capture
 
 
+- In a separate file
+  - Pro: Explicit, no special tooling needed
+  - Con: not automatic, can get lost
+  - Can be tricky if you have multiple writers
+
+
 ### Where not to store metadata
 
 - In your head
   - You know what's in `untitled_16_final_final.dat`
-  - Obviously those numbers are...
+  - I think those numbers mean...
 - In the paper
   - No
 - General tension: what is implicit vs explicit
@@ -184,6 +196,7 @@ Here's how to describe that.
   - e.g. Position & velocity of object over time
   - Observables have *distinct* meanings
   - in this example, `t` separates discrete sets
+- We'll be talking about the composite case
 
 
 ### Parts of composite data
@@ -207,6 +220,7 @@ Here's how to describe that.
   - Imperial? Metric? What's the scale/reference?
 - For categorical data, what defines the category values?
   - Are those values all known in advance?
+  - How do I encode those values?
 
 
 ## The map is not the terrain
@@ -215,7 +229,8 @@ Here's how to describe that.
 - Those are *representations* of your data
   - May or may not be a useful way to think about your data
   - May or may not be a desirable file format
-- How does data fail to be tabular?
+  - First choice: what data to store?
+- Limits of single-file table-oriented approach?
 
 
 ### Implicit Fields
@@ -227,49 +242,27 @@ Here's how to describe that.
   - each time is equally far apart
 - These are *choices* in representation
   - i.e. choosing what *not* to represent
-- Even a list is composite if you include the implicit field
-
-
-### Incompatible Scales
-
-<img src="assets/EHR_table.png" width="350" style="border:0;box-shadow:none">
-
-- We assumed a record is "one of each field", but:
-- Sometimes fields evolve at different rates
-  - Femtosecond scale:
-    - Reasonable for chemical simulations
-    - Agonizingly slow for protein folding
-- Data may be very unevenly distributed over a volume
-  - Imagine doing cosmology at a fixed scale
-
-
-### Missing fields & Evolving data
-
-- Fields might get added partway through data collection
-  - Cell division: objects appear!
-  - Perfectly inelastic collisions: objects disappear!
-- Fields' referents might change
-  - "Attractive force with nearest neighbor"
-  - Identity of that nearest neighbor varies
-- Some fields don't describe all records
-  - "Spouse" or "dependents" fields?
+- Consider representing implicit fields explicitly
+  - All data is composite if you do
 
 
 ### Higher-dimensional data
 
 - Suppose your data is a 6d tensor
-  - What dimension (field) separates the records?
+  - What dimension (field) distinguishes the records?
   - Is each record just one field with a 5d tensor?
 - How would you slice along the different dimensions?
 
 
-### Internal consistency
+### Missing fields & Evolving data
 
-<img src="assets/physics_table.png" width="350" style="border:0;box-shadow:none">
-
-- What if the change in `x` wasn't what `v_x` predicted?
-- Or if the `Mass` entry changed between rows?
-- Other representations can catch/prevent this better
+- Fields' interpretation might change
+  - `f_nn`: but the nearest neighbor can vary
+- Some fields don't apply to all records
+  - "Spouse" or "dependents" fields?
+- What if we want to add a new field partway through?
+- Partly a metadata issue, partly a data design issue
+  - Formats handle empty fields differently
 
 
 ### Sparsity
@@ -277,10 +270,26 @@ Here's how to describe that.
 - What if your table is mostly blank?
 
 
+### Incompatible Scales
+
+<img src="assets/physics_table.png" width="350" style="border:0;box-shadow:none">
+
+- Fields can evolve over different time scales or be treated at different spatial resolutions
+  - Mass gets repeated--can it even change?
+  - Adaptive grids, different-scale phenomena
+- Natural solution: record them as different files
+  - How do I keep the files together?
+  - How do I link related records?
+- Relational models address this (not in today's scope)
+
+
 ### Rehabilitating tables
 
 - Still useful for lots of scientific data
 - Just be aware of the limitations
+- It's expected that you'll find cases where data isn't neatly tabular
+- Whatever problem you encounter, you probably aren't the first
+  - Ask around for advice!
 
 
 ## Representations and Trade-Offs
@@ -334,74 +343,7 @@ Now that we've thought about data, let's look at how we would like to record it.
   - Concise, efficient, but brittle
 - We sort of map these onto "human-readable" and "binary"
 - But in practice all formats try to balance these extremes
-
-
-## FOLLOWING SLIDES TO BE CUT BEFORE FINAL VERSION
-
-Included here as possible source material
-
-
-## Trade-offs in file format design
-
-(Remember, much of this applies to all data representations!)
-
-
-### Flexibility costs space
-
-- `1234154516984556` vs
-- `1234 1545 1698 4556 `
-  - Omit the spaces: save 20%!
-  - BUT you can never support a five-digit number
-
-
-- Also applies for text-based representations
-- Encoding into letters/numbers takes space
-  - `AGAGCT` could be 6 characters (48 to 192 bits)
-  - Or it could be 12 bits--there's only 4 possible letters
-
-
-### Portability costs space
-
-- One extreme: write memory bits directly to disk
-  - Different machines interpret memory differently
-  - Any memory-address references won't make sense
-- Other extreme: XML
-  - External interpretive schema
-  - Every field is labeled
-- To be portable, your data must be *encoded*
-  - Encoding = padding = more space
-
-
-### Regular- vs Irregular-sized Records
-
-- Random access to records depends on regular sizing
-  - Easy to find the 1001st character
-  - Hard to find the 1001st word
-- Sparse data may not be worth storing regularly
-  - A 30 GB tensor that's 98% zeroes is probably not ideal
-
-
-### Support for missing values
-
-- Some representations imply that missing data is a negative observation
-  - Edge list vs. adjacency matrix
-  - Need an explicit "unknown" value?
-- You can support data whose fields aren't all known upfront
-  - but it costs you in efficiency and clarity
-
-
-### Transposed/Deconstructed Data Layouts
-
-- "Natural": each record has one value for each of the fields
-- "Transposed": each field is its own list, indexed by record
-
-[DROP IN: Two spreadsheet snippets illustrating this]
-
-- Multi-way trade-off among:
-  - write speed
-  - random-access read speed
-  - sequential read speed
-  - internal consistency
+  - Best -- or worst -- of both worlds
 
 
 
