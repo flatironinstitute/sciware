@@ -986,4 +986,10 @@ pos[20:29,0] = numpy.arange(10)
    - better to do all writes from a single rank
 
 
+## Other hdf5 interfaces
+
+- https://github.com/TRIQS/h5: C++, python
+
+
+
 # Survey
