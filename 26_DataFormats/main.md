@@ -769,7 +769,7 @@ Groups are like directories in a filesystem
 ### HDF5 Datasets
 
 - Datasets store multi-dimensional blocks of data of a single type
-- Usually represent a single "column" of data
+- Usually represent a single "field" of data
 
 <img src="https://docs.hdfgroup.org/hdf5/develop/dataset.png" width="80%" style="border:0;box-shadow:none">
 
@@ -782,7 +782,7 @@ Groups are like directories in a filesystem
   - `H5T_INTEL_I32`, `H5T_STD_I32LE`, `H5T_NATIVE_INT` (int)
   - `H5T_C_S1` (char, basis for fixed-length strings)
 - Derived datatypes: compound values composed of other types
-  - fixed-length strings
+  - fixed-length strings for random access
 
 
 ### HDF5 Compound Datatypes
@@ -794,7 +794,7 @@ Groups are like directories in a filesystem
 
 ### HDF5 Dataspaces
 
-- Dataspaces represent the size and dimensions of an array (scalar, vector, etc.)
+- Dataspaces represent the dimensions of an array (scalar, vector, etc.)
 - Can be used to describe overall Dataset size, and subsets ("views", "slices") of data
 
 <img src="https://docs.hdfgroup.org/hdf5/develop/dataspace.png" width="80%" style="border:0;box-shadow:none">
@@ -1029,7 +1029,7 @@ mass[10:19] = ...
 ## Tips
 
 - Avoid opening files (or objects) repeatedly
-- Combine related data in the same file
+- Combine related data in the same file (and...)
 - Add any relevant metadata in attributes
    - software version, timestamp, parameters, configuration
    - parameter descriptions, units
