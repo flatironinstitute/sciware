@@ -88,13 +88,13 @@ and making **choices** that fit our situation and goals.
   - using a *finite* series of *bits*
   - on some *persistent* electronic storage
   - *separate* from other data
-- Organizing separate files is its own expensive task
+- Organizing separate files is hard in its own right
 - There are many ways to represent the same data
 
 
 ### What is a file format?
 
-- Particular choices of rules for:
+- Particular choice of rules for:
   - What data to store
   - How to represent it in bits
   - How to organize it on hardware
@@ -133,7 +133,8 @@ choice of file formats. Let's look at that.
 
 - Data provenance? (Source, time, recording setup...)
 - Hyperparameter choices that generated the data?
-- Possible values for categorical observations ("data dictionary")
+- Possible values for categorical observations
+  - "data dictionary"
   - e.g. 6 quark types, 4 DNA bases, ...
 
 
@@ -146,14 +147,14 @@ choice of file formats. Let's look at that.
 - In the filename or directory structure
   - Easy and straightforward
   - until you need to share or re-sort your data
-  - also leads to long filenames and incomplete storage
+  - leads to long filenames, incomplete capture
 
 
 ### Where not to store metadata
 
-- Implicitly
-  - You know what's in `untitled_16_final_final.csv`
-  - ...don't you?
+- In your head
+  - You know what's in `untitled_16_final_final.dat`
+  - Obviously those numbers are...
 - In the paper
   - No
 - General tension: what is implicit vs explicit
@@ -163,12 +164,11 @@ choice of file formats. Let's look at that.
 
 - Some files are for publication
   - These require the most care and thought
-- Some files are for internal use or short duration
-  - Everything lasts longer than you intend
-  - Everything becomes more important than you thought
-  - You definitely forgot something in your file name
 - Many fields have standard practice
   - If you do something else, have a good reason
+- Some files are for internal use or short duration
+  - But listen to optimistic pessimism!
+  - It'll be more important & useful longer than you think
 
 
 ## Simple vs Composite Data
@@ -179,11 +179,11 @@ Here's how to describe that.
 
 - *Simple*: only one observation or type of observation
   - e.g. Height of an object at time `t=0`, `t=1`, ...
-  - One set of numbers, representing the same observable
+  - One set of values, representing the same observable
 - *Composite*: more than one type of observation that go together
-  - e.g. Position, velocity, mass of object over time
+  - e.g. Position & velocity of object over time
   - Observables have *distinct* meanings
-  - here `t` groups them together into discrete sets
+  - in this example, `t` separates discrete sets
 
 
 ### Parts of composite data
@@ -236,8 +236,9 @@ Here's how to describe that.
 
 - We assumed a record is "one of each field", but:
 - Sometimes fields evolve at different rates
-  - Femtoseconds: reasonable for chemical simulations
-    - but agonizingly short for protein folding
+  - Femtosecond scale:
+    - Reasonable for chemical simulations
+    - Agonizingly slow for protein folding
 - Data may be very unevenly distributed over a volume
   - Imagine doing cosmology at a fixed scale
 
