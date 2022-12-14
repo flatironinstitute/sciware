@@ -476,13 +476,15 @@ Lehman Garrison (SCC)
 
 * Not human readable (usually)
 * Low-level, often mostly a "raw memory dump"
-  * The data is stored identically on disk as it is in memory
+  * The values are stored identically on disk as they are in memory
   * No expensive translation step, like with CSV to binary
-  * Or if there is a translation step (c.f. compression), it's very efficient
+  * Or if there is a translation step (such as compression), it's very efficient
   * Binary formats are almost always the right way to store large amounts of data!
 
 
 ## What do binary files look like?
+
+Let's write the raw contents of an array with Numpy's `tofile()`:
 
 ```python
 >>> a = np.arange(10**7, dtype='f4')
@@ -498,9 +500,9 @@ $ head -c 128 mybinfile
 * What would we do if we wanted it to be human readable?
 
 
-## What do binary files look like? (cont.)
+## What do binary files look like?
 
-* Could make a human readable file with:
+Could make a human readable file with:
 
 ```python
 >>> np.savetxt('mytxtfile', a)
@@ -538,12 +540,15 @@ $ ls -lh
 ```
 
 
-## So we should always do `np.tofile()`?
+## So we should always use Numpy `tofile()`?
 
-* Don't always do `np.tofile()`!
-  * or similar raw binary dumps
+* Don't always use Numpy's `tofile()`!
+  * or similar raw binary dumps in other languages/packages
   * Doesn't store metadata
   * Not self-describing—how will a user know how to read? Does this file contain floats or ints? 4-byte or 8-byte? Etc.
+
+
+## What does self-describing mean?
 
 ```python
 >>> np.fromfile("mybinfile")
@@ -563,14 +568,34 @@ array([0.000000e+00, 1.000000e+00, 2.000000e+00, ..., 9.999997e+06,
 ## Better Binary Formats
 
 * Better formats exist that solve these problems
-  * Self-describing (e.g. knows its own `dtype`), stores metadata
+  * Self-describing (e.g. knows its own `dtype`)
+  * Stores metadata (what simulation did this data come from?)
   * Retain the performance and size benefits of raw binary
-* Examples
-  * .npy/.npz files (Numpy specific)
-  * Msgpack ("binary JSON": arbitrarily structured binary data, not just arrays)
-  * ASDF (human-readable header, binary data blocks, best of both worlds)
-  * HDF5 (wide adoption, feature-rich, often the Right Choice)
-  * See table at the end of this section
+
+
+## Examples of Binary Formats
+
+- HDF5
+  - Wide adoption, feature-rich, often the Right Choice
+  - _Good for:_ data arrays, inter-language operability
+- ASDF
+  - Combines human-readable header with binary data blocks
+  - _Good for:_ exchanging data (small or big) between Python users
+- .npy/.npz files (Numpy specific)
+  - Save/load Numpy arrays with `np.save()` and `np.load()`
+  - _Good for:_ data consists only of Numpy arrays
+
+
+## Examples of Binary Formats
+- Msgpack
+  - "Binary JSON": lists, key-value dicts, etc
+  - _Good for:_ arbitrarily structured binary data
+- Python Pickle
+  - Stores arbitrary Python objects
+  - _Good for:_ saving and loading state of custom Python objects
+- Domain-specific formats
+  - NIfTI (neuroscience), netCDF (geospatial)
+  - _Good for:_ compatibility with software tools in a domain
 
 
 ## ASDF File Format
@@ -683,7 +708,7 @@ squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289
 
 ## Summary of Binary Formats
 
-- Binary formats store data in a low-level way, often as a direct copy of the data in memory
+- Binary formats store data in a low-level way, often as a direct copy of the values in memory
 - Nearly always the right choice when size or performance is a consideration
 - Downsides: the format you choose locks you (and your users) into that format's tooling ecosystem
   - HDF5 files have to be read with an HDF5 library, npy files have to be read with numpy, etc.
