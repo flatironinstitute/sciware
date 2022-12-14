@@ -92,6 +92,17 @@ and making **choices** that fit our situation and goals.
 - There are many ways to represent the same data
 
 
+### What is a file format?
+
+- Particular choices of rules for:
+  - What data to store
+  - How to represent it in bits
+  - How to organize it on hardware
+- Allowing conversion
+  - in either direction
+  - consistently and repeatably
+
+
 ### Where is data when it's not in files?
 
 In memory!
