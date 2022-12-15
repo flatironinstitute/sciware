@@ -656,8 +656,14 @@ There are thousands of binary formats! Here are a few common, high-quality ones:
   - Usually can't open a file and know what's inside without that format's tools (but see ASDF)
 
 
-# Break
+## And many others...
 
+- Other formats you've used?  Things you like?  Challenges?
+- Questions?
+
+
+
+# Break
 
 # Survey
 Please give us some feedback!
@@ -1087,6 +1093,7 @@ squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289
   - Memory-mapped IO for efficient jump-ahead
   - Can define extensions and schema for serializing custom types
 - File format is formally standardized
+
 
 
 # Survey
