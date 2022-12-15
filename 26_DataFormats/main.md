@@ -371,8 +371,7 @@ Robert Blackwell (SCC)
 - Generally flexible/extendable
 
 
-## Simplest human readable format:<br>
-## one number
+## Simplest: one number
 
 ```bash
 $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
@@ -384,8 +383,7 @@ $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
 * Blows up very very quickly at scale
 
 
-## Second simplest human readable format: <br>
-## CSV (comma separated values)
+## Second simplest: CSV
 
 ```csv
 #  t,         x,         v_x
@@ -394,6 +392,8 @@ $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
    0.66667,  -0.86603,  -0.07958
    1.00000,  -0.00000,   0.15915
 ```
+
+* "Comma separated values"
 * Fixed table
 * Flexible types
 * Comments
