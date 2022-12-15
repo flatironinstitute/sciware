@@ -477,7 +477,7 @@ Lehman Garrison (SCC)
 
 ## What do we mean by "binary file"?
 
-* Not human readable (usually)
+* Any file meant to be read by a machine instead of a human
 * Low-level, often mostly a "raw memory dump"
   * The values are stored identically on disk as they are in memory
   * No expensive translation step, like with CSV to binary
@@ -578,156 +578,71 @@ array([0.000000e+00, 1.000000e+00, 2.000000e+00, ..., 9.999997e+06,
 
 ## Examples of Binary Formats
 
+There are thousands of binary formats! Here are a few common, high-quality ones:
+- HDF5
+- ASDF
+- Numpy .npy
+- Msgpack
+- Python Pickle
+- Other domain-specific formats
+
+
+## Binary Formats: HDF5
 - HDF5
   - Wide adoption, feature-rich, often the Right Choice
-  - _Good for:_ data arrays, inter-language operability
+  - Will talk about with examples in Part 2
+  - _Good for:_ arrays of data with metadata, complex data models, inter-language operability
+  - _Downsides:_ complicated API, opaque internals (unpredictable performance)
+  - https://docs.h5py.org/en/stable/quick.html#core-concepts
+
+
+## Binary Formats: ASDF
 - ASDF
   - Combines human-readable header with binary data blocks
-  - _Good for:_ exchanging data (small or big) between Python users
+  - _Good for:_ exchanging data (small or big) between Python users, medium-complicated use-cases like compression, extendable arrays, etc.
+  - _Downsides:_ limited support outside Python
+  - https://asdf.readthedocs.io/en/stable/asdf/overview.html
+
+
+## Binary Formats: Numpy .npy
 - .npy/.npz files (Numpy specific)
-  - Save/load Numpy arrays with `np.save()` and `np.load()`
-  - _Good for:_ data consists only of Numpy arrays
+  - Simple format for Numpy arrays; use with `np.save()` and `np.load()`
+  - .npz is literally zip file for .npy files
+  - _Good for:_ data consists only of Numpy arrays, easy to read in other languages
+  - _Downsides:_ only works with Numpy arrays, no metadata support besides types
+  - https://numpy.org/doc/stable/reference/generated/numpy.save.html
 
 
-## Examples of Binary Formats
+## Binary Formats: Msgpack
 - Msgpack
   - "Binary JSON": lists, key-value dicts, etc
   - _Good for:_ arbitrarily structured binary data
+  - _Downsides:_ bad for arrays: no random access/jump-ahead (each item can have different size)
+  - https://msgpack.org/index.html
+
+
+## Binary Formats: Python Pickle
 - Python Pickle
   - Stores arbitrary Python objects
-  - _Good for:_ saving and loading state of custom Python objects
+  - _Good for:_ saving and loading intermediate state of custom Python objects
+  - _Downsides:_ slow, fragile (won't work across Python versions or if packages are missing)
+  - https://docs.python.org/3/library/pickle.html
+
+
+## Binary formats: Domain Specific-Formats
 - Domain-specific formats
-  - NIfTI (neuroscience), netCDF (geospatial)
+  - Countless domain-specific formats!
+  - e.g. NIfTI (neuroscience), netCDF (geospatial)
   - _Good for:_ compatibility with software tools in a domain
-
-
-## ASDF File Format
-
-* Most binary formats are _all_ binary—no way to know what's inside with installing special tools (e.g. `h5ls`)
-* Doesn't have to be that way, we can have a human-readable header while still storing the data in binary blocks for efficiency
-* That's what ASDF is!
-  * ASDF = Advanced Scientific Data Format
-  * "A next-generation interchange format for scientific data"
-* https://github.com/asdf-format/asdf
-
-
-## ASDF Example
-
-```python
-import asdf
-import numpy as np
-
-seed = 123
-rng = np.random.default_rng(seed)
-sequence = np.arange(10**6, dtype='f4')
-rand = rng.random((512,512))
-tree = {'seq': sequence,
-        'rand': rand,
-        'params':
-            {'comment': 'This is an example for Sciware',
-             'seed': seed,
-            },
-       }
-
-af = asdf.AsdfFile(tree)
-af.write_to('/tmp/myfile.asdf')
-```
-
-
-## ASDF Example
-
-```yaml
-#ASDF 1.0.0
-#ASDF_STANDARD 1.5.0
-%YAML 1.1
-%TAG ! tag:stsci.edu:asdf/
---- !core/asdf-1.1.0
-asdf_library: !core/software-1.0.0 {author: The ASDF Developers, homepage: 'http://github.com/asdf-format/asdf',
-  name: asdf, version: 2.13.0}
-history:
-  extensions:
-  - !core/extension_metadata-1.0.0
-    extension_class: asdf.extension.BuiltinExtension
-    software: !core/software-1.0.0 {name: asdf, version: 2.13.0}
-params: {comment: This is an example for Sciware, seed: 123}
-rand: !core/ndarray-1.0.0
-  source: 1
-  datatype: float64
-  byteorder: little
-  shape: [512, 512]
-seq: !core/ndarray-1.0.0
-  source: 0
-  datatype: float32
-  byteorder: little
-  shape: [1000000]
-...
-<D3>BLK^@0^@^@^@^@^@^@^@^@^@^@^@^@^@=   ^@^@^@^@^@^@=   ^@^@^@^@^@^@=   ^@<B7>_<98><E3>^B<87><A5><FE>^M
-^M<BF><A7>^H*<B0><91>*^@^@^@^@^@^@<80>?^@^@^@@^@^@@@^@^@<80>@^@^@<A0>@^@^@<C0>@^@^@<E0>@^@^@^@A^@^@^PA^@
-```
-
-
-## ASDF Inline Array Example
-
-```python
-import asdf
-
-sequence = list(range(12))
-squares = {k:k**2 for k in range(10,20)}
-tree = { 'seq': sequence, 'squares': squares}
-
-af = asdf.AsdfFile(tree)
-af.write_to('/tmp/myfile.asdf')
-```
-
-
-## ASDF Inline Array Example
-
-```yaml
-#ASDF 1.0.0
-#ASDF_STANDARD 1.5.0
-%YAML 1.1
-%TAG ! tag:stsci.edu:asdf/
---- !core/asdf-1.1.0
-asdf_library: !core/software-1.0.0 {author: The ASDF Developers, homepage: 'http://github.com/asdf-format/asdf',
-  name: asdf, version: 2.13.0}
-history:
-  extensions:
-  - !core/extension_metadata-1.0.0
-    extension_class: asdf.extension.BuiltinExtension
-    software: !core/software-1.0.0 {name: asdf, version: 2.13.0}
-seq: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289,
-  18: 324, 19: 361}
-```
-
-
-## ASDF Details
-- Development led by astronomy community (STScI) as a FITS replacement (all JWST data in ASDF)
-- [Greenfield, et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2213133715000645) lays out motivation: want human-readable headers; avoid complexity of HDF5 (is it really archival?); HDF5 doesn't represent certain data structures (e.g. Python dict) well
-- The reference implementation is in Python. Excellent integration with Numpy. C++ interface less mature.
-- Lehman prefers to use ASDF over HDF5 when it makes sense
-  - End-users are using Python and are okay with non-HDF5
+  - _Downsides:_ users outside that domain won't know what to do with the file
 
 
 ## Summary of Binary Formats
-
 - Binary formats store data in a low-level way, often as a direct copy of the values in memory
 - Nearly always the right choice when size or performance is a consideration
 - Downsides: the format you choose locks you (and your users) into that format's tooling ecosystem
   - HDF5 files have to be read with an HDF5 library, npy files have to be read with numpy, etc.
   - Usually can't open a file and know what's inside without that format's tools (but see ASDF)
-
-
-## Binary Formats Table
-
-- Which: HDF5, ASDF, Pickle, msgpack, npy
-- Columns
-  - Self-describing
-  - Random access
-  - Supports compression
-  - Human-readable header
-  - Best for (npy: Numpy arrays; msgpack: JSON-like structures; pickle: Python objects, etc)
-
 
 
 # Break
@@ -1039,6 +954,128 @@ mass[10:19] = ...
 
 - https://github.com/TRIQS/h5: C++, python
 
+
+
+# ASDF File Format
+Lehman Garrison
+
+
+## ASDF File Format
+
+* Most binary formats are _all_ binary—no way to know what's inside with installing special tools (e.g. `h5ls`)
+* Doesn't have to be that way, we can have a human-readable header while still storing the data in binary blocks for efficiency
+* That's what ASDF is!
+  * ASDF = Advanced Scientific Data Format
+  * "A next-generation interchange format for scientific data"
+* https://github.com/asdf-format/asdf
+
+
+## ASDF Example
+
+```python
+import asdf
+import numpy as np
+
+seed = 123
+rng = np.random.default_rng(seed)
+sequence = np.arange(10**6, dtype='f4')
+rand = rng.random((512,512))
+tree = {'seq': sequence,
+        'rand': rand,
+        'params':
+            {'comment': 'This is an example for Sciware',
+             'seed': seed,
+            },
+       }
+
+af = asdf.AsdfFile(tree)
+af.write_to('/tmp/myfile.asdf')
+```
+
+
+## ASDF Example
+
+```yaml
+#ASDF 1.0.0
+#ASDF_STANDARD 1.5.0
+%YAML 1.1
+%TAG ! tag:stsci.edu:asdf/
+--- !core/asdf-1.1.0
+asdf_library: !core/software-1.0.0 {author: The ASDF Developers, homepage: 'http://github.com/asdf-format/asdf',
+  name: asdf, version: 2.13.0}
+history:
+  extensions:
+  - !core/extension_metadata-1.0.0
+    extension_class: asdf.extension.BuiltinExtension
+    software: !core/software-1.0.0 {name: asdf, version: 2.13.0}
+params: {comment: This is an example for Sciware, seed: 123}
+rand: !core/ndarray-1.0.0
+  source: 1
+  datatype: float64
+  byteorder: little
+  shape: [512, 512]
+seq: !core/ndarray-1.0.0
+  source: 0
+  datatype: float32
+  byteorder: little
+  shape: [1000000]
+...
+<D3>BLK^@0^@^@^@^@^@^@^@^@^@^@^@^@^@=   ^@^@^@^@^@^@=   ^@^@^@^@^@^@=   ^@<B7>_<98><E3>^B<87><A5><FE>^M
+^M<BF><A7>^H*<B0><91>*^@^@^@^@^@^@<80>?^@^@^@@^@^@@@^@^@<80>@^@^@<A0>@^@^@<C0>@^@^@<E0>@^@^@^@A^@^@^PA^@
+```
+
+
+## ASDF Inline Array Example
+
+```python
+import asdf
+
+sequence = list(range(12))
+squares = {k:k**2 for k in range(10,20)}
+tree = { 'seq': sequence, 'squares': squares}
+
+af = asdf.AsdfFile(tree)
+af.write_to('/tmp/myfile.asdf')
+```
+
+
+## ASDF Inline Array Example
+
+```yaml
+#ASDF 1.0.0
+#ASDF_STANDARD 1.5.0
+%YAML 1.1
+%TAG ! tag:stsci.edu:asdf/
+--- !core/asdf-1.1.0
+asdf_library: !core/software-1.0.0 {author: The ASDF Developers, homepage: 'http://github.com/asdf-format/asdf',
+  name: asdf, version: 2.13.0}
+history:
+  extensions:
+  - !core/extension_metadata-1.0.0
+    extension_class: asdf.extension.BuiltinExtension
+    software: !core/software-1.0.0 {name: asdf, version: 2.13.0}
+seq: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+squares: {10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225, 16: 256, 17: 289,
+  18: 324, 19: 361}
+```
+
+
+## ASDF Details
+- Development led by astronomy community (STScI) as a FITS replacement (all JWST data in ASDF)
+- [Greenfield, et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2213133715000645) lays out motivation: want human-readable headers; avoid complexity of HDF5 (is it really archival?); HDF5 doesn't represent certain data structures (e.g. Python dict) well
+- The reference implementation is in Python. Excellent integration with Numpy. C++ interface less mature.
+- Lehman prefers to use ASDF over HDF5 when it makes sense
+  - End-users are using Python and are okay with non-HDF5
+
+
+## ASDF Details
+- Reasonably feature-complete
+  - Multiple compression options
+  - Streaming blocks (for incoming data of unknown size)
+  - Lazy-loading of arrays
+  - Memory-mapped IO for efficient jump-ahead
+  - Can define extensions and schema for serializing custom types
+- File format is formally standardized
 
 
 # Survey
