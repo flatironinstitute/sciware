@@ -354,7 +354,10 @@ Robert Blackwell (SCC)
 
 ## What do I mean by "human readable"
 
-- Text only -- a human can read it
+<img src="assets/notepad.png" width="350" style="border:0;box-shadow:none">
+
+- Text only
+- A human can read, but not necessarily understand, it
 - ...That's about it
 
 
@@ -362,7 +365,7 @@ Robert Blackwell (SCC)
 
 - Self-documenting
 - No special tooling required to inspect
-- Typically easy to read
+- Typically easy to read, but maybe not understand
 - Portable
 - Generally flexible/extendable
 
@@ -370,7 +373,7 @@ Robert Blackwell (SCC)
 ## Simplest human readable format: one number
 
 ```bash
-% cat Energy_K=1.0_Beta=2.5_Gamma=193.2
+$ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
 3.953190
 ```
 
@@ -379,36 +382,58 @@ Robert Blackwell (SCC)
 * Blows up very very quickly at scale
 
 
-## JSON (1)
-
-```json
-
-```
-
-
-## JSON (2)
-
-* Flexible
-* Arbitrary structures
-* Verbose (introduce transposed formats)
-* No comments! (I assure you this is terrible)
-
-
-## CSV
+## Second simplest human readable format: CSV
 
 ```csv
+#  t,         x,         v_x
+   0.00000,   0.00000,   0.15915
+   0.33333,   0.86603,  -0.07958
+   0.66667,  -0.86603,  -0.07958
+   1.00000,  -0.00000,   0.15915
 ```
-
 * Fixed table
 * Flexible types
 * Comments
 * Very portable
+* Allows for empty fields
 
 
 ## "TXT" et al.
 
-* Typically suited for documentation and logging - not data
-* Since no standard format, hard to parse otherwise
+```csv
+#t x v_x
+0.00000 0.00000 0.15915
+0.33333 0.86603 -0.07958
+0.66667 -0.86603 -0.07958
+1.00000 -0.00000 0.15915
+```
+
+* Often a homegrown extension of csv
+* Space/tab/whatever delimited
+* Non-standard, so *might* have to write custom parser
+
+
+## JSON (1)
+
+natural:
+```json
+position_x, position_y, mass (list of objects)
+```
+
+
+## JSON (2)
+handles missing fields
+transposed
+
+
+## JSON (3)
+
+nested objects? mention jq? doesn't handle missing field
+
+* Flexible
+* Arbitrary structures
+* Verbose
+* No comments! (I assure you this is terrible)
 
 
 ## Some generalities: the "cons"
@@ -416,8 +441,8 @@ Robert Blackwell (SCC)
 * Size: Typically 2-??X larger than binary
   * CSV: ~2x for floats
   * JSON: minified ~2x, formatted ~10x (+?!)
-* Performance: Typically orders of magnitude slower than binary
-* Only sequential access -- No random access (in most cases)
+* Performance: Lot of overhead to read - easy for humans, hard for computers
+* Only sequential access -- No random access (in most cases) (also a pro for writing!)
 
 
 
