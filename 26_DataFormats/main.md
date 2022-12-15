@@ -347,14 +347,14 @@ Now that we've thought about data, let's look at how we would like to record it.
 
 
 
-# Common
-# "human readable"
+# Common<br>
+# "human readable"<br>
 # formats
 
 Robert Blackwell (SCC)
 
 
-## What do I mean by
+## What do I mean by<br>
 ## "human readable"
 
 <img src="assets/notepad.png" width="350" style="border:0;box-shadow:none">
@@ -373,7 +373,8 @@ Robert Blackwell (SCC)
 - Generally flexible/extendable
 
 
-## Simplest human readable format: one number
+## Simplest human readable format:<br>
+## one number
 
 ```bash
 $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
@@ -385,7 +386,8 @@ $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
 * Blows up very very quickly at scale
 
 
-## Second simplest human readable format: CSV
+## Second simplest human readable format: <br>
+## CSV (comma separated values)
 
 ```csv
 #  t,         x,         v_x
