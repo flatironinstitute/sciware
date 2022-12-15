@@ -751,6 +751,7 @@ Groups are like directories in a filesystem
 
 - Links (symlinks), Filters (compression, checksums)
 - Images, tables, units
+- Default values (missing data can be hard in binary)
 
 
 
