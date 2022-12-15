@@ -347,12 +347,15 @@ Now that we've thought about data, let's look at how we would like to record it.
 
 
 
-# Common "human readable" formats
+# Common
+# "human readable"
+# formats
 
 Robert Blackwell (SCC)
 
 
-## What do I mean by "human readable"
+## What do I mean by
+## "human readable"
 
 <img src="assets/notepad.png" width="350" style="border:0;box-shadow:none">
 
@@ -413,17 +416,30 @@ $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
 * Non-standard, so *might* have to write custom parser
 
 
-## JSON (1)
+## JSON "natural" form
 
-natural:
 ```json
-position_x, position_y, mass (list of objects)
+[{"t": 0.0, "x": 0.0, "v": 0.15915},
+ {"t": 0.33333, "x": 0.86603, "v": -0.07958},
+ {"t": 0.66667, "x": -0.86603, "v": -0.07958},
+ {"t": 1.0, "x": 0.0, "v": 0.15915}]
 ```
 
+* List of objects
+* Handles missing fields
 
-## JSON (2)
-handles missing fields
-transposed
+
+## JSON "transposed" form
+
+```json
+{"t": [0.0, 0.33333, 0.66666, 1.0],
+ "x": [0.0, 0.86603, -0.86603, 0.0],
+ "v": [0.15915, -0.07958, -0.07958, 0.15915]}
+```
+
+* Object of lists
+* Can't handle missing fields
+   * ...without special values
 
 
 ## JSON (3)
