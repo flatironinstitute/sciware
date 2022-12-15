@@ -665,7 +665,8 @@ There are thousands of binary formats! Here are a few common, high-quality ones:
 
 # Break
 
-# Survey
+
+## Survey
 Please give us some feedback!
 
 https://bit.ly/sciware-file-formats-2022
