@@ -446,21 +446,29 @@ $ cat Energy_K=1.0_Beta=2.5_Gamma=193.2
 
 ## JSON (3)
 
-nested objects? mention jq? doesn't handle missing field
+```json
+{'points': [{'x': [0.0, 0.0, 0.0], 'radius': 1.0},
+            {'x': [2.0, 0.0, 0.0], 'radius': 0.5}],
+ 'params': {'dt': 0.0001,
+            't_final': 1.0,
+            'optimization': {'dt_opt': 0.1, 'shell': 1.5} },
+ 'velocity_field': {'resolution': 0.5, 'dt_write': 0.5}}
+```
 
-* Flexible
-* Arbitrary structures
-* Verbose
+* Flexible/extendable -- very portable
+* Verbose (con? pro? context matters.)
 * No comments! (I assure you this is terrible)
+* `jq` utility useful for formatting
 
 
 ## Some generalities: the "cons"
 
-* Size: Typically 2-??X larger than binary
-  * CSV: ~2x for floats
+* Size: Typically 2-??X larger than machine native formats
+  * CSV/TXT: ~2x for floats
   * JSON: minified ~2x, formatted ~10x (+?!)
 * Performance: Lot of overhead to read - easy for humans, hard for computers
-* Only sequential access -- No random access (in most cases) (also a pro for writing!)
+* Only sequential access -- No random access
+  * Sequential is a 'pro' for writing often
 
 
 
