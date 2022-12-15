@@ -574,6 +574,17 @@ array([0.000000e+00, 1.000000e+00, 2.000000e+00, ..., 9.999997e+06,
   * Self-describing (e.g. knows its own `dtype`)
   * Stores metadata (what simulation did this data come from?)
   * Retain the performance and size benefits of raw binary
+- Another key advantage of binary over human-readable is jump-ahead (next slide...)
+
+
+## Jump-Ahead in Binary Formats
+- _Example:_ I have a file with 1 billion elements, but I know I only need elements 500 million to 501 million
+- In most human-readable formats, have to read all 501 million elements, then discard all the but last million
+- In binary formats with *fixed record size*, you can compute:
+  1) Each record (array element) is (e.g.) three 4-byte floats: 12 bytes per record
+  2) 500 millionth record is at offset: 12*500M = 6 billion bytes
+  3) Start reading from the 6 billionth byte in the file, save tons of time
+- A good binary format (HDF5, ASDF) will handle this for you under the hood
 
 
 ## Examples of Binary Formats
