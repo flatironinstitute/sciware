@@ -112,9 +112,9 @@ In memory!
 - *Not* the file extension (e.g. `.txt`)
 - Particular choice of rules for:
   - *What* data to store,
-  - How to represent it in bits
-  - How to organize it on disk
-- Allowing conversion
+  - How to *represent* it in *bits*
+  - How to *organize* it on *disk*
+- Allowing disk-to-memory conversion
   - in either direction
   - consistently and repeatably
 
@@ -125,13 +125,23 @@ There are considerations outside our data that may influence our
 choice of file formats. Let's look at that.
 
 
+### What's the purpose of data?
+
+- Some files are for publication
+  - These require the most care and robustness
+- Some files are for internal use or short duration
+  - But listen to optimistic pessimism!
+  - It'll be more important & long-lived than you think
+- Many fields have standard practice
+  - If you do something else, have a good reason
+
+
 ### What's metadata?
 
 - "Data that describes data"
 - Says how to interpret a representation/file
-  - Both by the humans and the machines
-  - Often separate from the file itself
-  - Might not even be explicitly stated
+  - For both the humans and the machines
+  - Might be explicit or implicit
 - Expresses assumptions made about the data
 
 
@@ -140,8 +150,8 @@ choice of file formats. Let's look at that.
 - Data provenance? (Source, time, recording setup...)
 - Hyperparameter choices that generated the data?
 - Possible values for categorical observations
-  - "data dictionary"
   - e.g. 6 quark types, 4 DNA bases, ...
+  - "data dictionary"
 
 
 ### Where to store metadata
@@ -172,17 +182,6 @@ choice of file formats. Let's look at that.
 - General tension: what is implicit vs explicit
 
 
-### What's the purpose of data?
-
-- Some files are for publication
-  - These require the most care and thought
-- Many fields have standard practice
-  - If you do something else, have a good reason
-- Some files are for internal use or short duration
-  - But listen to optimistic pessimism!
-  - It'll be more important & useful longer than you think
-
-
 ## Simple vs Composite Data
 
 Data often has some sort of natural internal structure.
@@ -192,11 +191,9 @@ Here's how to describe that.
 - *Simple*: only one observation or type of observation
   - e.g. Height of an object at time `t=0`, `t=1`, ...
   - One set of values, representing the same observable
-- *Composite*: more than one type of observation that go together
-  - e.g. Position & velocity of object over time
-  - Observables have *distinct* meanings
-  - in this example, `t` separates discrete sets
-- We'll be talking about the composite case
+- *Composite*: more than one type of observation that go together as a unit
+  - e.g. Position & velocity of an object over time
+- We mostly think about the composite case
 
 
 ### Parts of composite data
@@ -206,8 +203,8 @@ Here's how to describe that.
 - **Fields** are distinct observables
   - the columns above, e.g. `mass`, `v_x`, etc
 - **Records** are groups of fields that belong as a unit
-  - the rows above, i.e. one per time
-  - One of each of the fields
+  - the rows above, i.e. one row per time
+  - A record is "one value in each of the fields"
 - Does the row order mean anything?
 
 
@@ -217,7 +214,7 @@ Here's how to describe that.
   - Mass and velocity mean different things
 - Or it can be purely about representation
   - `float32`? `float64`? Ints? Strings?
-  - Imperial? Metric? What's the scale/reference?
+  - Imperial? Metric? What's the zero value?
 - For categorical data, what defines the category values?
   - Are those values all known in advance?
   - How do I encode those values?
@@ -229,7 +226,7 @@ Here's how to describe that.
 - Those are *representations* of your data
   - May or may not be a useful way to think about your data
   - May or may not be a desirable file format
-  - First choice: what data to store?
+- First choice: what data to store?
 - Limits of single-file table-oriented approach?
 
 
@@ -333,6 +330,7 @@ Now that we've thought about data, let's look at how we would like to record it.
 - Reading speeds compete with writing speeds
   - "Time" may not be the best way to structure a file
 - Random access competes with everything
+  - requires external indexes or regular-sized records
   - but enables using a subset of the full file
 
 
