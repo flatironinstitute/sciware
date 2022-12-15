@@ -44,8 +44,8 @@ Activities where participants all actively work to foster an environment which e
 ## Today's Agenda
 
 - Intro to _data_ and _files_
-- Basic overview of common file formats and their strengths/weaknesses
-- Moderately in-depth overview of the hdf5 file format and how to interact with hdf5 data in python (touching on other languages)
+- Common file formats and their strengths/weaknesses
+- Overview and python interfaces for HDF5 and ASDF
 
 
 
