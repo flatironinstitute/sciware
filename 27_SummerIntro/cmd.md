@@ -2,9 +2,9 @@
 
 ## Command line and Shell interaction
 
-https://sciware.flatironinstitute.org/23_CommandLine
+https://sciware.flatironinstitute.org/27_SummerIntro
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/23_CommandLine
+https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
 
 
 ## Rules of Engagement
@@ -28,36 +28,34 @@ Activities where participants all actively work to foster an environment which e
 </small>
 
 
-## Zoom Specific
+## Preparation instructions
 
-- Dedicated Zoom moderator to field questions.
-- Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/).
+Goal:
+- run `git version` in terminal
+- VS Code
 
-
-## Future Sessions
-
-- Planning for this fall
-   - How types can help you think about programs
-   - File formats, data management, hdf5
-   - Modern C++
-- Suggest topics and vote on options in #sciware Slack
+- Mac
+  - Install xcode: `xcode-select --install` (10 min)
+  - Install VS code [URL]
+- Windows
+  - Install WSL: https://learn.microsoft.com/en-us/windows/wsl/install
+  - Install VS code [URL]
+    - Configure: "open server in WSL"
+- Linux
 
 
 ## Today's Agenda
 
-- Introduction, terminology, shells
-- Shell interaction, navigation
-- Environment variables
-- Shell and prompt customization
-- Shell commands and scripting
+- Pre-session: setup a terminal (15 min)
+- git clone https://github.com/flatironinstitute/sciware-command [create]
+- Command-line intro (45 min, with terminal)
+- Cluster intro (30 min)
+- VS code intro, terminal (30 min)
+
+- Homework for next time: create a github account
 
 
-
-## Introduction
-
-### Jeff Soules (CCM)
-
+# Background
 
 ## Definitions
 
@@ -68,48 +66,8 @@ You may hear people use these terms to mean the same thing:
 * Terminal (console)
 * Command Line
 
-But there are some subtle differences. Let's do a quick review.
-
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
-
-
-### Operating System
-
-- Base programs that control what a computer does
-- Divided into
-   - "kernel": privileged code that drives hardware, manages processes
-   - "user space" processes: daemons/servers, desktop, ...
-<!-- <small>_Linux_ 🐧 can refer to both a kernel and the various OSs built on that kernel.</small> -->
-
-We mention this mainly to explain the...
-
-
-### Shell
-
-<small>The shell interface surrounds the kernel just as a nutshell surrounds a nut 🥜.</small>
-
-- A _shell_ is a program that lets you send commands to the OS
-  - Most commands are actually *other programs on the computer*
-- 50+ years of history
-  - Don't worry, we won't cover most of it 😀
-
-
-### Terminal
-
-- A _terminal_ provides text input/output (_I/O_) with a computer
-- Originally a remotely operated automatic typewriter
-
-<img src="assets/teletype-terminal.jpg" style="border:0;box-shadow:none" />
-
-
-### Terminal
-
-- Nowadays we use software terminal _emulators_
-- Many different terminal emulators (Gnome Terminal, iTerm, Terminator, xterm)
-- Terminal runs locally (on the computer in front of you)
-  - but the *shell* may run on a different remote computer (for example, accessed through `ssh`)
-- Closing terminal usually also terminates the attached shell
 
 
 ### Command Line
@@ -121,15 +79,6 @@ We mention this mainly to explain the...
   - But usually "command line" means a shell
 
 
-### All Together
-
-A *shell* is a program that uses a *terminal* to offer a *command line interface*,
-through which a user can direct the *operating system* to run other programs.
-
-
-<img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none" />
-
-
 ### Shell Command Example
 
 <img src="assets/command-line-example-major.png" width="60%" style="border:0;box-shadow:none" />
@@ -139,7 +88,41 @@ Here's a typical shell command, with three parts:
 - A **prompt** provided by the shell
 - A **command**, the other program I want to run
 - The **arguments** -- additional text that will be passed in to the command
-  - Often broken into *options* and (positional) *arguments*
+
+
+### Interactive navigation
+
+```
+cd
+pwd
+ls
+git clone https://github.com/flatironinstitute/sciware-command
+ls
+cd sciware-command
+pwd
+ls
+cat README
+less README
+mv
+cp
+rm
+mkdir
+rmdir
+ls -la
+git --help
+```
+
+history, scroll, up, down
+tab completion
+
+```
+exit
+touch
+python
+1+1
+^D
+```
+
 
 
 ### Shell Command Example
