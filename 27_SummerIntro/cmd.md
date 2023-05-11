@@ -7,6 +7,28 @@ https://sciware.flatironinstitute.org/27_SummerIntro
 https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
 
 
+
+## Preparation Instructions
+*Instructions to get your laptop set up before the session*
+
+Goal:
+- run `git version` in terminal
+- VS Code
+
+- Mac
+  - Install xcode: `xcode-select --install` (10 min)
+  - Install VS code [URL]
+- Linux
+
+
+## Windows Instructions
+- Follow the three steps at this link to install WSL, VS Code, and the WSL extension for VS Code: https://code.visualstudio.com/docs/remote/wsl#_installation
+- Check if your installation worked: follow these instructions to open VS Code and connect to WSL: https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace
+- If you see "WSL" in the bottom left of your VS Code window, your installation is working
+- If not, SciWare will be available to help you before/at the beginning of the session (TODO: is this true?)
+
+
+
 ## Rules of Engagement
 
 ### Goal:
@@ -27,21 +49,6 @@ Activities where participants all actively work to foster an environment which e
 (These will always be a work in progress and will be updated, clarified, or expanded as needed.)
 </small>
 
-
-## Preparation instructions
-
-Goal:
-- run `git version` in terminal
-- VS Code
-
-- Mac
-  - Install xcode: `xcode-select --install` (10 min)
-  - Install VS code [URL]
-- Windows
-  - Install WSL: https://learn.microsoft.com/en-us/windows/wsl/install
-  - Install VS code [URL]
-    - Configure: "open server in WSL"
-- Linux
 
 
 ## Today's Agenda
@@ -122,7 +129,6 @@ python
 1+1
 ^D
 ```
-
 
 
 ### Shell Command Example
