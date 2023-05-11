@@ -11,14 +11,13 @@ https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
 ## Preparation Instructions
 *Instructions to get your laptop set up before the session*
 
-Goal:
-- run `git version` in terminal
-- VS Code
-
+- Windows
+   - See next slide
 - Mac
-  - Install xcode: `xcode-select --install` (10 min)
-  - Install VS code [URL]
+  - Install xcode: open a terminal and run `xcode-select --install` (10 min)
+  - Install VS Code: https://code.visualstudio.com/docs/setup/mac
 - Linux
+   - Install VS Code: https://code.visualstudio.com/docs/setup/linux
 
 
 ## Windows Instructions
