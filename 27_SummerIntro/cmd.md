@@ -164,3 +164,8 @@ Interactive demo
 * look at a couple files
 * correspond to command line
 * terminal
+
+
+## Homework
+
+* create github account
