@@ -3,9 +3,10 @@
 ## Tools to make programming easier
 ### Intro to code editors and debugging
 
-https://sciware.flatironinstitute.org/22_Editors
+https://sciware.flatironinstitute.org/27_SummerIntro
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/22_Editors
+https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
+
 
 
 ## Rules of Engagement
