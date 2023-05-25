@@ -4,8 +4,6 @@
 
 https://sciware.flatironinstitute.org/27_SummerIntro
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
-
 
 ## Rules of Engagement
 
@@ -15,6 +13,8 @@ Activities where participants all actively work to foster an environment which e
 
 <small>\*though sometimes we try to expand your options</small>
 
+
+TODO: schedule for next few week
 
 ## Rules of Engagement
 
@@ -69,8 +69,15 @@ Activities where participants all actively work to foster an environment which e
 Let's start a terminal!
 - Start "Terminal" on Mac or Linux, or "wsl" on Windows
 
+TODO: terminal icon
+
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
+
+
+### Familiar with shells already?
+
+TODO: link to Geraud's page
 
 
 ### Command Line
@@ -125,7 +132,6 @@ Desktop  sciware-command-intro
 > cd sciware-command-intro
 > pwd
 /home/you/sciware-command-intro
-> cd ~/sciware-command-intro
 ```
 
 
@@ -133,13 +139,12 @@ Desktop  sciware-command-intro
 
 No one wants to type all these file names: use tab!
 ```bash
-> cat RE<tab>
+> cd ~
+> cd sciware-<tab>
 ```
 
 Join directories with `/` to make longer paths
 ```
-> cd ~
-> cd sciware-<tab>
 > cd ~/sciware-<tab>
 ```
 
@@ -170,7 +175,7 @@ To see *inside* a file, the contents, you need something else
 > ls -l # long
 > ls -ltr # long, sort by modification time, reversed
 > ls --help # may not work on Mac
-> man ls
+> man ls # MANual page
 ```
 
 
@@ -203,6 +208,7 @@ What if we want to make a directory `work stuff`?
 
 - The shell always splits arguments into words before the command gets it.
 - To avoid this, use quotes, or `\ `, which "escapes" any character
+- We often avoid putting spaces in filenames because it's annoying (often use `_` underscores)
 
 
 ### More file manipulation
@@ -215,6 +221,8 @@ What if we want to make a directory `work stuff`?
 > mv filea fileb
 > mv fileb dir1
 > ls dir1
+> rmdir dir1
+rmdir: failed to remove 'dir1': Directory not empty
 > rm dir1/fileb
 > rm -r dir1
 ```
@@ -227,7 +235,7 @@ Files and directories that start with `.` don't show up by default, but you can 
 ```bash
 > cd dir2
 > ls
-> ls -a
+> ls -a # all
 > ls -la
 > mv .hiddenfile nothidden
 > ls
@@ -242,7 +250,6 @@ Files and directories that start with `.` don't show up by default, but you can 
 ```bash
 > cp README readnot
 > cat readnot
-> diff README readnot
 ```
 
 To copy entire directories, use `cp -a`.
@@ -251,9 +258,9 @@ To copy entire directories, use `cp -a`.
 ### Interactive programs
 
 - Some programs are interactive, don't immediately return you to the shell.
-- You can often use Control keys to stop them, written `<ctrl-c>` or often `^C`
-   - `^D` tells a program you're done
-   - `^C` tells a program to exit ("cancel")
+- You can often use Control keys to stop them, written `<Ctrl-C>` (or sometimes `^C`)
+   - `<Ctrl-D>` tells a program you're done
+   - `<Ctrl-C>` tells a program to exit ("cancel")
 
 ```bash
 > python
@@ -266,21 +273,46 @@ Python 3
 
 ### History, navigation
 
+Run something again
+
 ```bash
-> <up>/<down>
+> <Up><Down>
 > history
-> <left><right><home><end>
+> <Ctrl-R>
+```
+
+Navigation
+
+```bash
+> <Left><Right><Home><End>
+```
+
+
+### Globbing
+
+You can use `*` to mean ... TODO
+
+```
+> ls dir1/*.txt
 ```
 
 
 ### Shell interaction
 
-- `^A` = Home (beginning of line), `^E` = End (end of line)
-- `^L` = clear
+- `<Ctrl-A>` = Home (beginning of line), `<Ctrl-E>` = End (end of line)
+- `<Ctrl-Left>`, `<Ctrl-Right>` = move by word
+- `<Ctrl-L>` = clear
+
+TODO: reference link
 
 ```bash
 > exit
 ```
+
+
+### Questions and exercise
+
+Organize the files in TODO directory
 
 
 ### Shells and configuration
