@@ -7,27 +7,6 @@ https://sciware.flatironinstitute.org/27_SummerIntro
 https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
 
 
-
-## Preparation Instructions
-*Instructions to get your laptop set up before the session*
-
-- Windows
-   - See next slide
-- Mac
-  - Install xcode: open a terminal and run `xcode-select --install` (10 min)
-  - Install VS Code: https://code.visualstudio.com/docs/setup/mac
-- Linux
-   - Install VS Code: https://code.visualstudio.com/docs/setup/linux
-
-
-## Windows Instructions
-- Follow the three steps at this link to install WSL, VS Code, and the WSL extension for VS Code: https://code.visualstudio.com/docs/remote/wsl#_installation
-- Check if your installation worked: follow these instructions to open VS Code and connect to WSL: https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace
-- If you see "WSL" in the bottom left of your VS Code window, your installation is working
-- If not, SciWare will be available to help you before/at the beginning of the session (TODO: is this true?)
-
-
-
 ## Rules of Engagement
 
 ### Goal:
@@ -52,12 +31,30 @@ Activities where participants all actively work to foster an environment which e
 ## Today's Agenda
 
 - Pre-session: setup a terminal (15 min)
-- git clone https://github.com/flatironinstitute/sciware-command [create]
 - Command-line intro (45 min, with terminal)
 - Cluster intro (30 min)
-- VS code intro, terminal (5 min)
+- VS code intro, terminal (10 min)
 
 - Homework for next time: create a github account
+
+
+
+## Preparation Instructions
+*Instructions to get your laptop set up before the session*
+
+- Windows
+   - See next slide
+- Mac
+  - Install xcode: open a terminal and run `xcode-select --install` (10 min)
+  - Install VS Code: https://code.visualstudio.com/docs/setup/mac
+- Linux
+   - Install VS Code: https://code.visualstudio.com/docs/setup/linux
+
+
+## Windows Instructions
+- Follow the three steps at this link to install WSL, VS Code, and the WSL extension for VS Code: https://code.visualstudio.com/docs/remote/wsl#_installation
+- Check if your installation worked: follow these instructions to open VS Code and connect to WSL: https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace
+- If you see "WSL" in the bottom left of your VS Code window, your installation is working
 
 
 
@@ -65,12 +62,10 @@ Activities where participants all actively work to foster an environment which e
 
 ## Definitions
 
-You may hear people use these terms to mean the same thing:
-
-* Operating System
+* Terminal
 * Shell
-* Terminal (console)
 * Command Line
+* Programs
 
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
@@ -79,33 +74,59 @@ You may hear people use these terms to mean the same thing:
 ### Command Line
 
 - "CLI" = _command line interface_
-- Term for any program you control with typed commands
-- Compare to GUI = _graphical user interface_
-- Non-shell programs can have a CLI (e.g. `ipython`)
-  - But usually "command line" means a shell
+   - Compare to GUI = _graphical user interface_
+- In a terminal, you run a shell
+- With the shell, you run programs
+- Shell may be on another (remote) computer (e.g., ssh)
 
 
 ### Shell Command Example
 
-<img src="assets/command-line-example-major.png" width="60%" style="border:0;box-shadow:none" />
+<img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
 
 Here's a typical shell command, with three parts:
 
 - A **prompt** provided by the shell
 - A **command**, the other program I want to run
-- The **arguments** -- additional text that will be passed in to the command
+- The **options** or **flags** that control behavior, usually starting with `-`
+- The **arguments**, additional words that will be passed in to the command
+
+
+## Working directory
+
+A shell or program always has a "current working directory": the directory (or folder) that's used by default
+- `pwd` shows you the current directory ("print working directory")
+- `cd` changes the current directory, by default to your "home" directory (`~`)
+
+```
+> pwd
+/home/you/dir
+> cd
+> pwd
+/home/you
+```
+
+
+## git
+
+- `ls` lists the files and directories (...in a specific directory, or your current by default)
+
+```
+> ls
+Desktop
+> git clone https://github.com/flatironinstitute/sciware-command-intro
+Cloning into 'sciware-command-intro'...
+> ls
+Desktop  sciware-command-intro
+> cd sciware-command-intro
+> pwd
+/home/you/sciware-command-intro
+```
 
 
 ### Interactive navigation
 
 ```
-cd
-pwd
-ls
-git clone https://github.com/flatironinstitute/sciware-command
-ls
-cd sciware-command
-pwd
 ls
 cat README
 less README
@@ -128,27 +149,6 @@ python
 1+1
 ^D
 ```
-
-
-### Shell Command Example
-
-<img src="assets/command-line-example-minor.png" width="60%" style="border:0;box-shadow:none" />
-
-- **Options** customize the command's behavior
-  - Also known as *flags* or *switches*
-  - Often have long (`--`) and short (`-`) forms
-  - Order usually doesn't matter
-  - Short flags can usually be combined (`-l -a` = `-la`)
-
-
-### Shell Command Example
-
-<img src="assets/command-line-example-minor.png" width="60%" style="border:0;box-shadow:none" />
-
-- **Positional Arguments** ("args")
-  - Order *does* matter for many commands
-  - Often identify files or directories to run on
-  - "arguments" by itself usually means positional arguments
 
 
 ### Shells and configuration
