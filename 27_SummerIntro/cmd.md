@@ -125,6 +125,27 @@ Desktop  sciware-command-intro
 > cd sciware-command-intro
 > pwd
 /home/you/sciware-command-intro
+> cd ~/sciware-command-intro
+```
+
+
+### Tab completion
+
+No one wants to type all these file names: use tab!
+```bash
+> cat RE<tab>
+```
+
+Join directories with `/` to make longer paths
+```
+> cd ~
+> cd sciware-<tab>
+> cd ~/sciware-<tab>
+```
+
+If there are multiple things, press tab twice:
+```bash
+> cd di<tab><tab>
 ```
 
 
@@ -150,21 +171,6 @@ To see *inside* a file, the contents, you need something else
 > ls -ltr # long, sort by modification time, reversed
 > ls --help # may not work on Mac
 > man ls
-```
-
-### Tab completion
-
-No one wants to type all these file names: use tab!
-
-```bash
-> cat RE<tab>
-> cd ~/sciware-<tab>
-```
-
-If there are multiple things, press tab twice:
-
-```bash
-> cd di<tab><tab>
 ```
 
 
