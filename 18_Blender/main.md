@@ -68,8 +68,8 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 ### Gas mixing simulation from Athena 
 #### Drummond Fielding
 <video  data-autoplay controls width="640" height="480" >
-  <source src="./assets/videos/MixingLayerMoving.mp4" type="video/mp4">
-  <source s src="./assets/videos/MixingLayerMoving.ogg" type="video/ogg">
+  <source src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/MixingLayerMoving.mp4" type="video/mp4">
+  <source s src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/MixingLayerMoving.ogg" type="video/ogg">
   <p>Your browser cannot play the provided video file.</p>
 </video>
 
@@ -77,8 +77,8 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 ### Cosmological simulation from Camels 
 #### Francisco Villaescusa-Navarro
 <video  data-autoplay controls width="640" height="480" >
-  <source src="./assets/videos/Camels_flyin.mp4" type="video/mp4">
-  <source s src="./assets/videos/Camels_flyin.ogg" type="video/ogg">
+  <source src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/Camels_flyin.mp4" type="video/mp4">
+  <source s src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/Camels_flyin.ogg" type="video/ogg">
   <p>Your browser cannot play the provided video file.</p>
 </video>
 
@@ -86,8 +86,8 @@ Here are a few preliminary renders produced by Kaze Wong from CCA using simulati
 ### Galaxy cluster simulation from Gadget
 #### Ulrich Steinwandel
 <video  data-autoplay controls width="640" height="480" >
-  <source src="./assets/videos/Gadget_cluster.mp4" type="video/mp4">
-  <source s src="./assets/videos/Gadget_cluster.ogg" type="video/ogg">
+  <source src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/Gadget_cluster.mp4" type="video/mp4">
+  <source s src="https://users.flatironinstitute.org/~scc/sciware/18_Blender/videos/Gadget_cluster.ogg" type="video/ogg">
   <p>Your browser cannot play the provided video file.</p>
 </video>
 
