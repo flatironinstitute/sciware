@@ -100,7 +100,7 @@ A shell or program always has a "current working directory": the directory (or f
 - `pwd` shows you the current directory ("print working directory")
 - `cd` changes the current directory, by default to your "home" directory (`~`)
 
-```
+```bash
 > pwd
 /home/you/somewhere
 > cd
@@ -115,7 +115,7 @@ A shell or program always has a "current working directory": the directory (or f
 
 - `ls` lists the files and directories (...in a specific directory, or your current by default)
 
-```
+```bash
 > ls
 Desktop
 > git clone https://github.com/flatironinstitute/sciware-command-intro
@@ -135,7 +135,7 @@ To see *inside* a file, the contents, you need something else
 - `less` lets you scroll around (`q` to quit)
 - You can also use an editor
 
-```
+```bash
 > cat README
 > less README
 ```
@@ -145,7 +145,7 @@ To see *inside* a file, the contents, you need something else
 
 `ls` lists files in a directory, and has many options to show more/different information
 
-```
+```bash
 > ls -l # long
 > ls -ltr # long, sort by modification time, reversed
 > ls --help # may not work on Mac
@@ -156,14 +156,14 @@ To see *inside* a file, the contents, you need something else
 
 No one wants to type all these file names: use tab!
 
-```
+```bash
 > cat RE<tab>
 > cd ~/sciware-<tab>
 ```
 
 If there are multiple things, press tab twice:
 
-```
+```bash
 > cd di<tab><tab>
 ```
 
@@ -172,7 +172,7 @@ If there are multiple things, press tab twice:
 
 Create a new directory with `mkdir`, remove with `rmdir`
 
-```
+```bash
 > mkdir mydir
 > cd mydir
 > ls
@@ -187,7 +187,7 @@ Create a new directory with `mkdir`, remove with `rmdir`
 
 What if we want to make a directory `work stuff`?
 
-```
+```bash
 > mkdir work stuff
 > ls
 > rmdir work stuff
@@ -204,7 +204,7 @@ What if we want to make a directory `work stuff`?
 - `mv` renames or moves files or directories
 - `rm` removes files, or `rm -r` removes directories and contents (careful!)
 
-```
+```bash
 > cd ~/sciware-command-intro
 > mv filea fileb
 > mv fileb dir1
@@ -218,7 +218,7 @@ What if we want to make a directory `work stuff`?
 
 Files and directories that start with `.` don't show up by default, but you can access them as usual.
 
-```
+```bash
 > cd dir2
 > ls
 > ls -a
@@ -233,7 +233,7 @@ Files and directories that start with `.` don't show up by default, but you can 
 
 `cp` makes an identical copy of a file.
 
-```
+```bash
 > cp README readnot
 > cat readnot
 > diff README readnot
@@ -249,7 +249,7 @@ To copy entire directories, use `cp -a`.
    - `^D` tells a program you're done
    - `^C` tells a program to exit ("cancel")
 
-```
+```bash
 > python
 Python 3
 >>> 1+1
@@ -260,7 +260,7 @@ Python 3
 
 ### History, navigation
 
-```
+```bash
 > <up>/<down>
 > history
 > <left><right><home><end>
@@ -272,7 +272,7 @@ Python 3
 - `^A` = Home (beginning of line), `^E` = End (end of line)
 - `^L` = clear
 
-```
+```bash
 > exit
 ```
 
