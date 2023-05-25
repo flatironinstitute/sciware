@@ -285,8 +285,12 @@ Python 3
 
 ### Shells and configuration
 
-- bash: .bashrc
-- zsh: .zshrc
+There are multiple different shells with different features.
+
+- bash (usually default on Linux): `.bashrc`
+- zsh (usually default on Mac): `.zshrc`
+
+Shells are extremely customizable, including prompts, keybindings, aliases, plugins
 
 
 
