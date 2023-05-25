@@ -45,7 +45,8 @@ Activities where participants all actively work to foster an environment which e
 - Windows
    - See next slide
 - Mac
-  - Install xcode: open a terminal and run `xcode-select --install` (10 min)
+  - Install xcode: open a terminal and run
+     - `xcode-select --install`
   - Install VS Code: https://code.visualstudio.com/docs/setup/mac
 - Linux
    - Install VS Code: https://code.visualstudio.com/docs/setup/linux
@@ -58,14 +59,15 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# Background
-
 ## Definitions
 
 * Terminal
 * Shell
 * Command Line
 * Programs
+
+Let's start a terminal!
+- Start "Terminal" on Mac or Linux, or "wsl" on Windows
 
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
@@ -100,14 +102,16 @@ A shell or program always has a "current working directory": the directory (or f
 
 ```
 > pwd
-/home/you/dir
+/home/you/somewhere
 > cd
 > pwd
 /home/you
+> cd ~
+> cd /home/you # same thing, for your home directory path
 ```
 
 
-## git
+## Clone a repo
 
 - `ls` lists the files and directories (...in a specific directory, or your current by default)
 
@@ -124,30 +128,152 @@ Desktop  sciware-command-intro
 ```
 
 
-### Interactive navigation
+### Looking at files
+
+To see *inside* a file, the contents, you need something else
+- `cat` just prints an entire file to the terminal
+- `less` lets you scroll around (`q` to quit)
+- You can also use an editor
 
 ```
-ls
-cat README
-less README
-mv
-cp
-rm
-mkdir
-rmdir
-ls -la
-git --help
+> cat README
+> less README
 ```
 
-history, scroll, up, down
-tab completion
+
+### Listing files
+
+`ls` lists files in a directory, and has many options to show more/different information
 
 ```
-exit
-touch
-python
-1+1
-^D
+> ls -l # long
+> ls -ltr # long, sort by modification time, reversed
+> ls --help # may not work on Mac
+> man ls
+```
+
+### Tab completion
+
+No one wants to type all these file names: use tab!
+
+```
+> cat RE<tab>
+> cd ~/sciware-<tab>
+```
+
+If there are multiple things, press tab twice:
+
+```
+> cd di<tab><tab>
+```
+
+
+### Creating directories
+
+Create a new directory with `mkdir`, remove with `rmdir`
+
+```
+> mkdir mydir
+> cd mydir
+> ls
+> cd ..
+> rmdir mydir
+```
+
+- `..` always refers to the "parent" directory, one above
+
+
+### Quoting, spaces, arguments
+
+What if we want to make a directory `work stuff`?
+
+```
+> mkdir work stuff
+> ls
+> rmdir work stuff
+> mkdir "work stuff"
+> cd work<tab>
+```
+
+- The shell always splits arguments into words before the command gets it.
+- To avoid this, use quotes, or `\ `, which "escapes" any character
+
+
+### More file manipulation
+
+- `mv` renames or moves files or directories
+- `rm` removes files, or `rm -r` removes directories and contents (careful!)
+
+```
+> cd ~/sciware-command-intro
+> mv filea fileb
+> mv fileb dir1
+> ls dir1
+> rm dir1/fileb
+> rm -r dir1
+```
+
+
+### Hidden "dot" files
+
+Files and directories that start with `.` don't show up by default, but you can access them as usual.
+
+```
+> cd dir2
+> ls
+> ls -a
+> ls -la
+> mv .hiddenfile nothidden
+> ls
+> cd ..
+```
+
+
+### Copying files
+
+`cp` makes an identical copy of a file.
+
+```
+> cp README readnot
+> cat readnot
+> diff README readnot
+```
+
+To copy entire directories, use `cp -a`.
+
+
+### Interactive programs
+
+- Some programs are interactive, don't immediately return you to the shell.
+- You can often use Control keys to stop them, written `<ctrl-c>` or often `^C`
+   - `^D` tells a program you're done
+   - `^C` tells a program to exit ("cancel")
+
+```
+> python
+Python 3
+>>> 1+1
+2
+>>> ^D
+```
+
+
+### History, navigation
+
+```
+> <up>/<down>
+> history
+> <left><right><home><end>
+```
+
+
+### Shell interaction
+
+- `^A` = Home (beginning of line), `^E` = End (end of line)
+- `^L` = clear
+
+```
+> exit
 ```
 
 
