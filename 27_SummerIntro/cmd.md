@@ -5,27 +5,19 @@
 https://sciware.flatironinstitute.org/27_SummerIntro
 
 
-## Rules of Engagement
-
-### Goal:
+## Sciware goal
 
 Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, *technology choices*\*, and scientific disciplines.
 
 <small>\*though sometimes we try to expand your options</small>
 
 
-TODO: schedule for next few week
+## Summer Intros
 
-## Rules of Engagement
-
-- Avoid discussions between a few people on a narrow topic
-- Provide time for people who haven't spoken to speak/ask questions
-- Provide time for experts to share wisdom and discuss
-- Work together to make discussions accessible to novices
-
-<small>
-(These will always be a work in progress and will be updated, clarified, or expanded as needed.)
-</small>
+- today 2-4: command line & cluster
+- Jun 7 2-4 in 162-2 IDA: git & Github, Part I
+- Jun 14 2-4 in 162-2 IDA: git & Github, Part II
+- Jun 21 **1-3** in 162-2 IDA: VS Code
 
 
 ## Today's Agenda
@@ -34,7 +26,6 @@ TODO: schedule for next few week
 - Command-line intro (45 min, with terminal)
 - Cluster intro (30 min)
 - VS code intro, terminal (10 min)
-
 - Homework for next time: create a github account
 
 
@@ -59,25 +50,27 @@ TODO: schedule for next few week
 
 
 
-## Definitions
+## References
+
+https://wiki.flatironinstitute.org/SCC/Software/UnixIntroduction
+
+Advanced exercises
+
+
+## Getting started
+
+Let's start a terminal!
+- Start "Terminal" (or "wsl" on Windows)
+
+<img src="assets/terminal-icon.png" width="50" style="border:0;box-shadow:none">
 
 * Terminal
 * Shell
 * Command Line
 * Programs
 
-Let's start a terminal!
-- Start "Terminal" on Mac or Linux, or "wsl" on Windows
-
-TODO: terminal icon
-
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
-
-
-### Familiar with shells already?
-
-TODO: link to Geraud's page
 
 
 ### Command Line
@@ -191,7 +184,7 @@ Create a new directory with `mkdir`, remove with `rmdir`
 > rmdir mydir
 ```
 
-- `..` always refers to the "parent" directory, one above
+- `..` refers to the "parent" directory, one above
 
 
 ### Quoting, spaces, arguments
@@ -233,7 +226,7 @@ rmdir: failed to remove 'dir1': Directory not empty
 Files and directories that start with `.` don't show up by default, but you can access them as usual.
 
 ```bash
-> cd dir2
+> cd notempty
 > ls
 > ls -a # all
 > ls -la
@@ -258,7 +251,7 @@ To copy entire directories, use `cp -a`.
 ### Interactive programs
 
 - Some programs are interactive, don't immediately return you to the shell.
-- You can often use Control keys to stop them, written `<Ctrl-C>` (or sometimes `^C`)
+- You can often use Control keys to stop them, written `<Ctrl-X>` (or sometimes `^X` or **C-X**)
    - `<Ctrl-D>` tells a program you're done
    - `<Ctrl-C>` tells a program to exit ("cancel")
 
@@ -290,11 +283,14 @@ Navigation
 
 ### Globbing
 
-You can use `*` to mean ... TODO
+You can use `*` to mean "anything", any file that matches:
 
 ```
-> ls dir1/*.txt
+> ls *.txt
+> echo *.txt
 ```
+
+`echo` just prints its arguments
 
 
 ### Shell interaction
@@ -303,7 +299,7 @@ You can use `*` to mean ... TODO
 - `<Ctrl-Left>`, `<Ctrl-Right>` = move by word
 - `<Ctrl-L>` = clear
 
-TODO: reference link
+https://vhernando.github.io/keyboard-shorcuts-bash-readline-default
 
 ```bash
 > exit
@@ -312,7 +308,9 @@ TODO: reference link
 
 ### Questions and exercise
 
-Organize the files in TODO directory
+Organize the files in animals directory:
+- create directories to categorize the animals
+- move files into these directories
 
 
 ### Shells and configuration
@@ -332,6 +330,7 @@ Interactive demo
 * look at a couple files
 * correspond to command line
 * terminal
+
 
 
 ## Homework
