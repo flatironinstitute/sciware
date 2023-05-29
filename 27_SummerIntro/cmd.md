@@ -60,9 +60,10 @@ Advanced exercises
 ## Getting started
 
 Let's start a terminal!
-- Start "Terminal" (or "wsl" on Windows)
-
-<img src="assets/terminal-icon.png" width="50" style="border:0;box-shadow:none">
+<br>
+<img src="assets/terminal-icon.png" width="100" style="border:0;box-shadow:none">
+<br>
+"Terminal" (or "wsl" on Windows)
 
 * Terminal
 * Shell
@@ -113,7 +114,7 @@ A shell or program always has a "current working directory": the directory (or f
 
 ## Clone a repo
 
-- `ls` lists the files and directories (...in a specific directory, or your current by default)
+`ls` lists the files and directories (...in a specific directory, or your current by default)
 
 ```bash
 > ls
@@ -127,6 +128,20 @@ Desktop  sciware-command-intro
 /home/you/sciware-command-intro
 ```
 
+### Paths
+
+- combine directories with `/` to make longer paths
+- paths starting with `/` start at the "top" or *root* of the system, full *absolute* path
+- others are *relative* paths, starting with current directory
+- `.` means current directory
+- `..` means parent directory (up one)
+- if `pwd` is `/home/you`, then these are all the same:
+   - `/home/you/dir/file`
+   - `dir/file`
+   - `./dir/file`
+   - `../you/dir/../dir/file`
+   - `../..///../.././home//you/dir/./file`
+
 
 ### Tab completion
 
@@ -134,10 +149,6 @@ No one wants to type all these file names: use tab!
 ```bash
 > cd ~
 > cd sciware-<tab>
-```
-
-Join directories with `/` to make longer paths
-```
 > cd ~/sciware-<tab>
 ```
 
@@ -183,8 +194,6 @@ Create a new directory with `mkdir`, remove with `rmdir`
 > cd ..
 > rmdir mydir
 ```
-
-- `..` refers to the "parent" directory, one above
 
 
 ### Quoting, spaces, arguments
@@ -291,6 +300,11 @@ You can use `*` to mean "anything", any file that matches:
 ```
 
 `echo` just prints its arguments
+
+```
+> echo "*.txt"
+> echo \*.txt
+```
 
 
 ### Shell interaction
