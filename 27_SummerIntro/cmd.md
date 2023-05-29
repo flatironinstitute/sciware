@@ -90,7 +90,7 @@ Let's start a terminal!
 Here's a typical shell command, with three parts:
 
 - A **prompt** provided by the shell
-- A **command**, the other program I want to run
+- A **command**, the program I want to run
 - The **options** or **flags** that control behavior, usually starting with `-`
 - The **arguments**, additional words that will be passed in to the command
 
@@ -127,6 +127,7 @@ Desktop  sciware-command-intro
 > pwd
 /home/you/sciware-command-intro
 ```
+
 
 ### Paths
 
