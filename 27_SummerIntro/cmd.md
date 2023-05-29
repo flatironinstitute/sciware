@@ -211,7 +211,7 @@ What if we want to make a directory `work stuff`?
 
 - The shell always splits arguments into words before the command gets it.
 - To avoid this, use quotes, or `\ `, which "escapes" any character
-- We often avoid putting spaces in filenames because it's annoying (often use `_` underscores)
+- We usually avoid putting spaces in filenames because it's annoying (often use `_` underscores)
 
 
 ### More file manipulation
@@ -226,8 +226,10 @@ What if we want to make a directory `work stuff`?
 > ls dir1
 > rmdir dir1
 rmdir: failed to remove 'dir1': Directory not empty
-> rm dir1/fileb
-> rm -r dir1
+> rm dir1/fileb dir1/deleteme
+> rmdir dir1
+> ls dir2
+> rm -r dir2
 ```
 
 
@@ -323,9 +325,10 @@ https://vhernando.github.io/keyboard-shorcuts-bash-readline-default
 
 ### Questions and exercise
 
-Organize the files in animals directory:
+Organize the files in `animals` directory:
 - create directories to categorize the animals
 - move files into these directories
+- hint: use `ls`, `cat`, `mkdir`, `mv`
 
 
 ### Shells and configuration
