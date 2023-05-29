@@ -353,4 +353,4 @@ Interactive demo
 
 ## Homework
 
-* create github account
+Sign up for account at [github.com](https://github.com/signup)
