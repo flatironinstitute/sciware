@@ -15,7 +15,7 @@ Activities where participants all actively work to foster an environment which e
 ## Summer Intros
 
 - today 2-4: command line & cluster
-- Jun 7 2-4 in 162-2 IDA: git & Github, Part I
+- Jun 7 2-4 in **162-2 IDA**: git & Github, Part I
 - Jun 14 2-4 in 162-2 IDA: git & Github, Part II
 - Jun 21 **1-3** in 162-2 IDA: VS Code
 
