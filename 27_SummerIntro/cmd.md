@@ -50,13 +50,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-## References
-
-https://wiki.flatironinstitute.org/SCC/Software/UnixIntroduction
-
-Advanced exercises
-
-
 ## Getting started
 
 Let's start a terminal!
@@ -127,6 +120,13 @@ Desktop  sciware-command-intro
 > pwd
 /home/you/sciware-command-intro
 ```
+
+
+## Advanced exercises
+
+See `advanced/README`
+
+https://wiki.flatironinstitute.org/SCC/Software/UnixIntroduction
 
 
 ### Paths
