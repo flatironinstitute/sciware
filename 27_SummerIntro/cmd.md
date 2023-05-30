@@ -84,8 +84,8 @@ Here's a typical shell command, with three parts:
 
 - A **prompt** provided by the shell
 - A **command**, the program I want to run
-- The **options** or **flags** that control behavior, usually starting with `-`
-- The **arguments**, additional words that will be passed in to the command
+- **options** or **flags** control behavior, starting with `-`
+- **arguments**, additional words that will be passed to the command
 
 
 ## Working directory
@@ -268,28 +268,11 @@ To copy entire directories, use `cp -a`.
    - `<Ctrl-C>` tells a program to exit ("cancel")
 
 ```bash
-> python
+> python3
 Python 3
 >>> 1+1
 2
 >>> ^D
-```
-
-
-### History, navigation
-
-Run something again
-
-```bash
-> <Up><Down>
-> history
-> <Ctrl-R>
-```
-
-Navigation
-
-```bash
-> <Left><Right><Home><End>
 ```
 
 
@@ -310,6 +293,23 @@ You can use `*` to mean "anything", any file that matches:
 ```
 
 
+### History, navigation
+
+Run something again
+
+```bash
+> <Up><Down>
+> history
+> <Ctrl-R>
+```
+
+Navigation
+
+```bash
+> <Left><Right><Home><End>
+```
+
+
 ### Shell interaction
 
 - `<Ctrl-A>` = Home (beginning of line), `<Ctrl-E>` = End (end of line)
@@ -323,14 +323,6 @@ https://vhernando.github.io/keyboard-shorcuts-bash-readline-default
 ```
 
 
-### Questions and exercise
-
-Organize the files in `animals` directory:
-- create directories to categorize the animals
-- move files into these directories
-- hint: use `ls`, `cat`, `mkdir`, `mv`
-
-
 ### Shells and configuration
 
 There are multiple different shells with different features.
@@ -339,6 +331,14 @@ There are multiple different shells with different features.
 - zsh (usually default on Mac): `.zshrc`
 
 Shells are extremely customizable, including prompts, keybindings, aliases, plugins
+
+
+### Questions and exercise
+
+Organize the files in `animals` directory:
+- create directories to categorize the animals
+- move files into these directories
+- hint: use `ls`, `cat`, `mkdir`, `mv`
 
 
 
