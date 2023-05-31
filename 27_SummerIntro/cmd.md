@@ -178,7 +178,8 @@ To see *inside* a file, the contents, you need something else
 
 ```bash
 > ls -l # long
-> ls -ltr # long, sort by modification time, reversed
+> ls -l -t -r # long, sort by modification time, reversed
+> ls -ltr # same
 > ls --help # may not work on Mac
 > man ls # MANual page
 ```
@@ -193,8 +194,13 @@ Create a new directory with `mkdir`, remove with `rmdir`
 > cd mydir
 > ls
 > cd ..
+> cd -
+> pwd
+> cd -
 > rmdir mydir
 ```
+
+`cd -` can be used to "go back" or "undo" the last `cd`
 
 
 ### Quoting, spaces, arguments
