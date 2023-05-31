@@ -54,14 +54,9 @@ Activities where participants all actively work to foster an environment which e
 
 Let's start a terminal!
 <br>
-<img src="assets/terminal-icon.png" width="100" style="border:0;box-shadow:none">
+<img src="assets/terminal-icon.png" width="150" style="border:0;box-shadow:none">
 <br>
 "Terminal" (or "wsl" on Windows)
-
-* Terminal
-* Shell
-* Command Line
-* Programs
 
 
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
