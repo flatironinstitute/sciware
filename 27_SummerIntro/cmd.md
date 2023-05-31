@@ -62,15 +62,6 @@ Let's start a terminal!
 <img src="assets/desktop-terminal-shell.png" width="100%" style="border:0;box-shadow:none">
 
 
-### Command Line
-
-- "CLI" = _command line interface_
-   - Compare to GUI = _graphical user interface_
-- In a terminal, you run a shell
-- With the shell, you run programs
-- Shell may be on another (remote) computer (e.g., ssh)
-
-
 ### Shell Command Example
 
 <img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
@@ -81,6 +72,15 @@ Here's a typical shell command, separated by spaces:
 - A **command**, the program to run
 - **options** or **flags** control behavior, starting with `-`
 - **arguments**, additional words that will be passed to the command
+
+
+### Command Line
+
+- "CLI" = _command line interface_
+   - Compare to GUI = _graphical user interface_
+- In a terminal, you run a shell
+- With the shell, you run programs
+- Shell may be on another (remote) computer (e.g., ssh)
 
 
 ## Working directory
