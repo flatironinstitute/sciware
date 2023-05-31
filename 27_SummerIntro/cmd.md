@@ -75,17 +75,17 @@ Let's start a terminal!
 
 <img src="assets/command-line-example.png" width="60%" style="border:0;box-shadow:none" />
 
-Here's a typical shell command, with three parts:
+Here's a typical shell command, separated by spaces:
 
-- A **prompt** provided by the shell
-- A **command**, the program I want to run
+- A **prompt** displayed by the shell
+- A **command**, the program to run
 - **options** or **flags** control behavior, starting with `-`
 - **arguments**, additional words that will be passed to the command
 
 
 ## Working directory
 
-A shell or program always has a "current working directory": the directory (or folder) that's used by default
+A shell always has a "current working directory": the directory (or folder) that's used by default
 - `pwd` shows you the current directory ("print working directory")
 - `cd` changes the current directory, by default to your "home" directory (`~`)
 
@@ -100,7 +100,7 @@ A shell or program always has a "current working directory": the directory (or f
 ```
 
 
-## Clone a repo
+## Clone a git repo
 
 `ls` lists the files and directories (...in a specific directory, or your current by default)
 
