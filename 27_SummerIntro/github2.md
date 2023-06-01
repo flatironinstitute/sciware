@@ -33,7 +33,7 @@ Activities where participants all actively work to foster an environment which e
 
 <div style="display: flex;">
 <ul>
-<li>If you already have a copy of this repo from yesterday's workshop, navigate to the directory above it and rename it.</li>
+<li>If you already have a copy of this repo from the last workshop, navigate to the directory above it and rename it.</li>
 <li>Normally you'd re-use this repository, but just to make sure everyone's on the same page...</li>
 </ul>
 <img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
