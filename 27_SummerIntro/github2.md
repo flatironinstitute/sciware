@@ -4,43 +4,20 @@
 
 https://sciware.flatironinstitute.org/27_SummerIntro
 
-https://github.com/flatironinstitute/learn-sciware-dev/tree/main/27_SummerIntro
 
-
-
-## Rules of Engagement
-
-### Goal:
+## Sciware goal
 
 Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, *technology choices*\*, and scientific disciplines.
 
 <small>\*though sometimes we try to expand your options</small>
 
 
-## Rules of Engagement
+## Summer Intros
 
-- Avoid discussions between a few people on a narrow topic
-- Provide time for people who haven't spoken to speak/ask questions
-- Provide time for experts to share wisdom and discuss
-- Work together to make discussions accessible to novices
-
-<small>
-(These will always be a work in progress and will be updated, clarified, or expanded as needed.)
-</small>
-
-
-## Zoom Specific
-
-- Dedicated Zoom moderator to field questions.
-- Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted on #sciware Slack.
-
-
-## Future Sessions
-
-- June 29: Showcase of code editors, development environments (show & tell)
-- July 21 (preliminary): Shells, environments, command-lines
-
+- May 31 2-4: command line & cluster
+- Jun 7 2-4 in 162-2 IDA: git & Github, Part I
+- today 2-4 in 162-2 IDA: git & Github, Part II
+- Jun 21 **1-3** in 162-2 IDA: VS Code
 
 ## Today's Agenda
 
