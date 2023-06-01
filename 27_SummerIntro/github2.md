@@ -39,7 +39,7 @@ Activities where participants all actively work to foster an environment which e
 <img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
 </div>
 
-<pre  style="font-size:0.75em;">> mv sciware21-git-intro/ sciware21-git-intro-day1/
+<pre  style="font-size:0.75em;">> mv sciware23-git-intro/ sciware23-git-intro-day1/
 </pre>
 
 
@@ -74,7 +74,7 @@ Activities where participants all actively work to foster an environment which e
 
 <div>
     First we need to fork the repo
-    https://github.com/flatironinstitute/sciware21-git-intro
+    https://github.com/flatironinstitute/sciware23-git-intro
     <img src="./assets/where_is_the_fork_button.png">
 </div>
 <style>
@@ -87,7 +87,7 @@ Activities where participants all actively work to foster an environment which e
     Next, we clone <em>our</em> fork of the repo:
     <pre  style="font-size:0.75em;">
         <code data-trim data-noescape class="language-zsh">
-        ➜ git clone git@github.com:your_user_name/sciware21-git-intro.git
+        ➜ git clone git@github.com:your_user_name/sciware23-git-intro.git
         </code>
     </pre>
 </div>
