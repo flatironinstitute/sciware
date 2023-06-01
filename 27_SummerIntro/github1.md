@@ -187,7 +187,7 @@ How to set up your favorite editor with Git:
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
 <ul>
 <li>Go to the repo on the GitHub website<ul>
-  <li><a href="https://github.com/flatironinstitute/sciware23-git-intro">https://github.com/ flatironinstitute/sciware23-git-intro</a></li></ul>
+  <li><a href="https://github.com/flatironinstitute/sciware27-git-intro">https://github.com/ flatironinstitute/sciware27-git-intro</a></li></ul>
 </li>
 <li>Click Green Code button</li>
 <li>Choose SSH tab</li>
@@ -198,10 +198,10 @@ How to set up your favorite editor with Git:
 
 ## Clone the repo (continued...)
 
-- In a Terminal window, clone the repo:
+In a Terminal window, clone the repo:
 
-<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware23-git-intro
-> cd sciware23-git-intro
+<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware27-git-intro
+> cd sciware27-git-intro
 </code></pre>
 
 <div class="spacer"></div>
@@ -221,8 +221,8 @@ How to set up your favorite editor with Git:
 - It also saves the URL to the repo and names it *origin*
 
 <pre  style="font-size:0.9em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>&gt; git remote -v
-origin  git@github.com:flatironinstitute/sciware23-git-intro (fetch)
-origin  git@github.com:flatironinstitute/sciware23-git-intro (push)
+origin  git@github.com:flatironinstitute/sciware27-git-intro (fetch)
+origin  git@github.com:flatironinstitute/sciware27-git-intro (push)
 </code></pre>
 
 
@@ -253,7 +253,7 @@ https://github.com/explore
 ## Make a project directory (folder)
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
-> cd #out of sciware23-git-intro
+> cd #out of sciware27-git-intro
 > mkdir silly_repo
 > cd silly_repo
 > touch silly_code.py
