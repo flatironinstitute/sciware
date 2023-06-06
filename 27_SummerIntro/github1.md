@@ -190,7 +190,8 @@ How to set up your favorite editor with Git:
   <li><a href="https://github.com/flatironinstitute/sciware27-git-intro">https://github.com/ flatironinstitute/sciware27-git-intro</a></li></ul>
 </li>
 <li>Click Green Code button</li>
-<li>Choose SSH tab</li>
+<li>Choose Local tab</li>
+<li>Choose SSH subtab</li>
 <li>Click the clipboard icon to copy the repo path</li>
 </ul>
 </div>
