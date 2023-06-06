@@ -109,7 +109,7 @@ For example:
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-plaintext">
 Name,Center,Research Focus,Fun Fact
-James Smith,CCQ,Quantum Chemistry,My initials are JETS
+Robert Blackwell,SCC,high performance computing,violin!
     </code>
 </pre>
 
@@ -193,7 +193,7 @@ Choose another student's PR and click on it.
 ![](./assets/pull_request_rev2.png)
 
 
-Click on the commit to see the diff of their changes and hover over a line until you see the `+` sybmol.
+Click on the commit to see the diff of their changes and hover over a line until you see the `+` symbol.
 
 ![](./assets/pull_request_rev3.png)
 
