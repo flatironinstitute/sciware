@@ -228,6 +228,11 @@ Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20
 
 <img width=80% src="./assets/fetch-upstream-1.png">
 
+
+## Step 4: Pull Other's Changes
+
+<img width=80% src="./assets/fetch-upstream-4.png">
+
 <pre class="fragment" style="font-size:0.75em;">
     <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
     ➜ git pull origin main
