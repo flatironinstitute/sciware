@@ -26,6 +26,7 @@ Activities where participants all actively work to foster an environment which e
 - Setting up git and GitHub on your computer
 - Getting code off of GitHub
 - Putting code onto GitHub
+- Reception at 4 on promenade
 
 
 
