@@ -104,6 +104,11 @@ Set an email address
 (Ideally set to the same email address you used for GitHub account)
 
 
+## Viewing your email address on github
+
+<img src="assets/github_email.png" width="60%">
+
+
 ## Generate an SSH key
 
 <pre style="font-size:1em;"> <code data-trim data-noescape>&gt; ssh-keygen -t ed25519
@@ -242,7 +247,9 @@ https://github.com/explore
 
 # Survey
 
-## http://bit.ly/sciware-github1-2022
+## http://bit.ly/sciware-git1-2023
+
+<img src="assets/survey_qr.png" width="30%">
 
 
 
@@ -291,9 +298,7 @@ https://github.com/explore
 - It's possible to have multiple *branches* of the code where different things are being worked on.
 - The primary branch is usually called *main*.
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
 > git status
-</code></pre>
 
 Notice:
 - branch name
@@ -407,13 +412,16 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 
 
-## Tomorrow
+## Next week
 
 ### Using GitHub to collaborate
 
 <img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
 
 
+
 # Survey
 
-## http://bit.ly/sciware-github1-2022
+## http://bit.ly/sciware-git1-2023
+
+<img src="assets/survey_qr.png" width="30%">
