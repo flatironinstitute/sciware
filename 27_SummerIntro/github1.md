@@ -286,7 +286,7 @@ https://github.com/explore
 
 ### Initialize the directory to use with GitHub
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git init
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git init -b main
 > git status
 </code></pre>
 
@@ -298,8 +298,7 @@ https://github.com/explore
 - It's possible to have multiple *branches* of the code where different things are being worked on.
 - The primary branch is usually called *main*.
 
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git branch -M main
- > git status
+<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 </code></pre>
 
 Notice:
