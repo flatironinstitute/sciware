@@ -12,12 +12,30 @@ Activities where participants all actively work to foster an environment which e
 <small>\*though sometimes we try to expand your options</small>
 
 
+## Sciware website
+
+Previous sciwares available here
+https://sciware.flatironinstitute.org
+
+Password for videos is...
+
+TODO: screenshot
+
+
+## Sciware slack, contact
+
+#sciware on simonsfoundation.slack.com (use flatiron email)
+
+Computational help: scicomp@flatironinstitute.org
+
+
 ## Summer Intros
 
 - May 31 2-4: command line & cluster
 - Jun 7 2-4 in 162-2 IDA: git & GitHub, Part I
 - today 2-4 in 162-2 IDA: git & GitHub, Part II
 - Jun 21 **1-3** in 162-2 IDA: VS Code
+
 
 ## Today's Agenda
 
@@ -51,49 +69,45 @@ Activities where participants all actively work to foster an environment which e
    - make and track changes to repositories we don't have permissions to push to
 
 
-## Forking to the Rescue
-
-<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
-
-
 ## Forking Workflow
 
-1. Fork and clone the project
-2. Add the code and push to your fork
-3. Merge code into the main project
+1. Fork the repository on github
+2. Clone your new fork from github to local
+2. Make changes to the code
+2. Push to your fork
+3. Open a Pull Request (PR) from your fork to the upstream repo
+3. Wait for upstream to approve and merge your changes
 4. Keep your fork up to date
 
 
 
-## Step 1: Fork and Clone
+## Step 1: Fork
+
+<img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
+
+
+## Step 1: Fork
+
+    First we need to fork the repo
+    https://github.com/flatironinstitute/sciware27-git-intro
+    <img src="./assets/where_is_the_fork_button.png">
+
+
+## Step 2: Clone
 
 <img width=80% src="./assets/Learn-Git-Graphics/Clone%20the%20Fork.png">
 
 
-## Step 1: Fork and Clone
+## Step 2: Clone
 
-<div>
-    First we need to fork the repo
-    https://github.com/flatironinstitute/sciware27-git-intro
-    <img src="./assets/where_is_the_fork_button.png">
-</div>
-<style>
-    pre {
-    overflow-x: hidden;
-    }
-</style>
+Next, we clone <em>our</em> fork of the repo:
 
-<div class="fragment">
-    Next, we clone <em>our</em> fork of the repo:
-    <pre  style="font-size:0.75em;">
-        <code data-trim data-noescape class="language-zsh">
-        ➜ git clone git@github.com:your_user_name/sciware27-git-intro.git
-        </code>
-    </pre>
-</div>
+<pre><code data-trim data-noescape class="language-zsh">
+➜ git clone git@github.com:your_user_name/sciware27-git-intro.git
+</code></pre>
 
 
-## Step 2a: Add Your Code
+## Step 3: Add Your Code
 
 - Add a file in `student_info` called `firstName_lastName.csv` with the following info:
    - Your full name
@@ -102,7 +116,7 @@ Activities where participants all actively work to foster an environment which e
    - A fun fact
 
 
-## Step 2a: Add Your Code
+## Step 3: Add Your Code
 
 For example:
 
@@ -114,12 +128,12 @@ Robert Blackwell,SCC,high performance computing,violin!
 </pre>
 
 
-## Step 2b: Push to Your Fork
+## Step 4: Push to Your Fork
 
 <img width=80% src="./assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png">
 
 
-## Step 2b: Push to Your Fork
+## Step 4: Push to Your Fork
 
 - Run `git add` on your file
 - Commit it
@@ -140,11 +154,11 @@ For example:
 
 
 
-## Step 3: Open a Pull Request
+## Step 5: Open a Pull Request
 <img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.png">
 
 
-## Step 3: Open a Pull Request
+## Step 5: Open a Pull Request
 
 - Using your browser, navigate to your forked repository
 - It should look something like this:
@@ -154,19 +168,19 @@ For example:
 - Click on the `Contribute` button
 
 
-## Step 3: Open a Pull Request
+## Step 5: Open a Pull Request
 
 <img src="./assets/pull_request_button2.png">
 
 - Click on the `Open pull request` button
 
 
-## Step 3: Open a Pull Request
+## Step 5: Open a Pull Request
 
 <img src="./assets/pull_request_form.png" style="height: 80vh">
 
 
-## Step 3: Open a Pull Request
+## Step 5: Open a Pull Request
 
 Things to think about when making pull requests (PR):
 
@@ -219,17 +233,17 @@ Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20
 
 
 
-## Step 4: Pull Other's Changes
+## Step 7: Pull Other's Changes
 
 <img width=80% src="./assets/fetch-upstream-3.png">
 
 
-## Step 4: Pull Other's Changes
+## Step 7: Pull Other's Changes
 
 <img width=80% src="./assets/fetch-upstream-1.png">
 
 
-## Step 4: Pull Other's Changes
+## Step 7: Pull Other's Changes
 
 <img width=80% src="./assets/fetch-upstream-4.png">
 
