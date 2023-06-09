@@ -19,7 +19,7 @@ https://sciware.flatironinstitute.org
 
 Password for videos is...
 
-TODO: screenshot
+<img src="assets/sciware_ss.png" width="40%">
 
 
 ## Sciware slack, contact
