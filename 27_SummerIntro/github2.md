@@ -78,7 +78,8 @@ Computational help: scicomp@flatironinstitute.org
 <img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
 </div>
 
-<pre  style="font-size:0.75em;">> mv sciware27-git-intro/ sciware27-git-intro-day1/
+<pre  style="font-size:1em;"><code data-trim data-noescape>
+&gt; mv sciware27-git-intro/ sciware27-git-intro-day1/
 </pre>
 
 
@@ -110,18 +111,17 @@ Next, we clone <em>our</em> fork of the repo:
 
 ## Step 3: Add Your Code
 
-- Add a file in the `student_info\` directory called `firstName_lastName.csv` with the following info:
+- Add a file in the `student_info/` directory called `firstName_lastName.csv` with the following info:
    - Your full name
    - Your center
    - Your research focus
    - A fun fact
 
-<pre  style="font-size:01em;">
-    <code data-trim data-noescape>
+<pre  style="font-size:01em;"><code data-trim data-noescape>
 &gt; cd student_info/
 &gt; nano
-    </code></pre>
-       
+</code></pre>
+
 
 ## Step 3: Add Your Code
 
@@ -135,6 +135,7 @@ Robert Blackwell,SCC,high performance computing,violin!
 </pre>
 
 Save the file.
+
 
 
 ## Step 4: Push to Your Fork
@@ -151,13 +152,21 @@ Save the file.
 <pre  style="font-size:1em;">
     <code data-trim data-noescape>
 &gt; git status
-...
-&gt; git add student_info/james_smith.csv
-&gt; git commit -m "Adding info for James Smith"
-...
+    </code>
+    <code data-trim data-noescape>
+&gt; git add student_info/robert_blackwell.csv
+&gt; git commit -m "Adding info for Robert Blacwell"
+    </code>
+    <code data-trim data-noescape>
 &gt; git push origin main
     </code>
 </pre>
+
+
+
+# Survey
+
+## http://bit.ly/sciware-github2-2023
 
 
 
@@ -187,15 +196,29 @@ Save the file.
 <img src="./assets/pull_request_form.png" style="height: 80vh">
 
 
+## PR Case Study
+
+Here's an example of a PR _without_ a helpful description:
+
+![](./assets/pr_case_study_bad.png)
+
+
+## PR Case Study
+
+Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
+
+<img height=70% width=60% src="./assets/pr_case_study_good.png">
+
+
 ## Step 5: Open a Pull Request
 
 Things to think about when making pull requests (PR):
 
 <ul>
-<li>Many projects have PR templates with information you need to fill out, <b><em>use them</em></b>!</li>
-<li>Include <b><em>why</em></b> you're making the PR, what steps you took, and how it addresses a current problem.</li>
-<li>Bug reports should <b><em>always</em></b> include a minimum working example.</li>
-<li>PRs (and Issues) are a valuable <b><em>public</em></b> record, just like StackOverflow.</li>
+   <li>PRs are a way for someone else to review your changes before they are merged into the "upstream" version.</li>
+   <li>PRs usually contain many commits.</li>
+   <li>The first comment in the PR should be more narrative than the commit messages and should describe <b><em>why</em></b> you're making the PR and summarize the changes you made.</li>
+   <li>PRs are a valuable record, similar to a lab notebook.</li>
 </ul>
 
 
@@ -219,26 +242,6 @@ Click on the commit to see the diff of their changes and hover over a line until
 ![](./assets/pull_request_rev3.png)
 
 
-## PR Case Study
-
-Here's an example of a PR _without_ a helpful description:
-
-![](./assets/pr_case_study_bad.png)
-
-
-## PR Case Study
-
-Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20251) _with_ a helpful description:
-
-<img height=70% width=60% src="./assets/pr_case_study_good.png">
-
-
-
-# Survey
-
-## http://bit.ly/sciware-github2-2022
-
-
 
 ## Step 7: Pull Other's Changes
 
@@ -254,9 +257,9 @@ Here's an example of a [PR](https://github.com/scikit-learn/scikit-learn/pull/20
 
 <img width=80% src="./assets/fetch-upstream-4.png">
 
-<pre class="fragment" style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh" data-line-numbers="1,4,5,10">
-    ➜ git pull origin main
+<pre class="fragment" style="font-size:1em;">
+    <code data-trim data-noescape data-line-numbers="1,4,5,10">
+    &gt; git pull origin main
     </code>
 </pre>
 
@@ -273,4 +276,4 @@ Check out and bookmark these tutorials for more information about git and the fo
 
 # Survey
 
-## http://bit.ly/sciware-github2-2022
+## http://bit.ly/sciware-github2-2023
