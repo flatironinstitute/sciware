@@ -268,8 +268,20 @@ Click on the commit to see the diff of their changes and hover over a line until
 <img width=80% src="./assets/fetch-upstream-4.png">
 
 <pre class="fragment" style="font-size:1em;">
-    <code data-trim data-noescape data-line-numbers="1,4,5,10">
+    <code data-trim data-noescape>
     &gt; git pull origin main
+    </code>
+</pre>
+
+
+## Step 7: Pull Other's Changes
+
+Confirm that you have the changes locally.
+
+<pre class="fragment" style="font-size:1em;">
+    <code data-trim data-noescape>
+      &gt; git log
+      &gt; ls student_info/
     </code>
 </pre>
 
