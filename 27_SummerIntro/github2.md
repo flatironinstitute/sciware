@@ -150,22 +150,18 @@ Save the file.
 - Push the commit to your fork
 
 <pre  style="font-size:1em; margin-top:0px">
+    <code data-trim data-noescape style="margin-top:0px">&gt; git status</code>
+    <code data-trim data-noescape style="margin-top:0px">&gt; git add student_info/robert_blackwell.csv
+   &gt; git commit -m "Adding info for Robert Blacwell"</code>
     <code data-trim data-noescape style="margin-top:0px">
-&gt; git status
-    </code>
-    <code data-trim data-noescape style="margin-top:0px">
-&gt; git add student_info/robert_blackwell.csv
-&gt; git commit -m "Adding info for Robert Blacwell"
-    </code>
-    <code data-trim data-noescape style="margin-top:0px">
-&gt; git push origin main
-    </code>
+   &gt; git push origin main</code>
 </pre>
 
 
 
-# Survey
+# Break 
 
+Please take survey if you're leaving now
 ## http://bit.ly/sciware-github2-2023
 
 
