@@ -249,28 +249,34 @@ Click on the commit to see the diff of their changes and hover over a line until
 
 
 
-## Step 7: Pull Other's Changes
+## Step 7: Pull Other's Changes 
 
 <img width=80% src="./assets/fetch-upstream-3.png">
 
 
-## Step 7: Pull Other's Changes
+## Step 7: Pull Other's Changes to your Fork
+
+Sync.
 
 <img width=80% src="./assets/fetch-upstream-1.png">
 
 
-## Step 7: Pull Other's Changes
+## Step 7: Pull Other's Changes to your Fork (Sync)
+
+Sync.
 
 <img width=80% src="./assets/fetch-upstream-4.png">
 
-<pre class="fragment" style="font-size:1em;">
-    <code data-trim data-noescape>
+
+
+## Step 8: Pull Other's Changes to your Local
+
+<pre style="font-size:1em;"><code data-trim data-noescape>
     &gt; git pull origin main
-    </code>
-</pre>
+</code></pre>
 
 
-## Step 7: Pull Other's Changes
+## Step 8: Pull Other's Changes to your Local
 
 Confirm that you have the changes locally.
 
