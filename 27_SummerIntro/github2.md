@@ -47,19 +47,6 @@ Computational help: scicomp@flatironinstitute.org
 
 
 
-## Step 0: A clean start
-
-<div style="display: flex;">
-<ul>
-<li>If you already have a copy of this repo from the last workshop, navigate to the directory above it and rename it.</li>
-<li>Normally you'd re-use this repository, but just to make sure everyone's on the same page...</li>
-</ul>
-<img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
-</div>
-
-<pre  style="font-size:0.75em;">> mv sciware27-git-intro/ sciware27-git-intro-day1/
-</pre>
-
 
 ## Collaborating with others
 
@@ -81,6 +68,20 @@ Computational help: scicomp@flatironinstitute.org
 
 
 
+## Step 0: A clean start
+
+<div style="display: flex;">
+<ul>
+<li>If you already have a copy of this repo from the last workshop, navigate to the directory above it and rename it.</li>
+<li>Normally you'd re-use this repository, but just to make sure everyone's on the same page...</li>
+</ul>
+<img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
+</div>
+
+<pre  style="font-size:0.75em;">> mv sciware27-git-intro/ sciware27-git-intro-day1/
+</pre>
+
+
 ## Step 1: Fork
 
 <img width=80% src="./assets/Learn-Git-Graphics/Forking%20a%20Repo.png">
@@ -88,9 +89,9 @@ Computational help: scicomp@flatironinstitute.org
 
 ## Step 1: Fork
 
-    First we need to fork the repo
-    https://github.com/flatironinstitute/sciware27-git-intro
-    <img src="./assets/where_is_the_fork_button.png">
+First we need to fork the repo
+https://github.com/flatironinstitute/sciware27-git-intro
+<img src="./assets/where_is_the_fork_button.png">
 
 
 ## Step 2: Clone
@@ -102,23 +103,29 @@ Computational help: scicomp@flatironinstitute.org
 
 Next, we clone <em>our</em> fork of the repo:
 
-<pre><code data-trim data-noescape class="language-zsh">
-➜ git clone git@github.com:your_user_name/sciware27-git-intro.git
+<pre style="font-size:1em;"><code data-trim data-noescape>
+&gt; git clone git@github.com:your_user_name/sciware27-git-intro.git
 </code></pre>
 
 
 ## Step 3: Add Your Code
 
-- Add a file in `student_info` called `firstName_lastName.csv` with the following info:
+- Add a file in the `student_info\` directory called `firstName_lastName.csv` with the following info:
    - Your full name
    - Your center
    - Your research focus
    - A fun fact
 
+<pre  style="font-size:01em;">
+    <code data-trim data-noescape>
+&gt; cd student_info/
+&gt; nano
+    </code></pre>
+       
 
 ## Step 3: Add Your Code
 
-For example:
+Example contents of `robert_blackwell.csv`:
 
 <pre  style="font-size:0.75em;">
     <code data-trim data-noescape class="language-plaintext">
@@ -126,6 +133,8 @@ Name,Center,Research Focus,Fun Fact
 Robert Blackwell,SCC,high performance computing,violin!
     </code>
 </pre>
+
+Save the file.
 
 
 ## Step 4: Push to Your Fork
@@ -135,20 +144,18 @@ Robert Blackwell,SCC,high performance computing,violin!
 
 ## Step 4: Push to Your Fork
 
-- Run `git add` on your file
-- Commit it
-- Push to your fork
+- Add the file
+- Commit the file
+- Push the commit to your fork
 
-For example:
-
-<pre  style="font-size:0.75em;">
-    <code data-trim data-noescape class="language-zsh">
-➜ git status
+<pre  style="font-size:1em;">
+    <code data-trim data-noescape>
+&gt; git status
 ...
-➜ git add student_info/james_smith.csv
-➜ git commit -m "Adding info for James Smith"
+&gt; git add student_info/james_smith.csv
+&gt; git commit -m "Adding info for James Smith"
 ...
-➜ git push origin main
+&gt; git push origin main
     </code>
 </pre>
 
