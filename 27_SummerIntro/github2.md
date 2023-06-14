@@ -274,8 +274,7 @@ Click on the commit to see the diff of their changes and hover over a line until
 
 Confirm that you have the changes locally.
 
-<pre class="fragment" style="font-size:1em;">
-    <code data-trim data-noescape>
+<pre style="font-size:1em;"><code data-trim data-noescape>
       &gt; git log
       &gt; ls student_info/
     </code>
