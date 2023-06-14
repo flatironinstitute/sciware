@@ -164,6 +164,7 @@ Save the file.
 Please take survey if you're leaving now
 ## http://bit.ly/sciware-github2-2023
 
+<img src="assets/gh2_qr.png" width="30%">
 
 
 ## Step 5: Open a Pull Request
