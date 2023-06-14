@@ -149,15 +149,15 @@ Save the file.
 - Commit the file
 - Push the commit to your fork
 
-<pre  style="font-size:1em;">
-    <code data-trim data-noescape>
+<pre  style="font-size:1em; margin-top:0px">
+    <code data-trim data-noescape style="margin-top:0px">
 &gt; git status
     </code>
-    <code data-trim data-noescape>
+    <code data-trim data-noescape style="margin-top:0px">
 &gt; git add student_info/robert_blackwell.csv
 &gt; git commit -m "Adding info for Robert Blacwell"
     </code>
-    <code data-trim data-noescape>
+    <code data-trim data-noescape style="margin-top:0px">
 &gt; git push origin main
     </code>
 </pre>
@@ -191,11 +191,6 @@ Save the file.
 - Click on the `Open pull request` button
 
 
-## Step 5: Open a Pull Request
-
-<img src="./assets/pull_request_form.png" style="height: 80vh">
-
-
 ## PR Case Study
 
 Here's an example of a PR _without_ a helpful description:
@@ -222,10 +217,24 @@ Things to think about when making pull requests (PR):
 </ul>
 
 
+## Step 5: Open a Pull Request
 
+Finish up your pull request and click "Create Pull Request"
+
+<img src="./assets/pull_request_form.png" style="height: 80vh">
+
+
+## Step 6: Wait for your PR to be merged
+
+Someone else will merge your PR.
+
+In practice, someone might leave comments on your PR and/or request changes before merging.
+
+
+<!--
 ## Reviewing a Pull Request
 
-As other students make PRs, go to the pull requests tab on GitHub.
+As other folks make PRs, go to the pull requests tab on GitHub.
 
 ![](./assets/pull_request_rev.png)
 
@@ -240,6 +249,7 @@ Choose another student's PR and click on it.
 Click on the commit to see the diff of their changes and hover over a line until you see the `+` symbol.
 
 ![](./assets/pull_request_rev3.png)
+-->
 
 
 
