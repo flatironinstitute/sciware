@@ -149,13 +149,13 @@ Save the file.
 - Commit the file
 - Push the commit to your fork
 
-<pre  style="font-size:1em; margin-top:0px">
-    <code data-trim data-noescape style="margin-top:0px">&gt; git status</code>
-    <code data-trim data-noescape style="margin-top:0px">&gt; git add student_info/robert_blackwell.csv
-   &gt; git commit -m "Adding info for Robert Blacwell"</code>
-    <code data-trim data-noescape style="margin-top:0px">
-   &gt; git push origin main</code>
-</pre>
+<pre  style="font-size:1em; margin-top:0px"><code data-trim data-noescape style="margin-top:0px">
+       &gt; git status</code></pre>
+<pre  style="font-size:1em; margin-top:0px"><code data-trim data-noescape style="margin-top:0px">
+&gt; git add student_info/robert_blackwell.csv
+&gt; git commit -m "Adding info for Robert Blacwell"</code></pre>
+   <pre  style="font-size:1em; margin-top:0px"><code data-trim data-noescape style="margin-top:0px">
+   &gt; git push origin main</code></pre>
 
 
 
