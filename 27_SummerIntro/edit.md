@@ -24,12 +24,23 @@ Activities where participants all actively work to foster an environment which e
 ## Today's agenda
 
 - What is VS Code?
+  - Orientation to the interface
 - Installing VS Code
+  - Installing miniconda (Mac and Windows)
+  - Using WSL: install WSL + WSL extension (Windows)
+- Setup dummy Python project (i.e. clone a repo)
 - Examples and demos of features
 - Practice using VS Code with a Python project
 
+- Lehman's todo
+  - Draft pre-session email
+  - Write any slides
+  - Make Python project repo
+
+
 <!-- Features:
 - Built-in terminal, with exit code coloring
+- How to use the command palette
 - File browser
 - Editor tabs/peeking
 - Search
@@ -39,10 +50,14 @@ Activities where participants all actively work to foster an environment which e
 - Python
   - Syntax highlighting
   - Tab complete
+  - Parentheses matching
+  - Type hinting
   - Hover for doc
   - Jump to definition
   - Linting (yellow squiggles)
   - Notebooks
+- Time permitting:
+  - Remote connection via JupyterHub
  -->
 
 <!-- Questions
