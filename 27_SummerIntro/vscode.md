@@ -26,45 +26,13 @@ Activities where participants all actively work to foster an environment which e
 - What is VS Code?
   - Orientation to the interface
 - Installing VS Code
-  - Installing miniconda (Mac and Windows)
-  - Using WSL: install WSL + WSL extension (Windows)
-- Setup dummy Python project (i.e. clone a repo)
+  - [Windows] Install WSL
+  - Install miniconda
+  - Install VS Code
+- Set up a Python project (i.e. clone a repo)
 - Examples and demos of features
+  - Follow along on your laptop
 - Practice using VS Code with a Python project
-
-- Lehman's todo
-  - Draft pre-session email
-  - Write any slides
-  - Make Python project repo
-
-
-<!-- Features:
-- Built-in terminal, with exit code coloring
-- How to use the command palette
-- File browser
-- Editor tabs/peeking
-- Search
-- Git awareness
-- Extensions: Python, Jupyter
-- Workspaces
-- Python
-  - Syntax highlighting
-  - Tab complete
-  - Parentheses matching
-  - Type hinting
-  - Hover for doc
-  - Jump to definition
-  - Linting (yellow squiggles)
-  - Notebooks
-- Time permitting:
-  - Remote connection via JupyterHub
- -->
-
-<!-- Questions
-- Do we want any slides?
-- Integrate short exercises, or lecturing followed by longer exercise?
-- Are we going to help students install VS Code and Python? (https://code.visualstudio.com/docs/python/python-tutorial)
--->
 
 # What is an IDE?
 
@@ -86,12 +54,12 @@ Activities where participants all actively work to foster an environment which e
 ### Lots of good options
 
 - VS Code ("Visual Studio Code"): open-source cross-platform editor from Microsoft
-- Sublime Text, Atom: lightweight text editors
+- Sublime Text, Atom: lightweight editors with code-aware features
 - PyCharm, Spyder: Python-specific IDEs with focus on debugging
 
-# Basic functionality
+## Previous SciWare materials on VS Code
 
-https://github.com/jsoules/vs-code-introduction 
+https://github.com/jsoules/vs-code-introduction
 
 # Survey
 
