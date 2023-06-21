@@ -21,18 +21,23 @@ Activities where participants all actively work to foster an environment which e
 - today **1-3** in 162-2 IDA: VS Code
 
 
-## Today's agenda
+## Today's agenda (1)
 
+- Install VS Code
+  - [Windows] Install WSL (https://learn.microsoft.com/windows/wsl/install)
+  - Install VS Code (https://code.visualstudio.com/Download)
 - What is VS Code?
   - Orientation to the interface
-- Installing VS Code
-  - [Windows] Install WSL
-  - Install miniconda
-  - Install VS Code
+  - Follow along!
+
+
+## Today's agenda (2)
+- Install Python (miniconda: https://docs.conda.io/en/latest/miniconda.html)
 - Set up a Python project (i.e. clone a repo)
 - Examples and demos of features
   - Follow along on your laptop
 - Practice using VS Code with a Python project
+
 
 # What is an IDE?
 
