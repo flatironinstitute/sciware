@@ -1,7 +1,9 @@
 # VS Code Lesson Plan
 ## Install VS Code [10 min]
+- (Windows) https://learn.microsoft.com/windows/wsl/install
+- https://code.visualstudio.com/Download
 
-## VS Code feature demo [10 min]
+## VS Code feature demo [20 min]
 - Workspaces
     - Open a directory
 - File browser
@@ -22,23 +24,23 @@
 ## Install miniconda [10 min]
 
 ## Clone a Python project [5 min]
-https://github.dev/flatironinstitute/sciware-vscode-exercise
+- https://github.com/flatironinstitute/sciware-vscode-exercise
 
 ## Break for cookies [10 min]
 
-## Follow along: demo Python features [30 min]
-- Python
-  - Syntax highlighting
-  - Tab complete
-  - Parentheses matching
-  - Type hinting
-  - Hover for doc
-  - Jump to definition
-  - Linting (yellow squiggles)
-  - Block comments
-  - Block folding
-  - Block indentation
-  - Notebooks
+## Python features [20 min]
+- Syntax highlighting
+- Tab complete
+- Parentheses matching
+- Right click on variables/functions/etc
+- Jump to definition
+- Type hinting
+- Hover for doc
+- Linting (yellow squiggles)
+- Block comments
+- Block folding
+- Block indentation
+- Notebooks
 
 ## Independent work: keep working on the Python project [20 min]
 

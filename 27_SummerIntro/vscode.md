@@ -34,13 +34,13 @@ Activities where participants all actively work to foster an environment which e
 ## Today's agenda (2)
 - Install Python (miniconda: https://docs.conda.io/en/latest/miniconda.html)
 - Set up a Python project (i.e. clone a repo)
-   - https://github.dev/flatironinstitute/sciware-vscode-exercise
-- Examples and demos of features
+  - https://github.com/flatironinstitute/sciware-vscode-exercise
+- Orientation to Python features
   - Follow along on your laptop
 - Practice using VS Code with a Python project
 
 
-# What is an IDE?
+## What is an IDE?
 
 ### Integrated Development Environment
 #### (or just "editor")
@@ -50,6 +50,7 @@ Activities where participants all actively work to foster an environment which e
 - that integrates other features
 - designed to make it easier to write code all in one place
 
+
 ## Text editor
 
 - Most IDEs are, at the core, a text editor
@@ -57,18 +58,25 @@ Activities where participants all actively work to foster an environment which e
 - Aware of code structure, projects, programming language, libraries
 - Integrated tools for running, compiling, testing, debugging, checking, documenting, sharing, ...
 
-### Lots of good options
+
+## Lots of good options
 
 - VS Code ("Visual Studio Code"): open-source cross-platform editor from Microsoft
 - Sublime Text, Atom: lightweight editors with code-aware features
 - PyCharm, Spyder: Python-specific IDEs with focus on debugging
 
-## Previous SciWare materials on VS Code
 
+## Other VS Code Intro Materials
+
+- Previous SciWare including VS Code:
 https://github.com/jsoules/vs-code-introduction
+- Intro videos from Microsoft:
+https://code.visualstudio.com/docs/getstarted/introvideos
+
 
 # Survey
 
 https://bit.ly/TBD
+
 
 # Questions & Help
