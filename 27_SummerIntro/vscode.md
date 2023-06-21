@@ -34,6 +34,7 @@ Activities where participants all actively work to foster an environment which e
 ## Today's agenda (2)
 - Install Python (miniconda: https://docs.conda.io/en/latest/miniconda.html)
 - Set up a Python project (i.e. clone a repo)
+   - https://github.dev/flatironinstitute/sciware-vscode-exercise
 - Examples and demos of features
   - Follow along on your laptop
 - Practice using VS Code with a Python project
