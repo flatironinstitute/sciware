@@ -318,8 +318,8 @@ code {
   border: solid 2px #efefef;
   font-family: "Courier New", monospace;
   font-size: 0.9em;
-  margin: 0 0.25em;
-  padding: 0.25em 0.65em;
+  margin: 0 0.15em;
+  padding: 0.15em 0.35em;
 }
 
 pre {
@@ -1859,9 +1859,9 @@ article.special {
 }
 
 header p {
-  color: #b2b2b2;
+  color: #7d7d7d;
   position: relative;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.2em 0;
 }
 
 header h2 + p {
