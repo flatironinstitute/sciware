@@ -112,36 +112,62 @@ What do you see for the output of the log file?
 
 
 # SSHFS and FUSE
-- SSH FileSystem (SSHFS): SSHFS lets you remotely mount filesystems over ssh. It's a convenient way to access files on the cluster as if they're on your local machine. (Think Dropbox but for files stored on cluster instead of the cloud.)
+- SSH FileSystem (SSHFS): Is a convenient way to access files on the cluster as if they're on your local machine. 
+  - Think Dropbox but for files stored on cluster instead of the cloud.
 
-- Filesystem in USErspace (FUSE): "a software interface for Unix and Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code." -Wikipedia. Needed by SSHFS to create the mount point in the cluster directory.
+- Filesystem in USErspace (FUSE): "a software interface for Unix and Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code." -Wikipedia. 
+  - Needed by SSHFS access files.
 
 https://docs.simonsfoundation.org/index.php/Public:Playbooks/SSHFS
 
 
-## Demo of what SSHFS can do
+## What can SSHFS do?
+
+- Access files on the cluster as if they're on your local machine
+- Transfer files between your local machine and the cluster
 
 
 ## Things to know 
 - It is very sensitive to latency, so depending on your connection, may sometimes be a bit slow.
+- Folders mounted on the cluster, e.g, a zip archive mounted using `fusermount`, may not show up in directory.
 
 
 ## Setting up FUSE for cluster
-- Install fuse and sshfs (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://osxfuse.github.io/)).
+- Install FUSE and SSHFS (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://osxfuse.github.io/)).
 - Make sure you can `ssh flatiron` (from inside the FI network) or `ssh gateway` (from outside), following the [RemoteConnect](https://docs.simonsfoundation.org/index.php/RemoteConnect) instructions if necessary.
-- Choose which directory you want to mount, such as /mnt/home/USERNAME or /mnt/ceph/users/USERNAME and create directories on your local computers to mount in. 
+- Choose which directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME` and create directories on your local computers to mount to. 
 
 
 It often makes things more convenient to use paths matching the cluster. If you wish to do this, then type the following commands
 ```bash
-sudo mkdir -p /mnt/home/<USERNAME /mnt/ceph/users/USERNAME
-sudo chown $USER /mnt/home/USERNAME /mnt/ceph/users/USERNAME
+sudo mkdir -p ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
+sudo chown $USER ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
 
 ```
-
 
 - Mount the directory you want from the server you can connect to, e.g.:
 
 ```bash
-sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME
+sshfs flatiron:/mnt/home/USERNAME ~/mnt/home/USERNAME
+```
+
+
+## Example
+```bash
+> cd ~/mnt/home/alamson/
+> ls
+> sshfs flatiron:/mnt/home/USERNAME ~/mnt/home/USERNAME
+> ls
+10-powerline-symbols.conf ceph                      requirements.txt
+Chi                       intel                     test_local
+Desktop                   libyaml-cpp.a             test_projects
+Downloads                 local                     
+bash_profile              projects
+bashrc                    public_www
+```
+
+## Tips and Tricks
+- Create aliases for common mount points in your `.bashrc` or `.bash_profile` files, e.g.:
+```bash
+alias mount_home='sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME'
 ```
