@@ -44,6 +44,7 @@ Activities where participants all actively work to foster an environment which e
 ## Today's Agenda
 
 
+
 # Measuring performance on HPC clusters
 - We always want everything to take less time.
 - Need to define
@@ -113,6 +114,8 @@ What do you see for the output of the log file?
 - Globus
 - Globus public download portal
 - SSHFS
+- JupyterHub
+- [Other options on wiki...](https://wiki.flatironinstitute.org/SCC/DataSharing)
 
 
 # Globus
