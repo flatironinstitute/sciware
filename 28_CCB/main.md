@@ -109,16 +109,21 @@ sbatch run_slurm_example1.sh
 
 What do you see for the output of the log file?
 
+# Ways to access and transfer data
+- Globus
+- Globus public download portal
+- SSHFS
+
+
+# Globus
 
 
 # SSHFS and FUSE
 - SSH FileSystem (SSHFS): Is a convenient way to access files on the cluster as if they're on your local machine. 
-  - Think Dropbox but for files stored on cluster instead of the cloud.
 
-- Filesystem in USErspace (FUSE): "a software interface for Unix and Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code." -Wikipedia. 
-  - Needed by SSHFS access files.
+- Filesystem in USErspace (FUSE): Needed by SSHFS to 'mount' a filesystem. 
 
-https://docs.simonsfoundation.org/index.php/Public:Playbooks/SSHFS
+https://wiki.flatironinstitute.org/SCC.Playbooks/SshFsMount
 
 
 ## What can SSHFS do?
@@ -128,35 +133,33 @@ https://docs.simonsfoundation.org/index.php/Public:Playbooks/SSHFS
 
 
 ## Things to know 
-- It is very sensitive to latency, so depending on your connection, may sometimes be a bit slow.
+- It is very sensitive to latency, so depending on your connection, may sometimes be slow.
 - Folders mounted on the cluster, e.g, a zip archive mounted using `fusermount`, may not show up in directory.
+- Used primarly to interact with files using GUI and visual tools.
 
 
 ## Setting up FUSE for cluster
-- Install FUSE and SSHFS (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://osxfuse.github.io/)).
-- Make sure you can `ssh flatiron` (from inside the FI network) or `ssh gateway` (from outside), following the [RemoteConnect](https://docs.simonsfoundation.org/index.php/RemoteConnect) instructions if necessary.
-- Choose which directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME` and create directories on your local computers to mount to. 
+- Install FUSE and SSHFS (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://www.fuse-t.org)).
+- Make sure you can `ssh rusty` (from inside the FI network) or `ssh gateway` (from outside), following the [RemoteConnect](https://wiki.flatironinstitute.org/SCC/RemoteConnect) instructions if necessary.
+- Choose which cluster directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME`, and create directories on your local computers to mount to. 
 
 
-It often makes things more convenient to use paths matching the cluster. If you wish to do this, then type the following commands
+It often makes things more convenient to use paths matching the cluster. If you wish to do this, then type the following command
 ```bash
-sudo mkdir -p ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
-sudo chown $USER ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
-
+mkdir -p ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
 ```
 
-- Mount the directory you want from the server you can connect to, e.g.:
 
+- Mount directory you want from the server, e.g.:
 ```bash
-sshfs flatiron:/mnt/home/USERNAME ~/mnt/home/USERNAME
+sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME 
 ```
-
 
 ## Example
 ```bash
 > cd ~/mnt/home/alamson/
 > ls
-> sshfs flatiron:/mnt/home/USERNAME ~/mnt/home/USERNAME
+> sshfs rusty:/mnt/home/alamson/ ~/mnt/home/alamson/
 > ls
 10-powerline-symbols.conf ceph                      requirements.txt
 Chi                       intel                     test_local
