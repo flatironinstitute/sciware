@@ -45,28 +45,30 @@ Activities where participants all actively work to foster an environment which e
 
 
 # Measuring performance on HPC clusters
-- We always want everything to take less time.
+- We want our code to be as performant as possible!
 - Need to define
   - "Time"
-  - "Less"
+  - "Performant"
   - <h4 style="color:rgb(255,0,0)">"Efficiency"</h4>
 - How do we do this in an HPC/cluster environment?
+- "Premature optimization is the root of all evil" -- Donald Knuth
 
 
 ## Problem statement
-We have highly parallelized code <foo> and want to get the "best" performance out of it that we can.
+We have highly parallelized code \<foo\> and want to get the "best" performance out of it that we can.
 
 
 ## A brief introduction to cluster computing (at FI)
 <small>
 (Although much of this information will work at other clusters)
 </small>
+
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
 
 
-## A (somewhat) standard SLURM script
+## A standard SLURM script
 ```bash
 #!/bin/bash
 #SBATCH --nodes=2
@@ -99,8 +101,8 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindi
 ```
 
 
-## Hands on demo 1
-<foo> = mpi_omp_mockup
+## Running a simple MPI/OpenMP executable on the cluster
+<foo> = mpi\_omp\_mockup
 
 ```bash
 cd mpi_omp_mockup/
@@ -108,6 +110,34 @@ sbatch run_slurm_example1.sh
 ```
 
 What do you see for the output of the log file?
+
+<small>
+If you want to compile mpi\_omp\_mockup.cpp, feel free to do so with MPI and OpenMP
+</small>
+
+
+## Understanding performance metrics
+
+### Time exists so everything doesn't happen all at once!
+
+- "Wall time" = time
+- "CPU time" = cpu cores * time
+  - Multiple threads
+  - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
+- Need to figure out what we just ran...
+
+## Getting performance results through **seff**
+
+Getting previous job information from the cluster (need JobID)
+```bash
+> sacct
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+2640715      mpi_omp_e+        ccb        ccb        256  COMPLETED      0:0 
+2640715.bat+      batch                   ccb        128  COMPLETED      0:0 
+2640715.ext+     extern                   ccb        256  COMPLETED      0:0 
+2640715.0         orted                   ccb        128  COMPLETED      0:0
+```
 
 
 

@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
         int omprank = omp_get_thread_num();
 
         // Sleep for some amount of time based on the number of threads and the mpirank size
-        auto sleepytime = std::chrono::milliseconds(omprank + 100*mpirank);
+        auto sleepytime = std::chrono::milliseconds(10*omprank + 1000*mpirank);
         std::this_thread::sleep_for(sleepytime);
 
         // Print out the information
