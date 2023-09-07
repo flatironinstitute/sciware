@@ -103,7 +103,8 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindi
 
 
 ## Running a simple MPI/OpenMP executable on the cluster
-<foo> = mpi\_omp\_mockup
+
+\<foo\> = mpi\_omp\_mockup
 
 ```bash
 cd mpi_omp_mockup/
