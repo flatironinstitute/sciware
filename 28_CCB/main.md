@@ -129,9 +129,14 @@ If you want to compile mpi\_omp\_mockup.cpp, feel free to do so with MPI and Ope
 - Need to figure out what we just ran...
 
 
-## Getting performance results through **seff**
+<!--
+
+## Getting performance results through *seff*
 
 Getting previous job information from the cluster (need JobID)
+
+<div class="fragment fade-out" data-fragment-index="0">
+
 ```bash
 > sacct
 JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
@@ -141,6 +146,28 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 2640715.ext+     extern                   ccb        256  COMPLETED      0:0 
 2640715.0         orted                   ccb        128  COMPLETED      0:0
 ```
+
+</div>
+<div class="fragment fade-in" data-fragment-index="0">
+
+```bash
+> seff 2640715
+Job ID: 2640715
+Cluster: slurm
+User/Group: cedelmaier/cedelmaier
+State: COMPLETED (exit code 0)
+Nodes: 2
+Cores per node: 128
+CPU Utilized: 00:00:19
+CPU Efficiency: 0.93% of 00:34:08 core-walltime
+Job Wall-clock time: 00:00:08
+Memory Utilized: 5.80 MB
+Memory Efficiency: 0.00% of 0.00 MB
+```
+
+</div>
+
+-->
 
 
 # Ways to access and transfer data
