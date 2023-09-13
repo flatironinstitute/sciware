@@ -1,0 +1,20 @@
+#!/bin/bash -l
+#SBATCH --nodes=#NODES#
+#SBATCH --ntasks-per-node=#RANKS_PER_NODE#
+#SBATCH --cpus-per-task=#THREADS_PER_RANK#
+#SBATCH --partition=#PARTITION#
+#SBATCH --constraint=#CONSTRAINTS#
+#SBATCH --time=#WALLTIME#
+#SBATCH --output=#OUT_FILEPATH#
+#SBATCH --error=#ERROR_FILEPATH#
+
+# Set up our environment for this SLURM submission
+module -q purge
+module -q load modules/2.2-20230808
+module -q load openmpi/cuda-4.0.7
+module -q load gromacs/mpi-2023.1
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+#EXEC#
+touch DONE

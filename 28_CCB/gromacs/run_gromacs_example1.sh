@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --nodes=2
-#SBATCH --ntasks-per-node=120
+#SBATCH --cpus-per-task=1
 #SBATCH --constraint=rome,ib
 #SBATCH --partition=ccb
 #SBATCH --time=01:00:00
-#SBATCH --job-name=gromacs_examplerun1
-#SBATCH --output=gromacs_examplerun1.log
+#SBATCH --job-name=slurm_gromacs_examplerun1
+#SBATCH --output=slurm_gromacs_examplerun1.log
 
 # Set up our environment for this SLURM submission
 module -q purge
@@ -15,7 +15,7 @@ module -q load gromacs/mpi-2023.1
 module list
 
 # Explicitly set the number of openmp tasks per mpi process
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 # Helper functions to see what kind of system we are running on, if we have GPUs that are accessible, and other information
 lscpu
@@ -26,4 +26,4 @@ numactl -H
 # mpirun -np 1 gmx_mpi grompp -f gromacs_examplerun1.mdp -o gromacs_examplerun1.tpr -c step6.6_equilibration.gro -p topol.top -n index.ndx
 
 # Run the TPR file for gromacs
-mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 240 --report-bindings gmx_mpi mdrun -v -deffnm gromacs_examplerun1 -ntomp $OMP_NUM_THREADS
+mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 240 --report-bindings gmx_mpi mdrun -v -deffnm gromacs_examplerun1

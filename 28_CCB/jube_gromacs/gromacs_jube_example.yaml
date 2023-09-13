@@ -1,0 +1,101 @@
+name: gromacs_jube_example
+outpath: gromacs_jube_example_rome_cpu
+comment: GROMACS on CPU
+
+# benchmark configuration
+parameterset:
+  - name: param_set
+    parameter:
+      - { name: nodes, type: int, _: "1,2" }
+      - { name: ranks_per_node, type: int, _: "120,60,30" }
+      - { name: tpr_filename, type: string, _: gromacs_examplerun }
+
+# Job configuration
+  - name: execute_set
+    parameter:
+      - { name: submit_cmd, _: sbatch }
+      - { name: job_file, _: gromacs_mpi.run }
+      - { name: walltime, _: "00:20:00" }
+      - { name: cores_per_node, type: int, mode: python, _: "${sockets_per_node} * ${cores_per_socket}" }
+      - { name: threads_per_rank, type: int, mode: python, _: "int(${cores_per_node} / ${ranks_per_node})" }
+      - { name: num_ranks, type: int, mode: python, _: "${nodes} * ${ranks_per_node}" }
+      - { name: ready_file, _: ready }
+      - { name: err_file, _: gromacs.err }
+      - { name: out_file, _: gromacs.out }
+      - { name: exec, _: "mpirun --map-by socket:pe=$$OMP_NUM_THREADS -np $num_ranks gmx_mpi mdrun -v -ntomp $$OMP_NUM_THREADS -maxh 0.25 -resethway -noconfout -deffnm $tpr_filename" }
+  - name: architecture_rome
+    parameter:
+      - { name: total_nodes, type: int, _: 640 }
+      - { name: sockets_per_node, type: int, _: 2 }
+      - { name: cores_per_socket, type: int, _: 64 }
+      - { name: numa_nodes_per_socket, type: int, _: 4 }
+      - { name: llc_mb, type: int, _: 256 }
+      - { name: mem_gb, type: int, _: 1024 }
+      - { name: partition, type: string, _: ccb }
+      - { name: constraints, type: string, _: "rome&ib" }
+
+# Load jobfile and copy input
+fileset:
+  name: files
+  link:
+    - "$$PWD/${job_file}.in"
+    - "$$PWD/${tpr_filename}.tpr"
+
+# Substitute jobfile
+substituteset:
+  name: sub_job
+  iofile: { in: "${job_file}.in", out: "$job_file" }
+  sub:
+    - { source: "#PARTITION#", dest: "$partition" }
+    - { source: "#CONSTRAINTS#", dest: "$constraints" }
+    - { source: "#NODES#", dest: "$nodes" }
+    - { source: "#RANKS_PER_NODE#", dest: "$ranks_per_node" }
+    - { source: "#THREADS_PER_RANK#", dest: "$threads_per_rank" }
+    - { source: "#WALLTIME#", dest: "$walltime" }
+    - { source: "#ERROR_FILEPATH#", dest: "$err_file" }
+    - { source: "#OUT_FILEPATH#", dest: "$out_file" }
+    - { source: "#EXEC#", dest: "$exec" }
+
+# Regex pattern
+patternset:
+  name: pattern
+  pattern:
+      - { name: ns_per_day, type: float, default: 0, _: "Performance:\\s+$jube_pat_fp" }
+      - { name: ns_per_day_per_core, type: float, mode: python, _: "$ns_per_day / ($nodes * $ranks_per_node * $threads_per_rank)" }
+
+# Operation
+step:
+  name: submit
+  work_dir: "$$HOME/ceph/BENCHMARKS/JUBE/GROMACS/gromacs_example_rome/${jube_benchmark_padid}/wp_${jube_wp_padid}_n${nodes}_r${ranks_per_node}"
+  use:
+    - architecture_rome
+    - param_set
+    - files
+    - execute_set
+    - sub_job
+  do:
+    done_file: "DONE"
+    _: "$submit_cmd $job_file"
+
+# Analyze
+analyser:
+  name: analyse
+  use: pattern
+  analyse:
+    step: submit
+    file: $err_file
+
+# Create result table
+result:
+  use: analyse
+  table:
+    name: result
+    style: csv
+    sort: [tpr_filename,ranks_per_node,nodes]
+    column:
+      - tpr_filename
+      - nodes
+      - ranks_per_node
+      - threads_per_rank
+      - ns_per_day
+      - ns_per_day_per_core
