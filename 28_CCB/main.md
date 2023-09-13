@@ -45,18 +45,29 @@ Activities where participants all actively work to foster an environment which e
 
 
 
-# Measuring performance on HPC clusters
+# Performance on HPC clusters
 - We want our code to be as performant as possible!
-- Need to define
-  - "Time"
-  - "Performant"
-  - <h4 style="color:rgb(255,0,0)">"Efficiency"</h4>
 - How do we do this in an HPC/cluster environment?
 - "Premature optimization is the root of all evil" -- Donald Knuth
 
 
 ## Problem statement
+
 We have highly parallelized code \<foo\> and want to get the "best" performance out of it that we can.
+
+- Need to define
+  - "Time"
+  - "Performant"
+  - <h4 style="color:rgb(255,0,0)">"Efficiency"</h4>
+
+
+## Some software in CCB
+
+- GROMACS
+- aLENS
+- Dedalus
+
+Add logos to this slide!
 
 
 ## A brief introduction to cluster computing (at FI)
@@ -69,7 +80,8 @@ We have highly parallelized code \<foo\> and want to get the "best" performance 
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
 
 
-## A standard SLURM script
+## SLURM preamble
+
 ```bash
 #!/bin/bash
 #SBATCH --nodes=2
@@ -78,9 +90,18 @@ We have highly parallelized code \<foo\> and want to get the "best" performance 
 #SBATCH --constraint=rome,ib
 #SBATCH --partition=ccb
 #SBATCH --time=00:10:00
-#SBATCH --job-name=mpi_omp_example4
-#SBATCH --output=mpi_omp_example4.log
+#SBATCH --job-name=mpi_omp_example1
+#SBATCH --output=mpi_omp_example1.log
+```
 
+<small>
+Replace ccb with your center partition!
+</small>
+
+
+## SLURM modules
+
+```bash
 # Set up our environment for this SLURM submission
 module -q purge
 module -q load openmpi
@@ -90,7 +111,12 @@ module list
 lscpu
 nvidia-smi
 numactl -H
+```
 
+
+## SLURM program execution
+
+```bash
 # Print some helpful information
 echo "Slurm nodes:              ${SLURM_NNODES}"
 echo "Slurm ntasks:             ${SLURM_NTASKS}"
@@ -98,7 +124,8 @@ echo "Slurm ntasks-per-node:    ${SLURM_NTASKS_PER_NODE}"
 echo "Slurm cpus-per-task:      ${SLURM_CPUS_PER_TASK}"
 
 # Run the program
-OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings mpi_omp_mockup
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings \
+  mpi_omp_mockup
 ```
 
 
@@ -107,15 +134,24 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindi
 \<foo\> = mpi\_omp\_mockup
 
 ```bash
-cd mpi_omp_mockup/
-sbatch run_slurm_example1.sh
+> cd mpi_omp_mockup/
+> sbatch run_slurm_example1.sh
 ```
 
 What do you see for the output of the log file?
 
 <small>
-If you want to compile mpi\_omp\_mockup.cpp, feel free to do so with MPI and OpenMP
+If you want to compile mpi_omp_mockup.cpp, feel free to do so with MPI and OpenMP and the provided Makefile
 </small>
+
+
+## Tips and tricks SLURM
+
+```bash
+> squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           2669303       ccb gromacs_ cedelmai  R       0:13      2 worker[5020,5088]
+```
 
 
 ## Understanding performance metrics
@@ -126,16 +162,32 @@ If you want to compile mpi\_omp\_mockup.cpp, feel free to do so with MPI and Ope
 - "CPU time" = cpu cores * time
   - Multiple threads
   - 1 core for 1 second + 8 cores for 5 seconds + 1 core for 2 seconds = 43 cpu seconds, 8 wall seconds
-- Need to figure out what we just ran...
 
 
-<!--
+## Measuring performance: *date*
 
-## Getting performance results through *seff*
+```bash
+# Capture the time
+start_time=$(date +%s)
 
-Getting previous job information from the cluster (need JobID)
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings \
+  mpi_omp_mockup
 
-<div class="fragment fade-out" data-fragment-index="0">
+# Report the time
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+echo "Elapsed time: $elapsed_time seconds"
+```
+
+Execute in the same directory as before (mpi_omp_mockup)
+```bash
+> sbatch run_slurm_example2.sh
+```
+
+
+## Measuring performance: *seff*
+
+Getting previous job information from the cluster (need JobID, get via sacct)
 
 ```bash
 > sacct
@@ -147,8 +199,10 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 2640715.0         orted                   ccb        128  COMPLETED      0:0
 ```
 
-</div>
-<div class="fragment fade-in" data-fragment-index="0">
+
+## Measuring performance: *seff*
+
+Getting previous job information from the cluster (once we have JobID)
 
 ```bash
 > seff 2640715
@@ -165,9 +219,79 @@ Memory Utilized: 5.80 MB
 Memory Efficiency: 0.00% of 0.00 MB
 ```
 
-</div>
 
--->
+## GROMACS
+
+Chris: Can I embed a video here, or just a still image?
+
+
+## Running GROMACS
+
+```bash
+> cd gromacs/
+> sbatch run_gromacs_example1.sh
+> squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           2669305       ccb slurm_gr cedelmai  R       2:05      2 worker[5086-5087]
+> ssh worker5086
+> htop
+```
+
+
+## Measuring GROMACS performance: *htop*
+
+<img height="60%" src="assets/htop_screenshot.png" class="plain">
+
+
+## Measuring GROMACS performance: *seff*
+
+```bash
+> seff 2669305
+Job ID: 2669305
+Cluster: slurm
+User/Group: cedelmaier/cedelmaier
+State: COMPLETED (exit code 0)
+Nodes: 2
+Cores per node: 128
+CPU Utilized: 19:04:53
+CPU Efficiency: 91.27% of 20:54:24 core-walltime
+Job Wall-clock time: 00:04:54
+Memory Utilized: 18.64 GB
+Memory Efficiency: 0.00% of 0.00 MB
+```
+
+
+## Tasks vs. Threading
+
+### MPI vs. OpenMP
+
+- MPI tasks across nodes (distributed memory)
+- OpenMP threads within a node (shared memory)
+
+```bash
+...
+#SBATCH --nodes=2
+#SBATCH --cpus-per-task=2
+...
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+...
+mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 120 --report-bindings \
+  gmx_mpi mdrun -v -deffnm gromacs_examplerun2
+```
+
+On a single node can trade MPI tasks for OpenMP threads with different performance results!
+
+
+## Installing JUBE
+
+```bash
+> module load python/3.10.10
+> python3 -m venv --system-site-packages ~/envs/jube
+> source ~/envs/jubs/bin/activate
+> pip3 install http://apps.fz-juelich.de/jsc/jube/jube2/download.php?version=latest --user
+> jube --version
+```
+
 
 
 # Ways to access and transfer data
