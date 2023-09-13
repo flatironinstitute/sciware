@@ -282,7 +282,102 @@ mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 120 --report-bindings \
 On a single node can trade MPI tasks for OpenMP threads with different performance results!
 
 
-## Installing JUBE
+## Good practices: code performance
+
+- Diagnose problems with *seff* and *htop*
+- To optimally/efficiently run code, need to turn to **benchmarking**
+
+
+## Benchmarking
+
+- Thanks to G&eacute;raud Krawezik
+  - A 15 minute benchmark can help your week-long computation get you more results
+- [Previous Sciware](https://sciware.flatironinstitute.org/17_FICluster/slides.html)
+
+
+## When to benchmark?
+
+- Once your code runs small samples (aka: it works!)
+- Before you type `sbatch --time=LOTS`
+- For new projects
+- For known projects: batch scripts are not "one size fits all"
+  - Especially if your scripts come from another HPC center
+  - Even locally we have very diverse machines!
+  - Drastically new inputs can require new benchmarks
+  - New software versions can mean new configuration
+
+
+## What to benchmark?
+
+- Find something that can:
+  - Represent your whole run in a short period of time
+  - eg: a couple of iterations instead of 1000s of them
+  - Use a production run configuration
+- Start small, but be wary of "toy benchmarks":
+
+
+## How to benchmark?
+
+- Domain-specific benchmarking tools
+  - [MDBenchmark](https://mdbenchmark.readthedocs.io/) for Molecular Dynamic simulations
+- Generic frameworks
+  - [JUBE](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/JUBE/jube.html)
+- These environments will let you:
+  - Explore a space of different parameters
+  - Easily read/format/export results
+  - Produce scaling results for articles
+
+
+## Speedup (1)
+
+- Simulation has some (amount of data) / (amount of time it took to collect)
+  - 1 CPU/core took T1 amount of time to run
+  - p CPU/core took Tp amount of time to run
+- Speedup can be defined as Sp = Tp/T1
+- Thanks to Bryce Palmer for the following data
+
+
+## Speedup (2)
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; text-align: center; margin-right: 10px;">
+    <h3>Old code</h3>
+    <img src="assets/FP_Figure_1c.png" style="width: 90%">
+  </div>
+  <div style="flex: 1; text-align: center; margin-left: 10px;">
+    <h3>New code</h3>
+    <img src="assets/FP_Figure_1a.png" style="width: 90%">
+  </div>
+</div>
+
+
+## Efficiency (1)
+
+- Speedup isn't the whole story, we also need to know how *efficient* our code is.
+  - Good efficiency: Use 2x the computing power to get a Speedup of 2x
+  - Bad efficiency: Use 2x the computing power to get a Speedup of 1.1x
+- Efficiency can be defined as Ep = Sp/p
+
+
+## Efficiency (2)
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; text-align: center; margin-right: 10px;">
+    <h3>Old code</h3>
+    <img src="assets/FP_Figure_2c.png" style="width: 90%">
+  </div>
+  <div style="flex: 1; text-align: center; margin-left: 10px;">
+    <h3>New code</h3>
+    <img src="assets/FP_Figure_2a.png" style="width: 90%">
+  </div>
+</div>
+
+
+## Using JUBE: Example
+
+<img height="60%" src="assets/JUBE-Logo.png" class="plain">
+
+[Jube Webpage](https://apps.fz-juelich.de/jsc/jube/jube2/docu/index.html)
 
 ```bash
 > module load python/3.10.10
@@ -290,6 +385,44 @@ On a single node can trade MPI tasks for OpenMP threads with different performan
 > source ~/envs/jubs/bin/activate
 > pip3 install http://apps.fz-juelich.de/jsc/jube/jube2/download.php?version=latest --user
 > jube --version
+```
+
+
+## Using JUBE: Running
+
+```bash
+> cd jube_gromacs
+> jube run gromacs_jube_example.yaml
+######################################################################
+# benchmark: gromacs_jube_example
+# id: 0
+#
+# GROMACS on CPU
+######################################################################
+
+Running workpackages (#=done, 0=wait, E=error):
+####################0000000000000000000000000000000000000000 (  2/  6)
+
+  | stepname | all | open | wait | error | done |
+  |----------|-----|------|------|-------|------|
+  |   submit |   6 |    0 |    4 |     0 |    2 |
+
+...
+> jube analyse gromacs_jube_example_rome_cpu --id 0
+```
+
+
+## Using JUBE: Results
+
+```bash
+jube result gromacs_jube_example_rome_cpu --id 0
+tpr_filename,nodes,ranks_per_node,threads_per_rank,ns_per_day,ns_per_day_per_core
+gromacs_examplerun,1,120,1,37.601,0.3133416666666667
+gromacs_examplerun,1,60,2,38.102,0.3175166666666666
+gromacs_examplerun,1,30,4,36.049,0.30040833333333333
+gromacs_examplerun,2,120,1,67.188,0.27995000000000003
+gromacs_examplerun,2,60,2,71.59,0.2982916666666667
+gromacs_examplerun,2,30,4,69.753,0.2906375
 ```
 
 
