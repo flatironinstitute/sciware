@@ -43,6 +43,12 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
+* Submitting and monitoring parallel slurm jobs
+   * GROMACS
+   * Benchmarking
+   * JUBE
+* Sharing and transferring data
+
 
 
 # Performance on HPC clusters
