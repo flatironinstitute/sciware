@@ -46,6 +46,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 # Performance on HPC clusters
+
 - We want our code to be as performant as possible!
 - How do we do this in an HPC/cluster environment?
 - "Premature optimization is the root of all evil" -- Donald Knuth
@@ -78,6 +79,8 @@ Add logos to this slide!
 - How do you share a set of computational resources among cycle-hungry scientists?
   - With a job scheduler! Also known as a queue system.
 - Flatiron uses [Slurm](https://slurm.schedmd.com) to schedule jobs
+
+<center><img width="25%" src="./assets/Slurm_logo.png"></center>
 
 
 ## SLURM preamble
@@ -128,6 +131,8 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindi
   mpi_omp_mockup
 ```
 
+<center><img width="25%" src="./assets/slurm_futurama.webp"></center>
+
 
 ## Running a simple MPI/OpenMP executable on the cluster
 
@@ -152,6 +157,15 @@ If you want to compile mpi_omp_mockup.cpp, feel free to do so with MPI and OpenM
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            2669303       ccb gromacs_ cedelmai  R       0:13      2 worker[5020,5088]
 ```
+```bash
+> alias scluster="sinfo -o  '%c %D %A %f' "
+> scluster
+CPUS NODES NODES(A/I) AVAIL_FEATURES
+...
+128 639 541/85 location=local,rome,ib,rocky8
+...
+```
+<small>You can place this in your `.bash_profile` or `.bashrc` file</small>
 
 
 ## Understanding performance metrics
@@ -222,7 +236,7 @@ Memory Efficiency: 0.00% of 0.00 MB
 
 ## GROMACS
 
-Chris: Can I embed a video here, or just a still image?
+<center><img width="25%" src="./assets/gmx_logo_blue.png"></center>
 
 
 ## Running GROMACS
@@ -383,7 +397,8 @@ On a single node can trade MPI tasks for OpenMP threads with different performan
 > module load python/3.10.10
 > python3 -m venv --system-site-packages ~/envs/jube
 > source ~/envs/jubs/bin/activate
-> pip3 install http://apps.fz-juelich.de/jsc/jube/jube2/download.php?version=latest --user
+> pip3 install http://apps.fz-juelich.de/jsc/jube/jube2/download.php?version=latest \ 
+  --user
 > jube --version
 ```
 
@@ -417,13 +432,118 @@ Running workpackages (#=done, 0=wait, E=error):
 ```bash
 jube result gromacs_jube_example_rome_cpu --id 0
 tpr_filename,nodes,ranks_per_node,threads_per_rank,ns_per_day,ns_per_day_per_core
-gromacs_examplerun,1,120,1,37.601,0.3133416666666667
-gromacs_examplerun,1,60,2,38.102,0.3175166666666666
-gromacs_examplerun,1,30,4,36.049,0.30040833333333333
-gromacs_examplerun,2,120,1,67.188,0.27995000000000003
-gromacs_examplerun,2,60,2,71.59,0.2982916666666667
-gromacs_examplerun,2,30,4,69.753,0.2906375
+| 1 | 120 | 1 | 37.601 | 0.3133416666666667
+| 1 | 60  | 2 | 38.102 | 0.3175166666666666
+| 1 | 30  | 4 | 36.049 | 0.30040833333333333
+| 2 | 120 | 1 | 67.188 | 0.27995000000000003
+| 2 | 60  | 2 | 71.59  | 0.2982916666666667
+| 2 | 30  | 4 | 69.753 | 0.2906375
 ```
+
+
+## JUBE Config (1) Parameter sets
+What parameters to explore, and generic run settings
+```yaml
+parameterset:
+  - name: param_set
+    parameter:
+      - { name: nodes,              type: int, _: "1,2" }
+      - { name: ranks_per_node,     type: int, _: "120,60,30" }
+      - { name: tpr_filename,       type: string, _: gromacs_examplerun }
+  - name: execute_set
+    parameter:
+      - { name: submit_cmd,         type: string, _: sbatch }
+      - { name: job_file,           type: string, _: gromacs_mpi.run }
+...
+      - { name: exec,               type: string, _:
+            mpirun -np <<A BUNCH OF COMPLICATED STUFF>>
+        }
+...
+```
+<small>`jube_gromacs/gromacs_jube_example.yaml for full configuration`</small>
+
+
+## JUBE Config (2) Analysis
+Regular expressions to parse the results from the output file(s)
+```yaml
+patternset:
+  name: regex_patterns
+  pattern:
+      - name: ns_per_day
+        type: float
+        default: 0
+        _: "Performance:\\s+$jube_pat_fp"
+      - name: ns_per_day_per_core
+        type: float
+        mode: python
+        _: "$ns_per_day / ($nodes * $ranks_per_node * $threads_per_rank)"
+```
+
+
+## JUBE Config (3) Dependencies
+From job submission to getting the results
+```yaml
+step:
+  name: submit
+...
+  use:
+...
+  do:
+    done_file: $ready_file   # Job is done when that file is created
+    _: $submit_cmd $job_file # shell command
+
+analyser:
+  name: analyse
+  use:  regex_patterns
+  analyse:
+    step: submit  # Dependency: applies to submit's results
+    file: $err_file
+
+result:
+  use: analyse    # Dependency: use results from analyse
+  table:
+    name:   result
+    column: [ nodes, ranks_per_node, threads_per_rank, ns_per_day, ns_per_day_per_core ]
+```
+
+
+## Benchmarking conclusions
+
+- Try and benchmark when you are starting a new large project on the FI machines
+- Using a toolkit like JUBE can simplify your life
+
+
+## Dedalus
+
+"A flexible framework for spectrally solving differential equations"
+
+- [Dedalus Website](https://dedalus-project.org/)
+- [BPM Summer School Slides on Dedalus](https://lamsoa729.github.io/BPMSummerSchool/Day6-Dedalus/slides.html)
+
+
+## Using Dedalus
+
+- A good source for information is the BPM Summer School, last slide
+- Thanks to Brato Chakrabarti for scripts
+
+```bash
+> cd dedalus/
+> sbatch run_dedalus_example1.sh
+```
+
+
+## DisBatch
+
+- We have been using SLURM to submit all of the jobs
+- DisBatch is an alternative to this at FI (or anywhere)
+- [BPM Summer School Slides on DisBatch](https://lamsoa729.github.io/BPMSummerSchool/Day8-AdvancedClusterUsage/slides.html)
+
+
+## Takeaways
+
+- Understand how much data you want from your code!
+- Figure out how to get this **quickly** and **efficiently**
+- Investigate code issues with *seff* and *htop*
 
 
 
