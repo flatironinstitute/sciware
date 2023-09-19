@@ -2,13 +2,13 @@
 CXX=mpicxx
 CXXFLAGS=-O2 -fopenmp
 
-# Target
-TARGET=mpi_omp_mockup
+all: mpi_omp_mockup mpi_omp_mockup_race
 
-all: $(TARGET)
+mpi_omp_mockup: mpi_omp_mockup.cpp
+	$(CXX) $(CXXFLAGS) $< -o $@
 
-$(TARGET): $(TARGET).cpp
+mpi_omp_mockup_race: mpi_omp_mockup_race.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
-	rm -f $(TARGET)
+	rm -f mpi_omp_mockup mpi_omp_mockup_race

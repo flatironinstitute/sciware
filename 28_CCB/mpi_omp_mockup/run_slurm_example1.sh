@@ -25,4 +25,4 @@ echo "Slurm ntasks-per-node:    ${SLURM_NTASKS_PER_NODE}"
 echo "Slurm cpus-per-task:      ${SLURM_CPUS_PER_TASK}"
 
 # Run the program
-OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings mpi_omp_mockup
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun mpi_omp_mockup

@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH --nodes=2
+#SBATCH --ntasks-per-node=120
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=rome,ib
 #SBATCH --partition=ccb
@@ -26,4 +27,4 @@ numactl -H
 # mpirun -np 1 gmx_mpi grompp -f gromacs_examplerun1.mdp -o gromacs_examplerun1.tpr -c step6.6_equilibration.gro -p topol.top -n index.ndx
 
 # Run the TPR file for gromacs
-mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 240 --report-bindings gmx_mpi mdrun -v -deffnm gromacs_examplerun1
+mpirun --map-by socket:pe=$OMP_NUM_THREADS gmx_mpi mdrun -v -deffnm gromacs_examplerun1
