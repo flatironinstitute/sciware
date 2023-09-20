@@ -68,6 +68,11 @@ We have highly parallelized code \<foo\> and want to get the "best" performance 
   - <h4 style="color:rgb(255,0,0)">"Efficiency": How efficient is the code?</h4>
 
 
+## A question for the class
+
+### How did you use your first cluster script?
+
+
 ## Some software in CCB
 
 <center>
@@ -184,8 +189,6 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun mpi_omp_mockup
 > cd sciware
 > cd 28_CCB
 ```
-We will refere to this as `<CCBase>` going forward
-
 <span style="color:red">DO NOT RUN THESE EXAMPLES WITHOUT UNDERSTANDING THEM FIRST!!!!!!</span>
 
 
@@ -194,7 +197,7 @@ We will refere to this as `<CCBase>` going forward
 \<foo\> = mpi\_omp\_mockup
 
 ```bash
-> cd <CCBase>/mpi_omp_mockup/
+> cd mpi_omp_mockup/
 > sbatch run_slurm_example1.sh
 ```
 
@@ -305,7 +308,7 @@ What does your output look like?
 ## Running GROMACS
 
 ```bash
-> cd <CCBase>/gromacs/
+> cd ../gromacs/
 > sbatch run_gromacs_example1.sh
 > squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -475,7 +478,7 @@ Memory Efficiency: 0.00% of 0.00 MB
 ## Using JUBE: Running
 
 ```bash
-> cd jube_gromacs
+> cd ../jube_gromacs
 > jube run gromacs_jube_example.yaml
 ######################################################################
 # benchmark: gromacs_jube_example
@@ -489,7 +492,7 @@ Running workpackages (#=done, 0=wait, E=error):
 
   | stepname | all | open | wait | error | done |
   |----------|-----|------|------|-------|------|
-  |   submit |   6 |    0 |    4 |     0 |    2 |
+  |   submit |   8 |    0 |    6 |     0 |    2 |
 
 ...
 > jube analyse gromacs_jube_example_rome_cpu --id 0
@@ -499,14 +502,16 @@ Running workpackages (#=done, 0=wait, E=error):
 ## Using JUBE: Results
 
 ```bash
-jube result gromacs_jube_example_rome_cpu --id 0
-tpr_filename,nodes,ranks_per_node,threads_per_rank,ns_per_day,ns_per_day_per_core
-| 1 | 120 | 1 | 37.601 | 0.3133416666666667
-| 1 | 60  | 2 | 38.102 | 0.3175166666666666
-| 1 | 30  | 4 | 36.049 | 0.30040833333333333
-| 2 | 120 | 1 | 67.188 | 0.27995000000000003
-| 2 | 60  | 2 | 71.59  | 0.2982916666666667
-| 2 | 30  | 4 | 69.753 | 0.2906375
+> jube result gromacs_jube_example_rome_cpu --id 0
+nodes | ranks_per_node | threads_per_rank | ns_per_day | ns_per_day_per_core
+1     | 128            | 1                | 34.594     | 0.270265625
+1     | 120            | 1                | 37.31      | 0.3109166666666667
+1     | 64             | 2                | 36.193     | 0.2827578125
+1     | 60             | 2                | 37.533     | 0.312775
+2     | 128            | 1                | 60.014     | 0.2344296875
+2     | 120            | 1                | 69.166     | 0.2881916666666667
+2     | 64             | 2                | 61.854     | 0.2416171875
+2     | 60             | 2                | 71.042     | 0.2960083333333333
 ```
 
 
@@ -596,7 +601,7 @@ result:
 - Thanks to Brato Chakrabarti for scripts
 
 ```bash
-> cd dedalus/
+> cd ../dedalus/
 > sbatch run_dedalus_example1.sh
 ```
 
