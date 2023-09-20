@@ -7,7 +7,7 @@ parameterset:
   - name: param_set
     parameter:
       - { name: nodes, type: int, _: "1,2" }
-      - { name: ranks_per_node, type: int, _: "120,60,30" }
+      - { name: ranks_per_node, type: int, _: "128,120,64,60" }
       - { name: tpr_filename, type: string, _: gromacs_examplerun }
 
 # Job configuration
@@ -22,7 +22,7 @@ parameterset:
       - { name: ready_file, _: ready }
       - { name: err_file, _: gromacs.err }
       - { name: out_file, _: gromacs.out }
-      - { name: exec, _: "mpirun --map-by socket:pe=$$OMP_NUM_THREADS -np $num_ranks gmx_mpi mdrun -v -ntomp $$OMP_NUM_THREADS -maxh 0.25 -resethway -noconfout -deffnm $tpr_filename" }
+      - { name: exec, _: "mpirun --map-by socket:pe=$$OMP_NUM_THREADS gmx_mpi mdrun -v -ntomp $$OMP_NUM_THREADS -maxh 0.25 -resethway -noconfout -deffnm $tpr_filename" }
   - name: architecture_rome
     parameter:
       - { name: total_nodes, type: int, _: 640 }
@@ -90,7 +90,7 @@ result:
   use: analyse
   table:
     name: result
-    style: csv
+    style: pretty
     sort: [tpr_filename,ranks_per_node,nodes]
     column:
       - tpr_filename
