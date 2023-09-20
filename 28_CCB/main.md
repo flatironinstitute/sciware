@@ -63,18 +63,56 @@ Activities where participants all actively work to foster an environment which e
 We have highly parallelized code \<foo\> and want to get the "best" performance out of it that we can.
 
 - Need to define
-  - "Time"
-  - "Performant"
-  - <h4 style="color:rgb(255,0,0)">"Efficiency"</h4>
+  - "Time": How long it takes the code to collect data?
+  - "Performant": How fast is the code?
+  - <h4 style="color:rgb(255,0,0)">"Efficiency": How efficient is the code?</h4>
 
 
 ## Some software in CCB
 
-- GROMACS
-- aLENS
-- Dedalus
+<center>
+<img width="25%" src="./assets/gmx_logo_blue.png">
+<img width="25%" src="./assets/dedalus_logo.webp">
+</center>
 
-Add logos to this slide!
+<center>
+<img width="25%" src="./assets/aLENS_Logo_RGB.jpg">
+<img width="25%" src="./assets/SkellySim_Logo_RGB_Full.png">
+</center>
+
+
+## Why should you care about parallelism?
+
+### Over laborious tax example
+
+- We have a stack of tax forms to fill out
+- Each form needs some information
+  - Some forms can be filled out completely <span style="color:red">independently</span>
+  - Some forms are <span style="color:red">dependent</span> on other forms
+- We can work on the forms with
+  - Our friends in the same room <span class="fragment"><span class="fragment highlight-red">(Threads)</span></span>
+  - Other rooms (with their own friends) <span class="fragment"><span class="fragment highlight-red">(Tasks)</span></span>
+
+
+## CCB parallelism examples
+
+<center>
+<img width="25%" src="./assets/gmx_logo_blue.png">
+</center>
+
+- Assume pairwise potentials
+- f_ij independent
+- f_i dependent on all f_ij
+
+
+## Tasks vs. Threading
+
+### MPI vs. OpenMP
+
+- MPI tasks across nodes (distributed memory)
+- OpenMP threads within a node (shared memory)
+
+On a single node can trade MPI tasks for OpenMP threads with different performance results!
 
 
 ## A brief introduction to cluster computing (at FI)
@@ -93,14 +131,14 @@ Add logos to this slide!
 
 ```bash
 #!/bin/bash
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=16
-#SBATCH --constraint=rome,ib
-#SBATCH --partition=ccb
-#SBATCH --time=00:10:00
-#SBATCH --job-name=mpi_omp_example1
-#SBATCH --output=mpi_omp_example1.log
+#SBATCH --nodes=2                     # number of nodes
+#SBATCH --ntasks-per-node=8           # number of tasks per node
+#SBATCH --cpus-per-task=16            # number of cpus(threads) per task
+#SBATCH --constraint=rome,ib          # computers to use at FI
+#SBATCH --partition=ccb               # center allocation
+#SBATCH --time=00:10:00               # maximum time for job
+#SBATCH --job-name=mpi_omp_example1   # job name
+#SBATCH --output=mpi_omp_example1.log # slurm output file
 ```
 
 <small>
@@ -112,14 +150,14 @@ Replace ccb with your center partition!
 
 ```bash
 # Set up our environment for this SLURM submission
-module -q purge
-module -q load openmpi
-module list
+module -q purge                       # purge current modules
+module -q load openmpi                # Load openmpi
+module list                           # What modules are loaded?
 
 # Helper functions to see what kind of system we are running on, if we have GPUs that are accessible, and other information
-lscpu
-nvidia-smi
-numactl -H
+lscpu                                 # What cpus do we have?
+nvidia-smi                            # Is there gpu information?
+numactl -H                            # What is the NUMA layout
 ```
 
 
@@ -133,11 +171,22 @@ echo "Slurm ntasks-per-node:    ${SLURM_NTASKS_PER_NODE}"
 echo "Slurm cpus-per-task:      ${SLURM_CPUS_PER_TASK}"
 
 # Run the program
-OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings \
-  mpi_omp_mockup
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun mpi_omp_mockup
 ```
 
 <center><img width="25%" src="./assets/slurm_futurama.webp"></center>
+
+
+## Getting the examples
+
+```bash
+> git clone https://github.com/flatironinstitute/sciware.git
+> cd sciware
+> cd 28_CCB
+```
+We will refere to this as `<CCBase>` going forward
+
+<span style="color:red">DO NOT RUN THESE EXAMPLES WITHOUT UNDERSTANDING THEM FIRST!!!!!!</span>
 
 
 ## Running a simple MPI/OpenMP executable on the cluster
@@ -145,7 +194,7 @@ OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindi
 \<foo\> = mpi\_omp\_mockup
 
 ```bash
-> cd mpi_omp_mockup/
+> cd <CCBase>/mpi_omp_mockup/
 > sbatch run_slurm_example1.sh
 ```
 
@@ -190,8 +239,7 @@ CPUS NODES NODES(A/I) AVAIL_FEATURES
 # Capture the time
 start_time=$(date +%s)
 
-OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun -np ${SLURM_NTASKS} --report-bindings \
-  mpi_omp_mockup
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK} mpirun mpi_omp_mockup
 
 # Report the time
 end_time=$(date +%s)
@@ -240,15 +288,24 @@ Memory Efficiency: 0.00% of 0.00 MB
 ```
 
 
+## Race conditions
+
+```bash
+> sbatch run_slurm_example3.sh
+```
+
+What does your output look like?
+
+
 ## GROMACS
 
-<center><img width="25%" src="./assets/gmx_logo_blue.png"></center>
+<center><img width="50%" src="./assets/gmx_logo_blue.png"></center>
 
 
 ## Running GROMACS
 
 ```bash
-> cd gromacs/
+> cd <CCBase>/gromacs/
 > sbatch run_gromacs_example1.sh
 > squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -279,27 +336,6 @@ Job Wall-clock time: 00:04:54
 Memory Utilized: 18.64 GB
 Memory Efficiency: 0.00% of 0.00 MB
 ```
-
-
-## Tasks vs. Threading
-
-### MPI vs. OpenMP
-
-- MPI tasks across nodes (distributed memory)
-- OpenMP threads within a node (shared memory)
-
-```bash
-...
-#SBATCH --nodes=2
-#SBATCH --cpus-per-task=2
-...
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-...
-mpirun --map-by socket:pe=$OMP_NUM_THREADS -np 120 --report-bindings \
-  gmx_mpi mdrun -v -deffnm gromacs_examplerun2
-```
-
-On a single node can trade MPI tasks for OpenMP threads with different performance results!
 
 
 ## Good practices: code performance
@@ -353,7 +389,7 @@ On a single node can trade MPI tasks for OpenMP threads with different performan
 - Simulation has some (amount of data) / (amount of time it took to collect)
   - 1 CPU/core took T1 amount of time to run
   - p CPU/core took Tp amount of time to run
-- Speedup can be defined as Sp = Tp/T1
+- Speedup can be defined as Sp = T1/Tp
 - Thanks to Bryce Palmer for the following data
 
 
@@ -393,6 +429,32 @@ On a single node can trade MPI tasks for OpenMP threads with different performan
 </div>
 
 
+## Throughput (1)
+
+<div class="two-column">
+  <div class="grid-item r-stack">
+    <div class="fragment fade-out" data-fragment-index="0">
+
+- Usually you want to vary something and run several different realization of your model (or simulation)
+  - These are <span style="color:red">independent</span>
+  - Can be run in parallel
+
+</div>
+<div class="fragment fade-in" data-fragment-index="0">
+
+- 10 independent simulations
+- 200 CPUs total
+  - Run each simulation using 20 CPUs
+  - Speedup/efficienty isn't worth it beyond that
+
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="assets/FP_Figure_1c.png" style="width: 90%">
+  </div>
+</div>
+
+
 ## Using JUBE: Example
 
 <img height="60%" src="assets/JUBE-Logo.png" class="plain">
@@ -401,6 +463,7 @@ On a single node can trade MPI tasks for OpenMP threads with different performan
 
 ```bash
 > module load python/3.10.10
+> mkdir -p ~/envs
 > python3 -m venv --system-site-packages ~/envs/jube
 > source ~/envs/jubs/bin/activate
 > pip3 install http://apps.fz-juelich.de/jsc/jube/jube2/download.php?version=latest \ 
