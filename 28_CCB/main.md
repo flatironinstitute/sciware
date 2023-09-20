@@ -106,8 +106,8 @@ We have highly parallelized code \<foo\> and want to get the "best" performance 
 </center>
 
 - Assume pairwise potentials
-- f_ij independent
-- f_i dependent on all f_ij
+- \\( f_{ij} = -f_{ji} \\) independent
+- \\( f_{i}  = \sum\limits_{j} f_{ij} \\) dependent
 
 
 ## Tasks vs. Threading
@@ -438,7 +438,7 @@ Memory Efficiency: 0.00% of 0.00 MB
   <div class="grid-item r-stack">
     <div class="fragment fade-out" data-fragment-index="0">
 
-- Usually you want to vary something and run several different realization of your model (or simulation)
+- Usually you want to vary something and run several different realizations of your model (or simulation)
   - These are <span style="color:red">independent</span>
   - Can be run in parallel
 
