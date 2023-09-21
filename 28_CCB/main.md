@@ -48,6 +48,9 @@ Activities where participants all actively work to foster an environment which e
    * Benchmarking
    * JUBE
 * Sharing and transferring data
+   * Globus
+   * Public web server
+   * SSHFS
 
 
 
@@ -632,13 +635,11 @@ result:
 
 # Ways to access and transfer data
 - Globus
-- Globus public download portal
+   - Globus public download portal
+- Public web server
 - SSHFS
 - JupyterHub
 - [Other options on wiki...](https://wiki.flatironinstitute.org/SCC/DataSharing)
-
-
-# Globus
 
 
 # SSHFS and FUSE
