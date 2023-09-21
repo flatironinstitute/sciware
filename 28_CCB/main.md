@@ -623,9 +623,10 @@ result:
 
 # Survey
 
-<img width="50%" src="assets/bit.ly_sciware-28.png">
+<img width="40%" src="assets/bit.ly_sciware-28.png">
 
-(bit.ly/sciware-28)[http://bit.ly/sciware-28]
+[bit.ly/sciware-28](http://bit.ly/sciware-28)
+
 
 
 
@@ -701,6 +702,6 @@ alias mount_home='sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME'
 
 # Survey
 
-<img width="50%" src="assets/bit.ly_sciware-28.png">
+<img width="40%" src="assets/bit.ly_sciware-28.png">
 
-(bit.ly/sciware-28)[http://bit.ly/sciware-28]
+[bit.ly/sciware-28](http://bit.ly/sciware-28)
