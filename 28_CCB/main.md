@@ -642,17 +642,11 @@ result:
 
 
 # SSHFS and FUSE
-- SSH FileSystem (SSHFS): Is a convenient way to access files on the cluster as if they're on your local machine. 
+- SSH FileSystem (SSHFS): A convenient way to access files on the cluster as if they were on your local machine. 
 
 - Filesystem in USErspace (FUSE): Needed by SSHFS to 'mount' a filesystem. 
 
 https://wiki.flatironinstitute.org/SCC.Playbooks/SshFsMount
-
-
-## What can SSHFS do?
-
-- Access files on the cluster as if they're on your local machine
-- Transfer files between your local machine and the cluster
 
 
 ## Things to know 
@@ -662,9 +656,12 @@ https://wiki.flatironinstitute.org/SCC.Playbooks/SshFsMount
 
 
 ## Setting up FUSE for cluster
-- Install FUSE and SSHFS (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://www.fuse-t.org)).
-- Make sure you can `ssh rusty` (from inside the FI network) or `ssh gateway` (from outside), following the [RemoteConnect](https://wiki.flatironinstitute.org/SCC/RemoteConnect) instructions if necessary.
-- Choose which cluster directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME`, and create directories on your local computers to mount to. 
+1. Install FUSE and SSHFS 
+    - Linux: may already be installed on linux, or easily downloaded through a package manager
+    - OSX: download them from [here](https://www.fuse-t.org)).
+2. Make sure you can `ssh rusty` (from inside the FI network) or `ssh gateway` (from outside), 
+    - Follow the [RemoteConnect](https://wiki.flatironinstitute.org/SCC/RemoteConnect) instructions if necessary.
+3. Choose which cluster directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME`, and create directories on your local computers to mount to. 
 
 
 It often makes things more convenient to use paths matching the cluster. If you wish to do this, then type the following command
@@ -677,6 +674,12 @@ mkdir -p ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
 ```bash
 sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME 
 ```
+- To unmount, type:
+```bash
+umount ~/mnt/home/USERNAME
+```
+Make sure you are not in the directory you are unmounting.
+
 
 ## Example
 ```bash
@@ -684,18 +687,22 @@ sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME
 > ls
 > sshfs rusty:/mnt/home/alamson/ ~/mnt/home/alamson/
 > ls
-10-powerline-symbols.conf ceph                      requirements.txt
-Chi                       intel                     test_local
-Desktop                   libyaml-cpp.a             test_projects
-Downloads                 local                     
-bash_profile              projects
-bashrc                    public_www
+10-powerline-symbols.conf  Chi        local       Run
+bash_profile               Desktop    miniconda3  test_local
+bashrc                     Downloads  projects    test_projects
+ceph                       intel      public_www  
+> cd ..
+> umount ~/mnt/home/alamson/
+> cd alamson
+> ls
+     
 ```
+
 
 ## Tips and Tricks
 - Create aliases for common mount points in your `.bashrc` or `.bash_profile` files, e.g.:
 ```bash
-alias mount_home='sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME'
+alias mount_home='sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME'
 ```
 
 
