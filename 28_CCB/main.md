@@ -621,6 +621,14 @@ result:
 
 
 
+# Survey
+
+<img width="50%" src="assets/bit.ly_sciware-28.png">
+
+(bit.ly/sciware-28)[http://bit.ly/sciware-28]
+
+
+
 # Ways to access and transfer data
 - Globus
 - Globus public download portal
@@ -688,3 +696,11 @@ bashrc                    public_www
 ```bash
 alias mount_home='sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME'
 ```
+
+
+
+# Survey
+
+<img width="50%" src="assets/bit.ly_sciware-28.png">
+
+(bit.ly/sciware-28)[http://bit.ly/sciware-28]
