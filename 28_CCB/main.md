@@ -48,6 +48,9 @@ Activities where participants all actively work to foster an environment which e
    * Benchmarking
    * JUBE
 * Sharing and transferring data
+   * Globus
+   * Public web server
+   * SSHFS
 
 
 
@@ -106,8 +109,8 @@ We have highly parallelized code \<foo\> and want to get the "best" performance 
 </center>
 
 - Assume pairwise potentials
-- f_ij independent
-- f_i dependent on all f_ij
+- \\( f_{ij} = -f_{ji} \\) independent
+- \\( f_{i}  = \sum\limits_{j} f_{ij} \\) dependent
 
 
 ## Tasks vs. Threading
@@ -438,7 +441,7 @@ Memory Efficiency: 0.00% of 0.00 MB
   <div class="grid-item r-stack">
     <div class="fragment fade-out" data-fragment-index="0">
 
-- Usually you want to vary something and run several different realization of your model (or simulation)
+- Usually you want to vary something and run several different realizations of your model (or simulation)
   - These are <span style="color:red">independent</span>
   - Can be run in parallel
 
@@ -621,29 +624,30 @@ result:
 
 
 
+# Survey
+
+<img width="40%" src="assets/bit.ly_sciware-28.png">
+
+[bit.ly/sciware-28](http://bit.ly/sciware-28)
+
+
+
+
 # Ways to access and transfer data
 - Globus
-- Globus public download portal
+   - Globus public download portal
+- Public web server
 - SSHFS
 - JupyterHub
 - [Other options on wiki...](https://wiki.flatironinstitute.org/SCC/DataSharing)
 
 
-# Globus
-
-
 # SSHFS and FUSE
-- SSH FileSystem (SSHFS): Is a convenient way to access files on the cluster as if they're on your local machine. 
+- SSH FileSystem (SSHFS): A convenient way to access files on the cluster as if they were on your local machine. 
 
 - Filesystem in USErspace (FUSE): Needed by SSHFS to 'mount' a filesystem. 
 
 https://wiki.flatironinstitute.org/SCC.Playbooks/SshFsMount
-
-
-## What can SSHFS do?
-
-- Access files on the cluster as if they're on your local machine
-- Transfer files between your local machine and the cluster
 
 
 ## Things to know 
@@ -653,9 +657,12 @@ https://wiki.flatironinstitute.org/SCC.Playbooks/SshFsMount
 
 
 ## Setting up FUSE for cluster
-- Install FUSE and SSHFS (may already be installed on linux, or should be in your package manager; on OSX download them [here](https://www.fuse-t.org)).
-- Make sure you can `ssh rusty` (from inside the FI network) or `ssh gateway` (from outside), following the [RemoteConnect](https://wiki.flatironinstitute.org/SCC/RemoteConnect) instructions if necessary.
-- Choose which cluster directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME`, and create directories on your local computers to mount to. 
+1. Install FUSE and SSHFS 
+    - Linux: may already be installed on linux, or easily downloaded through a package manager
+    - OSX: download them from [here](https://www.fuse-t.org)).
+2. Make sure you can `ssh rusty` (from inside the FI network) or `ssh gateway` (from outside), 
+    - Follow the [RemoteConnect](https://wiki.flatironinstitute.org/SCC/RemoteConnect) instructions if necessary.
+3. Choose which cluster directory you want to mount, such as `/mnt/home/USERNAME` or `/mnt/ceph/users/USERNAME`, and create directories on your local computers to mount to. 
 
 
 It often makes things more convenient to use paths matching the cluster. If you wish to do this, then type the following command
@@ -668,6 +675,12 @@ mkdir -p ~/mnt/home/USERNAME ~/mnt/ceph/users/USERNAME
 ```bash
 sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME 
 ```
+- To unmount, type:
+```bash
+umount ~/mnt/home/USERNAME
+```
+Make sure you are not in the directory you are unmounting.
+
 
 ## Example
 ```bash
@@ -675,16 +688,28 @@ sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME
 > ls
 > sshfs rusty:/mnt/home/alamson/ ~/mnt/home/alamson/
 > ls
-10-powerline-symbols.conf ceph                      requirements.txt
-Chi                       intel                     test_local
-Desktop                   libyaml-cpp.a             test_projects
-Downloads                 local                     
-bash_profile              projects
-bashrc                    public_www
+10-powerline-symbols.conf  Chi        local       Run
+bash_profile               Desktop    miniconda3  test_local
+bashrc                     Downloads  projects    test_projects
+ceph                       intel      public_www  
+> cd ..
+> umount ~/mnt/home/alamson/
+> cd alamson
+> ls
+     
 ```
+
 
 ## Tips and Tricks
 - Create aliases for common mount points in your `.bashrc` or `.bash_profile` files, e.g.:
 ```bash
-alias mount_home='sshfs flatiron:/mnt/home/USERNAME /mnt/home/USERNAME'
+alias mount_home='sshfs rusty:/mnt/home/USERNAME ~/mnt/home/USERNAME'
 ```
+
+
+
+# Survey
+
+<img width="40%" src="assets/bit.ly_sciware-28.png">
+
+[bit.ly/sciware-28](http://bit.ly/sciware-28)
