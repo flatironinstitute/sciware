@@ -1865,9 +1865,9 @@ header p {
 }
 
 header h2 + p {
-  font-size: 1.25em;
-  margin-top: -1em;
-  line-height: 1.5em;
+  /* font-size: 1.25em; */
+  /* margin-top: -1em; */
+  /* line-height: 1.5em; */
 }
 
 header h3 + p {
