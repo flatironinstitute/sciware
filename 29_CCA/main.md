@@ -57,42 +57,61 @@ Activities where participants all actively work to foster an environment which e
 - Servers for [rusty](binder.flatironinstitute.org) and [popeye](sdsc-binder.flatironinstitute.org)
 
 
+## Resource usage
+
+- Default limits: 2 cores, 10G memory
+   - Guaranteed resources vs. shared limits
+   - Can increase limits, but this reduces number of possible binder users
+- Popeye has a lot of available resources, rusty more limited
+   - Looking to expand rusty, possibly add GPUs
+- Monitor usage on [grafana.flatironinstitute.org](https://grafana.flatironinstitute.org/d/KqB4-8OZk/binder) from FI network
+
+
 ## Getting started
 
 - [Wiki documentation](https://wiki.flatironinstitute.org/SCC/BinderHub)
 - Create a directory under `~/public_binder`, e.g., `MyProjectEnv`
 - Specify software environment (does not use cluster software)
-   - Add pip packages to `requirements.txt` *or* conda packages to `environment.yml` (or other options)
-- Create YAML configuration file `~/pubilc_binder/MyProjectEnv/.public_binder`
-   - Specify users with access, directories to share, resource limits
+   - conda packages in `environment.yml` (recommended)
+   - pip packages in `requirements.txt`
+   - many other options, including a custom `Dockerfile` providing jupyter-compatible server
+- Create YAML configuration file `.public_binder`
 
 
-## Data storage considerations
+## Configuration
+
+Empty `~/public_binder/MyProjectEnv/.public_binder` works for defaults
+
+```yaml
+mounts: # from symlinks if not specified
+  symlinkname: symlinktarget
+  mydata: '/mnt/ceph/users/you/yourdata'
+users: # all users by default
+  - user1@gmail.com
+cpu_guarantee: 1 # dedicated exclusively to each user
+cpu_limit: 2 # peak usage limit (shared)
+mem_guarantee: '10G'
+mem_limit: '20G'
+```
+
+
+## Data sharing considerations
 
 - To share a data directory, it must be:
-   - World-readable
+   - World-readable (`chmod o+rX`)
    - Owned by you, or in the same group as the `~/public_binder/MyProjectEnv`
-   - Either list "mounts" in `.public_binder` *or* create symlinks
+   - Don't put data in `public_binder` directly (will be copied)
 - No write access to shared data from binder
-- Each user has their own `~/home` directory
+
+
+## User data storage
+
+- Each user has their own `~/home` directory (`/home/jovyan/home`)
    - 1TB storage limit
    - Deleted after a few weeks of inactivity
 
 
-## Specifying environments
+## Sharing environments
 
-- Conda provides the most flexible environment, but can be tricky to setup
-   - Add conda (not pip) packages to `environment.yml`
-- You can also write custom script for additional installation, or a full `Dockerfile`
-- Can host any jupyter-compatible server
 - Give users your username and directory (environment) name
-   - Or link directly to `binder.flatironinstitute.org/~YOURUSER/MyProjectEnv`
-
-
-## Resource usage
-
-- Default limits: 2 cores, 10G memory
-- Can increase limits, but this reduces number of binder users
-- Popeye has a lot of available resources, rusty more limited
-   - Looking to expand rusty, possibly add GPUs
-- Monitor usage on [grafana](https://grafana.flatironinstitute.org/d/KqB4-8OZk/binder) from FI network
+- Or link directly to `binder.flatironinstitute.org/~YOURUSER/MyProjectEnv`
