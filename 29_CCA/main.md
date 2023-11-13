@@ -40,9 +40,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Today's Agenda
 
-- JAX
-- Usage estimates
 - Binder
+- Usage estimates
+- JAX
 
 
 
@@ -63,7 +63,7 @@ Activities where participants all actively work to foster an environment which e
    - Guaranteed resources vs. shared limits
    - Can increase limits, but this reduces number of possible binder users
 - Popeye has a lot of available resources, rusty more limited
-   - Looking to expand rusty, possibly add GPUs
+   - Testing access to GPUs on rusty (`gpu: true`)
 - Monitor usage on [grafana.flatironinstitute.org](https://grafana.flatironinstitute.org/d/KqB4-8OZk/binder) from FI network
 
 
