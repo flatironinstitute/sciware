@@ -26,16 +26,15 @@ Activities where participants all actively work to foster an environment which e
 </small>
 
 
-## Zoom Specific
+## Center-hosted Sciware
 
-- Dedicated Zoom moderator to field questions.
-- Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
-
-
-## Future Sessions
-
+- Sciware will rotate between centers each month
+   - focus on topics of interest to centers
+   - include voices from all centers
+   - each center will host twice a year
+   - open to all
 - Suggest topics or contribute to content in #sciware Slack
+- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
 
 
 ## Today's Agenda
@@ -71,10 +70,6 @@ Activities where participants all actively work to foster an environment which e
 
 - [Wiki documentation](https://wiki.flatironinstitute.org/SCC/BinderHub)
 - Create a directory under `~/public_binder`, e.g., `MyProjectEnv`
-- Specify software environment (does not use cluster software)
-   - conda packages in `environment.yml` (recommended)
-   - pip packages in `requirements.txt`
-   - many other options, including a custom `Dockerfile` providing jupyter-compatible server
 - Create YAML configuration file `.public_binder`
 
 
@@ -93,6 +88,20 @@ cpu_limit: 2 # peak usage limit (shared)
 mem_guarantee: '10G'
 mem_limit: '20G'
 ```
+
+
+## Software environment
+
+- Does not use cluster software
+- Conda packages in `environment.yml`
+        dependencies:
+        - python=3.10
+        - scipy
+        - h5py=3.9.0
+        - pip:
+          - git+https://github.com/user/package --flags
+- Pip packages in `requirements.txt`
+- Many other options, including a custom `Dockerfile` providing jupyter-compatible server
 
 
 ## Data sharing considerations
