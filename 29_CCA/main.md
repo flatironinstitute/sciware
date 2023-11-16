@@ -94,6 +94,7 @@ mem_limit: '20G'
 
 - Does not use cluster software
 - Conda packages in `environment.yml`
+
         dependencies:
         - python=3.10
         - scipy
