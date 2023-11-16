@@ -47,6 +47,12 @@ Activities where participants all actively work to foster an environment which e
 
 # Binder
 
+Shy Genel
+
+[slides](https://docs.google.com/presentation/d/1XD2M2kY2MMW08AvuZlr9Q3FY9PBkBAnkGES98BY4ukU/edit)
+
+Dylan Simon, SCC
+
 
 ## Flatiron-hosted BinderHub
 
@@ -95,22 +101,23 @@ mem_limit: '20G'
 - Does not use cluster software
 - Conda packages in `environment.yml`
 
-        dependencies:
-        - python=3.10
-        - scipy
-        - h5py=3.9.0
-        - pip:
-          - git+https://github.com/user/package --flags
-- Pip packages in `requirements.txt`
-- Many other options, including a custom `Dockerfile` providing jupyter-compatible server
+      dependencies:
+      - python=3.10
+      - scipy
+      - h5py=3.9.0
+      - pip:
+        - git+https://github.com/user/package --flags
+- Pip packages in `requirements.txt` (python version in `runtime.txt`)
+- Additional commands to run in `postBuild`
+- Many other options, including custom `Dockerfile` providing jupyter-compatible server
 
 
 ## Data sharing considerations
 
 - To share a data directory, it must be:
    - World-readable (`chmod o+rX`)
-   - Owned by you, or in the same group as the `~/public_binder/MyProjectEnv`
-   - Don't put data in `public_binder` directly (will be copied)
+   - Owned by you, or in the same group as directory `~/public_binder/MyProjectEnv`
+   - Avoid putting large data in `public_binder` directly (will be copied)
 - No write access to shared data from binder
 
 
@@ -125,3 +132,17 @@ mem_limit: '20G'
 
 - Give users your username and directory (environment) name
 - Or link directly to `binder.flatironinstitute.org/~YOURUSER/MyProjectEnv`
+
+
+
+# Usage estimates
+
+Yan-Fei Jiang
+
+[slides](https://www.dropbox.com/sh/hrw4ulndqfa0iff/AADy7WZA1UHtAyAXK9EfvKVua?dl=0)
+
+
+
+# JAX
+
+Kaze Wong
