@@ -47,11 +47,11 @@ Activities where participants all actively work to foster an environment which e
 
 # Binder
 
-Shy Genel
+### Shy Genel
 
 [slides](https://docs.google.com/presentation/d/1XD2M2kY2MMW08AvuZlr9Q3FY9PBkBAnkGES98BY4ukU/edit)
 
-Dylan Simon, SCC
+### Dylan Simon (SCC)
 
 
 ## Flatiron-hosted BinderHub
@@ -67,7 +67,7 @@ Dylan Simon, SCC
 - Default limits: 2 cores, 10G memory
    - Guaranteed resources vs. shared limits
    - Can increase limits, but this reduces number of possible binder users
-- Popeye has a lot of available resources, rusty more limited
+- Popeye has a lot of available resources, rusty busier
    - Testing access to GPUs on rusty (`gpu: true`)
 - Monitor usage on [grafana.flatironinstitute.org](https://grafana.flatironinstitute.org/d/KqB4-8OZk/binder) from FI network
 
@@ -81,7 +81,7 @@ Dylan Simon, SCC
 
 ## Configuration
 
-Empty `~/public_binder/MyProjectEnv/.public_binder` works for defaults
+Empty `~/public_binder/MyProjectEnv/.public_binder` fine for defaults
 
 ```yaml
 mounts: # from symlinks if not specified
@@ -102,9 +102,9 @@ mem_limit: '20G'
 - Conda packages in `environment.yml`
 
       dependencies:
-      - python=3.10
       - scipy
       - h5py=3.9.0
+      - python=3.10
       - pip:
         - git+https://github.com/user/package --flags
 - Pip packages in `requirements.txt` (python version in `runtime.txt`)
@@ -118,6 +118,7 @@ mem_limit: '20G'
    - World-readable (`chmod o+rX`)
    - Owned by you, or in the same group as directory `~/public_binder/MyProjectEnv`
    - Avoid putting large data in `public_binder` directly (will be copied)
+   - Symlinks only work in top-level directory
 - No write access to shared data from binder
 
 
@@ -137,7 +138,7 @@ mem_limit: '20G'
 
 # Usage estimates
 
-Yan-Fei Jiang
+### Yan-Fei Jiang
 
 [slides](https://www.dropbox.com/sh/hrw4ulndqfa0iff/AADy7WZA1UHtAyAXK9EfvKVua?dl=0)
 
@@ -145,4 +146,4 @@ Yan-Fei Jiang
 
 # JAX
 
-Kaze Wong
+### Kaze Wong
