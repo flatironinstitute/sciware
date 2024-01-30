@@ -3340,3 +3340,11 @@ body.is-touch .poptrox-popup .closer {
     padding-left: 0;
   }
 }
+
+#news h1 {
+  margin-bottom: 0 !important;
+}
+
+#news .row {
+  margin-top: 50px;
+}
