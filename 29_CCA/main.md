@@ -147,3 +147,5 @@ mem_limit: '20G'
 # JAX
 
 ### Kaze Wong
+
+[slides](https://kazewong.github.io/MyUnhingedPresnetations/reveal/SciwareJax2023/top.html)
