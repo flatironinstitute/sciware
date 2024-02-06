@@ -1,0 +1,10 @@
+# This is just for the purpose of local development
+# It will serve this Github Pages / Jekyll app locally
+services:
+  jekyll:
+    image: jekyll/jekyll
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - 4000:4000
+    command: sh -c "gem install webrick && jekyll serve --watch --force_polling --verbose --incremental --livereload"
