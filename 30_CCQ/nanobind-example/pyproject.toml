@@ -1,0 +1,13 @@
+[build-system]
+requires = ["scikit-build-core >= 0.5", "nanobind"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "examplepkg"
+version = "0.0.1"
+requires-python = ">=3.8"
+
+[tool.scikit-build]
+minimum-version = "0.5"
+build-dir = "build/{wheel_tag}"
+editable.rebuild = true
