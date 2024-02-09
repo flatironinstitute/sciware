@@ -103,6 +103,22 @@ NB_MODULE(examplemod, m) {
 
 ---
 
+## nanobind `compute.py`
+```python
+from . import examplemod
+
+inarr = np.arange(20)
+outarr = np.empty_like(inarr)
+
+examplemod.double_arr(outarr, inarr)
+```
+
+- Easy! nanobind will check that the array types have the expected shape, dtype, strides, etc.
+- A more sophisticated example would have nanobind returning a NumPy array
+- Now we'll look at how `examplemod.cpp` gets built
+
+---
+
 ## nanobind `CMakeLists.txt`
 ```cmake
 cmake_minimum_required(VERSION 3.15...3.27)
@@ -148,21 +164,7 @@ $ pip install .
 $ pip install scikit-build-core nanobind ninja
 $ pip install -e . --no-build-isolation
 ```
-
----
-
-## nanobind `compute.py`
-```python
-from . import examplemod
-
-inarr = np.arange(20)
-outarr = np.empty_like(inarr)
-
-examplemod.double_arr(outarr, inarr)
-```
-
-- Easy! nanobind will check that the array types have the expected shape, dtype, strides, etc.
-- A more sophisticated example would have nanobind returning a NumPy array
+- Automatic rebuilds: C++ code is recompiled *at import time* (see demo)
 
 ---
 
@@ -204,21 +206,12 @@ Calling C from Python
 ```python
 import ctypes
 lib = ctypes.CDLL('./example.so')
-```
-
----
-
-## Python ctypes
-- Set up the arguments and the return types:
-
-```python
-double_arr = lib.double_arr
 # void double_arr(size_t n, double *outarr, double const * inarr)
-double_arr.argtypes = [ctypes.c_size_t,
-                       ctypes.POINTER(ctypes.c_double),
-                       ctypes.POINTER(ctypes.c_double),
-                      ]
-double_arr.restype = None
+lib.double_arr.argtypes = [ctypes.c_size_t,
+                           ctypes.POINTER(ctypes.c_double),
+                           ctypes.POINTER(ctypes.c_double),
+                          ]
+lib.double_arr.restype = None
 ```
 
 ---
@@ -226,7 +219,7 @@ double_arr.restype = None
 ## Python ctypes
 - Call the function (finally!):
 ```python
-double_arr(len(inarr),
+lib.double_arr(len(inarr),
             outarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
             inarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
             )
@@ -250,7 +243,7 @@ Segmentation fault (core dumped)
 
 ## Python ctypes
 - Verbose and fragile—relies on the user to keep Python definitions in sync with C function signatures
-- The tooling for compiling a library for ctypes is older and less portable
+- The tooling for compiling shared objects for ctypes is older and less portable
 - On the other hand, ctypes is built-in to the Python standard library
 - Universal, in the sense that it only deals with the platform's C ABI
 - Usually better to use C++ and nanobind for scientific computing
