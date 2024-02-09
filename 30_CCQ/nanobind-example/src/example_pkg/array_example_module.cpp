@@ -15,8 +15,7 @@ void double_arr(nb::ndarray<Scalar, nb::ndim<1>, nb::device::cpu> outarr,
     }
 }
 
-
-NB_MODULE(examplemod, m) {
+NB_MODULE(array_example_module, m) {
     m.def("double_arr", &double_arr<float>);
     m.def("double_arr", &double_arr<double>);
     m.def("double_arr", &double_arr<int64_t>);

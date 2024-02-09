@@ -15,5 +15,5 @@ $ pip install -e . --no-build-isolation
 
 ## Test
 ```
-$ python -m examplepkg.compute
+$ python -m example_pkg.compute
 ```

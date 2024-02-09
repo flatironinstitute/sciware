@@ -72,15 +72,15 @@ nanobind-example/
 ├── CMakeLists.txt
 ├── pyproject.toml
 └── src
-    └── examplepkg
+    └── example_pkg
         ├── compute.py
-        ├── examplemod.cpp
+        ├── array_example_module.cpp
         └── __init__.py
 ```
 
 ---
 
-## nanobind `examplemod.cpp`
+## nanobind `array_example_module.cpp`
 ```c++
 template <typename Scalar>
 void double_arr(
@@ -95,7 +95,7 @@ void double_arr(
     }
 }
 
-NB_MODULE(examplemod, m) {
+NB_MODULE(array_example_module, m) {
     m.def("double_arr", &double_arr<float>);
     m.def("double_arr", &double_arr<double>);
 }
@@ -105,17 +105,17 @@ NB_MODULE(examplemod, m) {
 
 ## nanobind `compute.py`
 ```python
-from . import examplemod
+from . import array_example_module
 
 inarr = np.arange(20)
 outarr = np.empty_like(inarr)
 
-examplemod.double_arr(outarr, inarr)
+array_example_module.double_arr(outarr, inarr)
 ```
 
 - Easy! nanobind will check that the array types have the expected shape, dtype, strides, etc.
 - A more sophisticated example would have nanobind returning a NumPy array
-- Now we'll look at how `examplemod.cpp` gets built
+- Now we'll look at how `array_example_module.cpp` gets built
 
 ---
 
@@ -127,9 +127,9 @@ project(${SKBUILD_PROJECT_NAME} LANGUAGES CXX)
 find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
 find_package(nanobind CONFIG REQUIRED)
 
-nanobind_add_module(examplemod src/examplepkg/examplemod.cpp)
+nanobind_add_module(array_example_module src/example_pkg/array_example_module.cpp)
 
-install(TARGETS examplemod LIBRARY DESTINATION examplepkg)
+install(TARGETS array_example_module LIBRARY DESTINATION example_pkg)
 ```
 
 ---
@@ -141,7 +141,7 @@ requires = ["scikit-build-core >= 0.5", "nanobind"]
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "examplepkg"
+name = "example_pkg"
 version = "0.0.1"
 requires-python = ">=3.8"
 
