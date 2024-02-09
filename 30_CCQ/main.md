@@ -175,6 +175,50 @@ $ pip install -e . --no-build-isolation
 
 ---
 
+## nanobind struct
+- Can get complicated and verbose with custom types
+<div class="two-column">
+    <div class="grid-item">
+
+```c++
+struct S {
+  int i;
+  S(int i):i{i}{}
+  int m() const { return i+2;}
+};
+
+// A function using S
+int f(S const & s){ return s.i;}
+
+// make S printable in C++
+std::ostream & operator<<(std::ostream &out, S const & s) {
+     return out << "S struct with i=" << s.i << '\n';
+}
+```
+
+    </div>
+    <div class="grid-item">
+
+```c++
+NB_MODULE(struct_example_module, m) {
+    nb::class_<S>(m, "S")
+        .def_rw("i", &S::i)
+        .def(nb::init<int>())
+        .def("m", &S::m)
+        .def("__repr__", [](const S& s) {
+          std::stringstream stream;
+          stream << s;
+          return stream.str();
+        });
+    m.def("f", &f);
+}
+```
+
+    </div>
+</div>
+
+---
+
 ## nanobind summary
 - nanobind makes it easy to define robust bindings between C++ and Python
 - Flexible and powerful, but verbose (terse on the Python side, however)
