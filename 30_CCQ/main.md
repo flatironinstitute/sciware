@@ -1,8 +1,8 @@
 # Sciware
 
-https://sciware.flatironinstitute.org/30_CCA
+https://sciware.flatironinstitute.org/30_CCQ
 
-https://github.com/flatironinstitute/sciware/tree/main/30_CCA
+https://github.com/flatironinstitute/sciware/tree/main/30_CCQ
 
 ---
 
@@ -260,5 +260,5 @@ Segmentation fault (core dumped)
 ## SciWare Survey
 
 <center>
-<img width="55%" src="./30_ccq.png">
+<img width="50%" src="./qr.png">
 </center>
