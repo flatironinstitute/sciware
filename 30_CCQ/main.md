@@ -49,108 +49,6 @@ Activities where participants all actively work to foster an environment which e
 
 ---
 
-# Python ctypes
-
-Calling C from Python
-https://docs.python.org/3/library/ctypes.html
-
----
-
-## Python ctypes
-- [ctypes](https://docs.python.org/3/library/ctypes.html) is part of the Python standard library
-- Lets you load a shared object, call functions, access variables, etc.
-- Responsibility falls on the user to compile the shared object and call the functions with the correct signature
-- *Very* easy to get this wrong and cause the Python interpreter to crash!
-
----
-
-## Python ctypes
-```c
-void compute_pair_dist(const size_t nbin, uint64_t *dist, const size_t npart, const double *pos2d) {
-    /* Compute all pair-wise distances between the points in `pos2d`
-     * and store the histogram of distances in `dist`.
-     */
-
-    for (size_t i = 0; i < npart; i++) {
-        for (size_t j = i + 1; j < npart; j++) {
-            double dx = pos2d[i * 2] - pos2d[j * 2];
-            double dy = pos2d[i * 2 + 1] - pos2d[j * 2 + 1];
-            double r = sqrt(dx * dx + dy * dy);
-            size_t k = (size_t) (r * nbin);
-            if (k < nbin) {
-                dist[k]++;
-            }
-        }
-    }
-}
-```
-
----
-
-## Python ctypes
-1. Compile the C code into a shared object (user is responsible for this, perhaps using a Makefile or CMake):
-
-```console
-gcc -fPIC -c -o example.o example.c
-gcc -fPIC -shared -o example.so example.o
-```
-
-2. Load the shared object in Python using ctypes:
-
-```python
-import ctypes
-lib = ctypes.CDLL('./example.so')
-```
-
----
-
-## Python ctypes
-3. Set up the arguments and the return types:
-
-```python
-compute_pair_dist = lib.compute_pair_dist
-# void compute_pair_dist(const size_t nbin, size_t *dist, const size_t npart, const double *pos2d)
-compute_pair_dist.argtypes = [ctypes.c_size_t,
-                              ctypes.POINTER(ctypes.c_size_t),
-                              ctypes.c_size_t,
-                              ctypes.POINTER(ctypes.c_double),
-                              ]
-compute_pair_dist.restype = None
-```
-
----
-
-## Python ctypes
-
-4. Call the function (finally!):
-```python
-compute_pair_dist(nbin,
-                  dist.ctypes.data_as(ctypes.POINTER(ctypes.c_size_t)),
-                  n,
-                  pos2d.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
-                  )
-```
-
----
-
-## Python ctypes
-
-### Live demo
-
----
-
-## Python ctypes
-- By default, Python knows nothing about the arguments and return types of our functions, or how to compile code into a load-able library
-- Verbose and fragile—relies on the user to keep Python definitions in sync with C function signatures
-- Portable path resolution to the built library can be challenging
-- Limited support for languages beyond C
-- Often hidden assumptions about contiguity of arrays
-- These are some of the problems that more sophisticated libraries, like pybind11 and clair, solve
-- On the other hand, ctypes is built-in to the Python standard library
-- Universal, in the sense that it only deals with the platform's C ABI
-
----
-
 # nanobind
 
 Calling C++ from Python
@@ -167,26 +65,39 @@ https://github.com/wjakob/nanobind
 
 ---
 
+## nanobind project layout
+A simple nanobind project has the following files:
+```
+nanobind-example/
+├── CMakeLists.txt
+├── pyproject.toml
+└── src
+    └── examplepkg
+        ├── compute.py
+        ├── examplemod.cpp
+        └── __init__.py
+```
+
+---
+
 ## nanobind `examplemod.cpp`
 ```c++
 template <typename Scalar>
-void compute_pair_dist(nb::ndarray<uint64_t, nb::shape<nb::any>, nb::c_contig, nb::device::cpu> dist,
-                       nb::ndarray<const Scalar, nb::shape<nb::any, 2>, nb::c_contig, nb::device::cpu> pos2d) {
+void double_arr(
+    nb::ndarray<Scalar, nb::ndim<1>, nb::device::cpu> outarr,
+    nb::ndarray<const Scalar, nb::ndim<1>, nb::device::cpu> inarr) {
 
-    auto dist_view = dist.view();
-    auto pos2d_view = pos2d.view();
+    auto out_view = outarr.view();
+    auto in_view = inarr.view();
 
-    for (size_t i = 0; i < pos2d_view.shape(0); i++) {
-        for (size_t j = i + 1; j < pos2d_view.shape(0); j++) {
-            Scalar dx = pos2d_view(i, 0) - pos2d_view(j, 0);
-            Scalar dy = pos2d_view(i, 1) - pos2d_view(j, 1);
-            Scalar r = sqrt(dx * dx + dy * dy);
-            size_t k = (size_t) (r * dist_view.shape(0));
-            if (k < dist_view.shape(0)) {
-                dist_view(k)++;
-            }
-        }
+    for (size_t i = 0; i < in_view.shape(0); i++) {
+        out_view(i) = in_view(i) * 2;
     }
+}
+
+NB_MODULE(examplemod, m) {
+    m.def("double_arr", &double_arr<float>);
+    m.def("double_arr", &double_arr<double>);
 }
 ```
 
@@ -231,7 +142,7 @@ editable.rebuild = true
 ```console
 $ pip install .
 ```
-
+- That's it! scikit-build-core, nanobind, cmake, and ninja will all be downloaded and installed automatically as needed
 - With automatic rebuilds:
 ```console
 $ pip install scikit-build-core nanobind ninja
@@ -240,19 +151,25 @@ $ pip install -e . --no-build-isolation
 
 ---
 
-## nanobind python
+## nanobind `compute.py`
 ```python
 from . import examplemod
-examplemod.compute_pair_dist(dist, pos2d)
+
+inarr = np.arange(20)
+outarr = np.empty_like(inarr)
+
+examplemod.double_arr(outarr, inarr)
 ```
 
 - Easy! nanobind will check that the array types have the expected shape, dtype, strides, etc.
+- A more sophisticated example would have nanobind returning a NumPy array
 
 ---
 
 ## nanobind
 
 ### Live demo
+*including automatic rebuilds*
 
 ---
 
@@ -262,3 +179,86 @@ examplemod.compute_pair_dist(dist, pos2d)
 - Native NumPy-awareness makes it a good option for array processing
 - Combined with scikit-build-core, is a very powerful way to distribute compiled components in a Python package
 - We've only scratched the surface; can deal with custom C++ types, GPU arrays, ownership/lifetime management, etc.
+
+---
+
+# Python ctypes
+
+Calling C from Python
+[https://docs.python.org/3/library/ctypes.html](https://docs.python.org/3/library/ctypes.html)
+
+---
+
+## Python ctypes
+- [ctypes](https://docs.python.org/3/library/ctypes.html) is part of the Python standard library
+- Lets you load a shared object, call functions, access variables, etc.
+- Responsibility falls on the user to compile the shared object and call the functions with the correct signature
+- *Very* easy to get this wrong and cause the Python interpreter to crash!
+
+---
+
+## Python ctypes
+- ctypes doesn't help you compile your code into a shared library, but assume we've figured that out (maybe with setuptools, a Makefile, or CMake)
+- Load the a shared object in Python using ctypes:
+
+```python
+import ctypes
+lib = ctypes.CDLL('./example.so')
+```
+
+---
+
+## Python ctypes
+- Set up the arguments and the return types:
+
+```python
+double_arr = lib.double_arr
+# void double_arr(size_t n, double *outarr, double const * inarr)
+double_arr.argtypes = [ctypes.c_size_t,
+                       ctypes.POINTER(ctypes.c_double),
+                       ctypes.POINTER(ctypes.c_double),
+                      ]
+double_arr.restype = None
+```
+
+---
+
+## Python ctypes
+- Call the function (finally!):
+```python
+double_arr(len(inarr),
+            outarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+            inarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+            )
+```
+
+---
+
+## Python ctypes
+- What happens if we swap the order of the C arguments but forget to update our Python?
+```c
+void double_arr(size_t n, double *outarr, double const *inarr)  // old
+void double_arr(double *outarr, double const *inarr, size_t n)  // new
+```
+
+```console
+$ python script.py
+Segmentation fault (core dumped)
+```
+
+---
+
+## Python ctypes
+- Verbose and fragile—relies on the user to keep Python definitions in sync with C function signatures
+- The tooling for compiling a library for ctypes is older and less portable
+- On the other hand, ctypes is built-in to the Python standard library
+- Universal, in the sense that it only deals with the platform's C ABI
+- Usually better to use C++ and nanobind for scientific computing
+
+---
+
+## SciWare Survey
+
+<center>
+<img width="55%" src="./30_ccq.png">
+</center>
