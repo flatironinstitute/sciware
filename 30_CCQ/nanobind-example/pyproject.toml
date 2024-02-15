@@ -6,6 +6,7 @@ build-backend = "scikit_build_core.build"
 name = "example_pkg"
 version = "0.0.1"
 requires-python = ">=3.8"
+dependencies = ["numpy"]
 
 [tool.scikit-build]
 minimum-version = "0.5"

@@ -52,13 +52,20 @@ Activities where participants all actively work to foster an environment which e
 # nanobind
 
 Calling C++ from Python
+
 https://github.com/wjakob/nanobind
+
+
+
+# Julia
+
+Matt Fishman (CCQ)
 
 
 
 ## nanobind
 - Library to create Python bindings to C++ code (and vice versa)
-- Successor to pybind11: near-identical syntax (same creator) but produces more efficient code
+- Successor to pybind11: near-identical syntax (same creator) but produces more efficient bindings
 - Works with C++17 and newer (can use pybind11 for C++11)
 - Seamless integration with modern Python build backends
 - NumPy-aware
@@ -144,6 +151,7 @@ build-backend = "scikit_build_core.build"
 name = "example_pkg"
 version = "0.0.1"
 requires-python = ">=3.8"
+dependencies = ["numpy"]
 
 [tool.scikit-build]
 minimum-version = "0.5"
@@ -196,8 +204,8 @@ std::ostream & operator<<(std::ostream &out, S const & s) {
 }
 ```
 
-    </div>
-    <div class="grid-item">
+</div>
+<div class="grid-item">
 
 ```c++
 NB_MODULE(struct_example_module, m) {
@@ -214,7 +222,7 @@ NB_MODULE(struct_example_module, m) {
 }
 ```
 
-    </div>
+</div>
 </div>
 
 
@@ -231,6 +239,7 @@ NB_MODULE(struct_example_module, m) {
 # Python ctypes
 
 Calling C from Python
+
 [https://docs.python.org/3/library/ctypes.html](https://docs.python.org/3/library/ctypes.html)
 
 
@@ -244,7 +253,7 @@ Calling C from Python
 
 
 ## Python ctypes
-- ctypes doesn't help you compile your code into a shared library, but assume we've figured that out (maybe with setuptools, a Makefile, or CMake)
+- ctypes doesn't help you compile your code into a shared library, but assume we've figured that out (maybe with CMake/scikit-build-core)
 - Load the a shared object in Python using ctypes:
 
 ```python
@@ -255,14 +264,6 @@ lib.double_arr.argtypes = [ctypes.c_size_t,
                            ctypes.POINTER(ctypes.c_double),
                            ctypes.POINTER(ctypes.c_double),
                           ]
-lib.double_arr.restype = None
-```
-
-
-
-## Python ctypes
-- Call the function (finally!):
-```python
 lib.double_arr(len(inarr),
             outarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
             inarr.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
@@ -287,9 +288,9 @@ Segmentation fault (core dumped)
 
 ## Python ctypes
 - Verbose and fragile—relies on the user to keep Python definitions in sync with C function signatures
-- The tooling for compiling shared objects for ctypes is older and less portable
+- Tooling for compiling shared objects for ctypes is less portable (shared object path resolution can be tricky)
 - On the other hand, ctypes is built-in to the Python standard library
-- Universal, in the sense that it only deals with the platform's C ABI
+- Universal: only deals with the platform's C ABI
 - Usually better to use C++ and nanobind for scientific computing
 
 
