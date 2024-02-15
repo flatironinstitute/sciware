@@ -49,17 +49,19 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+# Julia
+
+Matt Fishman (CCQ)
+
+
+
 # nanobind
 
 Calling C++ from Python
 
 https://github.com/wjakob/nanobind
 
-
-
-# Julia
-
-Matt Fishman (CCQ)
+Lehman Garrison (SCC)
 
 
 
@@ -255,7 +257,7 @@ Calling C from Python
 
 ## Python ctypes
 - ctypes doesn't help you compile your code into a shared library, but assume we've figured that out (maybe with CMake/scikit-build-core)
-- Load the a shared object in Python using ctypes:
+- Load the shared library with ctypes, define the types, call the function:
 
 ```python
 import ctypes
