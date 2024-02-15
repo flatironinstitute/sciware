@@ -49,6 +49,12 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+# Intro to inter-language operability
+
+Nils Wentzell (CCQ)
+
+
+
 # Julia
 
 Matt Fishman (CCQ)
