@@ -185,8 +185,9 @@ $ pip install -e . --no-build-isolation
 
 ## nanobind struct
 - Can get complicated and verbose with custom types
+
 <div class="two-column">
-    <div class="grid-item">
+<div class="grid-item" width="40%">
 
 ```c++
 struct S {
@@ -205,7 +206,7 @@ std::ostream & operator<<(std::ostream &out, S const & s) {
 ```
 
 </div>
-<div class="grid-item">
+<div class="grid-item" width="40%">
 
 ```c++
 NB_MODULE(struct_example_module, m) {
