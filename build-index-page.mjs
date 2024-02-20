@@ -6,50 +6,50 @@
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 
-const head = `<head>
-    <title>Sciware: a scientific software development learning community</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-    <link rel="manifest" href="/icons/site.webmanifest" />
-    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#404f9d" />
-    <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#3F519D" />
-    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-    <meta name="theme-color" content="#3F519D" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>`;
+const head = html`<head>
+  <title>Sciware: a scientific software development learning community</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+  <link rel="manifest" href="/icons/site.webmanifest" />
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#404f9d" />
+  <link rel="shortcut icon" href="/icons/favicon.ico" />
+  <meta name="msapplication-TileColor" content="#3F519D" />
+  <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+  <meta name="theme-color" content="#3F519D" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>`;
 
-const news = `<section id="news">
-        <header class="major">
-          <div class="row">
-            <div class="col-3 col-12-small">
-              <small>Thursday – Friday</small>
-              <h1 style="font-size: 1.5rem"><time datetime="2024-02-29">February 29 – March 1</time></h1>
-              <small>9:45 A.M. – 4:00 P.M.</small>
-              <div><small>Location TBD</small></div>
-            </div>
-            <div class="col-9 col-12-small">
-              <h2>NVIDIA ML Training</h2>
-              <p>This NVIDIA-provided training will cover machine learning and deep learning topics.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-3 col-12-small">
-              <small>Thursday</small>
-              <h1 style="font-size: 1.5rem"><time datetime="2024-03-28">March 28</time></h1>
-              <small>3:00 P.M. – 5:00 P.M.</small>
-              <div><small>160 5th Ave, Room 418</small></div>
-            </div>
-            <div class="col-9 col-12-small">
-              <h2>Topic TBD</h2>
-              <p>Save the date for this CCN-hosted Sciware.</p>
-            </div>
-          </div>
-        </header>
-      </section>`;
+const news = html`<section id="news">
+  <header class="major">
+    <div class="row">
+      <div class="col-3 col-12-small">
+        <small>Thursday – Friday</small>
+        <h1 style="font-size: 1.5rem"><time datetime="2024-02-29">February 29 – March 1</time></h1>
+        <small>9:45 A.M. – 4:00 P.M.</small>
+        <div><small>Location TBD</small></div>
+      </div>
+      <div class="col-9 col-12-small">
+        <h2>NVIDIA ML Training</h2>
+        <p>This NVIDIA-provided training will cover machine learning and deep learning topics.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 col-12-small">
+        <small>Thursday</small>
+        <h1 style="font-size: 1.5rem"><time datetime="2024-03-28">March 28</time></h1>
+        <small>3:00 P.M. – 5:00 P.M.</small>
+        <div><small>160 5th Ave, Room 418</small></div>
+      </div>
+      <div class="col-9 col-12-small">
+        <h2>Topic TBD</h2>
+        <p>Save the date for this CCN-hosted Sciware.</p>
+      </div>
+    </div>
+  </header>
+</section>`;
 
 const past_sessions_list = [
   [`Session #00`, `Founding`, `Feb 28, 2019`, `/00_Founding/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/00_Founding`],
@@ -92,142 +92,164 @@ const past_sessions_list = [
 ]
   .reverse()
   .map(([session, title, date, link, github, vimeo]) => {
-    const g = github ? `<a href="${github}" class="icon inline-icon brands fa-github"></a>` : ``;
-    const v = vimeo ? `<a href="${vimeo}" class="icon brands inline-icon fa-vimeo"></a>` : ``;
-    return `
-<li> 
-  <span>${session}:</span> 
-  <a href="${link}">${title}</a>
-  ${g}
-  ${v}
-  <span class="inline-date">${date}</span> 
-</li>
-`.trim();
-  })
-  .join("\n");
+    const g = github ? html`<a href="${github}" class="icon inline-icon brands fa-github"></a>` : ``;
+    const v = vimeo ? html`<a href="${vimeo}" class="icon brands inline-icon fa-vimeo"></a>` : ``;
+    // prettier-ignore
+    return html`
+      <li>
+        <span>${session}:</span>
+        <a href="${link}">${title}</a>
+        ${g}
+        ${v}
+        <span class="inline-date">${date}</span>
+      </li>
+    `.trim();
+  });
 
-const past = `<section id="past">
-        <h2>Past Sessions</h2>
-        <p>
-          In addition to the session slides listed below, many of the recordings from past events are available on
-          <a href="https://vimeo.com/showcase/sciware">Vimeo</a>. Please see the <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="sciware slack">#sciware </a>Slack channel for the password.
-        </p>
-        <ul class="alt">
-          ${past_sessions_list}
-        </ul>
-      </section>`;
+const past = html`<section id="past">
+  <h2>Past Sessions</h2>
+  <p>
+    In addition to the session slides listed below, many of the recordings from past events are available on
+    <a href="https://vimeo.com/showcase/sciware">Vimeo</a>. Please see the <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="sciware slack">#sciware </a>Slack channel for the password.
+  </p>
+  <ul class="alt">
+    ${past_sessions_list}
+  </ul>
+</section>`;
 
-const scripts = `
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+const scripts = html`
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 `;
 
-const template = `<!DOCTYPE html>
-<html>
-  ${head}
-  <body class="is-preload">
-    <!-- Header -->
-    <header id="header">
-      <div class="inner">
-        <a href="#" class="image avatar"><img src="assets/sciware.png" alt="" /></a>
-        <h1>
-          <strong>Sciware</strong>, a scientific<br />
-          software learning community <br />
-          at the <a href="http://flatironinstitute.org">Flatiron Institute</a>.
-        </h1>
-      </div>
-    </header>
+const template = html`<!DOCTYPE html>
+  <html>
+    ${head}
+    <body class="is-preload">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <a href="#" class="image avatar"><img src="assets/sciware.png" alt="" /></a>
+          <h1>
+            <strong>Sciware</strong>, a scientific<br />
+            software learning community <br />
+            at the <a href="http://flatironinstitute.org">Flatiron Institute</a>.
+          </h1>
+        </div>
+      </header>
 
-    <!-- Main -->
-    <main id="main">
-      <!-- News -->
-      ${news}
-      ${past}
-      <!-- Four -->
-      <section id="about">
-        <h2>About</h2>
-        <div class="row">
-          <div class="col-8 col-12-small">
-            <p> <b>Sciware</b> is a Flatiron-wide activity to share and build scientific software development and computing skills in a variety of areas. Our goal is to create an environment where everyone can discuss technologies, tools, and tricks that make their research process more efficient, across all experience levels, language and technology choices, and scientific disciplines. </p>
-            <p> We meet roughly once a month on Thursdays at 3pm and focus on a specific topic, bringing Flatiron (and occasionally external) expertise together to demonstrate and discuss everything from debuggers to editors to file formats, optimization to packaging. Events are open to all Flatiron and Simons Foundation researchers, as well as their external students and collaborators. </p>
-            <p>
-              There is also a
-              <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="#sciware Slack Channel">#sciware </a>
-              channel on the Simons Foundation Slack that everyone is encouraged to join and ask questions, share knowledge, or request code reviews.
-            </p>
+      <!-- Main -->
+      <main id="main">
+        <!-- News -->
+        ${news} ${past}
+        <!-- Four -->
+        <section id="about">
+          <h2>About</h2>
+          <div class="row">
+            <div class="col-8 col-12-small">
+              <p> <b>Sciware</b> is a Flatiron-wide activity to share and build scientific software development and computing skills in a variety of areas. Our goal is to create an environment where everyone can discuss technologies, tools, and tricks that make their research process more efficient, across all experience levels, language and technology choices, and scientific disciplines. </p>
+              <p> We meet roughly once a month on Thursdays at 3pm and focus on a specific topic, bringing Flatiron (and occasionally external) expertise together to demonstrate and discuss everything from debuggers to editors to file formats, optimization to packaging. Events are open to all Flatiron and Simons Foundation researchers, as well as their external students and collaborators. </p>
+              <p>
+                There is also a
+                <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" alt="#sciware Slack Channel">#sciware </a>
+                channel on the Simons Foundation Slack that everyone is encouraged to join and ask questions, share knowledge, or request code reviews.
+              </p>
+            </div>
+            <div class="col-4 col-12-small">
+              <h3>Organizers</h3>
+              <ul>
+                <li>Kelle Cruz, Flatiron</li>
+                <li>Dylan Simon, SCC</li>
+                <li>Robert Blackwell, SCC</li>
+                <li>Billy Broderick, CCN</li>
+                <li>Chris Edelmaier, CCB</li>
+                <li>Lehman Garrison, SCC</li>
+                <li>Geraud Krawezik, SCC</li>
+                <li>Jeff Soules, CCM</li>
+                <li>Nils Wentzell, CCQ</li>
+              </ul>
+              <h3>Contact</h3>
+              <ul class="labeled-icons">
+                <li>
+                  <h3 class="icon solid fa-envelope">
+                    <span class="label">Email</span>
+                  </h3>
+                  <a href="mailto:sciware@flatironinstitute.org">sciware@flatironinstitute.org</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-4 col-12-small">
-            <h3>Organizers</h3>
-            <ul>
-              <li>Kelle Cruz, Flatiron</li>
-              <li>Dylan Simon, SCC</li>
-              <li>Robert Blackwell, SCC</li>
-              <li>Billy Broderick, CCN</li>
-              <li>Chris Edelmaier, CCB</li>
-              <li>Lehman Garrison, SCC</li>
-              <li>Geraud Krawezik, SCC</li>
-              <li>Jeff Soules, CCM</li>
-              <li>Nils Wentzell, CCQ</li>
-            </ul>
-            <h3>Contact</h3>
-            <ul class="labeled-icons">
+        </section>
+        <!-- Five -->
+
+        <!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <ul class="icons">
               <li>
-                <h3 class="icon solid fa-envelope">
+                <a href="https://github.com/flatironinstitute/sciware" class="icon brands fa-github" alt="Sciware Github">
+                  <span class="label">Github</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" class="icon brands fa-slack" alt="#sciware Slack Channel">
+                  <span class="label">Slack</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://vimeo.com/showcase/sciware" class="icon brands fa-vimeo" alt="Sciware Vimeo">
+                  <span class="label">Vimeo</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:sciware@flatironinstitute.org" class="icon solid fa-envelope">
                   <span class="label">Email</span>
-                </h3>
-                <a href="mailto:sciware@flatironinstitute.org">sciware@flatironinstitute.org</a>
+                </a>
+              </li>
+            </ul>
+            <ul class="copyright">
+              <li><a href="#about">About</a></li>
+              <li>
+                <a alt="Sciware indico" href="https://indico.flatironinstitute.org/category/76/">Indico</a>
               </li>
             </ul>
           </div>
-        </div>
-      </section>
-      <!-- Five -->
+        </footer>
+      </main>
 
-      <!-- Footer -->
-      <footer id="footer">
-        <div class="inner">
-          <ul class="icons">
-            <li>
-              <a href="https://github.com/flatironinstitute/sciware" class="icon brands fa-github" alt="Sciware Github">
-                <span class="label">Github</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://simonsfoundation.slack.com/archives/CDU1EE9V5" class="icon brands fa-slack" alt="#sciware Slack Channel">
-                <span class="label">Slack</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://vimeo.com/showcase/sciware" class="icon brands fa-vimeo" alt="Sciware Vimeo">
-                <span class="label">Vimeo</span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:sciware@flatironinstitute.org" class="icon solid fa-envelope">
-                <span class="label">Email</span>
-              </a>
-            </li>
-          </ul>
-          <ul class="copyright">
-            <li><a href="#about">About</a></li>
-            <li>
-              <a alt="Sciware indico" href="https://indico.flatironinstitute.org/category/76/">Indico</a>
-            </li>
-          </ul>
-        </div>
-      </footer>
-    </main>
-
-  ${scripts}
-
-  </body>
-</html>
-`;
+      ${scripts}
+    </body>
+  </html> `;
 
 fs.writeFileSync("index.html", template);
 
 execSync("npx prettier --write index.html", { stdio: "inherit" });
+
+function html(strings, ...values) {
+  let result = "";
+  for (const [i, string] of strings.entries()) {
+    result += string;
+    if (i >= values.length) continue;
+    let value = values[i];
+    // Process arrays by recursively processing each element
+    if (Array.isArray(value)) {
+      value = value
+        .map((element) => {
+          if (Array.isArray(element) || typeof element === "function") {
+            return html`${element}`;
+          }
+          return element;
+        })
+        .join("\n");
+    } else if (value == null) {
+      // Handle undefined and null values safely
+      value = "";
+    }
+    result += value; // Append the processed value to the result
+  }
+  return result;
+}
