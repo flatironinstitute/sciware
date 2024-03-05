@@ -56,6 +56,7 @@ const past_events = [
   [`Session #27 day 4`, `Summer Intro Series`, `June 21, 2023`, `/27_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/885382496`],
   [`Session #28`, `CCB-Hosted Sciware`, `September 21, 2023`, `/28_CCB/`, null, `https://vimeo.com/showcase/7164070/video/885390328`],
   [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/`, null, `https://vimeo.com/showcase/7164070/video/885395764`],
+  [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`],
 ];
 
 const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -204,6 +205,10 @@ fs.writeFileSync("index-v2.html", template);
 
 execSync("npx prettier --write index.html", { stdio: "inherit" });
 
+/**
+ * This is a tagged template function to generate HTML strings.
+ * It is very similar in spirit to the `html` function in the `lit-html` library.
+ */
 function html(strings, ...values) {
   let result = "";
   for (const [i, string] of strings.entries()) {
