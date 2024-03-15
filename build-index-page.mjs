@@ -46,18 +46,18 @@ const past_events = [
   [`Session #19`, `Performance Troubleshooting and Profiling`, `Jan 27, 2022`, `/19_Profiling/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/19_Profiling`, `https://vimeo.com/showcase/7164070/video/672382395`],
   [`Session #20`, `Documentation: How to win users and influence science`, `Mar 24, 2022`, `/20_Documentation/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/20_Documentation`, `https://vimeo.com/showcase/7164070/video/695811502`],
   [`Session #21`, `Intro to Git and Github`, `June 21 - 22, 2022`, `/21_IntroGithub`, `https://github.com/flatironinstitute/sciware/tree/main/21_IntroGithub`, `https://vimeo.com/showcase/7164070`],
-  [`Session #22`, `Intro to code editors and debugging`, `June 29, 2022`, `/22_Editors`, `https://github.com/flatironinstitute/sciware/tree/main/22_Editors`, `https://vimeo.com/showcase/7164070/video/731055316`],
-  [`Session #23`, `Command-line interaction and shells`, `July 21, 2022`, `/23_CommandLine`, `https://github.com/flatironinstitute/sciware/tree/main/23_CommandLine`, `https://vimeo.com/showcase/7164070/video/733280307`],
-  [`Session #24`, `Types`, `September 29, 2022`, `/24_Types`, `https://github.com/flatironinstitute/sciware/tree/main/24_Types`, `https://vimeo.com/showcase/7164070/video/778892798`],
-  [`Session #25`, `Modern C++`, `October 20, 2022`, `/25_ModernC++`, `https://github.com/flatironinstitute/sciware/tree/main/25_ModernC++`, `https://vimeo.com/showcase/7164070/video/778640628`],
-  [`Session #26`, `File Formats and Storing Data`, `December 15, 2022`, `/26_DataFormats`, `https://github.com/flatironinstitute/sciware/tree/main/26_DataFormats`, `https://vimeo.com/showcase/7164070/video/797753028`],
+  [`Session #22`, `Intro to code editors and debugging`, `June 29, 2022`, `/22_Editors/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/22_Editors`, `https://vimeo.com/showcase/7164070/video/731055316`],
+  [`Session #23`, `Command-line interaction and shells`, `July 21, 2022`, `/23_CommandLine/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/23_CommandLine`, `https://vimeo.com/showcase/7164070/video/733280307`],
+  [`Session #24`, `Types`, `September 29, 2022`, `/24_Types/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/24_Types`, `https://vimeo.com/showcase/7164070/video/778892798`],
+  [`Session #25`, `Modern C++`, `October 20, 2022`, `/25_ModernC++/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/25_ModernC++`, `https://vimeo.com/showcase/7164070/video/778640628`],
+  [`Session #26`, `File Formats and Storing Data`, `December 15, 2022`, `/26_DataFormats/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/26_DataFormats`, `https://vimeo.com/showcase/7164070/video/797753028`],
   [`Session #27 day 1`, `Summer Intro Series`, `May 31, 2023`, `/27_SummerIntro`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/832383176`],
   [`Session #27 day 2`, `Summer Intro Series`, `June 6, 2023`, `/27_SummerIntro/day2.html`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/835496004`],
   [`Session #27 day 3`, `Summer Intro Series`, `June 14, 2023`, `/27_SummerIntro/day3.html`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/885375948`],
   [`Session #27 day 4`, `Summer Intro Series`, `June 21, 2023`, `/27_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/885382496`],
-  [`Session #28`, `CCB-Hosted Sciware`, `September 21, 2023`, `/28_CCB/`, null, `https://vimeo.com/showcase/7164070/video/885390328`],
-  [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/`, null, `https://vimeo.com/showcase/7164070/video/885395764`],
-  [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`],
+  [`Session #28`, `CCB-Hosted Sciware`, `September 21, 2023`, `/28_CCB/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/28_CCB`, `https://vimeo.com/showcase/7164070/video/885390328`],
+  [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/29_CCA`, `https://vimeo.com/showcase/7164070/video/885395764`],
+  [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`],
 ];
 
 const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -179,14 +179,14 @@ const socials = [
 const footer_contents = html`
   <ul class="icons">
     ${socials.map(([title, alt, url, classname]) => {
-      return html`
+  return html`
         <li>
           <a href="${url}" class="icon ${classname}" alt="${alt}">
             <span class="label">${title}</span>
           </a>
         </li>
       `;
-    })}
+})}
   </ul>
 `;
 
