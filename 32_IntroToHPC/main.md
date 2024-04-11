@@ -100,6 +100,25 @@ Activities where participants all actively work to foster an environment which e
 
 
 
+## Environment management
+
+
+## What you'll need
+
+- Remote access to the cluster via terminal
+  - on 'FI' wifi network: `ssh username@rusty`
+  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
+  - or... `https://jupyter.flatironinstitute.org`
+- Way to edit files on cluster
+  - terminal `emacs/vi/nano/ed`
+  - or... remote edit via `vscode/emacs/vi/sshfs`
+  - or... `https://jupyter.flatironinstitute.org`
+
+
+##
+
+
+
 ## SciWare Survey [TODO]
 <!-- <center> -->
 <!-- <img width="50%" src="./qr.png"> -->
