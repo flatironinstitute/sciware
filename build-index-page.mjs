@@ -10,12 +10,17 @@ import { execSync } from "node:child_process";
 
 const upcoming_events = [
   {
-    title: `Code Writing Robots and LLM Magic:<br />The Good, The Bad, and The Ugly`,
+    title: `An Extended Introduction to the Flatiron Clusters`,
     weekday: `Thursday`,
-    date: `March 28`,
-    time: `3:00 PM - 5:00 PM`,
-    location: `160 5th Ave<br />3rd Floor<br />CCM Classroom`,
-    summary: `We will discuss ways to develop software more quickly using tools which analyze and generate code.  Specifically, we’ll talk about static analysis tools (e.g., pylint, ruff, clangd) and GitHub Copilot. We’ll discuss how to use these tools and their pros and cons.`,
+    date: `April 25`,
+    time: `2:00 PM - 4:00 PM`,
+    location: `162 5th Ave<br />7th Floor<br />Classroom`,
+    summary: `
+In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, 
+<code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software 
+and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. 
+In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks.  This workshop is a pilot session for potential 
+future cluster onboarding and your participation and feedback would be greatly appreciated.`,
   },
 ];
 
@@ -58,6 +63,7 @@ const past_events = [
   [`Session #28`, `CCB-Hosted Sciware`, `September 21, 2023`, `/28_CCB/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/28_CCB`, `https://vimeo.com/showcase/7164070/video/885390328`],
   [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/29_CCA`, `https://vimeo.com/showcase/7164070/video/885395764`],
   [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`],
+  [`Session #31`, `Code Writing Robots and LLM Magic: The Good, The Bad, and The Ugly`, `March 28, 2024`, `/31_CodeRobots/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/31_CodeRobots`],
 ];
 
 const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -179,14 +185,14 @@ const socials = [
 const footer_contents = html`
   <ul class="icons">
     ${socials.map(([title, alt, url, classname]) => {
-  return html`
+      return html`
         <li>
           <a href="${url}" class="icon ${classname}" alt="${alt}">
             <span class="label">${title}</span>
           </a>
         </li>
       `;
-})}
+    })}
   </ul>
 `;
 
