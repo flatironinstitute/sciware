@@ -19,7 +19,11 @@ const upcoming_events = [
 In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, 
 <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software 
 and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. 
-In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks.  This workshop is a pilot session for potential 
+In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks.
+
+<p>In order to fully participate, a cluster account and a laptop will be needed. You will need to be able to login to the cluster from your laptop. 
+
+<p>This workshop is a pilot session for potential 
 future cluster onboarding and your participation and feedback would be greatly appreciated.`,
   },
 ];
