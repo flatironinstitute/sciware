@@ -145,7 +145,7 @@ Activities where participants all actively work to foster an environment which e
 ### Rusty/popeye storage -- home
 
 - Put your source code and software installs here!
-- High performance GPFS filesystem (mounted NFS on workstations)
+- High performance GPFS filesystem
 - Mind your quota! You can get locked out of the cluster!
   - \~1 million files
   - \~1 TiB limit
@@ -178,14 +178,11 @@ Activities where participants all actively work to foster an environment which e
   - or... `https://jupyter.flatironinstitute.org`
 
 
-## Navigating/building/running software
+## Building/running software
 
-- decide language (to discuss compilers and play with modules)
-- intro to modules (modules as a 'tree', `module avail`)
-- If possible, how to compile software in addition to python [high priority]
-- failure state if say, can't find necessary stuff (compiling with system compiler, or running without gcc loaded)
-- icx + gcc necessary
-- move this down to later
+- `git clone https://github.com/flatironinstitute/sciware_awful_cp`
+- `cd sciware_awful_cp`
+- examples for `module avail`, `module load`, `PATH` env variable, `fi-create-module`, `icp[cx]`+`libstdc++` issues
 
 
 ## Let's make a python project
