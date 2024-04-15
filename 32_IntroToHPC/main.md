@@ -41,9 +41,72 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Today's Agenda
+- Supercomputing components and terminology
 - Flatiron resources overview
 - Environment management [interactive]
 - Running your jobs [interactive]
+
+
+
+## Supercomputing terminology
+
+
+### Compute nodes
+- What most people would call a computer, but...
+  - Typically headless -- no display
+  - Accessed/controlled via network -- often programatically
+  - Often multiple network "interfaces" -- more later
+  - Designed for high _throughput_ computation
+
+
+### Compute node architecture
+- Typically large amounts of RAM (random access memory)
+  - temporary storage used during computation for data and program instructions
+- One or more "multi-core" CPUs (central processing unit) -- FI nodes typically two
+  - CPU Core -- a single physical CPU on a multi-core CPU
+  - Cores have their own _cache_ but also share _cache_ directly with other cores
+  - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
+- One or more network cards (more later!)
+
+
+### Compute node architecture -- `lstopo`
+- Cores also sometimes have extra groupings in "NUMA" (non-uniform memory architecture) domains
+  - beyond scope today, but good to know
+  - Specifies what hardware has direct access to what memory
+- `lstopo --no-io` on FI 'skylake' node
+<center>
+    <img src="./assets/skylake-topo.png" height="300px">
+</center>
+
+
+### GPU node architecture
+- GPU nodes have all the stuff a CPU node has, plus...
+- Some GPUs - graphics processing units
+  - Misnomer/legacy name, used to "offload" general computation
+    - AKA accelerator/TPU/etc
+  - Great for large dense linear algebra problems
+  - Or... tons of small problems in parallel
+
+
+### Network/fabric
+- Network/fabric - the means of communication between computers
+  - Communication lines usually fiber/copper/wireless
+  - fiber most common for _high performance_ networks
+- Some rough "typical" numbers
+  - WiFi -- wireless -- \~0.1-1 Gbit/s
+  - Ethernet -- copper -- \~1-40 Gbit/s
+  - Infiniband -- fiber -- \~100-800 Gbit/s
+
+
+### Filesystems
+- System that manages file organization and access
+  - Can be local (stored on "hard drive" like on laptop)
+    - _typically_ high bandwidth/low latency
+  - or distributed/networked (data shared between drives/computers and accessed remotely)
+    - _typically_ high bandwidth/high latency, networked
+    - Tradeoffs exist and are _extremely_ important
+- Ceph and GPFS are the distributed filesystems used at FI
+  - Lustre also common at supercomputing centers
 
 
 
@@ -58,12 +121,6 @@ Activities where participants all actively work to foster an environment which e
   - Independent job management
 - Both heterogenous -- multiple node types
 - Details at https://wiki.flatironinstitute.org/SCC/Overview
-
-
-### TODO Cluster components and lingo
-- File systems
-- Networks
-- Nodes vs CPUs vs cores
 
 
 ### Rusty -- compute power
