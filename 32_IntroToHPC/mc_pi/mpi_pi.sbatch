@@ -5,7 +5,7 @@
 #SBATCH -c 1
 #SBATCH -n 256
 #SBATCH -p scc
-#SBATCH -C rome
+#SBATCH -C ib-rome
 #SBATCH -t 1:00
 
 source load_env.sh

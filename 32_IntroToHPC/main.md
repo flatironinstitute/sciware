@@ -60,23 +60,29 @@ Activities where participants all actively work to foster an environment which e
 - Details at https://wiki.flatironinstitute.org/SCC/Overview
 
 
+### TODO Cluster components and lingo
+- File systems
+- Networks
+- Nodes vs CPUs vs cores
+
+
 ### Rusty -- compute power
 
-- ~100k dedicated CPU cores 
-- two 3-6TB 'bigmem' machines
-- Almost everything on high bandwidth fabric (omnipath *or* infiniband)
-- GPUs
-  - 144 H100 (18 x 8)
-  - 288 A100 (72 x 8)
-  - 8 V100 (22 x 4 + 5 x 2)
+- FI's "primary" cluster
+- \~100k CPU cores (\~1200 nodes)
+- _Almost_ every node connected by high performance infiniband fabric
+  - Dedicated (only for job traffic)
+  - fiber-optic
+  - Node types on different infiniband networks!
+- 240 H100, 288 A100 and 98 V100 GPUs
 
 
 ### Popeye -- compute power
 
-- Appx. 41k dedicated CPU cores
-- 1 3TB 'bigmem' machine
-- Everything (but bigmem) on infiniband
-- 128 V100 (32 x 4) GPUs
+- \~41k dedicated CPU cores (\~800 nodes)
+- Generally more available, but data separate from rusty
+- Everything on infiniband fabric
+- 128 V100 GPUs
 
 
 ### Rusty/popeye storage -- home
@@ -84,8 +90,8 @@ Activities where participants all actively work to foster an environment which e
 - Put your source code and software installs here!
 - High performance GPFS filesystem (mounted NFS on workstations)
 - Mind your quota! You can get locked out of the cluster!
-  - ~1 million files
-  - ~1 TiB limit
+  - \~1 million files
+  - \~1 TiB limit
 - `module load fi-utils && fi-quota`
 
 
@@ -94,8 +100,8 @@ Activities where participants all actively work to foster an environment which e
 - rusty: located at `/mnt/ceph/$USER` or via symlink at `~/ceph`
 - popeye: located at `/mnt/sdceph/$USER` or via symlink at `~/ceph`
 - Always put your data/large files here!
-- ~45 PiB (rusty) and ~15 PiB (popeye)
-- High bandwidth, high latency (~1.5GiB/s parallel reads)
+- \~45 PiB (rusty) and \~15 PiB (popeye)
+- High bandwidth, high latency (\~1.5GiB/s parallel reads)
 - Highly redundant, but not backed up
 
 
@@ -115,7 +121,52 @@ Activities where participants all actively work to foster an environment which e
   - or... `https://jupyter.flatironinstitute.org`
 
 
-##
+## Navigating/building/running software
+
+- decide language (to discuss compilers and play with modules)
+- intro to modules (modules as a 'tree', `module avail`)
+- If possible, how to compile software in addition to python [high priority]
+- failure state if say, can't find necessary stuff (compiling with system compiler, or running without gcc loaded)
+- icx + gcc necessary
+- move this down to later
+
+
+## Let's make a python project
+
+- create new project directory
+- `ml python ; python -m venv venv --system-site-packages ; source venv/bin/activate`
+- create `setup_env` script that loads clean environment
+
+
+## Please never do this
+
+- Calculate π by throwing darts "_Monte Carlo Sampling_"
+- π ≅ 4 N<sub>in</sub> / N<sub>tot</sub>
+- https://github.com/flatironinstitute/tree/main/32_IntroToHPC/mc_pi
+<center>
+    <img src="./assets/dartboard.png" style="border:0;box-shadow:none" height="350px">
+</center>
+
+
+## Running it on the cluster
+- Demonstrate how to sbatch script with single
+- just me, not other people (1 node, gen, partition, etc)
+
+
+## Scaling up
+- We could make our code more efficient...
+- But let's throw some power at it
+
+
+## MPI with slurm
+- This is not recommended with embarrassingly parallel problems (like this one)
+- We're going to do it anyway...
+
+
+## disBatch
+- Create list of tasks, pass to disBatch
+- `module load disBatch`
+- sbatch <sbatch options> disBatch task_file
 
 
 
