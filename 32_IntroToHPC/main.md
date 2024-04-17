@@ -62,7 +62,7 @@ Activities where participants all actively work to foster an environment which e
 ### Compute node architecture
 - Typically large amounts of RAM (random access memory)
   - temporary storage used during computation for data and program instructions
-- One or more "multi-core" CPUs (central processing unit) -- FI nodes typically two
+- One or more "multi-core" CPUs (central processing units)
   - CPU Core -- a single physical CPU on a multi-core CPU
   - Cores have their own _cache_ but also share _cache_ directly with other cores
   - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
@@ -100,11 +100,11 @@ Activities where participants all actively work to foster an environment which e
 
 ### Filesystems
 - System that manages file organization and access
-  - Can be local (stored on "hard drive" like on laptop)
-    - _typically_ high bandwidth/low latency
-  - or distributed/networked (data shared between drives/computers and accessed remotely)
-    - _typically_ high bandwidth/high latency, networked
-    - Tradeoffs exist and are _extremely_ important
+- Can be local (stored on "hard drive" like on laptop)
+  - _typically_ high bandwidth/low latency
+- or distributed/networked (data shared between drives/computers and accessed remotely)
+  - _typically_ high bandwidth/high latency, networked
+  - Tradeoffs exist and are _extremely_ important
 - Ceph and GPFS are the distributed filesystems used at FI
   - Lustre also common at supercomputing centers
 
@@ -196,15 +196,28 @@ Activities where participants all actively work to foster an environment which e
 
 - Calculate π by throwing darts "_Monte Carlo Sampling_"
 - π ≅ 4 N<sub>in</sub> / N<sub>tot</sub>
-- https://github.com/flatironinstitute/tree/main/32_IntroToHPC/mc_pi
+- https://github.com/flatironinstitute/sciware/tree/main/32_IntroToHPC/mc_pi
 <center>
+    <img src="./assets/mc_pi_qr.png" style="border:0;box-shadow:none;transform: translateY(-50px)" height="250px">
     <img src="./assets/dartboard.png" style="border:0;box-shadow:none" height="350px">
 </center>
 
 
 ## Running it on the cluster
-- Demonstrate how to sbatch script with single
-- just me, not other people (1 node, gen, partition, etc)
+```
+#!/bin/bash
+#SBATCH -o pi.log  # All stdout from this script
+#SBATCH -e pi.err  # All stderr from this script
+#SBATCH -p genx    # genx partition (non-exclusive -- doesn't request full nodes)
+#SBATCH -t 1:00    # request 1 min runtime (default 7 days, helps schedule faster)
+
+source load_env.sh
+python pi.py 100000 0
+```
+
+```
+% sbatch pi.sbatch
+```
 
 
 ## Scaling up
@@ -214,7 +227,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## MPI with slurm
 - This is not recommended with embarrassingly parallel problems (like this one)
-- We're going to do it anyway...
+  - It does at least have _some_ communication -- averaging `pi`
 
 
 ## disBatch

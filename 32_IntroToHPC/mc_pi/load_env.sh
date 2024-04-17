@@ -1,11 +1,4 @@
-
-if [[ ! -z $VIRTUAL_ENV ]]; then
-    deactivate
-fi
-
-if [[ ! -z $CONDA_DEFAULT_ENV ]]; then
-    conda deactivate
-fi
+[[ ! -z $CONDA_DEFAULT_ENV ]] && conda deactivate
 
 module -q reset
 module load openmpi python python-mpi
