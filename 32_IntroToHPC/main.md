@@ -179,10 +179,9 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Building/running software
-
+- Demonstrates: `module avail`, `module load`, `PATH`, `fi-create-module`, `icp[cx]`+`libstdc++` issues
 - `git clone https://github.com/flatironinstitute/sciware_awful_cp`
 - `cd sciware_awful_cp`
-- examples for `module avail`, `module load`, `PATH` env variable, `fi-create-module`, `icp[cx]`+`libstdc++` issues
 
 
 ## Let's make a python project
@@ -204,6 +203,8 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Running it on the cluster
+- Demonstrates: `sbatch`, `squeue`, `sacct`
+
 ```
 #!/bin/bash
 #SBATCH -o pi.log  # All stdout from this script
@@ -222,15 +223,22 @@ python pi.py 100000 0
 
 ## Scaling up
 - We could make our code more efficient...
-- But let's throw some power at it
+- But let's throw some power at it, some options are:
+  - `MPI` (message passing interface) using `openmpi`
+  - multiple serial jobs via `disBatch`
+  - could loop through calls to python in sbatch script, but hard to balance and error prone
+  - could use small jobs or job array with slurm, but this angers the compute gods
 
 
 ## MPI with slurm
-- This is not recommended with embarrassingly parallel problems (like this one)
-  - It does at least have _some_ communication -- averaging `pi`
+- Demonstrates: `module spider`, `openmpi`, `mpi4py`, `mpirun`, `squeue`, `htop`, `sacct`, `seff`
+- Run one π calculation per MPI "rank"
+- Send all π calculations to one rank, average, and write to disk
+  - Could also use `MPI_reduce`
 
 
 ## disBatch
+- Demonstrates: `disBatch` task files, and `disBatch` repeat
 - Create list of tasks, pass to disBatch
 - `module load disBatch`
 - sbatch <sbatch options> disBatch task_file
