@@ -93,9 +93,9 @@ Activities where participants all actively work to foster an environment which e
   - Communication lines usually fiber/copper/wireless
   - fiber most common for _high performance_ networks
 - Some rough "typical" numbers
-  - WiFi -- wireless -- \~0.1-1 Gbit/s
-  - Ethernet -- copper -- \~1-40 Gbit/s
-  - Infiniband -- fiber -- \~100-800 Gbit/s
+  - WiFi -- 1ms -- \~0.1-1 Gbit/s
+  - Ethernet -- 0.1ms -- \~1-40 Gbit/s
+  - Infiniband -- 0.001ms -- \~100-800 Gbit/s
 
 
 ### Filesystems
