@@ -197,7 +197,6 @@ Activities where participants all actively work to foster an environment which e
 <center>
 <img src="./assets/cephalopod.jpg" height=300px style="border:none;box-shadow:none;">
 </center>
-<!-- - picture of cephalod and that CEPH is the name of the software -->
 
 
 ### Rusty/popeye storage -- ceph (2)
@@ -212,7 +211,10 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### Rusty/popeye storage -- overview
-<!-- - TODO table summarizing storage differences for ceph/gpfs (lehman volunteered) -->
+<img src="./assets/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
+<br>
+https://wiki.flatironinstitute.org/SCC/Hardware/Storage
+
 
 
 ## Environment management
@@ -314,6 +316,7 @@ python pi.py 100000 0
   - `disBatch` `PREFIX/REPEAT`
   - `&>` redirect
   - `()` subshells
+
 
 
 ## SciWare Survey [TODO]
