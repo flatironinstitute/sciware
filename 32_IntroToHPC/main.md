@@ -50,11 +50,6 @@ Activities where participants all actively work to foster an environment which e
 
 ## Supercomputing terminology
 
-<!-- - stress that goal of a cluster is distributing computational load over multiple devices with a -->
-<!--   gradient/discontinuity of how fast they can talk to each other as you scale up in devices -->
-<!-- - numa is that things live in neighborhoods and it takes time to go between neighborhoods -->
-<!-- - maybe simd? re: GPU -->
-
 
 ## Cluster
 <div style="display: flex;">
@@ -70,6 +65,17 @@ Activities where participants all actively work to foster an environment which e
   </ul>
 </ul>
 </div>
+
+
+### Network/fabric
+- Network/fabric - the means of communication between nodes
+  - Communication lines usually fiber/copper/wireless
+- Latency -- time between sending and receiving messages
+- Bandwidth -- Rate data can be transferred
+- Some rough "typical" numbers
+  - WiFi -- 1ms -- \~0.1-1 Gbit/s
+  - Ethernet -- 0.1ms -- \~1-40 Gbit/s
+  - Infiniband -- 0.001ms -- \~100-800 Gbit/s
 
 
 ### Compute nodes
@@ -94,14 +100,13 @@ Activities where participants all actively work to foster an environment which e
   - CPU Core -- a single physical CPU on a multi-core CPU
   - Cores have their own _cache_ but also share _cache_ directly with other cores
   - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
-- One or more network cards (more later!)
 
 
 ### Compute node architecture -- `lstopo`
 - Cores also sometimes have extra groupings in `NUMA` (non-uniform memory architecture) domains
-  - beyond scope today, but good to know
   - Tells what hardware has direct access to what memory
-- `lstopo --no-io` on FI `skylake` node
+  - Automatic internal "fabric" with different latencies/bandwidth
+  - `lstopo --no-io` on FI `skylake` node
 <center>
     <img src="./assets/skylake-topo.png" height="300px">
 </center>
@@ -120,17 +125,6 @@ Activities where participants all actively work to foster an environment which e
   <li> e.g. large dense linear algebra problems
   </ul>
 </ul>
-
-
-### Network/fabric
-- Network/fabric - the means of communication between computers
-  - Communication lines usually fiber/copper/wireless
-- Latency -- time between sending and receiving messages
-- Bandwidth -- Rate data can be transferred
-- Some rough "typical" numbers
-  - WiFi -- 1ms -- \~0.1-1 Gbit/s
-  - Ethernet -- 0.1ms -- \~1-40 Gbit/s
-  - Infiniband -- 0.001ms -- \~100-800 Gbit/s
 
 
 ### Filesystems
