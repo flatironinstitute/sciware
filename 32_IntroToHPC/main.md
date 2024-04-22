@@ -50,13 +50,41 @@ Activities where participants all actively work to foster an environment which e
 
 ## Supercomputing terminology
 
+<!-- - stress that goal of a cluster is distributing computational load over multiple devices with a -->
+<!--   gradient/discontinuity of how fast they can talk to each other as you scale up in devices -->
+<!-- - numa is that things live in neighborhoods and it takes time to go between neighborhoods -->
+<!-- - maybe simd? re: GPU -->
+
+
+## Cluster
+<div style="display: flex;">
+<img src="./assets/compute_cluster.jpg" style="height:350px; float: left; border:none; box-shadow:none;">
+<ul>
+<li> A group of computers that work together as a single system
+<li> Goal: distribute computational load over multiple devices
+<li> Common components to be defined:
+  <ul>
+  <li> Node (CPU/GPU)
+  <li> Filesystem (shared/local)
+  <li> Network/fabric
+  </ul>
+</ul>
+</div>
+
 
 ### Compute nodes
-- What most people would call a computer, but...
-  - Typically headless -- no display
-  - Accessed/controlled via network -- often programatically
-  - Often multiple network "interfaces" -- more later
-  - Designed for high _throughput_ computation
+<div style="display: flex;">
+<ul>
+<li> What most people would call a computer, but...
+  <ul>
+  <li> Typically headless -- no display
+  <li> Accessed/controlled via network
+  <li> Often multiple network "interfaces"
+  <li> Designed for high <i>throughput</i> computation
+  </ul>
+</ul>
+<img src="./assets/compute_node.jpg" style="height:300px; float: right; border:none; box-shadow:none;">
+</div>
 
 
 ### Compute node architecture
@@ -70,28 +98,35 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### Compute node architecture -- `lstopo`
-- Cores also sometimes have extra groupings in "NUMA" (non-uniform memory architecture) domains
+- Cores also sometimes have extra groupings in `NUMA` (non-uniform memory architecture) domains
   - beyond scope today, but good to know
-  - Specifies what hardware has direct access to what memory
-- `lstopo --no-io` on FI 'skylake' node
+  - Tells what hardware has direct access to what memory
+- `lstopo --no-io` on FI `skylake` node
 <center>
     <img src="./assets/skylake-topo.png" height="300px">
 </center>
 
 
 ### GPU node architecture
-- GPU nodes have all the stuff a CPU node has, plus...
-- Some GPUs - graphics processing units
-  - Misnomer/legacy name, used to "offload" general computation
-    - AKA accelerator/TPU/etc
-  - Great for large dense linear algebra problems
-  - Or... tons of small problems in parallel
+<div style="display: flex;">
+<img src="./assets/h100.jpg" style="height:350px; float: left; border:none; box-shadow:none;">
+<ul>
+<li> GPU Node -- CPU node + GPU
+<li> GPU -- graphics processing unit
+  <ul>
+  <li> Misnomer/legacy name, used to "offload" general computation -- AKA accelerator/TPU
+  <li> SIMD power -- single instruction multiple data
+  <li> large numbers of small identical problems
+  <li> e.g. large dense linear algebra problems
+  </ul>
+</ul>
 
 
 ### Network/fabric
 - Network/fabric - the means of communication between computers
   - Communication lines usually fiber/copper/wireless
-  - fiber most common for _high performance_ networks
+- Latency -- time between sending and receiving messages
+- Bandwidth -- Rate data can be transferred
 - Some rough "typical" numbers
   - WiFi -- 1ms -- \~0.1-1 Gbit/s
   - Ethernet -- 0.1ms -- \~1-40 Gbit/s
@@ -143,24 +178,41 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### Rusty/popeye storage -- home
-
+- `/mnt/home/$USER` AKA `$HOME` -- default path
 - Put your source code and software installs here!
-- High performance GPFS filesystem
+- High performance GPFS filesystem (General Parallel FS)
 - Mind your quota! You can get locked out of the cluster!
   - \~1 million files
   - \~1 TiB limit
+- Backed up regularly -- can recover deleted files
 - `module load fi-utils && fi-quota`
 
 
-### Rusty/popeye storage -- ceph
+### Rusty/popeye storage -- ceph (1)
 
-- rusty: located at `/mnt/ceph/$USER` or via symlink at `~/ceph`
-- popeye: located at `/mnt/sdceph/$USER` or via symlink at `~/ceph`
-- Always put your data/large files here!
+- rusty: located at `/mnt/ceph/$USER`, symlink at `~/ceph`
+- popeye: located at `/mnt/sdceph/$USER`, symlink at `~/ceph`
+- `ceph` (after cephalopod) -- software providing this FS
+- Always put your data/large files here! (large \~ 100MB+)
+<center>
+<img src="./assets/cephalopod.jpg" height=300px style="border:none;box-shadow:none;">
+</center>
+<!-- - picture of cephalod and that CEPH is the name of the software -->
+
+
+### Rusty/popeye storage -- ceph (2)
 - \~45 PiB (rusty) and \~15 PiB (popeye)
 - High bandwidth, high latency (\~1.5GiB/s parallel reads)
-- Highly redundant, but not backed up
+- Highly redundant, not backed up (deletes unrecoverable!)
+- "Small" files "triple replicated"
+  - Two disks can fail and can still recover
+- Large files start triple replicated, then erasure coded later
+  - EC - file distributed across many disks with extra data
+  - Full recovery with some number of disk failures
 
+
+### Rusty/popeye storage -- overview
+<!-- - TODO table summarizing storage differences for ceph/gpfs (lehman volunteered) -->
 
 
 ## Environment management
@@ -173,22 +225,30 @@ Activities where participants all actively work to foster an environment which e
   - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
   - or... `https://jupyter.flatironinstitute.org`
 - Way to edit files on cluster
-  - terminal `emacs/vi/nano/ed`
+  - terminal `emacs`, `vi`, `nano`
   - or... remote edit via `vscode/emacs/vi/sshfs`
   - or... `https://jupyter.flatironinstitute.org`
 
 
 ## Building/running software
-- Demonstrates: `module avail`, `module load`, `PATH`, `fi-create-module`, `icp[cx]`+`libstdc++` issues
-- `git clone https://github.com/flatironinstitute/sciware_awful_cp`
+- `git clone ~scc/sciware_awful_cp`
 - `cd sciware_awful_cp`
 
 
-## Let's make a python project
+## Building/running software (2)
+- Learning points:
+  - `module avail`
+  - `module load`
+  - `PATH`
+  - `icp[cx]` +`libstdc++` issues
+
+
+## Let's make a Python project
 
 - create new project directory
-- `ml python ; python -m venv venv --system-site-packages ; source venv/bin/activate`
+- `ml python ; python -m venv myenv --system-site-packages ; source myenv/bin/activate`
 - create `setup_env` script that loads clean environment
+  - `module` quirk: load `python` BEFORE `venv` activate!
 
 
 ## Please never do this
@@ -203,14 +263,13 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Running it on the cluster
-- Demonstrates: `sbatch`, `squeue`, `sacct`
-
 ```
 #!/bin/bash
 #SBATCH -o pi.log  # All stdout from this script
 #SBATCH -e pi.err  # All stderr from this script
 #SBATCH -p genx    # genx partition (non-exclusive -- doesn't request full nodes)
 #SBATCH -t 1:00    # request 1 min runtime (default 7 days, helps schedule faster)
+#SBATCH -n 1       # 1 task (default)
 
 source load_env.sh
 python pi.py 100000 0
@@ -231,18 +290,30 @@ python pi.py 100000 0
 
 
 ## MPI with slurm
-- Demonstrates: `module spider`, `openmpi`, `mpi4py`, `mpirun`, `squeue`, `htop`, `sacct`, `seff`
-- Run one π calculation per MPI "rank"
+- Run one π calculation per MPI "rank" AKA task
 - Send all π calculations to one rank, average, and write to disk
   - Could also use `MPI_reduce`
 
 
+## MPI with slurm (2)
+- Learning points:
+  - `module spider`, `openmpi`, `mpi4py`
+  - `srun`, `sacct`, `seff`, `squeue`
+  - `htop`
+
+
 ## disBatch
-- Demonstrates: `disBatch` task files, and `disBatch` repeat
 - Create list of tasks, pass to disBatch
 - `module load disBatch`
-- sbatch <sbatch options> disBatch task_file
+- `sbatch <sbatch options> disBatch task_file`
 
+
+## disBatch (2)
+- Learning points:
+  - `disBatch` task files
+  - `disBatch` `PREFIX/REPEAT`
+  - `&>` redirect
+  - `()` subshells
 
 
 ## SciWare Survey [TODO]

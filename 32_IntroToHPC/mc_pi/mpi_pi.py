@@ -16,4 +16,4 @@ for i in range(N):
 hits_arr = comm.gather(hits, root=0)
 if rank == 0:
     pi = 4 * np.array(hits_arr).mean() / N
-    print(f'{pi:.16f}', np.abs(100 * (1 - pi/np.pi)))
+    print(f'{pi:.16f}')

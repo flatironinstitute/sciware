@@ -2,7 +2,7 @@
 
 module -q reset
 module load python
-if [[ ! -d "venv" ]]; then
-    python -m venv venv --system-site-packages
+if [[ ! -d "myenv" ]]; then
+    python -m venv myenv --system-site-packages
 fi
 mkdir -p logs
