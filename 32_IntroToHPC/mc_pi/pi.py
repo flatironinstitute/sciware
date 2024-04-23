@@ -3,11 +3,13 @@ import sys
 
 N = int(float(sys.argv[1]))
 seed = int(sys.argv[2])
-np.random.seed(seed)
+rng = np.random.default_rng(seed=seed)
 
 hits = 0
 for i in range(N):
-    hits += int(np.linalg.norm(np.random.uniform(low=-1, high=1.0, size=2)) <= 1.0)
+    xy = rng.uniform(low=-1.0, high=1.0, size=2)
+    if np.linalg.norm(xy) <= 1.0:
+        hits += 1
 
 pi = 4 * hits / N
 print(f'{pi:.16f}')
