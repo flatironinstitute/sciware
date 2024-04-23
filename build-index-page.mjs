@@ -14,7 +14,7 @@ const upcoming_events = [
     weekday: `Thursday`,
     date: `April 25`,
     time: `2:00 PM - 4:00 PM`,
-    location: `162 5th Ave<br />7th Floor<br />Classroom`,
+    location: `162 5th Ave<br />9th Floor<br />Classroom`,
     summary: `
 In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, 
 <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software 
