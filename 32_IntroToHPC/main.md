@@ -313,7 +313,7 @@ python pi.py 100000 0
 
 
 
-## SciWare Survey [TODO]
-<!-- <center> -->
-<!-- <img width="50%" src="./qr.png"> -->
-<!-- </center> -->
+## SciWare Survey
+<center>
+<img width="50%" src="./assets/qr.png">
+</center>
