@@ -158,7 +158,6 @@ Activities where participants all actively work to foster an environment which e
 - \~100k CPU cores (\~1200 nodes)
 - _Almost_ every node connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
-  - fiber-optic
   - Node types on different infiniband networks!
 - 240 H100, 288 A100 and 98 V100 GPUs
 
