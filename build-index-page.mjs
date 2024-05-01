@@ -66,8 +66,8 @@ const past_events = [
   [`Session #27 day 4`, `Summer Intro Series`, `June 21, 2023`, `/27_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/27_SummerIntro`, `https://vimeo.com/showcase/7164070/video/885382496`],
   [`Session #28`, `CCB-Hosted Sciware`, `September 21, 2023`, `/28_CCB/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/28_CCB`, `https://vimeo.com/showcase/7164070/video/885390328`],
   [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/29_CCA`, `https://vimeo.com/showcase/7164070/video/885395764`],
-  [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`],
-  [`Session #31`, `Code Writing Robots and LLM Magic: The Good, The Bad, and The Ugly`, `March 28, 2024`, `/31_CodeRobots/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/31_CodeRobots`],
+  [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`, `https://vimeo.com/showcase/7164070/video/939128628`],
+  [`Session #31`, `Code Writing Robots and LLM Magic: The Good, The Bad, and The Ugly`, `March 28, 2024`, `/31_CodeRobots/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/31_CodeRobots`, `https://vimeo.com/showcase/7164070/video/938814931`],
 ];
 
 const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -88,8 +88,8 @@ const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, 
 });
 
 const past_events_list = past_events.reverse().map(([session, title, date, link, github, vimeo]) => {
-  const g = github ? html`<a href="${github}" class="icon inline-icon brands fa-github"></a>` : ``;
-  const v = vimeo ? html`<a href="${vimeo}" class="icon inline-icon brands fa-vimeo"></a>` : ``;
+  const g = github ? html`<a href="${github}" class="icon inline-icon brands fa-github" target="_blank" rel="noopener noreferrer"></a>` : ``;
+  const v = vimeo ? html`<a href="${vimeo}" class="icon inline-icon brands fa-vimeo" target="_blank" rel="noopener noreferrer"></a>` : ``;
   // prettier-ignore
   return html`
       <li>
