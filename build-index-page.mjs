@@ -10,21 +10,45 @@ import { execSync } from "node:child_process";
 
 const upcoming_events = [
   {
-    title: `An Extended Introduction to the Flatiron Clusters`,
-    weekday: `Thursday`,
-    date: `April 25`,
-    time: `2:00 PM - 4:00 PM`,
-    location: `162 5th Ave<br />9th Floor<br />Classroom`,
+    title: `Tool Setup, Intro to the Shell and the Cluster`,
+    weekday: `Tuesday`,
+    date: `June 4`,
+    time: `10 AM – 12:30 PM`,
+    location: `162 5th Ave<br />IDA Auditorium`,
     summary: `
-In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, 
-<code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software 
-and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. 
-In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks.
-
-<p>In order to fully participate, a cluster account and a laptop will be needed. You will need to be able to login to the cluster from your laptop. 
-
-<p>This workshop is a pilot session for potential 
-future cluster onboarding and your participation and feedback would be greatly appreciated.`,
+    Learn about the cluster and navigating the command line, and setup your laptop for coding.`,
+  },
+  {
+    title: `Intro to Visual Studio Code`,
+    weekday: `Wednesday`,
+    date: `June 12`,
+    time: `10 AM – 12:30 PM`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: `Learn how Visual Studio Code can help you be a better Python programmer.`,
+  },
+  {
+    title: `NVIDIA Intro to Machine Learning`,
+    weekday: `Monday – Tuesday`,
+    date: `June 17 – 18`,
+    time: `All Day`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: `Learn to use the popular <code>torch</code> Python package to train machine learning models using cluster hardware.`,
+  },
+  {
+    title: `Intro to GitHub, Part 1`,
+    weekday: `Thursday`,
+    date: `June 20`,
+    time: `10 AM – 12:30 PM`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: `Get setup with <code>git</code> and local version control.`,
+  },
+  {
+    title: `Intro to GitHub, Part 2`,
+    weekday: `Thursday`,
+    date: `June 27`,
+    time: `10 AM – 12:30 PM`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: `Connect to Github and learn how to collaborate on code.`,
   },
 ];
 
@@ -68,6 +92,7 @@ const past_events = [
   [`Session #29`, `CCA-Hosted Sciware`, `November 11, 2023`, `/29_CCA/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/29_CCA`, `https://vimeo.com/showcase/7164070/video/885395764`],
   [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`, `https://vimeo.com/showcase/7164070/video/939128628`],
   [`Session #31`, `Code Writing Robots and LLM Magic: The Good, The Bad, and The Ugly`, `March 28, 2024`, `/31_CodeRobots/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/31_CodeRobots`, `https://vimeo.com/showcase/7164070/video/938814931`],
+  [`Session #32`, `Intro to High-Performance Computing`, `April 25, 2024`, `/32_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/32_IntroToHPC`],
 ];
 
 const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -81,7 +106,7 @@ const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, 
       </div>
       <div class="summary">
         <h3>${title}</h3>
-        <p>${summary}</p>
+        <p>${summary.trim()}</p>
       </div>
     </li>
   `;

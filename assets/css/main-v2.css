@@ -93,6 +93,9 @@ main section:first-child {
 }
 
 section#upcoming ul {
+  display: grid;
+  flex-direction: column;
+  row-gap: 2rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -106,7 +109,7 @@ section#upcoming ul li {
 
 @media (min-width: 1000px) {
   section#upcoming ul li {
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: 20ch 1fr;
     column-gap: 3rem;
   }
 }
