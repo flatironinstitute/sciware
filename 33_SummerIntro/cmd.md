@@ -109,9 +109,9 @@ Desktop  sciware-command-intro
 
 ## Advanced exercises
 
-See `advanced/README`
+See `advanced/README.md`
 
-https://wiki.flatironinstitute.org/SCC/Software/UnixIntroduction
+https://wiki.flatironinstitute.org/Public/UnixIntroduction
 
 
 ### Paths
