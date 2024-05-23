@@ -6,6 +6,7 @@
 ## VS Code feature demo [20 min]
 - Workspaces
     - Open a directory
+    - Don't open your home directory as a workspace
 - File browser
 - Editor tabs/peeking
 - Built-in terminal
@@ -19,7 +20,7 @@
   - Include/exclude
   - Hide certain search results (later)
 - Git awareness
-- Extensions: Python, Jupyter
+- Extensions: Python, Jupyter, Ruff
 
 ## Install miniconda [10 min]
 
@@ -31,19 +32,29 @@
 ## Python features [20 min]
 - Syntax highlighting
 - Tab complete
+- Cursor navigation by token (Ctrl-Left/Right, with Shift)
 - Parentheses matching
 - Right click on variables/functions/etc
-- Jump to definition
+- Jump to definition (F12)
 - Type hinting
 - Hover for doc
 - Linting (yellow squiggles)
 - Block comments
 - Block folding
 - Block indentation
+- Multi-line editing
+- Variable renaming
 - Notebooks
+- Delete line (Shift-Delete)
+- Ruff: Format code
+- Copilot
 
 ## Independent work: keep working on the Python project [20 min]
 
+## What did you learn? [10 min]
+Ask the students what they discovered about VS Code
+
 ## Wrap-up [? min]
-- Time permitting:
-  - Remote connection via JupyterHub
+
+## For cluster users [5 min]
+- Remote - Tunnel connection via JupyterHub
