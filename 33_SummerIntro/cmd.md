@@ -26,7 +26,7 @@ Activities where participants all actively work to foster an environment which e
 - Pre-session: setup a terminal (15 min)
 - Command-line intro (45 min, with terminal)
 - Cluster intro (30 min)
-- VS code intro, terminal (10 min)
+- VS code setup, intro (15 min)
 - Homework for next time: create a github account
 
 
@@ -37,7 +37,7 @@ Activities where participants all actively work to foster an environment which e
 - Mac: Install xcode: open a terminal and run
    - `xcode-select --install`
 - Windows
-  - Install WSL (and VS Code): https://code.visualstudio.com/docs/remote/wsl#_installation
+  - Install WSL: https://learn.microsoft.com/en-us/windows/wsl/install
 
 
 ## Getting started
