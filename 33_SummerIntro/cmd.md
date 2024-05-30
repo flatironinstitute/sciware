@@ -73,6 +73,7 @@ Here's a typical shell command, separated by spaces:
 - Shell may be on another (remote) computer (e.g., ssh)
 
 
+
 ## Working directory
 
 A shell always has a "current working directory": the directory (or folder) that's used by default
@@ -112,6 +113,10 @@ Desktop  sciware-command-intro
 See `advanced/README.md`
 
 https://wiki.flatironinstitute.org/Public/UnixIntroduction
+
+- `cd`, `cat`, `rmdir`, history, globbing
+- `awk`, `wget`, `sed`, `grep`
+
 
 
 ### Paths
