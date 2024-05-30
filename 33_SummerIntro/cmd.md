@@ -32,7 +32,8 @@ Activities where participants all actively work to foster an environment which e
 
 ## Getting help
 
-\#code-help on SF Intern Slack
+- \#code-help on SF Intern Slack
+- Introductions
 
 
 
