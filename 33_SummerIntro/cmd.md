@@ -30,6 +30,11 @@ Activities where participants all actively work to foster an environment which e
 - Homework for next time: create a github account
 
 
+## Getting help
+
+\#code-help on SF Intern Slack
+
+
 
 ## Preparation Instructions
 *Instructions to get your laptop set up before the session*
@@ -338,7 +343,9 @@ Organize the files in `animals` directory:
 
 
 
-## VS code
+## VS Code
+
+A flexible IDE (Integrated Development Environment) and editor
 
 
 ### Preparation Instructions
