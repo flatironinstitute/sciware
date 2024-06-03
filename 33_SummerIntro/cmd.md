@@ -116,12 +116,12 @@ Desktop  sciware-command-intro
 
 ## Advanced exercises
 
+- Today: `cd`, `cat`, `rmdir`, history, globbing
+- `awk`, `wget`, `sed`, `grep`
+
 See `advanced/README.md`
 
-https://wiki.flatironinstitute.org/Public/UnixIntroduction
-
-- `cd`, `cat`, `rmdir`, history, globbing
-- `awk`, `wget`, `sed`, `grep`
+ https://wiki.flatironinstitute.org/Public/UnixIntroduction
 
 
 
