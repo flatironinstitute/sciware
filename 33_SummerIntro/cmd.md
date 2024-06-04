@@ -346,7 +346,7 @@ Organize the files in `animals` directory:
 
 ## Break
 
-<img src="assets/cmd_survey.png" width="30%">
+<img src="assets/day1_survey.png" width="30%">
 
 
 
@@ -381,4 +381,4 @@ A flexible IDE (Integrated Development Environment) and editor
 
 Sign up for account at [github.com](https://github.com/signup)
 
-<img src="assets/cmd_survey.png" width="30%">
+<img src="assets/day1_survey.png" width="30%">
