@@ -344,6 +344,16 @@ Organize the files in `animals` directory:
 
 
 
+## Break
+
+<img src="assets/cmd_survey.png" width="30%">
+
+
+
+## HPC Intro
+
+
+
 ## VS Code
 
 A flexible IDE (Integrated Development Environment) and editor
@@ -370,3 +380,5 @@ A flexible IDE (Integrated Development Environment) and editor
 ## Homework
 
 Sign up for account at [github.com](https://github.com/signup)
+
+<img src="assets/cmd_survey.png" width="30%">
