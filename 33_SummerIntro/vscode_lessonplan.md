@@ -4,6 +4,7 @@
 - https://code.visualstudio.com/Download
 
 ## VS Code feature demo [20 min]
+- Select a color theme
 - Workspaces
     - Open a directory
     - Don't open your home directory as a workspace
@@ -32,6 +33,7 @@
 
 ## Python features [25 min]
 - Syntax highlighting
+- Unused variable shading
 - Tab complete
 - Cursor navigation by token (Ctrl-Left/Right, with Shift)
 - Parentheses matching
@@ -45,6 +47,7 @@
 - Block indentation
 - Multi-line editing (Ctrl-Alt-Up/Down)
 - Variable renaming (F2)
+- Find highlighting (Ctrl-F, or highlighting)
 - Notebooks (Jupyter: Create New Notebook)
 - Delete line (Shift-Delete)
 - Ruff: Format code
