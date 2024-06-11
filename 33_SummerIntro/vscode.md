@@ -73,11 +73,8 @@ Activities where participants all actively work to foster an environment which e
 https://github.com/jsoules/vs-code-introduction
 - Intro videos from Microsoft:
 https://code.visualstudio.com/docs/getstarted/introvideos
-
+- Get help at [#code-help](https://simonsfoundation.enterprise.slack.com/archives/C072CB7GKAB) in the SF Interns 2024 Slack workspace
 
 # Survey
 
-https://bit.ly/sciware-vscode-2023
-
-
-# Questions & Help
+![image](https://github.com/flatironinstitute/sciware/assets/5640139/ea925162-48aa-4276-aa64-ee0acc9ebfff)
