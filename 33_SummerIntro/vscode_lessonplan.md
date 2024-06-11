@@ -20,6 +20,7 @@
   - Include/exclude
   - Hide certain search results (later)
 - Git awareness
+- Demo of larger repo (sciware)
 - Extensions: Python, Jupyter, Ruff
 
 ## Install miniconda [10 min]
@@ -29,7 +30,7 @@
 
 ## Break for cookies [10 min]
 
-## Python features [20 min]
+## Python features [25 min]
 - Syntax highlighting
 - Tab complete
 - Cursor navigation by token (Ctrl-Left/Right, with Shift)
@@ -39,22 +40,19 @@
 - Type hinting
 - Hover for doc
 - Linting (yellow squiggles)
-- Block comments
+- Block comments (Ctrl-/)
 - Block folding
 - Block indentation
-- Multi-line editing
-- Variable renaming
-- Notebooks
+- Multi-line editing (Ctrl-Alt-Up/Down)
+- Variable renaming (F2)
+- Notebooks (Jupyter: Create New Notebook)
 - Delete line (Shift-Delete)
 - Ruff: Format code
 - Copilot
 
-## Independent work: keep working on the Python project [20 min]
+## Independent work: keep working on the Python project [15 min]
 
-## What did you learn? [10 min]
-Ask the students what they discovered about VS Code
-
-## Wrap-up [? min]
+## What did you learn? [5 min]
 
 ## For cluster users [5 min]
 - Remote - Tunnel connection via JupyterHub

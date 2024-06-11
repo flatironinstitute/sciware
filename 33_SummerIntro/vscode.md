@@ -3,7 +3,7 @@
 ## Intro to VS Code
 ### Learn how VS Code can help you be a better programmer
 
-https://sciware.flatironinstitute.org/27_SummerIntro
+https://sciware.flatironinstitute.org/33_SummerIntro
 
 
 ## Sciware goal
@@ -15,10 +15,11 @@ Activities where participants all actively work to foster an environment which e
 
 ## Summer Intros
 
-- May 31 2-4: command line & cluster
-- Jun 7 2-4 in 162-2 IDA: git & GitHub, Part I
-- Jun 14 2-4 in 162-2 IDA: git & GitHub, Part II
-- today **1-3** in 162-2 IDA: VS Code
+- ~~June 4 10-12:30: command line & cluster~~
+- **Jun 12 10-12:30: VS Code**
+- Jun 17-18 all day: NVIDIA intro to Machine Learning
+- Jun 20 10-12:30: git & Github, Part I
+- Jun 27 10-12:30: git & Github, Part II
 
 
 ## Today's agenda (1)
@@ -26,17 +27,17 @@ Activities where participants all actively work to foster an environment which e
 - Install VS Code
   - [Windows] Install WSL (https://learn.microsoft.com/windows/wsl/install)
   - Install VS Code (https://code.visualstudio.com/Download)
-- What is VS Code?
+- Intro to VS Code
+  - Clone a repo
+    - https://github.com/flatironinstitute/sciware-vscode-exercise
   - Orientation to the interface
   - Follow along!
 
 
 ## Today's agenda (2)
-- Install Python (miniconda: https://docs.conda.io/en/latest/miniconda.html)
-- Set up a Python project (i.e. clone a repo)
-  - https://github.com/flatironinstitute/sciware-vscode-exercise
-- Orientation to Python features
-  - Follow along on your laptop
+- Install Python
+  - https://docs.anaconda.com/free/miniconda/#quick-command-line-install
+- Orientation to Python features (follow along!)
 - Practice using VS Code with a Python project
 
 
