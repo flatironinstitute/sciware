@@ -2,7 +2,7 @@
 
 ## Intro to GitHub
 
-https://sciware.flatironinstitute.org/27_SummerIntro
+https://sciware.flatironinstitute.org/33_SummerIntro
 
 
 ## Sciware goal
@@ -12,12 +12,26 @@ Activities where participants all actively work to foster an environment which e
 <small>\*though sometimes we try to expand your options</small>
 
 
+## Sciware website
+
+Previous sciwares available here
+https://sciware.flatironinstitute.org
+
+Password for videos is...
+
+<img src="assets/sciware_ss.png" width="40%">
+
+
 ## Summer Intros
 
-- May 31 2-4: command line & cluster
-- today 2-4 in 162-2 IDA: git & GitHub, Part I
-- Jun 14 2-4 in 162-2 IDA: git & GitHub, Part II
-- Jun 21 **1-3** in 162-2 IDA: VS Code
+- today 10-12:30: git & Github, Part I
+- Jun 27 10-12:30: git & Github, Part II
+
+
+## Getting help
+
+- \#code-help on SF Intern Slack
+- \#sciware on SF Slack
 
 
 ## Today's Agenda
@@ -193,7 +207,7 @@ How to set up your favorite editor with Git:
 <img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
 <ul>
 <li>Go to the repo on the GitHub website<ul>
-  <li><a href="https://github.com/flatironinstitute/sciware27-git-intro">https://github.com/ flatironinstitute/sciware27-git-intro</a></li></ul>
+  <li><a href="https://github.com/flatironinstitute/sciware33-git-intro">https://github.com/ flatironinstitute/sciware33-git-intro</a></li></ul>
 </li>
 <li>Click Green Code button</li>
 <li>Choose Local tab</li>
@@ -207,8 +221,8 @@ How to set up your favorite editor with Git:
 
 In a Terminal window, clone the repo:
 
-<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware27-git-intro
-> cd sciware27-git-intro
+<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware33-git-intro
+> cd sciware33-git-intro
 </code></pre>
 
 <div class="spacer"></div>
@@ -228,8 +242,8 @@ In a Terminal window, clone the repo:
 - It also saves the URL to the repo and names it *origin*
 
 <pre  style="font-size:0.9em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>&gt; git remote -v
-origin  git@github.com:flatironinstitute/sciware27-git-intro (fetch)
-origin  git@github.com:flatironinstitute/sciware27-git-intro (push)
+origin  git@github.com:flatironinstitute/sciware33-git-intro (fetch)
+origin  git@github.com:flatironinstitute/sciware33-git-intro (push)
 </code></pre>
 
 
@@ -262,7 +276,7 @@ https://github.com/explore
 ## Make a project directory (folder)
 
 <pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
-> cd #out of sciware27-git-intro
+> cd #out of sciware33-git-intro
 > mkdir silly_repo
 > cd silly_repo
 > touch silly_code.py

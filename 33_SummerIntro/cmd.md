@@ -139,6 +139,8 @@ See `advanced/README.md`
    - `../you/dir/../dir/file`
    - `../..///../.././home//you/dir/./file`
 
+<!-- notes for next year: simplify examples, side-by-side graphical -->
+
 
 ### Tab completion
 

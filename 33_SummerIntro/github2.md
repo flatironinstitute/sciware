@@ -2,7 +2,7 @@
 
 ## Intro to GitHub
 
-https://sciware.flatironinstitute.org/27_SummerIntro
+https://sciware.flatironinstitute.org/33_SummerIntro
 
 
 ## Sciware goal
@@ -22,19 +22,10 @@ Password for videos is...
 <img src="assets/sciware_ss.png" width="40%">
 
 
-## Sciware slack, contact
+## Getting help
 
-#sciware on simonsfoundation.slack.com (use flatiron email)
-
-Computational help: scicomp@flatironinstitute.org
-
-
-## Summer Intros
-
-- May 31 2-4: command line & cluster
-- Jun 7 2-4 in 162-2 IDA: git & GitHub, Part I
-- today 2-4 in 162-2 IDA: git & GitHub, Part II
-- Jun 21 **1-3** in 162-2 IDA: VS Code
+- \#code-help on SF Intern Slack
+- \#sciware on SF Slack
 
 
 ## Today's Agenda
@@ -44,7 +35,6 @@ Computational help: scicomp@flatironinstitute.org
 - Forking
 - Pull Requests
 - Reviewing
-
 
 
 
@@ -79,7 +69,7 @@ Computational help: scicomp@flatironinstitute.org
 </div>
 
 <pre  style="font-size:1em;"><code data-trim data-noescape>
-&gt; mv sciware27-git-intro/ sciware27-git-intro-day1/
+&gt; mv sciware33-git-intro/ sciware33-git-intro-day1/
 </pre>
 
 
@@ -91,7 +81,7 @@ Computational help: scicomp@flatironinstitute.org
 ## Step 1: Fork
 
 First we need to fork the repo
-https://github.com/flatironinstitute/sciware27-git-intro
+https://github.com/flatironinstitute/sciware33-git-intro
 <img src="./assets/where_is_the_fork_button.png">
 
 
@@ -105,7 +95,7 @@ https://github.com/flatironinstitute/sciware27-git-intro
 Next, we clone <em>our</em> fork of the repo:
 
 <pre style="font-size:1em;"><code data-trim data-noescape>
-&gt; git clone git@github.com:your_user_name/sciware27-git-intro.git
+&gt; git clone git@github.com:your_user_name/sciware33-git-intro.git
 </code></pre>
 
 
