@@ -252,7 +252,7 @@ origin  git@github.com:flatironinstitute/sciware33-git-intro (push)
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
 
 
-# Activity
+# Homework
 
 ## Find a repo and clone it to your computer
 
@@ -262,9 +262,7 @@ https://github.com/explore
 
 # Survey
 
-## http://bit.ly/sciware-git1-2023
-
-<img src="assets/survey_qr.png" width="30%">
+<img src="assets/gh1_qr.png" width="30%">
 
 
 
@@ -395,6 +393,9 @@ Alternatively, you can commit directly from the command line:
 # Activity
 
 - Push `silly_code.py` to the repo
+
+# Homework
+
 - Put one of your projects into a new GitHub repo
 
 
@@ -404,7 +405,7 @@ Alternatively, you can commit directly from the command line:
 - Find GitHub buddies
 - The best way to figure things out is by asking folks for help
 
-<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh">
+<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh; border: none">
 
 
 ## Troubleshooting
@@ -438,6 +439,4 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 # Survey
 
-## http://bit.ly/sciware-git1-2023
-
-<img src="assets/survey_qr.png" width="30%">
+<img src="assets/gh1_qr.png" width="30%">

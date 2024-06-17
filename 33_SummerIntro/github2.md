@@ -152,7 +152,6 @@ Save the file.
 # Break 
 
 Please take survey if you're leaving now
-## http://bit.ly/sciware-github2-2023
 
 <img src="assets/gh2_qr.png" width="30%">
 
@@ -289,7 +288,5 @@ Check out and bookmark these tutorials for more information about git and the fo
 
 
 # Survey
-
-## http://bit.ly/sciware-github2-2023
 
 <img src="assets/gh2_qr.png" width="30%">
