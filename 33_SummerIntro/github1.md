@@ -40,7 +40,6 @@ Password for videos is...
 - Setting up git and GitHub on your computer
 - Getting code off of GitHub
 - Putting code onto GitHub
-- Reception at 4 on promenade
 
 
 
