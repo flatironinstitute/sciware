@@ -36,8 +36,8 @@ Password for videos is...
 
 ## Today's Agenda
 
-- What is Git and GitHub?
-- Setting up git and GitHub on your computer
+- What are Git and GitHub?
+- Setting up Git and GitHub on your computer
 - Getting code off of GitHub
 - Putting code onto GitHub
 
@@ -113,7 +113,7 @@ See what email address is currently set
 </code></pre>
 
 Set an email address
-<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "youremail@flatironinstitute.org"
+<pre  style="font-size:0.9em;"> <code data-trim data-noescape>&gt; git config --global user.email "email@email.org"
 </code></pre>
 (Ideally set to the same email address you used for GitHub account)
 
@@ -140,8 +140,7 @@ Copy this whole line to the clipboard
 
 ## Add the SSH key to GitHub
 
-- On GitHub:
-  - Profile Photo > Settings > SSH and GPG keys > New SSH Key
+- GitHub > Profile Photo > Settings > SSH and GPG keys > New SSH Key
 
 <img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
 <img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
@@ -184,8 +183,8 @@ How to set up your favorite editor with Git:
 <div style="display: flex;">
 <img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
 <ul>
-<li>Directory containing the code<ul>
-  <li><i>repository</i> or <i>repo</i>, for short</li>
+<li>Directory with the code<ul>
+  <li><i>repository</i> or <i>repo</i></li>
 </ul></li>
 <li> "Download the code"<ul>
   <li><i>clone</i> the repo</li>
@@ -283,20 +282,7 @@ https://github.com/explore
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
-## Create a repo on GitHub
-
-<div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-left:20px; margin-right:10px">
-<ul>
-<li>Go to your homepage on GitHub</li>
-<li>Click the Repositories tab</li>
-<li>Click the green New button</li>
-<li>Name the repository <tt>silly_repo</tt></li>
-</ul>
-</div>
-
-
-### Initialize the directory to use with GitHub
+### Initialize the directory to use with git & GitHub
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git init -b main
 > git status
@@ -305,7 +291,7 @@ https://github.com/explore
 <img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
-## Name the primary *branch* `main`
+## Check the status of your current *branch*
 
 - It's possible to have multiple *branches* of the code where different things are being worked on.
 - The primary branch is usually called *main*.
@@ -318,9 +304,9 @@ Notice:
 - `silly_file.txt` is in red and is *untracked*
 
 
-## Specify which files that you want to transfer
+## Specify the files to save to version control
 
-Use the `git add` command to specify exactly which files you want to transfer to GitHub.
+Use the `git add` command to specify exactly which files you want to keep under version control.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
 > git add silly_file.txt
@@ -354,7 +340,20 @@ Alternatively, you can commit directly from the command line:
 - Says what you changed and why
 
 
-## Connect the repo to GitHub
+## Create a repo on GitHub
+
+<div style="display: flex;">
+<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-left:20px; margin-right:10px">
+<ul>
+<li>Go to your homepage on GitHub</li>
+<li>Click the Repositories tab</li>
+<li>Click the green New button</li>
+<li>Name the repository <tt>silly_repo</tt></li>
+</ul>
+</div>
+
+
+## Connect the local repo to GitHub
 
 - Use `git remote add` to provide the URL to the GitHub repo.
 - The repo that is in your personal profile is usually called `origin`
@@ -366,7 +365,7 @@ Alternatively, you can commit directly from the command line:
 </code></pre>
 
 
-## Upload the repo contents to GitHub
+## Upload the local repo contents to GitHub
 
 - Use the `git push` command to upload the committed changes to the GitHub repo.
 
