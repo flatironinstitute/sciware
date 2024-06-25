@@ -35,6 +35,7 @@ Password for videos is...
 - Forking
 - Pull Requests
 - Reviewing
+- Branches
 
 
 
@@ -68,9 +69,9 @@ Password for videos is...
 <img src="https://imgs.xkcd.com/comics/git.png" style="height=14em; float: left;">
 </div>
 
-<pre  style="font-size:1em;"><code data-trim data-noescape>
+<pre style="font-size:1em;"><code data-trim data-noescape>
 &gt; mv sciware33-git-intro/ sciware33-git-intro-day1/
-</pre>
+</code></pre>
 
 
 ## Step 1: Fork
@@ -151,13 +152,13 @@ Save the file.
 
 # Break 
 
-Please take survey if you're leaving now
-
 <img src="assets/gh2_qr.png" width="30%">
 
 
+
 ## Step 5: Open a Pull Request
-<img width=80% src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.png">
+
+<img width="80%" src="./assets/Learn-Git-Graphics/Open%20a%20Pull%20Request%20for%20the%20Fork.png">
 
 
 ## Step 5: Open a Pull Request
@@ -207,7 +208,7 @@ Things to think about when making pull requests (PR):
 
 Finish up your pull request and click "Create Pull Request"
 
-<img src="./assets/pull_request_form.png" style="height: 80vh">
+<img src="./assets/pull_request_form.png" height="80vh">
 
 
 ## Step 6: Wait for your PR to be merged
@@ -217,7 +218,6 @@ Someone else will merge your PR.
 In practice, someone might leave comments on your PR and/or request changes before merging.
 
 
-<!--
 ## Reviewing a Pull Request
 
 As other folks make PRs, go to the pull requests tab on GitHub.
@@ -235,7 +235,6 @@ Choose another student's PR and click on it.
 Click on the commit to see the diff of their changes and hover over a line until you see the `+` symbol.
 
 ![](./assets/pull_request_rev3.png)
--->
 
 
 
@@ -276,6 +275,49 @@ Confirm that you have the changes locally.
     </code>
 </pre>
 
+
+
+## Advanced: Branching
+
+- A branch is like a fork within a repository
+- You can create a local branch that is only on your local computer
+- You can push this branch to your remote to have multiple branches on your github repo
+
+
+## Create a local branch
+
+- `git checkout` can be used to switch branches
+
+```
+> git branch -v
+> git checkout -b newbranch
+> git branch -v
+> git checkout main
+```
+
+
+## Make a commit on a branch
+
+- Checkout your branch: `git checkout newbranch`
+- Create/edit a file, add, and commit
+- Push this branch to github: `git push origin newbranch`
+
+
+## Open a PR
+
+- On your own github repo, create a PR to merge `newbranch` into `main`
+
+
+## Merge into main
+
+```
+> git branch -v
+> git checkout main
+> git merge newbranch
+> git push origin main
+```
+
+Check your new PR!
 
 
 ## Extra Resources
