@@ -208,7 +208,7 @@ Things to think about when making pull requests (PR):
 
 Finish up your pull request and click "Create Pull Request"
 
-<img src="./assets/pull_request_form.png" height="80vh">
+<img src="./assets/pull_request_form.png" width="70%">
 
 
 ## Step 6: Wait for your PR to be merged
