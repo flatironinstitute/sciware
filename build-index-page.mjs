@@ -9,47 +9,47 @@ import fs from "node:fs";
 import { execSync } from "node:child_process";
 
 const upcoming_events = [
-  {
-    title: `Tool Setup, Intro to the Shell and the Cluster`,
-    weekday: `Tuesday`,
-    date: `June 4`,
-    time: `10 AM – 12:30 PM`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: `
-    Learn about the cluster and navigating the command line, and setup your laptop for coding.`,
-  },
-  {
-    title: `Intro to Visual Studio Code`,
-    weekday: `Wednesday`,
-    date: `June 12`,
-    time: `10 AM – 12:30 PM`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: `Learn how Visual Studio Code can help you be a better Python programmer.`,
-  },
-  {
-    title: `NVIDIA Intro to Machine Learning`,
-    weekday: `Monday – Tuesday`,
-    date: `June 17 – 18`,
-    time: `All Day`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: `Learn to use the popular <code>torch</code> Python package to train machine learning models using cluster hardware.`,
-  },
-  {
-    title: `Intro to GitHub, Part 1`,
-    weekday: `Thursday`,
-    date: `June 20`,
-    time: `10 AM – 12:30 PM`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: `Get setup with <code>git</code> and local version control.`,
-  },
-  {
-    title: `Intro to GitHub, Part 2`,
-    weekday: `Thursday`,
-    date: `June 27`,
-    time: `10 AM – 12:30 PM`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: `Connect to Github and learn how to collaborate on code.`,
-  },
+  // {
+  //   title: `Tool Setup, Intro to the Shell and the Cluster`,
+  //   weekday: `Tuesday`,
+  //   date: `June 4`,
+  //   time: `10 AM – 12:30 PM`,
+  //   location: `162 5th Ave<br />IDA Auditorium`,
+  //   summary: `
+  //   Learn about the cluster and navigating the command line, and setup your laptop for coding.`,
+  // },
+  // {
+  //   title: `Intro to Visual Studio Code`,
+  //   weekday: `Wednesday`,
+  //   date: `June 12`,
+  //   time: `10 AM – 12:30 PM`,
+  //   location: `162 5th Ave<br />IDA Auditorium`,
+  //   summary: `Learn how Visual Studio Code can help you be a better Python programmer.`,
+  // },
+  // {
+  //   title: `NVIDIA Intro to Machine Learning`,
+  //   weekday: `Monday – Tuesday`,
+  //   date: `June 17 – 18`,
+  //   time: `All Day`,
+  //   location: `162 5th Ave<br />IDA Auditorium`,
+  //   summary: `Learn to use the popular <code>torch</code> Python package to train machine learning models using cluster hardware.`,
+  // },
+  // {
+  //   title: `Intro to GitHub, Part 1`,
+  //   weekday: `Thursday`,
+  //   date: `June 20`,
+  //   time: `10 AM – 12:30 PM`,
+  //   location: `162 5th Ave<br />IDA Auditorium`,
+  //   summary: `Get setup with <code>git</code> and local version control.`,
+  // },
+  // {
+  //   title: `Intro to GitHub, Part 2`,
+  //   weekday: `Thursday`,
+  //   date: `June 27`,
+  //   time: `10 AM – 12:30 PM`,
+  //   location: `162 5th Ave<br />IDA Auditorium`,
+  //   summary: `Connect to Github and learn how to collaborate on code.`,
+  // },
 ];
 
 const past_events = [
@@ -93,9 +93,13 @@ const past_events = [
   [`Session #30`, `Programming Language Interoperability`, `February 15, 2024`, `/30_CCQ/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/30_CCQ`, `https://vimeo.com/showcase/7164070/video/939128628`],
   [`Session #31`, `Code Writing Robots and LLM Magic: The Good, The Bad, and The Ugly`, `March 28, 2024`, `/31_CodeRobots/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/31_CodeRobots`, `https://vimeo.com/showcase/7164070/video/938814931`],
   [`Session #32`, `Intro to High-Performance Computing`, `April 25, 2024`, `/32_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/32_IntroToHPC`],
+  [`Session #33 day 1`, `Command line and Shell interaction`, `June 4, 2024`, `/33_SummerIntro/day1.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
+  [`Session #33 day 2`, `Intro to VS Code`, `June 12, 2024`, `/33_SummerIntro/day2.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
+  [`Session #33 day 3`, `Intro to GitHub, Part 1`, `June 20, 2024`, `/33_SummerIntro/day3.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
+  [`Session #33 day 4`, `Intro to GitHub, Part 2`, `June 27, 2024`, `/33_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
 ];
 
-const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
+const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
   return html`
     <li>
       <div class="details">
@@ -111,6 +115,12 @@ const upcoming_events_list = upcoming_events.map(({ title, weekday, date, time, 
     </li>
   `;
 });
+
+const upcoming_events_list = html`
+  <ul>
+    ${upcoming_events_list_items}
+  </ul>
+`;
 
 const past_events_list = past_events.reverse().map(([session, title, date, link, github, vimeo]) => {
   const g = github ? html`<a href="${github}" class="icon inline-icon brands fa-github" target="_blank" rel="noopener noreferrer"></a>` : ``;
@@ -167,9 +177,7 @@ const about_section = html`
 const main_contents = html`
   <section id="upcoming">
     <h2>Upcoming Sciware Events</h2>
-    <ul>
-      ${upcoming_events_list}
-    </ul>
+    ${upcoming_events_list_items.length > 0 ? upcoming_events_list : html`<p>There are no upcoming events at this time.</p>`}
   </section>
   <section id="past">
     <h2>Previous Events</h2>
