@@ -97,6 +97,7 @@ const past_events = [
   [`Session #33 day 2`, `Intro to VS Code`, `June 12, 2024`, `/33_SummerIntro/day2.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
   [`Session #33 day 3`, `Intro to GitHub, Part 1`, `June 20, 2024`, `/33_SummerIntro/day3.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
   [`Session #33 day 4`, `Intro to GitHub, Part 2`, `June 27, 2024`, `/33_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
+  [`Session #34`, `NVIDIA Intro to Machine Learning`, `June 17, 2024`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -129,7 +130,7 @@ const past_events_list = past_events.reverse().map(([session, title, date, link,
   return html`
       <li>
         <span>${session}:</span>
-        <a href="${link}">${title}</a>
+        ${link ? html`<a href="${link}">${title}</a>` : html`<span style="color: #717171;">${title}</span>`}
         ${g}
         ${v}
         <span class="inline-date">${date}</span>
