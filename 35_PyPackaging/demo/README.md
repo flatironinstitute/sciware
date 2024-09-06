@@ -15,6 +15,7 @@ the end of the demo in the `pre-baked-cake/` folder.
 ## Getting Started
 
 To run this locally, you may need to install some additional packages.
+Run the following commands from inside this directory (`sciware/35_PyPackaging/demo/`).
 
 If you are a conda user, you can run
 
@@ -31,7 +32,7 @@ $ source ./env/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-Then, launch `jupyter lab` to follow along.
+Then, run `jupyter lab` to launch Jupyter and follow along.
 
 ### Google Colab
 You can follow along most of the tutorial using Google Colab instead, to avoid
