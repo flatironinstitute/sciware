@@ -1,11 +1,15 @@
+# for the notebook
 jupyterlab
 matplotlib
-scipy
 emcee
 autograd
+tqdm
+# these three will be dependencies of our new package
+# so future users wouldn't need to install them independently
+scipy
 numpy
 celerite
-tqdm
+# for help packaging
 pip
 build
-twine
+twine # for uploading to PyPI

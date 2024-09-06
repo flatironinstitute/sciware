@@ -6,13 +6,15 @@ dependencies:
   # for the notebook
   - python==3.11
   - jupyterlab
-  - matplotlib
-  - scipy
   - emcee
   - autograd
+  - tqdm
+  - matplotlib
+  # these three will be dependencies of our new package
+  # so future users wouldn't need to install them independently
+  - scipy
   - numpy
   - celerite
-  - tqdm
   # for help packaging
   - pip
   - build
