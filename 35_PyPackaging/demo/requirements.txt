@@ -1,0 +1,11 @@
+jupyterlab
+matplotlib
+scipy
+emcee
+autograd
+numpy
+celerite
+tqdm
+pip
+build
+twine

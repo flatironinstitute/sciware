@@ -1,0 +1,19 @@
+name: sciware-python-packaging-examples
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # for the notebook
+  - python==3.11
+  - jupyterlab
+  - matplotlib
+  - scipy
+  - emcee
+  - autograd
+  - numpy
+  - celerite
+  - tqdm
+  # for help packaging
+  - pip
+  - build
+  - twine # for uploading to PyPI
