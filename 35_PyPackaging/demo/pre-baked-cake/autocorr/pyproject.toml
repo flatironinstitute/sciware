@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "autocorr"
 dependencies = [
-    "numpy",    
+    "numpy",
     "scipy",
     "celerite",
 ]
@@ -13,11 +13,14 @@ authors = [
     {name = "Brian Ward", email = "bward@flatironinstitute.org"},
 ]
 description = "A collection of autocorrelation estimators for Markov chains"
-readme = "README.md"
 requires-python = ">=3.9"
 keywords = ["autocorrelation", "mcmc", "diagnostics"]
 license = {text = "BSD-3-Clause"}
 classifiers = [
     "Programming Language :: Python :: 3",
 ]
-dynamic = ["version"]
+dynamic = ["version", "readme"]
+
+[tool.setuptools.dynamic]
+version = {attr = "autocorr.__version__"}
+readme = {file="README.md", content-type="text/markdown"}
