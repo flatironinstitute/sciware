@@ -39,4 +39,7 @@ any local installation being necessary. Note that this will be a slightly
 different UI than the presenter will be using, so some parts may be slightly
 harder to follow along.
 
-[Click Here](https://colab.research.google.com/github/flatironinstitute/sciware/blob/main/35_PyPackaging/demo) to launch a Colab session
+[Click Here](https://colab.research.google.com/github/flatironinstitute/sciware/blob/main/35_PyPackaging/demo/Demo.ipynb) to launch a Colab session
+
+You will need to uncomment and run the first cell of the notebook which says
+"Google Colab: uncomment and run this next line!"
