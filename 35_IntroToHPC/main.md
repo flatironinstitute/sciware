@@ -41,6 +41,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Today's Agenda
+- Helpdesk recap
 - Supercomputing components and terminology
 - Flatiron resources overview
 - Environment management [interactive]
@@ -57,6 +58,28 @@ Activities where participants all actively work to foster an environment which e
   - terminal `emacs`, `vi`, `nano`
   - or... remote edit via `vscode/emacs/vi/sshfs`
   - or... `https://jupyter.flatironinstitute.org`
+
+
+
+## Getting help with the FI clusters!
+
+<img height=400px src="./assets/everythingisfine.jpg">
+
+
+### Getting help with the clusters (1)
+
+- SCC provides a wiki for cluster help and information
+  - https://wiki.flatironinstitute.org
+  - Information on effectively using slurm, python, conda, mpi, compiles, MATLAB, Mathematica, etc.
+  - can log in with cluster credentials, or SSO if flatiron email is on your cluster account
+
+
+### Getting help with the cluster (2)
+
+- #scicomp on slack for quick or broad questions
+  - SCC/FI community will help with your issue
+- https://wiki.flatironinstitute.org/SCC/ReportingProblems
+  - Email with details from above to scicomp@flatironinstitute.org
 
 
 
@@ -152,22 +175,6 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Flatiron resources overview
-
-
-### Getting help with the cluster (1)
-
-- SCC provides a wiki for cluster help and information
-  - https://wiki.flatironinstitute.org 
-  - Information on effectively using slurm, python, conda, mpi, compiles, MATLAB, Mathematica, etc.
-  - can log in with cluster credentials, or SSO if flatiron email is on your cluster account
-
-
-### Getting help with the cluster (2)
-
-- #scicomp on slack for quick or broad questions
-  - SCC/FI community will help with your issue
-- https://wiki.flatironinstitute.org/SCC/ReportingProblems
-  - Email with details from above to scicomp@flatironinstitute.org
 
 
 ### Two clusters: 'Rusty' and 'Popeye'
