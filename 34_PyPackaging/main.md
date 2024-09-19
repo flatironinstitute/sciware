@@ -28,16 +28,11 @@ Activities where participants all actively work to foster an environment which e
 </small>
 
 
-## Zoom Specific
-
-- Dedicated Zoom moderator to field questions.
-- Please stay muted if not speaking. (Host may mute you.)
-- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
-
-
 ## Future Sessions
 
+- Oct 2 10-noon: Intro to HPC: Extended introduction to the FI cluster
 - Suggest topics or contribute to content in #sciware Slack
+- We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
 
 
 ## Today's Agenda
