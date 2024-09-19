@@ -73,18 +73,20 @@ Activities where participants all actively work to foster an environment which e
 - So first we edit `sys.path`...
 
 
-Bet you never have these issues with packages you install by `pip`.
+Do you have these issues with packages you install by `pip`?
 
-You just `import ThePackage` and it Just Works.
+No. You `import ThePackage` and it Just Works.
 
 Running your own code should be that simple too.
 
 
-What we'll show you today helps get you ready for *distributing* your
-work on a package archive like PyPI. But we'll leave the fine details of
-that for a future Sciware about distributing code (already in planning).
+What we'll show today helps get you ready for *distributing* your
+work on a package archive like PyPI.
 
-For today, we just want you to be able to `import` your code as easily
+But we'll leave the fine details of
+that for a future Sciware about distributing code.
+
+For today, we just want you to be able to `import` your own code as easily
 as you do someone else's.
 
 
@@ -105,6 +107,9 @@ For today, we use these to mean:
   - Can be one or more files (the user doesn't need to care)
   - Can be downloaded from a repository or installed locally
 
+
+In short:
+
 We'll use "project" to refer to something you're editing, and "package"
 to refer to something you want to import.
 
@@ -118,19 +123,21 @@ Our goal for today is to show how easy and beneficial it is to make your
 - `pypi` is one *package repository* where you can download packages.
 - `conda` is one tool for managing [virtual environments](https://docs.python.org/3/tutorial/venv.html).
   - A `virtual environment` lets you control which packages (& versions) are visible. This helps
-  avoid conflicts between different projects or tools running on the same machine.
+  avoid conflicts between different projects on the same machine.
 - `conda-forge` is another package repository, specific to conda. It also provides non-Python packages.
 
-Today we will assume you are working in a virtual environment (you always should!) but we'll only talk
-about installation with pip.
+
+We will assume you are working in a virtual environment (you always should!) but today we'll only talk
+about installation with `pip`.
 
 
 ### namespaces
 
-A [namespace](https://docs.python.org/3/glossary.html#term-namespace) is a way to create a hierarchy
+A [namespace](https://docs.python.org/3/glossary.html#term-namespace) creates a hierarchy
 of names.
 
-They let different packages define variables, functions, and classes without worrying about uniqueness.
+Namespaces let packages define variables, functions, and classes without worrying about uniqueness.
+
 
 Example:
 - `numpy.linalg.norm()` is one function
@@ -141,10 +148,10 @@ Example:
 
 ### global vs local namespaces
 
-The *global namespace* is the top level for everything in the file. Example:
+The *global namespace* is the top level for everything in the file.
 ```python
 x = 10
-print(f"{x}")
+print(f"{x}") # prints 10
 ```
 
 *Local namespaces* nest one name inside another:
@@ -178,15 +185,15 @@ Example:
 from math import sqrt
 import numpy as np
 
-print(f'{sqrt(16)}')
+print(f'{sqrt(16)}') # prints 4
 print(f'{math.pi}') # fails--we didn't import math!
-my_array_1 = np.array([1, 2, 3])
+my_array_1 = np.array([1, 2, 3]) # works
 my_array_2 = numpy.array([1, 2, 3]) # fails!
 ```
 - `sqrt` is attached to the *global namespace*
-- its parent, `math`, is not!
+- its parent, `math`, is not! We didn't import that.
 - The `numpy` package has been imported with an alias
-  - That *alias* is in the global namespace, but the original name isn't
+  - That *alias* is visible, but the original name isn't
 
 
 ### Relative imports
@@ -212,37 +219,37 @@ Why is this so brittle?
 
 ### Finding the code to import
 
-Python tries to satisfy `import FOO` by looking for a module named `FOO`.
-
-The places it looks are defined in `sys.path`, a list of filesystem locations.
-
-This list will include various standard locations, as well as your current
-working directory--but that working directory will change with every `cd`!
+- When you `import FOO`, Python looks for a module named `FOO`
+- It looks in the list of locations defined in `sys.path`
+- This list includes various standard locations
+- It also includes your current working directory
+  - But that changes with every `cd`!
 
 Reliable imports require the package to be in one of the standard locations.
 
 
 ### Package installation
 
-When you install a package (like with `pip`), you're downloading a bundle with
-its code, and placing that in a standard location that's part of `sys.path`.
+- When you `pip install` a package, `pip`:
+  - downloads a bundle with the package code
+  - Places it in a standard location (in `sys.path`)
 
 (This is actually how virtual environments work--they set `sys.path` to something
-unique, and install packages there, so that's where Python finds them.)
+unique, and install packages there, so the Python interpreter finds the right version.)
 
 
-But `pip` can also install *your project* as a package, using *edit mode*:
+`pip` can also install *your project* as a package, using *edit mode*:
 
 `$ pip install -e /path/to/my/project`
 
-When you do this, the base directory of your project gets added to `sys.path`.
-So regular import patterns work. All you need to do is to tell `pip` (or
-any other package installer) *how* your project should be bundled.
+- the base directory of your project gets added to `sys.path`
+- Now regular import patterns work!
+- First you just have to tell `pip` how to bundle your project
 
 We do that through `pyproject.toml`.
 
 
-## Properly Handling your Python Project
+## Properly Handling Python Projects
 
 <img height="50%" src="assets/wikihow-Hold-a-Snake-Step-13-Version-2.jpg" class="plain">
 
@@ -250,12 +257,12 @@ We do that through `pyproject.toml`.
 ### pyproject.toml
 
 - The modern way to configure a project
-  - Not just for packaging! It's a unified configuration file!
-- Written in [toml](https://toml.io/en/) format--human-readable
+  - Not just for packaging--it's a single-source config file
+- Written in [toml](https://toml.io/en/) format, so human-readable
 - Goes in the root of your project's source code directory
 
 
-### Minimal requirements for installability
+### Minimal requirements for package installation
 
 `[project]` section:
 
@@ -276,7 +283,7 @@ dependencies = [
 `dependencies` will be automatically installed when you `pip install` the package.
 
 
-Additional fields can be useful:
+Additional fields for distributing your package:
 ```toml
 [project]
 ...
@@ -293,14 +300,14 @@ classifiers = [
 [project.license]
 file = "LICENSE"
 ```
-- Most of these fields help other users find your project once it's uploaded to a repository
-- `readme` can be set to text, or a file, or even marked `dynamic` (see later)
-- The `license` field lets you reference how others are allowed to use your code
+- These help other users find your uploaded project
+- `readme` can be text, a file, or even `dynamic` (see later)
+- The `license` field grants others rights to use your code
 
 
 ### build system
 
-In addition to the `[project]` section, you also need a `[build-system]`:
+With the `[project]` section, you also need a `[build-system]`:
 
 ```toml
 [build-system]
@@ -312,10 +319,12 @@ package-dir = {"" = "src"}
 packages = ["MY_PROJECT"]
 ```
 
-This tells `pip` what tools to use to bundle up your code. We've specified `setuptools` here.
+This tells `pip` what tools to use to bundle up your code. `setuptools` is a
+well-supported and painless option.
 
-Then we have a separate config block for `setuptools` specifically (`pyproject.toml` combines
-tool-specific config into the same file).
+Then we have another config block for the `setuptools` tool.
+
+(`pyproject.toml` combines tool-specific config into the same file)
 
 
 ```toml
@@ -324,16 +333,16 @@ package-dir = {"" = "src"}
 packages = ["MY_PROJECT"]
 ```
 
-This is specific to `setuptools`. We're just telling it:
-- The root directory of the code to distribute (the `src` directory adjacent to where this file is located)
-- The packages that should be installed (just matches the `name` field of the `[project]` section)
+This block is specific to `setuptools`. It just defines:
+- the root directory of the code to distribute (the `src` directory adjacent to where this file is located)
+- the packages that should be bundled (matches the `name` field of the `[project]` section)
 
 
-That's it! You can install your project as a package.
+That's it! With this minimal `pyproject.toml` config in place, you can install your project as a package.
 
 - Assume our project is at `~/MY_PROJECT`
 - We have `~/MY_PROJECT/pyproject.toml` defined as above
-- And the code lives in `~/MY_PROJECT/src/`
+- And the code lives in `~/MY_PROJECT/src/`. Then:
 
 ```bash
 $ cd ~/MY_PROJECT
@@ -348,18 +357,19 @@ from MY_PROJECT import my_cool_stuff
 from MY_PROJECT.util import my_cool_util
 ```
 
-and it'll be just as smooth as the fancy store-bought packages you got from PyPI.
+and those functions will be just as smooth and simple to use as the fancy store-bought ones you
+got from a package off PyPI.
 
 
 ### But that's not all!
 
-Now that you have `pyproject.toml` set up in your project, it's a great time
-and place to configure other code quality tools! In particular, I like to use:
+Now that you have `pyproject.toml` set up in your project, consider configuring other code quality
+tools there! In particular, I like:
 
 - `[tool.pytest]` to set default options for running tests
-- `[tool.coverage.run]` config to specify what files should be considered for test coverage reports
+- `[tool.coverage.run]` to specify what files should be considered for test coverage reports
 - `[tool.pylint]` to set what style rules to enforce and limit unnecessary messages
-- `[tool.mypy]` to customize type-checking behavior and strictness
+- `[tool.mypy]` to customize type-checking strictness
 
 There's many more! It's worth looking into for any other tooling your project is using.
 (And if you don't have any, now's a great time to consider it!)
@@ -368,11 +378,10 @@ There's many more! It's worth looking into for any other tooling your project is
 
 # Live Demo
 
+### Brian Ward, CCM
 
 
 ## Survey
 Please give us some feedback!
 
-https://bit.ly/sciware-file-formats-2022
-
-![bit ly_sciware-file-formats-2022](https://user-images.githubusercontent.com/1444249/207740745-d14dabf1-9227-4cd8-bd4a-72843da1003d.png)
+NEED TO UPDATE SURVEY LINK
