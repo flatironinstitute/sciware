@@ -39,7 +39,7 @@ Activities where participants all actively work to foster an environment which e
 
 - What do we mean by packaging, and why do you want to do it?
 - Review of the Python import system 
-- Configuring your project with `pyrpoject.toml`
+- Configuring your project with `pyproject.toml`
 - Hands-on example of turning a Jupyter notebook into importable code
 
 
