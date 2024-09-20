@@ -91,7 +91,7 @@ as you do someone else's.
 ### "Package" vs "Module" vs "Project"
 
 The [documentation](https://docs.python.org/3/glossary.html#term-package) can
-be a little confusing or circular.
+be quite confusing.
 
 For today, we use these to mean:
 
@@ -112,18 +112,73 @@ Our goal for today is to show how easy and beneficial it is to make your
 *projects* into (locally) importable *packages*.
 
 
-### pip, pypi, conda, condaforge...
+### Why Packages?
 
-- `pip` is a tool for installing packages.
-- `pypi` is one *package repository* where you can download packages.
-- `conda` is one tool for managing [virtual environments](https://docs.python.org/3/tutorial/venv.html).
-  - A `virtual environment` lets you control which packages (& versions) are visible. This helps
-  avoid conflicts between different projects on the same machine.
-- `conda-forge` is another package repository, specific to conda. It also provides non-Python packages.
+We've said packages are "stuff you can import."
+
+So the point of packages is *code reuse*. They are
+libraries of pre-written code.
+
+A big part of Python's success is its robust package ecosystem!
 
 
-We will assume you are working in a virtual environment (you always should!) but today we'll only talk
-about installation with `pip`.
+<img src="https://imgs.xkcd.com/comics/python.png">
+
+
+That comic is from *2007*. There have been a lot of changes and complications
+to the Python import system in that time!
+
+The system as a whole is still trying to solve 3 problems:
+
+- How do I get useful code from other people
+- How do I share my useful code with others
+- How do I run the *right* code
+
+
+## Five Pillars of Python Packages
+
+- Python version management
+- Environment management
+- Package management
+- Package building
+- Package publishing
+
+
+### Version control
+
+- Python version management
+  - i.e. interpreter. Python 2 is not 3.6 is not 3.12
+- Package management
+  - Regardless of environment, how do I install 3rd-party code?
+  - `pip`, `conda`
+- Environment management
+  - Different tasks require different, maybe conflicting, packages
+  - [(virtual) environments](https://docs.python.org/3/tutorial/venv.html) let them coexist
+  - `venv`, `conda`
+
+
+### Package distribution
+
+- Package building
+  - How do I get my code into a distributable form
+  - `setuptools`, `hatch`, `pdm`, others
+- Package publishing
+  - How do I put my bundled code in a public place
+  - `twine` (bundling), `PyPI` (a repository)
+
+
+### Five Pillars Revisited
+
+TODO: Change font color to gray for the ones we don't care about
+
+- Python version management
+- Environment management
+- **Package management**
+- **Package building**
+- Package publishing
+
+For today, while we encourage you to work in a virtual environment as always,
+the only tools we'll discuss are `pip` and (a little bit of) `setuptools`.
 
 
 ### namespaces
@@ -157,6 +212,7 @@ class MyClass:
 print(f'{y}') # fails: y not defined
 print(f'{MyClass.y}') # prints 10
 ```
+
 
 
 ## Python imports
@@ -229,8 +285,16 @@ Reliable imports require the package to be in one of the standard locations.
   - downloads a bundle with the package code
   - Places it in a standard location (in `sys.path`)
 
-(This is actually how virtual environments work--they set `sys.path` to something
-unique, and install packages there, so the Python interpreter finds the right version.)
+
+### A bit more about environments
+
+`sys.path` is actually how virtual
+environments work.
+
+Let's take a look at a `venv` virtual environment and
+what happens when I install packages in it.
+
+[LIVE]
 
 
 `pip` can also install *your project* as a package, using *edit mode*:
@@ -244,9 +308,14 @@ unique, and install packages there, so the Python interpreter finds the right ve
 We do that through `pyproject.toml`.
 
 
+
 ## Properly Handling Python Projects
 
 <img height="50%" src="assets/wikihow-Hold-a-Snake-Step-13-Version-2.jpg" class="plain">
+
+
+### TODO: An example directory structure for a Python project
+Which we'll show and refer to for the below
 
 
 ### pyproject.toml
@@ -255,6 +324,14 @@ We do that through `pyproject.toml`.
   - Not just for packaging--it's a single-source config file
 - Written in [toml](https://toml.io/en/) format, so human-readable
 - Goes in the root of your project's source code directory
+
+
+Quick aside: there's a lot of old material recommending old package
+configuration methods. Guides referring to `setup.cfg` are almost certainly
+outdated.
+
+`setup.py` is sometimes still required, but only very rarely--if you aren't
+very positive why you need it, you might just have outdated instructions.
 
 
 ### Minimal requirements for package installation
@@ -302,7 +379,7 @@ file = "LICENSE"
 
 ### build system
 
-With the `[project]` section, you also need a `[build-system]`:
+Alongside the `[project]` section, you also need a `[build-system]`:
 
 ```toml
 [build-system]
