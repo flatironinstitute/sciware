@@ -250,3 +250,7 @@ a.icon:visited {
   text-decoration: none;
   border-bottom: none;
 }
+
+code {
+  font-size: 0.8em;
+}

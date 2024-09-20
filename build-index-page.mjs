@@ -50,6 +50,22 @@ const upcoming_events = [
   //   location: `162 5th Ave<br />IDA Auditorium`,
   //   summary: `Connect to Github and learn how to collaborate on code.`,
   // },
+  {
+    title: `Intro to Python Packaging`,
+    weekday: `Thursday`,
+    date: `September 26`,
+    time: `3 — 5 PM`,
+    location: `162 5th Ave<br />3rd Floor Classroom`,
+    summary: html`In this Sciware workshop, we'll discuss Python packaging and relevant tools. Our main focus will be on how to get a project <code>pip</code>-installable using a <code>pyproject.toml</code> file and <code>setuptools</code>. We'll work together to make a test project where everyone can go through the steps of organizing and making a Python package.`,
+  },
+  {
+    title: `Extended Intro to High-Performance Computing`,
+    weekday: `Wednesday`,
+    date: `October 2`,
+    time: `10 AM — Noon`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: html` In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks. `,
+  },
 ];
 
 const past_events = [
@@ -97,7 +113,9 @@ const past_events = [
   [`Session #33 day 2`, `Intro to VS Code`, `June 12, 2024`, `/33_SummerIntro/day2.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
   [`Session #33 day 3`, `Intro to GitHub, Part 1`, `June 20, 2024`, `/33_SummerIntro/day3.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
   [`Session #33 day 4`, `Intro to GitHub, Part 2`, `June 27, 2024`, `/33_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
-  [`Session #34`, `NVIDIA Intro to Machine Learning`, `June 17, 2024`],
+  // [``, `NVIDIA Intro to Machine Learning`, `June 17, 2024`],
+  // [`Session #34`, `Python Packaging`, `September 26, 2024`, `/34_PyPackaging/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/34_PyPackaging`],
+  // [`Session #35`, `Extended Intro to HPC`, `October 2, 2024`, `/35_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
@@ -111,7 +129,7 @@ const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, 
       </div>
       <div class="summary">
         <h3>${title}</h3>
-        <p>${summary.trim()}</p>
+        <p>${summary}</p>
       </div>
     </li>
   `;
