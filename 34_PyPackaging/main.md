@@ -169,16 +169,14 @@ The system as a whole is still trying to solve 3 problems:
 
 ### Five Pillars Revisited
 
-TODO: Change font color to gray for the ones we don't care about
-
-- Python version management
-- Environment management
+- Python version management <!-- .element style="color: #999999" -->
+- Environment management <!-- .element style="color: #999999" -->
 - **Package management**
 - **Package building**
-- Package publishing
+- Package publishing <!-- .element style="color: #999999" -->
 
-For today, while we encourage you to work in a virtual environment as always,
-the only tools we'll discuss are `pip` and (a little bit of) `setuptools`.
+For today, the tools we're focusing on are
+`pip` and (a little bit of) `setuptools`.
 
 
 ### namespaces
