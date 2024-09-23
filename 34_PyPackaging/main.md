@@ -75,13 +75,13 @@ No. You `import ThePackage` and it Just Works.
 Running your own code should be that simple too.
 
 
-What we'll show today helps get you ready for *distributing* your
+- What we'll show today helps get you ready for *distributing* your
 work on a package archive like PyPI.
 
-But we'll leave the fine details of
+- But we'll leave the fine details of
 that for a future Sciware about distributing code.
 
-For today, we just want you to be able to `import` your own code as easily
+- For today, we just want you to be able to `import` your own code as easily
 as you do someone else's.
 
 
@@ -99,34 +99,33 @@ For today, we use these to mean:
 - A `module` is any file that has Python code.
   - We won't use this term.
 - A `package` is a bundle of Python code you can *import*.
-  - Can be one or more files (the user doesn't need to care)
-  - Can be downloaded from a repository or installed locally
+  - One or more files (the user doesn't need to care)
+  - Downloaded from a repository or installed locally
 
 
 In short:
 
-We'll use "project" to refer to something you're editing, and "package"
+- We'll use "project" to refer to something you're editing, and "package"
 to refer to something you want to import.
 
-Our goal for today is to show how easy and beneficial it is to make your
+- Our goal for today is to show how easy and beneficial it is to make your
 *projects* into (locally) importable *packages*.
 
 
 ### Why Packages?
 
-We've said packages are "stuff you can import."
+- We've said packages are "stuff you can import."
 
-So the point of packages is *code reuse*. They are
+- So the point of packages is *code reuse*. They are
 libraries of pre-written code.
 
-A big part of Python's success is its robust package ecosystem!
+- A big part of Python's success is its robust package ecosystem!
 
 
 <img src="https://imgs.xkcd.com/comics/python.png">
 
 
-That comic is from *2007*. There have been a lot of changes and complications
-to the Python import system in that time!
+That comic is from *2007*. There have been a lot of changes since!
 
 The system as a whole is still trying to solve 3 problems:
 
@@ -144,7 +143,7 @@ The system as a whole is still trying to solve 3 problems:
 - Package publishing
 
 
-### Version control
+### (Installed) Version Control
 
 - Python version management
   - i.e. interpreter. Python 2 is not 3.6 is not 3.12
@@ -175,23 +174,25 @@ The system as a whole is still trying to solve 3 problems:
 - **Package building**
 - Package publishing <!-- .element style="color: #999999" -->
 
-For today, the tools we're focusing on are
-`pip` and (a little bit of) `setuptools`.
+Each of these offers many tools, but for today
+we're really only talking about `pip`
+(and maybe a little bit of [setuptools]https://setuptools.pypa.io/en/latest/).
 
 
 ### namespaces
 
-A [namespace](https://docs.python.org/3/glossary.html#term-namespace) creates a hierarchy
+- A [namespace](https://docs.python.org/3/glossary.html#term-namespace) creates a hierarchy
 of names.
 
-Namespaces let packages define variables, functions, and classes without worrying about uniqueness.
+- Namespaces let packages define variables, functions, and classes without worrying about uniqueness.
 
 
 Example:
 - `numpy.linalg.norm()` is one function
 - `torch.norm()` is a different function
 - Both compute norms, but they have different parameters and work on different objects
-- You can use both because the namespace (`numpy` vs `torch`) clarifies what you mean.
+- You can use both in the same script because the
+namespace (`numpy` vs `torch`) clarifies what you mean.
 
 
 ### global vs local namespaces
@@ -223,7 +224,7 @@ print(f'{MyClass.y}') # prints 10
 An [import](https://docs.python.org/3/reference/import.html) does
 two things:
 
-- Finds the code you're importing, and
+- Finds the code you want to import, and
 - Attaches that code to a name in the namespace
 
 Let's talk about the second point first.
@@ -268,13 +269,13 @@ Why is this so brittle?
 
 ### Finding the code to import
 
-- When you `import FOO`, Python looks for a module named `FOO`
+- When you `import FOO`, Python looks for a *module* named `FOO`
 - It looks in the list of locations defined in `sys.path`
-- This list includes various standard locations
+  - This list includes various standard locations
 - It also includes your current working directory
   - But that changes with every `cd`!
 
-Reliable imports require the package to be in one of the standard locations.
+Reliable imports require the code to be in one of the standard locations.
 
 
 ### Package installation
@@ -282,17 +283,6 @@ Reliable imports require the package to be in one of the standard locations.
 - When you `pip install` a package, `pip`:
   - downloads a bundle with the package code
   - Places it in a standard location (in `sys.path`)
-
-
-### A bit more about environments
-
-`sys.path` is actually how virtual
-environments work.
-
-Let's take a look at a `venv` virtual environment and
-what happens when I install packages in it.
-
-[LIVE]
 
 
 `pip` can also install *your project* as a package, using *edit mode*:
@@ -303,8 +293,18 @@ what happens when I install packages in it.
 - Now regular import patterns work!
 - First you just have to tell `pip` how to bundle your project
 
-We do that through `pyproject.toml`.
+We do that through `pyproject.toml`. But first...
 
+
+### A bit more about environments
+
+`sys.path` is actually how
+environments work.
+
+Let's take a look at a `venv` virtual environment and
+what happens when I install packages in it.
+
+[LIVE]
 
 
 ## Properly Handling Python Projects
@@ -312,8 +312,24 @@ We do that through `pyproject.toml`.
 <img height="50%" src="assets/wikihow-Hold-a-Snake-Step-13-Version-2.jpg" class="plain">
 
 
-### TODO: An example directory structure for a Python project
-Which we'll show and refer to for the below
+### Pythons Organized Neatly
+
+To make this example concrete, we'll work with an example project using a standard layout.
+
+You can find this example in this repository at `example_project_root`.
+
+
+<img src="./assets/sample-layout.png" class="plain">
+
+
+The highlights:
+- The root of the project is `example_project_root` (this name doesn't matter)
+- Package code is in the `src` directory.
+  - Specifically, in a `SciwarePackage` sub-directory
+  - That name matches the package name
+  - `separate_file.py` is not part of the package
+- Test code is in a `test` directory that's not part of the package
+- `pyproject.toml` goes at the top level--the project root
 
 
 ### pyproject.toml
@@ -338,13 +354,11 @@ very positive why you need it, you might just have outdated instructions.
 
 ```toml
 [project]
-name = "MY_PROJECT"
+name = "SciwarePackage"
 version = "0.0.1"
 requires-python = ">=3.8"
 dependencies = [
     "numpy>=1.24.0",
-    "scipy>=1.10.0",
-    "scikit-learn>=1.3.0"
 ]
 ```
 
@@ -357,9 +371,9 @@ Additional fields for distributing your package:
 ```toml
 [project]
 ...
-description = "Describe your package here"
+description = "Example package for Sciware 34"
 authors = [
-    { name = "Your Name", email = "you@your.email" }
+    { name = "Jeff Soules", email = "jsoules@flatironinstitute.org" }
 ]
 readme = "README.md"
 classifiers = [
@@ -370,14 +384,14 @@ classifiers = [
 [project.license]
 file = "LICENSE"
 ```
-- These help other users find your uploaded project
+- These help others find your uploaded project
 - `readme` can be text, a file, or even `dynamic` (see later)
-- The `license` field grants others rights to use your code
+- The `license` grants others rights to use your code
 
 
-### build system
+### Build system
 
-Alongside the `[project]` section, you also need a `[build-system]`:
+You also need a `[build-system]` section:
 
 ```toml
 [build-system]
@@ -386,45 +400,43 @@ build-backend="setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["MY_PROJECT"]
+packages = ["SciwarePackage"]
 ```
 
-This tells `pip` what tools to use to bundle up your code. `setuptools` is a
-well-supported and painless option.
+This states the tools to use to bundle up your code (`setuptools` here).
 
 Then we have another config block for the `setuptools` tool.
 
-(`pyproject.toml` combines tool-specific config into the same file)
+(`pyproject.toml` collects most tools' config into the same file)
 
 
 ```toml
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["MY_PROJECT"]
+packages = ["SciwarePackage"]
 ```
 
-This block is specific to `setuptools`. It just defines:
+This block is specific to `setuptools`. It defines:
 - the root directory of the code to distribute (the `src` directory adjacent to where this file is located)
 - the packages that should be bundled (matches the `name` field of the `[project]` section)
 
 
 That's it! With this minimal `pyproject.toml` config in place, you can install your project as a package.
 
-- Assume our project is at `~/MY_PROJECT`
-- We have `~/MY_PROJECT/pyproject.toml` defined as above
-- And the code lives in `~/MY_PROJECT/src/`. Then:
+- Assume our project is at `~/example_project_root`
+- We have `~/example_project_root/pyproject.toml` defined as above
+- And the code lives in `~/example_project_root/src/`. Then:
 
 ```bash
-$ cd ~/MY_PROJECT
-$ pip install -e .
+$ pip install -e ~/example_project_root/
 ```
 
 
 Now, in *any* Python file *anywhere*, you can just
 
 ```python
-from MY_PROJECT import my_cool_stuff
-from MY_PROJECT.util import my_cool_util
+from SciwarePackage import describe_operation
+from SciwarePackage.util.formatting import canonicalize_string
 ```
 
 and those functions will be just as smooth and simple to use as the fancy store-bought ones you
@@ -433,15 +445,16 @@ got from a package off PyPI.
 
 ### But that's not all!
 
-Now that you have `pyproject.toml` set up in your project, consider configuring other code quality
-tools there! In particular, I like:
+Now that you have `pyproject.toml` set up in your project, consider configuring other
+tools there! Here are some code quality tools that support `pyproject.toml` configuration:
 
-- `[tool.pytest]` to set default options for running tests
-- `[tool.coverage.run]` to specify what files should be considered for test coverage reports
-- `[tool.pylint]` to set what style rules to enforce and limit unnecessary messages
-- `[tool.mypy]` to customize type-checking strictness
+- [pytest](https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml) for automated testing
+- [pytest-cov](https://coverage.readthedocs.io/en/latest/config.html) for test coverage reports
+- [pylint](https://pylint.pycqa.org/en/latest/user_guide/configuration/all-options.html) the classic linter
+- [mypy](https://mypy.readthedocs.io/en/stable/config_file.html) for type-checking
+- [ruff](https://docs.astral.sh/ruff/configuration/), monolithic linter and formatter
 
-There's many more! It's worth looking into for any other tooling your project is using.
+There's many more! It's worth looking into for any tool you use.
 (And if you don't have any, now's a great time to consider it!)
 
 
@@ -454,4 +467,6 @@ There's many more! It's worth looking into for any other tooling your project is
 ## Survey
 Please give us some feedback!
 
-NEED TO UPDATE SURVEY LINK
+<img width="50%" src="./assets/bit.ly_sciware-sep2024.png">
+
+[https://bit.ly/sciware-sep2024](https://bit.ly/sciware-sep2024)
