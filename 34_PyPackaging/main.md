@@ -304,7 +304,54 @@ environments work.
 Let's take a look at a `venv` virtual environment and
 what happens when I install packages in it.
 
-[LIVE]
+
+```bash
+$ which python  # none found--it's called python3
+$ which python3 # /usr/bin/python3
+$ python3 --version # Python 3.10.12
+$ python3 -m venv tmp/my-venv
+$ source tmp/my-venv/bin/activate
+$ which python  # now returns ~/tmp/my-venv/bin/python
+```
+
+
+<img src="./assets/venv-demo-2.png" class="plain">
+
+Note the paths:
+- `''` will give the current working directory
+- `/usr/lib/python310.zip`, `/usr/lib/python3.10`, `/usr/lib/python3.10/lib-dynload`
+are for preinstalled packages
+- `/home/jsoules/tmp/my-venv/lib/python3.10/site-packages` is what we care about
+
+
+<img src="./assets/venv-demo-3.png" class="plain">
+
+
+Now let's install numpy!
+
+```bash
+$ pip install numpy
+```
+
+And see that `numpy` gets copied into the package directory.
+
+<img src="./assets/venv-demo-4.png" class="plain">
+
+
+What about a local package installed in editable mode?
+
+<img src="./assets/venv-demo-5.png" class="plain">
+
+
+Note we get a project descriptor, but no actual code directory.
+
+Instead:
+<img src="./assets/venv-demo-6.png" class="plain">
+
+The project src directory gets added to `sys.path`.
+
+This means my changes are visible live--no reinstall needed.
+
 
 
 ## Properly Handling Python Projects
