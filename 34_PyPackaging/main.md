@@ -61,9 +61,10 @@ Activities where participants all actively work to foster an environment which e
 
 ## Does this sound like you?
 
-- My script only runs from a certain directory!
-- My tests can't find my code!
-- I've defined the same function in three notebooks!
+- My script only runs from a certain directory
+- My tests can't find my code
+- I've defined the same function in three notebooks
+- Using `setup.cfg` or `setup.py`
 - To run that function in `ipython` I paste in...
 - So first we edit `sys.path`...
 
@@ -76,10 +77,9 @@ Running your own code should be that simple too.
 
 
 - What we'll show today helps get you ready for *distributing* your
-work on a package archive like PyPI.
+work on a package archive like PyPI (so it is `pip` installable).
 
-- But we'll leave the fine details of
-that for a future Sciware about distributing code.
+- We can cover the details of PyPI distribution in a later session if there's interest
 
 - For today, we just want you to be able to `import` your own code as easily
 as you do someone else's.
@@ -95,9 +95,9 @@ be quite confusing.
 
 For today, we mean:
 
-- `Project`: some collection of files that you're working on.
-- `Module`: any file that has Python code.
-- `Package`: a bundle of Python code you can *import*.
+- `Project`: some collection of files that you're working on
+- `Module`: a file (ending in `.py`) of Python code
+- `Package`: Python code you can *install* for reuse
   - One or more files (the user doesn't need to care)
   - Downloaded from a repository or installed locally
 
@@ -105,7 +105,7 @@ For today, we mean:
 In short:
 
 - We'll use "**project**" to mean something you're editing, and "**package**"
-to mean something you want to import.
+to mean something you want to install and import.
 
 - Our goal for today is to show how easy and beneficial it is to make your
   *projects* into (locally) importable *packages*.
@@ -113,10 +113,11 @@ to mean something you want to import.
 
 ### Why Have Packages?
 
-- We've said packages are "stuff you can import."
+- We've said packages are "code you can install"
 
-- So the point of packages is *code reuse*.
-  - They are libraries of pre-written code.
+- So the point of packages is *code reuse*
+  - They are libraries of pre-written code
+  - Importantly, with *versions* and *dependencies*
 
 - A big part of Python's success is its robust package ecosystem!
 
@@ -126,8 +127,7 @@ to mean something you want to import.
 
 That comic is from *2007*. (A few things have changed!)
 
-The ecosystem addresses 3 problems:
-
+But the ecosystem still addresses 3 problems:
 
 - How do I get useful code from other people
 - How do I share my useful code with others
@@ -143,26 +143,43 @@ The ecosystem addresses 3 problems:
 - Package publishing
 
 
-### (Installed) Version Control
+### The easy one
 
 - Python version management
-  - = interpreter version. Python 2 is not 3.6 is not 3.12
+  - aka interpreter version. Python 2 is not 3.6 is not 3.12
+  - Thanks to backward compatibility, this is rarely a huge issue any more
+
+
+### Wrangling installed packages
+
 - Package management
-  - How do I install 3rd-party code?
+  - Fetching and installing published code
+  - *and its dependencies*
+  - e.g. `pip install xarray` also installs `pandas`
   - `pip`, `conda`
 - Environment management
-  - Different tasks require different (conflicting?) packages
+  - Different tasks need different (conflicting?) packages/versions
   - [(virtual) environments](https://docs.python.org/3/tutorial/venv.html) let them coexist
   - `venv`, `conda`
+
+
+### Multiple environments example
+
+- I have `Project_One` from grad school in 2019
+  - That used PyTorch v 1.1.0
+- Today I'm working on `Project_Two`
+  - I'm... not using PyTorch from 2019
+  - But upgrading `Project_One` to PyTorch 2024 is a huge ask
+- Separate environments solve this issue
 
 
 ### Package distribution
 
 - Package building
   - How do I put my code in a distributable form?
-  - `setuptools`, `hatch`, `pdm`, others
+  - `setuptools`, `meson`, others
 - Package publishing
-  - How do I share my bundled code in publicly?
+  - How do I share my bundled code publicly?
   - `twine` (bundling), `PyPI` (a repository)
 
 
@@ -174,7 +191,7 @@ The ecosystem addresses 3 problems:
 - **Package building**
 - Package publishing <!-- .element style="color: #999999" -->
 
-Each of these offers many tools, but for today
+Many tools are available for these; today
 we're really only talking about `pip`
 (and maybe a little bit of [setuptools](https://setuptools.pypa.io/en/latest/)).
 
@@ -186,30 +203,31 @@ we're really only talking about `pip`
 
 - Namespaces let packages define variables, functions, and classes without worrying about uniqueness.
 
-
 Example:
-- `numpy.linalg.norm()` is one function
-- `torch.norm()` is a different function
-- Both compute norms, but they have different parameters and work on different objects
+- `numpy.linalg.norm(...)` and `torch.norm(...)` work on different objects
 - You can use both in the same script because the
 namespace (`numpy` vs `torch`) clarifies what you mean.
 
 
 ### global vs local namespaces
 
-The *global namespace* is the top level for everything in the file.
+The *global namespace* is the top level for everything in the module.
 ```python
+# in my_file.py
+
 x = 10
-print(f"{x}") # prints 10
+print(x) # prints 10
 ```
 
 *Local namespaces* nest one name inside another:
 ```python
+# in my_file.py
+
 class MyClass:
     y = 10  # note this is a class variable
 
-print(f'{y}') # fails: y not defined
-print(f'{MyClass.y}') # prints 10
+print(y) # fails: y not defined
+print(MyClass.y) # prints 10
 ```
 
 
@@ -240,7 +258,7 @@ print(f'{math.pi}') # fails--we didn't import math!
 my_array_1 = np.array([1, 2, 3]) # works
 my_array_2 = numpy.array([1, 2, 3]) # fails!
 ```
-- `sqrt` is attached to the *global namespace*
+- `sqrt` is attached to the *global namespace* of this file
 - its parent, `math`, is not! We didn't import that.
 - The `numpy` package has been imported with an alias
   - That *alias* is visible, but the original name isn't
@@ -270,7 +288,13 @@ Why is this so brittle?
 ### Finding the code to import
 
 - `import FOO` makes Python look for a *module* named `FOO`
-- It looks in the list of locations defined in `sys.path`
+  - That means a file `FOO.py`
+  - Or a directory `FOO/` with an `__init__.py` file in it
+
+
+### Finding the code to import
+
+- Python looks in the list of locations defined in `sys.path`
   - This list includes various standard locations
   - It also includes your current working directory, but...
     - ...that changes with every `cd`!
@@ -279,14 +303,35 @@ Reliable imports require the code to be in one of the standard locations.
 Managing that is what `pip` does.
 
 
+### Aside: Re-exports
+
+- Importing code makes it part of the namespace, just as
+  if the module defined it directly.
+- A common pattern is to use imports in `__init__.py` to
+  simplify the import structure, e.g.:
+
+```python
+# src/sciware_package/util/__init__.py
+from .enums import Mode as Mode
+from .enums import Precision as Precision
+from .formatting import canonicalize_string
+```
+Now `Mode` is importable from
+`sciware_package.util` rather than from
+`sciware_package.util.enums.Mode`, etc.
+
+We're okay with relative imports here because this directory
+structure is pretty fixed.
+
+
 ### Package installation
 
 - When you `pip install` a package, `pip`:
-  - downloads a bundle with the package code
-  - Places it in a standard location (in `sys.path`)
+  - downloads a bundle from PyPI with the package code
+  - Places it in a standard location (defined in `sys.path`)
 
 
-`pip` can also install *your project* as a package, using *edit mode:*
+`pip` can also install *your project* as a package, using *editable mode:*
 
 `$ pip install -e /path/to/my/project`
 
@@ -295,7 +340,13 @@ Managing that is what `pip` does.
 - You just have to describe your project to `pip`
 - which you do through `pyproject.toml`
 
-But first...
+
+Note: If you're used to manually editing `sys.path` to make your code
+visible--there's no need! An editable install will do this for you, in
+a robust, well-tested way.
+
+Now before we get to `pyproject.toml`...
+
 
 
 ### A bit more about environments
@@ -360,34 +411,43 @@ The project src directory gets added to `sys.path`.
 This means my changes are visible live--no reinstall needed.
 
 
+### Editable install gotchas
+
+- Building your package for distribution usually removes all the
+  non-`.py` files. So if you rely on (say) data files, those may work
+  fine in editable mode, but break for a real install
+  - Unless you do some extra config to include them
+- Depending on your build tool configuration, sub-packages may
+  work in editable mode but need more configuration for a real install.
+
+
 
 ## Properly Handling Python Projects
 
-<img height="50%" src="assets/wikihow-Hold-a-Snake-Step-13-Version-2.jpg" class="plain">
+<img height="50%" src="assets/snake-handling-wikipedia-pubdomain.jpg" class="plain">
 
 
 ### Pythons Organized Neatly
 
 To make following discussion concrete, we'll work with an example project using a standard layout.
-We're calling our package `SciwarePackage`.
+We're calling our package `sciware_package`.
 
 The code for this example is under `example_project_root` in
 [this presentation repository](https://github.com/flatironinstitute/sciware/tree/main/34_PyPackaging).
 
 
-<img src="./assets/sample-layout.png" class="plain">
 <img src="./assets/sample-layout-shorter.png" class="plain">
+<img src="./assets/sample-layout.png" class="plain">
 
 
 The highlights:
 - The root of the project is `example_project_root` (this name doesn't matter)
+- `pyproject.toml` goes at the top level--the project root
 - Package code is in the `src` directory.
-  - Specifically, in a `SciwarePackage` sub-directory
+  - Specifically, in a `sciware_package` sub-directory
     - That name matches the package name
-  - `separate_file.py` is not part of the package
 - Test code is in a `test` directory
   - Also *not* part of the package
-- `pyproject.toml` goes at the top level--the project root
 
 
 ### pyproject.toml
@@ -398,12 +458,16 @@ The highlights:
 - Goes in the root of your project directory
 
 
-Quick aside: there's a lot of old material online recommending deprecated package
+Quick note: there's a lot of old material online recommending deprecated package
 configuration methods. Guides referring to `setup.cfg` are almost certainly
 outdated.
 
 `setup.py` is sometimes still required, but only very rarely--if you aren't
 positive why you need it, you're probably just using outdated instructions.
+
+In particular, `setup.py` is not required to use single-source version numbers.
+
+These configuration methods will stop working soon, so now's the time to migrate!
 
 
 ### Minimal pyproject.toml for an installable package
@@ -412,7 +476,7 @@ positive why you need it, you're probably just using outdated instructions.
 
 ```toml
 [project]
-name = "SciwarePackage"
+name = "sciware_package"
 version = "0.0.1"
 requires-python = ">=3.8"
 dependencies = [
@@ -420,29 +484,11 @@ dependencies = [
 ]
 ```
 
-`name` will be the name you use to import the package.
+- `name` will be the name you use to import the package
+  - Note: it can't have spaces, dashes, or periods
+  - By convention it should be lower-case
 
-`dependencies` will be automatically installed when you `pip install` the package.
-
-
-### [project] section, continued
-```toml
-description = "Example package for Sciware 34"
-authors = [
-    { name = "Jeff Soules", email = "jsoules@flatironinstitute.org" }
-]
-readme = "README.md"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
-]
-
-[project.license]
-file = "LICENSE"
-```
-- Not required right now but help others find your uploaded package
-- `readme` can be text, a file, or even `dynamic` (see later)
-- `license` describes how others can legally use your code
+- `dependencies` will be automatically installed when you `pip install` the package
 
 
 ### Build system
@@ -451,31 +497,26 @@ You also need a `[build-system]` section:
 
 ```toml
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools"]
 build-backend="setuptools.build_meta"
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["SciwarePackage"]
 ```
 
-Specifies the tool that bundles your code (i.e. `setuptools`)
-
-We have another config block for the `setuptools` tool.
-
-(`pyproject.toml` collects most tools' config into the same file)
+This specifies the tool that bundles your code (i.e. `setuptools`)
 
 
 ```toml
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["SciwarePackage"]
+[tool.setuptools.packages.find]
+where = ["src"]
 ```
+We have another config block for the `setuptools` tool.
 
-This block is specific to `setuptools`. It defines:
-- the root directory of the code to distribute, relative to where `pyproject.toml` is located
-  - Here that's the `src` directory
-- the packages that should be bundled (matches the `name` field of the `[project]` section)
+(Remember, `pyproject.toml` collects most tools' config into the same file)
+
+- This block is specific to `setuptools`. Specifically:
+  - It configures the "find" option of the "packages" option
+  - This just tells `setuptools` the root directory to start from
+    when looking for installable packages to bundle.
+- These can also be set explicitly, but that can lead to pitfalls with sub-packages.
 
 
 That's it! With this minimal `pyproject.toml` config in place, you can install your project as a package.
@@ -490,16 +531,38 @@ $ pip install -e ~/example_project_root/
 ```
 
 
-Now, in *any* Python file *anywhere*, you can import the `SciwarePackage` package
+Now, in *any* Python file, `repl`, or notebook, you can import the `sciware_package` package
 and the code it defines.
 
 ```python
-from SciwarePackage import describe_operation
-from SciwarePackage.util.formatting import canonicalize_string
+from sciware_package import describe_operation
+from sciware_package.util.formatting import canonicalize_string
 ```
 
 Importing your package will work just as smoothly as importing a fancy published package
 you got off PyPI!
+
+
+### What if I want to share?
+Our sample `pyproject.toml` has some extra fields in the `[project]` section:
+
+```toml
+description = "Example package for Sciware 34"
+authors = [
+    { name = "Jeff Soules", email = "jsoules@flatironinstitute.org" }
+]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.license]
+file = "LICENSE"
+```
+- Not needed for local install but required for publishing to PyPI
+- `readme` can be text, a file, or even `dynamic` (see later)
+- `license` describes how others can legally use your code
 
 
 ### But that's not all!

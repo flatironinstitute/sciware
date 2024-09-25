@@ -1,5 +1,5 @@
 [project]
-name = "SciwarePackage"
+name = "sciware_package"
 version = "0.0.1"
 description = "Example package for Sciware 34"
 authors = [
@@ -19,9 +19,8 @@ dependencies = [
 file = "LICENSE"
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools"]
 build-backend="setuptools.build_meta"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["SciwarePackage"]
+[tool.setuptools.packages.find]
+where = ["src"]
