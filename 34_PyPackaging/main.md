@@ -462,17 +462,13 @@ Quick note: there's a lot of old material online recommending deprecated package
 configuration methods. Guides referring to `setup.cfg` are almost certainly
 outdated.
 
-`setup.py` is sometimes still required, but only very rarely--if you aren't
-positive why you need it, you're probably just using outdated instructions.
-
-In particular, `setup.py` is not required to use single-source version numbers.
-
-These configuration methods will stop working soon, so now's the time to migrate!
+- `setup.py` is sometimes still required, but only very rarely
+  - if you aren't positive why you need it, you probably don't
+  - In particular, you can use single-source version numbers without it
+- These configuration methods will stop working soon, so now's the time to migrate!
 
 
 ### Minimal pyproject.toml for an installable package
-
-`[project]` section:
 
 ```toml
 [project]
@@ -508,43 +504,44 @@ This specifies the tool that bundles your code (i.e. `setuptools`)
 [tool.setuptools.packages.find]
 where = ["src"]
 ```
-We have another config block for the `setuptools` tool.
-
-(Remember, `pyproject.toml` collects most tools' config into the same file)
+We have another config block: for the `setuptools` tool.
+(`pyproject.toml` collects many tools' config into the same file)
 
 - This block is specific to `setuptools`. Specifically:
   - It configures the "find" option of the "packages" option
   - This just tells `setuptools` the root directory to start from
-    when looking for installable packages to bundle.
+    when looking for packages to bundle.
 - These can also be set explicitly, but that can lead to pitfalls with sub-packages.
 
 
 That's it! With this minimal `pyproject.toml` config in place, you can install your project as a package.
+
 If:
 
 - the project is at `~/example_project_root`
 - `~/example_project_root/pyproject.toml` is as above
 - package code lives in `~/example_project_root/src/`
 
+Then:
 ```bash
 $ pip install -e ~/example_project_root/
 ```
 
 
 Now, in *any* Python file, `repl`, or notebook, you can import the `sciware_package` package
-and the code it defines.
+and use the code it defines.
 
 ```python
 from sciware_package import describe_operation
-from sciware_package.util.formatting import canonicalize_string
+from sciware_package.util import canonicalize_string
 ```
 
-Importing your package will work just as smoothly as importing a fancy published package
+Importing your own code will work just as smoothly as importing a fancy published package
 you got off PyPI!
 
 
 ### What if I want to share?
-Our sample `pyproject.toml` has some extra fields in the `[project]` section:
+Sample `pyproject.toml` has extra `[project]` fields:
 
 ```toml
 description = "Example package for Sciware 34"
@@ -560,15 +557,15 @@ classifiers = [
 [project.license]
 file = "LICENSE"
 ```
-- Not needed for local install but required for publishing to PyPI
+- Required for publishing to PyPI
 - `readme` can be text, a file, or even `dynamic` (see later)
 - `license` describes how others can legally use your code
 
 
 ### But that's not all!
 
-Now that you have a `pyproject.toml`, consider configuring other tools too!
-Here are some that support `pyproject.toml` configuration:
+Now that you have a `pyproject.toml`, consider using it to configure other tools too!
+For example:
 
 - [pytest](https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml) for automated testing
 - [pytest-cov](https://coverage.readthedocs.io/en/latest/config.html) for test coverage reports
@@ -578,6 +575,15 @@ Here are some that support `pyproject.toml` configuration:
 
 It's worth looking into for any tool you use.
 (And if you don't use any code quality tools, now's a great time to start!)
+
+
+
+## Survey
+Please give us some feedback!
+
+<img width="50%" src="./assets/bit.ly_sciware-sep2024.png">
+
+[https://bit.ly/sciware-sep2024](https://bit.ly/sciware-sep2024)
 
 
 
