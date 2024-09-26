@@ -251,10 +251,10 @@ Let's talk about the second point first.
 Example:
 ```python
 from math import sqrt
-import numpy as np
+print(sqrt(16)) # prints 4
+print(math.pi) # fails--we didn't import math!
 
-print(f'{sqrt(16)}') # prints 4
-print(f'{math.pi}') # fails--we didn't import math!
+import numpy as np
 my_array_1 = np.array([1, 2, 3]) # works
 my_array_2 = numpy.array([1, 2, 3]) # fails!
 ```
@@ -272,9 +272,9 @@ from .mycode import function_a
 from . import othercode
 from .. import thirdfile as t
 
-print(f'{function_a(1, 2)}')
-print(f'{othercode.function_b(3, 4)}')
-print(f'{t.fun_c()}')
+print(function_a(1, 2))
+print(othercode.function_b(3, 4))
+print(t.fun_c())
 ```
 
 It *might* work...
@@ -424,7 +424,7 @@ This means my changes are visible live--no reinstall needed.
 
 ## Properly Handling Python Projects
 
-<img height="50%" src="assets/snake-handling-wikipedia-pubdomain.jpg" class="plain">
+<img height="10%" src="assets/snake-handling-wikipedia-pubdomain.jpg" class="plain">
 
 
 ### Pythons Organized Neatly
