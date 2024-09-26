@@ -424,7 +424,7 @@ This means my changes are visible live--no reinstall needed.
 
 ## Properly Handling Python Projects
 
-<img height="10%" src="assets/snake-handling-wikipedia-pubdomain.jpg" class="plain">
+<img width="728px" src="assets/snake-handling-wikipedia-pubdomain.jpg" class="plain">
 
 
 ### Pythons Organized Neatly
