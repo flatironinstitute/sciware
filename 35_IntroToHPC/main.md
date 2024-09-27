@@ -47,6 +47,18 @@ Activities where participants all actively work to foster an environment which e
 - Running your jobs [interactive]
 
 
+## What you'll need
+
+- Remote access to the cluster via terminal
+  - on 'FI' wifi network: `ssh username@rusty`
+  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
+  - or... `https://jupyter.flatironinstitute.org`
+- Way to edit files on cluster
+  - terminal `emacs`, `vi`, `nano`
+  - or... remote edit via `vscode/emacs/vi/sshfs`
+  - or... `https://jupyter.flatironinstitute.org`
+
+
 
 ## Supercomputing terminology
 
@@ -183,7 +195,7 @@ Activities where participants all actively work to foster an environment which e
 - \~41k dedicated CPU cores (\~800 nodes)
 - Generally more available, but data separate from rusty
 - Everything on infiniband fabric
-- 128 V100 GPUs
+- A handful of GPUs for special purposes
 
 
 ### Rusty/popeye storage -- home
@@ -229,18 +241,6 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 ## Environment management
 
 
-## What you'll need
-
-- Remote access to the cluster via terminal
-  - on 'FI' wifi network: `ssh username@rusty`
-  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
-  - or... `https://jupyter.flatironinstitute.org`
-- Way to edit files on cluster
-  - terminal `emacs`, `vi`, `nano`
-  - or... remote edit via `vscode/emacs/vi/sshfs`
-  - or... `https://jupyter.flatironinstitute.org`
-
-
 ## Building/running software
 - `git clone ~scc/sciware_awful_cp`
 - `cd sciware_awful_cp`
@@ -266,7 +266,7 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 - Calculate π by throwing darts "_Monte Carlo Sampling_"
 - π ≅ 4 N<sub>in</sub> / N<sub>tot</sub>
-- https://github.com/flatironinstitute/sciware/tree/main/32_IntroToHPC/mc_pi
+- https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC/mc_pi
 <center>
     <img src="./assets/mc_pi_qr.png" style="border:0;box-shadow:none;transform: translateY(-50px)" height="250px">
     <img src="./assets/dartboard.png" style="border:0;box-shadow:none" height="350px">
@@ -311,6 +311,13 @@ python pi.py 100000 0
   - `module spider`, `openmpi`, `mpi4py`
   - `srun`, `sacct`, `seff`, `squeue`
   - `htop`
+
+
+
+## What now?
+- `disBatch` - e.g. modify `pi.py` for a `disBatch` submission
+- NUMA: `lstopo` - pinning/binding - latency/bandwidth
+- discussion about other HPC topics -- what interests you?
 
 
 ## disBatch
