@@ -190,11 +190,11 @@ Activities where participants all actively work to foster an environment which e
 ### Rusty -- compute power
 
 - FI's "primary" cluster
-- \~100k CPU cores (\~1200 nodes)
+- \~150k CPU cores (\~1400 nodes)
 - _Almost_ every node connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
   - Node types on different infiniband networks!
-- 240 H100, 288 A100 and 98 V100 GPUs
+- 240 H100, 288 A100 and 24 V100 GPUs
 
 
 ### Popeye -- compute power
