@@ -211,7 +211,7 @@ Activities where participants all actively work to foster an environment which e
 - High performance GPFS filesystem (General Parallel FS)
 - Mind your quota! You can get locked out of the cluster!
   - \~1 million files
-  - \~1 TiB limit
+  - \~500 GiB limit
 - Backed up regularly -- can recover deleted files
 - `module load fi-utils && fi-quota`
 
@@ -228,7 +228,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### Rusty/popeye storage -- ceph (2)
-- \~45 PiB (rusty) and \~15 PiB (popeye)
+- \~50 PiB (rusty) and \~20 PiB (popeye)
 - High bandwidth, high latency (\~1.5GiB/s parallel reads)
 - Highly redundant, not backed up (deletes unrecoverable!)
 - "Small" files "triple replicated"
