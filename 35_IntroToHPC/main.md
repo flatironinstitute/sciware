@@ -108,9 +108,9 @@ Activities where participants all actively work to foster an environment which e
 - Latency -- time between sending and receiving messages
 - Bandwidth -- Rate data can be transferred
 - Some rough "typical" numbers
-  - WiFi -- 1ms -- \~0.1-1 Gbit/s
-  - Ethernet -- 0.1ms -- \~1-40 Gbit/s
-  - Infiniband -- 0.001ms -- \~100-800 Gbit/s
+  - WiFi -- 1ms -- \~0.1-1 Gbit/s -- network
+  - Ethernet -- 0.1ms -- \~1-40 Gbit/s -- network
+  - Infiniband -- 0.001ms -- \~100-800 Gbit/s -- fabric
 
 
 ### Compute nodes
