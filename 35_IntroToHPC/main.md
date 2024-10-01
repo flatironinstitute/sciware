@@ -102,6 +102,12 @@ Activities where participants all actively work to foster an environment which e
 </div>
 
 
+### Which statement is generally true about what we mean by a "cluster"?
+- A. One very powerful computer
+- B. Many geographically dispersed computers connected via the internet
+- C. Network of CPU nodes with lots of RAM that are linked together with some kind of network
+
+
 ### Network/fabric
 - Network/fabric - the means of communication between nodes
   - Communication lines usually fiber/copper/wireless
@@ -111,6 +117,11 @@ Activities where participants all actively work to foster an environment which e
   - WiFi -- 1ms -- \~0.1-1 Gbit/s -- network
   - Ethernet -- 0.1ms -- \~1-40 Gbit/s -- network
   - Infiniband -- 0.001ms -- \~100-800 Gbit/s -- fabric
+
+### Which statement is false?
+- A. Latency is the time between sending and receiving messages
+- B. Bandwidth is the rate at which messages can be sent
+- C. Infiniband fabric has relatively 'high' latency and 'low' bandwidth
 
 
 ### Compute nodes
@@ -135,6 +146,12 @@ Activities where participants all actively work to foster an environment which e
   - CPU Core -- a single physical CPU on a multi-core CPU
   - Cores have their own _cache_ but also share _cache_ directly with other cores
   - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
+
+
+### Which statement is true about nodes and cores?
+- A. There is one node per supercomputer
+- B. Each node has multiple CPU cores
+- C. Cores in supercomputers are typically faster than laptop cores and have less RAM
 
 
 ### Compute node architecture -- `lstopo`
@@ -205,6 +222,12 @@ Activities where participants all actively work to foster an environment which e
 - A handful of GPUs for special purposes
 
 
+### Rusty/popeye storage -- local
+- All worker nodes have fast `NVMe` storage local to the machine
+- Usually about 2 terabytes in the `/tmp` path
+- Automatically deleted at job completion!
+
+
 ### Rusty/popeye storage -- home
 - `/mnt/home/$USER` AKA `$HOME` -- default path
 - Put your source code and software installs here!
@@ -242,6 +265,13 @@ Activities where participants all actively work to foster an environment which e
 <img src="./assets/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
 <br>
 https://wiki.flatironinstitute.org/SCC/Hardware/Storage
+
+
+### Which statement is true about file systems at FI?
+- A. I should put many small files ina  single directory on ceph
+- B. I should put large files in my home directory
+- C. Home and ceph are the only options for storing data during a job
+- D. Files stored in my home directory are backed up while ones on ceph are not
 
 
 
@@ -302,6 +332,7 @@ python pi.py 100000 0
 - We could make our code more efficient...
 - But let's throw some power at it, some options are:
   - `MPI` (message passing interface) using `openmpi`
+  - `srun` to run multiple copies
   - multiple serial jobs via `disBatch`
   - could loop through calls to python in sbatch script, but hard to balance and error prone
   - could use small jobs or job array with slurm, but this angers the compute gods
