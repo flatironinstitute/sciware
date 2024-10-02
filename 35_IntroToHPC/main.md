@@ -84,7 +84,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### What's the best way to get questions about the cluster answered?
-- <font color="#804">A. https://wiki.flatironinstitute.org/</font>
+- <font color="#808">A. https://wiki.flatironinstitute.org/</font>
 - <font color="#080">B. Slack #scicomp</font>
 - <font color="#880">C. scicomp@flatironinstitute.org</font>
 - <font color="#048">D. Any of the above</font>
@@ -112,7 +112,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Quiz!
 ### Which statement is generally true about what we mean by a "cluster"?
-- <font color="#804">A. One very powerful computer</font>
+- <font color="#808">A. One very powerful computer</font>
 - <font color="#080">B. Many geographically dispersed computers connected via the internet</font>
 - <font color="#880">C. Collection of computers that are linked together with a local network</font>
 
@@ -130,7 +130,7 @@ Activities where participants all actively work to foster an environment which e
 
 ## Quiz!
 ### Which statement is false?
-- <font color="#804">A. Latency is the time between sending and receiving messages</font>
+- <font color="#808">A. Latency is the time between sending and receiving messages</font>
 - <font color="#080">B. Bandwidth is the rate at which messages can be sent</font>
 - <font color="#880">C. Infiniband fabric has relatively high latency and low bandwidth</font>
 
@@ -161,9 +161,9 @@ Activities where participants all actively work to foster an environment which e
 
 ## Quiz!
 ### Which statement is true about nodes and cores?
-- <font color="#804">A. There is one node per supercomputer</font>
+- <font color="#808">A. There is one node per supercomputer</font>
 - <font color="#080">B. Each node has multiple CPU cores</font>
-- <font color="$880">C. Cores in supercomputers are typically faster than laptop cores and have less RAM</font>
+- <font color="#880">C. Cores in supercomputers are typically faster than laptop cores and have less RAM</font>
 
 
 ### Compute node architecture -- `lstopo`
@@ -281,7 +281,7 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 ## Quiz!
 ### Which statement is true about file systems at FI?
-- <font color="#804">A. I should put many small files in a single directory on ceph</font>
+- <font color="#808">A. I should put many small files in a single directory on ceph</font>
 - <font color="#080">B. I should put large files in my home directory</font>
 - <font color="#880">C. Home and ceph are the only options for storing data during a job</font>
 - <font color="#048">D. Files stored in my home directory are backed up while ones on ceph are not</font>
