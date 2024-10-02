@@ -102,10 +102,11 @@ Activities where participants all actively work to foster an environment which e
 </div>
 
 
+## Quiz!
 ### Which statement is generally true about what we mean by a "cluster"?
-- A. One very powerful computer
-- B. Many geographically dispersed computers connected via the internet
-- C. Network of CPU nodes with lots of RAM that are linked together with some kind of network
+- <font color="red">A. One very powerful computer</font>
+- <font color="green">B. Many geographically dispersed computers connected via the internet</font>
+- <font color="blue">C. Network of CPU nodes with lots of RAM that are linked together with some kind of network</font>
 
 
 ### Network/fabric
@@ -118,6 +119,8 @@ Activities where participants all actively work to foster an environment which e
   - Ethernet -- 0.1ms -- \~1-40 Gbit/s -- network
   - Infiniband -- 0.001ms -- \~100-800 Gbit/s -- fabric
 
+
+## Quiz!
 ### Which statement is false?
 - <font color="red">A. Latency is the time between sending and receiving messages</font>
 - <font color="green">B. Bandwidth is the rate at which messages can be sent</font>
@@ -148,10 +151,11 @@ Activities where participants all actively work to foster an environment which e
   - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
 
 
+## Quiz!
 ### Which statement is true about nodes and cores?
-- A. There is one node per supercomputer
-- B. Each node has multiple CPU cores
-- C. Cores in supercomputers are typically faster than laptop cores and have less RAM
+- <font color="red">A. There is one node per supercomputer</font>
+- <font color="green">B. Each node has multiple CPU cores</font>
+- <font color="blue">C. Cores in supercomputers are typically faster than laptop cores and have less RAM</font>
 
 
 ### Compute node architecture -- `lstopo`
@@ -267,11 +271,12 @@ Activities where participants all actively work to foster an environment which e
 https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
+## Quiz!
 ### Which statement is true about file systems at FI?
-- A. I should put many small files ina  single directory on ceph
-- B. I should put large files in my home directory
-- C. Home and ceph are the only options for storing data during a job
-- D. Files stored in my home directory are backed up while ones on ceph are not
+- <font color="red">A. I should put many small files in a single directory on ceph</font>
+- <font color="green">B. I should put large files in my home directory</font>
+- <font color="blue">C. Home and ceph are the only options for storing data during a job</font>
+- <font color="yellow">D. Files stored in my home directory are backed up while ones on ceph are not</font>
 
 
 
