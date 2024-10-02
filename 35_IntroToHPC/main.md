@@ -66,7 +66,7 @@ Activities where participants all actively work to foster an environment which e
 <img height=400px src="./assets/everythingisfine.jpg">
 
 
-### Getting help with the clusters (1)
+### Getting help with the clusters
 
 - SCC provides a wiki for cluster help and information
   - https://wiki.flatironinstitute.org
@@ -74,12 +74,20 @@ Activities where participants all actively work to foster an environment which e
   - can log in with cluster credentials, or SSO if flatiron email is on your cluster account
 
 
-### Getting help with the cluster (2)
+### Getting help with the cluster
 
 - #scicomp on slack for quick or broad questions
   - SCC/FI community will help with your issue
 - https://wiki.flatironinstitute.org/SCC/ReportingProblems
   - Email with details from above to scicomp@flatironinstitute.org
+- #sciware channel for software development discussions
+
+
+### What's the best way to get questions about the cluster answered?
+- <font color="#804">A. https://wiki.flatironinstitute.org/</font>
+- <font color="#080">B. Slack #scicomp</font>
+- <font color="#880">C. scicomp@flatironinstitute.org</font>
+- <font color="#048">D. Any of the above</font>
 
 
 
