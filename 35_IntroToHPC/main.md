@@ -106,7 +106,7 @@ Activities where participants all actively work to foster an environment which e
 ### Which statement is generally true about what we mean by a "cluster"?
 - <font color="red">A. One very powerful computer</font>
 - <font color="green">B. Many geographically dispersed computers connected via the internet</font>
-- <font color="blue">C. Network of CPU nodes with lots of RAM that are linked together with some kind of network</font>
+- <font color="blue">C. Collection of computers that are linked together with a local network</font>
 
 
 ### Network/fabric
@@ -124,7 +124,7 @@ Activities where participants all actively work to foster an environment which e
 ### Which statement is false?
 - <font color="red">A. Latency is the time between sending and receiving messages</font>
 - <font color="green">B. Bandwidth is the rate at which messages can be sent</font>
-- <font color="blue">C. Infiniband fabric has relatively 'high' latency and 'low' bandwidth</font>
+- <font color="blue">C. Infiniband fabric has relatively high latency and low bandwidth</font>
 
 
 ### Compute nodes
