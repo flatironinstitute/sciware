@@ -119,9 +119,9 @@ Activities where participants all actively work to foster an environment which e
   - Infiniband -- 0.001ms -- \~100-800 Gbit/s -- fabric
 
 ### Which statement is false?
-- A. Latency is the time between sending and receiving messages
-- B. Bandwidth is the rate at which messages can be sent
-- C. Infiniband fabric has relatively 'high' latency and 'low' bandwidth
+- <font color="red">A. Latency is the time between sending and receiving messages</font>
+- <font color="green">B. Bandwidth is the rate at which messages can be sent</font>
+- <font color="blue">C. Infiniband fabric has relatively 'high' latency and 'low' bandwidth</font>
 
 
 ### Compute nodes
