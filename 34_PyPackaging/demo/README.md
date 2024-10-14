@@ -15,7 +15,7 @@ the end of the demo in the `pre-baked-cake/` folder.
 ## Getting Started
 
 To run this locally, you may need to install some additional packages.
-Run the following commands from inside this directory (`sciware/35_PyPackaging/demo/`).
+Run the following commands from inside this directory (`sciware/34_PyPackaging/demo/`).
 
 If you are a conda user, you can run
 
@@ -40,7 +40,7 @@ any local installation being necessary. Note that this will be a slightly
 different UI than the presenter will be using, so some parts may be slightly
 harder to follow along.
 
-[Click Here](https://colab.research.google.com/github/flatironinstitute/sciware/blob/main/35_PyPackaging/demo/Demo.ipynb) to launch a Colab session
+[Click Here](https://colab.research.google.com/github/flatironinstitute/sciware/blob/main/34_PyPackaging/demo/Demo.ipynb) to launch a Colab session
 
 You will need to uncomment and run the first cell of the notebook which says
 "Google Colab: uncomment and run this next line!"

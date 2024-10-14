@@ -1,7 +1,6 @@
 name: sciware-python-packaging-examples
 channels:
   - conda-forge
-  - defaults
 dependencies:
   # for the notebook
   - python==3.11

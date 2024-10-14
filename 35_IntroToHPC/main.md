@@ -41,10 +41,53 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Today's Agenda
+- Helpdesk recap
 - Supercomputing components and terminology
 - Flatiron resources overview
 - Environment management [interactive]
 - Running your jobs [interactive]
+
+
+## What you'll need
+
+- Remote access to the cluster via terminal
+  - on 'FI' wifi network: `ssh username@rusty`
+  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
+  - or... `https://jupyter.flatironinstitute.org`
+- Way to edit files on cluster
+  - terminal `emacs`, `vi`, `nano`
+  - or... remote edit via `vscode/emacs/vi/sshfs`
+  - or... `https://jupyter.flatironinstitute.org`
+
+
+
+## Getting help with the FI clusters!
+
+<img height=400px src="./assets/everythingisfine.jpg">
+
+
+### Getting help with the clusters
+
+- SCC provides a wiki for cluster help and information
+  - https://wiki.flatironinstitute.org
+  - Information on effectively using slurm, python, conda, mpi, compiles, MATLAB, Mathematica, etc.
+  - can log in with cluster credentials, or SSO if flatiron email is on your cluster account
+
+
+### Getting help with the cluster
+
+- #scicomp on slack for quick or broad questions
+  - SCC/FI community will help with your issue
+- https://wiki.flatironinstitute.org/SCC/ReportingProblems
+  - Email with details from above to scicomp@flatironinstitute.org
+- #sciware channel for software development discussions
+
+
+### What's the best way to get questions about the cluster answered?
+- <font color="#808">A. https://wiki.flatironinstitute.org/</font>
+- <font color="#080">B. Slack #scicomp</font>
+- <font color="#880">C. scicomp@flatironinstitute.org</font>
+- <font color="#048">D. Any of the above</font>
 
 
 
@@ -67,15 +110,29 @@ Activities where participants all actively work to foster an environment which e
 </div>
 
 
+## Quiz!
+### Which statement is generally true about what we mean by a "cluster"?
+- <font color="#808">A. One very powerful computer</font>
+- <font color="#080">B. Many geographically dispersed computers connected via the internet</font>
+- <font color="#880">C. Collection of computers that are linked together with a local network</font>
+
+
 ### Network/fabric
 - Network/fabric - the means of communication between nodes
   - Communication lines usually fiber/copper/wireless
 - Latency -- time between sending and receiving messages
 - Bandwidth -- Rate data can be transferred
 - Some rough "typical" numbers
-  - WiFi -- 1ms -- \~0.1-1 Gbit/s
-  - Ethernet -- 0.1ms -- \~1-40 Gbit/s
-  - Infiniband -- 0.001ms -- \~100-800 Gbit/s
+  - WiFi -- 1ms -- \~0.1-1 Gbit/s -- network
+  - Ethernet -- 0.1ms -- \~1-40 Gbit/s -- network
+  - Infiniband -- 0.001ms -- \~100-800 Gbit/s -- fabric
+
+
+## Quiz!
+### Which statement is false?
+- <font color="#808">A. Latency is the time between sending and receiving messages</font>
+- <font color="#080">B. Bandwidth is the rate at which messages can be sent</font>
+- <font color="#880">C. Infiniband fabric has relatively high latency and low bandwidth</font>
 
 
 ### Compute nodes
@@ -100,6 +157,13 @@ Activities where participants all actively work to foster an environment which e
   - CPU Core -- a single physical CPU on a multi-core CPU
   - Cores have their own _cache_ but also share _cache_ directly with other cores
   - Cores typically slower than laptop/workstation cores, but more of them and more cache/RAM
+
+
+## Quiz!
+### Which statement is true about nodes and cores?
+- <font color="#808">A. There is one node per supercomputer</font>
+- <font color="#080">B. Each node has multiple CPU cores</font>
+- <font color="#880">C. Cores in supercomputers are typically faster than laptop cores and have less RAM</font>
 
 
 ### Compute node architecture -- `lstopo`
@@ -142,22 +206,6 @@ Activities where participants all actively work to foster an environment which e
 ## Flatiron resources overview
 
 
-### Getting help with the cluster (1)
-
-- SCC provides a wiki for cluster help and information
-  - https://wiki.flatironinstitute.org 
-  - Information on effectively using slurm, python, conda, mpi, compiles, MATLAB, Mathematica, etc.
-  - can log in with cluster credentials, or SSO if flatiron email is on your cluster account
-
-
-### Getting help with the cluster (2)
-
-- #scicomp on slack for quick or broad questions
-  - SCC/FI community will help with your issue
-- https://wiki.flatironinstitute.org/SCC/ReportingProblems
-  - Email with details from above to scicomp@flatironinstitute.org
-
-
 ### Two clusters: 'Rusty' and 'Popeye'
 
 - Rusty on east coast, Popeye on west coast
@@ -171,11 +219,11 @@ Activities where participants all actively work to foster an environment which e
 ### Rusty -- compute power
 
 - FI's "primary" cluster
-- \~100k CPU cores (\~1200 nodes)
+- \~150k CPU cores (\~1400 nodes)
 - _Almost_ every node connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
   - Node types on different infiniband networks!
-- 240 H100, 288 A100 and 98 V100 GPUs
+- 240 H100, 288 A100 and 24 V100 GPUs
 
 
 ### Popeye -- compute power
@@ -183,7 +231,13 @@ Activities where participants all actively work to foster an environment which e
 - \~41k dedicated CPU cores (\~800 nodes)
 - Generally more available, but data separate from rusty
 - Everything on infiniband fabric
-- 128 V100 GPUs
+- A handful of GPUs for special purposes
+
+
+### Rusty/popeye storage -- local
+- All worker nodes have fast `NVMe` storage local to the machine
+- Usually about 2 terabytes in the `/tmp` path
+- Automatically deleted at job completion!
 
 
 ### Rusty/popeye storage -- home
@@ -192,7 +246,7 @@ Activities where participants all actively work to foster an environment which e
 - High performance GPFS filesystem (General Parallel FS)
 - Mind your quota! You can get locked out of the cluster!
   - \~1 million files
-  - \~1 TiB limit
+  - \~500 GiB limit
 - Backed up regularly -- can recover deleted files
 - `module load fi-utils && fi-quota`
 
@@ -209,7 +263,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ### Rusty/popeye storage -- ceph (2)
-- \~45 PiB (rusty) and \~15 PiB (popeye)
+- \~50 PiB (rusty) and \~20 PiB (popeye)
 - High bandwidth, high latency (\~1.5GiB/s parallel reads)
 - Highly redundant, not backed up (deletes unrecoverable!)
 - "Small" files "triple replicated"
@@ -225,20 +279,16 @@ Activities where participants all actively work to foster an environment which e
 https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
+## Quiz!
+### Which statement is true about file systems at FI?
+- <font color="#808">A. I should put many small files in a single directory on ceph</font>
+- <font color="#080">B. I should put large files in my home directory</font>
+- <font color="#880">C. Home and ceph are the only options for storing data during a job</font>
+- <font color="#048">D. Files stored in my home directory are backed up while ones on ceph are not</font>
+
+
 
 ## Environment management
-
-
-## What you'll need
-
-- Remote access to the cluster via terminal
-  - on 'FI' wifi network: `ssh username@rusty`
-  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
-  - or... `https://jupyter.flatironinstitute.org`
-- Way to edit files on cluster
-  - terminal `emacs`, `vi`, `nano`
-  - or... remote edit via `vscode/emacs/vi/sshfs`
-  - or... `https://jupyter.flatironinstitute.org`
 
 
 ## Building/running software
@@ -266,7 +316,7 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 - Calculate π by throwing darts "_Monte Carlo Sampling_"
 - π ≅ 4 N<sub>in</sub> / N<sub>tot</sub>
-- https://github.com/flatironinstitute/sciware/tree/main/32_IntroToHPC/mc_pi
+- https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC/mc_pi
 <center>
     <img src="./assets/mc_pi_qr.png" style="border:0;box-shadow:none;transform: translateY(-50px)" height="250px">
     <img src="./assets/dartboard.png" style="border:0;box-shadow:none" height="350px">
@@ -295,6 +345,7 @@ python pi.py 100000 0
 - We could make our code more efficient...
 - But let's throw some power at it, some options are:
   - `MPI` (message passing interface) using `openmpi`
+  - `srun` to run multiple copies
   - multiple serial jobs via `disBatch`
   - could loop through calls to python in sbatch script, but hard to balance and error prone
   - could use small jobs or job array with slurm, but this angers the compute gods
@@ -311,6 +362,13 @@ python pi.py 100000 0
   - `module spider`, `openmpi`, `mpi4py`
   - `srun`, `sacct`, `seff`, `squeue`
   - `htop`
+
+
+
+## What now?
+- `disBatch` - e.g. modify `pi.py` for a `disBatch` submission
+- NUMA: `lstopo` - pinning/binding - latency/bandwidth
+- discussion about other HPC topics -- what interests you?
 
 
 ## disBatch
