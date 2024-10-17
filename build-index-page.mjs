@@ -66,6 +66,15 @@ const upcoming_events = [
   //   location: `162 5th Ave<br />IDA Auditorium`,
   //   summary: html` In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks. `,
   // },
+  {
+    // Date- Thur Nov 21 at 10am-12pm.
+    title: `How to (try to) publish a reproducible paper`,
+    weekday: `Thursday`,
+    date: `November 21`,
+    time: `10 AM — Noon`,
+    location: `160 5th Ave<br />4th Floor Classroom`,
+    summary: html`There is a lot of code and data that goes into a paper (simulation, analysis, plotting) that doesn't belong in a software package. How do you share that code and data so that it is possible for your work to be reproducible? In this workshop, we will discuss considerations around sharing such code and data. Tools and topics will include workflow managers like Snakemake; software environments & installability; GitHub; README best practices; using repositories and data archives such as Zenodo; licensing; and more. We will focus on code and data products which are not intended to be maintained or generalizable but rather which are particular to a specific publication.`,
+  },
 ];
 
 const past_events = [
