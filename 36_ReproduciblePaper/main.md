@@ -135,6 +135,63 @@ Don't let the perfect be the enemy of the good.
 
 so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up.
 
+## Get your code running on another machine
+
+## 1. Choose your toolkit well
+
+- **Focus on Your Scientific Problem**  
+   - Use "standard" tools to avoid re-implementing common solutions.
+      - Look for: well documented, widely used, and actively maintained. 
+   - Example: don't reimplement your own PCA, use libraries like scikit-learn instead.
+
+- **Open Source First**  
+  - Increases transparency and reproducibility.  
+  - Open-source tools often have better community support.  
+
+- **Avoid GUIs, Prefer Scripting**  
+   - GUIs limit automation—use scriptable alternatives / get scripted version when possible.  
+   - When not possible, store both GUI outputs and configurations.
+      -  **Example:** Finding & merge double-counted units in spike sorting (manual GUI step).
+
+## 2. Version Control with Git and GitHub  
+- **Keep a Clean Repository**  
+   - Use `.gitignore` to avoid committing unnecessary files.  
+   - Have a `README` file explaining repo content, as well as references to associated paper.
+   - Minimize the amount of files (especially large binaries), ideally only source code and small config files.
+   - Avoid credentials, and private data.
+   - Delete stale branches.
+
+## 3. License Your Code 
+
+- **Clarify Usage Rights**  
+  - Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.  
+
+## 4. **Avoid Hard-Coded Paths**  
+  - Use **config files** (or **environment variables**, harder for users).
+
+## 5. **Make your package installable**
+- Specify Core Dependencies in a `requirements.txt` File.
+   - List direct dependency only
+   - Check what is improted:
+   ```sh
+   find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^import' {} \+ | sort -u
+   ```
+- Avoid pinning pacakge version if possible.
+- Store your package version as a reference, use `pip freeze > myenv.txt` for python.
+- See [September sciware on packaging](https://sciware.flatironinstitute.org/34_PyPackaging/slides.html).
+
+## 6. Consider Containers (When Necessary)  
+- **When to Use Containers**  
+  - If your code has **complex dependencies** or non-Python packages.  
+  - If you have code that must run on High Performance Computing clusters (facilitate portability).  
+
+- **When to Skip Containers**  
+  - If you use **stable Python packages** with good backward compatibility.
+  - **Conda environments** might be enough if dependencies are Python-only.
+
+- **Reproducibility Benefits**  
+  - Containers ensure **bitwise reproducibility**
+   - Hash the image.
 
 
 ## Survey
