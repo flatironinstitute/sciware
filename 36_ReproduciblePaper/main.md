@@ -116,11 +116,25 @@ Don't let the perfect be the enemy of the good.
 
 ## Caveats
 
-- Largely talking about python
-- I'm mostly familiar with neuroscience and psychology
-- This is heavily opinionated
+- Largely talking about python.
+- I'm mostly familiar with neuroscience and psychology.
+- This is heavily opinionated.
 
 #note: finally, some caveats
+
+
+## Topics
+
+- Get your code running on another machine.
+- Tell people how to run your code and what it's doing.
+- Data and archiving.
+- Automation.
+- Advanced topics.
+
+#note: we're going to give a brief overview of a lot today, which fall into these categories. the goal here is to make you aware of all of these topics, and to get you started. the goal is not to be exhaustive, and you'll probably need to do more reading or ask questions about the topics we'll cover today. I'll have some resources at the end of this presentation, which you can find on the sciware site and, if you end up trying to follow these guidelines and have questions or just want to show off, post on the sciware channel!
+
+so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up.
+
 
 
 ## Survey
