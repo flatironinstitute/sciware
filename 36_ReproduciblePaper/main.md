@@ -135,63 +135,168 @@ Don't let the perfect be the enemy of the good.
 
 so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up.
 
+
 ## Get your code running on another machine
 
-## 1. Choose your toolkit well
+#note: the absolute minimal requirement for reproducible results is that your analysis code can run on a machine that is not your own. In the next slides I will
+provide a few advices that should make this requirement easier.
 
-- **Focus on Your Scientific Problem**  
-   - Use "standard" tools to avoid re-implementing common solutions.
-      - Look for: well documented, widely used, and actively maintained. 
-   - Example: don't reimplement your own PCA, use libraries like scikit-learn instead.
 
-- **Open Source First**  
-  - Increases transparency and reproducibility.  
-  - Open-source tools often have better community support.  
+<ol start="1">
+  <li><strong>Choose Your Toolkit Well</strong>
+    <ul>
+      <li><strong>Focus on Your Scientific Problem</strong>
+        <ul>
+          <li class="fragment appear">Use "standard" tools to avoid re-implementing common solutions.</li>
+          <li class="fragment appear">Example: don't reimplement your own PCA; use libraries like scikit-learn instead.</li>
+          <li class="fragment appear">Look for: well-documented, widely used, and actively maintained tools.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
 
-- **Avoid GUIs, Prefer Scripting**  
-   - GUIs limit automation—use scriptable alternatives / get scripted version when possible.  
-   - When not possible, store both GUI outputs and configurations.
-      -  **Example:** Finding & merge double-counted units in spike sorting (manual GUI step).
+#note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained.
 
-## 2. Version Control with Git and GitHub  
-- **Keep a Clean Repository**  
-   - Use `.gitignore` to avoid committing unnecessary files.  
-   - Have a `README` file explaining repo content, as well as references to associated paper.
-   - Minimize the amount of files (especially large binaries), ideally only source code and small config files.
-   - Avoid credentials, and private data.
-   - Delete stale branches.
 
-## 3. License Your Code 
+<ol start="2">
+   <li><strong>Open Source First</strong>
+      <ul>
+         <li>Increases transparency and reproducibility.</li>
+         <li class="fragment appear">Open-source tools often have better community support.</li>
+      </ul>
+   </li>
+</ol>
+<br>
+<ol start="3">
+   <div class="fragment appear">
+   <li><strong>Avoid GUIs, Prefer Scripting</strong>
+      <ul>
+         <li class="fragment appear">GUIs limit automation—use scriptable alternatives or obtain a scripted version when possible.</li>
+         <li class="fragment appear">When not possible, store both GUI outputs and configurations.</li>
+         <li class="fragment appear"><strong>Example:</strong> Finding and merging double-counted units in spike sorting (manual GUI step).</li>
+      </ul>
+   </li>
+   </div>
+</ol>
 
-- **Clarify Usage Rights**  
-  - Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.  
+#note: My second recommendation is to prioritize open source tools. This increases transparency and often results in better support from active communities of users and developers.
 
-## 4. **Avoid Hard-Coded Paths**  
-  - Use **config files** (or **environment variables**, harder for users).
 
-## 5. **Make your package installable**
-- Specify Core Dependencies in a `requirements.txt` File.
-   - List direct dependency only
-   - Check what is improted:
-   ```sh
-   find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^import' {} \+ | sort -u
-   ```
-- Avoid pinning pacakge version if possible.
-- Store your package version as a reference, use `pip freeze > myenv.txt` for python.
-- See [September sciware on packaging](https://sciware.flatironinstitute.org/34_PyPackaging/slides.html).
+<ol start="4"> 
+   <li><strong>Version Control with Git and GitHub</strong></li>
+   <ul>
+   <li><strong>Keep a Clean Repository</strong></li>
+   <ul>
+      <li class="fragment appear">Use `.gitignore` to avoid committing unnecessary files.</li>
+      <li class="fragment appear">Have a `README` file explaining repo content, as well as references to associated paper.</li>
+      <li class="fragment appear">Minimize the amount of files (especially large binaries).</li>
+      <li class="fragment appear">Avoid credential and private data.</li>
+      <li class="fragment appear">Delete stale branches.</li>
+   </ul>
+   </ul>
+</ol>
 
-## 6. Consider Containers (When Necessary)  
-- **When to Use Containers**  
-  - If your code has **complex dependencies** or non-Python packages.  
-  - If you have code that must run on High Performance Computing clusters (facilitate portability).  
 
-- **When to Skip Containers**  
-  - If you use **stable Python packages** with good backward compatibility.
-  - **Conda environments** might be enough if dependencies are Python-only.
+<ol start="5"> 
+<li><strong>License Your Code</strong></li>
+<ul>
+   <li><strong>Clarify Usage Rights</strong></li>
+   <ul>
+      <li>Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.</li>
+   </ul>
+</ul>
+<li><strong>Avoid Hard-Coded Paths</strong> </li>
+<ul>
+   <li>Use <strong>config files</strong> (or <strong>environment variables</strong>, harder for users).</li>
+</ul>
+</ol>
 
-- **Reproducibility Benefits**  
-  - Containers ensure **bitwise reproducibility**
-   - Hash the image.
+
+<ol start="5">
+<li><strong>Make Your Package Installable</strong></li>
+   <ul>
+      <li>Specify Core Dependencies in a <code>requirements.txt</code> file.
+      <ul>
+         <li>List only direct dependencies.</li>
+         <li>Avoid pinning package versions if possible.</li>
+         <li>Store your package version as a reference, using <code>pip freeze > myenv.txt</code> for Python.</li>
+         <li>See <a href="https://sciware.flatironinstitute.org/34_PyPackaging/slides.html">September Sciware on Packaging</a>.</li>
+         <li>Check what is imported:</li>
+      </ul>
+   </ul>
+</ol>
+
+<pre style="position: relative; left: -20px; margin: 0; padding: 0; text-align: left;">
+   <code class="language-sh">
+find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^import' {} \+ | sort -u
+   </code>
+</pre>
+
+
+<ol start="6">
+  <li><strong>Consider Containers</strong></li>
+  <ul>
+    <li><strong>When Using Containers</strong>
+      <ul>
+        <li>If your code has <strong>complex dependencies</strong> or non-Python packages.</li>
+        <li>If you have code that must run on High-Performance Computing clusters (facilitates portability).</li>
+      </ul>
+    </li>
+    <li><strong>When Probably Not</strong>
+      <ul>
+        <li>If you use <strong>stable Python packages</strong> with good backward compatibility.</li>
+        <li><strong>Conda environments</strong> might be enough if dependencies are Python-only.</li>
+      </ul>
+    </li>
+    <li><strong>Reproducibility Benefits</strong>
+      <ul>
+        <li>Containers ensure <strong>bitwise reproducibility</strong></li>
+        <li>Hash the image.</li>
+      </ul>
+    </li>
+  </ul>
+</ol>
+
+
+## Necessary Information
+
+Have a `README` file which answers:
+
+- What does my code do? 
+- How to install my code?
+- How to run my code?
+- How to cite?
+
+
+## What does my code do?
+
+- Broief overview of what problem my code solves.
+- Key information: programming language, core dependencies (JAX, scipy...).
+- Link to related papers, presentations, or documentation.
+
+
+## How to install my code?
+
+- Step-by-step install procedure.
+- Specify python vesions and non-python dependencies.
+- Mention OS compatibility.
+
+
+## How to run my code?
+
+- Code snippets with examples of usage.
+- Add decriptive text and comments.
+- Point to extended notebook/script tutorials, summarizing the content.
+- Notebooks should show example usages, not full analysis.
+
+
+## How to run my code?
+
+Different ways of adding citations:
+- Bibtex entry in `README`
+- Citation file in the repo as `CITATION.cff` (Citation File Format) or `CITATION.md` file/
+- Consider generating a DOI via Zenodo.
 
 
 ## Survey
