@@ -88,21 +88,12 @@ the way I've heard this described is "your most important collaborator is yourse
 
 ## Points to consider
 
-<div class="fragment appear">
-What are your goals? 
-</div>
-<div class="fragment appear">
-Who is the target community?
-</div>
-<div class="fragment appear">
-How much maintenance do you want to do on this?
-</div>
-<div class="fragment appear">
-The earlier you start, the easier this will be.<div class="fragment appear" style="display:inline">.. but it's never too late to start.</div>
-</div>
-<div class="fragment appear">
-Don't let the perfect be the enemy of the good.
-</div>
+- What are your goals?  <!-- .element: class="fragment"  -->
+- Who is the target community?  <!-- .element: class="fragment"  -->
+- How much maintenance do you want to do on this?  <!-- .element: class="fragment"  -->
+- The earlier you start, the easier this will be.  <!-- .element: class="fragment" -->
+- But it's never too late to start. <!-- .element: class="fragment" -->
+- Don't let the perfect be the enemy of the good.  <!-- .element: class="fragment"  -->
 
 #note: so now you're all thoroughly convinced that you should be reproducible and that to do that, you need to share your code+data. Before we start talking practically, let's set out some questions:
 - What your goal is when sharing the code: do you want people to just be able to re-generate your figures? Running same method on newly-collected data / different datasets? Are there any parts of your code (model, algorithm) that folks will want to apply to a completely new context? 
@@ -133,8 +124,177 @@ Don't let the perfect be the enemy of the good.
 
 #note: we're going to give a brief overview of a lot today, which fall into these categories. the goal here is to make you aware of all of these topics, and to get you started. the goal is not to be exhaustive, and you'll probably need to do more reading or ask questions about the topics we'll cover today. I'll have some resources at the end of this presentation, which you can find on the sciware site and, if you end up trying to follow these guidelines and have questions or just want to show off, post on the sciware channel!
 
-so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up.
+so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up. Periodically, we're going to switch tabs to show you how we've implemented these steps in our own projects.
 
+
+
+## What data to share and where?
+
+#note: when thinking about sharing data, start with these questions.
+
+
+## What to share?
+
+- Raw data <!-- .element: class="fragment" -->
+- Processed data <!-- .element: class="fragment"  -->
+- Model parameters <!-- .element: class="fragment" -->
+- Stand-alone outputs <!-- .element: class="fragment"  -->
+- Metadata (e.g., data dictionary)  <!-- .element: class="fragment"  -->
+
+#note: So what do you share? the obvious one is your raw data. If someone is going to run your analysis from scratch, they obviously need your data.
+
+However, there are other things worth sharing that you might not thought of:
+- it's probably worth sharing data that has been processed in some way. this is especially useful if part of your pipeline uses non-open source software or takes a long time / lots of computational resources to run. if you have any pre-processing steps, which use standard analyses which you are not responsible for (e.g., you're using some existing package and just applying as is), it can be useful to share the output of all those steps as well. these are typically also a good deal smaller than the raw data, at least in neuroscience. For me, I like to share the output of these pre-processing steps, and then also the inputs to the figure generation. that gives people multiple entry points into the data
+- Model parameters. if you fit a model, these are probably useful to people. it's probably a small text file (csv, json) and very important for anyone to use your model, but a pain in the ass to sufficiently include in the paper
+- Stand-alone outputs. By this I mean things that might be useful for people beyond just the goal of re-creating your figures. in that case, it's a bit out of the context of this talk, but still worth taking a moment to think about. model parameters (or model code, if new) are one instance of this but, there are others. (model metamer images)
+- Metadata. how do you interpret any of this stuff? If you have collaborators, I'm sure you have the experience of getting data from them and having no idea how to move through it. you need to describe it: what does stimulus=0 mean? how do subject codes align with those used in the paper? etc. the generic way of doing this is using something called a data dictionary, which is a csv file describing each field in your dataset, with description (including units), and possible values
+
+- [data dictionary](https://help.osf.io/article/217-how-to-make-a-data-dictionary)
+
+
+## Use data standards
+
+![](assets/data_standards.svg) <!-- .element: class="plain" -->
+
+#note: it might strike you that writing up all the metadata is a lot of work. yep! that's why, if your field has a data standard, you should use it. in neuroscience, there's BIDS (brain imaging data structure) for neuroimaging, and NWB (neurodata without borders) for physiology.
+
+The point of a data standard is to handle all of that metadata for you: you'll have to go through some effort to get your data into that standard (though this should be at least a lab-wide, if not department-wide effort and only needs to be done once), but this makes it very clear how the information is structured. standard typically also have validation tools, which will automatically ensure everything looks good.
+
+Ideally, getting data into the standard happens as soon as the data is collected, and this should be moved as upstream as possible. as an example, I gathered fMRI data in my phd, and what really led to the fMRI labs at NYU adopting BIDS is that the team that ran the actual fMRI machine made it easy to export the data directly into BIDS: they already had a consistent internal format, and so they were able to put together a little pipeline that converted from that format into BIDS, and offered it to everyone.
+
+advantage beyond reproducibility: tools! for BIDS, there are a lot of tools that will work automatically with BIDS-formatted data, so you get an immediate benefit as an individual researcher.
+
+
+## Where to share?
+
+- Generally, data does not belong in a git repo.  <!-- .element: class="fragment" -->
+  - Exception: small (<1 MB) text files. <!-- .element: class="fragment" -->
+- Checklist:  <!-- .element: class="fragment" -->
+  - Is it run by a non-profit and open source? 
+  - How discoverable is it? How is it indexed?
+  - Related to above, what does community use?
+  - Gives DOI 
+  - Integrations with other services
+- Examples:   <!-- .element: class="fragment" -->
+  - General: Open Science Framework (OSF), Zenodo
+  - Neuroscience-specific: OpenNeuro, DANDI
+  - Institutional repositories (e.g., NYU Faculty Data Archive)
+
+#note: generally speaking, data does not belong in a git repo. the only exception is small text files containing model parameters or similar.
+
+therefore, we need to come up with somewhere else to put it. this is a checklist from Vicky Rampin, the reproducibility librarian at NYU. she's excellent, and was a lot of help during my PhD. I recommend anyone at NYU who's looking to share their data/code talk with her.
+
+talk through checklist, show examples. these are all free, and will have different file size / number of file limits. the neuro-specific ones also enforce and check for data standards
+
+in particular, you'll note that dropbox and google drive are not on here. Beyond the points in this checklist (which they fail), they're just not fit-for-purpose: they are not intended to do long-term public archiving (of anything).
+
+
+## Code archiving
+
+The internet is not forever.
+
+#note: which brings me to my next point: beyond your data, you should also archive your code. nothing is guaranteed to last forever on the internet, and this is especially true of resources owned by private companies like Microsoft.
+
+Fortunately, Zenodo has an easy interface with Github. Once you set up your account, you can set it up to automatically archive your code, giving you a DOI and promising to archive it for a long time. In fact, Zenodo will mint a new DOI whenever you do a release / add a git tag, which leads us to...
+
+
+## Versioning
+
+Not just for software packages!
+
+#note: while versioning is very useful for software packages, it can also be useful for research code. I've used versions to mark whenever I've reached a milestone. that includes when making a pretty large refactor, but also just to say "this was the code I used for this presentation" or "the preprint", "journal submission", "final accepted version".
+
+This way, it's easy to come back and say "I generated this figure in that presentation I made three years ago, but at some point later I broke the code -- how did I do it?"
+
+
+
+## Workflow
+
+How do I convert the data into figures?
+- Some notes in your readme  <!-- .element: class="fragment" -->
+- A handful of bash scripts <!-- .element: class="fragment" -->
+- Snakemake <!-- .element: class="fragment" -->
+- Spyglass / DataJoint / BrainLife <!-- .element: class="fragment" -->
+
+#note: when I say workflow, I'm referring to whatever you have that can answer the question of "how do I convert data into figures?"
+
+there are many ways to do this, with varying levels of complexity. it could be as simple as some notes showing the commands you ran, in order or bash scripts doing just that. however, there are also dedicated tools for this, which can be quite helpful, such as snakemake and spyglass / datajoint / brainlife. these second class are "heavier" in that they are primarily cloud services and build docker containers and run everything as well. for me, these have generally seemed like overkill for the kind of small bespoke research projects that I have done (balance shifts if you have a super standard pipeline that is used for every dataset)
+
+for me, snakemake is ideal. it can be run locally, makes naive parallelization easy , can be configured to work with cluster or commercial cloud systems, and is fairly flexible.
+
+Snakemake comes from the bioinformatics community and is inspired by GNU make, which, if you're like me, you've only interacted with by calling `make install`.
+
+
+
+## Snakemake
+
+```python
+rule bwa_map:
+    input:
+        "data/genome.fa",
+        "data/samples/A.fastq"
+    output:
+        "mapped_reads/A.bam"
+    shell:
+        "bwa mem {input} | samtools view -Sb - > {output}"
+```
+
+#note: snakemake defines rules in a Snakefile, which all look something like this: they define some number of inputs, outputs, and what needs to be done to get from in to out. this is from their official tutorial and not my area, but here we have some arbitrary shell code that converts the input to the output. this can be shell, as here, but can also be arbitrary python or a script.
+
+if this is the contents of your file, you can run `snakemake mapped_reads/A.bam`, and snakemake goes through the rules, finds how to produce the file you requested, and calls the shell code.
+
+
+## Wildcards
+
+```python
+rule bwa_map:
+    input:
+        "data/genome.fa",
+        "data/samples/{sample}.fastq"
+    output:
+        "mapped_reads/{sample}.bam"
+    shell:
+        "bwa mem {input} | samtools view -Sb - > {output}"
+```
+
+#note: snakemake supports wildcards, so if we have many different files that are all created with the same basic command, we don't need to write separate rules for `mapped_reads/B.bam`, etc. we just use the curly brace syntax to denote a wildcard. now running `snakemake mapped_reads/A.bam` or `snakemake mapped_reads/B.bam` will both produce the appropriate output.
+
+
+
+## Tests and Continuous Integration
+
+#note: And now to talk about something that initially sounds like it's too complex: tests and CI. Since you're writing research code, you don't need to fully test your code in the way you would if you were writing a research package. however, Github actions is available for free on any public repo and is quite easy to set up.
+
+this can allow you to check: did I actually define my installation correctly? can write a small test to install your dependencies and run a quick test: can I import my code and run a simple test (e.g., initialize my model, load a subset of my data). if you're using snakemake, you could write a small rule (or some number of rules) that serves as your "installation check", which will import your code and do similar. this way, you can have that check running in your CI and your readme can tell people "run this command, if it passes, then your installation is working".
+
+this can also help you keep track of dependencies changing under you. if you followed our advice from before, your version limits are minimal, but running this CI regularly will let you know if a version of e.g., pytorch, gets released that you're not compatible with.
+
+this will give you some maintenance load, which is why it's not obvious that it's necessary; you're committing to looking at this if it fails at some point. but the goal being that you do ~10 minutes / month, rather than coming back in a year and having to spend much longer.
+
+
+## CI to build a paper
+
+#note: there's a different use case for CI, which has always struck me as cool, but impractical: build your entire paper with CI. this requires that your analysis's compute requirements be relatively small, so that you can run it on the free resources in a relatively short amount of time -- that's never happened to me, but would be very cool.
+
+
+
+## Code style and readability
+
+
+#note: finally, some closing thoughts. we've spent this entire time talking about how to share your code without actually describing anything about what your code looks like. that's intentional -- ideally, people will be able to do the above without looking at your source code.
+
+but, at some point, if someone is interested enough, they'll want to look at your code. in order to make their life easier, try to write readable code. Sciware and CCM member Jeff Soules gave a great talk at FWAM about how to write code for humans, the slides of which canb e found (__). 
+
+additionally, most programming languages have some sort of linters / formatters, such as ruff for python, which will help keep your code to some defined standards. this will help your code match your readers' expectation, reducing the cognitive load. not necessary, but can be nice.
+
+
+## Resources
+
+- https://blog.nicholdav.info/four-tips-structuring-research-python/
+- https://help.osf.io/article/217-how-to-make-a-data-dictionary
+- https://goodresearch.dev/
+- https://book.the-turing-way.org/index.html
+- https://guides.nyu.edu/software-reproducibility/home 
 
 
 ## Survey
