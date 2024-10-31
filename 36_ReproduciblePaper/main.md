@@ -156,7 +156,7 @@ provide a few advices that should make this requirement easier.
   </li>
 </ol>
 
-#note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained.
+#note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained. In general, try not to depend on other research code, this type of code is not meant for stable distribution. If you depend on research code, expect breaking changes at every release.
 
 
 <ol start="2">
@@ -184,18 +184,20 @@ provide a few advices that should make this requirement easier.
 
 
 <ol start="4"> 
-   <li><strong>Version Control with Git and GitHub</strong></li>
+   <li><strong>Version Control with Git</strong></li>
    <ul>
    <li><strong>Keep a Clean Repository</strong></li>
    <ul>
       <li class="fragment appear">Use `.gitignore` to avoid committing unnecessary files.</li>
       <li class="fragment appear">Have a `README` file explaining repo content, as well as references to associated paper.</li>
       <li class="fragment appear">Minimize the amount of files (especially large binaries).</li>
-      <li class="fragment appear">Avoid credential and private data.</li>
       <li class="fragment appear">Delete stale branches.</li>
+      <li class="fragment appear">Avoid credential and private data.</li>
    </ul>
    </ul>
 </ol>
+
+#note: Next, you should version control you code. You can host your code in a repo, GitHub is the most common, GitLab or bitbucket are other alternatives. Try to keep your repository clean, which include having a gitignore file to minimize the risk  of adding unecssary files; delete inactive branches,do not hardcode credential or personal data.
 
 
 <ol start="5"> 
@@ -212,9 +214,11 @@ provide a few advices that should make this requirement easier.
 </ul>
 </ol>
 
+#note: generally, license your code, this is a way to specify how your work shold be used and distributed.
 
-<ol start="5">
-<li><strong>Make Your Package Installable</strong></li>
+
+<ol start="6">
+<li><strong>Facilitate Installation</strong></li>
    <ul>
       <li>Specify Core Dependencies in a <code>requirements.txt</code> file.
       <ul>
@@ -233,9 +237,10 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
    </code>
 </pre>
 
+#note: Finally, facilitate installing your code. List your direct dependecies in a requirement file, menaing the things you directly import and use. Do not pin specific python version; for more details on this check Sept sciware on pacakging. You can list your import in various way, here I added a one-linear command for that.
 
 <ol start="6">
-  <li><strong>Consider Containers</strong></li>
+  <li><strong>Containers?</strong></li>
   <ul>
     <li><strong>When Using Containers</strong>
       <ul>
@@ -249,19 +254,15 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
         <li><strong>Conda environments</strong> might be enough if dependencies are Python-only.</li>
       </ul>
     </li>
-    <li><strong>Reproducibility Benefits</strong>
-      <ul>
-        <li>Containers ensure <strong>bitwise reproducibility</strong></li>
-        <li>Hash the image.</li>
-      </ul>
-    </li>
   </ul>
 </ol>
 
+#note: You can also consider containers, like Docker or Singularity. Usually convenient when your package as complex dependency, like more than one programming language. Singularity may be a good idea since it makes your environment very easy to port on any 
+HPC syste. On the other hand, if your installation is easy enough (pure python, standard packages), conda enviroments may be sufficient.
 
-## Necessary Information
+## Provide Necessary Information
 
-Have a `README` file which answers:
+Write a `README` file which answers the following questions:
 
 - What does my code do? 
 - How to install my code?
@@ -288,14 +289,15 @@ Have a `README` file which answers:
 - Code snippets with examples of usage.
 - Add decriptive text and comments.
 - Point to extended notebook/script tutorials, summarizing the content.
-- Notebooks should show example usages, not full analysis.
+- Notebooks should show example usages, rather than full analysis.
 
 
-## How to run my code?
+## How to cite?
 
 Different ways of adding citations:
+
 - Bibtex entry in `README`
-- Citation file in the repo as `CITATION.cff` (Citation File Format) or `CITATION.md` file/
+- Citation file in the repo as `CITATION.cff` (Citation File Format) or `CITATION.md` file.
 - Consider generating a DOI via Zenodo.
 
 
