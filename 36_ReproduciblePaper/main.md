@@ -206,6 +206,7 @@ provide a few advices that should make this requirement easier.
    <ul>
       <li>Specify Core Dependencies in a <code>requirements.txt</code> file.
       <ul>
+         <li> Set up a <a href="https://github.com/flatironinstitute/sciware/blob/main/34_PyPackaging/example_project_root/pyproject.toml">pyproject.toml></a> (instead of requirements.txt).</li>
          <li>List only direct dependencies.</li>
          <li>Avoid pinning package versions if possible.</li>
          <li>Store your package version as a reference, using <code>pip freeze > myenv.txt</code> for Python.</li>
@@ -284,10 +285,9 @@ Write a `README` file which answers the following questions:
 Different ways of adding citations:
 
 - Bibtex entry in `README`
-- Citation file in the repo as `CITATION.cff` (Citation File Format) or `CITATION.md` file.
+- Link to a paper. 
 - Consider generating a DOI via Zenodo.
-
-
+- [Example](https://github.com/billbrod/spatial-frequency-preferences/blob/main/README.md)
 
 ## What data to share and where?
 
