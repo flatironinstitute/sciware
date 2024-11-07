@@ -127,6 +127,7 @@ the way I've heard this described is "your most important collaborator is yourse
 so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up. Periodically, we're going to switch tabs to show you how we've implemented these steps in our own projects.
 
 
+
 ## Get your code running on another machine
 
 #note: the absolute minimal requirement for reproducible results is that your analysis code can run on a machine that is not your own. In the next slides I will
@@ -228,11 +229,10 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
    </code>
 </pre>
 
-
 #note: Finally, facilitate installing your code. List your direct dependecies in a requirement file, menaing the things you directly import and use. Do not pin specific python version; for more details on this check Sept sciware on pacakging. You can list your import in various way, here I added a one-linear command for that.
 
 
-<ol start="6">
+<ol start="7">
   <li><strong>Containers?</strong></li>
   <ul>
     <li><strong>When Using Containers</strong>
@@ -252,6 +252,7 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
 
 #note: You can also consider containers, like Docker or Singularity. Usually convenient when your package as complex dependency, like more than one programming language. Singularity may be a good idea since it makes your environment very easy to port on any 
 HPC syste. On the other hand, if your installation is easy enough (pure python, standard packages), conda enviroments may be sufficient.
+
 
 
 ## Provide Necessary Information
@@ -293,6 +294,7 @@ Different ways of adding citations:
 - Bibtex entry in `README`
 - Citation file in the repo as `CITATION.cff` (Citation File Format) or `CITATION.md` file.
 - Consider generating a DOI via Zenodo.
+
 
 
 ## What data to share and where?
