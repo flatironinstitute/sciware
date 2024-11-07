@@ -228,7 +228,9 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
    </code>
 </pre>
 
+
 #note: Finally, facilitate installing your code. List your direct dependecies in a requirement file, menaing the things you directly import and use. Do not pin specific python version; for more details on this check Sept sciware on pacakging. You can list your import in various way, here I added a one-linear command for that.
+
 
 <ol start="6">
   <li><strong>Containers?</strong></li>
@@ -250,6 +252,7 @@ find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^i
 
 #note: You can also consider containers, like Docker or Singularity. Usually convenient when your package as complex dependency, like more than one programming language. Singularity may be a good idea since it makes your environment very easy to port on any 
 HPC syste. On the other hand, if your installation is easy enough (pure python, standard packages), conda enviroments may be sufficient.
+
 
 ## Provide Necessary Information
 
