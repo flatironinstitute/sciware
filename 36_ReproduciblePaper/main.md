@@ -134,19 +134,11 @@ so our topics are grouped into a couple of higher-level categories: read slide. 
 provide a few advices that should make this requirement easier.
 
 
-<ol start="1">
-  <li><strong>Choose Your Toolkit Well</strong>
-    <ul>
-      <li><strong>Focus on Your Scientific Problem</strong>
-        <ul>
-          <li class="fragment appear">Use "standard" tools to avoid re-implementing common solutions.</li>
-          <li class="fragment appear">Example: don't reimplement your own PCA; use libraries like scikit-learn instead.</li>
-          <li class="fragment appear">Look for: well-documented, widely used, and actively maintained tools.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ol>
+### Choose Your Toolkit Well
+- **Focus on Your Scientific Problem**
+  - Use "standard" tools to avoid re-implementing common solutions.   <!-- .element: class="fragment"  -->
+  - Example: don't reimplement your own PCA; use libraries like scikit-learn instead.  <!-- .element: class="fragment"  -->
+  - Look for: well-documented, widely used, and actively maintained tools.   <!-- .element: class="fragment"  -->
 
 #note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained. In general, try not to depend on other research code, this type of code is not meant for stable distribution. If you depend on research code, expect breaking changes at every release.
 
