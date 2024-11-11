@@ -46,7 +46,7 @@ Activities where participants all actively work to foster an environment which e
 
 ![](assets/reproducibility.png)
 
-#note: before we get started, let's define our terms. I'm using the definitions from the Turing Way, which locates reproducible research here: can I run the same analysis on the same data and get the same output? these other quadrants are also really important for good science, but beyond the scope of this talk.
+#note: before we get started, let's define our terms. I'm using the definitions from the Turing Way, which locates reproducible research here: can I run the same analysis on the same data and get the same output? these other quadrants are also really important for good science and we should generally aim for all of them, but beyond the scope of this talk.
 
 of these quadrants, reproducible should be the easiest. but that doesn't mean it's *easy*
 
@@ -119,7 +119,7 @@ the way I've heard this described is "your most important collaborator is yourse
 - Get your code running on another machine.
 - Tell people how to run your code and what it's doing.
 - Data and archiving.
-- Automation.
+- Workflow.
 - Advanced topics.
 
 #note: we're going to give a brief overview of a lot today, which fall into these categories. the goal here is to make you aware of all of these topics, and to get you started. the goal is not to be exhaustive, and you'll probably need to do more reading or ask questions about the topics we'll cover today. I'll have some resources at the end of this presentation, which you can find on the sciware site and, if you end up trying to follow these guidelines and have questions or just want to show off, post on the sciware channel!
@@ -289,6 +289,8 @@ Different ways of adding citations:
 - Consider generating a DOI via Zenodo.
 - [Example](https://github.com/billbrod/spatial-frequency-preferences/blob/main/README.md)
 
+
+
 ## What data to share and where?
 
 #note: when thinking about sharing data, start with these questions.
@@ -299,8 +301,8 @@ Different ways of adding citations:
 - Raw data <!-- .element: class="fragment" -->
 - Processed data <!-- .element: class="fragment"  -->
 - Model parameters <!-- .element: class="fragment" -->
-- Stand-alone outputs <!-- .element: class="fragment"  -->
-- Metadata (e.g., data dictionary)  <!-- .element: class="fragment"  -->
+-  <!-- .element: class="fragment"  --> <a href="https://users.flatironinstitute.org/~wbroderick/metamers/">Stand-alone outputs</a>
+- <!-- .element: class="fragment" --> Metadata (e.g., <a href="https://help.osf.io/article/217-how-to-make-a-data-dictionary">data dictionary</a>)
 
 #note: So what do you share? the obvious one is your raw data. If someone is going to run your analysis from scratch, they obviously need your data.
 
@@ -309,8 +311,7 @@ However, there are other things worth sharing that you might not thought of:
 - Model parameters. if you fit a model, these are probably useful to people. it's probably a small text file (csv, json) and very important for anyone to use your model, but a pain in the ass to sufficiently include in the paper
 - Stand-alone outputs. By this I mean things that might be useful for people beyond just the goal of re-creating your figures. in that case, it's a bit out of the context of this talk, but still worth taking a moment to think about. model parameters (or model code, if new) are one instance of this but, there are others. (model metamer images)
 - Metadata. how do you interpret any of this stuff? If you have collaborators, I'm sure you have the experience of getting data from them and having no idea how to move through it. you need to describe it: what does stimulus=0 mean? how do subject codes align with those used in the paper? etc. the generic way of doing this is using something called a data dictionary, which is a csv file describing each field in your dataset, with description (including units), and possible values
-
-- [data dictionary](https://help.osf.io/article/217-how-to-make-a-data-dictionary)
+  - click to picture, talk through 
 
 
 ## Use data standards
@@ -330,22 +331,26 @@ advantage beyond reproducibility: tools! for BIDS, there are a lot of tools that
 
 - Generally, data does not belong in a git repo.  <!-- .element: class="fragment" -->
   - Exception: small (<1 MB) text files. <!-- .element: class="fragment" -->
-- Checklist:  <!-- .element: class="fragment" -->
+- Archive checklist:  <!-- .element: class="fragment" -->
   - Is it run by a non-profit and open source? 
   - How discoverable is it? How is it indexed?
   - Related to above, what does community use?
   - Gives DOI 
   - Integrations with other services
-- Examples:   <!-- .element: class="fragment" -->
-  - General: Open Science Framework (OSF), Zenodo
-  - Neuroscience-specific: OpenNeuro, DANDI
-  - Institutional repositories (e.g., NYU Faculty Data Archive)
 
 #note: generally speaking, data does not belong in a git repo. the only exception is small text files containing model parameters or similar.
 
 therefore, we need to come up with somewhere else to put it. this is a checklist from Vicky Rampin, the reproducibility librarian at NYU. she's excellent, and was a lot of help during my PhD. I recommend anyone at NYU who's looking to share their data/code talk with her.
 
-talk through checklist, show examples. these are all free, and will have different file size / number of file limits. the neuro-specific ones also enforce and check for data standards
+talk through checklist
+
+
+## Example data archives
+- General: [Open Science Framework (OSF)](https://osf.io/67tbe/), [Zenodo](https://zenodo.org/records/3854034)
+- Neuroscience-specific (raw data only): [OpenNeuro](https://openneuro.org/datasets/ds003812), [DANDI](https://dandiarchive.org/dandiset/000939)
+- Institutional repositories (e.g., [NYU Faculty Data Archive](http://hdl.handle.net/2451/63344))
+
+#note: these are all free, and will have different file size / number of file limits. the neuro-specific ones also enforce and check for data standards. I've included links here to example datasets, several from me, so you can see what they look like.
 
 in particular, you'll note that dropbox and google drive are not on here. Beyond the points in this checklist (which they fail), they're just not fit-for-purpose: they are not intended to do long-term public archiving (of anything).
 
@@ -353,6 +358,8 @@ in particular, you'll note that dropbox and google drive are not on here. Beyond
 ## Code archiving
 
 The internet is not forever.
+- <!-- .element: class="fragment" data-fragment-index=0 --> Zenodo can automatically archive github repositories and give them DOIs (<a href="https://zenodo.org/records/12763387">e.g.</a>)
+- <!-- .element: class="fragment" data-fragment-index=0 --> See <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">instructions</a>.
 
 #note: which brings me to my next point: beyond your data, you should also archive your code. nothing is guaranteed to last forever on the internet, and this is especially true of resources owned by private companies like Microsoft.
 
@@ -362,6 +369,8 @@ Fortunately, Zenodo has an easy interface with Github. Once you set up your acco
 ## Versioning
 
 Not just for software packages!
+- Use versioning to mark milestones (e.g., "presentation at Cosyne", "preprint", "journal submission", "final accepted version") <!-- .element: class="fragment" -->
+- Version your data too!  <!-- .element: class="fragment" -->
 
 #note: while versioning is very useful for software packages, it can also be useful for research code. I've used versions to mark whenever I've reached a milestone. that includes when making a pretty large refactor, but also just to say "this was the code I used for this presentation" or "the preprint", "journal submission", "final accepted version".
 
@@ -377,52 +386,76 @@ How do I convert the data into figures?
 - Snakemake <!-- .element: class="fragment" -->
 - Spyglass / DataJoint / BrainLife <!-- .element: class="fragment" -->
 
-#note: when I say workflow, I'm referring to whatever you have that can answer the question of "how do I convert data into figures?"
+#note: when I say workflow, I'm referring to whatever you have that can answer the question of "how do I convert data into figures?" 
 
 there are many ways to do this, with varying levels of complexity. it could be as simple as some notes showing the commands you ran, in order or bash scripts doing just that. however, there are also dedicated tools for this, which can be quite helpful, such as snakemake and spyglass / datajoint / brainlife. these second class are "heavier" in that they are primarily cloud services and build docker containers and run everything as well. for me, these have generally seemed like overkill for the kind of small bespoke research projects that I have done (balance shifts if you have a super standard pipeline that is used for every dataset)
 
-for me, snakemake is ideal. it can be run locally, makes naive parallelization easy , can be configured to work with cluster or commercial cloud systems, and is fairly flexible.
+for me, snakemake is ideal. it can be run locally, makes naive parallelization easy, can be configured to work with cluster or commercial cloud systems, and is fairly flexible.
 
 Snakemake comes from the bioinformatics community and is inspired by GNU make, which, if you're like me, you've only interacted with by calling `make install`.
 
 
+## Snakemake
+
+<div data-animate data-load="assets/workflow.svg">
+<!-- {"setup": [
+{"element": "#g8", "modifier": "attr", "parameters": [ {"class": "fragment fade-out", "data-fragment-index": "1"} ]},
+{"element": "#g12", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "1"} ]},
+{"element": "#g20", "modifier": "attr", "parameters": [ {"class": "fragment fade-in-then-out", "data-fragment-index": "2"} ]},
+{"element": "#g18", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "3"} ]},
+{"element": "#path9-6", "modifier": "attr", "parameters": [ {"class": "fragment fade-in-then-out", "data-fragment-index": "3"} ]},
+{"element": "#rect13-3", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "4"} ]},
+{"element": "#g18-2", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "4"} ]},
+{"element": "#path9-2-88", "modifier": "attr", "parameters": [ {"class": "fragment fade-in-then-out", "data-fragment-index": "4"} ]},
+{"element": "#rect13-1-2", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "5"} ]},
+{"element": "#g18-2-7", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "5"} ]},
+{"element": "#path9-2-8-4-0-3", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "5"} ]}
+]} -->
+</div>
+
+#note: I'm going to give a bit of an overview of what snakemake allows you to do, which I hope will convince you to look into the tool yourself; I'm not going to cover the syntax at all, though if there's interest, we can think about doing another sciware session on it
+
+- so, snakemake allows you to define how you get from your raw data to your figures using a series of rules (file -> ??? -> figures)
+- to do this, you define how your analysis proceeds from file to file. so, for example, the raw data gets converted to spikes, which gets used to fit a model, and each of these files is used to generate a separate figure
+- that is, we've defined our data analysis as a DAG, a directed acyclic graph
+- each of these arrows is what snakemake calls a rule. 
+- each rule defines a step in your analysis and can be a script, a shell command, or arbitrary python
+
 
 ## Snakemake
 
-```python
-rule bwa_map:
-    input:
-        "data/genome.fa",
-        "data/samples/A.fastq"
-    output:
-        "mapped_reads/A.bam"
-    shell:
-        "bwa mem {input} | samtools view -Sb - > {output}"
-```
+<div data-animate data-load="assets/workflow-2.svg">
+<!-- {"setup": [
+{"element": "#g18-2", "modifier": "attr", "parameters": [ {"class": "fragment fade-out", "data-fragment-index": "1"} ]},
+{"element": "#g4", "modifier": "attr", "parameters": [ {"class": "fragment", "data-fragment-index": "1"} ]},
+{"element": "#g18-2-2", "modifier": "attr", "parameters": [ {"class": "fragment fade-in-then-out", "data-fragment-index": "1"} ]},
+{"element": "#g11", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "2"} ]},
+{"element": "#g13", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "3"} ]},
+{"element": "#g11-2", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "4"} ]},
+{"element": "#g13-0", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "5"} ]},
+{"element": "#g14", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "5"} ]},
+{"element": "#g13-7", "modifier": "attr", "parameters": [ {"class": "fragment fade-in", "data-fragment-index": "6"} ]}
+]} 
+-->
+</div>
 
-#note: snakemake defines rules in a Snakefile, which all look something like this: they define some number of inputs, outputs, and what needs to be done to get from in to out. this is from their official tutorial and not my area, but here we have some arbitrary shell code that converts the input to the output. this can be shell, as here, but can also be arbitrary python or a script.
-
-if this is the contents of your file, you can run `snakemake mapped_reads/A.bam`, and snakemake goes through the rules, finds how to produce the file you requested, and calls the shell code.
-
-
-## Wildcards
-
-```python
-rule bwa_map:
-    input:
-        "data/genome.fa",
-        "data/samples/{sample}.fastq"
-    output:
-        "mapped_reads/{sample}.bam"
-    shell:
-        "bwa mem {input} | samtools view -Sb - > {output}"
-```
-
-#note: snakemake supports wildcards, so if we have many different files that are all created with the same basic command, we don't need to write separate rules for `mapped_reads/B.bam`, etc. we just use the curly brace syntax to denote a wildcard. now running `snakemake mapped_reads/A.bam` or `snakemake mapped_reads/B.bam` will both produce the appropriate output.
+#note:
+- and you can define rules using wildcards so that you can apply the same rule to produce multiple outputs. here, we're using a wildcard to specify the "model type", and passing that to our fit_model.py script, which will interpret it as needed
+- once you've defined your workflow, you can say `snakemake fig-03.svg` and snakemake will figure out which parts of your analysis need to be run (highlight path through DAG)
+- and because it knows the relationship between the jobs, if you tell it to run this in parallel, it will run this first job, wait for it to finish, then run these three jobs in parallel, and wait for them all to finish before running the final job
+- if you were then to run this again, with fig-03.svg already existing, it would say "nothing to do". but if you were to modify spikes.npy (in any way), snakemake would see that some of the inputs are newer than their outputs (determined just by file modification time), and rerun all necessary steps
+- this is just an overview -- there are more features! and snakemake is one such tool, which I like, but there are others which will have similar features to what I described here
 
 
 
 ## Tests and Continuous Integration
+
+- Research code is not expected to be as generalizable as software code. <!-- .element: class="fragment" -->
+- But CI can still be useful to check some of what we've talked about. <!-- .element: class="fragment" -->
+- E.g., can I install my software, import it, and initialize my model. <!-- .element: class="fragment" -->
+- Allows you to determine if dependencies change in breaking way. <!-- .element: class="fragment" -->
+- Does my install work on multiple OSs? <!-- .element: class="fragment" -->
+- Does add some maintenance load, but may save you time in long run. <!-- .element: class="fragment" -->
 
 #note: And now to talk about something that initially sounds like it's too complex: tests and CI. Since you're writing research code, you don't need to fully test your code in the way you would if you were writing a research package. however, Github actions is available for free on any public repo and is quite easy to set up.
 
@@ -433,30 +466,37 @@ this can also help you keep track of dependencies changing under you. if you fol
 this will give you some maintenance load, which is why it's not obvious that it's necessary; you're committing to looking at this if it fails at some point. but the goal being that you do ~10 minutes / month, rather than coming back in a year and having to spend much longer.
 
 
-## CI to build a paper
-
-#note: there's a different use case for CI, which has always struck me as cool, but impractical: build your entire paper with CI. this requires that your analysis's compute requirements be relatively small, so that you can run it on the free resources in a relatively short amount of time -- that's never happened to me, but would be very cool.
-
-
-
 ## Code style and readability
 
+- Ideally, people will not need to read your source code to run it.
+- Code is read far more often than it's written. <!-- .element: class="fragment" -->
+- <!-- .element: class="fragment" --> See <a href="https://docs.google.com/presentation/d/1H7F0KiPMhNC79QxoBZiY4-xiIEdF8GWQ_XsLyE_Bygk/edit#slide=id.p3">Jeff Soules's presentation from FWAM</a>
+- Consider using linters and formatters (e.g., ruff, black, flake8). <!-- .element: class="fragment" -->
 
 #note: finally, some closing thoughts. we've spent this entire time talking about how to share your code without actually describing anything about what your code looks like. that's intentional -- ideally, people will be able to do the above without looking at your source code.
 
-but, at some point, if someone is interested enough, they'll want to look at your code. in order to make their life easier, try to write readable code. Sciware and CCM member Jeff Soules gave a great talk at FWAM about how to write code for humans, the slides of which canb e found (__). 
+but, at some point, if someone is interested enough, they'll want to look at your code. The guiding principle is that code is read far more often than it's written, so aim for practices that make it easy to read.
+
+Sciware and CCM member Jeff Soules gave a great talk at FWAM about how to write code for humans, the slides of which canb e found
 
 additionally, most programming languages have some sort of linters / formatters, such as ruff for python, which will help keep your code to some defined standards. this will help your code match your readers' expectation, reducing the cognitive load. not necessary, but can be nice.
 
 
-## Resources
 
-- https://blog.nicholdav.info/four-tips-structuring-research-python/
-- https://help.osf.io/article/217-how-to-make-a-data-dictionary
-- https://goodresearch.dev/
-- https://book.the-turing-way.org/index.html
-- https://guides.nyu.edu/software-reproducibility/home 
+## Some useful links
+
+- [David Nicholson's Four tips for structuring your research group’s Python packages](https://blog.nicholdav.info/four-tips-structuring-research-python/)
+- [Jeff's presentation](https://docs.google.com/presentation/d/1H7F0KiPMhNC79QxoBZiY4-xiIEdF8GWQ_XsLyE_Bygk/edit#slide=id.p3)
+- [Previous sciware about making python code installable](https://sciware.flatironinstitute.org/34_PyPackaging/slides.html)
+- [Patrick Mineault's Good Research Code Handbook](https://goodresearch.dev/)
+- [The Turing Way](https://book.the-turing-way.org/index.html)
+- [NYU Guide to software reproducibility](https://guides.nyu.edu/software-reproducibility/home)
+- Neuroscience data standards: [NWB](https://nwb-overview.readthedocs.io/en/latest/) (systems neuro), [BIDS](https://bids.neuroimaging.io/) (neuroimaging)
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/)
+- Data archives: [OSF](https://osf.io/), [Zenodo](https://zenodo.org/), [DANDI](https://www.dandiarchive.org/)
 
 
 ## Survey
 Please give us some feedback!
+
+<img width="50%" src="./assets/qrcode.svg">
