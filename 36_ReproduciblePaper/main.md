@@ -499,4 +499,4 @@ additionally, most programming languages have some sort of linters / formatters,
 ## Survey
 Please give us some feedback!
 
-<img width="50%" src="./assets/qrcode.svg">
+[![survey](./assets/qrcode.svg)](https://docs.google.com/forms/d/e/1FAIpQLSfnUzHj8VXUDn1krKV3g4qi4vdJSAKP3imtRev6rhVgmsxt4g/viewform) 
