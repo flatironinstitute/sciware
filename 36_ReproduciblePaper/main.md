@@ -355,11 +355,18 @@ talk through checklist
 in particular, you'll note that dropbox and google drive are not on here. Beyond the points in this checklist (which they fail), they're just not fit-for-purpose: they are not intended to do long-term public archiving (of anything).
 
 
+## How to set up data?
+
+Script the download and arrangement of your data.
+
+#note: it is possible that getting your data ready to use with your pipeline requires a bit more work than "download zip file, unzip, and store the path to it in a variable". if that's case, if it's literally *any* more complicated than that, I'd recommend you include a "download data" script, which downloads the data, extracts it, and arranges it as necessary. this is helpful if, for example, you'll be downloading multiple files and their relative locations matter. your goal is for preparing the data to be a single line of code to run or something you can describe in a single sentence. you want it to be as easy as possible. 
+
+
 ## Code archiving
 
 The internet is not forever.
-- <!-- .element: class="fragment" data-fragment-index=0 --> Zenodo can automatically archive github repositories and give them DOIs (<a href="https://zenodo.org/records/12763387">e.g.</a>)
-- <!-- .element: class="fragment" data-fragment-index=0 --> See <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">instructions</a>.
+- <!-- .element: class="fragment"  --> Zenodo can automatically archive github repositories and give them DOIs (<a href="https://zenodo.org/records/13851768">e.g.</a>)
+- <!-- .element: class="fragment"  --> See <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">instructions</a>.
 
 #note: which brings me to my next point: beyond your data, you should also archive your code. nothing is guaranteed to last forever on the internet, and this is especially true of resources owned by private companies like Microsoft.
 
@@ -369,6 +376,7 @@ Fortunately, Zenodo has an easy interface with Github. Once you set up your acco
 ## Versioning
 
 Not just for software packages!
+- Can do through GitHub's web UI ([e.g.](https://github.com/billbrod/spatial-frequency-preferences)). <!-- .element: class="fragment" -->
 - Use versioning to mark milestones (e.g., "presentation at Cosyne", "preprint", "journal submission", "final accepted version") <!-- .element: class="fragment" -->
 - Version your data too!  <!-- .element: class="fragment" -->
 
@@ -450,11 +458,11 @@ Snakemake comes from the bioinformatics community and is inspired by GNU make, w
 
 ## Tests and Continuous Integration
 
-- Research code is not expected to be as generalizable as software code. <!-- .element: class="fragment" -->
+- Research code is not expected to be as generalizable as a full software library. <!-- .element: class="fragment" -->
 - But CI can still be useful to check some of what we've talked about. <!-- .element: class="fragment" -->
 - E.g., can I install my software, import it, and initialize my model. <!-- .element: class="fragment" -->
-- Allows you to determine if dependencies change in breaking way. <!-- .element: class="fragment" -->
 - Does my install work on multiple OSs? <!-- .element: class="fragment" -->
+- Allows you to determine if dependencies change in breaking way. <!-- .element: class="fragment" -->
 - Does add some maintenance load, but may save you time in long run. <!-- .element: class="fragment" -->
 
 #note: And now to talk about something that initially sounds like it's too complex: tests and CI. Since you're writing research code, you don't need to fully test your code in the way you would if you were writing a research package. however, Github actions is available for free on any public repo and is quite easy to set up.
