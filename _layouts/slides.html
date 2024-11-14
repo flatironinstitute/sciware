@@ -35,9 +35,17 @@
     <script src="{{ site.baseurl }}/reveal.js/plugin/notes/notes.js"></script>
     <script src="{{ site.baseurl }}/reveal.js/plugin/math/math.js"></script>
 
+    <!-- needed for builds from svg images: https://github.com/rajgoel/reveal.js-plugins/tree/master/animate -->
+    <script src="{{ site.baseurl }}/reveal.js-plugins/loadcontent/plugin.js"></script>
+    <script src="{{ site.baseurl }}/reveal.js-plugins/animate/plugin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.1.2/svg.min.js"></script>
+
     <script>
       Reveal.initialize({
-	plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2],
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2, RevealLoadContent, RevealAnimate],
+         animate: {
+             autoplay: true
+         },
         controlsTutorial: false,
         slideNumber: true,
         width: 1200,
