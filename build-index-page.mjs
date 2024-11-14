@@ -8,6 +8,8 @@
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 
+// Add events here to have them appear at the top of the page.
+// If this array is empty, the page will display a message saying there are no upcoming events.
 const upcoming_events = [
   // {
   //   title: `Tool Setup, Intro to the Shell and the Cluster`,
@@ -77,6 +79,9 @@ const upcoming_events = [
   },
 ];
 
+// This is an array of past events, with the format:
+// [session number, title, date, slides link, github link, vimeo link]
+// The array is reversed so that the most recent events appear first.
 const past_events = [
   [`Session #00`, `Founding`, `Feb 28, 2019`, `/00_Founding/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/00_Founding`],
   [`Session #01`, `Overview`, `Mar 28, 2019`, `/01_Overview/reveal.html`, `https://github.com/flatironinstitute/sciware/tree/main/01_Overview`],
