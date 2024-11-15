@@ -29,3 +29,12 @@ A developing series of meetings about software development for science.
 - Sep 29, 2022 [Types](24_Types): An theoretical introduction to how thinking about data types can improve code, and specific applications to mypy
 - Oct 20, 2022 [Modern C++](25_ModernC++)
 - Dec 15, 2022 [File Formats and Storing Data](26_DataFormats)
+
+# Homepage Build Script
+
+A simple Node script — [build-index-page.mjs](build-index-page.mjs) is used to render `index.html`. The Node script does not have any external dependencies, so you don't need to `npm install`:
+
+```bash
+module load nodejs
+node build-index-page.mjs
+```
