@@ -398,6 +398,11 @@ How do I convert the data into figures?
 
 there are many ways to do this, with varying levels of complexity. it could be as simple as some notes showing the commands you ran, in order or bash scripts doing just that. however, there are also dedicated tools for this, which can be quite helpful, such as snakemake and spyglass / datajoint / brainlife. these second class are "heavier" in that they are primarily cloud services and build docker containers and run everything as well. for me, these have generally seemed like overkill for the kind of small bespoke research projects that I have done (balance shifts if you have a super standard pipeline that is used for every dataset)
 
+you'll note that I don't say "big pile of / one big jupyter notebooks". several reasons:
+- big picture reason is that my research projects have always required a lot of compute. I've never had a project where things could be done in a reasonable time in a jupyter notebook, no parallelization.
+- makes things very non-modular: hard to run just the part of the code you want or rerun something
+- in general, most people don't write clean notebooks. while it's possible, it's hard to do, and using something like snakemake will force you to write a usable workflow
+
 for me, snakemake is ideal. it can be run locally, makes naive parallelization easy, can be configured to work with cluster or commercial cloud systems, and is fairly flexible.
 
 Snakemake comes from the bioinformatics community and is inspired by GNU make, which, if you're like me, you've only interacted with by calling `make install`.
