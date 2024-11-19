@@ -143,105 +143,57 @@ provide a few advices that should make this requirement easier.
 #note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained. In general, try not to depend on other research code, this type of code is not meant for stable distribution. If you depend on research code, expect breaking changes at every release.
 
 
-<ol start="2">
-   <li><strong>Open Source First</strong>
-      <ul>
-         <li>Increases transparency and reproducibility.</li>
-         <li class="fragment appear">Open-source tools often have better community support.</li>
-      </ul>
-   </li>
-</ol>
-<br>
-<ol start="3">
-   <div class="fragment appear">
-   <li><strong>Avoid GUIs, Prefer Scripting</strong>
-      <ul>
-         <li class="fragment appear">GUIs limit automation—use scriptable alternatives or obtain a scripted version when possible.</li>
-         <li class="fragment appear">When not possible, store both GUI outputs and configurations.</li>
-         <li class="fragment appear"><strong>Example:</strong> Finding and merging double-counted units in spike sorting (manual GUI step).</li>
-      </ul>
-   </li>
-   </div>
-</ol>
+### Open Source First
+- Increases transparency and reproducibility.  <!-- .element: class="fragment"  -->
+- Open-source tools often have better community support.  <!-- .element: class="fragment"  -->
+
+### Avoid GUIs, Prefer Scripting  <!-- .element: class="fragment"  -->
+- GUIs limit automation—use scriptable alternatives or obtain a scripted version when possible. <!-- .element: class="fragment"  -->
+- When not possible, store both GUI outputs and configurations. <!-- .element: class="fragment"  -->
+   - Example: Finding and merging double-counted units in spike sorting (manual GUI step). <!-- .element: class="fragment"  -->
 
 #note: My second recommendation is to prioritize open source tools. This increases transparency and often results in better support from active communities of users and developers.
 
 
-<ol start="4"> 
-   <li><strong>Version Control with Git</strong></li>
-   <ul>
-   <li><strong>Keep a Clean Repository</strong></li>
-   <ul>
-      <li class="fragment appear">Use `.gitignore` to avoid committing unnecessary files.</li>
-      <li class="fragment appear">Have a `README` file explaining repo content, as well as references to associated paper.</li>
-      <li class="fragment appear">Minimize the amount of files (especially large binaries).</li>
-      <li class="fragment appear">Delete stale branches.</li>
-      <li class="fragment appear">Avoid credential and private data.</li>
-   </ul>
-   </ul>
-</ol>
+### Version Control with Git
+- **Keep a Clean Repository**
+   - <!-- .element: class="fragment" --> Use <code>.gitignore</code> to avoid committing unnecessary files. 
+   - <!-- .element: class="fragment" --> Have a <code>README</code> file explaining repo content, as well as references to associated paper. 
+   - Minimize the amount of files (especially large binaries).  <!-- .element: class="fragment"  -->
+   - Delete stale branches.  <!-- .element: class="fragment"  -->
+   - Avoid credential and private data.  <!-- .element: class="fragment"  -->
 
 #note: Next, you should version control you code. You can host your code in a repo, GitHub is the most common, GitLab or bitbucket are other alternatives. Try to keep your repository clean, which include having a gitignore file to minimize the risk  of adding unecssary files; delete inactive branches,do not hardcode credential or personal data.
 
 
-<ol start="5"> 
-<li><strong>License Your Code</strong></li>
-<ul>
-   <li><strong>Clarify Usage Rights</strong></li>
-   <ul>
-      <li>Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.</li>
-   </ul>
-</ul>
-<li><strong>Avoid Hard-Coded Paths</strong> </li>
-<ul>
-   <li>Use <strong>config files</strong> (or <strong>environment variables</strong>, harder for users).</li>
-</ul>
-</ol>
+### License Your Code
+- **Clarify Usage Rights**
+   - Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.
+
+### Avoid Hard-Coded Paths  <!-- .element: class="fragment" data-fragment-index=1 -->
+- <!-- .element: class="fragment" data-fragment-index=1 -->Use <strong>config files</strong> (or <strong>environment variables</strong>, harder for users). 
 
 #note: generally, license your code, this is a way to specify how your work shold be used and distributed.
 
 
-<ol start="6">
-<li><strong>Facilitate Installation</strong></li>
-   <ul>
-      <li>Specify Core Dependencies in a <code>requirements.txt</code> file.
-      <ul>
-         <li> Set up a <a href="https://github.com/flatironinstitute/sciware/blob/main/34_PyPackaging/example_project_root/pyproject.toml">pyproject.toml></a> (instead of requirements.txt).</li>
-         <li>List only direct dependencies.</li>
-         <li>Avoid pinning package versions if possible.</li>
-         <li>Store your package version as a reference, using <code>pip freeze > myenv.txt</code> for Python.</li>
-         <li>See <a href="https://sciware.flatironinstitute.org/34_PyPackaging/slides.html">September Sciware on Packaging</a>.</li>
-         <li>Check what is imported:</li>
-      </ul>
-   </ul>
-</ol>
 
-<pre style="position: relative; left: -20px; margin: 0; padding: 0; text-align: left;">
-   <code class="language-sh">
-find path/to/dir/ -type f -name '*py' -exec grep --no-filename -e '^from' -e '^import' {} \+ | sort -u
-   </code>
-</pre>
+### Facilitate Installation
+- Specify Core Dependencies in a [pyproject.toml](https://github.com/flatironinstitute/sciware/blob/main/34_PyPackaging/example_project_root/pyproject.toml) file.
+   - List only direct dependencies. <!-- .element: class="fragment"  -->
+   - Avoid pinning package versions if possible. <!-- .element: class="fragment"  -->
+   - <!-- .element: class="fragment"  --> Store your package version as a reference, using <code>pip freeze > myenv.txt</code> for Python.
+   -  <!-- .element: class="fragment"  --> See <a href="https://sciware.flatironinstitute.org/34_PyPackaging/slides.html">September Sciware on Packaging</a>.
 
 #note: Finally, facilitate installing your code. List your direct dependecies in a requirement file, menaing the things you directly import and use. Do not pin specific python version; for more details on this check Sept sciware on pacakging. You can list your import in various way, here I added a one-linear command for that.
 
 
-<ol start="7">
-  <li><strong>Containers?</strong></li>
-  <ul>
-    <li><strong>When Using Containers</strong>
-      <ul>
-        <li>If your code has <strong>complex dependencies</strong> or non-Python packages.</li>
-        <li>If you have code that must run on High-Performance Computing clusters (facilitates portability).</li>
-      </ul>
-    </li>
-    <li><strong>When Probably Not</strong>
-      <ul>
-        <li>If you use <strong>stable Python packages</strong> with good backward compatibility.</li>
-        <li><strong>Conda environments</strong> might be enough if dependencies are Python-only.</li>
-      </ul>
-    </li>
-  </ul>
-</ol>
+### Containers?
+- **When To Use Containers**
+   - If your code has **complex dependencies** or non-Python packages.
+   - If you have code that must run on High-Performance Computing clusters (facilitates portability).
+- **When To Probably Not** <!-- .element: class="fragment" data-fragment-index=1 -->
+   -  <!-- .element: class="fragment" data-fragment-index=1 --> If you use <strong>stable Python packages</strong> with good backward compatibility.
+   -  <!-- .element: class="fragment" data-fragment-index=2 --> <strong>Conda environments</strong> might be enough if dependencies are Python-only.
 
 #note: You can also consider containers, like Docker or Singularity. Usually convenient when your package as complex dependency, like more than one programming language. Singularity may be a good idea since it makes your environment very easy to port on any 
 HPC syste. On the other hand, if your installation is easy enough (pure python, standard packages), conda enviroments may be sufficient.
