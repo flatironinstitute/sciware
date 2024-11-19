@@ -176,6 +176,7 @@ provide a few advices that should make this requirement easier.
 ### License Your Code
 - **Clarify Usage Rights**
    - [Add a license](https://choosealicense.com/) (e.g., MIT, Apache 2.0) to define how others can use your code.
+   - On `GitHub`, you can set it when you create a [new repository](https://github.com/new).
 
 #note: As your repository takes shape, don’t forget to add a license. This step is often overlooked, but it’s critical for defining how others can use your code. Popular licenses like MIT or Apache 2.0 are great for encouraging reuse while protecting your work.
 
