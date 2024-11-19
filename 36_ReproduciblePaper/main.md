@@ -140,7 +140,7 @@ provide a few advices that should make this requirement easier.
   - Example: don't reimplement your own PCA; use libraries like scikit-learn instead.  <!-- .element: class="fragment"  -->
   - Look for: well-documented, widely used, and actively maintained tools.   <!-- .element: class="fragment"  -->
 
-#note: First of all, it is important to choose your tools wisely. Your code should focus mainly on your research question, and standard processing steps should be handled by established tools when available. When deciding between tools, what I look for is: well-documented, widely used, and actively maintained. In general, try not to depend on other research code, this type of code is not meant for stable distribution. If you depend on research code, expect breaking changes at every release.
+#note: Let's start with choosing your toolkit. The tools you select form the foundation of your workflow, so it’s crucial to pick wisely. Your primary focus should be on addressing your research question. Standard tools, like scikit-learn for machine learning or numpy for numerical computations, help you avoid reinventing the wheel and are reliable because they’re widely used and maintained. Prioritize tools that are well-documented and actively supported by the community to ensure stability and longevity.
 
 
 ### Open Source First
@@ -152,7 +152,7 @@ provide a few advices that should make this requirement easier.
 - When not possible, store both GUI outputs and configurations. <!-- .element: class="fragment"  -->
    - Example: Finding and merging double-counted units in spike sorting (manual GUI step). <!-- .element: class="fragment"  -->
 
-#note: My second recommendation is to prioritize open source tools. This increases transparency and often results in better support from active communities of users and developers.
+#note: Generally, you should prioritize open-source whenever possible. Open-source software fosters transparency, making it easier for others to understand and reproduce your work. Plus, with a large community of contributors and users, open-source tools typically offer better support and faster resolution of issues. Avoid using GUI-based tools, which are usually hard to automate, don't scale well, and may manual steps that are difficult to reproduce. When a GUI is unavoidable, a classic example in neurosciecne is finding double counted units in spike sorting, document and save the configurations and outputs so the process remains traceable.
 
 
 ### Version Control with Git
@@ -163,28 +163,31 @@ provide a few advices that should make this requirement easier.
    - Delete stale branches.  <!-- .element: class="fragment"  -->
    - Avoid credential and private data.  <!-- .element: class="fragment"  -->
 
-#note: Next, you should version control you code. You can host your code in a repo, GitHub is the most common, GitLab or bitbucket are other alternatives. Try to keep your repository clean, which include having a gitignore file to minimize the risk  of adding unecssary files; delete inactive branches,do not hardcode credential or personal data.
+#note: Now that your tools and scripts are in place, it’s time to focus on version control. Use Git to track changes and host your code on a platform like GitHub, GitLab, or Bitbucket. Keep your repository clean: exclude unnecessary files using a `.gitignore`, document the repo with a clear `README`, and avoid including large binaries. Regularly delete stale branches, and never commit credentials or private data.
+
+
+### Avoid Hard-Coded Paths 
+- <!-- .element: class="fragment" data-fragment-index=1 -->Use <strong>config files</strong> (or <strong>environment variables</strong>, harder for users). 
+
+#note: Another thing to be mindful of is how you manage file paths in your code. Avoid hard-coded paths. Instead, use configuration files to store paths and parameters. This approach makes your code easier to share and adapt.
 
 
 ### License Your Code
 - **Clarify Usage Rights**
    - Add a license (e.g., MIT, Apache 2.0) to define how others can use your code.
 
-### Avoid Hard-Coded Paths  <!-- .element: class="fragment" data-fragment-index=1 -->
-- <!-- .element: class="fragment" data-fragment-index=1 -->Use <strong>config files</strong> (or <strong>environment variables</strong>, harder for users). 
-
-#note: generally, license your code, this is a way to specify how your work shold be used and distributed.
-
+#note: As your repository takes shape, don’t forget to add a license. This step is often overlooked, but it’s critical for defining how others can use your code. Popular licenses like MIT or Apache 2.0 are great for encouraging reuse while protecting your work.
 
 
 ### Facilitate Installation
 - Specify Core Dependencies in a [pyproject.toml](https://github.com/flatironinstitute/sciware/blob/main/34_PyPackaging/example_project_root/pyproject.toml) file.
    - List only direct dependencies. <!-- .element: class="fragment"  -->
    - Avoid pinning package versions if possible. <!-- .element: class="fragment"  -->
+   - <!-- .element: class="fragment"  --> Specify version ranges when needed (e.g., <code> >=1.0,<2.0 </code>) 
    - <!-- .element: class="fragment"  --> Store your package version as a reference, using <code>pip freeze > myenv.txt</code> for Python.
    -  <!-- .element: class="fragment"  --> See <a href="https://sciware.flatironinstitute.org/34_PyPackaging/slides.html">September Sciware on Packaging</a>.
 
-#note: Finally, facilitate installing your code. List your direct dependecies in a requirement file, menaing the things you directly import and use. Do not pin specific python version; for more details on this check Sept sciware on pacakging. You can list your import in various way, here I added a one-linear command for that.
+#note: To ensure your package is easy to install, list your direct dependencies (the ones your code directly imports) in a pyproject.toml file. Avoid pinning exact versions for flexibility, but consider specifying version ranges (e.g., >=1.0,<2.0) for critical packages to prevent compatibility issues. Do not pin a specific. For reproducibility, create a snapshot of your environment with pip freeze, which lists all installed packages and their versions. This snapshot should be saved separately (e.g., requirements.txt). For more details, check the September Sciware session on packaging. for more details on this check Sept sciware on pacakging.
 
 
 ### Containers?
@@ -195,8 +198,7 @@ provide a few advices that should make this requirement easier.
    -  <!-- .element: class="fragment" data-fragment-index=1 --> If you use <strong>stable Python packages</strong> with good backward compatibility.
    -  <!-- .element: class="fragment" data-fragment-index=2 --> <strong>Conda environments</strong> might be enough if dependencies are Python-only.
 
-#note: You can also consider containers, like Docker or Singularity. Usually convenient when your package as complex dependency, like more than one programming language. Singularity may be a good idea since it makes your environment very easy to port on any 
-HPC syste. On the other hand, if your installation is easy enough (pure python, standard packages), conda enviroments may be sufficient.
+#note: Containers like Docker or Singularity can simplify the setup process, especially when your code has complex or non-Python dependencies. They are particularly useful for high-performance computing environments, where portability is key. However, if your project relies only on stable Python packages, a Conda environment might be sufficient. Choose the approach that aligns with your needs, and my suggestion is don't over engineer it, keep it simple when you can.
 
 
 
@@ -209,27 +211,35 @@ Write a `README` file which answers the following questions:
 - How to run my code?
 - How to cite?
 
+#note: A README file is crucial for your repository as it serves as the entry point for anyone trying to use your code. Make sure to clearly explain what your code is, how to install it, how to use it with examples, and how to properly cite your work if someone includes it in their research. The goal is to make your code as accessible as possible.
+
 
 ## What does my code do?
 
-- Broief overview of what problem my code solves.
-- Key information: programming language, core dependencies (JAX, scipy...).
-- Link to related papers, presentations, or documentation.
+- Brief overview of what problem my code solves.
+- Key information: programming language, core dependencies (JAX, scipy...).<!-- .element: class="fragment" -->
+- Link to related papers, presentations, or documentation.<!-- .element: class="fragment" -->
+
+#note: Start by summarizing the main goal of your code. What problem does it solve, or what research question does it address? Include any important technical details, like the programming language and major dependencies, so users can understand what they’re working with. Add links to relevant background materials or to an associated paper, when available.
 
 
 ## How to install my code?
 
 - Step-by-step install procedure.
-- Specify python vesions and non-python dependencies.
-- Mention OS compatibility.
+- Specify python vesions and non-python dependencies. <!-- .element: class="fragment" -->
+- Mention OS compatibility. <!-- .element: class="fragment" -->
+
+#note: The installation section should provide clear, step-by-step instructions. Mention specific Python versions and any non-Python dependencies that users need. Don’t forget to specify which operating systems are supported to avoid confusion, if you did test your code on a specific operating system only, it is fair to state it, and say that it is not guaranteed to work on other platforms.
 
 
 ## How to run my code?
 
 - Code snippets with examples of usage.
-- Add decriptive text and comments.
-- Point to extended notebook/script tutorials, summarizing the content.
-- Notebooks should show example usages, rather than full analysis.
+- Add decriptive text and comments. <!-- .element: class="fragment" -->
+- Point to extended notebook/script tutorials, summarizing the content. <!-- .element: class="fragment" -->
+- Notebooks should show example usages, rather than full analysis. <!-- .element: class="fragment" -->
+
+#note: The README should also breifly demonstrate how to use your code with simple examples. These should include enough context and comments so users can understand the workflow. It is also useful to liink to more detailed tutorials for advanced use cases. These notebooks focus on illustrating usage rather than performing a full analysis.
 
 
 ## How to cite?
@@ -240,6 +250,8 @@ Different ways of adding citations:
 - Link to a paper. 
 - Consider generating a DOI via Zenodo.
 - [Example](https://github.com/billbrod/spatial-frequency-preferences/blob/main/README.md)
+
+#note: Finally, since you have done your job well and you produced some good quality research code, you definitely desearve credit! For this, it is important to let people know how they should cite your work. This can take the form of a BibTeX entry, a DOI, or a link to a related publication. Zenodo is a great option for generating DOIs for your code and increasing its visibility, more on that later.
 
 
 
