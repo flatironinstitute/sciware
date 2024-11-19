@@ -147,6 +147,7 @@ provide a few advices that should make this requirement easier.
 - Increases transparency and reproducibility.  <!-- .element: class="fragment"  -->
 - Open-source tools often have better community support.  <!-- .element: class="fragment"  -->
 
+
 ### Avoid GUIs, Prefer Scripting  <!-- .element: class="fragment"  -->
 - GUIs limit automation—use scriptable alternatives or obtain a scripted version when possible. <!-- .element: class="fragment"  -->
 - When not possible, store both GUI outputs and configurations. <!-- .element: class="fragment"  -->
@@ -194,7 +195,7 @@ provide a few advices that should make this requirement easier.
 - **When To Use Containers**
    - If your code has **complex dependencies** or non-Python packages.
    - If you have code that must run on High-Performance Computing clusters (facilitates portability).
-- **When To Probably Not** <!-- .element: class="fragment" data-fragment-index=1 -->
+- <!-- .element: class="fragment" data-fragment-index=1 --> **When To Probably Not** 
    -  <!-- .element: class="fragment" data-fragment-index=1 --> If you use <strong>stable Python packages</strong> with good backward compatibility.
    -  <!-- .element: class="fragment" data-fragment-index=2 --> <strong>Conda environments</strong> might be enough if dependencies are Python-only.
 
@@ -340,7 +341,7 @@ Fortunately, Zenodo has an easy interface with Github. Once you set up your acco
 ## Versioning
 
 Not just for software packages!
-- Can do through GitHub's web UI ([e.g.](https://github.com/billbrod/spatial-frequency-preferences)). <!-- .element: class="fragment" -->
+- <!-- .element: class="fragment" --> Can do through GitHub's web UI ([e.g.](https://github.com/billbrod/spatial-frequency-preferences)). 
 - Use versioning to mark milestones (e.g., "presentation at Cosyne", "preprint", "journal submission", "final accepted version") <!-- .element: class="fragment" -->
 - Version your data too!  <!-- .element: class="fragment" -->
 
