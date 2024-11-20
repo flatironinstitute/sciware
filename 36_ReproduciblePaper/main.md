@@ -532,7 +532,7 @@ additionally, most programming languages have some sort of linters / formatters,
 - [The Turing Way](https://book.the-turing-way.org/index.html)
 - [NYU Guide to software reproducibility](https://guides.nyu.edu/software-reproducibility/home)
 - Neuroscience data standards: [NWB](https://nwb-overview.readthedocs.io/en/latest/) (systems neuro), [BIDS](https://bids.neuroimaging.io/) (neuroimaging)
-- [Snakemake](https://snakemake.readthedocs.io/en/stable/)
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/), [snakemake tutorial](https://carpentries-incubator.github.io/workflows-snakemake/)
 - Data archives: [OSF](https://osf.io/), [Zenodo](https://zenodo.org/), [DANDI](https://www.dandiarchive.org/)
 
 
