@@ -417,10 +417,11 @@ Snakemake comes from the bioinformatics community and is inspired by GNU make, w
 
 ## Manual workflow
 
-```markdown
-Run this to spike sort: `python spike_sort.py`.
-Run this to fit the model: `python model_fit.py`.
-```
+- Run this to spike sort: `python spike_sort.py path/to/raw_data.nwb`.
+- Run this to fit the model (spike sort must have been run already!): `python model_fit.py path/to/spikes.npz`.
+- Run this to create figure 1 (only needs raw data): `python create_figures.py 1 path/to/raw_data.nwb`.
+- Run this to create figure 2 (needs spike sorting): `python create_figures.py 2 path/to/spikes.npz`.
+- Run this to create figure 3 (needs model fitting): `python create_figures.py 3 path/to/model_params.csv`.
 
 
 ## Snakemake
@@ -479,7 +480,7 @@ Run this to fit the model: `python model_fit.py`.
 ### Tests and Continuous Integration
 
 - Research code is not expected to be as generalizable as a full software library. <!-- .element: class="fragment supplemental" -->
-- Many researchers write informal tests -- formalize them! <!-- .element: class="fragment supplemental" -->
+- Many researchers write informal tests &mdash;  formalize them! <!-- .element: class="fragment supplemental" -->
 - CI can still be useful to check some of what we've talked about. <!-- .element: class="fragment supplemental" -->
 - E.g., can I install my software, import it, and initialize my model. <!-- .element: class="fragment supplemental" -->
 - Does my install work on multiple OSs? <!-- .element: class="fragment supplemental" -->
