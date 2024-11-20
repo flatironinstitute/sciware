@@ -70,7 +70,7 @@ const upcoming_events = [
   // },
   {
     // Date- Thur Nov 21 at 10am-12pm.
-    title: `How to (try to) publish a reproducible paper`,
+    title: `How to publish a (hopefully) reproducible paper`,
     weekday: `Thursday`,
     date: `November 21`,
     time: `10 AM — Noon`,
@@ -129,6 +129,7 @@ const past_events = [
   [`Session #33 day 4`, `Intro to GitHub, Part 2`, `June 27, 2024`, `/33_SummerIntro/day4.html`, `https://github.com/flatironinstitute/sciware/tree/main/33_SummerIntro`],
   [`Session #34`, `Python Packaging`, `September 26, 2024`, `/34_PyPackaging/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/34_PyPackaging`],
   [`Session #35`, `Extended Intro to HPC`, `October 2, 2024`, `/35_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC`],
+  [`Session #36`, `How to publish a (hopefully) reproducible paper`, `November 21, 2024`, `/36_ReproduciblePaper/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/36_ReproduciblePaper`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
