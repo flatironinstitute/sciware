@@ -409,3 +409,7 @@ div.two-column {
 .big-math > span {
   font-size: 100% !important;
 }
+
+.supplemental {
+  color: #aaa
+}
