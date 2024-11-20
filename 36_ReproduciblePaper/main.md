@@ -53,7 +53,7 @@ of these quadrants, reproducible should be the easiest. but that doesn't mean it
 
 ## Why be reproducible at all?
 
-#note: why should you do this at all? this any of these steps requires extra time, which is time that you're not spending working on your next brilliant idea. If you look around online, people make a lot of different arguments for this, but for me I think there are two main reasons, one practical and one normative.
+#note: why should you do this at all? I think just about every scientist, if you ask them, will say this is important, but they won't agree that it's worth spending time on. any of these steps requires extra time, which is time that you're not spending working on your next brilliant idea. If you look around online, people make a lot of different arguments for this, but for me I think there are two main reasons, one practical and one normative.
 
 
 ## The number one person you're helping is future you
@@ -72,9 +72,9 @@ the way I've heard this described is "your most important collaborator is yourse
 #note: secondly, more normatively, doing science means being transparent. this is a paper from some philosophers of science, addressing what's known as the "demarcation problem": how do you determine whether something counts as science? their answer is that what really distinguishes science from other forms of inquiry is that scientists must share their work widely for public scrutiny and evaluation. you cannot just say "trust me", you have to explain why.
 
 
-## But I've already written the paper!
+### But I've already written the paper!
 
-![](assets/abstrusegoose.png)
+![](assets/abstrusegoose.png) <!-- .element: style="width:90%" -->
 
 #note: but you might say, I've already published the paper, surely if anyone has any questions about my analysis, they can just read my beautifully-written  and completely clear paper
 
@@ -98,7 +98,7 @@ the way I've heard this described is "your most important collaborator is yourse
 #note: so now you're all thoroughly convinced that you should be reproducible and that to do that, you need to share your code+data. Before we start talking practically, let's set out some questions:
 - What your goal is when sharing the code: do you want people to just be able to re-generate your figures? Running same method on newly-collected data / different datasets? Are there any parts of your code (model, algorithm) that folks will want to apply to a completely new context? 
    - Do you see this as a living code base that you’ll continue to update and use for other projects? Or does it serve only to generate results for a single paper?
-   - For this talk, we'll assume your goal is just to allow the regeneration of your figures
+   - what we'll cover helps all of these, but the "more difficult" topics will be more and more useful the broader your goals
 - Who is the community you are sharing with. Will depend on your publication venue, but how comfortable can you assume they are with programming. If you say “set up a python virtual environment with python 3.10”, will they know how to do that?
 - Think about your maintenance burden going forward. You probably don't want to do much maintenance on this.
 - In general, all of these will be easier the earlier you start. 
@@ -125,6 +125,10 @@ the way I've heard this described is "your most important collaborator is yourse
 #note: we're going to give a brief overview of a lot today, which fall into these categories. the goal here is to make you aware of all of these topics, and to get you started. the goal is not to be exhaustive, and you'll probably need to do more reading or ask questions about the topics we'll cover today. I'll have some resources at the end of this presentation, which you can find on the sciware site and, if you end up trying to follow these guidelines and have questions or just want to show off, post on the sciware channel!
 
 so our topics are grouped into a couple of higher-level categories: read slide. Edaordo's going to present about the first two of these, which are the meatiest, and then I'm going to come back and finish us up. Periodically, we're going to switch tabs to show you how we've implemented these steps in our own projects.
+
+these topics pretty much all generally fall into "good software engineering practices".
+
+we're covering a lot of ground here. we're going to try and signal what we think is required, and what is "supplemental", which we'll try to indicate with gray
 
 
 
