@@ -1,6 +1,10 @@
+<head>
+<base target="_blank">
+</head>
+
 # Sciware
 
-## How to  publish a (hopefully) reproducible paper
+## How to publish a (hopefully) reproducible paper
 
 https://sciware.flatironinstitute.org/36_ReproduciblePaper
 
