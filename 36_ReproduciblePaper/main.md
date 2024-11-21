@@ -207,6 +207,7 @@ we're covering a lot of ground here. we're going to try and signal what we think
   - `environment.yaml` (conda)
   - [pyproject.toml](https://github.com/flatironinstitute/sciware/blob/main/34_PyPackaging/example_project_root/pyproject.toml) (pip)
 -  <!-- .element: class="fragment supplemental"  --> With little extra effort and <code>pyproject.toml</code>, you can make your code installable (see <a href="https://sciware.flatironinstitute.org/34_PyPackaging/slides.html">September sciware</a>)
+- <!-- .element: class="fragment supplemental"  --><a href="https://github.com/pypa/sampleproject/blob/main/pyproject.toml">Here a pyproject.toml</a> with detailed descriptions of the configuraiton options.
 
 #note: requirements is the minimum, if you have non-python deps and use conda you'll need the environment.yaml. We reccomend pyproject.toml which will make you code installable. meaning that you can run import myproject form anywhere, making your code easier to use in the end with little extra effort.
 
