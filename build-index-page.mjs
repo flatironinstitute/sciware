@@ -176,11 +176,11 @@ const organizers = [
   `Dylan Simon, SCC`,
   `Robert Blackwell, SCC`,
   `Billy Broderick, CCN`,
+  `Lukas Devos, CCQ`,
   `Chris Edelmaier, CCB`,
   `Lehman Garrison, SCC`,
   `Geraud Krawezik, SCC`,
   `Jeff Soules, CCM`,
-  `Nils Wentzell, CCQ`,
 ];
 
 const about_section = html`
