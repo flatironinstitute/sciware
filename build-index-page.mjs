@@ -70,12 +70,20 @@ const upcoming_events = [
   // },
   {
     // Date- Thur Nov 21 at 10am-12pm.
-    title: `How to publish a (hopefully) reproducible paper`,
+    title: `What's New in Python 3.13 and NumPy 2`,
     weekday: `Thursday`,
-    date: `November 21`,
+    date: `Feb 20`,
+    time: `2:30-3:30 PM `,
+    location: `162 5th Ave<br />2nd Floor IDA`,
+    summary: html`Python 3.13 introduces a new interactive interpreter, a "free-threaded" mode, and an experimental just-in-time compiler. In this shorter SciWare, we'll break down these features and what they mean for scientific software. We'll also talk about NumPy 2 and the various improvements and incompatibilities it brings.`,
+  },
+  {
+    title: `Extended Intro to High-Performance Computing`,
+    weekday: `Wednesday`,
+    date: `March 12`,
     time: `10 AM — Noon`,
-    location: `160 5th Ave<br />4th Floor Classroom`,
-    summary: html`There is a lot of code and data that goes into a paper (simulation, analysis, plotting) that doesn't belong in a software package. How do you share that code and data so that it is possible for your work to be reproducible? In this workshop, we will discuss considerations around sharing such code and data. Tools and topics will include workflow managers like Snakemake; software environments & installability; GitHub; README best practices; using repositories and data archives such as Zenodo; licensing; and more. We will focus on code and data products which are not intended to be maintained or generalizable but rather which are particular to a specific publication.`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: html` In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks. `,
   },
 ];
 
@@ -130,6 +138,7 @@ const past_events = [
   [`Session #34`, `Python Packaging`, `September 26, 2024`, `/34_PyPackaging/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/34_PyPackaging`],
   [`Session #35`, `Extended Intro to HPC`, `October 2, 2024`, `/35_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC`],
   [`Session #36`, `How to publish a (hopefully) reproducible paper`, `November 21, 2024`, `/36_ReproduciblePaper/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/36_ReproduciblePaper`],
+  [`Session #37`, `What's New in Python 3.13 and NumPy 2`, `Feb 20, 2025`, ``, ``],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
