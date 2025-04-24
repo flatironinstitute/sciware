@@ -217,6 +217,7 @@ const socials = [
   [`GitHub`, `Sciware GitHub repository`, `https://github.com/flatironinstitute/sciware`, `brands fa-github`],
   [`Slack`, `#sciware Slack channel`, `https://simonsfoundation.slack.com/archives/CDU1EE9V5`, `brands fa-slack`],
   [`Vimeo`, `Sciware Vimeo showcase`, `https://vimeo.com/showcase/sciware`, `brands fa-vimeo`],
+  [`Calendar`, `Google Calendar`, `https://calendar.google.com/calendar/u/0?cid=Y18zZmQ4OTVlNjM3MzgzZmZhODM3YTRjNmUzMDQyYjA1OWNhYTAyOGE3M2M5YjdmZDk3ZWFjMTIyMmU5YzM2YzE0QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20`, `solid fa-calendar`],
   [`Email`, `Email sciware`, `mailto:sciware@flatironinstitute.org`, `solid fa-envelope`],
 ];
 
