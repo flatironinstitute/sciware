@@ -11,79 +11,37 @@ import { execSync } from "node:child_process";
 // Add events here to have them appear at the top of the page.
 // If this array is empty, the page will display a message saying there are no upcoming events.
 const upcoming_events = [
-  // {
-  //   title: `Tool Setup, Intro to the Shell and the Cluster`,
-  //   weekday: `Tuesday`,
-  //   date: `June 4`,
-  //   time: `10 AM – 12:30 PM`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: `
-  //   Learn about the cluster and navigating the command line, and setup your laptop for coding.`,
-  // },
-  // {
-  //   title: `Intro to Visual Studio Code`,
-  //   weekday: `Wednesday`,
-  //   date: `June 12`,
-  //   time: `10 AM – 12:30 PM`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: `Learn how Visual Studio Code can help you be a better Python programmer.`,
-  // },
-  // {
-  //   title: `NVIDIA Intro to Machine Learning`,
-  //   weekday: `Monday – Tuesday`,
-  //   date: `June 17 – 18`,
-  //   time: `All Day`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: `Learn to use the popular <code>torch</code> Python package to train machine learning models using cluster hardware.`,
-  // },
-  // {
-  //   title: `Intro to GitHub, Part 1`,
-  //   weekday: `Thursday`,
-  //   date: `June 20`,
-  //   time: `10 AM – 12:30 PM`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: `Get setup with <code>git</code> and local version control.`,
-  // },
-  // {
-  //   title: `Intro to GitHub, Part 2`,
-  //   weekday: `Thursday`,
-  //   date: `June 27`,
-  //   time: `10 AM – 12:30 PM`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: `Connect to Github and learn how to collaborate on code.`,
-  // },
-  // {
-  //   title: `Intro to Python Packaging`,
-  //   weekday: `Thursday`,
-  //   date: `September 26`,
-  //   time: `3 — 5 PM`,
-  //   location: `162 5th Ave<br />3rd Floor Classroom`,
-  //   summary: html`In this Sciware workshop, we'll discuss Python packaging and relevant tools. Our main focus will be on how to get a project <code>pip</code>-installable using a <code>pyproject.toml</code> file and <code>setuptools</code>. We'll work together to make a test project where everyone can go through the steps of organizing and making a Python package.`,
-  // },
-  // {
-  //   title: `Extended Intro to High-Performance Computing`,
-  //   weekday: `Wednesday`,
-  //   date: `October 2`,
-  //   time: `10 AM — Noon`,
-  //   location: `162 5th Ave<br />IDA Auditorium`,
-  //   summary: html` In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks. `,
-  // },
   {
-    // Date- Thur Nov 21 at 10am-12pm.
-    title: `What's New in Python 3.13 and NumPy 2`,
-    weekday: `Thursday`,
-    date: `Feb 20`,
-    time: `2:30-3:30 PM `,
-    location: `162 5th Ave<br />2nd Floor IDA`,
-    summary: html`Python 3.13 introduces a new interactive interpreter, a "free-threaded" mode, and an experimental just-in-time compiler. In this shorter SciWare, we'll break down these features and what they mean for scientific software. We'll also talk about NumPy 2 and the various improvements and incompatibilities it brings.`,
-  },
-  {
-    title: `Extended Intro to High-Performance Computing`,
-    weekday: `Wednesday`,
-    date: `March 12`,
+    title: `Summer Sciware 1 - Setting up a laptop for scientific computing`,
+    weekday: `Tuesday`,
+    date: `June 3`,
     time: `10 AM — Noon`,
     location: `162 5th Ave<br />IDA Auditorium`,
-    summary: html` In this SCC-hosted Sciware, we will introduce cluster terminology and describe the two Flatiron clusters, <code>popeye</code> and <code>rusty</code>. In the interactive session, we will learn to make use of the software and hardware resources available by setting up a Python environment and running a Python script on the cluster by submitting jobs using <code>slurm</code>. In addition, we will demonstrate how to use <code>mpi4py</code> and <code>disBatch</code> to run distributed Python tasks. `,
+    summary: html``,
+  },
+  {
+    title: `Summer Sciware 2 - VSCode and Github`,
+    weekday: `Thursday`,
+    date: `June 12`,
+    time: `10 AM — Noon`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: html``,
+  },
+  {
+    title: `Summer Sciware 3 - Intro to the cluster`,
+    weekday: `Tuesday`,
+    date: `June 24`,
+    time: `10 AM — Noon`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: html``,
+  },
+  {
+    title: `Summer Sciware 4 - Cluster hands-on`,
+    weekday: `Wednesday`,
+    date: `July 2`,
+    time: `10 AM — Noon`,
+    location: `162 5th Ave<br />IDA Auditorium`,
+    summary: html``,
   },
 ];
 
@@ -138,7 +96,8 @@ const past_events = [
   [`Session #34`, `Python Packaging`, `September 26, 2024`, `/34_PyPackaging/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/34_PyPackaging`],
   [`Session #35`, `Extended Intro to HPC`, `October 2, 2024`, `/35_IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/35_IntroToHPC`],
   [`Session #36`, `How to publish a (hopefully) reproducible paper`, `November 21, 2024`, `/36_ReproduciblePaper/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/36_ReproduciblePaper`],
-  [`Session #37`, `What's New in Python 3.13 and NumPy 2`, `Feb 20, 2025`, ``, ``],
+  [`Session #37`, `What's New in Python 3.13 and NumPy 2`, `Feb 20, 2025`, `/37_WhatsNewInPython313`, ``],
+  [`Session #38`, `Extended Intro to HPC`, `March 12, 2025`, `/IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/IntroToHPC`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
