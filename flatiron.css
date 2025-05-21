@@ -18,7 +18,7 @@ body {
 
 .reveal {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 40px;
+  font-size: 24px;
   font-weight: normal;
   color: #5c5c5c;
 }
@@ -161,7 +161,7 @@ body {
   width: 90%;
   margin: 20px auto;
   text-align: left;
-  font-size: 0.55em;
+  font-size: 0.75em;
   font-family: monospace;
   line-height: 1.2em;
   word-wrap: break-word;
