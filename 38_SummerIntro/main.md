@@ -36,7 +36,7 @@ Activities where participants all actively work to foster an environment which e
 ## Summer Sciware Sessions
 - Schedule
   - **June 3**: Summer Sciware 1 - Setting up a laptop for scientific computing
-  - **June 12**: Summer Sciware 2 - VSCode and Github
+  - **June 12**: Summer Sciware 2 - VS Code and GitHub
   - **June 24**: Summer Sciware 3 - Intro to the cluster
   - **July 2**: Summer Sciware 4 - Cluster hands-on
   - All 10 AM - noon in the IDA Auditorium (162 Fifth Ave, 2nd Floor)
@@ -45,9 +45,12 @@ Activities where participants all actively work to foster an environment which e
 
 ## Where to Find Sciware
 - The [#code-help](https://simonsfoundation.enterprise.slack.com/archives/C08SZK2C0TB) channel on Simons Foundation Slack
-- The [#sciware](https://simonsfoundation.enterprise.slack.com/archives/CDU1EE9V5) channel on Simons Foundation Slack
-- The anonymous [Summer 2025 Flatiron Computing Question Form](https://docs.google.com/forms/d/e/1FAIpQLSemCVw8_QHXFXN6nS27z-QMIpaWhvHNBVi7tRxAs85RaGbc4w/viewform?usp=dialog) Google Form
-- Sciware website: https://sciware.flatironinstitute.org/
+  - On your laptop, go to [simonsfoundation.slack.com](https://simonsfoundation.slack.com), log in, and add the #code-help channel.
+  - Put up your green sticky 🟩 if you've found #code-help, or your yellow sticky 🟨 if you can't find it!
+- Other Slack channels:
+  - The [#sciware](https://simonsfoundation.enterprise.slack.com/archives/CDU1EE9V5) channel on Simons Foundation Slack
+  - The anonymous [Summer 2025 Flatiron Computing Question Form](https://docs.google.com/forms/d/e/1FAIpQLSemCVw8_QHXFXN6nS27z-QMIpaWhvHNBVi7tRxAs85RaGbc4w/viewform?usp=dialog) Google Form
+  - Sciware website: https://sciware.flatironinstitute.org/
 
 
 ## Today's Agenda
@@ -59,6 +62,7 @@ Activities where participants all actively work to foster an environment which e
 
 
 ## Prerequisite Software
+Put up your green sticky 🟩 when you're done this slide, or your yellow sticky 🟨 if you get stuck!
 - Mac users:
   1. Open a terminal: press Command (⌘) + Space to open Spotlight Search, type "Terminal", and press Enter.
   1. Run: `xcode-select --install`
@@ -106,6 +110,7 @@ More detailed instructions here: https://learn.microsoft.com/en-us/windows/wsl/i
 
 
 ## Install uv Python
+Put up your green sticky 🟩 when you're done this slide, or your yellow sticky 🟨 if you get stuck!
 - Go to [docs.astral.sh/uv/](https://docs.astral.sh/uv/)
 - Click Installation on the left
 - Copy the standalone installer command: `curl -LsSf https://astral.sh/uv/install.sh | sh`
@@ -124,6 +129,15 @@ These instructions are adapted from uv's ["Working on projects"](https://docs.as
   uv init sciware-2025
   code sciware-2025
   ```
+
+
+## uv Cheatsheet
+| Traditional Command         | uv Equivalent         | Description                                 |
+|----------------------------|-----------------------|---------------------------------------------|
+| `pip install <package>`      | `uv add <package>`      | Add a package as a dependency               |
+| `pip uninstall <package>`    | `uv remove <package>`   | Remove a package from dependencies           |
+| `python script.py`         | `uv run script.py`    | Run a Python script using project env       |
+| `python`                   | `uv run python`       | Get an interactive Python prompt |
 
 
 ## Add a Dependency
@@ -146,13 +160,7 @@ These instructions are adapted from uv's ["Working on projects"](https://docs.as
 
 For more advanced projects (like packages for GitHub or PyPI), see uv's [project concepts](https://docs.astral.sh/uv/concepts/projects/init/).
 
-
-## uv Cheatsheet
-| Traditional Command         | uv Equivalent         | Description                                 |
-|----------------------------|-----------------------|---------------------------------------------|
-| `pip install package`      | `uv add package`      | Add a package as a dependency               |
-| `pip uninstall package`    | `uv remove package`   | Remove a package from dependencies           |
-| `python script.py`         | `uv run script.py`    | Run a Python script using project env       |
+Put up a green sticky 🟩 if running a script works, or your yellow sticky 🟨 if you get stuck!
 
 
 ## Using Notebooks
@@ -172,33 +180,37 @@ These instructions are adapted from uv's ["Using Jupyter from VS Code"](https://
 
 
 ## Exercise: Create a New Project
-1. Create a new project called `sciware-exercise` in your home directory.
+Put up your green sticky 🟩 when you're done this slide, or your yellow sticky 🟨 if you get stuck!
+1. Create a new project called `sciware-exercise` in your home directory (not in the `sciware-2025` project that we already created).
 2. Open the project in VS Code.
 3. Add `numpy` and `matplotlib` as dependencies.
 4. Add `ipykernel` as a development dependency.
 5. Create a new notebook in the project.
 7. Make a colorful scatter plot from a 2D Gaussian distribution!
-  1. Use NumPy to generate 100 random points from a 2D Gaussian distribution with mean `[0, 0]` and covariance `[[1, 0.5], [0.5, 1]]`.
-  2. Use Matplotlib to create a scatter plot of the points, with each point colored by a random value between 0 and 1.
+   1. Use NumPy to generate 100 random points from a 2D Gaussian distribution with mean `[0, 0]` and covariance `[[1, 0.5], [0.5, 1]]`.
+   2. Use Matplotlib to create a scatter plot of the points, with each point colored by a random value between 0 and 1.
 
-  ```python
-  import numpy as np
-  import matplotlib.pyplot as plt
 
-  N = 100
-  rng = np.random.default_rng()
-  mean = [0, 0]
-  cov = [[1, 0.5], [0.5, 1]]  # Covariance matrix for some correlation
-  x, y = rng.multivariate_normal(mean, cov, N).T
-  colors = rng.random(N)  # Random color for each point
+## Exercise: Solution
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
-  plt.scatter(x, y, c=colors, cmap='viridis', s=60)
-  plt.title('Random Colorful Gaussian Scatter Plot')
-  plt.xlabel('x')
-  plt.ylabel('y')
-  plt.colorbar(label='Color value')
-  plt.show()
-  ```
+N = 100
+rng = np.random.default_rng()
+mean = [0, 0]
+cov = [[1, 0.5], [0.5, 1]]  # Covariance matrix for some correlation
+x, y = rng.multivariate_normal(mean, cov, N).T
+colors = rng.random(N)  # Random color for each point
+
+plt.scatter(x, y, c=colors, cmap='viridis', s=60)
+plt.title('Random Colorful Gaussian Scatter Plot')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.colorbar(label='Color value')
+plt.show()
+```
+
 
 ## Resources
 - uv has excellent [documentation](https://docs.astral.sh/uv), including a [guide for Jupyter integration](https://docs.astral.sh/uv/guides/integration/jupyter/). If you get stuck, check the docs, or get in touch with us!
