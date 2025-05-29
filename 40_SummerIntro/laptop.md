@@ -3,9 +3,9 @@
 ## Summer Sciware 1
 ## Setting up a laptop for scientific computing
 
-https://sciware.flatironinstitute.org/38_SummerIntro
+https://sciware.flatironinstitute.org/40_SummerIntro
 
-https://github.com/flatironinstitute/sciware/tree/main/38_SummerIntro
+https://github.com/flatironinstitute/sciware/tree/main/40_SummerIntro
 
 
 ## Who We Are

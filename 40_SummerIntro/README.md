@@ -1,3 +1,9 @@
+# Summer Intern Intro
+- Jun 3 - Jul 2, 2025
+
+- [day 1](https://sciware.flatironinstitute.org/40_SummerIntro/day1.html) ([source](laptop.md))
+- [day 1 (github)](https://sciware.flatironinstitute.org/40_SummerIntro/github.html) ([source](github1.md))
+
 # Email to interns (cc to mentors) before summer begins
 
 1) To make sure your laptop is ready for scientific computing, please do this before the first workshop on Tuesday, June 3:
