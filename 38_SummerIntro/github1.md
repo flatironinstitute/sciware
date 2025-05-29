@@ -5,42 +5,10 @@
 https://sciware.flatironinstitute.org/33_SummerIntro
 
 
-## Sciware goal
-
-Activities where participants all actively work to foster an environment which encourages participation across experience levels, coding language fluency, *technology choices*\*, and scientific disciplines.
-
-<small>\*though sometimes we try to expand your options</small>
-
-
-## Sciware website
-
-Previous sciwares available here
-https://sciware.flatironinstitute.org
-
-Password for videos is...
-
-<img src="assets/sciware_ss.png" width="40%">
-
-
-## Summer Intros
-
-- today 10-12:30: git & Github, Part I
-- Jun 27 10-12:30: git & Github, Part II
-
-
-## Getting help
-
-- \#code-help on SF Intern Slack
-- \#sciware on SF Slack
-
-
-## Today's Agenda
+## Agenda
 
 - What are Git and GitHub?
 - Setting up Git and GitHub on your computer
-- Getting code off of GitHub
-- Putting code onto GitHub
-
 
 
 # Intro to Git and GitHub
@@ -263,153 +231,15 @@ https://github.com/explore
 <img src="assets/gh1_qr.png" width="30%">
 
 
-
-## Putting code on GitHub
-
-<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote.png" alt="Push to remote graphic" style="height:550px; margin-right:10px">
-
-
-## Make a project directory (folder)
-
-<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
-> cd #out of sciware33-git-intro
-> mkdir silly_repo
-> cd silly_repo
-> touch silly_code.py
-> touch silly_file.txt
-</code></pre>
-
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
-
-
-### Initialize the directory to use with git & GitHub
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git init -b main
-> git status
-</code></pre>
-
-<img src="assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
-
-
-## Check the status of your current *branch*
-
-- It's possible to have multiple *branches* of the code where different things are being worked on.
-- The primary branch is usually called *main*.
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
-</code></pre>
-
-Notice:
-- branch name
-- `silly_file.txt` is in red and is *untracked*
-
-
-## Specify the files to save to version control
-
-Use the `git add` command to specify exactly which files you want to keep under version control.
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
-> git add silly_file.txt
-> git status
-</code></pre>
-
-Notice:
-- `silly_file.txt` is now green
-- `silly_file.txt` needs to be committed
-
-
-## Save the changes
-
-- Use the `git commit` to save the local changes.
-- Add a *commit message* to document the changes.
-- Launch a text editor where you can type the commit message:
-
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape>> git commit
-</code></pre>
-Alternatively, you can commit directly from the command line:
-<pre  style="font-size:1.1em; margin-top:-30px"> <code data-trim data-noescape>> git commit -m "add silly file"
-> git status
-</code></pre>
-
-
-## What's in a commit message?
-
-<img src="https://imgs.xkcd.com/comics/git_commit.png" style="width: 80vh">
-
-- Like a comment in your code
-- Says what you changed and why
-
-
-## Create a repo on GitHub
-
-<div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Remote.png" alt="remote graphic" style="float:left; height:400px; margin-left:20px; margin-right:10px">
-<ul>
-<li>Go to your homepage on GitHub</li>
-<li>Click the Repositories tab</li>
-<li>Click the green New button</li>
-<li>Name the repository <tt>silly_repo</tt></li>
-</ul>
-</div>
-
-
-## Connect the local repo to GitHub
-
-- Use `git remote add` to provide the URL to the GitHub repo.
-- The repo that is in your personal profile is usually called `origin`
-
-<pre  style="font-size:1.1em"><code data-trim data-noescape>
-> git remote -v
-> git remote add origin git@github.com:kelle/silly_repo.git
-> git remote -v
-</code></pre>
-
-
-## Upload the local repo contents to GitHub
-
-- Use the `git push` command to upload the committed changes to the GitHub repo.
-
-<pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">
-> git push origin main
-</code></pre>
-
-<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
-
-
-# Check GitHub
-
-`silly_file.txt` should now be in the repo on the GitHub website.
-
-<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:400px">
-
-
-# Questions?
-
-<img src="assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:500px">
-
-
-# Activity
-
-- Push `silly_code.py` to the repo
-
-# Homework
-
-- Put one of your projects into a new GitHub repo
-
-
-
 # Troubleshooting
 
 - Find GitHub buddies
 - The best way to figure things out is by asking folks for help
+- There are many resources for common git and GitHub problems on the internet.
+  - Consider discussing with a buddy before copy/pasting.
 
 <img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh; border: none">
 
-
-## Troubleshooting
-
-- Avoid problems by keeping track of the state of your local.
-- Inspect `git status` before and after every command until you gain confidence
 
 <img src="assets/GitStatus.png" alt="github status screenshot" style="height:350px">
 
@@ -420,8 +250,7 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 # Troubleshooting
 
-- There are many resources for common git and GitHub problems on the internet.
-- Consider discussing with a buddy before copy/pasting.
+
 
 <img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:400px">
 
@@ -429,10 +258,9 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 
 ## Next week
 
-### Using GitHub to collaborate
+### Tools for better coding
 
-<img src="assets/Learn-Git-Graphics/Push%20to%20the%20Fork.png" alt="Push to the fork graphic" style="height:550px">
-
+Thursday, June 12, 10am-12pm.
 
 
 # Survey
