@@ -230,7 +230,7 @@ How to set up your favorite editor with Git:
 
 ## Questions?
 
-<img src="assets/gh1_qr.png" width="30%">
+<img src="assets/survey40.1.png" width="30%">
 
 
 
@@ -247,4 +247,4 @@ or
 
 # Survey
 
-<img src="assets/gh1_qr.png" width="30%">
+<img src="assets/survey40.1.png" width="30%">

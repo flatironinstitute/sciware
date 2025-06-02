@@ -221,4 +221,4 @@ plt.show()
 ## Survey
 Please give us some feedback!
 
-[![survey](./qrcode.png)] 
+[![survey](assets/survey40.1.png)] 
