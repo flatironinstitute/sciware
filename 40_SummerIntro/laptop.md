@@ -53,6 +53,7 @@ Activities where participants all actively work to foster an environment which e
   - Sciware website: https://sciware.flatironinstitute.org/
 
 
+
 ## Today's Agenda
 - Install prerequisite software (xcode on Mac, WSL on Windows)
 - Install uv Python
@@ -163,6 +164,7 @@ For more advanced projects (like packages for GitHub or PyPI), see uv's [project
 Put up a green sticky 🟩 if running a script works, or your yellow sticky 🟨 if you get stuck!
 
 
+
 ## Using Notebooks
 
 These instructions are adapted from uv's ["Using Jupyter from VS Code"](https://docs.astral.sh/uv/guides/integration/jupyter/#using-jupyter-from-vs-code) documentation.
@@ -218,7 +220,8 @@ plt.show()
 - VS Code documentation for the cluster: https://wiki.flatironinstitute.org/SCC/Software/VSCode
 
 
+
 ## Survey
 Please give us some feedback!
 
-[![survey](assets/survey40.1.png)] 
+![survey](assets/survey40.1.png)
