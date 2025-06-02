@@ -58,12 +58,13 @@ https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 
 - unlimited private repositories
 - more cloud computing resources (Codespaces)
-- Free GitHub Copilot, AI-powered coding companion
+- **Free GitHub Copilot, AI-powered coding companion**
 
 
 ## Do you already have GitHub Copilot? 
 
 https://github.com/settings/copilot/
+<div class="spacer"></div>
 -  🟩 if you have Copilot
 -  🟨 if you do not have Copilot
 
@@ -75,14 +76,19 @@ https://github.com/settings/copilot/
 - Other options exist
 
 
-## To request a GitHub Pro account - Settings
+## To request a GitHub Pro account - Edu email
 
-- Add your .edu email address to your GitHub profile
+<div style="display: flex;">
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; height: 500px">
+
+- Add your school .edu email address to your GitHub profile
   https://github.com/settings/emails
 
+or 
 
-- Github > Profile Photo > Settings 
-<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
+- Github > Profile Photo > Settings > Emails
+<div class="spacer"></div>
+-  🟩 when you have a .edu email added
 
 
 ## To get a Pro account - Settings
@@ -95,6 +101,11 @@ https://github.com/settings/copilot/
 
 - Choose your school
 - Upload your document
+
+
+## Homework
+
+Finish your GitHub for Education application.
 
 
 
@@ -112,28 +123,33 @@ https://github.com/new
 <img src="assets/Clone.png" alt="Clone screenshot" style="height:550px">
 
 
-## Clone the repository to your computer
+## Make sure `git` is installed
+In Terminal:
+
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
+git version 2.30.1
+</code></pre>
+<div class="spacer"></div>
+-  🟩 if you have git version
+-  🟨 if you get an error
+
+
+## Clone your new repository to your computer
 
 - At the Terminal prompt:
-<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git clone git@github.com:kelle/delete-me.git
+<pre  style="font-size:1em;"> <code data-trim data-noescape>
+&gt; git clone git@github.com:kelle/delete-me.git
+&gt; ls
+&gt; cd delete-me
+&gt; ls 
 </code></pre>
-- Open README.md in a text editor
-
--  🟩 if you can edit README.md
+<div class="spacer"></div>
+-  🟩 if you can see delete-me/README.md
 -  🟨 if you're having trouble
 
 
 
 # Setting up GitHub on your Computer
-
-
-## Make sure `git` is installed
-<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
-git version 2.30.1
-</code></pre>
-
-<p class="align-left">If this returns an error, please raise your hand or put a yellow sticky on your laptop.
-</p>
 
 
 ## Setting your name in Git
@@ -212,122 +228,9 @@ How to set up your favorite editor with Git:
 > https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
 
 
-# Questions?
-
-
-
-## Getting code from GitHub onto your computer
-
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
-
-
-# GitHub Jargon
-
-<div style="display: flex;">
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="float: right; margin-right: 5px; height:400px">
-<ul>
-<li>Directory with the code<ul>
-  <li><i>repository</i> or <i>repo</i></li>
-</ul></li>
-<li> "Download the code"<ul>
-  <li><i>clone</i> the repo</li>
-</ul></li>
-<li>Your computer drive<ul>
-  <li><i>local</i></li>
-</ul></li>
-</ul>
-</div>
-
-*Download the code to your computer* in GitHub-ese is
-**Clone the Repo to your local**
-
-
-## Clone the repo
-
-<div style="display: flex;">
-<img src="assets/Clone.png" alt="Clone button screenshot" style="float: right; height: 450px;">
-<ul>
-<li>Go to the repo on the GitHub website<ul>
-  <li><a href="https://github.com/flatironinstitute/sciware33-git-intro">https://github.com/ flatironinstitute/sciware33-git-intro</a></li></ul>
-</li>
-<li>Click Green Code button</li>
-<li>Choose Local tab</li>
-<li>Choose SSH subtab</li>
-<li>Click the clipboard icon to copy the repo path</li>
-</ul>
-</div>
-
-
-## Clone the repo (continued...)
-
-In a Terminal window, clone the repo:
-
-<pre  style="font-size:0.9em; margin-top:-25px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape style="margin-right: 0px">> git clone git@github.com:flatironinstitute/sciware33-git-intro
-> cd sciware33-git-intro
-</code></pre>
-
-<div class="spacer"></div>
-
-- A directory will be created containing all of the files in the repo.
-- The directory name will be the repo name.
-
-
-## What does `git clone` do?
-
-- Using the `git clone` command connects the directory to the repo on GitHub in case you ever wanted to interact with it later.
-- It generates hidden directory `.git`
-
-<pre  style="font-size:1em; margin-top:-25px"> <code data-trim data-noescape>&gt; ls -a
-</code></pre>
-
-- It also saves the URL to the repo and names it *origin*
-
-<pre  style="font-size:0.9em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>&gt; git remote -v
-origin  git@github.com:flatironinstitute/sciware33-git-intro (fetch)
-origin  git@github.com:flatironinstitute/sciware33-git-intro (push)
-</code></pre>
-
-
-# Questions?
-
-<img src="assets/Learn-Git-Graphics/Clone%20a%20Repo%20to%20Local%20Copy.png" alt="Clone graphic" style="height:550px">
-
-
-# Homework
-
-## Find a repo and clone it to your computer
-
-https://github.com/explore
-
-
-
-# Survey
+## Questions?
 
 <img src="assets/gh1_qr.png" width="30%">
-
-
-# Troubleshooting
-
-- Find GitHub buddies
-- The best way to figure things out is by asking folks for help
-- There are many resources for common git and GitHub problems on the internet.
-  - Consider discussing with a buddy before copy/pasting.
-
-<img src="assets/Forktocat.jpg" alt="Octocat buddies" style="height:40vh; border: none">
-
-
-<img src="assets/GitStatus.png" alt="github status screenshot" style="height:350px">
-
-<p style="font-size:11px">
-https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-status-colors-170de858953d
-</p>
-
-
-# Troubleshooting
-
-
-
-<img src="assets/github-stack-overflow.png" alt="github status screenshot" style="height:400px">
 
 
 
@@ -336,6 +239,10 @@ https://medium.com/@kenwarner/command-line-ux-matters-too-improve-your-git-statu
 ### Tools for better coding
 
 Thursday, June 12, 10am-12pm.
+
+- More GitHub and VSCode
+or
+- Introduction to the Command Line
 
 
 # Survey
