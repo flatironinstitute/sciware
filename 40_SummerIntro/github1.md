@@ -63,7 +63,7 @@ https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 
 ## Do you already have GitHub Copilot? 
 
-https://github.com/settings/copilot/
+### https://github.com/settings/copilot/
 
 <div class="spacer"></div>
 
@@ -80,6 +80,7 @@ https://github.com/settings/copilot/
 
 ## To request a GitHub Pro account - Edu email
 
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; height: 500px">
 
 - Add your school .edu email address to your GitHub profile
   https://github.com/settings/emails
@@ -88,10 +89,11 @@ or
 
  -  Github > Profile Photo > Settings > Emails
 
+<div class="spacer"></div>
+
  -  🟩 when you have a .edu email added
 
-<div style="display: flex;">
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; height: 500px">
+
 
 
 ## To get a Pro account - Settings
@@ -107,7 +109,7 @@ or
 - Upload your document
 
 
-## Homework
+## HOMEWORK
 
 Finish your GitHub for Education application.
 
@@ -121,7 +123,7 @@ Finish your GitHub for Education application.
 
 https://github.com/new
 
-<img src="assets/new_repo.png" alt="New GitHub repository setup screenshot" style="height: 500px">
+<img src="assets/new_repo.png" alt="New GitHub repository setup screenshot" style="height: 600px">
 
 
 ## Copy the SSH address to the repository
@@ -130,7 +132,8 @@ https://github.com/new
 
 
 ## Make sure `git` is installed
-In Terminal:
+
+- At the Terminal prompt:
 
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
 git version 2.30.1
@@ -144,7 +147,7 @@ git version 2.30.1
 ## Clone your new repository to your computer
 
 - At the Terminal prompt:
-<pre  style="font-size:1em;"> <code data-trim data-noescape>
+<pre  style="font-size:1em;"> <code data-noescape>
 &gt; git clone git@github.com:kelle/delete-me.git
 &gt; ls
 &gt; cd delete-me
@@ -206,14 +209,14 @@ Copy this whole line to the clipboard
 
 ## Add the SSH key to GitHub
 
-- GitHub > Profile Photo > Settings > SSH and GPG keys > New SSH Key
+<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="float:left; height: 600px">
 
-<img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
+- GitHub > Profile Photo > Settings > SSH and GPG keys > New SSH Key
 
 
 ## Add the SSH key to GitHub
 
-- **Title** should refer to the computer on which the key was generated.
+- **Title** should refer to the computer on which the key was generated. ("pink mac laptop")
 
 - Paste key into text box.
 
