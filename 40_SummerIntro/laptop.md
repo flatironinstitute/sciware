@@ -224,4 +224,4 @@ plt.show()
 ## Survey
 Please give us some feedback!
 
-![survey](assets/survey40.1.png)
+<img src="assets/survey40.1.png" width="30%">
