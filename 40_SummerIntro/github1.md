@@ -8,6 +8,7 @@ https://sciware.flatironinstitute.org/33_SummerIntro
 ## Agenda
 
 - What are Git and GitHub?
+- Setting up a Free Pro account
 - Setting up Git and GitHub on your computer
 
 
@@ -47,6 +48,49 @@ https://sciware.flatironinstitute.org/33_SummerIntro
 * Provides repository management, permissions, collaboration tools, CI, etc.
 * Alternatives: gitlab, bitbucket, ...
 
+
+# Get a free GitHub Pro account 
+
+
+## GitHub Pro accounts for Education
+
+- unlimited private repositories
+- more cloud computing resources (Codespaces)
+- Free GitHub Copilot, AI-powered coding companion
+
+
+## Do you already have GitHub Copilot? 
+
+https://github.com/settings/copilot/
+
+
+## GitHub Pro accounts for Education - Qualification
+
+- Students, Teachers, Researchers
+- Easiest to use school ID with a date or recent transcript
+- Other options exist
+
+
+## To request a GitHub Pro account - Settings
+
+- Add your .edu email address to your GitHub profile
+  https://github.com/settings/emails
+
+
+- Github > Profile Photo > Settings 
+<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
+
+
+## To get a Pro account - Settings
+
+- Settings > Billing and Licensing > Education benefits
+<img src="assets/edu_benefts.png" alt="Edu benefits screenshot" style="margin-left: 50px; height: 500px">
+
+
+## To get a Pro account - Application
+
+- Choose your school
+- Upload your document
 
 
 # Setting up GitHub on your Computer
