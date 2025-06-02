@@ -2,7 +2,8 @@
 
 ## Intro to GitHub
 
-https://sciware.flatironinstitute.org/33_SummerIntro
+https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
+
 
 
 ## Agenda
@@ -12,13 +13,14 @@ https://sciware.flatironinstitute.org/33_SummerIntro
 - Setting up Git and GitHub on your computer
 
 
+
 # Intro to Git and GitHub
 
 
 ## Version control
 
 <div style="display: flex;">
-<img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" style="height: 16em; float: left;">
+<img src="assets/phd101212s.gif" style="height: 16em; float: left;">
 <ul>
 <li>keeps track of the edit history to one or more files</li>
 <li>serves as a backup</li>
@@ -62,6 +64,8 @@ https://sciware.flatironinstitute.org/33_SummerIntro
 ## Do you already have GitHub Copilot? 
 
 https://github.com/settings/copilot/
+-  🟩 if you have Copilot
+-  🟨 if you do not have Copilot
 
 
 ## GitHub Pro accounts for Education - Qualification
@@ -84,13 +88,40 @@ https://github.com/settings/copilot/
 ## To get a Pro account - Settings
 
 - Settings > Billing and Licensing > Education benefits
-<img src="assets/edu_benefts.png" alt="Edu benefits screenshot" style="margin-left: 50px; height: 500px">
+<img src="assets/edu_benefits.png" alt="Edu benefits screenshot" style="margin-left: 50px; height: 500px">
 
 
 ## To get a Pro account - Application
 
 - Choose your school
 - Upload your document
+
+
+
+# Make a new GitHub Repository
+(stickies down)
+
+## Make a new Private GitHub repo with a README
+
+https://github.com/new
+<img src="assets/new_repo.png" alt="New GitHub repository setup screenshot" style="margin-left: 50px; height: 500px">
+
+
+## Copy the SSH address to the repository
+
+<img src="assets/Clone.png" alt="Clone screenshot" style="height:550px">
+
+
+## Clone the repository to your computer
+
+- At the Terminal prompt:
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git clone git@github.com:kelle/delete-me.git
+</code></pre>
+- Open README.md in a text editor
+
+-  🟩 if you can edit README.md
+-  🟨 if you're having trouble
+
 
 
 # Setting up GitHub on your Computer
@@ -130,7 +161,7 @@ Set an email address
 (Ideally set to the same email address you used for GitHub account)
 
 
-## Viewing your email address on github
+## Viewing your email address on GitHub
 
 <img src="assets/github_email.png" width="60%">
 
