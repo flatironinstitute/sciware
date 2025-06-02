@@ -5,7 +5,6 @@
 https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 
 
-
 ## Agenda
 
 - What are Git and GitHub?
@@ -51,6 +50,7 @@ https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 * Alternatives: gitlab, bitbucket, ...
 
 
+
 # Get a free GitHub Pro account 
 
 
@@ -64,7 +64,9 @@ https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 ## Do you already have GitHub Copilot? 
 
 https://github.com/settings/copilot/
+
 <div class="spacer"></div>
+
 -  🟩 if you have Copilot
 -  🟨 if you do not have Copilot
 
@@ -78,22 +80,24 @@ https://github.com/settings/copilot/
 
 ## To request a GitHub Pro account - Edu email
 
-<div style="display: flex;">
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: left; height: 500px">
 
 - Add your school .edu email address to your GitHub profile
   https://github.com/settings/emails
 
 or 
 
-- Github > Profile Photo > Settings > Emails
-<div class="spacer"></div>
--  🟩 when you have a .edu email added
+ -  Github > Profile Photo > Settings > Emails
+
+ -  🟩 when you have a .edu email added
+
+<div style="display: flex;">
+<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; height: 500px">
 
 
 ## To get a Pro account - Settings
 
 - Settings > Billing and Licensing > Education benefits
+
 <img src="assets/edu_benefits.png" alt="Edu benefits screenshot" style="margin-left: 50px; height: 500px">
 
 
@@ -112,10 +116,12 @@ Finish your GitHub for Education application.
 # Make a new GitHub Repository
 (stickies down)
 
+
 ## Make a new Private GitHub repo with a README
 
 https://github.com/new
-<img src="assets/new_repo.png" alt="New GitHub repository setup screenshot" style="margin-left: 50px; height: 500px">
+
+<img src="assets/new_repo.png" alt="New GitHub repository setup screenshot" style="height: 500px">
 
 
 ## Copy the SSH address to the repository
@@ -129,6 +135,7 @@ In Terminal:
 <pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git version
 git version 2.30.1
 </code></pre>
+
 <div class="spacer"></div>
 -  🟩 if you have git version
 -  🟨 if you get an error
@@ -201,7 +208,6 @@ Copy this whole line to the clipboard
 
 - GitHub > Profile Photo > Settings > SSH and GPG keys > New SSH Key
 
-<img src="assets/Settings.png" alt="Settings screenshot" style="margin-left: 50px; height: 500px">
 <img src="assets/SSHkeys.png" alt="SSH Keys screenshot" style="margin-right: 50px; height: 500px">
 
 
@@ -230,13 +236,15 @@ How to set up your favorite editor with Git:
 
 ## Questions?
 
+### Survey
+
 <img src="assets/survey40.1.png" width="30%">
 
 
 
-## Next week
+# Next week
 
-### Tools for better coding
+## Tools for better coding
 
 Thursday, June 12, 10am-12pm.
 
