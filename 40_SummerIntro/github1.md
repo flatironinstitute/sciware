@@ -80,7 +80,10 @@ https://sciware.flatironinstitute.org/40_SummerIntro/github1.md
 
 ## To request a GitHub Pro account - Edu email
 
-<img src="assets/Settings.png" alt="Settings screenshot" style="float: right; height: 500px">
+<img src="assets/Settings.png" alt="Settings screenshot" style="height: 500px">
+
+
+## To request a GitHub Pro account - Edu email
 
 - Add your school .edu email address to your GitHub profile
   https://github.com/settings/emails
@@ -92,8 +95,6 @@ or
 <div class="spacer"></div>
 
  -  🟩 when you have a .edu email added
-
-
 
 
 ## To get a Pro account - Settings
@@ -139,23 +140,21 @@ https://github.com/new
 git version 2.30.1
 </code></pre>
 
-<div class="spacer"></div>
--  🟩 if you have git version
--  🟨 if you get an error
+ - 🟩 if you have git version
+ - 🟨 if you get an error
 
 
 ## Clone your new repository to your computer
 
 - At the Terminal prompt:
-<pre  style="font-size:1em;"> <code data-noescape>
-&gt; git clone git@github.com:kelle/delete-me.git
+<pre  style="font-size:1em;"> <code data-trim data-noescape>&gt; git clone git@github.com:kelle/delete-me.git
 &gt; ls
 &gt; cd delete-me
-&gt; ls 
-</code></pre>
+&gt; ls </code></pre>
 <div class="spacer"></div>
--  🟩 if you can see delete-me/README.md
--  🟨 if you're having trouble
+
+ - 🟩 if you can see delete-me/README.md
+ - 🟨 if you're having trouble
 
 
 
@@ -216,7 +215,8 @@ Copy this whole line to the clipboard
 
 ## Add the SSH key to GitHub
 
-- **Title** should refer to the computer on which the key was generated. ("pink mac laptop")
+- **Title** should refer to the computer on which the key was generated. 
+  - for example: pink mac laptop
 
 - Paste key into text box.
 
