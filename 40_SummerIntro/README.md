@@ -3,6 +3,7 @@
 
 - [day 1](https://sciware.flatironinstitute.org/40_SummerIntro/day1.html) ([source](laptop.md))
 - [day 1 (github)](https://sciware.flatironinstitute.org/40_SummerIntro/github.html) ([source](github1.md))
+- [day 2 (command-line)](https://sciware.flatironinstitute.org/40_SummerIntro/day2b.html) ([source](cli.md))
 
 # Instructions for setting up your laptop (before the first session)
 
