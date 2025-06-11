@@ -105,6 +105,7 @@ $ cd .. # just go up one level
 $ cd /home/USERNAME/  # absolute path
 $ cd ~ # use the home directory alias
 $ cd   # cd with no argument defaults to cd ~
+$ cd ../.. # to go up two levels
 ```
 
 
@@ -170,12 +171,12 @@ This is why a word is worth a thousand pictures!
 - The wildcard only expands to possible matches
   - So `myfile_0*` is expanded to all the files that start with `myfile_0`
   - `myfile*` matches more (not just `_0` files)
-- A `?` replaces a *single* character, while `*` replaces *one or more*
+- A `?` replaces a *single* character, while `*` replaces *zero or more*
   - So `myfile_?2*` matches `myfile_02.txt` and `myfile_12.txt`
 
 
 - You can use square brackets `[]` to list specific options
-  - Q: What does `ls -l myfile_1[1,3,5]*` do?
+- Q: What does `ls -l myfile_1[1,3,5]*` do?
 - Ex: Use `ls` and wildcards to show all the even-numbered `myfile`s.
 
 
@@ -184,27 +185,26 @@ This is why a word is worth a thousand pictures!
 ```bash
 $ ls myf*_?[0,2,4,6,8]*
 ```
-  - Be careful not to include `myfile_05.2.txt`!
+- Be careful not to include `myfile_05.2.txt`!
 
 
 ### Aside: more navigation
 
 - Use the up arrow to scroll through prior commands
-  - You can edit them too by moving the cursor
+  - You can edit them too by moving the cursor left or right
 - Use `control-a` (`ctrl-a` or `C-a`) to move the cursor to the start of the line
 - `C-e` moves the cursor to the end of the line
-- Holding down `ctrl` with left- and right-arrows moves by word instead of by character
+- Holding down `ctrl` when tapping left or right moves by word instead of by character
 
 
 ### Cutting and pasting on command line
 
-- `ctrl-k` **k**ills the current line
-  - from the cursor to the end of the line
-- `ctrl-y` **y**anks it back (whatever you last `C-k`ed)
+- `ctrl-k` (**k**ill) cuts from cursor to end of line
+- `ctrl-y` (**y**ank) pastes it back
 - `C-c` cancels whatever you were typing & gives you a new prompt
 
 
-### Copying and Moving Files
+## Copying and Moving Files
 
 - `mv` **m**o**v**es files
 - `cp` **c**o**p**ies files
@@ -215,19 +215,19 @@ $ ls myf*_?[0,2,4,6,8]*
 ```bash
 $ ls -lh *  # read the results--biggest file is myfile_02.txt
 $ mv myfile_02.txt big.txt
-$ ls    # to confirm
+$ ls    # to confirm it worked
 $ mv big.txt myfile_02.txt # undo your change!
 ```
 There are more automatic ways to do this, too, but we haven't
 gotten there yet.
 
 
-### Managing directories
+## Managing directories
 
 - `mkdir` **m**a**k**es a **dir**ectory
 - `rm` **r**e**m**oves a file
   - There is *NO TRASH CAN*--files are removed immediately!
-- `rmdir` removes a directory
+- `rmdir` **r**e**m**oves a **dir**ectory
 - Exercise: Make a directory called "newdir"
   - Now copy into it all the files whose names end in `txt`
 - Exercise: Remove the "newdir" directory
@@ -236,24 +236,26 @@ gotten there yet.
 ```bash
 $ mkdir newdir
 $ cp *txt newdir
+$ ls newdir  # confirm it worked
 $ rm newdir/* # rmdir only works on empty dirs!
 $ rmdir newdir
 ```
 
-Note: we could also do `rm -r newdir` to **r**ecursively remove
-the directory and its contents. Again, no backsies!
+- Note: we could also do `rm -r newdir` to **r**ecursively remove
+the directory and its contents
+  - Again, no backsies! Be careful!
 
 
 ### Special characters
 
 - Q: What happens when you do `ls dir1/file with spaces.doc`?
-  - Q: What shows when you do `ls dir1/file` and hit `tab`?
+- Q: What shows when you do `ls dir1/file` and hit `tab`?
 
 
-- Shell sees some characters (like spaces, `?`, `[]`, `*`) as special
+- Some characters (like spaces, `?`, `[]`, `*`) are special
 - If they're actually in the name, they must be "escaped"
   - Putting a `\` in front a special character makes it not special
-- Quotes (double `"` or single `'`) also solve this problem
+- Matching quotes (double `"` or single `'`) also solve this problem
 
 ```bash
 $ ls dir1/"file with spaces.doc"  # this works fine
@@ -267,18 +269,18 @@ $ ls dir1/"file with spaces.doc"  # this works fine
 ## Printing values
 
 - `echo` prints out the arguments it gets from the shell
-- `cat` (for con**cat**enate) prints the contents of the listed files
+- `cat` (for con**cat**enate) prints the contents of all specified files
 - `nano` is a simple text editor
 
 
 - Q: What does `echo myfile_0*` do?
-- What does `cat MainFile.idx` do?
-- What does `nano myfile_02.txt` do?
+- Q: What does `cat MainFile.idx` do?
+- Q: What does `nano myfile_02.txt` do?
 
 
 - `echo myfile_0*`: shell expands the wildcard
   - the `echo` prints all the file names it received
-  - (This is `ls` with extra steps!)
+  - (This is just `ls` with extra steps!)
 - `cat MainFile.idx` prints the text of `MainFile.idx`
 - `nano myfile_02.txt` opens an interactive editor
 
@@ -286,7 +288,7 @@ $ ls dir1/"file with spaces.doc"  # this works fine
 ### Peeking in files
 
 - `more`, like `cat`, prints out the file contents
-  - but it does it one screen at a time (you ask for **more**)
+  - but it does so one screenful at a time (you ask for **more**)
 - `less` is like `more` but also lets you scroll back up
   - "`less` is `more`"
 
@@ -316,10 +318,7 @@ $ tail -n 3 myfile_02.txt
 ## Pipes
 
 - Pipes `|` let you use the *output* of one command as the *input* of another
-
-```bash
-$ cat myfile_02.txt | head -n 3
-```
+- `cat myfile_02.txt | head -n 3`
   - This will print the first 3 lines of `myfile_02.txt`
 - Exercise: Print just lines 11-13 of `myfile_11.txt`.
 
@@ -333,22 +332,28 @@ $ head -n 13 myfile_11.txt | tail -n 3
 
 - `wc` gives **w**ord **c**ounts (as well as character and line counts)
   - `wc -l` prints the number of lines in the input
-- Q: Run `wc MainFile.idx`. What do the fields mean? (Use `cat` to check)
-- `ls -1` (the number 1) returns filenames, one file per line
+- `ls -1` (that's a number 1) returns one filename per line
+  - Ex: Run `wc MainFile.idx`. What do the fields mean? (Use `cat` to check)
   - Ex: Use `ls -1`, pipes, and `wc` to find how many files are in this directory
 
 
 ```bash
+$ wc MainFile.idx
+ 2  9 43 MainFile.idx
+```
+- Returns # of lines, # of words, # of characters
+
+```bash
 $ ls -1 | wc -l
 ```
-- But note--that *does* include the directories!
+- Returns 25, but note--that *does* include the directories!
 
 
 ## Other redirections
 
-- `<` takes input from a file
-  - (for commands that would take keyboard input while running)
-- `>` sends output to a file
+- `<` takes input *from* a file
+  - (for commands that want keyboard input while running)
+- `>` sends output *to* a file
   - `> FILE` will overwrite ("clobber") `FILE` if it already exists
   - use `>>` to *append* to that file instead
 - Useful for recording output of a command
@@ -360,7 +365,7 @@ $ ls -1 | wc -l
 ### Aside--revisiting history
 
 - `history` shows you a numbered list of the commands you've run before
-  - This can be very long--`history | tail` or similar are useful!
+  - This can be very long--`history | tail` is useful!
   - or `history | grep PATTERN` to use `grep` to search for a pattern
 - Exercise: use `grep` to look for every command you've run using the word "myfile" today
 
@@ -369,10 +374,10 @@ $ ls -1 | wc -l
 $ history | grep myfile
 ```
 - should return several entries
-- Note: it's matching the pattern against the *command you typed*!
-  - If you ran `cat myf*`, `myf*` might have *expanded* to `myfile`, but
-  `grep` does not match the word "myfile" against it
-- `grep` can also be used to search file contents
+- Note: it's matching the pattern against *what you typed*!
+  - If you ran `cat myf*`, `myf*` might have *expanded* to `myfile`
+  - but `grep` does not match "myfile" against it--that's not what you typed
+- `grep` can also be used to search the contents of files
   - Worth looking at more, but not today
 
 
