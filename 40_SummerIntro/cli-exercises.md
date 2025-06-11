@@ -386,9 +386,10 @@ $ history | grep myfile
   - `!54` will rerun the command numbered 54
   - note that the numbers will change as you work
 - `C-r` lets you do a search back through your command history
-  - Type what you want to search for, hit `C-r` again to cycle through matches
-  - hit enter to rerun the command, or left/right arrow to edit it first
-- Exercise: Use `ctrl-r` to see all the commands you ran with `07` today
+  - Type what you want to search for
+  - Type `C-r` again to cycle through matches
+  - Enter to rerun the command, or left/right arrow to edit it first
+- Exercise: Use `ctrl-r` to see all the commands you ran today containing `07`
 
 
 ### Shell does the expansion
@@ -424,7 +425,7 @@ $ history | grep myfile
 $ ls -l MainFile.idx
 -rwxrw-r-- 1 jsoules jsoules 43 Jun 11 11:48 MainFile.idx
 ```
-- `MainFile.idx` gives read, write, execute to its owner
+- `MainFile.idx` gives read, write, execute to its owner (`jsoules`)
   - members of the `jsoules` group can read or write it
   - all other users can only read it
 
@@ -435,18 +436,18 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 -rw-rw-r-- 1 jsoules jsoules    0 Jun 11 11:48 myfile_01.txt
 ```
 - `dir1` is a directory so the first character is a `d`
-- `myfile_01.txt` is a file, so it's a `-`
-  - `dir1` has e`x`ecute permissions for everyone
+  - `myfile_01.txt` is a file, so it's a `-`
+- `dir1` has e`x`ecute permissions for everyone
   - You can't enter or see into a directory without execute permissions
 
 
-### Challenge of Execution
+### Executing Successfully
 
-- Most shell commands are actually running executable files
+- Most shell commands are actually executable files
   - binary files: treated as compiled code
-  - text files: treated as list of shell commands to run
+  - text files: human-readable list of shell commands to run
   - (This makes it easy to combine multi-step procedures)
-- But this only works for *executable* files
+- But this only works for files with *executable* permissions
   - If a file isn't executable, it can't be run
 - Tab autocomplete is aware of context
   - Q: What happens when you type `M` and hit tab?
@@ -465,7 +466,7 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 - `chmod` **ch**anges file permissions (**mod**e)
   - `chmod a+x some-file`
   - First letter: whose permissions?
-    - `u`ser/owner, `g`roup, `o`thers, `a`ll
+    - `u` user/owner, `g` group, `o` others, `a` all
   - Second character: `+` add or `-` remove
   - 3rd letter: what permissions? `r`/`w`/`x`
 - Permissions can also be represented numerically
@@ -477,8 +478,9 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 - `which NAME` tells you the location of the file that gets run when you type NAME
 - It does this by searching the `PATH` variable
   - That's a list of paths, separated by colons `:`
-  - Searches these, in order, for *executable* file with that name
-- In shell, when you want to use a variable's value, you prefix with a `$`
+  - Checks these, in order, for *executable* file with that name
+- Shell replaces variable with its value when prefixed with `$`
+  - So to mean "the value of `PATH`" you'd type `$PATH`
   - Usually people capitalize the names of variables
 
 
@@ -489,8 +491,10 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 
 - `which git` shows the location
   - Can type that result into `ls -l` for listing
-- `which python` and `which python3` will answer this for you
-- `echo $PATH` -- remember you need the dollar sign `$`
+  - Can also do `ls -l ``which git`` `
+  - (backticks mean "replace this with the result of running the command")
+- `which python` and `which python3` will answer Q2 for you
+- To print `PATH` use `echo $PATH` -- remember you need the dollar sign `$`
 
 
 ## Shell variables
@@ -518,22 +522,23 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 - `MYNUM=13; echo $MYNUM` (`;` ends a command, so you can write them on one line)
 - `STAR=*`, then `echo $STAR` shows all files in this directory
   - `cd dir1` then `echo $STAR` shows the files in `dir1`
-  - Shell first replaces the variable
-  - then expands the wildcard
-  - *then* passes all results to `echo`
+  - Shell *first* replaces the variable
+  - *then* expands the wildcard
+  - *then finally* passes all results to `echo`
 - `echo $LS` just prints `ls -l`
-- `$LS` actually *runs* it!
+- `$LS` actually *runs* `ls -l`!
 
 
 ## `find`
 
 - Complex but powerful way to find files matching criteria
 - Basic use: `find . -name '*txt'`
-- first arguments (without `-`) say what directories to search
+- first argument(s) (without `-`) say what directories to search
 - arguments with `-` (like `-name`) apply *tests*
   - Each test can take its own arguments
-- files that pass go to the next test
-  - after all tests, prints one file per line
+- files that pass, go on to the next test
+  - if all tests pass, by default `find` prints the filename
+  - (including path, from wherever you started the search)
 
 
 - Other test types:
@@ -550,15 +555,16 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 - Ex: find all directories containing the letter `i` and also the letter `d`
 
 
-- `$ find . -name "*txt" -print` (`-print` is optional)
+- `$ find . -name "*txt" -print`
 - `$ find . -type d -name '*i*'`
+  - `-print` is implied by default
   - oh hey, there's a hidden `.git` directory!
 - `$ find . -type d -name '*i*' -name '*d*'`
 
 
 ## Beyond Pipes
 
-- `|` passes output of a command to input of next command
+- Recall: `|` passes output of a command to input of next command
 - But what if we want to pass those values as *arguments*?
 
 
@@ -568,8 +574,8 @@ drwxrwxr-x 3 jsoules jsoules 4096 Jun 11 11:48 dir1
 - Q: What does `ls myfile_?[1,2]* | xargs cat` do?
 - `-I` flag lets you specify the character(s) to use to stand in for each input
   - `xargs -I {}` means "Replace `{}` in the command with the arguments"
-  - When using `mv` or `cp`, need a way to say *what* you are moving
-  - e.g. `xargs -I {} cp {} DESTINATION/` 
+  - Commands like `mv` or `cp` need a way to say *what* you are moving
+  - e.g. `xargs -I {} cp {} DESTINATION/`
 - Exercise: Use one `xargs` command to copy all the files named in `myfile_07.txt`
   into the `dir2` directory.
   - Hint: try `cat`ting `myfile_07.txt` to see what it contains!
@@ -588,8 +594,8 @@ You may wish to delete the extra copies before the next exercise.
   - executed command is everything between `-exec` & `';'`
     - (can use `';'` or `\;`, it just needs to be escaped)
   - `find` replaces `{}` in the command with the path to each found file
-- Ex: use `find -exec` and the `cp` command to make a copy of all `.txt`
-  files in the `dir2/done/` directory
+- Exercise: use `find -exec` and `cp` to copy all `.txt`
+  files into the `dir2/done/` directory
    - hint: you will get a warning unless you use `-prune` and `-o`
 
 
@@ -598,4 +604,10 @@ $ find . -name "*txt" -exec cp {} dir2/done/ ';' # gives warning
 $ find . -name "done" -prune -o -name "*txt" -exec cp {} dir2/done/ ';' # no warning
 ```
 
-Q: Why did the warning occur? 
+Q: Why did the warning occur?
+
+
+```bash
+$ find . -name "*txt" -print -exec cp {} dir2/done/ ';'
+```
+This explains the error: add `-print` when `-exec` is used to keep the printing behavior
