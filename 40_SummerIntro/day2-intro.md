@@ -1,12 +1,13 @@
 # Sciware
 
-## Future Workshops
 
-## Summer Sciware Sessions
+## Future Sciware Workshops
+
 - Schedule
   - **June 24**: Summer Sciware 3 - Intro to the cluster
   - **July 2**: Summer Sciware 4 - Cluster hands-on
   - All 10 AM - noon in the IDA Auditorium (162 Fifth Ave, 2nd Floor)
+
 
 ## Today's Agenda
 
