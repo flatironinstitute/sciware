@@ -5,6 +5,7 @@
 - [day 1 (github)](https://sciware.flatironinstitute.org/40_SummerIntro/github.html) ([source](github1.md))
 - [day 2](https://sciware.flatironinstitute.org/40_SummerIntro/day2.html) ([source](day2-intro.md))
 - [day 2 (command-line)](https://sciware.flatironinstitute.org/40_SummerIntro/day2b.html) ([source](cli.md))
+- [day 3](https://sciware.flatironinstitute.org/40_SummerIntro/day3.html) ([source](cluster.md))
 
 # Instructions for setting up your laptop (before the first session)
 
