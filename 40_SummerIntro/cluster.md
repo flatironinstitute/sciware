@@ -477,8 +477,8 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 <ul>
   <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code> (or <code>~</code>)</li>
-  <li class="fragment">Home directory is shared on all FI nodes (rusty, workstations, gateway)</li>
-  <li class="fragment">Popeye (SDSC) has the same structure, but it's a <em>different</em> home directory than on FI nodes</li>
+  <li>Home directory is shared on all nodes (rusty, workstations, gateway)</li>
+  <li>Popeye (SDSC) has the same structure, but it's a <em>different</em> home directory</li>
 </ul>
 
 
@@ -593,25 +593,20 @@ rm -r /mnt/home/johndoe/SourceDir
 
 ## Tape Storage
 
-- We have large "cold storage" tape archive at FI
+- We have a large "cold storage" tape archive
 - Can be used to backup things you don't expect to need but don't want to lose
 - Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
 
 
-## Summary
+## Summary: Persistent storage
 
-| Partition |                         Moving Large Files                         |                     Moving Lots of Small Files                     |        Back Up        |
-| :-------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: | :-------------------: |
-| /mnt/home |                       <span>&#128034;</span>                       |                       <span>&#128007;</span>                       | <span>&#x2705;</span> |
-| /mnt/ceph |                       <span>&#128007;</span>                       |            <span>&#128034;</span><span>&#128034;</span>            | <span>&#x274C;</span> |
-| /dev/shm  |           <span>&#128007;</span> <span>&#128007;</span>            |            <span>&#128007;</span><span>&#128007;</span>            | <span>&#x274C;</span> |
-|   tape    | <span>&#128034;</span><span>&#128034;</span><span>&#128034;</span> | <span>&#128034;</span><span>&#128034;</span><span>&#128034;</span> | <span>&#x274C;</span> |
+<img src="assets/cluster/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
 
 
-## Speeding up your Workflow
+## Summary: Temporary storage
 
-If file IO to HOME is slowing down your workflow, try writing to `/tmp` or `/dev/shm` instead
+<img src="assets/cluster/storage_temp.svg" height=500px style="border:none; box-shadow:none;">
 
 
 # Planned usage
