@@ -98,6 +98,7 @@ const past_events = [
   [`Session #36`, `How to publish a (hopefully) reproducible paper`, `November 21, 2024`, `/36_ReproduciblePaper/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/36_ReproduciblePaper`],
   [`Session #37`, `What's New in Python 3.13 and NumPy 2`, `Feb 20, 2025`, `/37_WhatsNewInPython313`, ``],
   [`Session #38`, `Extended Intro to HPC`, `March 12, 2025`, `/IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/IntroToHPC`],
+  [`Session #40`, `Summer Sciware`, `June 3 - July 2, 2025`, `/40_SummerIntro`, `https://github.com/flatironinstitute/sciware/tree/main/40_SummerIntro`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
