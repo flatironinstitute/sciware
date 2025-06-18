@@ -532,15 +532,12 @@ cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
 <small><sup>\*</sup> <code>.snap</code> is coming soon</small>
 
 
-## Local Scratch
+## Summary: Persistent storage
 
-- Each node as a `/tmp` (or `/scratch`) disk of &ge; 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (uses memory)
-- Both of these directories are cleaned up after _each_ job
-  - Make sure you copy any important data/results over to `ceph` or your `home`
+<img src="assets/cluster/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
 
 
-## Monitoring Usage
+## Monitoring Usage: `/mnt/home`
 
 View a usage summary:
 
@@ -591,22 +588,25 @@ rm -r /mnt/home/johndoe/SourceDir
 ```
 
 
+## Local Scratch
+
+- Each node as a `/tmp` (or `/scratch`) disk of &ge; 1 TB
+- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (uses memory)
+- Both of these directories are cleaned up after _each_ job
+  - Make sure you copy any important data/results over to `ceph` or your `home`
+
+
+## Summary: Temporary storage
+
+<img src="assets/cluster/storage_temp.svg" height=500px style="border:none; box-shadow:none;">
+
+
 ## Tape Storage
 
 - We have a large "cold storage" tape archive
 - Can be used to backup things you don't expect to need but don't want to lose
 - Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
 - Restores by request (please allow a few weeks)
-
-
-## Summary: Persistent storage
-
-<img src="assets/cluster/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
-
-
-## Summary: Temporary storage
-
-<img src="assets/cluster/storage_temp.svg" height=500px style="border:none; box-shadow:none;">
 
 
 # Planned usage
