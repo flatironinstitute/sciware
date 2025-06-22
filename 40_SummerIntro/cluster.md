@@ -31,7 +31,6 @@ https://sciware.flatironinstitute.org/40_SummerIntro
 
 * 4 login nodes (`ssh rusty`)
 * \~140k CPU cores, \~1400 nodes, 1.8PB RAM (\~1TB/node)
-   * CPU nodes through "center" partition (`-p ccx`), exclusive
 * 150 H200, 240 H100, 288 A100 GPUs
 
 https://wiki.flatironinstitute.org/SCC/Hardware/Rusty
@@ -43,7 +42,6 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Rusty
 
 * Completely separate cluster (separate storage, job queue)
 * \~42k CPU cores, \~800 nodes, 700TB RAM (\~1TB/node)
-   * CPU nodes through "center" partition (`-p ccx`), exclusive
 
 https://wiki.flatironinstitute.org/SCC/Hardware/Popeye
 
@@ -305,9 +303,22 @@ python3 myscript.py
 ```
 
 
+## Running Jobs in Parallel
+
+- You've written a script to post-process a simulation output
+- Have 10–10000 outputs to process
+   ```bash
+   > ls ~/ceph/myproj
+   data1.hdf5  data2.hdf5  data3.hdf5 [...]
+   ```
+- Each file can be processed independently
+- Running 1000 independent jobs won't work: limits on how many jobs can run
+- This pattern of independent parallel jobs is known as "embarrassingly parallel"
+
+
 ## What about multiple things?
 
-Let's say we have 3 files, each using 1 GB and 1 CPU
+Let's say we have 10 files, each using 1 GB and 1 CPU
 
 <div class="two-column">  
   <div class="grid-item">
@@ -316,17 +327,18 @@ Let's say we have 3 files, each using 1 GB and 1 CPU
 #!/bin/bash
 #SBATCH --mem=10G           # Request 10x the memory
 #SBATCH --time=02:00:00     # 2 hours
-#SBATCH --ntasks=3          # Run 2 instances
+#SBATCH --ntasks=10         # Run 10 tasks
 #SBATCH --cpus-per-task=1   # Request 1 CPU
 #SBATCH --partition=genx
 
-# this would run 3 identical tasks:
+# this would run 10 identical tasks:
 #srun python3 myjob.py
 
 # instead run different things:
 srun -n1 python3 myjob.py data1.hdf5 &
 srun -n1 python3 myjob.py data2.hdf5 &
 srun -n1 python3 myjob.py data3.hdf5 &
+...
 wait # wait for all background tasks to complete
 ```
   </div>
@@ -366,21 +378,7 @@ wait # wait for all background tasks to complete
 
 ## Running Jobs in Parallel
 
-- You've written a script to post-process a simulation output
-- Have 10–10000 outputs to process
-   ```bash
-   $ ls ~/myproj
-   my_analysis_script.py
-   $ ls ~/ceph/myproj
-   data1.hdf5  data2.hdf5  data3.hdf5 [...]
-   ```
-- Each file can be processed independently
-- Running 1000 independent jobs won't work: limits on how many jobs can run
-
-
-## Running Jobs in Parallel
-
-- This pattern of independent parallel jobs is known as "embarrassingly parallel" or "pleasantly parallel"
+- What if we have 10000 things?
 - What if tasks take a variable amount of time?
   - The single-job approach allocates resources until the longest one finishes
 - What if one task fails?
@@ -421,21 +419,18 @@ wait # wait for all background tasks to complete
 `disBatch -r jobs.disbatch_*_status.txt -R`
 
 ```text
-0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
-1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data2.hdf5'
+0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'...'
+1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'...'
 ```
 
 
 ### Slurm Tip: Tasks and threads
 
 - For flexibility across nodes, prefer `-n`/`--ntasks` to specify total tasks (not `-N`/`--nodes` + `--ntasks-per-nodes`)
-- Always make sure `-c` and thread count match:
+- If each task needs more CPUs, use `-c`:
    ```bash
    #SBATCH --cpus-per-task=4 # number of threads per task
-
    export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-
-   run
    ```
 - Total cores is `-c` * `-n`
 
@@ -456,14 +451,6 @@ wait # wait for all background tasks to complete
   - Amount of memory: `--mem=16G` or `--mem-per-gpu=16G`
   - Number of GPUs: `--gpus=` or `--gpus-per-task=`
   - Acceptable GPU types: `-C v100|a100|h100|h200`
-
-
-
-# Break
-
-### Survey
-
-<img src="assets/survey40.3.png" width="30%">
 
 
 
@@ -542,16 +529,12 @@ cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
 ## Monitoring Usage: `/mnt/home`
 
 View a usage summary:
-
 <pre style="font-size:0.75em">
 <code data-trim class="language-bash">
 module load fi-utils
 fi-quota
 </code>
 </pre>
-
-
-## Monitoring Usage: `/mnt/home`
 
 To track down large files or file counts use:
 <pre style="font-size:1em">
@@ -574,22 +557,6 @@ cephdu
 </pre>
 
 
-## Moving Files
-- Use `mv` within a filesystem, __NOT__ in between them
-- Use `rsync` between `/mnt/ceph` and `/mnt/home`, see below
-- `rsync` allows to stop in the middle, then resume
-- `rsync` can verify the transfer before removal
-
-```bash
-# Transfer
-rsync -a /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
-# Verify
-rsync -anv /mnt/home/johndoe/SourceDir /mnt/ceph/users/johndoe/TargetParentDir/
-# Clean-up
-rm -r /mnt/home/johndoe/SourceDir
-```
-
-
 ## Local Scratch
 
 - Each node as a `/tmp` (or `/scratch`) disk of &ge; 1 TB
@@ -601,14 +568,6 @@ rm -r /mnt/home/johndoe/SourceDir
 ## Summary: Temporary storage
 
 <img src="assets/cluster/storage_temp.svg" height=500px style="border:none; box-shadow:none;">
-
-
-## Tape Storage
-
-- We have a large "cold storage" tape archive
-- Can be used to backup things you don't expect to need but don't want to lose
-- Archive by moving files to /mnt/ceph/tape/*USERNAME* (contact SCC to setup the first time)
-- Restores by request (please allow a few weeks)
 
 
 # Planned usage
