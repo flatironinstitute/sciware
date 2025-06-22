@@ -5,14 +5,15 @@
 https://sciware.flatironinstitute.org/40_SummerIntro
 
 - Schedule
-  - **July 2**: Summer Sciware 4 - Cluster hands-on
+  - **July 2**: Summer Sciware 4
   - All 10 AM - noon in the IDA Auditorium (162 Fifth Ave, 2nd Floor)
 
 
 ## Today's agenda
 
-- Cluster overview
+- Cluster overview, access
 - Modules and software
+- VS code remote
 - Python environments and Jupyter kernels
 - Slurm and parallelization
 - Filesystems and storage
@@ -47,13 +48,18 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Rusty
 https://wiki.flatironinstitute.org/SCC/Hardware/Popeye
 
 
-<img style="border: none; box-shadow: none;" src="assets/cluster/network.png">
+# Remote access
 
+- Setup your cluster account
+   - Mentor requests account on FIDO, provides PIN
+   - Set your password on FIDO
+   - Get a one-time verification code on FIDO
+   - `ssh -p 61022 USERNAME@gateway.flatironinstitute.org`
+   - Setup google-authenticator
+- From gateway:
+   - `ssh rusty` (or `ssh popeye`)
 
-<img style="border: none; box-shadow: none;" src="assets/cluster/dwdm.png">
-
-
-<img style="border: none; box-shadow: none;" src="assets/cluster/storage.png">
+https://wiki.flatironinstitute.org/SCC/RemoteConnect
 
 
 
@@ -63,8 +69,8 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Popeye
 
 - Most software you'll use on the cluster will either be:
   - In a *module* we provide
-  - Downloaded/built/installed by you (usually using compiler/library modules)
-- By default you only see the *base system* software (Rocky8), which is often rather old
+  - Downloaded/built/installed by you (often using modules)
+- By default you only see the *base system* software (Rocky8)
 
 
 ### `module avail`: Core
@@ -84,7 +90,7 @@ python/3.11.7
 ```
 - `D`: default version (also used to build other packages)
 - `L`: currently loaded
-- `S`: sticky (see BLAS below)
+- `S`: sticky
 
 
 ### `module load` or `ml`
@@ -107,38 +113,26 @@ python/3.11.7
    ```
 
 
-### `module avail`: MPI
-
-- When you load an MPI module, you may see a separate section
-   ```text
-   > ml openmpi
-   ----- openmpi/4.0.7 -----
-   fftw/mpi-3.3.10
-   hdf5/mpi-1.12.3
-   python-mpi/3.10.13  (for mpi4py, h5py)
-   ...
-   ```
-- Load them using `ml NAME/mpi`
-
-
 ### `module show`
 
 * Try loading some modules
 * Find some command one of these modules provides
+* (Hint: look at `module show MODULE`)
 
 
 ### Other module commands
 
 - `module list` to see what you've loaded
-- `module purge` to unload all modules (except `S`: slurm, blas)
+- `module reset` to reset to default modules
 - `module spider MODULE` to search for a module or package
    ```text
    > module spider numpy
-   > module spider numpy/2.2.4
+   > module spider numpy/1.26.4
    ```
+   - Some modules are "hidden" behind other modules: `module spider mpi4py/3.1.5`
 
 
-### module relaeses
+### module releases
 
 - We keep old sets of modules, and regularly release new ones
 - Try to use the default when possible
@@ -171,9 +165,38 @@ pip install ...
 - Repeat the `ml` and `source activate` to return in a new shell
 
 
+### Too much typing
+
+Put common sets of modules in a script
+```bash
+# File: ~/mymods
+module reset
+module load gcc python hdf5 git
+source ~/myvenv/bin/activate
+```
+And "source" it when needed:
+```bash
+source ~/mymods
+```
+
+- Avoid putting module loads in `~/.bashrc`
+
+
+## Other software
+
+If you need something not in the base system, modules, or pip:
+- Ask your mentor!
+- Download and install it yourself
+  - Many packages provide install instructions
+  - Load modules to find dependencies
+- Ask for help!  #code-help, #sciware, #scicomp, scicomp@
+
+
 ### Jupyter
 
-- JupyterHub: https://jupyter.flatironinstitute.org
+- JupyterHub: https://jupyter.flatironinstitute.org/
+  - Login and start a server
+  - Default settings are fine: JupyterLab, 1 core
 - To use an environment you need to create a kernel
   - Create a kernel with the environment
      ```bash
@@ -187,31 +210,17 @@ pip install ...
   - Reload jupyterhub and "mykernel" will show up providing the same environment
 
 
-### Too much typing
+### VS code remote
 
-Put common sets of modules in a script
-```bash
-# File: ~/mymods
-module purge
-module load gcc python hdf5 git
-source ~/myvenv/bin/activate
-```
-And "source" it when needed:
-```bash
-. ~/mymods
-```
-
-- Or use `module save`, `module restore`
-- Avoid putting module loads in `~/.bashrc`
+- In JupyterLab: File, Hub control panel, Stop My Server
 
 
-## Other software
 
-If you need something not in the base system, modules, or pip:
-- Download and install it yourself
-  - Many packages provide install instructions
-  - Load modules to find dependencies
-- Ask!  #code-help, #sciware, #scicomp@
+# Break
+
+### Survey
+
+<img src="assets/survey40.3.png" width="30%">
 
 
 
@@ -232,7 +241,7 @@ How to run jobs efficiently on Flatiron's clusters
 
 
 ## Slurm
-- Wide adoption at universities and HPC centers. The skills you learn today will be highly transferable!
+- Wide adoption at universities and HPC centers: same commands work on most clusters (some details are different)
 - Run any of these Slurm commands from a command line on rusty or popeye (or your workstation)
 
 https://wiki.flatironinstitute.org/SCC/Software/Slurm
@@ -240,15 +249,13 @@ https://wiki.flatironinstitute.org/SCC/Software/Slurm
 
 ## Batch file
 
-Write a _batch file_ that specifies the resources needed.
+Write a _batch file_ called `myjob.sbatch` that specifies the resources needed.
 
 <div class="two-column">  
   <div class="grid-item">
 
 ```bash
 #!/bin/bash
-# File: myjob.sbatch
-# These comments are interpreted by Slurm as sbatch flags
 #SBATCH --partition=genx  # Non-exclusive partition
 #SBATCH --ntasks=1        # Run one instance
 #SBATCH --cpus-per-task=1 # Cores?
@@ -257,7 +264,7 @@ Write a _batch file_ that specifies the resources needed.
 
 echo "Starting..."
 hostname
-srun sleep 1m
+sleep 1m
 echo "Done!"
 ```
   </div>
@@ -277,13 +284,30 @@ echo "Done!"
 ## Where is my output?
 
 - By default, anything printed to `stdout` or `stderr` ends up in `slurm-<jobid>.out` in your current directory
-- Can set `#SBATCH -o outfile.log` `-e stderr.log`
-- You can also run interactive jobs with `srun --pty ... bash`
+- Can add `#SBATCH -o myoutput.log` `-e myerror.log`
+
+
+## Loading environments
+
+Good practice is to load the modules you need in the script:
+
+```bash
+#!/bin/bash
+#SBATCH ...
+
+module reset
+module load gcc python
+source ~/myvenv/bin/activate
+
+# (or: source ~/mymods)
+
+python3 myscript.py
+```
 
 
 ## What about multiple things?
 
-Let's say we have 10 files, each using 1 GB and 1 CPU
+Let's say we have 3 files, each using 1 GB and 1 CPU
 
 <div class="two-column">  
   <div class="grid-item">
@@ -292,15 +316,17 @@ Let's say we have 10 files, each using 1 GB and 1 CPU
 #!/bin/bash
 #SBATCH --mem=10G           # Request 10x the memory
 #SBATCH --time=02:00:00     # 2 hours
-#SBATCH --ntasks=10         # Run 10 instances
+#SBATCH --ntasks=3          # Run 2 instances
 #SBATCH --cpus-per-task=1   # Request 1 CPU
 #SBATCH --partition=genx
 
-#srun python myjob.py # this would run 10 identical tasks
+# this would run 3 identical tasks:
+#srun python3 myjob.py
 
-for filename in data{1..10}.hdf5; do
-    srun -n1 python myjob.py $filename &  # the "&" runs the task in the background
-done
+# instead run different things:
+srun -n1 python3 myjob.py data1.hdf5 &
+srun -n1 python3 myjob.py data2.hdf5 &
+srun -n1 python3 myjob.py data3.hdf5 &
 wait # wait for all background tasks to complete
 ```
   </div>
@@ -308,24 +334,6 @@ wait # wait for all background tasks to complete
     <img src="assets/cluster/genxbg10.svg" class="plain" width="500"></img>
   </div>
 </div>
-
-
-## Loading environments
-
-Good practice to load the modules you need in the script:
-
-```bash
-#!/bin/bash
-#SBATCH ...
-
-module purge
-module load gcc python
-source ~/myvenv/bin/activate
-
-# or: source ~/mymods
-
-python3 myscript.py
-```
 
 
 ## Slurm Tip: Estimating Resource Requirements
@@ -367,27 +375,17 @@ python3 myscript.py
    data1.hdf5  data2.hdf5  data3.hdf5 [...]
    ```
 - Each file can be processed independently
-- Ready to use rusty! ... but how?
 - Running 1000 independent jobs won't work: limits on how many jobs can run
 
 
 ## Running Jobs in Parallel
 
 - This pattern of independent parallel jobs is known as "embarrassingly parallel" or "pleasantly parallel"
-- Two good options for pleasantly parallel jobs:
-  - Slurm job arrays
-  - disBatch (`module load disBatch`)
-- Note: this job is a bad candidate for MPI
-  - If the jobs don't need to communicate with each other, **no need for MPI**!
-
-
-## disBatch
 - What if tasks take a variable amount of time?
   - The single-job approach allocates resources until the longest one finishes
 - What if one task fails?
   - Resubmitting requires a manual post-mortem
-- disBatch solves both of these problems!
-  - A Slurm-aware dynamic dispatch mechanism that also has nice task tracking
+- disBatch (`module load disBatch`)
   - Developed here at Flatiron: https://github.com/flatironinstitute/disBatch
 
 
@@ -395,15 +393,16 @@ python3 myscript.py
 - Write a "task file" with one command-line command per line:
    ```bash
    # File: jobs.disbatch
-   ./my_analysis_script.py data1.hdf5 >& data1.log
-   ./my_analysis_script.py data2.hdf5 >& data2.log
+   python3 myjob.py data1.hdf5 >& data1.log
+   python3 myjob.py data2.hdf5 >& data2.log
+   python3 myjob.py data3.hdf5 >& data3.log
    ```
 - Can also use loops:
    ```bash
-   #DISBATCH REPEAT 13 ./my_analysis_script.py data${DISBATCH_REPEAT_INDEX}.hdf5 >& data${DISBATCH_REPEAT_INDEX}.log
+   #DISBATCH REPEAT 13 python3 myjob.py data${DISBATCH_REPEAT_INDEX}.hdf5 >& data${DISBATCH_REPEAT_INDEX}.log
    ```
 - Submit a Slurm job, invoking the `disBatch` executable with the task file as an argument:\
-`sbatch [...] disBatch jobs.disbatch`
+`sbatch -p genx -n 2 -t 0-2 disBatch jobs.disbatch`
 
 
 ## disBatch
@@ -416,10 +415,10 @@ python3 myscript.py
 
 ## disBatch
 
-- When the job runs, it will write a `status.txt` file, one line per task
+- When the job runs, it will write a `jobs.disbatch_*_status.txt` file, one line per task
 - Only limited output is captured: if you need logs, add `>&` redirection for each task
 - Resubmit any jobs that failed with:\
-`disBatch -r status.txt -R`
+`disBatch -r jobs.disbatch_*_status.txt -R`
 
 ```text
 0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'./my_analysis_script.py data1.hdf5'
@@ -469,6 +468,8 @@ python3 myscript.py
 
 
 # File Systems
+
+<img style="border: none; box-shadow: none;" src="assets/cluster/storage.png">
 
 https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
@@ -526,6 +527,7 @@ cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
 - Rusty: `/mnt/ceph/users/USERNAME`
 - Popeye: `/mnt/sdceph/users/USERNAME`
 - For large, high-bandwidth data storage
+- Not a "scratch" filesystem: no automatic deletion
 - No backups<sup>\*</sup>
 - Do not put &ge; 1000 files in a directory
 
