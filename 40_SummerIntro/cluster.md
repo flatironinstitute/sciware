@@ -312,8 +312,8 @@ python3 myscript.py
    data1.hdf5  data2.hdf5  data3.hdf5 [...]
    ```
 - Each file can be processed independently
-- Running 1000 independent jobs won't work: limits on how many jobs can run
 - This pattern of independent parallel jobs is known as "embarrassingly parallel"
+- Running 1000 independent jobs won't work: limits on how many jobs can run
 
 
 ## What about multiple things?
@@ -360,7 +360,8 @@ wait # wait for all background tasks to complete
 
 1. Guess based on your knowledge of the program. Think about the sizes of big arrays and any files being read
 2. Run a test job
-3. Check the actual usage of the test job with:\
+3. While the job is running, check `squeue`, `ssh` to the node, and run `htop`
+4. Check the actual usage of the test job with:\
 `seff <jobid>`
   - `Job Wall-clock time`: how long it took in "real world" time; corresponds to `#SBATCH -t`
   - `Memory Utilized`: maximum amount of memory used; corresponds to `#SBATCH --mem`
@@ -435,13 +436,6 @@ wait # wait for all background tasks to complete
 - Total cores is `-c` * `-n`
 
 
-## Summary of Parallel Jobs
-- Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
-    - Slurm job arrays or disBatch work better than MPI
-
-<img width="20%" src="assets/cluster/slurm_futurama.webp"></img>
-
-
 ## GPUs
 
 - GPU nodes are not exclusive (like genx), so you should specify:
@@ -451,6 +445,14 @@ wait # wait for all background tasks to complete
   - Amount of memory: `--mem=16G` or `--mem-per-gpu=16G`
   - Number of GPUs: `--gpus=` or `--gpus-per-task=`
   - Acceptable GPU types: `-C v100|a100|h100|h200`
+
+
+## Summary of Parallel Jobs
+- Independent parallel jobs are a common pattern in scientific computing (parameter grid, analysis of multiple outputs, etc.)
+- If you need more communication, check out MPI (e.g., mpi4py)
+
+<img width="20%" src="assets/cluster/slurm_futurama.webp"></img>
+
 
 
 
