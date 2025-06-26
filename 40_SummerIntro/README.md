@@ -6,6 +6,8 @@
 - [day 2](https://sciware.flatironinstitute.org/40_SummerIntro/day2.html) ([source](day2-intro.md))
 - [day 2 (command-line)](https://sciware.flatironinstitute.org/40_SummerIntro/day2b.html) ([source](cli.md))
 - [day 3](https://sciware.flatironinstitute.org/40_SummerIntro/day3.html) ([source](cluster.md))
+- day 4
+   - [disbatch](disBatch_slides.pdf)
 
 # Instructions for setting up your laptop (before the first session)
 
