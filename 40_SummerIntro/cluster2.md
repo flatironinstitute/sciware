@@ -12,14 +12,14 @@ https://sciware.flatironinstitute.org/40_SummerIntro
 ## Today's agenda
 
 - Demos of cluster usage
-  - disBatch demo (Aramis)
-  - PyTorch demo (Geraud)
-  - MPI demo (?)
+  - disBatch demo (Aramis Tanelus)
+  - PyTorch demo (Geraud Krawezik)
+  - MPI demo (Chris Eidelmaier)
 - Your questions about the cluster!
   - Slurm questions
   - Software environment questions (modules, virtual environments, compilers, etc)
   - File systems
-  - GPUs
+  - GPUs/CUDA
   - Connecting to the cluster
   - FIDO
 
