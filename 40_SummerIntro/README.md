@@ -8,7 +8,7 @@
 - [day 3](https://sciware.flatironinstitute.org/40_SummerIntro/day3.html) ([source](cluster.md))
 - [day 4](https://sciware.flatironinstitute.org/40_SummerIntro/day4.html) ([source](cluster2.md))
    - [disbatch](disBatch_slides.pdf)
-   - https://wiki.flatironinstitute.org/SCC/Software/ScalingPyTorchOnMultipleGPUNodes
+   - [Scaling PyTorch on the FI Wiki](https://wiki.flatironinstitute.org/SCC/Software/ScalingPyTorchOnMultipleGPUNodes)
 
 # Instructions for setting up your laptop (before the first session)
 
