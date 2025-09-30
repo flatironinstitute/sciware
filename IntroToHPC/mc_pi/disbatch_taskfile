@@ -1,2 +1,0 @@
-#DISBATCH PREFIX seed=$DISBATCH_REPEAT_INDEX ; ( cd ~/mc_pi ; source load_env.sh ; python pi.py 100000 $seed ) &> logs/pi_s${seed}.log
-#DISBATCH REPEAT 256

@@ -216,22 +216,26 @@ Activities where participants all actively work to foster an environment which e
 - Details at https://wiki.flatironinstitute.org/SCC/Overview
 
 
-### Rusty -- compute power
+### Clusters: Let's connect
 
-- FI's "primary" cluster
-- \~150k CPU cores (\~1400 nodes)
-- _Almost_ every node connected by high performance infiniband fabric
+- Remote access to the rusty cluster via terminal
+  - on 'FI' wifi network: `ssh username@rusty`
+  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
+  - or... `https://jupyter.flatironinstitute.org`
+- Popeye
+  - From rusty gateway `ssh popeye`
+- `module load fi-utils` for useful FI-specific utilities
+
+
+### Rusty/Popeye -- compute power
+
+- Rusty -- \~150k CPU cores (\~1400 nodes)
+- Popeye -- \~40k CPU cores (\~800 nodes)
+- Node groups connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
   - Node types on different infiniband networks!
-- 240 H100, 288 A100 and 24 V100 GPUs
-
-
-### Popeye -- compute power
-
-- \~41k dedicated CPU cores (\~800 nodes)
-- Generally more available, but data separate from rusty
-- Everything on infiniband fabric
-- A handful of GPUs for special purposes
+- Rusty -- around 240 H100, 290 A100 GPUs
+- `fi-nodes`
 
 
 ### Rusty/popeye storage -- local
@@ -245,10 +249,8 @@ Activities where participants all actively work to foster an environment which e
 - Put your source code and software installs here!
 - High performance GPFS filesystem (General Parallel FS)
 - Mind your quota! You can get locked out of the cluster!
-  - \~1 million files
-  - \~500 GiB limit
-- Backed up regularly -- can recover deleted files
-- `module load fi-utils && fi-quota`
+- Backed up regularly -- can recover deleted files -- quota fixed
+- `fi-quota`
 
 
 ### Rusty/popeye storage -- ceph (1)
@@ -257,13 +259,15 @@ Activities where participants all actively work to foster an environment which e
 - popeye: located at `/mnt/sdceph/$USER`, symlink at `~/ceph`
 - `ceph` (after cephalopod) -- software providing this FS
 - Always put your data/large files here! (large \~ 100MB+)
+- Quota set in FIDO! `fi-usage` (only runs on rusty, but prints both)
+- `cephdu` from `fi-utils` very useful for managing files
 <center>
 <img src="./assets/cephalopod.jpg" height=300px style="border:none;box-shadow:none;">
 </center>
 
 
 ### Rusty/popeye storage -- ceph (2)
-- \~50 PiB (rusty) and \~20 PiB (popeye)
+- \~65 PiB (rusty) and \~20 PiB (popeye)
 - High bandwidth, high latency (\~1.5GiB/s parallel reads)
 - Highly redundant, not backed up (deletes unrecoverable!)
 - "Small" files "triple replicated"
@@ -288,101 +292,83 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
 
-## Environment management
+## Job/resource/software management
 
 
-## Building/running software
-- `git clone ~scc/sciware_awful_cp`
-- `cd sciware_awful_cp`
+### FIDO - quota management
+- https://fido.flatironinstitute.org
+  - set resource estimates -- helps us plan
+- `module load fi-utils; fi-quota`
+  - see home storage quota usage info
+- `module load fi-utils; fi-slurm-limits`
+  - see your and your center's slurm job limits
 
 
-## Building/running software (2)
-- Learning points:
-  - `module avail`
-  - `module load`
-  - `PATH`
-  - `icp[cx]` +`libstdc++` issues
+### Resource monitoring
+- `module load fi-utils; fi-nodes`
+  - Quick overview of total current cluster usage.
+  - `fi-nodes --help` option for detailed help, `-h` for terse
+- https://grafana.flatironinstitute.org
+  - history of all jobs/nodes on cluster
+- `ssh workerXXXX` to node in a running job
+  - `htop` -- quick live CPU/mem usage of running job
+  - `nvtop` -- quick live GPU usage of running job
+    - Only works if the node has job allocated to you!
+- `seff`
+  - usage statistics of past jobs
 
 
-## Let's make a Python project
-
-- create new project directory
-- `ml python ; python -m venv myenv --system-site-packages ; source myenv/bin/activate`
-- create `setup_env` script that loads clean environment
-  - `module` quirk: load `python` BEFORE `venv` activate!
-
-
-## Please never do this
-
-- Calculate π by throwing darts "_Monte Carlo Sampling_"
-- π ≅ 4 N<sub>in</sub> / N<sub>tot</sub>
-- https://github.com/flatironinstitute/sciware/tree/main/IntroToHPC/mc_pi
-<center>
-    <img src="./assets/mc_pi_qr.png" style="border:0;box-shadow:none;transform: translateY(-50px)" height="250px">
-    <img src="./assets/dartboard.png" style="border:0;box-shadow:none" height="350px">
-</center>
+### Software (live demo)
+- `module` for dynamically loading common software
+  - `module avail` to list details of modules
+  - `module spider` to search
+  - `module load` to load
+  - `ml` "smart" shorthand
+- Python
+  - `python` module has common set of useful packages (aka module 'extensions')
+  - `conda` and `uv` are other options for python
+    - can push limits of file quota easily
+    - conda doesn't play nice with modules -- especially with MPI
+    - check wiki for details
 
 
-## Running it on the cluster
-```
-#!/bin/bash
-#SBATCH -o pi.log  # All stdout from this script
-#SBATCH -e pi.err  # All stderr from this script
-#SBATCH -p genx    # genx partition (non-exclusive -- doesn't request full nodes)
-#SBATCH -t 1:00    # request 1 min runtime (default 7 days, helps schedule faster)
-#SBATCH -n 1       # 1 task (default)
-
-source load_env.sh
-python pi.py 100000 0
-```
-
-```
-% sbatch pi.sbatch
-```
+### Slurm definitions
+- **Node**: Same idea as a compute node, generally
+- **CPU**: Same idea as a CPU core defined earlier
+- **GPU**: Same as defined earlier, generally
+- **Task**: Work that runs on a **node** using some amount of **cpus**, **memory**, and possibly **gpus**
+  - E.g. running a python script or rank of an MPI program
+- **Job**: List of **tasks** to run, on some number of **nodes**
+- **Partition**: queue of jobs that can run on some set of **nodes**
+- **Constraint**: subset of **nodes** with some special configuration
+  - Useful for multi-node **jobs**, benchmarking, consistent resource needs, or **GPU jobs**
 
 
-## Scaling up
-- We could make our code more efficient...
-- But let's throw some power at it, some options are:
-  - `MPI` (message passing interface) using `openmpi`
-  - `srun` to run multiple copies
-  - multiple serial jobs via `disBatch`
-  - could loop through calls to python in sbatch script, but hard to balance and error prone
-  - could use small jobs or job array with slurm, but this angers the compute gods
+### Monitoring slurm at FI (live demo)
+- `module load fi-utils`
+  - `fi-slurm-limits`: shows the current **partitions** and current user/center resource usage in
+    each partition
+  - `fi-nodes`: shows the current resource usage by **constraint**
+    - `fi-nodes -h` for help
 
 
-## MPI with slurm
-- Run one π calculation per MPI "rank" AKA task
-- Send all π calculations to one rank, average, and write to disk
-  - Could also use `MPI_reduce`
+### Useful slurm commands
+- **Most critical**:
+  - `sbatch`: Submits a slurm 'sbatch' script to run in 'batch' (non-interactive) mode
+    - For heavy/repeatable work, you should **always** be using `sbatch`
+  - `squeue`: Show the job queues in any/all partitions
+    - `squeue --me` to show only your jobs in queue. `squeue -p cca` to show cca **jobs**. etc.
+  - `srun`: Run a set of slurm tasks limited by the resources defined in a **job**
+- **Other useful**:
+  - `seff`: Display resource usages of a **job** after it has finished
+  - `sacct`: Display accounting information of past **jobs**
+  - `salloc`: Allocates a slurm **job** without running anything. Our configuration automatically
+    starts an interactive shell in that allocation. This is not universal behavior!
+  - `man slurm` for more
 
 
-## MPI with slurm (2)
-- Learning points:
-  - `module spider`, `openmpi`, `mpi4py`
-  - `srun`, `sacct`, `seff`, `squeue`
-  - `htop`
-
-
-
-## What now?
-- `disBatch` - e.g. modify `pi.py` for a `disBatch` submission
-- NUMA: `lstopo` - pinning/binding - latency/bandwidth
-- discussion about other HPC topics -- what interests you?
-
-
-## disBatch
-- Create list of tasks, pass to disBatch
-- `module load disBatch`
-- `sbatch <sbatch options> disBatch task_file`
-
-
-## disBatch (2)
-- Learning points:
-  - `disBatch` task files
-  - `disBatch` `PREFIX/REPEAT`
-  - `&>` redirect
-  - `()` subshells
+### Putting this all to use (live demo)
+- Demonstrating an sbatch script with a simple python program
 
 
 
