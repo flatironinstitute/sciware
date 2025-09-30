@@ -296,12 +296,15 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
 ### FIDO - quota management
-- https://fido.flatironinstitute.org
-  - set resource estimates -- helps us plan
-- `module load fi-utils; fi-quota`
-  - see home storage quota usage info
-- `module load fi-utils; fi-slurm-limits`
-  - see your and your center's slurm job limits
+<div style="display: flex;">
+<img src="./assets/fido.png" style="height:300px; float: left; border:none; padding-left:200px; box-shadow:none;">
+<ul>
+<li> <a href="https://fido.flatironinstitute.org"> https://fido.flatironinstitute.org </a>
+<ul> <li> set resource estimates -- helps us plan </ul>
+<li> <code> module load fi-utils; fi-quota </code>
+<ul> <li> see home storage quota usage info </ul>
+</ul>
+</div>
 
 
 ### Software (live demo)
@@ -335,14 +338,12 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
   - `fi-slurm-limits`: shows the current **partitions** and current user/center resource usage in
     each partition
   - `fi-nodes`: shows the current resource usage by **constraint**
-    - `fi-nodes -h` for help
-- https://grafana.flatironinstitute.org
-  - history of all **jobs/nodes** on cluster -- advanced but graphical
 - `ssh workerXXXX` to **node** in a running **job**
   - `htop` -- quick live **CPU/mem** usage of running **job**
-  - `nvtop` -- quick live **GPU** usage of running job
-    - Only works if the **node** has a **job** allocated to you!
+  - `nvtop` -- quick live **GPU** usage of running job (only works if the **node** has a **job** allocated to you!)
 - `seff`: Usage summary of completed **jobs**
+- https://grafana.flatironinstitute.org
+  - history of all **jobs/nodes** on cluster -- advanced but graphical
 
 
 ### Useful slurm commands
@@ -362,6 +363,9 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 ### Putting this all to use (live demo)
 - Demonstrating an sbatch script with a simple python program
+<center>
+<img width="70%" src="./assets/slurm.jpg">
+</center>
 
 
 
