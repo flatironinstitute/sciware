@@ -304,20 +304,6 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
   - see your and your center's slurm job limits
 
 
-### Resource monitoring
-- `module load fi-utils; fi-nodes`
-  - Quick overview of total current cluster usage.
-  - `fi-nodes --help` option for detailed help, `-h` for terse
-- https://grafana.flatironinstitute.org
-  - history of all jobs/nodes on cluster
-- `ssh workerXXXX` to node in a running job
-  - `htop` -- quick live CPU/mem usage of running job
-  - `nvtop` -- quick live GPU usage of running job
-    - Only works if the node has job allocated to you!
-- `seff`
-  - usage statistics of past jobs
-
-
 ### Software (live demo)
 - `module` for dynamically loading common software
   - `module avail` to list details of modules
@@ -350,6 +336,13 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
     each partition
   - `fi-nodes`: shows the current resource usage by **constraint**
     - `fi-nodes -h` for help
+- https://grafana.flatironinstitute.org
+  - history of all **jobs/nodes** on cluster -- advanced but graphical
+- `ssh workerXXXX` to **node** in a running **job**
+  - `htop` -- quick live **CPU/mem** usage of running **job**
+  - `nvtop` -- quick live **GPU** usage of running job
+    - Only works if the **node** has a **job** allocated to you!
+- `seff`: Usage summary of completed **jobs**
 
 
 ### Useful slurm commands
