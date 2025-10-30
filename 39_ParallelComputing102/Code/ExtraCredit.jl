@@ -40,7 +40,7 @@ Bresult_col = zeros(Int64, Nbins);
 @b MatrixSum_Serial_Row!($Bresult_row, $Adata)
 @b MatrixSum_Serial_Column!($Bresult_col, $Adata)
 
-# Play around with different base types of Integer math and how they interact with cache lines
+# Play around with different base types and how they interact with cache lines
 Cdata = Int32.(rand(0:1, Nreplicates, Nbins));
 Cresult_row = zeros(Int32, Nbins);
 Cresult_column = zeros(Int32, Nbins);
