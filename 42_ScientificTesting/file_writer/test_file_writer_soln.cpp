@@ -26,7 +26,7 @@ TEST(DataProcessor, Compute2DrawsSize) {
     // Could also consider making the members accessible for testing
     // or reading the files from disk for the real version, plus cleanup
     MockFIM file_manager{};
-    dp.write_files(file_manager);`1
+    dp.write_files(file_manager);
     EXPECT_EQ(file_manager.two.size(), 7);
  }
 
