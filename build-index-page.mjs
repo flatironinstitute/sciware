@@ -12,35 +12,19 @@ import { execSync } from "node:child_process";
 // If this array is empty, the page will display a message saying there are no upcoming events.
 const upcoming_events = [
   {
-    title: `Summer Sciware 1 - Setting up a laptop for scientific computing`,
+    title: `Python Profiling`,
     weekday: `Tuesday`,
-    date: `June 3`,
-    time: `10 AM — Noon`,
-    location: `162 5th Ave<br />IDA Auditorium`,
+    date: `Dec. 16`,
+    time: `1:30 PM — 2:50 PM`,
+    location: `5th floor classroom`,
     summary: html``,
   },
   {
-    title: `Summer Sciware 2 - VSCode and Github`,
-    weekday: `Thursday`,
-    date: `June 12`,
-    time: `10 AM — Noon`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: html``,
-  },
-  {
-    title: `Summer Sciware 3 - Intro to the cluster`,
+    title: `Advent of Code Wrap-Up`,
     weekday: `Tuesday`,
-    date: `June 24`,
-    time: `10 AM — Noon`,
-    location: `162 5th Ave<br />IDA Auditorium`,
-    summary: html``,
-  },
-  {
-    title: `Summer Sciware 4 - Cluster hands-on`,
-    weekday: `Wednesday`,
-    date: `July 2`,
-    time: `10 AM — Noon`,
-    location: `162 5th Ave<br />IDA Auditorium`,
+    date: `Dec. 16`,
+    time: `3 PM — 3:50 PM`,
+    location: `12th floor boardroom`,
     summary: html``,
   },
 ];
