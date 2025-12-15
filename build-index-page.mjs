@@ -17,7 +17,11 @@ const upcoming_events = [
     date: `Dec. 16`,
     time: `1:30 PM — 2:50 PM`,
     location: `5th floor classroom`,
-    summary: html``,
+    summary: html`Want to know why your Python code is slow? Come learn about the latest tools in Python profiling in this CCA-hosted Sciware! 
+
+In the first half, Lehman Garrison will focus on CPU profiling, using py-spy, speedscope, and other tools. We'll cover pure Python as well as mixed Python + compiled code, and teach you how to interpret profile visualizations. 
+
+In the second half, Philip Mocz will cover GPU profiling, focusing on xprof/tensorboard for JAX, as well as more general GPU profilers.`,
   },
   {
     title: `Advent of Code Wrap-Up`,
@@ -25,7 +29,7 @@ const upcoming_events = [
     date: `Dec. 16`,
     time: `3 PM — 3:50 PM`,
     location: `12th floor boardroom`,
-    summary: html``,
+    summary: html`Come celebrate the Advent of Code season! Discuss your trials and tribulations from this year or come to learn about Advent of Code for next year.`,
   },
 ];
 
