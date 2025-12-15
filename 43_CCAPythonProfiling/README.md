@@ -11,3 +11,5 @@ In the first half, Lehman Garrison will focus on CPU profiling, using py-spy, sp
 In the second half, Philip Mocz will cover GPU profiling, focusing on xprof/tensorboard for JAX, as well as more general GPU profilers.
 
 [Part 1: CPU Profiling](https://lgarrison.github.io/talks/04_PythonProfiling/)
+
+[Part 2: GPU Profiling](https://github.com/pmocz/gpu-jax-profiling-demo)
