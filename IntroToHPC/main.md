@@ -30,10 +30,10 @@ Activities where participants all actively work to foster an environment which e
 
 ## Center-hosted Sciware
 
-- Sciware will rotate between centers each month
+- Sciware rotates between centers
    - focus on topics of interest to centers
    - include voices from all centers
-   - each center will host twice a year
+   - each center will host once or twice a year
    - open to all
 - Suggest topics or contribute to content in #sciware Slack
 - We are recording. Link will be posted to [https://sciware.flatironinstitute.org/](https://sciware.flatironinstitute.org/)
@@ -234,7 +234,7 @@ Activities where participants all actively work to foster an environment which e
 - Node groups connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
   - Node types on different infiniband networks!
-- Rusty -- around 240 H100, 290 A100 GPUs
+- Rusty -- around 120 RTX6000Pro Blackwell, 192 H200, 240 H100, 290 A100 GPUs
 - `fi-nodes`
 
 
@@ -302,7 +302,11 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 <li> <a href="https://fido.flatironinstitute.org"> https://fido.flatironinstitute.org </a>
 <ul> <li> set resource estimates -- helps us plan </ul>
 <li> <code> module load fi-utils; fi-quota </code>
-<ul> <li> see home storage quota usage info </ul>
+<ul> <li> see <i>home</i> storage quota usage info </ul>
+<li> <code> module load fi-utils; fi-usage </code>
+<ul> <li> see all <i>FIDO</i> related quota usage </ul>
+<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU </ul>
+<ul> <li> quick and easy, but lags FIDO by ~1hr </ul>
 </ul>
 </div>
 
