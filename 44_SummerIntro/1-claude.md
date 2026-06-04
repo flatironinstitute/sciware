@@ -1,5 +1,47 @@
 # Sciware
 
+## Summer Sciware 1
+### Introduction to Scientific Computing at Flatiron
+
+https://sciware.flatironinstitute.org/44_SummerIntro
+
+
+## Summer Sciware Sessions
+- Schedule
+  - **June 10**: Summer Sciware 1 - Introduction to Scientific Computing at Flatiron
+  - **June 17**: Summer Sciware 2 - Hands-on Computing with the Cluster
+  - **July 1**: Summer Sciware 3 -  Making Your Software Project "Just Work"
+    - Environment and package management with uv and pixi, the next gen pip and conda replacements
+  - **July 8**: Summer Sciware 4 - Developing Software Collaboratively with git and GitHub
+  - **July 22**: Summer Sciware open office hour
+  - All 10 AM - noon, future sessions in **162 3rd floor classroom**
+
+
+## Today's Agenda
+
+- Introduction and Goals for Sciware
+- VS Code and Claude Code
+- AI discussion
+- Cluster intro
+
+
+## Who We Are
+- Sciware is a grassroots, scientific software learning community at Flatiron Institute
+- We're here to help! Our goals are:
+  - to help you setup and learn the computing tools you need to do your summer work, and
+  - to help you build fundamental computing skills (terminal, VS Code, git/GitHub, Python project setup, etc).
+- These will be useful in any kind of computing career, academic or not!
+
+
+## Where to get help
+- The cluster wiki: https://wiki.flatironinstitute.org/
+- The [#sciware](https://simonsfoundation.enterprise.slack.com/archives/CDU1EE9V5) channel on Simons Foundation Slack
+- Sciware website: https://sciware.flatironinstitute.org/
+- Your mentor!
+- SCC: scicomp@flatironinstitute.org or #scicomp Slack channel
+
+
+
 ## Intro to Claude Code
 
 https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
