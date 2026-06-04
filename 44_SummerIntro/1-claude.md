@@ -164,7 +164,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     - My experience? Don't buy the hype.
 
 
-# Understanding vs Productivity: Ways to use Claude in Research Software
+# Velocity vs Productivity
+## Ways to use Claude in Research Software
 
 <style>
 .spectrum-row {
