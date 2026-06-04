@@ -39,6 +39,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 - Sciware website: https://sciware.flatironinstitute.org/
 - Your mentor!
 - SCC: scicomp@flatironinstitute.org or #scicomp Slack channel
+- Question: Do you want a intern-only code-help channel??
 
 
 
