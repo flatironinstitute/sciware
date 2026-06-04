@@ -7,14 +7,14 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 
 ## Summer Sciware Sessions
-- Schedule
+- Schedule:
   - **June 10**: Summer Sciware 1 - Introduction to Scientific Computing at Flatiron
   - **June 17**: Summer Sciware 2 - Hands-on Computing with the Cluster
   - **July 1**: Summer Sciware 3 -  Making Your Software Project "Just Work"
     - Environment and package management with uv and pixi, the next gen pip and conda replacements
   - **July 8**: Summer Sciware 4 - Developing Software Collaboratively with git and GitHub
   - **July 22**: Summer Sciware open office hour
-  - All 10 AM - noon, future sessions in **162 3rd floor classroom**
+- All 10 AM - noon, future sessions in **162 3rd floor classroom**
 
 
 ## Today's Agenda
