@@ -164,7 +164,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     - My experience? Don't buy the hype.
 
 
-# Ways to use Claude for research software
+# Understanding vs Productivity: Ways to use Claude in Research Software
 
 <style>
 .spectrum-row {
