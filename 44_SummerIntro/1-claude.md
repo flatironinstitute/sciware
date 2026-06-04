@@ -164,7 +164,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     - My experience? Don't buy the hype.
 
 
-# Velocity vs Productivity
+# Understanding vs Velocity
 ## Ways to use Claude in Research Software
 
 <style>
