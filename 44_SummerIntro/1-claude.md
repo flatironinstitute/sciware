@@ -51,9 +51,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 ## Agenda
 
 - Some context on Claude
+- How to get Claude access through SF
 - The Claude CLI and VS Code extension
-- Hands-on demos: plan mode, existing repos, models, the shell, memory, more
-- Advice for exploring technical topics with Claude
+- Hands-on demos: models, plan mode, existing repos, memory, more
+- Exploring the many ways to use Claude
 - How to learn more
 
 
@@ -67,26 +68,51 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Model family: **Opus** (most capable), **Sonnet** (balanced), **Haiku** (fast / cheap)
 - "Claude Code" = Anthropic's official CLI for software engineering
     - Can be used as a chat bot or an "agent" able to edit files and even run commands on its own
-- The claude.ai website gives you access to a Claude chat bot
+- The [claude.ai](https://claude.ai) website gives you access to a Claude chat bot, but no execution environment for arbitrary code
+
+<div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-top: 20px;">
+    <figure style="margin: 0;">
+        <img src="assets/claude_ai.png" alt="The claude.ai web chat interface" style="height: 340px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border-radius: 6px;">
+        <figcaption style="font-size: 0.7em; color: #888; margin-top: 0.3em;">claude.ai — chat in the browser</figcaption>
+    </figure>
+    <figure style="margin: 0;">
+        <img src="assets/claude_code.png" alt="The Claude Code CLI running in a terminal" style="height: 340px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border-radius: 6px;">
+        <figcaption style="font-size: 0.7em; color: #888; margin-top: 0.3em;">Claude Code — CLI in the terminal</figcaption>
+    </figure>
+</div>
 
 
 ## The "December revolution"
 
 - Through mid-2025, agentic coding LLMs were capable but inconsistent
 - Opus 4.6 (late 2025) + Claude Code: LLM tool use and reasoning became sophisticated enough to be useful by modern software engineering standards
-- This workshop wouldn't have made sense a year ago
-- Many people using Opus 4.7 with Claude Code today, although many alternatives/competitors exist (OpenAI's GPT + Codex, Google's Gemini + CLI, etc).
+- A year ago, we wouldn't be talking about LLMs in the first summer Sciware
+- Many people using Opus 4.8 with Claude Code today, although many alternatives/competitors exist (OpenAI's GPT + Codex, Google's Gemini + CLI, etc).
+
+<img src="assets/contributions.svg" alt="Mock GitHub contributions grid: sparse through late 2025, then a dramatic sustained uptick from December 2025 through June 2026" style="width: 90%; border: none; box-shadow: none;">
+
+<p style="font-size: 0.7em; color: #888; margin-top: 0.2em;">You'll see a lot of GitHub contribution graphs like this today</p>
 
 
 
-# Two ways to use Claude
+# How to use Claude Code
+
+
+## Getting Access to Claude Code
+- Login to https://myaccess.microsoft.com/ with your Flatiron Institute email address
+- "My Access" -> "Access Packages"
+- Click "Request" next to "Anthropic - Claude"
+
+<img src="assets/claude_myaccess.png" alt="The My Access portal showing the Anthropic - Claude access package with a Request button" style="width: 75%; margin-top: 16px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border-radius: 6px;">
 
 
 ## Claude CLI vs. VS Code extension
 
-- **Claude CLI** — runs in your terminal
+- **Claude CLI** — runs in your terminal (download from https://claude.ai/downloads)
 - **VS Code extension** — runs inside the editor sidebar
+    - This is unrelated to the GitHub Copilot extension, even though Copilot can use Claude as a model
 - Same Claude underneath; pick whichever matches your workflow
+    - Claude CLI can still "talk" to VS Code (e.g. open a file, see what you have highlighted)
 - We'll see both today
 
 
@@ -96,17 +122,23 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 
 ## Demo 1 — A new Python project from scratch
 
-- Headline idea: **plan mode**
-- Ask Claude to design *before* it writes any code
-- Review the plan, edit, iterate — then approve
-- Files only appear after you exit plan mode
+- Key idea: **plan mode**
+    - Ask Claude to design *before* it writes any code
+    - Review the plan, edit, iterate — then approve
+    - Plans can be pretty verbose. But in order for plan mode to work, you need to read the plan!
+- Model selection: **Opus** vs **Sonnet** vs **Haiku** — capability vs. cost / speed
+    - Effort selection to fine-tune usage (although effort isn't entirely up to the user)
+    - `/usage` to see token usage per session (5 hr) & per week
 
 
 ## Demo 2 — Working in an existing repo
-
 - `CLAUDE.md` — project conventions Claude reads on startup
-- Reference materials — point Claude at docs, papers, related code
-- **Skills** — small reusable instructions Claude can invoke (`/skill-name`)
+    - If the repo doesn't have a `CLAUDE.md` yet, use `/init` to have Claude explore the code and write a summary
+    - Reference materials — point Claude at docs, papers, related code
+    - Frequently loaded into your conversation — keep small
+- Follow project guidelines regarding AI use
+    - Always disclose AI use (ask Claude to add itself as a co-author on commits when appropriate)
+    - If contributing to an external project with Claude, keep yourself in the loop. Project maintainers often already have Claude!
 
 
 ## A repo friendly to Claude is friendly to humans
@@ -115,38 +147,21 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Tests that exercise the real code paths
 - Sensible directory structure, good error messages, clear API
 - *Free win:* the LLM benefits from the same things a new collaborator does
+- Likewise, patterns that make a repo unfriendly to humans make them unfriendly to LLMs
+    - E.g. dead code, outdated documentation, "it's not written anywhere, but..."
 
 
-## Demo 3 — Model, effort, usage
-
-- Choosing **Opus** vs **Sonnet** vs **Haiku** — capability vs. cost / speed
-- Effort / thinking knobs — when to let Claude think longer
-- `/usage` — see your rate-limit state before you hit a wall mid-task
-
-
-## Demo 4 — Claude + the shell
-
-- **Bash commands** — Claude runs shell on your behalf; permission prompts; allowlisting
-- **tmux** — detachable long-running sessions, multi-pane, survives SSH disconnects
-- **`gh` CLI** — open issues / PRs, read CI logs, post review comments — from the terminal
-
-
-## Demo 5 — Memory and context
-
+## Demo 3 — Memory and context
+- **Context** — LLMs are state-free, next-token predictors. When you chat with an LLM, every query sends the entire chat history to the model.
+    - Whatever the LLM "sees" (chat history, relevant files, `CLAUDE.md`, available tools, etc) is called the "context"
+    - Long conversations consume a lot of tokens! Start new sessions frequently.
+- **Context management** — `/compact`, `/clear`, auto-summarization
+    - Sub-agents help too; Claude will often use them automatically (look for the Agent tool use)
 - **Memory system** — facts Claude carries across sessions
     - Auto-memory directory; `CLAUDE.md` at user / project scope; `MEMORY.md` index
-- **Context management** — `/compact`, `/clear`, auto-summarization
-    - Habits to keep long sessions from drowning in context
-
-
-## `--dangerously-skip-permissions`
-
-- Skips every permission prompt — Claude can do anything in the shell
-- The name is intentional!
-- Designed for: throwaway VM, sandbox, isolated container without internet access
-- Not designed for: shared clusters, your real repos
-- Alert fatigue is real. Recommend curating your allowlist rather than skipping prompts.
-
+- Generally don't need extensions to track memory (same with subagents)
+    - Dozens of extensions that "fix" Claude by adding persistent memory, or reduce token use with sub-agents
+    - My experience? Don't buy the hype.
 
 
 # Ways to use Claude for research software
@@ -232,7 +247,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     <div class="spectrum-col">
         <h3>Some tradeoffs</h3>
         <ul>
-            <li>Plan mode</li>
+            <li>Feature implementation (plan mode)</li>
+            <li>Writing tests</li>
             <li>Bug fixing</li>
         </ul>
     </div>
@@ -240,13 +256,36 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
         <h3>More tradeoffs</h3>
         <ul>
             <li>Hands off, fully agentic, end-to-end execution</li>
+            <li>Implementing core science logic/algorithms</li>
         </ul>
     </div>
 </div>
 
 
 
-# Grounding Claude's Technical Answers
+# How to learn more
+
+
+## Where to go next
+
+- **Claude docs** — [docs.claude.com](https://docs.claude.com/en/docs/claude-code/overview)
+    - Reference for the CLI, settings, skills, memory, and more
+- **Official Claude Code course** — [anthropic.skilljar.com](https://anthropic.skilljar.com/claude-code-in-action)
+    - Free, hands-on "Claude Code in Action"
+- **Just ask Claude!** — it knows its own features
+    - "How do I ...?", "What does `/foo` do?", `/help`
+    - Tell Claude to search the web docs if it seems confused
+- **Slack: #sciware**
+    - Chat with other humans about how they use Claude
+- **Output styles** (`/config` → Output style) — let Claude teach as it works
+    - **Explanatory** adds "Insights" on its choices; **Learning** has you write pieces yourself (`TODO(human)`)
+
+
+
+# Extra
+
+
+## Grounding Claude's Technical Answers
 
 <style>
 .rigor-levels {
