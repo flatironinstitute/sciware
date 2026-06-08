@@ -87,11 +87,13 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Through mid-2025, agentic coding LLMs were capable but inconsistent
 - Opus 4.6 (late 2025) + Claude Code: LLM tool use and reasoning became sophisticated enough to be useful by modern software engineering standards
 - A year ago, we wouldn't be talking about LLMs in the first summer Sciware
-- Many people using Opus 4.8 with Claude Code today, although many alternatives/competitors exist (OpenAI's GPT + Codex, Google's Gemini + CLI, etc).
+- Many people using Opus 4.8 with Claude Code today, although lots of alternatives/competitors exist
+  - Tools like OpenAI's GPT + Codex or Google's Gemini + CLI.
+  - AI-first IDEs like Cursor, Windsurf, or Antigravity (often can be powered by different models)
 
 <img src="assets/contributions.svg" alt="Mock GitHub contributions grid: sparse through late 2025, then a dramatic sustained uptick from December 2025 through June 2026" style="width: 90%; border: none; box-shadow: none;">
 
-<p style="font-size: 0.7em; color: #888; margin-top: 0.2em;">You'll see a lot of GitHub contribution graphs like this today</p>
+<p style="font-size: 0.7em; color: #888; margin-top: 0.2em;">You'll see a lot of GitHub contribution graphs like this (fake) one</p>
 
 
 
@@ -162,6 +164,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Generally don't need extensions to track memory (same with subagents)
     - Dozens of extensions that "fix" Claude by adding persistent memory, or reduce token use with sub-agents
     - My experience? Don't buy the hype.
+
 
 
 # Understanding vs Velocity
