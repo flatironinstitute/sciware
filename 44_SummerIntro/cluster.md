@@ -14,15 +14,12 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 - Getting help
 - Supercomputing terminology
-- Cluster overview, access
+- Cluster overview, access, account management
 - Modules and software
-- Jupyterhub
+- Break!
+- Jupyterhub and remote VS Code
 - Slurm and parallelization
-- Filesystems and storage
-- Planned usage and FIDO
 - Using Flatiron hosted LLMs
-- Measuring resource usage (cpu/gpu hours)
-- tmux for resumeable cluster sessions
 
 
 
@@ -30,10 +27,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 
 # FI Cluster account status
-- <font color="#808">A. Have one already!</font>
-- <font color="#080">B. Will receive one soon</font>
-- <font color="#880">C. Not sure if receiving</font>
-- <font color="#048">D. Won't receive</font>
+- <font color="#808">A. Set up and a power user!</font>
+- <font color="#080">B. Set up and used a cluster lightly (jupyterhub, vscode, ...)</font>
+- <font color="#880">C. Will set up soon</font>
+- <font color="#048">D. Don't have one</font>
 
 
 
@@ -46,13 +43,13 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 - SCC provides a wiki for cluster help and information
   - https://wiki.flatironinstitute.org
-  - Information on effectively using slurm, python, conda, mpi, compiles, MATLAB, Mathematica, etc.
+  - Information on effectively using slurm, python, conda, mpi, compilers, MATLAB, Mathematica, etc.
   - Log in with cluster credentials, or SSO if your Flatiron email is on your cluster account
 
 
 ### Where to get help
 
-- `#scicomp` on Slack for quick or broad questions
+- `#scicomp` on Slack for quick or broad questions (might need to join first)
   - SCC/FI community will help with your issue
 - https://wiki.flatironinstitute.org/SCC/ReportingProblems
   - Email with details to scicomp@flatironinstitute.org
@@ -86,6 +83,11 @@ https://sciware.flatironinstitute.org/44_SummerIntro
   </ul>
 </ul>
 </div>
+
+
+## Our rusty cluster overview
+
+<img src="assets/cluster/rusty_diagram.png" style="height:350px; float: left; border:none; box-shadow:none;">
 
 
 ### Quiz!
@@ -195,21 +197,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 - Details at https://wiki.flatironinstitute.org/SCC/Overview
 
 
-### Clusters: Let's connect
-
-- Remote access to the rusty cluster via terminal
-  - on 'FI' wifi network: `ssh username@rusty`
-  - or... `ssh -p 61022 username@gateway.flatironinstitute.org`, `ssh rusty`
-  - or... `https://jupyter.flatironinstitute.org`
-- Popeye
-  - From rusty gateway `ssh popeye`
-- `module load fi-utils` for useful FI-specific utilities
-
-
 ### Rusty/Popeye -- compute power
 
-- Rusty -- \~150k CPU cores (\~1400 nodes)
-- Popeye -- \~40k CPU cores (\~800 nodes)
+- Rusty -- \~200k CPU cores (\~2000 nodes)
+- Popeye -- \~31k CPU cores (\~600 nodes, in flux currently)
 - Node groups connected by high performance infiniband fabric
   - Dedicated (only for job traffic)
   - Node types on different infiniband networks!
@@ -272,6 +263,7 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
 # Remote cluster connections
+<!-- 25 min mark? -->
 
 - Setup your cluster account with mentor
    - Mentor requests account on FIDO, provides PIN
@@ -283,6 +275,7 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
    - `ssh rusty` (or `ssh popeye`)
 
 https://wiki.flatironinstitute.org/SCC/RemoteConnect
+
 (even on site, remote connection usually necessary)
 
 
@@ -378,8 +371,8 @@ python/3.11.7
 - Try to use the default when possible
 
 ```text
-modules/2.3-20240529 (S,L,D)
-modules/2.4-beta2    (S)
+   modules/2.0-20220630   (S)    modules/2.2-20230808 (S)    modules/2.4-20250724 (S,L,D)
+   modules/2.1.1-20230405 (S)    modules/2.3-20240529 (S)
 ```
 
 
@@ -407,8 +400,17 @@ If you need something not in the base system, modules, or pip:
 - Download and install it yourself
   - Many packages provide install instructions
   - Load modules to find dependencies
-- Ask for help!  #code-help, #sciware, #scicomp, scicomp@
+- Ask for help!  #sciware, #scicomp, scicomp@
 
+
+
+# Break
+<!-- 1 hour point -->
+
+<img src="assets/day2_survey.png" width="30%">
+
+
+# Jupyter/VS Code Remote
 
 
 ### Jupyter
@@ -417,6 +419,7 @@ If you need something not in the base system, modules, or pip:
   - Login and start a server
   - Default settings are fine: JupyterLab, 1 core
 - To use an environment you need to create a kernel
+  - Detailed description at https://wiki.flatironinstitute.org/SCC/JupyterHub !
   - Create a kernel with the environment
      ```bash
      # setup your environment
@@ -429,12 +432,9 @@ If you need something not in the base system, modules, or pip:
   - Reload jupyterhub and "mykernel" will show up providing the same environment
 
 
+### VS Code remote
 
-# Break
-
-### Survey
-
-<img src="assets/day2_survey.png" width="30%">
+- In JupyterLab: File, Hub control panel, Stop My Server
 
 
 
@@ -660,38 +660,6 @@ wait # wait for all background tasks to complete
 `sbatch -p genx -n 2 -t 0-2 disBatch jobs.disbatch`
 
 
-## disBatch
-<div class="r-stack">
-  <img src="assets/cluster/disbatch.svg"  class="plain fragment fade-out" data-fragment-index="0" height="700"></img>
-  <img src="assets/cluster/disbatch2.svg" class="plain fragment current-visible" data-fragment-index="0" height="700"></img>
-  <img src="assets/cluster/disbatch3.svg" class="plain fragment" height="700"></img>
-</div>
-
-
-## disBatch
-
-- When the job runs, it will write a `jobs.disbatch_*_status.txt` file, one line per task
-- Only limited output is captured: if you need logs, add `>&` redirection for each task
-- Resubmit any jobs that failed with:\
-`disBatch -r jobs.disbatch_*_status.txt -R`
-
-```text
-0	1	-1	worker032	8016	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'...'
-1	2	-1	worker032	8017	0	10.0486528873	1458660919.78	1458660929.83	0	""	0	""	'...'
-```
-
-
-### Slurm Tip: Tasks and threads
-
-- For flexibility across nodes, prefer `-n`/`--ntasks` to specify total tasks (not `-N`/`--nodes` + `--ntasks-per-nodes`)
-- If each task needs more CPUs, use `-c`:
-   ```bash
-   #SBATCH --cpus-per-task=4 # number of threads per task
-   export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-   ```
-- Total cores is `-c` * `-n`
-
-
 ## GPUs
 
 - GPU nodes are not exclusive (like genx), so you should specify:
@@ -709,131 +677,6 @@ wait # wait for all background tasks to complete
 
 <img width="20%" src="assets/cluster/slurm_futurama.webp"></img>
 
-
-
-
-# File Systems
-
-<img style="border: none; box-shadow: none;" src="assets/cluster/storage.png">
-
-https://wiki.flatironinstitute.org/SCC/Hardware/Storage
-
-
-## Home Directory
-
-<ul>
-  <li>Every user has a "home" directory at <code>/mnt/home/USERNAME</code> (or <code>~</code>)</li>
-  <li>Home directory is shared on all nodes (rusty, workstations, gateway)</li>
-  <li>Popeye (SDSC) has the same structure, but it's a <em>different</em> home directory</li>
-</ul>
-
-
-## Home Directory
-
-<b>Your home directory is for code, notes, and documentation.</b>
-
-<p style="text-align:left;">It is <b>NOT</b> for:</p>
-
-1. Large data sets downloaded from other sites
-2. Intermediate files generated and then deleted during the course of a computation
-3. Large output files
-
-<p style="text-align:left;"><b>You are limited to 900,000 files and 450 GB</b> (if you go beyond this you will not be able to log in)</p>
-
-
-## Backups (aka snapshots)
-
-<div class="r-stack">
-
-  <img class="fragment fade-out" data-fragment-index=0 src="https://media.giphy.com/media/G4rIGiMVtrJ1S/source.gif?cid=ecf05e4733lcv4bxv1hctf6k50lc0365y23gunb55d3ei2e6&rid=source.gif&ct=g">
-
-  <div class="fragment fade-in" data-fragment-index=0>
-    If you accidentally delete some files, you can access backups through the <code>.snapshots</code> directory like this:
-
-  <pre style="font-size:0.65em">
-  <code data-trim>
-ls .snapshots
-cp -a .snapshots/@GMT-2021.09.13-10.00.55/lost_file lost_file.restored</code>
-  </pre>
-
-  <ul>
-    <li><code>.snapshots</code> is a special invisible directory and <em>won't</em> autocomplete</li>
-    <li>Snapshots happen once a day and are kept for 3-4 weeks</li>
-    <li>There are separate long-term backups of home if needed (years)</li>
-  </ul>
-  </div>
-
-</div>
-
-
-## Ceph
-
-- Pronounced as "sef"
-- Rusty: `/mnt/ceph/users/USERNAME`
-- Popeye: `/mnt/sdceph/users/USERNAME`
-- For large, high-bandwidth data storage
-- Not a "scratch" filesystem: no automatic deletion
-- No backups<sup>\*</sup>
-- Do not put &ge; 1000 files in a directory
-
-<small><sup>\*</sup> <code>.snap</code> is coming soon</small>
-
-
-## Summary: Persistent storage
-
-<img src="assets/cluster/storage_overview.svg" height=500px style="border:none; box-shadow:none;">
-
-
-## Monitoring Usage: `/mnt/home`
-
-View a usage summary:
-<pre style="font-size:0.75em">
-<code data-trim class="language-bash">
-module load fi-utils
-fi-quota
-</code>
-</pre>
-
-To track down large files or file counts use:
-<pre style="font-size:1em">
-<code data-trim class="language-bash">
-ncdu -x --show-itemcount ~
-</code>
-</pre>
-
-
-## Monitoring Usage: `/mnt/ceph`
-
-- Don't use <code>du</code> or <code>ncdu</code>, it's slow
-- Use can use `ls -lh`!
-
-<pre style="font-size:0.7em">
-    <code data-trim class="language-bash">
-module load fi-utils
-cephdu
-    </code>
-</pre>
-
-
-## Local Scratch
-
-- Each node as a `/tmp` (or `/scratch`) disk of &ge; 1 TB
-- For extremely fast access to smaller data, you can use the memory on each node under `/dev/shm` (uses memory)
-- Both of these directories are cleaned up after _each_ job
-  - Make sure you copy any important data/results over to `ceph` or your `home`
-
-
-## Summary: Temporary storage
-
-<img src="assets/cluster/storage_temp.svg" height=500px style="border:none; box-shadow:none;">
-
-
-### Quiz!
-#### Which statement is true about file systems at FI?
-- <font color="#808">A. I should put many small files in a single directory on ceph</font>
-- <font color="#080">B. I should put large files in my home directory</font>
-- <font color="#880">C. Home and ceph are the only options for storing data during a job</font>
-- <font color="#048">D. Files stored in my home directory are backed up while ones on ceph are not</font>
 
 
 # Survey
