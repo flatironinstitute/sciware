@@ -131,6 +131,9 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Model selection: **Opus** vs **Sonnet** vs **Haiku** — capability vs. cost / speed
     - Effort selection to fine-tune usage (although effort isn't entirely up to the user)
     - `/usage` to see token usage per session (5 hr) & per week
+    - Waiting for AI responses can take you out of the flow! Use judiciously.
+- Output style
+    - **Explanatory** adds "Insights" on its choices; **Learning** has you write pieces yourself (`TODO(human)`)
 
 
 ## Demo 2 — Working in an existing repo
@@ -140,7 +143,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     - Frequently loaded into your conversation — keep small
 - Follow project guidelines regarding AI use
     - Always disclose AI use (ask Claude to add itself as a co-author on commits when appropriate)
-    - If contributing to an external project with Claude, keep yourself in the loop. Project maintainers often already have Claude!
+    - These slides generated with Claude assistance!
+    - If contributing to an external project with Claude, keep yourself in the loop. Project maintainers generally want to foster a community of human contributors.
 
 
 ## A repo friendly to Claude is friendly to humans
@@ -153,17 +157,23 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
     - E.g. dead code, outdated documentation, "it's not written anywhere, but..."
 
 
-## Demo 3 — Memory and context
-- **Context** — LLMs are state-free, next-token predictors. When you chat with an LLM, every query sends the entire chat history to the model.
+## Demo 3 — Context
+- **Context** — LLMs are stateless next-token predictors. When you chat with an LLM, every query sends the entire chat history to the model.
     - Whatever the LLM "sees" (chat history, relevant files, `CLAUDE.md`, available tools, etc) is called the "context"
     - Long conversations consume a lot of tokens! Start new sessions frequently.
 - **Context management** — `/compact`, `/clear`, auto-summarization
     - Sub-agents help too; Claude will often use them automatically (look for the Agent tool use)
-- **Memory system** — facts Claude carries across sessions
+
+
+## Demo 4 — Memory and Extensions
+- **Memory system** — context Claude Code carries across sessions
+    - Re-sent to the model each time: the Anthropic servers aren't "remembering" anything, Claude Code is (in local files).
     - Auto-memory directory; `CLAUDE.md` at user / project scope; `MEMORY.md` index
-- Generally don't need extensions to track memory (same with subagents)
+- **Extensions** — Claude Code add-ons
+    - Generally don't need extensions to track memory (same with subagents)
     - Dozens of extensions that "fix" Claude by adding persistent memory, or reduce token use with sub-agents
-    - My experience? Don't buy the hype.
+    - Might be a few weeks ahead of native capability, but Claude Code tends to catch up quickly
+    - My experience? Don't buy the hype around extensions.
 
 
 
@@ -267,10 +277,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 
 
 
-# How to learn more
-
-
-## Where to go next
+## How to learn more
 
 - **Claude docs** — [docs.claude.com](https://docs.claude.com/en/docs/claude-code/overview)
     - Reference for the CLI, settings, skills, memory, and more
@@ -279,8 +286,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - **Just ask Claude!** — it knows its own features
     - "How do I ...?", "What does `/foo` do?", `/help`
     - Tell Claude to search the web docs if it seems confused
-- **Slack: #sciware**
-    - Chat with other humans about how they use Claude
+- **Simons Foundation Slack: #sciware**
+    - Chat with other humans about how they use LLMs
 - **Output styles** (`/config` → Output style) — let Claude teach as it works
     - **Explanatory** adds "Insights" on its choices; **Learning** has you write pieces yourself (`TODO(human)`)
 
@@ -355,7 +362,14 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
         <div class="rigor-number">3</div>
         <div class="rigor-content">
             <h3>Reference the local docs and code</h3>
-            <p>Get a copy of the software locally and force Claude to reference the source code and documentation in its answers. Potentially most accurate, but most setup.</p>
+            <p>Get a copy of the software locally and force Claude to reference the source code and documentation in its answers. Makes it easier for Claude to leverage sub-agents.</p>
+        </div>
+    </div>
+    <div class="rigor-level">
+        <div class="rigor-number">4</div>
+        <div class="rigor-content">
+            <h3>Write and run a test</h3>
+            <p>Have Claude write and run a test that verifies its hypothesis, rather than trusting its reasoning. Especially powerful for performance questions — let it benchmark the alternatives and measure, instead of guessing which is faster.</p>
         </div>
     </div>
 </div>
