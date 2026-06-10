@@ -113,6 +113,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 What do you think the PROs and CONs are of using LLMs as a research tool? 
 https://ahaslides.com/DEDFJ
 
+![LLM Survey Link](assets/ahaslides-qrcode.png)
+
 
 # Context on Claude
 
@@ -351,6 +353,8 @@ https://ahaslides.com/DEDFJ
 
 What do you think the PROs and CONs are of using LLMs as a research tool? 
 https://ahaslides.com/DEDFJ
+
+![LLM Survey Link](assets/ahaslides-qrcode.png)
 
 
 # Extra
