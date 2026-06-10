@@ -58,7 +58,7 @@ Examples: Python, numpy, astropy, C++, R
 ### 5. Name the tools used for environment and/or package management.
 Examples: conda, uv, pixi
 
-#### July 1 Workshops
+#### July 1 Workshop
 
 
 ## Summer Computing Learning Goals
