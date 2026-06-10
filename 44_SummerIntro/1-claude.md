@@ -27,8 +27,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 ## Summer Learning Goals
 
-Six things that we think you should be able to do/have done by the end of this summer internship.
+We've identified six things that we think you should be able to do/have done by the end of this summer internship.
 
+Report on poster:
+![Poster Box](assets/PosterBox.png)
 
 ## Summer Learning Goals
 
