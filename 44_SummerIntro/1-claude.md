@@ -69,7 +69,8 @@ July 8 Workshop
 
 ## Report on Poster
 
-<img src="assets/PosterBox.png" alt="poster box example" width="200"/>
+
+![Poster box](assets/PosterBox.png)
 
 
 
