@@ -40,17 +40,13 @@ Examples: VS Code, vim, emacs
 ### 2. Name any AI tools and/or models used.
 Examples: chatGPT web, GitHub Copilot, Claude, Gemini
 
-#### This workshop
+##### This workshop
 
-
-## Summer Computing Learning Goals
 
 ### 3. If the cluster was used, measure how many CPU and GPU hours were used.
 
-#### June 17 Workshop
+##### June 17 Workshop
 
-
-## Summer Computing Learning Goals
 
 ### 4. Name programming languages and notable packages and dependencies used.
 Examples: Python, numpy, astropy, C++, R
@@ -58,14 +54,12 @@ Examples: Python, numpy, astropy, C++, R
 ### 5. Name the tools used for environment and/or package management.
 Examples: conda, uv, pixi
 
-#### July 1 Workshop
+##### July 1 Workshop
 
-
-## Summer Computing Learning Goals
 
 ### 6. Create a GitHub repository containing new material developed.
 
-#### July 8 Workshop
+##### July 8 Workshop
 
 
 ## Report on Poster
