@@ -27,12 +27,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 -  These will be useful in any kind of computing career, academic or not!
 
 
-## Summer Learning Goals
+## Summer Computing Learning Goals
 
 ### We've identified six things that we think you should be able to do/have done by the end of this summer internship.
 
-
-## Summer Computing Learning Goals
 
 ### 1. Name the tool(s) used to edit code (aka IDE). 
 Examples: VS Code, vim, emacs
