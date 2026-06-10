@@ -2,7 +2,7 @@
 - Jun 10 - July 22
 
 - [day 1](https://sciware.flatironinstitute.org/44_SummerIntro/day1.html) ([source](1-claude.md))
-- day 2
+- [day 2](https://sciware.flatironinstitute.org/44_SummerIntro/day2.html) ([source](cluster.md))
 - day 3
 - day 4
 - office hours
