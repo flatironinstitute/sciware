@@ -70,7 +70,6 @@ July 8 Workshop
 
 ## Report on Poster
 
-
 ![Poster box](assets/PosterBox.png)
 
 
