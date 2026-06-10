@@ -68,8 +68,9 @@ July 8 Workshop
 
 
 ## Summer Computing Learning Goals
-Report on poster:
-![Poster Box](assets/PosterBox.png)
+
+### Report on poster:
+<img src="assets/PosterBox" alt="poster box example" width="200"/>
 
 
 
