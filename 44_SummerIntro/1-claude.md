@@ -18,16 +18,17 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 
 ## Who We Are
-- Sciware is a grassroots, scientific software learning community at Flatiron Institute
-- We're here to help! Our goals are:
+
+### Sciware is a grassroots, scientific software learning community at Flatiron Institute
+### We're here to help! Our goals are:
   - to help you setup and learn the computing tools you need to do your summer work, and
   - to help you build fundamental computing skills (terminal, VS Code, git/GitHub, Python project setup, etc).
-- These will be useful in any kind of computing career, academic or not!
+### These will be useful in any kind of computing career, academic or not!
 
 
 ## Summer Learning Goals
 
-We've identified six things that we think you should be able to do/have done by the end of this summer internship.
+### We've identified six things that we think you should be able to do/have done by the end of this summer internship.
 
 
 ## Summer Computing Learning Goals
@@ -40,11 +41,13 @@ Examples: chatGPT web, GitHub Copilot, Claude, Gemini
 
 This workshop
 
+
 ## Summer Computing Learning Goals
 
 ### 3. If the cluster was used, measure how many CPU and GPU hours were used.
 
 June 17 Workshop
+
 
 ## Summer Computing Learning Goals
 
@@ -56,11 +59,13 @@ Examples: conda, uv, pixi
 
 July 1 Workshops
 
+
 ## Summer Computing Learning Goals
 
 ### 6. Create a GitHub repository containing new material developed.
 
 July 8 Workshop
+
 
 ## Summer Computing Learning Goals
 Report on poster:
