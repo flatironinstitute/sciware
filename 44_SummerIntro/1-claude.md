@@ -1,9 +1,66 @@
-# Sciware
-
-## Summer Sciware 1
-### Introduction to Scientific Computing at Flatiron
+# Summer Sciware 1
+## Introduction to Scientific Computing at Flatiron
 
 https://sciware.flatironinstitute.org/44_SummerIntro
+
+
+## Today's Agenda
+
+- Introduction and computing learning goals
+- Where to get computing help
+- VS Code and Claude Code
+- AI discussion
+- Cluster intro
+
+
+
+# Introduction and Computing Learning Goals
+
+
+## Who We Are
+- Sciware is a grassroots, scientific software learning community at Flatiron Institute
+- We're here to help! Our goals are:
+  - to help you setup and learn the computing tools you need to do your summer work, and
+  - to help you build fundamental computing skills (terminal, VS Code, git/GitHub, Python project setup, etc).
+- These will be useful in any kind of computing career, academic or not!
+
+
+## Summer Learning Goals
+
+Six things that we think you should be able to do/have done by the end of this summer internship.
+
+
+## Summer Learning Goals
+
+### 1. Name the tool(s) used to edit code (aka IDE). 
+Examples: VS Code, vim, emacs
+
+### 2. Name any AI tools and/or models used.
+Examples: chatGPT web, GitHub Copilot, Claude, Gemini
+
+
+## Summer Learning Goals
+
+### 3. If the cluster was used, measure how many CPU and GPU hours were used.
+
+
+## Summer Learning Goals
+
+### 4. Name programming languages and notable packages and dependencies used.
+Examples: Python, numpy, astropy, C++, R
+
+### 5. Name the tools used for environment and/or package management.
+Examples: conda, uv, pixi
+
+
+## Summer Learning Goals
+
+### 6. Create a GitHub repository containing new material developed.
+
+
+# Resources 
+
+## How to get more help
 
 
 ## Summer Sciware Sessions
@@ -13,24 +70,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro
   - **July 1**: Summer Sciware 3 -  Making Your Software Project "Just Work"
     - Environment and package management with uv and pixi, the next gen pip and conda replacements
   - **July 8**: Summer Sciware 4 - Developing Software Collaboratively with git and GitHub
-  - **July 22**: Summer Sciware open office hour
+  - **July 22, 2-4pm**: Summer Sciware open office hour/poster help
 - All 10 AM - noon, future sessions in **162 3rd floor classroom**
-
-
-## Today's Agenda
-
-- Introduction and Goals for Sciware
-- VS Code and Claude Code
-- AI discussion
-- Cluster intro
-
-
-## Who We Are
-- Sciware is a grassroots, scientific software learning community at Flatiron Institute
-- We're here to help! Our goals are:
-  - to help you setup and learn the computing tools you need to do your summer work, and
-  - to help you build fundamental computing skills (terminal, VS Code, git/GitHub, Python project setup, etc).
-- These will be useful in any kind of computing career, academic or not!
 
 
 ## Where to get help
@@ -57,6 +98,10 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - Exploring the many ways to use Claude
 - How to learn more
 
+
+## Thoughts and Feelings
+What do you think the PROs and CONs are of using LLMs as a research tool? 
+https://ahaslides.com/DEDFJ
 
 
 # Context on Claude
@@ -291,6 +336,11 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 - **Output styles** (`/config` → Output style) — let Claude teach as it works
     - **Explanatory** adds "Insights" on its choices; **Learning** has you write pieces yourself (`TODO(human)`)
 
+
+## Thoughts and Feelings
+
+What do you think the PROs and CONs are of using LLMs as a research tool? 
+https://ahaslides.com/DEDFJ
 
 
 # Extra
