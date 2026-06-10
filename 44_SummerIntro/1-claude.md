@@ -69,6 +69,7 @@ July 8 Workshop
 
 ## Report on Poster
 
+text:
 <img src="assets/PosterBox" alt="poster box example" width="200"/>
 
 
@@ -115,10 +116,12 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 
 
 ## Thoughts and Feelings
-What do you think the PROs and CONs are of using LLMs as a research tool? 
+
+### What do you think the PROs and CONs are of using LLMs as a research tool? 
 https://ahaslides.com/DEDFJ
 
-<img src="assets/ahaslides-qrcode.png" alt="LLM survey qrcode" width="200"/>
+<img src="assets/ahaslides-qrcode.png" alt="LLM survey qrcode" width="300"/>
+
 
 # Context on Claude
 
