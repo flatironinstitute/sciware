@@ -9,6 +9,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 - Introduction and computing learning goals
 - Where to get computing help
 - VS Code and Claude Code
+- BREAK
 - AI discussion
 - Cluster intro
 
