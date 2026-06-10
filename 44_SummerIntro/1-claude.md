@@ -29,10 +29,8 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 We've identified six things that we think you should be able to do/have done by the end of this summer internship.
 
-Report on poster:
-![Poster Box](assets/PosterBox.png)
 
-## Summer Learning Goals
+## Summer Computing Learning Goals
 
 ### 1. Name the tool(s) used to edit code (aka IDE). 
 Examples: VS Code, vim, emacs
@@ -41,12 +39,12 @@ Examples: VS Code, vim, emacs
 Examples: chatGPT web, GitHub Copilot, Claude, Gemini
 
 
-## Summer Learning Goals
+## Summer Computing Learning Goals
 
 ### 3. If the cluster was used, measure how many CPU and GPU hours were used.
 
 
-## Summer Learning Goals
+## Summer Computing Learning Goals
 
 ### 4. Name programming languages and notable packages and dependencies used.
 Examples: Python, numpy, astropy, C++, R
@@ -55,9 +53,15 @@ Examples: Python, numpy, astropy, C++, R
 Examples: conda, uv, pixi
 
 
-## Summer Learning Goals
+## Summer Computing Learning Goals
 
 ### 6. Create a GitHub repository containing new material developed.
+
+
+## Summer Computing Learning Goals
+Report on poster:
+![Poster Box](assets/PosterBox.png)
+
 
 
 # Resources 
