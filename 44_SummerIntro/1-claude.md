@@ -17,13 +17,13 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 # Introduction and Computing Learning Goals
 
 
-## Who We Are
+## Who We Are: Sciware
 
-### Sciware is a grassroots, scientific software learning community at Flatiron Institute
-### We're here to help! Our goals are:
+- Sciware is a grassroots, scientific software learning community at Flatiron Institute
+-  We're here to help! Our goals are:
   - to help you setup and learn the computing tools you need to do your summer work, and
   - to help you build fundamental computing skills (terminal, VS Code, git/GitHub, Python project setup, etc).
-### These will be useful in any kind of computing career, academic or not!
+-  These will be useful in any kind of computing career, academic or not!
 
 
 ## Summer Learning Goals
@@ -67,9 +67,8 @@ July 1 Workshops
 July 8 Workshop
 
 
-## Summer Computing Learning Goals
+## Report on Poster
 
-### Report on poster:
 <img src="assets/PosterBox" alt="poster box example" width="200"/>
 
 
@@ -119,8 +118,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day1.html
 What do you think the PROs and CONs are of using LLMs as a research tool? 
 https://ahaslides.com/DEDFJ
 
-![LLM Survey Link](assets/ahaslides-qrcode.png)
-
+<img src="assets/ahaslides-qrcode.png" alt="LLM survey qrcode" width="200"/>
 
 # Context on Claude
 
