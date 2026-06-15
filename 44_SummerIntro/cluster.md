@@ -407,7 +407,7 @@ If you need something not in the base system, modules, or pip:
 # Break
 <!-- 1 hour point -->
 
-<img src="assets/day2_survey.png" width="30%">
+<img src="assets/QR_46.2.png" width="30%">
 
 
 # Jupyter/VS Code Remote
@@ -681,7 +681,7 @@ wait # wait for all background tasks to complete
 
 # Survey
 
-<img src="assets/day2_survey.png" width="30%">
+<img src="assets/QR_46.2.png" width="30%">
 
 
 # Questions & Help
