@@ -293,7 +293,7 @@ https://wiki.flatironinstitute.org/SCC/RemoteConnect
 <ul> <li> see <i>home</i> storage quota usage info </ul>
 <li> <code> module load fi-utils; fi-usage </code>
 <ul> <li> see all <i>FIDO</i> related quota usage </ul>
-<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU **(for your poster!)** </ul>
+<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU (<b>for your poster!</b>) </ul>
 </ul>
 </div>
 
