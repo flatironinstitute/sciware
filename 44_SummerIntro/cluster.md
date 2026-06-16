@@ -269,8 +269,9 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 <!-- 25 min mark? -->
 
 - Setup your cluster account with mentor
-   - Mentor requests account on FIDO, provides PIN
-   - Set your password on FIDO
+   - Mentor requests account on FIDO, waits for approval from center
+   - Once approved, mentor initiates setup and provides PIN
+   - Get email link to login to FIDO, use PIN Set your password
    - Get a one-time verification code on FIDO
    - `ssh -p 61022 USERNAME@gateway.flatironinstitute.org`
    - Setup google-authenticator
@@ -292,7 +293,7 @@ https://wiki.flatironinstitute.org/SCC/RemoteConnect
 <ul> <li> see <i>home</i> storage quota usage info </ul>
 <li> <code> module load fi-utils; fi-usage </code>
 <ul> <li> see all <i>FIDO</i> related quota usage </ul>
-<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU (**for your poster!**) </ul>
+<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU **(for your poster!)** </ul>
 </ul>
 </div>
 
