@@ -54,6 +54,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 - https://wiki.flatironinstitute.org/SCC/ReportingProblems
   - Email with details to scicomp@flatironinstitute.org
 - `#sciware` channel for software development discussions
+- `#code-help` channel
 - Your mentor!
 
 
@@ -83,17 +84,6 @@ https://sciware.flatironinstitute.org/44_SummerIntro
   </ul>
 </ul>
 </div>
-
-
-## Our rusty cluster overview
-
-<!-- TODO
-<img src="assets/cluster/rusty_diagram.png" style="height:350px; float: left; border:none; box-shadow:none;">
--->
-
-* 2 gateway nodes (`gateway.flatironinstitute.org`): only for remote access to log into other cluster nodes (not for running applications)
-* 4 login nodes (`rusty.flatironinstitute.org`): for submitting jobs
-* Many CPU and GPU nodes
 
 
 ### Quiz!
@@ -212,6 +202,13 @@ https://sciware.flatironinstitute.org/44_SummerIntro
   - Node types on different infiniband networks!
 - Rusty -- around 120 RTX6000Pro Blackwell, 192 H200, 240 H100, 290 A100 GPUs
 - `fi-nodes`
+
+
+## Our rusty cluster overview
+
+* 2 gateway nodes (`gateway.flatironinstitute.org`): only for remote access to log into other cluster nodes (not for running applications)
+* 4 login nodes (`rusty.flatironinstitute.org`): for submitting jobs
+* Many CPU and GPU nodes
 
 
 ### Rusty/popeye storage -- local
