@@ -87,7 +87,13 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 ## Our rusty cluster overview
 
+<!-- TODO
 <img src="assets/cluster/rusty_diagram.png" style="height:350px; float: left; border:none; box-shadow:none;">
+-->
+
+* 2 gateway nodes (`gateway.flatironinstitute.org`): only for remote access to log into other cluster nodes (not for running applications)
+* 4 login nodes (`rusty.flatironinstitute.org`): for submitting jobs
+* Many CPU and GPU nodes
 
 
 ### Quiz!
@@ -289,8 +295,7 @@ https://wiki.flatironinstitute.org/SCC/RemoteConnect
 <ul> <li> see <i>home</i> storage quota usage info </ul>
 <li> <code> module load fi-utils; fi-usage </code>
 <ul> <li> see all <i>FIDO</i> related quota usage </ul>
-<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU </ul>
-<ul> <li> quick and easy, but lags FIDO by ~1hr </ul>
+<ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU (**for your poster!**) </ul>
 </ul>
 </div>
 
