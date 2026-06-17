@@ -12,24 +12,20 @@ import { execSync } from "node:child_process";
 // If this array is empty, the page will display a message saying there are no upcoming events.
 const upcoming_events = [
   {
-    title: `Python Profiling`,
-    weekday: `Tuesday`,
-    date: `Dec. 16`,
-    time: `1:30 PM — 2:50 PM`,
-    location: `5th floor classroom`,
-    summary: html`Want to know why your Python code is slow? Come learn about the latest tools in Python profiling in this CCA-hosted Sciware! 
-
-In the first half, Lehman Garrison will focus on CPU profiling, using py-spy, speedscope, and other tools. We'll cover pure Python as well as mixed Python + compiled code, and teach you how to interpret profile visualizations. 
-
-In the second half, Philip Mocz will cover GPU profiling, focusing on xprof/tensorboard for JAX, as well as more general GPU profilers.`,
+    title: `Summer Sciware 3: Making Your Software Project "Just Work"`,
+    weekday: `Wednesday`,
+    date: `July 1`,
+    time: `10 AM — noon`,
+    location: `162 Fifth Ave, 3rd Floor classroom`,
+    summary: html`Learn the tools and practices that make a software project easy to set up, run, and share — environments, dependencies, and reproducibility. Part of the Summer Intro series for interns and newcomers to scientific computing at Flatiron.`,
   },
   {
-    title: `Advent of Code Wrap-Up`,
-    weekday: `Tuesday`,
-    date: `Dec. 16`,
-    time: `3 PM — 3:50 PM`,
-    location: `12th floor boardroom`,
-    summary: html`Come celebrate the Advent of Code season! Discuss your trials and tribulations from this year or come to learn about Advent of Code for next year.`,
+    title: `Summer Sciware 4: Developing Software Collaboratively with git and GitHub`,
+    weekday: `Wednesday`,
+    date: `July 8`,
+    time: `10 AM — noon`,
+    location: `162 Fifth Ave, 3rd Floor classroom`,
+    summary: html`Collaborate on code with confidence using git and GitHub: tracking changes, branching, pull requests, and working as a team. Part of the Summer Intro series for interns and newcomers to scientific computing at Flatiron.`,
   },
 ];
 
@@ -87,6 +83,10 @@ const past_events = [
   [`Session #37`, `What's New in Python 3.13 and NumPy 2`, `Feb 20, 2025`, `/37_WhatsNewInPython313`, ``],
   [`Session #38`, `Extended Intro to HPC`, `March 12, 2025`, `/IntroToHPC/slides.html`, `https://github.com/flatironinstitute/sciware/tree/main/IntroToHPC`],
   [`Session #40`, `Summer Sciware`, `June 3 - July 2, 2025`, `/40_SummerIntro`, `https://github.com/flatironinstitute/sciware/tree/main/40_SummerIntro`],
+  [`Session #43`, `Python Profiling for Research Software`, `December 16, 2025`, `/43_CCAPythonProfiling`, `https://github.com/flatironinstitute/sciware/tree/main/43_CCAPythonProfiling`],
+  [`Advent of Code`, `Wrap-Up`, `December 16, 2025`, null],
+  [`Session #44 day 1`, `Introduction to Scientific Computing at Flatiron`, `June 10, 2026`, `/44_SummerIntro/day1.html`, `https://github.com/flatironinstitute/sciware/tree/main/44_SummerIntro`],
+  [`Session #44 day 2`, `Hands-on Computing with the Cluster`, `June 17, 2026`, `/44_SummerIntro/day2.html`, `https://github.com/flatironinstitute/sciware/tree/main/44_SummerIntro`],
 ];
 
 const upcoming_events_list_items = upcoming_events.map(({ title, weekday, date, time, location, summary }) => {
