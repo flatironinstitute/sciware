@@ -4,10 +4,11 @@
 
 https://sciware.flatironinstitute.org/44_SummerIntro
 
-- Schedule
+- Schedule:
   - **July 1**: Summer Sciware 3: Making your Software Project "Just Work"
-  - **July 8**: Summer Sciware 4: Git and Github and You
-  - All 10 AM - noon in the IDA Auditorium (162 Fifth Ave, 2nd Floor)
+  - **July 8**: Summer Sciware 4: Git and Github
+- 10 AM - noon in the **162 3rd floor classroom**
+- **July 22, 2-4pm**: Summer Sciware open office hour/poster help
 
 
 ## Today's agenda
