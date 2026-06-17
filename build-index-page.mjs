@@ -17,7 +17,7 @@ const upcoming_events = [
     date: `July 1`,
     time: `10 AM — noon`,
     location: `162 Fifth Ave, 3rd Floor classroom`,
-    summary: html`Learn the tools and practices that make a software project easy to set up, run, and share — environments, dependencies, and reproducibility. Part of the Summer Intro series for interns and newcomers to scientific computing at Flatiron.`,
+    summary: html`Learn the tools and practices that make a software project easy to set up, run, and share — managing environments and dependencies with modern tools like uv and pixi for reproducible projects. Part of the Summer Intro series for interns and newcomers to scientific computing at Flatiron.`,
   },
   {
     title: `Summer Sciware 4: Developing Software Collaboratively with git and GitHub`,
