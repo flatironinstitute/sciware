@@ -1,6 +1,20 @@
 # Making Your Software Project "Just Work"
 ## Project-centric environments and lockfiles with uv and Pixi
 
+## Let's set up an environment the "traditional" way
+
+- Start with some Python scripts importing NumPy
+- No `pyproject.toml` or anything
+
+
+## Traditional: central venv + pip install
+
+- Create a venv: `python -m venv ~/venvs/research`
+- Activate: `source ~/venvs/research/bin/activate`
+- Install a package: `pip install numpy`
+- Or similarly with conda:
+  - `conda create -n myenv`, `conda activate myenv`, `conda install numpy`
+
 
 ## Python projects have dependencies
 
@@ -17,21 +31,6 @@
 - (Conda/Pixi can install more than just Python packages — we'll come back to that)
 
 
-## Let's set up an environment the "traditional" way
-
-- Start with some Python scripts importing NumPy
-- No `pyproject.toml` or anything
-
-
-## Traditional: central venv + pip install
-
-- Create a venv: `python -m venv ~/venvs/research`
-- Activate: `source ~/venvs/research/bin/activate`
-- Install a package: `pip install numpy`
-- Or similarly with conda:
-  - `conda create -n myenv`, `conda activate myenv`, `conda install numpy`
-
-
 ## What can go wrong?
 
 1. You have to inspect your scripts to figure out their dependencies
@@ -42,7 +41,7 @@
 ## Solve (1) & (2) with a `pyproject.toml`
 
 - Add `numpy < 2` to the deps
-- Install the project in editable mode: reads `pyproject.toml`
+- Install the project in editable mode: reads `pyproject.toml` (`pip install -e .`)
 - ...but we haven't solved (3)
 
 
@@ -60,6 +59,12 @@
 - (*) We'll see "workspaces" for consistent, multi-project envs though
 
 
+## The Ecosystem of Python Package Managers
+- Overview of different ways to manage python packages
+- pip + venv
+- uv
+- conda/pixi
+
 
 # uv: a project-centric package manager
 
@@ -72,6 +77,11 @@
   - runs your code in the venv
 - No manual activation → no chance to use the wrong env
 - Automatically installs the local package in editable mode
+
+
+## Installing uv
+- If you want to follow along, go to the Astral website and follow the uv install docs
+- Minimally invasive
 
 
 ## Other uv selling points
@@ -90,10 +100,11 @@
 
 ## Project interface
 
-- `uv init`, `uv add`, `uv sync`, `uv run`
+- `uv init`, `uv add`, `uv sync`, `uv run`, `uv lock`
 - `uv add` works with local packages (or use workspaces)
 - Dev-only dependencies: `uv add --dev`
 - ...and the generalization: groups (`uv add --group tests`)
+- Groups versus extras
 
 
 ## Lockfiles
@@ -105,11 +116,11 @@
 
 ## pip interface
 
-- `uv venv`, `uv pip install`
+- `uv venv`, `uv pip install`, `uv run --no-sync`
 - More control, but more chance to make mistakes
 - Don't need to activate the venv to install — do need to to run
 - Can be a good option for projects that mix Python & compiled code
-- uv venvs are fully pip-compatible and automatically git-ignored
+- uv venvs are fully pip-compatible (and project-interface compatible) and automatically git-ignored
 
 
 ## Python versions
@@ -121,12 +132,13 @@
 
 ## More uv bells and whistles
 
-- `uvx`: run a package in an ephemeral, isolated environment
+- `uvx`: run a package in an ephemeral, isolated environment, same as pipx
 - `uv tool`: install global commands from packages
   - (disbatch, meson, pre-commit, py-spy, ruff)
 - Manually create ephemeral envs: `uv run --with numpy,matplotlib`
 - "Scrolls": standalone scripts with embedded deps (`uv add --script`)
   - Great for email, Slack, or gists
+  - PEP 723
 - Broad ecosystem support: dedicated GH Action, Docker distroless
 - `uv_build` build backend, good for Python-only projects
 
@@ -135,6 +147,7 @@
 
 - Just need `ipykernel`
   - (can add to dev deps, or VS Code will install it)
+- `uv run --with jupyter jupyter lab`, probably best for laptop
 
 
 ## uv workspace
@@ -158,7 +171,7 @@
 - Astral bought by OpenAI; plans for uv unclear. Still, uv could be forked.
 - Still waiting on features like venv-in-cache (centralized venvs) for cluster users
 - Team is active in next-gen Python packaging (WheelNext, PEP 817, 825)
-- Leading wheel variant support (generalized platform tags), complex installs like PyTorch
+- Leading support for Wheel Variants (generalized platform tags), complex installs like PyTorch
 - uv + pip + wheels growing more conda-like (build/package/distribute compiled deps, e.g. CUDA)
 - First-class source installs are a clear advantage over conda for HPC / complex builds
   - Can still be a footgun
@@ -192,6 +205,7 @@
   - (like uv is to PyPI)
 - Project-centric and lockfile-based, instead of central named envs you activate
 - `pixi global` for user-wide tools (cf. conda base / `uv tool`)
+- Downsides of conda: shared envs can get modified, injects things in your bashrc (maybe Pixi does too?), isn't ABI compatible with non-conda software (e.g. modules)
 
 
 ## uv or Pixi?
