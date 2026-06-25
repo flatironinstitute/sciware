@@ -523,3 +523,11 @@ pixi run python analyze.py    # run in the project env — no activation
 - Pure-Python / PyPI stack → **uv**
 - Need non-Python deps from conda-forge (compilers, CUDA, R, …) → **Pixi**
 - Same project-centric mental model either way, so switching is cheap
+
+
+
+# Survey
+
+<img src="assets/QR_46.3.png" width="30%">
+
+

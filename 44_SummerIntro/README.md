@@ -3,7 +3,7 @@
 
 - [day 1](https://sciware.flatironinstitute.org/44_SummerIntro/day1.html) ([source](1-claude.md))
 - [day 2](https://sciware.flatironinstitute.org/44_SummerIntro/day2.html) ([source](cluster.md))
-- day 3
+- [day 3](https://sciware.flatironinstitute.org/44_SummerIntro/day3.html) ([source](3-uvpixi.md))
 - day 4
 - office hours
 
