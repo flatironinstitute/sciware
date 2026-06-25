@@ -12,22 +12,21 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day3.html
 </style>
 
 
-## We start with a couple of Python scripts
+## We start with a small Python script
 
-- A small analysis, split across two files. No `pyproject.toml`, no environment — yet.
-
-```text
-uv-demo/
-├── analyze.py        # the script we run
-└── measurements.py   # helper functions it imports
-```
+- A small analysis in a single file, `analyze.py`. No `pyproject.toml`, no environment — yet.
 
 ```python
-# analyze.py
-from measurements import summarize
+# analyze.py  —  our whole "project"
+import numpy as np
 
-values = [12.3, 11.8, -999.0, 12.1, 12.5, -999.0, 11.9]
-mean, std = summarize(values)
+def summarize(values):
+    arr = np.asarray(values, dtype=np.float_)
+    arr[arr == -999.0] = np.NaN          # -999.0 marks a failed reading
+    return np.nanmean(arr), np.nanstd(arr)
+
+readings = [12.3, 11.8, -999.0, 12.1, 12.5, -999.0, 11.9]
+mean, std = summarize(readings)
 print(f"mean = {mean:.3f}, std = {std:.3f}")
 ```
 
@@ -36,7 +35,7 @@ print(f"mean = {mean:.3f}, std = {std:.3f}")
 
 ## Python projects have dependencies
 
-- `analyze.py` → `measurements.py` → `import numpy`
+- `analyze.py` → `import numpy`
 - Today we *declare* dependencies in a `pyproject.toml`
   - older methods: `setup.py`, `setup.cfg`, `requirements.txt`
 - To run the project, Python has to *find* those dependencies at import time
@@ -60,11 +59,17 @@ pip install numpy                      # install into it
 python analyze.py                      # run
 ```
 
-- Or the `conda` equivalent: `conda create -n research`, `conda activate research`, `conda install numpy`. Still centralized.
+- Or the `conda` equivalent — still centralized:
+
+```bash
+conda create -n research   # create a named env
+conda activate research    # activate it
+conda install numpy        # install into it
+```
 - We `pip install numpy` → we get the *latest* NumPy (2.x). Then:
 
 ```text
-  File "measurements.py", line 11, in clean
+  File "analyze.py", line 8, in summarize
     arr = np.asarray(values, dtype=np.float_)
 AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.
 ```
@@ -72,10 +77,13 @@ AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float6
 #note: Demo live: create the venv, activate, `pip install numpy`, run, and let it crash — the traceback is the hook for the next slide. Use **Python 3.12**: it's the last version with NumPy 1 wheels, so when we pin `numpy < 2` in a moment, the install stays fast (from a wheel). On 3.13+, pip finds no wheel and compiles NumPy from source — minutes of dead air in front of the room. Make sure `python3.12` is on your PATH first (e.g. `uv python install 3.12`, pyenv, or a module).
 
 
-## What can go wrong?
+## What went wrong?
 
-1. **Hidden dependencies** — nothing announced that this project needs NumPy; you have to read *every* file (the `import numpy` is down in `measurements.py`, not `analyze.py`)
+1. **Undeclared dependencies** — nothing *records* that this project needs NumPy: no `pyproject.toml`, no `requirements.txt`. You only find out by reading the code — or when it crashes
 2. **No version constraints** — `pip install numpy` grabbed NumPy 2, but the code needs NumPy 1. Nothing recorded that requirement.
+
+And a latent issue:
+
 3. **One env, many projects** — reuse `~/venvs/research` for project B, upgrade a package, and you can silently break project A
 
 
@@ -96,7 +104,7 @@ pip install -e .
 ```
 
 - ⚠️ An old dependency can constrain your *Python*: NumPy 1's last wheels are for **Python 3.12** — use 3.12 or earlier, or pip compiles NumPy from source on 3.13+ (`uv` automates this for us later)
-- ✅ (1) deps discoverable &nbsp; ✅ (2) version pinned &nbsp; ❌ (3) still one shared env
+- ✅ (1) deps discoverable &nbsp; ✅ (2) version range specified &nbsp; ❌ (3) still one shared env
 
 
 ## A 4th pitfall: the "wrong-environment" problem
@@ -164,9 +172,9 @@ python analyze.py             # ✗ still in A's venv!
   </div>
 </div>
 
-- The venv lives *beside* the code (a `.venv/` in the project), so projects can't interfere → fixes **(3)** and **(4)**
+- The venv lives *beside* the code (a `.venv/` in the project), so projects can't cross-talk
 - Reproducible & **disposable**: delete `.venv`, recreate it from scratch anytime
-- (*) Need a consistent env across several projects? → **workspaces** (later)
+- (*) Need a consistent env across several projects? → **workspaces** (bonus slides, if we have time)
 
 
 ## The ecosystem of Python package managers
@@ -201,10 +209,14 @@ python analyze.py             # ✗ still in A's venv!
 <p class="eco-note"><b>uv</b> is to <b>pip</b> what <b>pixi</b> is to <b>conda</b>: a fast, modern, project-centric frontend.<br>Today: mostly <b>uv</b>, with a look at <b>pixi</b> at the end.</p>
 
 
+
 # uv: a project-centric package manager
 
 
 ## Introducing uv
+
+<div style="display:flex; align-items:center; justify-content:center; gap:48px;">
+<div>
 
 - `uv run script.py`: one command that
   - creates a venv (`uv venv`),
@@ -213,6 +225,10 @@ python analyze.py             # ✗ still in A's venv!
   - runs your code in the venv
 - No manual activation → no chance to use the wrong env
 - Automatically installs the local package in editable mode
+
+</div>
+<img src="assets/uv-logo.svg" alt="uv logo" style="height:140px; border:none; box-shadow:none; flex-shrink:0;">
+</div>
 
 
 ## Installing uv
@@ -231,10 +247,12 @@ python analyze.py             # ✗ still in A's venv!
 ## Other uv selling points
 
 - Lightning-fast dependency resolution and installation
-  - (see [Charlie Marsh's talk](https://www.youtube.com/watch?v=gSKTfG1GXYQ) for more)
+  - see [Charlie Marsh's talk](https://www.youtube.com/watch?v=gSKTfG1GXYQ) for more
 - Great error messages and docs (`uv run --help`, `uv help run`)
 - Developed openly, permissive licensing (dual MIT / Apache-2)
-- Wide adoption (see next slide)
+- Wide adoption
+  - About 25% of all PyPI downloads originated from uv as of 1 year ago ([source](https://discuss.python.org/t/pypi-downloads-statistics-and-continuous-integration/91810/3))
+  - Highly active GitHub (https://github.com/astral-sh/uv/)
 
 
 ## Adoption
@@ -282,6 +300,8 @@ uv gives you two ways to work — pick one per project:
 Our project already has a `pyproject.toml`. The whole venv dance becomes:
 
 ```bash
+# Starting with no pyproject.toml
+uv init --bare
 uv add "numpy<2"      # record the dep → updates pyproject.toml + uv.lock
 uv run analyze.py     # build the env to match, then run — no activation
 ```
@@ -337,7 +357,9 @@ plot = ["matplotlib"]             # uv add --optional plot matplotlib
 
 - Pins every package's exact version + hash → a **reproducible**, **disposable** env (delete `.venv`, `uv sync` rebuilds it)
   - skips the **"should I add an upper bound?"** debate: prefer **lower bounds only** (`numpy>=1.26`) + the lockfile of known-good versions — speculative caps like `numpy<2` propagate downstream and cause conflicts
-  - imperfect for **libraries**, which usually don't ship a lockfile
+- Should I add `uv.lock` to git?
+  - Applications/pipelines: **yes!** Records known-good versions.
+  - Libraries: sometimes. Lockfiles don't get published in wheels/sdist, so not much point.
 - Technically human-readable TOML — but generated & maintained by **tooling** (`uv lock`, `uv sync`); you rarely read or edit it yourself
 
 ```toml
@@ -360,14 +382,16 @@ wheels = [
 ```bash
 uv venv                       # create a .venv (no project files needed)
 uv pip install numpy          # install into it, pip-style
-uv run --no-sync analyze.py   # run without re-syncing from the lockfile
+source .venv/bin/activate     # activate the venv
+python analyze.py             # run
 ```
 
 - More control, but more chances to slip up — doesn't use the lockfile
 - No need to activate to install; you *do* to run `python` directly (or just use `uv run --no-sync`)
-- Can be useful for projects that mix Python with compiled code (easy way to force rebuild)
+- **Good way to get started with uv!** Low barrier to entry, familiar workflow but **blazingly fast**.
+- Also useful for projects that mix Python with compiled code (easy way to force rebuild)
 - uv venvs are ordinary, PEP-standardized venvs: pip-compatible, project-interface-compatible, auto git-ignored
-  - Contrast with conda/Pixi, which lock you into specific (albeit open source) tooling
+  - Contrast with conda/Pixi, which lock you into specific tooling
 
 
 ## Python versions
@@ -376,7 +400,8 @@ uv run --no-sync analyze.py   # run without re-syncing from the lockfile
   - plays nice with cluster modules
 - Pin a version per-project in a `.python-version` file (`uv python pin 3.12`) — a lockfile for your Python
 - `requires-python` in `pyproject.toml` declares the *range* your code supports — not an exact pin (don't upper-bound it!)
-- **Back to our demo:** `numpy < 2` needed Python ≤ 3.12 — pin `3.12` and uv fetches it for you. No manual `python3.12`, no surprise source build.
+- **Back to our demo:** NumPy 1 only publishes wheels for Python ≤ 3.12 — pin `3.12` and uv fetches it for you. Avoids surprise source build.
+- Most uv commands accept `-p`, e.g. `-p 3.12` or `-p 3.14t`
 
 <pre class="term"><span class="pr">❯</span> uv python list
 cpython-3.14.3-linux-x86_64-gnu     <span class="dl">&lt;download available&gt;</span>
@@ -420,12 +445,14 @@ Run it often? **Bake the deps into the script** — a "scroll" (PEP 723):
 # requires-python = ">=3.11"
 # dependencies = ["matplotlib", "numpy"]
 # ///
+import numpy as np
 import matplotlib.pyplot as plt
 ```
 
 - `uv run plot.py` reads the embedded metadata, builds the env, and runs — no `--with`, no `pyproject.toml`
 - The `# /// script` block is **PEP 723** — a Python standard, not uv-specific (pipx and hatch read it too)
-- Perfect for emailing/Slacking/gisting a one-file tool; add deps with `uv add --script plot.py numpy`
+- Perfect for emailing/Slacking/gisting a one-file tool; add deps with `uv add --script plot.py numpy matplotlib`
+- Only for **standalone scripts**, not code that is part of a bigger project (where you'd use `pyproject.toml`)
 
 <!-- niche/advanced — kept for reference, not shown
 ## Ecosystem & build backend
@@ -444,10 +471,45 @@ uv add --dev ipykernel              # makes the project env available as a kerne
 uv run --with jupyter jupyter lab   # launch Jupyter (nice on a laptop)
 ```
 
-- In VS Code, just select `.venv` as the kernel — it'll offer to install `ipykernel` for you
+- In VS Code, just select `.venv` as the kernel source — it'll offer to install `ipykernel` for you
+- Dedicated UV guide for Jupyter: https://docs.astral.sh/uv/guides/integration/jupyter/
+- Cluster users: a venv created with uv will work fine with [JupyterHub custom kernels (see FI Wiki)](https://wiki.flatironinstitute.org/SCC/JupyterHub)
 
 
-## uv workspace (advanced)
+## Future of uv
+
+- Among the fastest-growing dev tools by GitHub stars
+- Astral was acquired by OpenAI; development seems to be carrying on as normal — but the future of AI companies is impossible to predict (uv is permissively licensed and could be forked)
+  - Why should we care? Think about what happened with the Conda default channel!
+- Upcoming features
+  - **Centralized venvs** (venv-in-cache): will make it easier for HPC users to keep venvs out of their quota-limited space
+  - **Wheel Variants** (PEPs 817 & 825) — auto-pick the **optimal build for your machine**, e.g. the right GPU/CUDA wheel (think PyTorch, JAX)
+- The uv team plays a leading role in the next generation of wheels:
+  - **WheelNext** — first-class **compiled / non-Python dependencies** in wheels (conda's old advantage): https://wheelnext.dev/
+- uv + wheels seem poised to become the default for many scientists who would have reached for conda before (also Pixi is promising, too)
+- And for HPC/cluster users: uv's first-class **source installs** give it an edge over Pixi (although Pixi adding experimental support)
+
+
+## Bonus: Conflicting Dependencies
+
+```bash
+uv init --bare
+uv add 'numpy<2'
+uv add 'scipy>=1.18'
+```
+
+```
+  × No solution found when resolving dependencies for split (markers: python_full_version >= '3.12'):
+  ╰─▶ Because only scipy<=1.18.0 is available and scipy==1.18.0 depends on numpy>=2.0.0, we can conclude that scipy>=1.18.0 depends on numpy>=2.0.0.
+      And because your project depends on numpy<2 and scipy>=1.18, we can conclude that your project's requirements are unsatisfiable.
+
+      hint: While the active Python version is 3.11, the resolution failed for other Python versions supported by your project. Consider limiting
+      your project's supported Python versions using `requires-python`.
+  help: If you want to add the package regardless of the failed resolution, provide the `--frozen` flag to skip locking and syncing.
+```
+
+
+## Bonus: uv workspace (advanced)
 
 - One repo, several packages → **shared resolution and a single `.venv`**
 - List members in `[tool.uv.workspace]` in the top-level `pyproject.toml`
@@ -456,31 +518,64 @@ uv run --with jupyter jupyter lab   # launch Jupyter (nice on a laptop)
 - Members resolve together → no version skew between your own projects
 
 
-## uv on the FI clusters
 
-- `module load python uv` — module Python + uv's cache on your GPFS home (doesn't shadow your own uv)
-- Fast installs **hard-link** from the cache → cache and `.venv` must share a filesystem. Seeing this?
+# uv on the FI clusters
+## Best Practices on Rusty & Popeye
+
+
+## When is uv the right tool on the clusters?
+
+**Short answer: most of the time**
+
+- We've made our modules **uv-aware**:
+   - `python` module: sets `UV_PYTHON` to tell uv to use its Python
+   - `uv` module: provides a uv installation and tells uv to put its cache in `$HOME/.cache`
+   - `uv` module **does not override** a user-installed uv binary. So install your own, and keep it up to date with `uv self update`!
+- Typical usage:
+
+```bash
+module load python uv
+
+uv run ...  # defaults to using Python from modules
+```
+
+- Also valid to use uv on its own, without a Python module. Especially useful if you want a Python version we don't have in modules:
+
+```bash
+module load uv
+
+uv run -p 3.14 ...
+```
+
+- uv will fetch and install its own Python. Careful, will count against your **file count quota!**
+
+
+## Using uv on the cluster
+
+**When to not use uv:**
+
+- When you need `--system-site-packages`
+  - Creating a venv with `--system-site-packages` lets you use the pre-built Python packages in the `python` module
+  - uv will create such an environment, but won't respect it when resolving packages!
+  - First install/sync after creating an environment will overlay the system site packages. Not an error, but maybe not what you want.
+- Some Python packages, like `mpi4py`, should be loaded from modules (`python-mpi`) and not installed with uv, pip, or conda/pixi
+- See the [uv Python cluster wiki page](https://wiki.flatironinstitute.org/SCC.Software/UvPython) for more info
+
+
+## Cluster gotchas
+
+- uv uses **hard-links** to quickly create venvs from its cache → the cache and your `.venv` must share a filesystem
+- Hard-linking across filesystems fails → uv falls back to slow copies:
 
 ```text
 warning: Failed to hardlink files; falling back to full copy.
          …cache and target directories are on different filesystems…
 ```
 
-- **Fix:** `module load uv` (puts the cache beside your venvs) — or silence with `UV_LINK_MODE=copy` (copies are slower)
-- The cache is **many small files** → run `uv cache prune` occasionally to stay under your GPFS **inode quota**
-- uv ignores `--system-site-packages` during resolution · see the cluster wiki for setup
-
-
-## Future of uv
-
-- Among the fastest-growing dev tools by GitHub stars
-- Astral was acquired by OpenAI; development seems to be carrying on as normal — but the future of AI companies is impossible to predict (uv is permissively licensed and could be forked)
-- **Centralized venvs** (venv-in-cache) are landing — a big win for cluster users
-- The uv team plays a **leading role** in the next generation of wheels:
-  - **WheelNext** — first-class **compiled / non-Python dependencies** in wheels (conda's old advantage)
-  - **Wheel Variants** (PEPs 817 & 825) — auto-pick the **optimal build for your machine**, e.g. the right GPU/CUDA wheel (think PyTorch)
-- uv + wheels growing more conda-like: build, package & distribute compiled deps (e.g. CUDA)
-- First-class **source installs** — an edge over conda for HPC / complex builds (still a footgun; Pixi is moving toward first-class source installs too)
+- **If you see this:** run `module load uv`, which puts the cache on the home filesystem (which is where venvs should be)
+- The cache is **many small files** → occasionally clear out your uv cache to stay under your **FIDO quota**:
+  - `uv cache prune`: removes unreachable cache entries, always safe
+  - `uv cache purge`: removes everything from cache, also safe, but can make subsequent installs slower
 
 
 
@@ -492,6 +587,10 @@ warning: Failed to hardlink files; falling back to full copy.
 - Same idea as uv — per-project env, lockfile, `pixi run` — but it pulls from **conda channels** (conda-forge), not PyPI
 - Reach for it when your dependencies aren't just Python packages:
   - compilers, MPI, CUDA toolkit, R, system libraries — things pip/uv generally can't install
+- On a cluster, usually prefer modules for compiled dependencies, especially when interacting with MPI
+- https://pixi.prefix.dev/
+
+<img src="assets/pixi-logo.svg" alt="Pixi logo" style="display:block; margin:28px auto 0; height:210px; border:none; box-shadow:none;">
 
 
 ## Quick tour
@@ -515,14 +614,16 @@ pixi run python analyze.py    # run in the project env — no activation
   - project-centric + lockfile, instead of central named envs you manually activate
   - no `conda init` block bloating your `.bashrc` — it just adds `pixi` to your `PATH`
 - `pixi global` installs user-wide tools — cf. conda's base env or `uv tool`
-- Inherits conda's *ecosystem* caveat: conda-forge binaries aren't ABI-compatible with the cluster **modules** — don't mix the two
+- Inherits conda's *ecosystem* caveat: conda-forge packages aren't binary-compatible with the cluster **modules** — don't mix the two
 
 
 ## uv or Pixi?
 
 - Pure-Python / PyPI stack → **uv**
+- Working on cluster: usually **uv**
 - Need non-Python deps from conda-forge (compilers, CUDA, R, …) → **Pixi**
 - Same project-centric mental model either way, so switching is cheap
+- **Caveat**: we (Sciware) don't have much experience with Pixi! But it's gaining community traction and seems like a promising option if you're working in the conda ecosystem.
 
 
 
