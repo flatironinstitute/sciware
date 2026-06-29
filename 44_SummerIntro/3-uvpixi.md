@@ -12,12 +12,19 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day3.html
 </style>
 
 
-## We start with a small Python script
+## Outline of Package Management
 
-- A small analysis in a single file, `analyze.py`. No `pyproject.toml`, no environment — yet.
+- Dependencies
+- Environments
+  - Why
+  - How
+- How `uv` makes it safer
+
+
+## Start with a small Python script
 
 ```python
-# analyze.py  —  our whole "project"
+# analyze.py (the entire project)
 import numpy as np
 
 def summarize(values):
@@ -30,43 +37,72 @@ mean, std = summarize(readings)
 print(f"mean = {mean:.3f}, std = {std:.3f}")
 ```
 
-- **Goal:** run this on a machine that doesn't have its dependencies yet
+
+## Dependency
+
+- Did you notice `import numpy as np`?
+- Installing python does not install numpy
+  - We install it separately with `pip`
+- Installation places a bunch of python code in a known directory structure
+- `import` → the interpreter loads that code & makes the functions accessible
 
 
-## Python projects have dependencies
+## Versions
 
-- `analyze.py` → `import numpy`
-- Today we *declare* dependencies in a `pyproject.toml`
-  - older methods: `setup.py`, `setup.cfg`, `requirements.txt`
-- To run the project, Python has to *find* those dependencies at import time
-- Where does it look? In a **virtual environment** ("venv")
-  - in gory detail: a list of directories on `sys.path`
+- Dependencies/libraries have **versions**
+- A library's functions can change a lot between versions!
+- `import` gives you whatever version comes first in `sys.path`
 
 
-## How do packages get into the venv?
+## Attempt 1: system python?
 
-- You put them there with a **frontend**: `pip`, `conda`, `uv`, or `pixi`
-- The frontend resolves the dependency graph and installs packages into the venv
-- `conda` / `pixi` can install more than *Python* packages — we'll come back to that
+- `$ python analyze.py`
+- Calls whatever my system thinks `python` is
+- Accesses whatever "numpy" shows up first in the path
+- I don't know what the system python is
+  - I certainly don't want to change its installed packages!
+  - might break my system (ask me how I know...)
 
 
-## A "traditional" way: one central venv + pip
+## Controlled *environment*
+
+- We handle consistency using **virtual environments** (`venv`)
+- `venv` sets up an environment-specific alias for the python interpreter executable
+- and environment-specific directories for installed dependencies
+- Standard part of Python (PEP 405)
+
+
+## Aside: don't share environments
+
+- You may see people using the same `venv` for many projects
+- This is just recreating system python with extra steps!
+
+
+## Attempt 2: Use an *environment*
 
 ```bash
-python3.12 -m venv ~/venvs/research    # create a venv — Python 3.12 (why: next slides)
-source ~/venvs/research/bin/activate   # activate it
-pip install numpy                      # install into it
+python3.10 -m venv ~/venvs/analyze     # create a venv
+source ~/venvs/analyze/bin/activate    # activate it
+which python                           # confirm I'm in the venv
 python analyze.py                      # run
 ```
 
-- Or the `conda` equivalent — still centralized:
+```text
+  File "analyze.py", line 3, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+```
+
+Oops: no numpy
+
+
+## Attempt 2b: Install the dependency
 
 ```bash
-conda create -n research   # create a named env
-conda activate research    # activate it
-conda install numpy        # install into it
+which python          # confirm environment
+pip install numpy     # install into it
+python analyze.py     # run
 ```
-- We `pip install numpy` → we get the *latest* NumPy (2.x). Then:
 
 ```text
   File "analyze.py", line 8, in summarize
@@ -74,20 +110,35 @@ conda install numpy        # install into it
 AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.
 ```
 
-#note: Demo live: create the venv, activate, `pip install numpy`, run, and let it crash — the traceback is the hook for the next slide. Use **Python 3.12**: it's the last version with NumPy 1 wheels, so when we pin `numpy < 2` in a moment, the install stays fast (from a wheel). On 3.13+, pip finds no wheel and compiles NumPy from source — minutes of dead air in front of the room. Make sure `python3.12` is on your PATH first (e.g. `uv python install 3.12`, pyenv, or a module).
+Oops: *wrong* numpy...
 
 
-## What went wrong?
+## Attempt 2c: Use the right numpy
 
-1. **Undeclared dependencies** — nothing *records* that this project needs NumPy: no `pyproject.toml`, no `requirements.txt`. You only find out by reading the code — or when it crashes
-2. **No version constraints** — `pip install numpy` grabbed NumPy 2, but the code needs NumPy 1. Nothing recorded that requirement.
+```bash
+which python              # confirm environment
+pip install numpy==1.26   # downgrade numpy
+python analyze.py         # *now* it works
+```
 
-And a latent issue:
-
-3. **One env, many projects** — reuse `~/venvs/research` for project B, upgrade a package, and you can silently break project A
+Finally! Why was that so hard...?
 
 
-## Fix (1) & (2): a `pyproject.toml`
+## Don't make users guess
+
+- Imagine having to guess and check for every dependency in a big package!
+- `pyproject.toml`: *declare* the needed dependencies & versions
+  - older methods: `setup.py`, `setup.cfg`, `requirements.txt`
+- Packages are installed by a **frontend** (`pip`, `conda`, `uv`, `pixi`...)
+  - Frontend builds a *dependency graph* to determine all needed dependencies
+  - (`numpy` might have dependencies of its own...)
+- `conda` / `pixi` can also install non-Python packages (more later)
+
+
+## pyproject.toml makes it easy
+
+<div style="display:flex; align-items:center; justify-content:center; gap:48px;">
+<div>
 
 ```toml
 [project]
@@ -96,34 +147,64 @@ version = "0.1"
 dependencies = ["numpy < 2"]
 ```
 
-- Dependencies now live *with the code* — discoverable, and with a version constraint
-- Install the project itself in **editable mode**; pip reads `pyproject.toml`:
+- Declared dependencies: just `pip install PACKAGE` and you're done
+  - If it's a package you're developing, install in editable mode: `pip install -e .`
+- Documented & discoverable dependencies!
+- Consistency--makes sure every user, everywhere, can use your package
+</div>
+
+<img src="assets/uv/sunny-road-antoino-cinotti.jpg"
+alt="An image of an open rural road under a bright clear sky. 'Sunny road in Tuscany' by Antonio Cinotti is licensed under CC BY-NC-ND 2.0."
+style="height:280px; border:none; box-shadow:none; flex-shrink:0;" />
+<div style="font-size:xx-small">"Sunny road in Tuscany" by Antonio Cinotti is licensed under CC BY-NC-ND 2.0.</div>
+</div>
+
+
+## Not so fast
+
+<img src="assets/uv/stormy-fields-daz-smith.jpg"
+alt="A dark black and white image of a rural road in a storm. 'stormy fields' by Daz Smith is licensed under CC BY-NC-ND 2.0."
+style="height:280px; border:none; box-shadow:none; flex-shrink:0;"
+/>
+<div style="font-size:xx-small">"stormy fields" by Daz Smith is licensed under CC BY-NC-ND 2.0.</div>
+
+
+## What can go wrong
+
+- Using the wrong `venv`
+- Using one big `venv` for everything
+  - Version conflicts
+  - silent upgrades
+
+
+## the "wrong-environment" problem
 
 ```bash
-pip install -e .
-```
-
-- ⚠️ An old dependency can constrain your *Python*: NumPy 1's last wheels are for **Python 3.12** — use 3.12 or earlier, or pip compiles NumPy from source on 3.13+ (`uv` automates this for us later)
-- ✅ (1) deps discoverable &nbsp; ✅ (2) version range specified &nbsp; ❌ (3) still one shared env
-
-
-## A 4th pitfall: the "wrong-environment" problem
-
-```bash
-# yesterday — set up and ran project A
+# before lunch — set up and ran project A
 cd ~/projA
 source .venv/bin/activate     # activate A's environment
 python train.py               # ✓ runs with A's packages
 
-# today — same terminal still open; switch to project B
+# after lunch — same terminal still open; switch to project B
 cd ~/projB
 python analyze.py             # ✗ still in A's venv!
 #   ModuleNotFoundError: No module named 'pandas'
 #   ...or worse: it runs, but with the wrong versions → subtly wrong results
 ```
 
-- Manual activation is a step you can always forget
-- Pitfalls (3) & (4) share one root cause: **shared, manually-managed environments**
+
+## Or you get false success
+
+- Maybe `pyproject.toml` left out some dependencies
+  - but you installed something manually
+  - so your package still works... *for you*
+  - but it's a hassle for others to figure it out
+
+
+Conclusion: We should *automate* using the right `venv` for every project.
+
+
+#note: Demo live: create the venv, activate, `pip install numpy`, run, and let it crash — the traceback is the hook for the next slide. Use **Python 3.12**: it's the last version with NumPy 1 wheels, so when we pin `numpy < 2` in a moment, the install stays fast (from a wheel). On 3.13+, pip finds no wheel and compiles NumPy from source — minutes of dead air in front of the room. Make sure `python3.12` is on your PATH first (e.g. `uv python install 3.12`, pyenv, or a module).
 
 
 
@@ -131,53 +212,21 @@ python analyze.py             # ✗ still in A's venv!
 ## A conceptual framework for projects that "just work"
 
 
-## A venv per project
+## A venv per project, used automatically
 
-<style>
-.pce { display:flex; gap:56px; justify-content:center; align-items:flex-start; margin:6px 0 4px; }
-.pce-col { flex:0 1 430px; }
-.pce-col h3 { text-align:center; margin:0 0 14px; font-size:0.9em; }
-.pce-chips { display:flex; gap:10px; justify-content:center; }
-.pce-chip { border:2px solid #537eba; border-radius:8px; padding:6px 10px; font-weight:bold; font-size:0.72em; }
-.pce-stack { display:flex; flex-direction:column; align-items:center; gap:5px; }
-.pce-down { color:#537eba; font-size:1.2em; line-height:1; }
-.pce-shared { border:2px dashed #537eba; border-radius:8px; padding:12px; text-align:center; font-weight:bold; font-size:0.74em; margin-top:6px; }
-.pce-card { border:2px solid #537eba; border-radius:8px; padding:8px; text-align:center; }
-.pce-card .lbl { font-weight:bold; font-size:0.72em; margin-bottom:6px; }
-.pce-venv { border:2px dashed #537eba; border-radius:6px; padding:5px; font-size:0.66em; font-family:monospace; }
-.pce-note { text-align:center; margin-top:12px; font-size:0.72em; }
-.pce-bad { color:#c0392b; }
-.pce-good { color:#2e7d32; }
-</style>
+In an ideal world:
 
-<div class="pce">
-  <div class="pce-col">
-    <h3>Traditional: one central venv</h3>
-    <div class="pce-chips">
-      <div class="pce-stack"><span class="pce-chip">Project A</span><span class="pce-down">↓</span></div>
-      <div class="pce-stack"><span class="pce-chip">Project B</span><span class="pce-down">↓</span></div>
-      <div class="pce-stack"><span class="pce-chip">Project C</span><span class="pce-down">↓</span></div>
-    </div>
-    <div class="pce-shared">one shared venv<br>~/venvs/research</div>
-    <p class="pce-note pce-bad">⚠ upgrade a package for B → silently break A</p>
-  </div>
-  <div class="pce-col">
-    <h3>Project-centric: a venv per project</h3>
-    <div class="pce-chips">
-      <div class="pce-card"><div class="lbl">Project A</div><div class="pce-venv">.venv</div></div>
-      <div class="pce-card"><div class="lbl">Project B</div><div class="pce-venv">.venv</div></div>
-      <div class="pce-card"><div class="lbl">Project C</div><div class="pce-venv">.venv</div></div>
-    </div>
-    <p class="pce-note pce-good">✓ the venv is a property of the project</p>
-  </div>
-</div>
-
-- The venv lives *beside* the code (a `.venv/` in the project), so projects can't cross-talk
-- Reproducible & **disposable**: delete `.venv`, recreate it from scratch anytime
+- The `venv` lives *beside* the code (a `.venv/` in the project), so projects can't cross-talk
+- Changing the environment's installed packages updates `pyproject.toml` automatically
+- Tooling checks the environment against the description every time you run
+  - Documentation is always what you get
+  - This makes `.venv` **reproducible** & **disposable** -- recreate it from scratch any time
 - (*) Need a consistent env across several projects? → **workspaces** (bonus slides, if we have time)
 
 
 ## The ecosystem of Python package managers
+
+TODO CHECK THIS SLIDE
 
 <style>
 .eco { display:grid; grid-template-columns:auto 1fr 1fr; gap:10px; max-width:740px; margin:18px auto 0; }
@@ -213,13 +262,13 @@ python analyze.py             # ✗ still in A's venv!
 # uv: a project-centric package manager
 
 
-## Introducing uv
+## `uv run` command
 
 <div style="display:flex; align-items:center; justify-content:center; gap:48px;">
 <div>
 
 - `uv run script.py`: one command that
-  - creates a venv (`uv venv`),
+  - creates a venv (`uv venv`)
   - solves the dependency graph (`uv lock`)
   - ensures the dependencies are present (`uv sync`), and
   - runs your code in the venv
@@ -235,18 +284,21 @@ python analyze.py             # ✗ still in A's venv!
 
 - Follow the official docs at <https://docs.astral.sh/uv/>:
 
-<pre style="width:fit-content;margin:20px auto;"><code class="language-bash">curl -LsSf https://astral.sh/uv/install.sh | sh</code></pre>
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 
 - **Minimally invasive:** a single self-contained binary
   - no admin rights, doesn't touch your system Python
   - no `conda`-style activation block in your `.bashrc` — only a `PATH` entry
   - on the FI clusters, there's also a module: `module load uv` (more later)
-- Want to follow along today? Install it now.
+- Can install now if you want to follow along today
 
 
 ## Other uv selling points
 
-- Lightning-fast dependency resolution and installation
+- Much faster dependency resolution and installation than base `pip`
   - see [Charlie Marsh's talk](https://www.youtube.com/watch?v=gSKTfG1GXYQ) for more
 - Great error messages and docs (`uv run --help`, `uv help run`)
 - Developed openly, permissive licensing (dual MIT / Apache-2)
@@ -262,9 +314,9 @@ python analyze.py             # ✗ still in A's venv!
 <p style="font-size:0.7em; color:#888; margin-top:0.2em;">Stars ≈ developer mindshare, not usage, but still one of the steepest star trajectories ever on GitHub.</p>
 
 
-## Tour of uv: two interfaces
+## Two interfaces
 
-uv gives you two ways to work — pick one per project:
+`uv` gives you two ways to work — automated and manual
 
 <style>
 .iface { display:flex; gap:40px; justify-content:center; margin-top:16px; }
@@ -297,7 +349,7 @@ uv gives you two ways to work — pick one per project:
 
 ## Project interface
 
-Our project already has a `pyproject.toml`. The whole venv dance becomes:
+From an empty project, using `uv` is as simple as:
 
 ```bash
 # Starting with no pyproject.toml
@@ -335,7 +387,7 @@ mean = 12.120, std = 0.256
 
 ## Dependency groups & extras
 
-The same `uv add` commands write to different tables in `pyproject.toml`:
+`uv add` can write to different tables in `pyproject.toml`:
 
 ```toml
 [project]
@@ -349,14 +401,16 @@ docs = ["sphinx"]                 # uv add --group docs sphinx
 plot = ["matplotlib"]             # uv add --optional plot matplotlib
 ```
 
-- **Groups** = *developer*-side (tests, docs); never published with your package
+- **Groups** = *developer*-side (tests, docs): not installed to end users
 - **Extras** = optional features your *users* choose: `pip install research[plot]`
 
 
 ## Lockfiles
 
 - Pins every package's exact version + hash → a **reproducible**, **disposable** env (delete `.venv`, `uv sync` rebuilds it)
-  - skips the **"should I add an upper bound?"** debate: prefer **lower bounds only** (`numpy>=1.26`) + the lockfile of known-good versions — speculative caps like `numpy<2` propagate downstream and cause conflicts
+  - don't re-solve the dependency graph unless necessary
+  - skips the **"should I add an upper bound?"** debate: prefer **lower bounds only** (`numpy>=1.26`) + the lockfile of a known-good version
+  - speculative caps like `numpy<2` propagate downstream and cause conflicts with other packages
 - Should I add `uv.lock` to git?
   - Applications/pipelines: **yes!** Records known-good versions.
   - Libraries: sometimes. Lockfiles don't get published in wheels/sdist, so not much point.
@@ -377,7 +431,7 @@ wheels = [
 ```
 
 
-## uv pip interface
+## uv pip / manual interface
 
 ```bash
 uv venv                       # create a .venv (no project files needed)
@@ -386,22 +440,23 @@ source .venv/bin/activate     # activate the venv
 python analyze.py             # run
 ```
 
-- More control, but more chances to slip up — doesn't use the lockfile
+- Doesn't use the lockfile: misses a big part of the advantage
 - No need to activate to install; you *do* to run `python` directly (or just use `uv run --no-sync`)
-- **Good way to get started with uv!** Low barrier to entry, familiar workflow but **blazingly fast**.
+- **Good way to get started with uv!** Low barrier to entry, familiar workflow but faster than `pip`
 - Also useful for projects that mix Python with compiled code (easy way to force rebuild)
-- uv venvs are ordinary, PEP-standardized venvs: pip-compatible, project-interface-compatible, auto git-ignored
+- `uv` `venv`s are ordinary, PEP-standardized `venv`s: `pip`-compatible, project-interface-compatible, auto git-ignored
   - Contrast with conda/Pixi, which lock you into specific tooling
 
 
 ## Python versions
 
-- uv will download Python for you, or use a local version
+- It's hard to set up a manual `venv` with a python version that's not on your system
+- `uv` will download Python for you, or use a local version
   - plays nice with cluster modules
 - Pin a version per-project in a `.python-version` file (`uv python pin 3.12`) — a lockfile for your Python
 - `requires-python` in `pyproject.toml` declares the *range* your code supports — not an exact pin (don't upper-bound it!)
-- **Back to our demo:** NumPy 1 only publishes wheels for Python ≤ 3.12 — pin `3.12` and uv fetches it for you. Avoids surprise source build.
-- Most uv commands accept `-p`, e.g. `-p 3.12` or `-p 3.14t`
+- **Back to our demo:** NumPy 1 only publishes wheels for Python ≤ 3.12 — pin `3.12` and `uv` fetches it for you. Avoids surprise source build.
+- Most `uv` commands accept `-p`, e.g. `-p 3.12` or `-p 3.14t`
 
 <pre class="term"><span class="pr">❯</span> uv python list
 cpython-3.14.3-linux-x86_64-gnu     <span class="dl">&lt;download available&gt;</span>
@@ -414,9 +469,9 @@ cpython-3.10.20-linux-x86_64-gnu    <span class="dl">&lt;download available&gt;<
 ## Running tools, not just projects
 
 - A "tool" is a Python project with an executable module (e.g. `python -m ruff`)
-- uv has first-class support for tools (`uv tool`, `uvx`)
+- `uv` has first-class support for tools (`uv tool`, `uvx`)
 - `uvx ruff check` — run a tool in a throwaway env (like `pipx run`)
-  - Exactly equivalent to `uv tool run`
+  - `uvx` is exactly equivalent to `uv tool run`
 - `uv tool install ruff` — install a CLI globally, isolated from your projects
   - handy for `ruff`, `pre-commit`, `py-spy`, `meson`, even `disbatch`
 
@@ -432,11 +487,12 @@ cpython-3.10.20-linux-x86_64-gnu    <span class="dl">&lt;download available&gt;<
 
 ## Ephemeral envs → "scrolls"
 
-Need a package for a *single* run? Make a throwaway env with `--with`:
+Need a package for a *single* run of a standalone script? Make a throwaway env with `--with`:
 
 ```bash
 uv run --with matplotlib plot.py   # temporary env, just this once
 ```
+
 
 Run it often? **Bake the deps into the script** — a "scroll" (PEP 723):
 
@@ -449,8 +505,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-- `uv run plot.py` reads the embedded metadata, builds the env, and runs — no `--with`, no `pyproject.toml`
-- The `# /// script` block is **PEP 723** — a Python standard, not uv-specific (pipx and hatch read it too)
+- `uv run plot.py` builds the one-off env from the embedded metadata (no `--with` or `pyproject.toml` needed)
+- The `# /// script` block is **PEP 723** — a Python standard, not `uv`-specific (`pipx` and `hatch` read it too)
 - Perfect for emailing/Slacking/gisting a one-file tool; add deps with `uv add --script plot.py numpy matplotlib`
 - Only for **standalone scripts**, not code that is part of a bigger project (where you'd use `pyproject.toml`)
 
@@ -472,14 +528,16 @@ uv run --with jupyter jupyter lab   # launch Jupyter (nice on a laptop)
 ```
 
 - In VS Code, just select `.venv` as the kernel source — it'll offer to install `ipykernel` for you
-- Dedicated UV guide for Jupyter: https://docs.astral.sh/uv/guides/integration/jupyter/
-- Cluster users: a venv created with uv will work fine with [JupyterHub custom kernels (see FI Wiki)](https://wiki.flatironinstitute.org/SCC/JupyterHub)
+- Dedicated uv guide for Jupyter: https://docs.astral.sh/uv/guides/integration/jupyter/
+- Cluster users: a `venv` created with `uv` will work fine with [JupyterHub custom kernels (see FI Wiki)](https://wiki.flatironinstitute.org/SCC/JupyterHub)
 
 
 ## Future of uv
 
 - Among the fastest-growing dev tools by GitHub stars
-- Astral was acquired by OpenAI; development seems to be carrying on as normal — but the future of AI companies is impossible to predict (uv is permissively licensed and could be forked)
+- Astral was acquired by OpenAI; development seems to be carrying on as normal
+  - the future of AI companies is impossible to predict
+  - uv is permissively licensed and could be forked
   - Why should we care? Think about what happened with the Conda default channel!
 - Upcoming features
   - **Centralized venvs** (venv-in-cache): will make it easier for HPC users to keep venvs out of their quota-limited space
