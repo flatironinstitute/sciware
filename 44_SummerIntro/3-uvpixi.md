@@ -256,16 +256,16 @@ TODO CHECK THIS SLIDE
   <div class="hd">PyPI<br><span>(pip wheels / sdists)</span></div>
   <div class="hd">conda-forge<br><span>(conda packages)</span></div>
 
-  <div class="rh"><span>Traditional</span><span class="sub">central envs</span></div>
+  <div class="rh"><span>Manual Envs</span><span class="sub">hand-managed</span></div>
   <div class="cell">pip + venv</div>
   <div class="cell">conda</div>
 
-  <div class="rh"><span>Project-centric</span><span class="sub">lockfiles</span></div>
+  <div class="rh"><span>Automated Envs</span><span class="sub">tools/lockfiles</span></div>
   <div class="cell focus">uv</div>
   <div class="cell">pixi</div>
 </div>
 
-<p class="eco-note"><b>uv</b> is to <b>pip</b> what <b>pixi</b> is to <b>conda</b>: a fast, modern, project-centric frontend.<br>Today: mostly <b>uv</b>, with a look at <b>pixi</b> at the end.</p>
+<p class="eco-note"><b>uv</b> is to <b>pip</b> what <b>pixi</b> is to <b>conda</b>: a fast, modern, project-centric frontend.</p>
 
 
 
