@@ -11,6 +11,16 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day3.html
 .reveal pre.term .pr { color:#6a9955; }
 </style>
 
+## Flatiron Summer Workshops
+
+https://sciware.flatironinstitute.org/44_SummerIntro
+
+- Schedule:
+  - 10 AM - noon in the **162 3rd floor classroom**
+  - **July 8**: Summer Sciware 4: Git and Github
+  - **July 22, 2-4pm**: Summer Sciware open office hour/poster help
+
+
 
 ## Outline of Package Management
 
