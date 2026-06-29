@@ -11,6 +11,7 @@ https://sciware.flatironinstitute.org/44_SummerIntro/day3.html
 .reveal pre.term .pr { color:#6a9955; }
 </style>
 
+
 ## Flatiron Summer Workshops
 
 https://sciware.flatironinstitute.org/44_SummerIntro
@@ -48,13 +49,13 @@ print(f"mean = {mean:.3f}, std = {std:.3f}")
 ```
 
 
-## Dependency
+## Dependencies
 
 - Did you notice `import numpy as np`?
 - Installing python does not install numpy
-  - We install it separately with `pip`
+  - We install numpy separately with `pip`
 - Installation places a bunch of python code in a known directory structure
-- `import` → the interpreter loads that code & makes the functions accessible
+- `import` causes the the interpreter to load that code & make its functions accessible
 
 
 ## Versions
@@ -66,20 +67,24 @@ print(f"mean = {mean:.3f}, std = {std:.3f}")
 
 ## Attempt 1: system python?
 
-- `$ python analyze.py`
+```bash
+python analyze.py
+```
+
 - Calls whatever my system thinks `python` is
 - Accesses whatever "numpy" shows up first in the path
 - I don't know what the system python is
   - I certainly don't want to change its installed packages!
-  - might break my system (ask me how I know...)
+  - That might break my system (ask me how I know...)
 
 
 ## Controlled *environment*
 
-- We handle consistency using **virtual environments** (`venv`)
-- `venv` sets up an environment-specific alias for the python interpreter executable
-- and environment-specific directories for installed dependencies
-- Standard part of Python (PEP 405)
+- We control these parameters using **virtual environments** (`venv`)
+- `venv` sets up an **environment-specific**:
+  - alias for the python interpreter executable, and
+  - directories for installed dependencies
+- Standard part of Python standard (PEP 405)
 
 
 ## Aside: don't share environments
@@ -97,22 +102,24 @@ which python                           # confirm I'm in the venv
 python analyze.py                      # run
 ```
 
+Oops: no numpy
+
 ```text
   File "analyze.py", line 3, in <module>
     import numpy as np
 ModuleNotFoundError: No module named 'numpy'
 ```
 
-Oops: no numpy
 
-
-## Attempt 2b: Install the dependency
+## Attempt 3: Install the dependency
 
 ```bash
 which python          # confirm environment
-pip install numpy     # install into it
+pip install numpy     # install in the env
 python analyze.py     # run
 ```
+
+Oops: *wrong* numpy...
 
 ```text
   File "analyze.py", line 8, in summarize
@@ -120,15 +127,17 @@ python analyze.py     # run
 AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.
 ```
 
-Oops: *wrong* numpy...
 
-
-## Attempt 2c: Use the right numpy
+## Attempt 4: Use the right numpy
 
 ```bash
 which python              # confirm environment
 pip install numpy==1.26   # downgrade numpy
 python analyze.py         # *now* it works
+```
+
+```text
+mean = 12.120, std = 0.256
 ```
 
 Finally! Why was that so hard...?
@@ -137,7 +146,7 @@ Finally! Why was that so hard...?
 ## Don't make users guess
 
 - Imagine having to guess and check for every dependency in a big package!
-- `pyproject.toml`: *declare* the needed dependencies & versions
+- `pyproject.toml`: lets you *declare* the needed dependencies & versions
   - older methods: `setup.py`, `setup.cfg`, `requirements.txt`
 - Packages are installed by a **frontend** (`pip`, `conda`, `uv`, `pixi`...)
   - Frontend builds a *dependency graph* to determine all needed dependencies
@@ -163,10 +172,11 @@ dependencies = ["numpy < 2"]
 - Consistency--makes sure every user, everywhere, can use your package
 </div>
 
+<div style="font-size:xx-small">
 <img src="assets/uv/sunny-road-antoino-cinotti.jpg"
 alt="An image of an open rural road under a bright clear sky. 'Sunny road in Tuscany' by Antonio Cinotti is licensed under CC BY-NC-ND 2.0."
 style="height:280px; border:none; box-shadow:none; flex-shrink:0;" />
-<div style="font-size:xx-small">"Sunny road in Tuscany" by Antonio Cinotti is licensed under CC BY-NC-ND 2.0.</div>
+"Sunny road in Tuscany" by Antonio Cinotti is licensed under CC BY-NC-ND 2.0.</div>
 </div>
 
 
@@ -213,7 +223,6 @@ python analyze.py             # ✗ still in A's venv!
 
 Conclusion: We should *automate* using the right `venv` for every project.
 
-
 #note: Demo live: create the venv, activate, `pip install numpy`, run, and let it crash — the traceback is the hook for the next slide. Use **Python 3.12**: it's the last version with NumPy 1 wheels, so when we pin `numpy < 2` in a moment, the install stays fast (from a wheel). On 3.13+, pip finds no wheel and compiles NumPy from source — minutes of dead air in front of the room. Make sure `python3.12` is on your PATH first (e.g. `uv python install 3.12`, pyenv, or a module).
 
 
@@ -235,8 +244,6 @@ In an ideal world:
 
 
 ## The ecosystem of Python package managers
-
-TODO CHECK THIS SLIDE
 
 <style>
 .eco { display:grid; grid-template-columns:auto 1fr 1fr; gap:10px; max-width:740px; margin:18px auto 0; }
@@ -260,7 +267,7 @@ TODO CHECK THIS SLIDE
   <div class="cell">pip + venv</div>
   <div class="cell">conda</div>
 
-  <div class="rh"><span>Automated Envs</span><span class="sub">tools/lockfiles</span></div>
+  <div class="rh"><span>Automated Envs</span><span class="sub">lockfiles</span></div>
   <div class="cell focus">uv</div>
   <div class="cell">pixi</div>
 </div>
@@ -298,7 +305,6 @@ TODO CHECK THIS SLIDE
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-
 - **Minimally invasive:** a single self-contained binary
   - no admin rights, doesn't touch your system Python
   - no `conda`-style activation block in your `.bashrc` — only a `PATH` entry
@@ -313,7 +319,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 - Great error messages and docs (`uv run --help`, `uv help run`)
 - Developed openly, permissive licensing (dual MIT / Apache-2)
 - Wide adoption
-  - About 25% of all PyPI downloads originated from uv as of 1 year ago ([source](https://discuss.python.org/t/pypi-downloads-statistics-and-continuous-integration/91810/3))
+  - About 25% of all PyPI downloads originated from `uv` as of 1 year ago ([source](https://discuss.python.org/t/pypi-downloads-statistics-and-continuous-integration/91810/3))
   - Highly active GitHub (https://github.com/astral-sh/uv/)
 
 
@@ -350,7 +356,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
   </div>
   <div class="iface-col">
     <h3>pip interface</h3>
-    <p class="iface-tag">you manage the venv yourself (familiar <code>pip</code> muscle memory)</p>
+    <p class="iface-tag">you manage the venv yourself</p><p>(familiar <code>pip</code> muscle memory)</p>
     <div class="iface-cmds"><code>uv venv</code> &nbsp; <code>uv pip install</code></div>
     <p class="iface-use"><b>Use for:</b> fine control, temporary edits to venv</p>
   </div>
@@ -418,13 +424,14 @@ plot = ["matplotlib"]             # uv add --optional plot matplotlib
 ## Lockfiles
 
 - Pins every package's exact version + hash → a **reproducible**, **disposable** env (delete `.venv`, `uv sync` rebuilds it)
-  - don't re-solve the dependency graph unless necessary
-  - skips the **"should I add an upper bound?"** debate: prefer **lower bounds only** (`numpy>=1.26`) + the lockfile of a known-good version
-  - speculative caps like `numpy<2` propagate downstream and cause conflicts with other packages
+- Skips the **"should I add an upper bound?"** debate
+  - prefer **lower bounds** (`numpy>=1.26`) + the lockfile of a known-good version
+  - speculative caps (`numpy<2`) propagate downstream and cause conflicts with other packages
 - Should I add `uv.lock` to git?
   - Applications/pipelines: **yes!** Records known-good versions.
   - Libraries: sometimes. Lockfiles don't get published in wheels/sdist, so not much point.
-- Technically human-readable TOML — but generated & maintained by **tooling** (`uv lock`, `uv sync`); you rarely read or edit it yourself
+- Technically human-readable TOML but you rarely read or edit it yourself
+  - Generated & maintained by **tooling** (`uv lock`, `uv sync`);
 
 ```toml
 # uv.lock — generated; read & written by tooling, not by hand
@@ -451,10 +458,11 @@ python analyze.py             # run
 ```
 
 - Doesn't use the lockfile: misses a big part of the advantage
-- No need to activate to install; you *do* to run `python` directly (or just use `uv run --no-sync`)
+- No need to activate venv to install
+- *Do* need to activate to run `python` directly (or just use `uv run --no-sync`)
 - **Good way to get started with uv!** Low barrier to entry, familiar workflow but faster than `pip`
 - Also useful for projects that mix Python with compiled code (easy way to force rebuild)
-- `uv` `venv`s are ordinary, PEP-standardized `venv`s: `pip`-compatible, project-interface-compatible, auto git-ignored
+- uv `venv`s are ordinary, PEP-standardized `venv`s: `pip`-compatible, project-interface-compatible, auto git-ignored
   - Contrast with conda/Pixi, which lock you into specific tooling
 
 
@@ -518,7 +526,7 @@ import matplotlib.pyplot as plt
 - `uv run plot.py` builds the one-off env from the embedded metadata (no `--with` or `pyproject.toml` needed)
 - The `# /// script` block is **PEP 723** — a Python standard, not `uv`-specific (`pipx` and `hatch` read it too)
 - Perfect for emailing/Slacking/gisting a one-file tool; add deps with `uv add --script plot.py numpy matplotlib`
-- Only for **standalone scripts**, not code that is part of a bigger project (where you'd use `pyproject.toml`)
+- Only for **standalone scripts** (use `pyproject.toml` if part of a bigger project)
 
 <!-- niche/advanced — kept for reference, not shown
 ## Ecosystem & build backend
