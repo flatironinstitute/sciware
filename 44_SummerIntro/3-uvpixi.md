@@ -702,7 +702,7 @@ pixi run python analyze.py    # run in the project env — no activation
 ## uv or Pixi?
 
 - Pure-Python / PyPI stack → **uv**
-- Working on cluster: usually **uv**
+- Working on cluster: usually **uv** (or modules)
 - Need non-Python deps from conda-forge (compilers, CUDA, R, …) → **Pixi**
 - Same project-centric mental model either way, so switching is cheap
 - **Caveat**: we (Sciware) don't have much experience with Pixi! But it's gaining community traction and seems like a promising option if you're working in the conda ecosystem.
@@ -712,5 +712,3 @@ pixi run python analyze.py    # run in the project env — no activation
 # Survey
 
 <img src="assets/QR_46.3.png" width="30%">
-
-
