@@ -83,15 +83,18 @@ python analyze.py
 - Instead let's use an installation we know & control
 - We do this using **virtual environments** (`venv`)
 - `venv` sets up an **environment-specific**:
-  - alias for the python interpreter executable, and
-  - directories for installed dependencies
-- Standard part of Python standard (PEP 405)
+  - *alias* for the python interpreter executable, and
+  - *directories* for installed dependencies
+- Part of Python standard (PEP 405)
 
 
 ## Aside: don't share environments
 
 - You may see people using the same `venv` for many projects
 - This is just recreating system python with extra steps!
+  - You won't know what's in there
+  - It might not play nicely together
+  - Any upgrade could potentially break things
 
 
 ## Attempt 2: Use an *environment*
@@ -133,7 +136,7 @@ AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float6
 
 ```bash
 which python            # confirm environment
-pip install numpy<2     # downgrade numpy
+pip install "numpy<2"   # downgrade numpy
 python analyze.py       # *now* it works
 ```
 
@@ -175,7 +178,7 @@ dependencies = ["numpy < 2"]
 
 <img src="assets/uv/sunny-road-antoino-cinotti.jpg"
 alt="An image of an open rural road under a bright clear sky. 'Sunny road in Tuscany' by Antonio Cinotti is licensed under CC BY-NC-ND 2.0."
-style="height:380px; border:none; box-shadow:none; flex-shrink:0;" />
+style="height:480px; border:none; box-shadow:none; flex-shrink:0;" />
 <div style="font-size:xx-small">"Sunny road in Tuscany" by Antonio Cinotti is licensed under CC BY-NC-ND 2.0.</div>
 
 
@@ -183,7 +186,7 @@ style="height:380px; border:none; box-shadow:none; flex-shrink:0;" />
 
 <img src="assets/uv/stormy-fields-daz-smith.jpg"
 alt="A dark black and white image of a rural road in a storm. 'stormy fields' by Daz Smith is licensed under CC BY-NC-ND 2.0."
-style="height:380px; border:none; box-shadow:none; flex-shrink:0;"
+style="height:480px; border:none; box-shadow:none; flex-shrink:0;"
 />
 <div style="font-size:xx-small">"stormy fields" by Daz Smith is licensed under CC BY-NC-ND 2.0.</div>
 
@@ -199,7 +202,7 @@ style="height:380px; border:none; box-shadow:none; flex-shrink:0;"
 ## the "wrong-environment" problem
 
 ```bash
-# before lunch — set up and ran project A
+# before lunch — was working with project A
 cd ~/projA
 source .venv/bin/activate     # activate A's environment
 python train.py               # ✓ runs with A's packages
@@ -215,9 +218,13 @@ python analyze.py             # ✗ still in A's venv!
 ## Or you get false success
 
 - Maybe `pyproject.toml` left out some dependencies
-  - but you installed something manually
+  - ...but you `pip install`ed something already
   - so your package still works... *for you*
   - but it's a hassle for others to figure it out
+- Maybe you updated `pyproject.toml`
+  - ...but included conflicting package versions
+  - since you installed them manually, you don't notice
+  - but now your package isn't automatically installable
 
 
 Conclusion: Good tools can help us use the right `venv` for every project.
@@ -234,12 +241,12 @@ Conclusion: Good tools can help us use the right `venv` for every project.
 
 In an ideal world:
 
-- `venv` lives *beside* the code (in a `.venv/` directory in the project), to avoid cross-talk
+- the `venv` would live *beside* the code (like in a `.venv/` directory in the project)
 - Changing the env's installed packages would update `pyproject.toml` automatically
 - Tooling would check the environment against the description every time you run
   - So the documentation is always what you get
   - This makes `.venv` **reproducible** & **disposable** -- recreate it from scratch any time
-- (*) Need to keep several projects in sync? → **workspaces** (bonus slides, if we have time)
+<!-- - (*) Need to keep several projects in sync? → **workspaces** (bonus slides, if we have time) -->
 
 
 ## The ecosystem of Python package managers
@@ -470,7 +477,7 @@ python analyze.py             # run
 - It's hard to set up a manual `venv` with a python version that's not on your system
 - `uv` will download Python for you, or use a local version
   - plays nice with cluster modules
-- Pin a version per-project in a `.python-version` file (`uv python pin 3.12`) — a lockfile for your Python
+- Pin a version per-project in a `.python-version` file (`uv python pin 3.12`)
 - `requires-python` in `pyproject.toml` declares the *range* your code supports — not an exact pin (don't upper-bound it!)
 - **Back to our demo:** NumPy 1 only publishes wheels for Python ≤ 3.12 — pin `3.12` and `uv` fetches it for you. Avoids surprise source build.
 - Most `uv` commands accept `-p`, e.g. `-p 3.12` or `-p 3.14t`
@@ -525,7 +532,7 @@ import matplotlib.pyplot as plt
 - `uv run plot.py` then builds the one-off env from the embedded metadata (no `--with` or `pyproject.toml` needed)
 - The `# /// script` block is **PEP 723** — a Python standard (`pipx` and `hatch` read it too)
 - Perfect for emailing/Slacking/gisting a one-file tool
-  - `uv` can help you manage this metadata with with `uv add --script plot.py numpy matplotlib`
+  - `uv` helps manage this metadata with `uv add --script plot.py numpy matplotlib`
 - Only for **standalone scripts** (use `pyproject.toml` if part of a bigger project)
 
 <!-- niche/advanced — kept for reference, not shown
