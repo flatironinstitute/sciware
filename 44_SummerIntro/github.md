@@ -90,17 +90,20 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 <img src="../21_IntroGithub/assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
-## Name the primary *branch* `main`
+## The primary *branch* `main`
 
 - It's possible to have multiple *branches* of the code where different things are being worked on.
 - The primary branch is usually called *main*.
 
 <pre  style="font-size:1.1em"><code data-trim data-noescape>> git status
+> git branch -v
+> git branch -va
 </code></pre>
 
 Notice:
 - branch name
 - `silly_file.txt` is in red and is *untracked*
+- no remote branches
 
 
 ## Specify which files that you want to transfer
@@ -147,7 +150,7 @@ Alternatively, you can commit directly from the command line:
 <pre  style="font-size:1.1em"><code data-trim data-noescape>
 > git remote -v
 > git remote add origin git@github.com:kelle/silly_repo.git
-> git remote -v
+> git remote update
 </code></pre>
 
 
@@ -156,7 +159,9 @@ Alternatively, you can commit directly from the command line:
 - Use the `git push` command to upload the committed changes to the GitHub repo.
 
 <pre  style="font-size:1.1em; margin-top:-20px"> <code data-trim data-noescape style="margin-top:-20px">
+> git branch -va
 > git push origin main
+> git branch -va
 </code></pre>
 
 <img src="../21_IntroGithub/assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:300px">
