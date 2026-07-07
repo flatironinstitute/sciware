@@ -4,7 +4,7 @@
 
 https://sciware.flatironinstitute.org/44_SummerIntro
 
-- **July 22, 2-4pm**: Summer Sciware open office hour/poster help
+- **July 22, 2-4pm** 5th floor classroom: Summer Sciware open office hour/poster help
 
 
 
