@@ -55,19 +55,6 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 <img src="../21_IntroGithub/assets/Learn-Git-Graphics/Push-Pull%20to%20Remote.png" alt="Push to remote graphic" style="height:550px; margin-right:10px">
 
 
-## Make a project directory (folder)
-
-<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
-> cd #out of sciware21-git-intro
-> mkdir silly_repo
-> cd silly_repo
-> touch silly_code.py
-> touch silly_file.txt
-</code></pre>
-
-<img src="../21_IntroGithub/assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
-
-
 ## Create a repo on GitHub
 
 <div style="display: flex;">
@@ -79,6 +66,19 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 <li>Name the repository <tt>silly_repo</tt></li>
 </ul>
 </div>
+
+
+## Make a project directory (folder)
+
+<pre  style="font-size:1em; margin-top:-20px; margin-left:40px; margin-right: 40px"> <code data-trim data-noescape>
+> cd #out of sciware21-git-intro
+> mkdir silly_repo
+> cd silly_repo
+> touch silly_code.py
+> touch silly_file.txt
+</code></pre>
+
+<img src="../21_IntroGithub/assets/Learn-Git-Graphics/Local.png" alt="Local graphic" style="height:300px">
 
 
 ### Initialize the directory to use with GitHub
