@@ -46,10 +46,6 @@ https://sciware.flatironinstitute.org/44_SummerIntro
 
 
 
-# Topics
-
-
-
 ## Putting code on GitHub
 
 <img src="../21_IntroGithub/assets/Learn-Git-Graphics/Push-Pull%20to%20Remote.png" alt="Push to remote graphic" style="height:550px; margin-right:10px">
@@ -173,3 +169,17 @@ Alternatively, you can commit directly from the command line:
 
 <img src="../21_IntroGithub/assets/Learn-Git-Graphics/Push-Pull%20to%20Remote%20v2.png" alt="Push to remote graphic" style="height:400px">
 
+
+
+# Topics
+
+- branches
+- merge conflicts
+- pull requests
+- licenses
+
+
+
+# Survey
+
+<img src="assets/QR_46.4.png" width="30%">
