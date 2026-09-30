@@ -44,6 +44,7 @@ Activities where participants all actively work to foster an environment which e
 - Helpdesk recap
 - Supercomputing components and terminology
 - Flatiron resources overview
+- AI/coding tools guidance
 - Environment management [interactive]
 - Running your jobs [interactive]
 
@@ -224,7 +225,7 @@ Activities where participants all actively work to foster an environment which e
   - or... `https://jupyter.flatironinstitute.org`
 - Popeye
   - From rusty gateway `ssh popeye`
-- `module load fi-utils` for useful FI-specific utilities
+- `module load fi-utils` for useful FI-specific utilities (default loaded!)
 
 
 ### Rusty/Popeye -- compute power
@@ -292,6 +293,69 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 
 
 
+## AI/coding tools guidance
+
+
+### Agentic AI tools used
+- <font color="#808">A. Claude</font>
+- <font color="#080">B. Codex</font>
+- <font color="#880">C. Give me everything</font>
+- <font color="#048">D. Chat only/none</font>
+
+
+### Agentic AI usage level
+- <font color="#808">A. I will never write code and run commands myself again</font>
+- <font color="#080">B. I use it primarily as a coding assistant, but let it drive sometimes</font>
+- <font color="#880">C. I only ask advice, and barely let it run anything</font>
+- <font color="#048">D. I have never tried agentic AI</font>
+
+
+### Primary editor
+- <font color="#808">A. VSCode</font>
+- <font color="#080">B. Cursor or other "AI-centric" tool</font>
+- <font color="#880">C. vi/vim</font>
+- <font color="#048">D. emacs/other</font>
+
+
+### Responsibilities 
+#### "But my AI did it" -- some user
+
+*You* are responsible for *everything* your code/agent does! We've seen the following
+behavior already:
+
+- Deleting valuable data
+- Excessively crawling the filesystem (crawls of `/`, `$HOME`, `$HOME/ceph`, sometimes parallel)
+- Creating millions of files
+- Inappropriately running cluster jobs
+- Launching hundreds of processes on login nodes
+- Aggressive monitoring of jobs in harmful ways (e.g. tight loops on file ops)
+- Generally doing things we advise against directly, here and on the wiki
+
+
+### What you can do to help
+
+- Don't run agents/VSCode on login nodes
+  - Workstation > cluster allocation (e.g. jupyterhub) > login node
+- Open VSCode *workspaces* on a SMALL CODE DIRECTORY (local or `$HOME`, never `ceph`)
+  - Open ide tools such as `claude` or `codex` with the same constraint
+  - Keep code and large data separate as much as possible
+- If using `codex`, copy `/etc/claude-code/CLAUDE.md` into `~/.codex/AGENTS.md`
+- If you get an automated email about tool misbehavior -- *fix the issue*
+- Containerize tools with access to only files that they explicitly need
+- Never automate slurm submissions
+
+
+### FI LLM resources
+
+- Internal open models -- https://wiki.flatironinstitute.org/SCC.Software/LLMsAtFI
+  - Kimi K3
+  - Kimi K2.6
+  - GLM 5.3
+- Agentic coding with internal models
+  - https://wiki.flatironinstitute.org/SCC/Software/CodeWithFILLMs
+
+
+
 ## Job/resource/software management
 
 
@@ -301,9 +365,9 @@ https://wiki.flatironinstitute.org/SCC/Hardware/Storage
 <ul>
 <li> <a href="https://fido.flatironinstitute.org"> https://fido.flatironinstitute.org </a>
 <ul> <li> set resource estimates -- helps us plan </ul>
-<li> <code> module load fi-utils; fi-quota </code>
+<li> <code> fi-quota </code>
 <ul> <li> see <i>home</i> storage quota usage info </ul>
-<li> <code> module load fi-utils; fi-usage </code>
+<li> <code> fi-usage </code>
 <ul> <li> see all <i>FIDO</i> related quota usage </ul>
 <ul> <li> i.e. Rusty/Popeye Ceph/CPU/GPU </ul>
 <ul> <li> quick and easy, but lags FIDO by ~1hr </ul>
