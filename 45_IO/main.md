@@ -27,7 +27,7 @@ if p.exists():
     x = f.readline()
 ```
 
-```c
+```
 newfstatat(AT_FDCWD, "file.txt", {st_mode=S_IFREG|0644, st_size=2, ...}, 0) = 0
 openat(AT_FDCWD, "file.txt", O_RDONLY|O_CLOEXEC) = 3
 fstat(3, {st_mode=S_IFREG|0644, st_size=2, ...}) = 0
@@ -42,7 +42,7 @@ close(3)                                = 0
 
 ## Small (unbuffered) text writes
 
-```c
+```
 write(57, "3068356 4.586100000e+01\n", 24) = 24
 write(57, "3068357 4.436139000e+01\n", 24) = 24
 write(57, "3068358 4.858434000e+01\n", 24) = 24
@@ -69,7 +69,7 @@ write(57, "3068361 0.000000000e+00\n", 24) = 24
 
 ## Repeated opens of same file
 
-```c
+```
 openat(AT_FDCWD, "file.dat", O_RDONLY) = 4
 lseek(4, 394092, SEEK_CUR) = 0
 read(4, "...", 32, 0) = 32
@@ -90,7 +90,7 @@ close(4)                   = 0
 
 ## Many opens, small reads
 
-```c
+```
 openat(AT_FDCWD, "file0047.dat", O_RDONLY) = 4
 read(4, "...", 32, 0) = 32
 close(4)                   = 0
@@ -107,7 +107,7 @@ close(4)                   = 0
 
 ## Unnecessary file locking
 
-```c
+```
 openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54
 fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
 flock(54, LOCK_SH|LOCK_NB) = 0
@@ -127,7 +127,7 @@ close(54)                  = 0
 
 ## Unnecessary file locking
 
-```c
+```
 openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54 <0.002495>
 fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000263>
 flock(54, LOCK_SH|LOCK_NB) = 0 <0.831976>
@@ -147,7 +147,7 @@ close(54)                  = 0 <0.000095>
 
 ## Using the filesystem as a database
 
-```c
+```
 newfstatat(AT_FDCWD, "file0040, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0124, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0493, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
