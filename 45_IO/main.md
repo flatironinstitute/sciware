@@ -148,9 +148,9 @@ close(54)                  = 0 <0.000095>
 ## Using the filesystem as a database
 
 ```
-newfstatat(AT_FDCWD, "file0040, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
-newfstatat(AT_FDCWD, "file0124, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
-newfstatat(AT_FDCWD, "file0493, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
+newfstatat(AT_FDCWD, "file0040", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
+newfstatat(AT_FDCWD, "file0124", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
+newfstatat(AT_FDCWD, "file0493", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0242", 0x7fffffff87c0, 0) = -1 ENOENT
 openat(AT_FDCWD, "file0242", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0644) = 6
 close(6)
