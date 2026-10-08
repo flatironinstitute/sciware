@@ -107,7 +107,7 @@ close(4)                                   = 0
 
 ## Unnecessary file locking
 
-<pre class="code-wrapper"><code data-noescape>
+<pre><code data-noescape>
 openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002495&gt;</span>
 fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000263&gt;</span>
 flock(5, LOCK_SH|LOCK_NB)                              = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.831976&gt;</span>
@@ -131,7 +131,7 @@ newfstatat(AT_FDCWD, "file0124", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0493", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0242", 0x7fffffff87c0, 0)                      = -1 ENOENT
 openat(AT_FDCWD, "file0242", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0644)    = 6
-close(6)
+close(6)                                                                 = 0
 newfstatat(AT_FDCWD, "file0384", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 ```
 
