@@ -71,17 +71,17 @@ write(57, "3068361 0.000000000e+00\n", 24) = 24
 
 ```
 openat(AT_FDCWD, "file.dat", O_RDONLY) = 4
-lseek(4, 394092, SEEK_CUR) = 0
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+lseek(4, 394092, SEEK_CUR)             = 0
+read(4, "...", 32, 0)                  = 32
+close(4)                               = 0
 openat(AT_FDCWD, "file.dat", O_RDONLY) = 4
-lseek(4, 353022, SEEK_CUR) = 0
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+lseek(4, 353022, SEEK_CUR)             = 0
+read(4, "...", 32, 0)                  = 32
+close(4)                               = 0
 openat(AT_FDCWD, "file.dat", O_RDONLY) = 4
-lseek(4, 234464, SEEK_CUR) = 0
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+lseek(4, 234464, SEEK_CUR)             = 0
+read(4, "...", 32, 0)                  = 32
+close(4)                               = 0
 ```
 
 - Leave files open
@@ -92,14 +92,14 @@ close(4)                   = 0
 
 ```
 openat(AT_FDCWD, "file0047.dat", O_RDONLY) = 4
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+read(4, "...", 32, 0)                      = 32
+close(4)                                   = 0
 openat(AT_FDCWD, "file0048.dat", O_RDONLY) = 4
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+read(4, "...", 32, 0)                      = 32
+close(4)                                   = 0
 openat(AT_FDCWD, "file0049.dat", O_RDONLY) = 4
-read(4, "...", 32, 0) = 32
-close(4)                   = 0
+read(4, "...", 32, 0)                      = 32
+close(4)                                   = 0
 ```
 
 - Restructure data into fewer files
@@ -107,19 +107,17 @@ close(4)                   = 0
 
 ## Unnecessary file locking
 
-<pre class="code-wrapper"><code class="language-stylus" data-trim data-noescape>
-openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002495&gt;</span>
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000263&gt;</span>
-flock(54, LOCK_SH|LOCK_NB) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.831976&gt;</span>
-read(54, "\211HDF\r\n\32\n", 8, 0) = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000248&gt;</span>
-lstat("file0047.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002801&gt;</span>
-close(54)                  = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000353&gt;</span>
-openat(AT_FDCWD, "file0151.hdf5", O_RDONLY) = 54 <span class="fragment fade-in" data-fragment-index="2">&lt;0.001183&gt;</span>
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000230&gt;</span>
-flock(54, LOCK_SH|LOCK_NB) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.820609&gt;</span>
-pread64(54, "\211HDF\r\n\32\n", 8, 0) = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000275&gt;</span>
-lstat("file0151.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002651&gt;</span>
-close(54)                  = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000095&gt;</span>
+<pre class="code-wrapper"><code data-noescape>
+openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002495&gt;</span>
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000263&gt;</span>
+flock(5, LOCK_SH|LOCK_NB)                              = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.831976&gt;</span>
+read(5, "\211HDF\r\n\32\n", 8, 0)                      = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000248&gt;</span>
+close(5)                                               = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000353&gt;</span>
+openat(AT_FDCWD, "file0151.hdf5", O_RDONLY)            = 5 <span class="fragment fade-in" data-fragment-index="2">&lt;0.001183&gt;</span>
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000230&gt;</span>
+flock(5, LOCK_SH|LOCK_NB)                              = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.820609&gt;</span>
+pread64(5, "\211HDF\r\n\32\n", 8, 0)                   = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000275&gt;</span>
+close(5)                                               = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000095&gt;</span>
 </code></pre>
 
 - Locks are very slow... <span class="fragment fade-in" data-fragment-index="2">almost 1s each!</span>
@@ -131,8 +129,8 @@ close(54)                  = 0 <span class="fragment fade-in" data-fragment-inde
 newfstatat(AT_FDCWD, "file0040", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0124", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 newfstatat(AT_FDCWD, "file0493", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
-newfstatat(AT_FDCWD, "file0242", 0x7fffffff87c0, 0) = -1 ENOENT
-openat(AT_FDCWD, "file0242", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0644) = 6
+newfstatat(AT_FDCWD, "file0242", 0x7fffffff87c0, 0)                      = -1 ENOENT
+openat(AT_FDCWD, "file0242", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0644)    = 6
 close(6)
 newfstatat(AT_FDCWD, "file0384", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 ```
