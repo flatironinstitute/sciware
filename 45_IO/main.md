@@ -107,42 +107,22 @@ close(4)                   = 0
 
 ## Unnecessary file locking
 
-```
-openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
-flock(54, LOCK_SH|LOCK_NB) = 0
-read(54, "\211HDF\r\n\32\n", 8, 0) = 8
-lstat("file0047.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
-close(54)                  = 0
-openat(AT_FDCWD, "file0151.hdf5", O_RDONLY) = 54
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
-flock(54, LOCK_SH|LOCK_NB) = 0
-pread64(54, "\211HDF\r\n\32\n", 8, 0) = 8
-lstat("file0151.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
-close(54)                  = 0
-```
+<pre class="code-wrapper"><code class="language-stylus" data-trim data-noescape>
+openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54 <span class="fragment fade-in" data-fragment-index="1">&lt;0.002495&gt;</span>
+fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000263&gt;</span>
+flock(54, LOCK_SH|LOCK_NB) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.831976&gt;</span>
+read(54, "\211HDF\r\n\32\n", 8, 0) = 8 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000248&gt;</span>
+lstat("file0047.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.002801&gt;</span>
+close(54)                  = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000353&gt;</span>
+openat(AT_FDCWD, "file0151.hdf5", O_RDONLY) = 54 <span class="fragment fade-in" data-fragment-index="1">&lt;0.001183&gt;</span>
+fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000230&gt;</span>
+flock(54, LOCK_SH|LOCK_NB) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.820609&gt;</span>
+pread64(54, "\211HDF\r\n\32\n", 8, 0) = 8 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000275&gt;</span>
+lstat("file0151.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.002651&gt;</span>
+close(54)                  = 0 <span class="fragment fade-in" data-fragment-index="1">&lt;0.000095&gt;</span>
+</code></pre>
 
-- Locks are very slow...
-
-
-## Unnecessary file locking
-
-```
-openat(AT_FDCWD, "file0047.hdf5", O_RDONLY) = 54 <0.002495>
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000263>
-flock(54, LOCK_SH|LOCK_NB) = 0 <0.831976>
-read(54, "\211HDF\r\n\32\n", 8, 0) = 8 <0.000248>
-lstat("file0047.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.002801>
-close(54)                  = 0 <0.000353>
-openat(AT_FDCWD, "file0151.hdf5", O_RDONLY) = 54 <0.001183>
-fstat(54, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000230>
-flock(54, LOCK_SH|LOCK_NB) = 0 <0.820609>
-pread64(54, "\211HDF\r\n\32\n", 8, 0) = 8 <0.000275>
-lstat("file0151.hdf5", {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.002651>
-close(54)                  = 0 <0.000095>
-```
-
-- Locks are very slow... almost 1s each!
+- Locks are very slow... <span class="fragment fade-in">almost 1s each!</span>
 
 
 ## Using the filesystem as a database
