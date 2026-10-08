@@ -40,7 +40,7 @@ close(3)                                = 0
 ```
 
 
-## Small (unbuffered) text writes
+## Small (unbuffered) writes
 
 ```
 write(57, "3068356 4.586100000e+01\n", 24) = 24
@@ -58,7 +58,7 @@ write(57, "3068361 0.000000000e+00\n", 24) = 24
    - with flushing: 73.57s
 
 
-## Numeric tabular text files in general
+## Numeric tabular text files
 
 - Much larger than binary equivalents
 - More CPU time converting to text
