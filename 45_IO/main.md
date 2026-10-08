@@ -149,6 +149,8 @@ close(6)                                                                 = 0
 newfstatat(AT_FDCWD, "file0384", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 ```
 
+- when combined with encoding data in filenames...
+
 
 ## Compressed files
 
@@ -156,7 +158,7 @@ newfstatat(AT_FDCWD, "file0384", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
 - decompression takes more (CPU) time than reading
 
 
-## Pro patterns
+## Pro-patterns
 
 - hdf5: flexible, fairly efficient on IO
   - at least in some use cases...
