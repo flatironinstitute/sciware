@@ -107,8 +107,8 @@ close(4)                                   = 0
 
 ## Unnecessary file locking
 
-<div class="fragment current-visible" data-fragment-index="1">
-<pre><code>
+<div class="r-stack">
+<pre class="fragment" data-fragment-index="1"><code>
 openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5
 fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
 flock(5, LOCK_SH|LOCK_NB)                              = 0
@@ -120,9 +120,7 @@ flock(5, LOCK_SH|LOCK_NB)                              = 0
 pread64(5, "\211HDF\r\n\32\n", 8, 0)                   = 8
 close(5)                                               = 0
 </code></pre>
-</div>
-<div class="fragment current-visible" data-fragment-index="2">
-<pre><code>
+<pre class="fragment" data-fragment-index="2"><code>
 openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5 <0.002495>
 fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000263>
 flock(5, LOCK_SH|LOCK_NB)                              = 0 <0.831976>
