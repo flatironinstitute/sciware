@@ -107,18 +107,34 @@ close(4)                                   = 0
 
 ## Unnecessary file locking
 
-<pre><code data-noescape>
-openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5 <span class="fragment fade-in" data-fragment-index="2">&lt;0.002495&gt;</span>
-fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000263&gt;</span>
-flock(5, LOCK_SH|LOCK_NB)                              = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.831976&gt;</span>
-read(5, "\211HDF\r\n\32\n", 8, 0)                      = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000248&gt;</span>
-close(5)                                               = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000353&gt;</span>
-openat(AT_FDCWD, "file0151.hdf5", O_RDONLY)            = 5 <span class="fragment fade-in" data-fragment-index="2">&lt;0.001183&gt;</span>
-fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000230&gt;</span>
-flock(5, LOCK_SH|LOCK_NB)                              = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.820609&gt;</span>
-pread64(5, "\211HDF\r\n\32\n", 8, 0)                   = 8 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000275&gt;</span>
-close(5)                                               = 0 <span class="fragment fade-in" data-fragment-index="2">&lt;0.000095&gt;</span>
+<div class="fragment fade-out" data-fragment-index="1">
+<pre><code>
+openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
+flock(5, LOCK_SH|LOCK_NB)                              = 0
+read(5, "\211HDF\r\n\32\n", 8, 0)                      = 8
+close(5)                                               = 0
+openat(AT_FDCWD, "file0151.hdf5", O_RDONLY)            = 5
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0
+flock(5, LOCK_SH|LOCK_NB)                              = 0
+pread64(5, "\211HDF\r\n\32\n", 8, 0)                   = 8
+close(5)                                               = 0
 </code></pre>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<pre><code>
+openat(AT_FDCWD, "file0047.hdf5", O_RDONLY)            = 5 <0.002495>
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000263>
+flock(5, LOCK_SH|LOCK_NB)                              = 0 <0.831976>
+read(5, "\211HDF\r\n\32\n", 8, 0)                      = 8 <0.000248>
+close(5)                                               = 0 <0.000353>
+openat(AT_FDCWD, "file0151.hdf5", O_RDONLY)            = 5 <0.001183>
+fstat(5, {st_mode=S_IFREG|0600, st_size=2627776, ...}) = 0 <0.000230>
+flock(5, LOCK_SH|LOCK_NB)                              = 0 <0.820609>
+pread64(5, "\211HDF\r\n\32\n", 8, 0)                   = 8 <0.000275>
+close(5)                                               = 0 <0.000095>
+</code></pre>
+</div>
 
 - Locks are very slow... <span class="fragment fade-in" data-fragment-index="2">almost 1s each!</span>
 
@@ -148,3 +164,8 @@ newfstatat(AT_FDCWD, "file0384", {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
   - at least in some use cases...
   - parallel (mpi-enabled hdf5) often harmful, multi-node contention, `cephtweaks` is an option
 - Other options...
+
+
+
+## Survey
+<img width="50%" src="qr.png">
